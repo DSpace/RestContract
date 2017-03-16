@@ -42,6 +42,10 @@ Unbinds the association. Return 405 Method Not Allowed if the association is non
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association
 
+401 Unauthenticated - if the request require a logged-in user
+ 
+403 Unauthorized - if the requester doesn't have enough privilege to execute the request
+ 
 404 Not found - if the requested entity or collection doesn't exists
 
 405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
@@ -52,13 +56,25 @@ The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format t
 ## Pagination
 Each endpoints that expose a collection of resources, including sub-paths for embedded or linked collections (aka list of items of a collection, etc.), MUST implement the pagination with the following common behavior
 
-### Request parameter
-- **page**: 0 based integer value that specify the requested page in the result set [default 0]
-- **size**: the dimension of the result set window to show. It must be a positive value. Negative or zero value must be rejected with a 400 Error code. The default value as well as maximum values are configurable by the system administrator. Different Maximum values apply for anonymous users, logged-in users and administrators. Size over the maximum value are automatically reset to the maximum allowed value, no error is thrown.
+### Request parameters
+- **page**: 0 based integer value that specify the requested page in the result set [default 0]. Negative values must be rejected with a 400 Error code.
+- **size**: the dimension of the result set window to show. It must be a positive value. Negative or zero values must be rejected with a 400 Error code. The default value as well as maximum values are configurable by the system administrator. Different Maximum values apply for anonymous users, logged-in users and administrators. Size over the maximum value are automatically reset to the maximum allowed value, no error is thrown.
 - **sort**: the criteria to use. Ordering is specified appending a comma and the keyword asc or desc to the criteria name (i.e. title,asc). Unknown sort criteria and/or ordering keyword produce an error response with Http Code 400
 
 ### Response
-The HAL document always includes the following attributes
+The HAL document always includes a page object with the following attributes
+- **size**: the dimension of the result set window returned (can be different than the requested value due to imposed limit, see the request parameters section)
+- **totalElements**: the total size of the result set
+- **totalPages**: the number of available page of result using the current window size
+- **number**: the index (0-based) of the returned page
+An example
+
+	"page": {
+    	"size": 5,
+    	"totalElements": 14,
+    	"totalPages": 3,
+    	"number": 0
+  	}
 
 and, when applicable, the following links
 - **self**: a parameterized link to the requested collection page
@@ -67,6 +83,23 @@ and, when applicable, the following links
 - **first**: the link to the first page of resources in the collection, keeping the same option for size and sorting
 - **last**: the link to the last page of resources in the collection, keeping the same option for size and sorting
 
+An example
+
+	"_links": {
+    	"first": {
+      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=0&size=5"
+    	},
+    	"self": {
+      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams"
+    	},
+    	"next": {
+      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=1&size=5"
+    	},
+    	"last": {
+	      "href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=2&size=5"
+	    }
+  	}
+  	
 ### Out of bound pages
 In the case that the request parameters lead to a page outside the result set an empty page should be returned with the links needed to go to the first and last page of the result set if the results set is not empty and the total number of resources in the collection
 
