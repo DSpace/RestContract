@@ -1,4 +1,5 @@
 # Endpoints
+[REST Overview Documentation](README.md)
 
 ## Available Endpoints
 * /api/core/communities

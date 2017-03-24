@@ -1,4 +1,5 @@
 # Endpoint Searches and Endpoint Relationships
+[REST Overview Documentation](README.md)
 
 ## Available Search
 

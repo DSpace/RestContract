@@ -1,4 +1,5 @@
 # Projections
+[REST Overview Documentation](README.md)
 
 ## Questions
 * How does an object convey its level of initialization (distinguishing empty from uninitialized)?
@@ -15,8 +16,8 @@ Perhaps this should be the default.
 * populate metadata
 * populate link to parent object (breadcrumb projection)
 * populate link to child objects (child projection)
- 
-## Projection = breadcrumb 
+
+## Projection = breadcrumb
 * populate id, name, handle
 * populate parent object (breadcrumb projection)
 
