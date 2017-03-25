@@ -1,5 +1,17 @@
 # Rest7Contract
-Repository to discuss the new REST API contract for DSpace 7 <https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group>
+Repository to discuss the new REST API contract for DSpace 7
+
+## Community resources
+
+* [Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
+* [Community Slack Channel](https://dspace-org.slack.com/messages/C3T5FTLNP)
+* [Historical Documentation Behind this Project](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
+* [DSpace 7 UI and REST Working Group Meeting Notes](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
+
+## Detailed Documentation pages
+* [Endpoints](endpoints.md)
+* [Endpoint Search Options and Relationships](search-rels.md)
+* [Endpoint Projections](projections.md)
 
 ## Use of the HTTP Verbs and HTTP Response CODE
 
@@ -43,9 +55,9 @@ Unbinds the association. Return 405 Method Not Allowed if the association is non
 400 Bad Request - if multiple URIs were given for a to-one-association
 
 401 Unauthenticated - if the request require a logged-in user
- 
+
 403 Unauthorized - if the requester doesn't have enough privilege to execute the request
- 
+
 404 Not found - if the requested entity or collection doesn't exists
 
 405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
@@ -78,7 +90,7 @@ An example
 
 and, when applicable, the following links
 - **self**: a parameterized link to the requested collection page
-- **next**: the link to the next page of resources in the collection, if any, keeping the same option for size and sorting 
+- **next**: the link to the next page of resources in the collection, if any, keeping the same option for size and sorting
 - **previous**: the link to the previous page of resources in the collection, if any, keeping the same option for size and sorting
 - **first**: the link to the first page of resources in the collection, keeping the same option for size and sorting
 - **last**: the link to the last page of resources in the collection, keeping the same option for size and sorting
@@ -99,7 +111,7 @@ An example
 	      "href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=2&size=5"
 	    }
   	}
-  	
+
 ### Out of bound pages
 In the case that the request parameters lead to a page outside the result set an empty page should be returned with the links needed to go to the first and last page of the result set if the results set is not empty and the total number of resources in the collection
 
@@ -123,11 +135,11 @@ A profile link as defined in RFC 6906 (<https://tools.ietf.org/html/rfc6906>), i
 ## Endpoints
 At the root of the api a HAL document MUST list all the primary endpoints allowing full discovery of the current version of the API.
 
-[Documentation of the defined endpoints](endpoints.md) 
- 
+[Documentation of the defined endpoints](endpoints.md)
+
 ## API Versioning
-... here we will describe our strategy to provide access overtime to a specific version of the REST API... 
+... here we will describe our strategy to provide access overtime to a specific version of the REST API...
 ### Deprecated endpoints & methods
 ... how we want to let know the client about deprecated endpoints & methods?
 ### Experimentals endpoints & methods
-... do we want/need to introduce endpoints keeping the right to change behavior and other aspects without face with the self-imposed guarantee about backward compatibilty and versioning? 
+... do we want/need to introduce endpoints keeping the right to change behavior and other aspects without face with the self-imposed guarantee about backward compatibilty and versioning?
