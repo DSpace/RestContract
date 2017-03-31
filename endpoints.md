@@ -12,7 +12,7 @@
 * /api/core/sites
 
 ## Proposed Endpoints
-* /api/discover
+* /api/discover/(dso)?(sort)
   * "context" contains the following
     * Item counts
     * All items accessible to user by context default sort
