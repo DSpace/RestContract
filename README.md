@@ -1,9 +1,20 @@
 # Rest7Contract
-Repository to discuss the new REST API contract for DSpace 7
+
+Repository to discuss the new REST API contract for DSpace 7. The code to implement this contract is being developed on the DSpace [`master` branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
+
+***
+:warning: **As the DSpace 7 REST API is under active development, this REST Contract is expected to change rapidly.** REST Contract contributors will be rapidly adding ideas (via Pull Requests) to this repository in order to enable the detailed discussions necessary to finalize the REST Contract. Once the REST Contract stabilizes, we will remove this warning and more actively publicize it.
+
+**If you would like to get involved in our DSpace 7 development effort, we welcome new contributors.**
+  * DSpace 7 Meetings and subteams can be found on the [DSpace 7 UI Working Group](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group) wiki page.
+  * DSpace 7 REST API development work (corresponding to this contract) is occurring on the DSpace [`master` branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
+  * DSpace 7 Angular UI work is occurring at https://github.com/DSpace/dspace-angular
+***
+
 
 ## Community resources
 
-* [Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
+* [REST Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
 * [Community Slack Channel](https://dspace-org.slack.com/messages/C3T5FTLNP)
 * [Historical Documentation Behind this Project](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
 * [DSpace 7 UI and REST Working Group Meeting Notes](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
