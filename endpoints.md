@@ -7,9 +7,13 @@
 * /api/core/sites
 * /api/core/bitstreams
 * /api/core/bitstreamformats
+* /api/core/sites
 
 ## Endpoints Under Development
-* /api/core/sites
+* /api/core/metadatafields
+* /api/core/metadataschemas
+* /api/core/{model}/search
+* /api/discover/search
 
 ## Proposed Endpoints
 * /api/discover/search
