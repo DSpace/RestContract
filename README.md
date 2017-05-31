@@ -15,6 +15,7 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
 ## Community resources
 
 * [REST Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
+* [REST Coding Tips](https://wiki.duraspace.org/display/DSPACE/DSpace+7+REST%3A+Coding+DSpace+Objects)
 * [Community Slack Channel](https://dspace-org.slack.com/messages/C3T5FTLNP)
 * [Historical Documentation Behind this Project](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
 * [DSpace 7 UI and REST Working Group Meeting Notes](https://wiki.duraspace.org/display/DSPACE/DSpace+7+UI+Working+Group)
