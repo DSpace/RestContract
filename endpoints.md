@@ -2,19 +2,21 @@
 [REST Overview Documentation](README.md)
 
 ## Available Endpoints
-* /api/core/communities
-* /api/core/collections
 * /api/core/sites
-* /api/core/bitstreams
+* [/api/core/communities](communities.md)
+* /api/core/collections
+* [/api/core/items] (items.md)
+* [/api/core/bitstreams](bitstreams.md)
 * /api/core/bitstreamformats
 * /api/core/sites
 * /api/core/metadatafields
 * /api/core/metadataschemas
 * /api/core/epersons
 * /api/core/groups
+* [/api/discover/browses](browses.md)
 
 ## Endpoints Under Development
-* /api/core/{model}/search
+* /api/core/{model}/search <https://github.com/DSpace/DSpace/pull/1726>
 * /api/discover/search
     * to provide access the the discovery search. The supported parameters could be:
         * profile (similar to the current location parameter but more general so that we can provide different configuration for the repository, for a community, etc.)
@@ -32,11 +34,6 @@
     * Get all items for a full text search
     * Get all items for a faceted search
     * Get all items for a complex search
-* /api/discover/browse
-    * to provide access to the browse system. it should return the list of available browse indexes. 
-    * On a specific browse indexes /api/discover/browse/ the supported parameters could be:
-        * sort
-        * filter value (on metadata browse)
  
 ## Proposed Endpoints
 * /api/authorize/(dso)
