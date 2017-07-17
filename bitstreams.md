@@ -35,14 +35,14 @@ Exposed links:
 
 ## Linked entities
 ### Format
-**/api/core/bitstreams/<:uudi>/format**
+**/api/core/bitstreams/<:uuid>/format**
 
 Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
 
 It returns the format of the bitstream
 
 ### Content
-**/api/core/bitstreams/<:uudi>/content**
+**/api/core/bitstreams/<:uuid>/content**
 
 Example: <http://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
 
