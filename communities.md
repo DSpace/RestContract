@@ -56,7 +56,7 @@ Exposed links:
 
 ## Linked entities
 ### Sub-Communties
-**/api/core/communities/<:uudi>/communities**
+**/api/core/communities/<:uuid>/communities**
 
 Example: not available 
 
@@ -66,7 +66,7 @@ The supported parameters are:
 * page, size
 
 ### Collections
-**/api/core/communities/<:uudi>/collections**
+**/api/core/communities/<:uuid>/collections**
 
 Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
 
@@ -76,7 +76,7 @@ The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 
 ### Logo
-**/api/core/communities/<:uudi>/logo**
+**/api/core/communities/<:uuid>/logo**
 
 Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
 
