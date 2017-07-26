@@ -113,23 +113,43 @@ The returned JSON response will be like:
     	"totalPages": 3,
     	"number": 0
   },
-  "results" : [
-    {
-      "dspaceObject" : {
-        ... --> Partial object
+  "_embedded" : {
+    "searchResults" : [
+      {
+        "hitHighlights": {
+          "dc.description.abstract" : "This is the <em>very cool</em> abstract of this item",
+          "dc.publisher" : "My <em>very cool</em> publisher",
+        },
+        "_links" : {
+          "dspaceObject" : {
+            "href": "/api/core/items/9f3288b2-f2ad-454f-9f4c-70325646dcee"
+          }
+        },
+        "_embedded" : {
+          "dspaceObject" : {
+            "uuid": "9f3288b2-f2ad-454f-9f4c-70325646dcee",
+            "name": "Test Webpage",
+            "handle": "10673/4"
+          }
+        }
       },
-      "hitHighlights": {
-        "dc.description.abstract" : "This is the <em>very cool</em> abstract of this item",
-        "dc.publisher" : "My <em>very cool</em> publisher",
+      {
+        "hitHighlights": { },
+        "_links" : {
+          "dspaceObject" : {
+            "href": "/api/core/items/ff7ec3a4-0aab-418b-94fc-d0e8189084db"
+          }
+        },
+        "_embedded" : {
+          "dspaceObject" : {
+            "uuid": "ff7ec3a4-0aab-418b-94fc-d0e8189084db",
+            "name": "Test Item with no hit highlights",
+            "handle": "10673/5"
+          }
+        }
       }
-    },
-    {
-      "dspaceObject" : {
-        ... --> Partial object
-      },
-      "hitHighlights": { }
-    }
-  ],
+    ]
+  },
   "_links": {
       "first": {
         "href": "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
@@ -183,60 +203,76 @@ The returned JSON response will be like:
     "by" : "dc.title",
     "order" : "asc"
   },
-  "facets" : [
-    {
-      "name" : "author",
-      "results" : [
-          {
-            "value" : "Smith, Donald 2",
-            "count" : 100,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
-            }
-          },
-          {
-            "value" : "Smith, Donald 1",
-            "count" : 80,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
-            }
-          },
-          {
-            "value" : "Smith, Donald 3",
-            "count" : 10,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
-            }
+  "_embedded" : {
+    "facets" : [
+      {
+        "name" : "author",
+        "_embedded" : {
+          "values" : [
+              {
+                "value" : "Smith, Donald 2",
+                "count" : 100,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
+                }
+              },
+              {
+                "value" : "Smith, Donald 1",
+                "count" : 80,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
+                }
+              },
+              {
+                "value" : "Smith, Donald 3",
+                "count" : 10,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
+                }
+              }
+          ]
+        },
+        "_links" : {
+          "self": {
+            "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
           }
-      ]
-    },
-    {
-      "name" : "subject",
-      "results" : [
-          {
-            "value" : "Java",
-            "count" : 100,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
-            }
-          },
-          {
-            "value" : "SQL",
-            "count" : 80,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
-            }
-          },
-          {
-            "value" : "CSS",
-            "count" : 10,
-            "_links": {
-              "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
-            }
+        }
+      },
+      {
+        "name" : "subject",
+        "_embedded" : {
+          "values" : [
+              {
+                "value" : "Java",
+                "count" : 100,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                }
+              },
+              {
+                "value" : "SQL",
+                "count" : 80,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                }
+              },
+              {
+                "value" : "CSS",
+                "count" : 10,
+                "_links": {
+                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                }
+              }
+          ]
+        },
+        "_links" : {
+          "self": {
+            "href": "/api/discover/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
           }
-      ]
-    }
-  ],
+        }
+      }
+    ]
+  },
   "_links": {
       "self": {
         "href": "/api/discover/search/<:dso-type>/facets?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234"
@@ -316,28 +352,46 @@ The returned JSON response will be like:
     	"totalPages": 3,
     	"number": 0
   },
-  "results" : [
-      {
-        "value" : "Smith, Donald 2",
-        "count" : 100,
-        "_links": {
-          "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
+  "name" : "<:facet-name>",
+  "type" : "string",
+  "_embedded" : {
+    "values" : [
+        {
+          "value" : "Smith, Donald 2",
+          "count" : 100,
+          "_links": {
+            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
+          }
+        },
+        {
+          "value" : "Smith, Donald 1",
+          "count" : 80,
+          "_links": {
+            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
+          }
+        },
+        {
+          "value" : "Smith, Donald 3",
+          "count" : 10,
+          "_links": {
+            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
+          }
         }
+    ]
+  },
+  "_links": {
+      "first": {
+        "href": "/api/discover/facets/<:facet-name>?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
       },
-      {
-        "value" : "Smith, Donald 1",
-        "count" : 80,
-        "_links": {
-          "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
-        }
+      "self": {
+        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
       },
-      {
-        "value" : "Smith, Donald 3",
-        "count" : 10,
-        "_links": {
-          "self" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
-        }
+      "next": {
+        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=1&size=5"
+      },
+      "last": {
+        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=2&size=5"
       }
-  ]
+  }
 }
 ```
