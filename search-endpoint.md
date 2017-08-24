@@ -4,23 +4,12 @@
 ## Search Endpoint
 **/api/discover/search**   
 
-This endpoint provides the functionality of the Discovery search screen: http://demo.dspace.org/xmlui/discover.
-
-Provide access to the Discovery search system (SOLR based). This endpoint returns the list of available DSpace object (DSO) types that can be searched:
-* all: Execute a query over all available DSO types.
-* items: Only search the DSpace items.
-* communities: Search within the DSpace community records.
-* collections: Limit the search to DSpace collection records.
-
-Example: TODO
-
-### Search with a given DSO type
-**/api/discover/search/<:dso-type>**
-
-This endpoint will provide detailed information on the Discovery search configuration that can be used to build complex searches.
+This endpoint provides the functionality of the Discovery search screen: https://wiki.duraspace.org/display/DSDOC6x/Discovery.
+It will provide detailed information on the Discovery search configuration that can be used to build complex searches.
 
 It supports the following parameters:
 * `scope`: UUID of a specific DSpace container (site, community or collection) to which the search will to be limited. If the scope has a specific DSpace configuration defined in `config/spring/api/discovery.xml`[https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L28] that configuration will be returned. Otherwise the default configuration will be returned.
+* `configuration`: The name of a Discovery configuration that should be used by this search. If the provided scope already has a specific Discovery configuration defined, than this parameter will be ignored.
 
 The JSON response document is as follow
 ```json
@@ -28,23 +17,45 @@ The JSON response document is as follow
   "filters": [
     {
       "filter" : "title",
+      "operators": [
+        {
+          "operator" : "contains",
+        },
+        {
+          "operator" : "notcontains",
+        },
+        {
+          "operator" : "authority",
+        }
+      ]
     },
     {
       "filter" : "author",
+      "operators": [
+        {
+          "operator" : "contains",
+        },
+        {
+          "operator" : "notcontains",
+        },
+        {
+          "operator" : "authority",
+        }
+      ]
     },
     {
       "filter" : "type",
-    }
-  ],
-  "operators": [
-    {
-      "operator" : "contains",
-    },
-    {
-      "operator" : "notcontains",
-    },
-    {
-      "operator" : "authority",
+      "operators": [
+        {
+          "operator" : "contains",
+        },
+        {
+          "operator" : "notcontains",
+        },
+        {
+          "operator" : "authority",
+        }
+      ]
     }
   ],
   "sortOptions": [
@@ -66,6 +77,7 @@ The JSON response document is as follow
 
 * filters: Provides a list of advanced search filters that can be used to limit the result set as configured in https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L97
 * operators: A list of supported operators that can be combined on each search filter.
+*
 * sortOptions: The sort options available for this query type as configured in https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L112
 
 Exposed links:
@@ -73,12 +85,18 @@ Exposed links:
 * facets: link to get the list of facet values and counts associated with this search query as configured in https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L86
 
 ### Matching DSpace objects search results
-**/api/discover/search/<:dso-type>/objects**
+**/api/discover/search/objects**
 
 This endpoint returns a list of DSpace Objects that match the given type. The result can be refined using the following parameters:
 * `query`: The discovery search string to will be used to match records.
+* `dsoType`: Limit the search to a specific DSpace Object type:
+     * all: Execute a query over all available DSO types.
+     * item: Only search the DSpace items.
+     * community: Search within the DSpace community records.
+     * collection: Limit the search to DSpace collection records.
 * `scope`: UUID of a specific DSpace container (site, community or collection) to which the search has to be limited, e.g. `scope=9076bd16-e69a-48d6-9e41-0238cb40d863`.
-* `<:filter-name>.<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `author.authority=5df05073-3be7-410d-8166-e254369e4166` or `title.notcontains=rainbows`.
+* `configuration`: The name of a Discovery configuration that should be used by this search. If the provided scope already has a specific Discovery configuration defined, than this parameter will be ignored.
+* `f.<:filter-name>=<:filter-value>,<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `f.author=5df05073-3be7-410d-8166-e254369e4166,authority` or `f.title=rainbows,notcontains`.
 * `page`, `size` & `sort` [see pagination](README.md#Pagination): the sort name must match a value returned by the parent search endpoint (see above) or *default*, followed by a comma and the order direction. For example `sort=default,asc` or `sort=dateissued,desc`.
 
 Example: TODO
@@ -89,7 +107,7 @@ The returned JSON response will be like:
 {
   "query":"my query",
   "scope":"9076bd16-e69a-48d6-9e41-0238cb40d863",
-  "filters": [
+  "appliedFilters": [
       {
         "filter" : "title",
         "operator" : "notcontains",
@@ -148,62 +166,7 @@ The returned JSON response will be like:
           }
         }
       }
-    ]
-  },
-  "_links": {
-      "first": {
-        "href": "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
-      },
-      "self": {
-        "href": "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
-      },
-      "next": {
-        "href": "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=1&size=5"
-      },
-      "last": {
-        "href": "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=2&size=5"
-      }
-  }
-}
-```
-
-### Matching facet search results
-**/api/discover/search/<:dso-type>/facets**
-
-This endpoint returns a list of facet values and counts based on the current query. The result can be refined using the following parameters:
-* `query`: The discovery search string to will be used to match records.
-* `scope`: UUID of a specific DSpace container (site, community or collection) to which the search has to be limited, e.g. `scope=9076bd16-e69a-48d6-9e41-0238cb40d863`.
-* `<:filter-name>.<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `author.authority=5df05073-3be7-410d-8166-e254369e4166` or `title.notcontains=rainbows`.
-* There is no paging here since the number of facet values displayed in the Discovery search screen is configured in the backend.
-
-Example: TODO
-
-The returned JSON response will be like:
-
-```json
-{
-  "query":"my query",
-  "scope":"9076bd16-e69a-48d6-9e41-0238cb40d863",
-  "filters": [
-      {
-        "filter" : "title",
-        "operator" : "notcontains",
-        "value" : "abcd",
-        "label" : "abcd"
-      },
-      {
-        "filter" : "author",
-        "operator" : "authority",
-        "value" : "1234",
-        "label" : "Smith, Donald"
-      }
-  ],
-  "sort" :
-  {
-    "by" : "dc.title",
-    "order" : "asc"
-  },
-  "_embedded" : {
+    ],
     "facets" : [
       {
         "name" : "author",
@@ -213,28 +176,28 @@ The returned JSON response will be like:
                 "value" : "Smith, Donald 2",
                 "count" : 100,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
+                  "narrow" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
                 }
               },
               {
                 "value" : "Smith, Donald 1",
                 "count" : 80,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
+                  "narrow" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
                 }
               },
               {
                 "value" : "Smith, Donald 3",
                 "count" : 10,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
+                  "narrow" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
                 }
               }
           ]
         },
         "_links" : {
           "self": {
-            "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
+            "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
           }
         }
       },
@@ -246,48 +209,56 @@ The returned JSON response will be like:
                 "value" : "Java",
                 "count" : 100,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                  "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
                 }
               },
               {
                 "value" : "SQL",
                 "count" : 80,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                  "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
                 }
               },
               {
                 "value" : "CSS",
                 "count" : 10,
                 "_links": {
-                  "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&subject.equals=Java"
+                  "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
                 }
               }
           ]
         },
         "_links" : {
           "self": {
-            "href": "/api/discover/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
+            "href": "/api/discover/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
           }
         }
       }
     ]
   },
   "_links": {
+      "first": {
+        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
+      },
       "self": {
-        "href": "/api/discover/search/<:dso-type>/facets?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234"
+        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
+      },
+      "next": {
+        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
+      },
+      "last": {
+        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=2&size=5"
       }
   }
 }
 ```
 
-## Facet Endpoint
-**/api/discover/facets**   
-
-This endpoint provides the functionality of the Discovery search filter screens, e.g. http://demo.dspace.org/xmlui/search-filter?field=author&order=COUNT
+### Matching facet search results
+**/api/discover/facets**
 
 Provide access to the Discovery facet system (SOLR based). This endpoint returns the list of available facet fields that can be queried. The endpoint supports the following parameters:
 * `scope`: UUID of a specific DSpace container (site, community or collection) to which the search will to be limited. If the scope has a specific DSpace configuration defined in `config/spring/api/discovery.xml`[https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L28] that configuration will be returned. Otherwise the default configuration will be returned.
+* `configuration`: The name of a Discovery configuration that should be used by this search. If the provided scope already has a specific Discovery configuration defined, than this parameter will be ignored.
 
 The list of returned facet fields will depend on the Discovery configuration: https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L86
 
@@ -317,7 +288,7 @@ The JSON response document is as follow
 This endpoint returns a list of values that correspond to the given facet name. The result can be refined using the following parameters:
 * `query`: The discovery search string to will be used to match records.
 * `scope`: UUID of a specific DSpace container (site, community or collection) to which the search has to be limited, e.g. `scope=9076bd16-e69a-48d6-9e41-0238cb40d863`.
-* `<:filter-name>.<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `author.authority=5df05073-3be7-410d-8166-e254369e4166` or `title.notcontains=rainbows`.
+* `f.<:filter-name>=<:filter-value>,<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `f.author=5df05073-3be7-410d-8166-e254369e4166,authority` or `f.title=rainbows,notcontains`.
 * `page`, `size` & `sort` [see pagination](README.md#Pagination): the sort name be "count" (results ordered descending by the number of matching records) or "index" (results order alphabetically).
 
 Example: TODO
@@ -328,7 +299,7 @@ The returned JSON response will be like:
 {
   "query":"my query",
   "scope":"9076bd16-e69a-48d6-9e41-0238cb40d863",
-  "filters": [
+  "appliedFilters": [
       {
         "filter" : "title",
         "operator" : "notcontains",
@@ -343,8 +314,7 @@ The returned JSON response will be like:
       }
   ],
   "sort" : {
-    "by" : "dateissued",
-    "order" : "asc"
+    "by" : "index"
   },
   "page" : {
     	"size": 5,
@@ -352,7 +322,7 @@ The returned JSON response will be like:
     	"totalPages": 3,
     	"number": 0
   },
-  "name" : "<:facet-name>",
+  "name" : "author",
   "type" : "string",
   "_embedded" : {
     "values" : [
@@ -360,37 +330,37 @@ The returned JSON response will be like:
           "value" : "Smith, Donald 2",
           "count" : 100,
           "_links": {
-            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+2"
+            "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
           }
         },
         {
           "value" : "Smith, Donald 1",
           "count" : 80,
           "_links": {
-            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+1"
+            "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
           }
         },
         {
           "value" : "Smith, Donald 3",
           "count" : 10,
           "_links": {
-            "search" : "/api/discover/search/<:dso-type>/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&author.equals=Smith,+Donald+3"
+            "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
           }
         }
     ]
   },
   "_links": {
       "first": {
-        "href": "/api/discover/facets/<:facet-name>?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
+        "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
       },
       "self": {
-        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=0&size=5"
+        "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
       },
       "next": {
-        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=1&size=5"
+        "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
       },
       "last": {
-        "href": "/api/discover/facets/<:facet-name>?objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&title.notcontains=abcd&author.authority=1234&page=2&size=5"
+        "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=3&size=5"
       }
   }
 }
