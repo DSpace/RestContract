@@ -18,6 +18,8 @@
 ## Endpoints Under Development
 * /api/core/{model}/search <https://github.com/DSpace/DSpace/pull/1726>
 * [/api/discover/search](search-endpoint.md)
+* [/api/configuration/input-forms](input-forms.md)
+* [/api/configuration/submission-panels](submission-panels.md)
  
 ## Proposed Endpoints
 * /api/authorize/(dso)
