@@ -75,7 +75,7 @@ Unbinds the association. Return 405 Method Not Allowed if the association is non
 405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
 
 ## HATEOAS & HAL
-The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources.
+The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
 
 ## Pagination
 Each endpoints that expose a collection of resources, including sub-paths for embedded or linked collections (aka list of items of a collection, etc.), MUST implement the pagination with the following common behavior
