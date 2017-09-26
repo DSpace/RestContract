@@ -55,7 +55,13 @@ Provide detailed information about a specific submission-definition. The JSON re
 
 Exposed links:
 * collections: list of collections that explicitly use such submission-definition
- 
+
+## Search methods
+### findByCollection
+**/api/configuration/submission-definitions/search/findByCollection?uuid=<:collection-uuid>**
+
+It returns the submission definition that apply to a specific collection eventually fallback to the default configuration 
+
 ## Linked entities
 ### collections
 **/api/configuration/submission-definitions/<:definition-name>/collections**

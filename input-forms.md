@@ -8,7 +8,7 @@ Provide access to the configured input-forms. It returns the list of existent in
 
 Example: to be provided
 
-**/api/configuration/value-pairs **   
+**/api/configuration/value-pairs**   
 
 Provide access to the configured value-pairs. It returns the list of existent value-pairs.
 
@@ -71,11 +71,18 @@ Provide detailed information about a specific input-form. The JSON response docu
 Exposed links:
 * value-pairs: list of value-pairs used by the specific input-form
 * collections: list of collections that explicitly use such input-form
+
 Inside the field definition we will have links if appropriate to
-** metadata: the link to the metadataregistry entry
-** authority: a definition of the authority used by the field (mainly to retrieve the autocomplete/lookup endpoint)
-** vocabulary: the link to the vocabulary xml file
-** value-pair: the list of entries for dropdown, checkbox, etc.
+* metadata: the link to the metadataregistry entry
+* authority: a definition of the authority used by the field (mainly to retrieve the autocomplete/lookup endpoint)
+* vocabulary: the link to the vocabulary xml file
+* value-pair: the list of entries for dropdown, checkbox, etc.
+ 
+## Search methods
+### findByCollection
+**/api/configuration/input-forms/search/findByCollection?uuid=<:collection-uuid>**
+
+It returns the input form that apply to a specific collection eventually fallback to the default configuration
  
 ## Linked entities
 ### Value pairs
