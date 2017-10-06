@@ -8,12 +8,6 @@ Provide access to the configured input-forms. It returns the list of existent in
 
 Example: to be provided
 
-**/api/configuration/value-pairs**   
-
-Provide access to the configured value-pairs. It returns the list of existent value-pairs.
-
-Example: to be provided
-
 ## Single Input-Form 
 **/api/configuration/input-forms/<:form-name>**
 
@@ -46,7 +40,8 @@ Provide detailed information about a specific input-form. The JSON response docu
   				main: null,
   				other: null
   			},
-  			typeBind: []
+  			typeBind: [],
+  			languageCodes: []
   		},
   		{
 			label: "Title",
@@ -55,9 +50,8 @@ Provide detailed information about a specific input-form. The JSON response docu
   			hints: "Enter the main title of the item.",
   			input: {
   				type: "onebox",
-  				regex: null,
-  				closedVocabulary: false  				
-  			}
+  				regex: null
+  			},
   			selectableMetadata: [
   				{
   					metadata: "dc.title"
@@ -68,7 +62,17 @@ Provide detailed information about a specific input-form. The JSON response docu
   				main: null,
   				other: null
   			},
-  			typeBind: []
+  			typeBind: [],
+  			languageCodes: [
+  				{
+  					display: "English",
+  					code: "en_US"
+				},
+				{
+  					display: "Italian",
+  					code: "it_IT"
+				}
+  			]
   		},
   		...
   	]
@@ -80,70 +84,12 @@ Provide detailed information about a specific input-form. The JSON response docu
 
 ```
 
-Exposed links:
-* value-pairs: list of value-pairs used by the specific input-form
-* collections: list of collections that explicitly use such input-form
+it is important to note that the field definition contains special attribute that in an ideal HAL representation should be replaced with links but for simplicity we have preferred to expose as string
+* authority: the name of the authority used to retrieve value for the input [see authorities](authorities.md) 
+* metadata: the key of the metadata field to use to store the input
 
-Inside the field definition we will have links if appropriate to
-* metadata: the link to the metadataregistry entry
-* authority: a definition of the authority used by the field (mainly to retrieve the autocomplete/lookup endpoint)
-* vocabulary: the link to the vocabulary xml file
-* value-pair: the list of entries for dropdown, checkbox, etc.
- 
 ## Search methods
 ### findByCollection
 **/api/configuration/input-forms/search/findByCollection?uuid=<:collection-uuid>**
 
 It returns the input form that apply to a specific collection eventually fallback to the default configuration
- 
-## Linked entities
-### Value pairs
-**/api/configuration/input-forms/<:form-name>/value-pairs**
-
-It returns the list of value-pairs used by the specific input form
-
-### collections
-**/api/configuration/input-forms/<:form-name>/collections**
-
-It returns the list of collection that make an explicit use of the input-form. If a collection doesn't specify the input-form to be used the default mapping apply but this collection is not included in the list returned by this method
-
-### metadata
-** /api/core/metadatafields/<:metadata-uuid> **
-
-It returns the metadataregistry entry associated with the field
-
-### authority
-**/api/submission/authority/<:authority-name> **
-
-It returns the authority used by the field/metadata
-
-### vocabulary
-** /api/configuration/vocabulary/<vocabylary-name> ** 
-
-It returns the vocabulary used by the field in its raw XML format
-
-### value-pair
-**/api/configuration/value-pairs/<:value-pair-name>**
-
-It returns the value pair used by the field
-
-```json
-{
-  "name": "common_types",
-  "entries": [
-		{
-      		displayValue: {"en":"Animation"}
-      		storedValue: "Animation",
-      		storedLang: "en"
-    	},
-    	{
-    		displayValue: {"en":"Article"}
-      		storedValue: "Article",
-      		storedLang: "en"
-    	},
-    	...
-  ]
-}
-```
-
-
