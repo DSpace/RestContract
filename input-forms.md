@@ -23,14 +23,14 @@ Provide detailed information about a specific input-form. The JSON response docu
   "name": "traditional",
   "pages": [
   {
-  	header: {"en": "First page"},
+  	header: "First page",
   	mandatory: true,
   	fields: [
   		{
-  			label: {"en":"Authors"},
+  			label: "Authors",
   			repeatable: false,
   			mandatory: null,
-  			hints: {"en":"Enter the names of the authors of this item."},
+  			hints: "Enter the names of the authors of this item.",
   			input: {
   				type: "name"
   			}
@@ -42,9 +42,9 @@ Provide detailed information about a specific input-form. The JSON response docu
   			typeBind: []
   		},
   		{
-			label: {"en":"Title"}
+			label: "Title",
   			repeatable: false,
-  			mandatory: {"en":"You must enter a main title for this item."},
+  			mandatory: "You must enter a main title for this item.",
   			hints: "Enter the main title of the item.",
   			input: {
   				type: "onebox",
