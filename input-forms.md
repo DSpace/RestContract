@@ -33,7 +33,14 @@ Provide detailed information about a specific input-form. The JSON response docu
   			hints: "Enter the names of the authors of this item.",
   			input: {
   				type: "name"
-  			}
+  			},
+  			selectableMetadata: [
+  				{
+  					"metadata": "dc.contributor.author",
+  					"authority": "SolrAuthorAuthority",
+  					"closed": false
+  				}
+  			],
   			scope: null, 
   			visibility: {
   				main: null,
@@ -51,6 +58,11 @@ Provide detailed information about a specific input-form. The JSON response docu
   				regex: null,
   				closedVocabulary: false  				
   			}
+  			selectableMetadata: [
+  				{
+  					metadata: "dc.title"
+  				}
+  			],
   			scope: null, 
   			visibility: {
   				main: null,
