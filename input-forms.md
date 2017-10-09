@@ -5,6 +5,7 @@
 **/api/configuration/input-forms**   
 
 Provide access to the configured input-forms. It returns the list of existent input-forms.
+Please note that starting from DSpace 7 each input-form will describe a single page of inputs, combining different pages togheter is done with the [submission-definition](submission-panels.md), aka the item-submission.xml configuration file 
 
 Example: to be provided
 
@@ -15,11 +16,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```json
 {
   "name": "traditional",
-  "pages": [
-  {
-  	header: "First page",
-  	mandatory: true,
-  	fields: [
+  "fields": [
   		{
   			label: "Authors",
   			repeatable: false,
@@ -75,11 +72,7 @@ Provide detailed information about a specific input-form. The JSON response docu
   			]
   		},
   		...
-  	]
-  },
-  ...  
-  ],
-  "isDefault": true
+  ]
 }
 
 ```
@@ -87,9 +80,3 @@ Provide detailed information about a specific input-form. The JSON response docu
 it is important to note that the field definition contains special attribute that in an ideal HAL representation should be replaced with links but for simplicity we have preferred to expose as string
 * authority: the name of the authority used to retrieve value for the input [see authorities](authorities.md) 
 * metadata: the key of the metadata field to use to store the input
-
-## Search methods
-### findByCollection
-**/api/configuration/input-forms/search/findByCollection?uuid=<:collection-uuid>**
-
-It returns the input form that apply to a specific collection eventually fallback to the default configuration

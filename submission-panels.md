@@ -17,30 +17,41 @@ Provide detailed information about a specific submission-definition. The JSON re
   "name": "traditional",
   "panels": [
   {
+  	id: "id-of-the-input-form-page",
   	header: "First page",
   	mandatory: true,
   	type: "inputform",
-  	scope: null
+  	scope: null,
+  	_links: {
+  		"configuration" : "<dspace-url>/configuration/inputforms/<:id-of-the-input-form-page>" 
+  	}
   },
   {
+    id: "id-of-the-input-form-page",
   	header: "Second page",
   	mandatory: true,
   	type: "inputform",
-  	scope: null
+  	scope: null,
+  	_links: {
+  		"configuration" : "<dspace-url>/configuration/inputforms/<:id-of-the-input-form-page>" 
+  	}
   },
   {
+    id: "id-of-the-upload-panel",
   	header: "Files and access condition",
   	mandatory: true,
   	type: "uploadWithEmbargo",
   	scope: null
   },
   {
+  	id: "id-of-the-deposit-license-panel",
   	header: "Deposit license",
   	mandatory: true,
   	type: "license",
   	scope: null
   },
   {
+  	id: "id-of-the-cc-license-panel",
   	header: "Creative Commons",
   	mandatory: false,
   	type: "cclicense",
