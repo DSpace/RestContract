@@ -17,31 +17,31 @@ Provide detailed information about a specific submission-definition. The JSON re
   "name": "traditional",
   "panels": [
   {
-  	header: {"en": "First page"},
+  	header: "First page",
   	mandatory: true,
   	type: "inputform",
   	scope: null
   },
   {
-  	header: {"en": "Second page"},
+  	header: "Second page",
   	mandatory: true,
   	type: "inputform",
   	scope: null
   },
   {
-  	header: {"en": "Files and access condition"},
+  	header: "Files and access condition",
   	mandatory: true,
   	type: "uploadWithEmbargo",
   	scope: null
   },
   {
-  	header: {"en": "Deposit license"},
+  	header: "Deposit license",
   	mandatory: true,
   	type: "license",
   	scope: null
   },
   {
-  	header: {"en": "Creative Commons"},
+  	header: "Creative Commons",
   	mandatory: false,
   	type: "cclicense",
   	scope: null
