@@ -13,13 +13,16 @@
 * /api/core/metadataschemas
 * /api/core/epersons
 * /api/core/groups
+* /api/core/{model}/search
 * [/api/discover/browses](browses.md)
 
 ## Endpoints Under Development
-* /api/core/{model}/search <https://github.com/DSpace/DSpace/pull/1726>
+
 * [/api/discover/search](search-endpoint.md)
-* [/api/configuration/input-forms](input-forms.md)
-* [/api/configuration/submission-panels](submission-panels.md)
+* [/api/config/submission-definitions](submission-definitions.md)
+* [/api/config/submission-sections](submission-panels.md)
+* [/api/config/submission-forms](submission-forms.md)
+* [/api/integration/authorities](authorities.md)
  
 ## Proposed Endpoints
 * /api/authorize/(dso)

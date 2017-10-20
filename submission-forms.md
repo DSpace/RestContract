@@ -1,6 +1,8 @@
 # Submission-Forms Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
+A submission-form represents a single data entry form, associated with a submission section. It is configurable, and consists of one or more data entry fields. In DSpace 6 and below, this concept was called an "input-form" and was configured via input-forms.xml.
+
 ## Main Endpoint
 **/api/config/submission-forms**   
 
