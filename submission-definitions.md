@@ -17,51 +17,8 @@ Provide detailed information about a specific submission-definition. The JSON re
 ```json
 {
   "name": "traditional",
-  "panels": [
-  {
-  	id: "id-of-the-input-form-page",
-  	header: "First page",
-  	mandatory: true,
-  	type: "submission-form",
-  	scope: null,
-  	_links: {
-  		"config" : "<dspace-url>/config/submission-forms/<:id-of-the-submission-form-page>" 
-  	}
-  },
-  {
-    id: "id-of-the-input-form-page",
-  	header: "Second page",
-  	mandatory: true,
-  	type: "submission-form",
-  	scope: null,
-  	_links: {
-  		"config" : "<dspace-url>/config/submission-forms/<:id-of-the-submission-form-page>" 
-  	}
-  },
-  {
-    id: "id-of-the-upload-panel",
-  	header: "Files and access condition",
-  	mandatory: true,
-  	type: "uploadWithEmbargo",
-  	scope: null
-  },
-  {
-  	id: "id-of-the-deposit-license-panel",
-  	header: "Deposit license",
-  	mandatory: true,
-  	type: "license",
-  	scope: null
-  },
-  {
-  	id: "id-of-the-cc-license-panel",
-  	header: "Creative Commons",
-  	mandatory: false,
-  	type: "cclicense",
-  	scope: null
-  },
-  ...  
-  ],
-  "isDefault": true
+  "isDefault": true,
+  "type": "submission-definition"
 }
 
 ```
