@@ -20,7 +20,7 @@
 
 * [/api/discover/search](search-endpoint.md)
 * [/api/config/submission-definitions](submission-definitions.md)
-* [/api/config/submission-sections](submission-panels.md)
+* [/api/config/submission-sections](submission-sections.md)
 * [/api/config/submission-forms](submission-forms.md)
 * [/api/integration/authorities](authorities.md)
  
