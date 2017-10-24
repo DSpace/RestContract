@@ -45,23 +45,23 @@ sample for an authority
 		{
 		  "id": "rp00001",
 		  "display": "Surname, Lastname",
-		  "count": 19,
 		  "otherInformation": 
 		  	{
 		    	ORCID: "0000-0000-0000-0000"
 		      	affiliation: "University of Sample",
-		      	biography: "..."
+		      	biography: "...",
+		      	"count": 19
 		    }
 	    },
 	    {
 		  "id": "rp00002",
 		  "display": "Other, Researcher",
-		  "count": 3,
 		  "otherInformation": 
 		  	{
 		    	"ORCID": "0000-0000-0000-0000"
 		      	"affiliation": "My University",
-		      	"biography": "..."
+		      	"biography": "...",
+		      	"count": 3
 		    }
 	    },
 }
@@ -74,19 +74,19 @@ sample for a hierarchical authority  (srsc)
 		{
 		  "id": "SCB110"
 		  "display": "History of religion",
-		  "count": 19,
 		  "otherInformation": 
 		  	{
-		    	"note": "Religionshistoria"
+		    	"note": "Religionshistoria",
+		    	"count": 19
 		    }
 	    },
 	    {
 		  "id": "VR110103"
 		  "display": "Other, Researcher",
-		  "count": 3,
 		  "otherInformation": 
 		  	{
-		    	"note": "Kyrkovetenskap"
+		    	"note": "Kyrkovetenskap",
+		    	"count": 3
 		    }
 	    },
 	    ...
