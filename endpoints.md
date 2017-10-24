@@ -19,9 +19,9 @@
 ## Endpoints Under Development
 
 * [/api/discover/search](search-endpoint.md)
-* [/api/config/submission-definitions](submission-definitions.md)
-* [/api/config/submission-sections](submission-sections.md)
-* [/api/config/submission-forms](submission-forms.md)
+* [/api/config/submissiondefinitions](submissiondefinitions.md)
+* [/api/config/submissionsections](submissionsections.md)
+* [/api/config/submissionforms](submissionforms.md)
 * [/api/integration/authorities](authorities.md)
  
 ## Proposed Endpoints

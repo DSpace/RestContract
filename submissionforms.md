@@ -4,20 +4,21 @@
 A submission-form represents a single data entry form, associated with a submission section. It is configurable, and consists of one or more data entry fields. In DSpace 6 and below, this concept was called an "input-form" and was configured via input-forms.xml.
 
 ## Main Endpoint
-**/api/config/submission-forms**   
+**/api/config/submissionforms**   
 
 Provide access to the configured submission-forms. It returns the list of existent submission-forms.
-Please note that from DSpace 7 the submission-form concept has been introduced splitting the previous configuration file named input-forms.xml by page. Each submission-form describes a single page of inputs, combining different pages together is done with the [submission-definition](submission-definitions.md), aka the item-submission.xml configuration file 
+Please note that from DSpace 7 the submission-form concept has been introduced splitting the previous configuration file named input-forms.xml by page. Each submission-form describes a single page of inputs, combining different pages together is done with the [submission-definition](submissiondefinitions.md), aka the item-submission.xml configuration file 
 
 Example: to be provided
 
 ## Single Submission-Form 
-**/api/config/submission-forms/<:form-name>**
+**/api/config/submissionforms/<:form-name>**
 
 Provide detailed information about a specific input-form. The JSON response document is as follow
 ```json
 {
   "name": "traditional-page1",
+  "type": "submissionform",
   "fields": [
   		{
   			label: "Authors",
