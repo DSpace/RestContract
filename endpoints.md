@@ -5,7 +5,7 @@
 * /api/core/sites
 * [/api/core/communities](communities.md)
 * /api/core/collections
-* [/api/core/items] (items.md)
+* [/api/core/items](items.md)
 * [/api/core/bitstreams](bitstreams.md)
 * /api/core/bitstreamformats
 * /api/core/sites
