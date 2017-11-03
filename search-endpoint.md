@@ -60,15 +60,12 @@ The JSON response document is as follow
   ],
   "sortOptions": [
     {
-      "name": "title",
       "metadata": "dc.title"
     },
     {
-      "name": "dateissued",
       "metadata": "dc.date.issued"
     },
     {
-      "name": "dateaccessioned",
       "metadata": "dc.date.accessioned"
     }
   ],
@@ -81,7 +78,6 @@ The JSON response document is as follow
 
 Exposed links:
 * objects: link to get the actual list of objects that match the search query
-* facets: link to get the list of facet values and counts associated with this search query as configured in https://github.com/DSpace/DSpace/blob/master/dspace/config/spring/api/discovery.xml#L86
 
 ### Matching DSpace objects search results
 **/api/discover/search/objects**
@@ -121,7 +117,7 @@ The returned JSON response will be like:
       }
   ],
   "sort" : {
-    "by" : "dateissued",
+    "by" : "dc.date.issued",
     "order" : "asc"
   },
   "page": {
@@ -169,6 +165,8 @@ The returned JSON response will be like:
     "facets" : [
       {
         "name" : "author",
+        "facetType": "text",
+        "hasMore": true,
         "_embedded" : {
           "values" : [
               {
@@ -202,6 +200,8 @@ The returned JSON response will be like:
       },
       {
         "name" : "subject",
+        "facetType": "text",
+        "hasMore": true,
         "_embedded" : {
           "values" : [
               {
@@ -264,20 +264,44 @@ The list of returned facet fields will depend on the Discovery configuration: ht
 The JSON response document is as follow
 ```json
 {
-  "facets": [
-    {
-      "name" : "author",
-      "type" : "string"
-    },
-    {
-      "name" : "dateissued",
-      "type" : "date"
-    },
-    {
-      "name" : "subject",
-      "type" : "string"
+  "scope": null,
+  "configurationName": null,
+  "_links": {
+    "self": {
+      "href": "/api/discover/facets"
     }
-  ]
+  },
+  "_embedded": {
+    "facets": [
+      {
+        "name" : "author",
+        "facetType" : "string",
+        "_links" : {
+          "self": {
+            "href": "/api/discover/facets/author"
+          }
+        }
+      },
+      {
+        "name" : "dateIssued",
+        "facetType" : "date",
+        "_links" : {
+          "self": {
+            "href": "/api/discover/facets/dateIssued"
+          }
+        }
+      },
+      {
+        "name" : "subject",
+        "facetType" : "string",
+        "_links" : {
+          "self": {
+            "href": "/api/discover/facets/subject"
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -326,21 +350,21 @@ The returned JSON response will be like:
   "_embedded" : {
     "values" : [
         {
-          "value" : "Smith, Donald 2",
+          "label" : "Smith, Donald 2",
           "count" : 100,
           "_links": {
             "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
           }
         },
         {
-          "value" : "Smith, Donald 1",
+          "label" : "Smith, Donald 1",
           "count" : 80,
           "_links": {
             "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
           }
         },
         {
-          "value" : "Smith, Donald 3",
+          "label" : "Smith, Donald 3",
           "count" : 10,
           "_links": {
             "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
