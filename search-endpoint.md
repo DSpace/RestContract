@@ -167,6 +167,15 @@ The returned JSON response will be like:
         "name" : "author",
         "facetType": "text",
         "hasMore": true,
+        "facetLimit": 5,
+        "_links": {
+          "next": "/api/discover/facets/author?page=1&size=5",
+          "self": "/api/discover/facets/author"
+        },
+        "page": {
+          "number": 0,
+          "size": 5
+        },
         "_embedded" : {
           "values" : [
               {
@@ -202,6 +211,15 @@ The returned JSON response will be like:
         "name" : "subject",
         "facetType": "text",
         "hasMore": true,
+        "facetLimit": 5,
+        "_links": {
+          "next": "/api/discover/facets/subject?page=1&size=5",
+          "self": "/api/discover/facets/subject"
+        },
+        "page": {
+          "number": 0,
+          "size": 5
+        },
         "_embedded" : {
           "values" : [
               {
