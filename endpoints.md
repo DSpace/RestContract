@@ -23,6 +23,7 @@
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/integration/authorities](authorities.md)
+* [/api/submission/workspaceitems](workspaceitems.md)
  
 ## Proposed Endpoints
 * /api/authorize/(dso)
