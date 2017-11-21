@@ -120,3 +120,7 @@ In addition, it allows in future to change the 1:1 association between collectio
 **/api/submission/workspaceitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
 It returns the workspaceitem created by the specified submitter
+
+## Multipart POST Method
+Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
+If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.   
