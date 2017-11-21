@@ -13,25 +13,29 @@
 * /api/core/metadataschemas
 * /api/core/epersons
 * /api/core/groups
-* /api/core/{model}/search
-* [/api/discover/browses](browses.md)
-
-## Endpoints Under Development
-
-* [/api/discover/search](search-endpoint.md)
+* [/api/core/{model}/search](search-rels.md)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
+* [/api/discover/browses](browses.md)
+* [/api/integration/authorities](authorities.md)
+
+## Endpoints Under Development/Discussion
+* [/api/discover/search](search-endpoint.md)
+* [/api/config/submissionuploads](submissionforms.md)
 * [/api/integration/authorities](authorities.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
+* /api/authn/login
+* /api/authn/logout
+* /api/authn/status
+* /api/authz/resourcepolicies
  
-## Proposed Endpoints
+## Other Endpoints (raw list)
 * /api/authorize/(dso)
 * /api/curate
 * /api/export
 * /api/app/bulkmetadataedit
 * /api/statistics/(dso)
-* /api/authority
 * /api/configuration
   * return relevant configuration values to the client
     * DSpace version
