@@ -28,6 +28,12 @@ Provide detailed information about a specific submission-section. The JSON respo
 }
 ```
 
+* the *header* attribute is the label or the i18n key to use to present the section to the user
+* the *mandatory* attribute defines if the section MUST be used by each submission. Otherwise, the user is allowed to enable/disable the section interacting with the workspaceitem
+* the *scope* attribute can be null or one of the values: workflow or submission. A value other than *null* mean that the section will be only available during the specified phase 
+* the *sectionType* attribute defines the kind of section that the UI will need to use to interact with the data.
+
+
 ## Linked Entities
 ### config
 
