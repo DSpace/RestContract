@@ -8,7 +8,7 @@ sectionType | configuration endpoint | data representation
 collection | n/a | ```json { collection: 'uuid-of-the-collection'}```
 submission-form | [/config/submissionforms](submissionforms.md) | [example](workspaceitem-data-metadata.md)
 upload | [/config/submissionuploads](submissionuploads.md) | [example](workspaceitem-data-upload.md)
-license | (it is retrieved from the collection following the *license* link](collections.md) | [example](workspaceitem-data-license.md)
+license | (it is retrieved from the collection following the *license* link](collections.md#License) | [example](workspaceitem-data-license.md)
 cclicense | t.b.d | t.b.d
 access | t.b.d | t.b.d
 
