@@ -82,7 +82,7 @@ Provide detailed information about a specific workspaceitem. The JSON response d
 }
 ```
 
-The actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure  
+The actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure. See the [out-of-box submission section types](submissionsection-types.md) page for details.
 
 Exposed links:
 * collection: the collection where the inprogress submission will be created
