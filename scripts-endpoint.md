@@ -4,11 +4,11 @@
 DSpace (6) has admin functionality to import and export items in CSV and ZIP format, to start a collection harvest run, to run or schedule curation tasks. Each of these functionalities also map on a DSpace CLI script. While we could implement each of these operations as a separate endpoint, this contract tries to describe a generic endpoint that allows administrators to explore, run or schedule DSpace CLI scripts from the REST API.
 
 ## Scripts Endpoint
-** GET /api/admin/scripts**
+**GET /api/admin/scripts**
 
 This endpoint will list all (REST supported) scripts defined in `dspace/config/launcher.xml`. The script entries are embedded with a name, description and a self link. By "REST supported" we mean all scripts that have been updated to allow invocations from the REST API.
 
-The JSON response document is as follow
+The JSON response document is as follows
 ```
 {
   "page": {
@@ -49,11 +49,11 @@ The JSON response document is as follow
 ## Script Name Endpoint
 
 ### Script Details
-** GET /api/admin/scripts/<:script-name>**
+**GET /api/admin/scripts/<:script-name>**
 
 This endpoint will return information on all the parameters that are required to invoke the script. This dependens on the parameters defined in the implementation of the script.
 
-The JSON response document is as follow
+The JSON response document is as follows
 ```
 {
    "name" : "import",
@@ -146,7 +146,7 @@ Following parameter types are available:
 * `output`: Parameters with this type define the name of the output file. This name can be used later to download the the output file (e.g. when running `export` or `metadata-export`).
 
 ### Script Invocation
-** POST /api/admin/scripts/<:script-name>**
+**POST /api/admin/scripts/<:script-name>**
 
 POST requests to this endpoint will start the corresponding script with the provided parameters. All parameter values should be provided in the body that has to use the `multipart/form-data` content type. Once the upload is complete and the script was started successfully, this endpoint will return details on the scripts execution
 
