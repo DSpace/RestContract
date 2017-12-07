@@ -6,8 +6,6 @@
 
 As we don't have yet an use case to iterate over all the existent resource policies the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error codes).
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/collections>
-
 ## Single Resource Policy
 **/api/authz/resourcepolicies/<:id>**
 
