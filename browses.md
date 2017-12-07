@@ -56,10 +56,11 @@ It returns a collection of BrowseEntryResource the JSON document looks like
 ```json
 {
   "_embedded": {
-    "browseEntryResources": [
+    "browseEntries": [
       {
         "authority": null,
         "value": "Arulmozhiyal, Ramaswamy",
+        "type": "browseEntry",
         "valueLang": null,
         "count": 1,
         "_links": {
