@@ -51,6 +51,8 @@ The attributes of the objects in the accessConditionOptions arrays are as follow
 * If there is a *hasStartDate* attribute and it is true, the access condition to be applied requires to specify a startDate that must be less or equal than the value of the *maxStartDate* attribute (if null any date is acceptable)
 * If there is a *hasEndDate* attribute and it is true, the access condition to be applied requires to specify an endDate that must be less or equal than the value of the *maxEndDate* attribute (if null any date is acceptable). If a startDate is supplied the endDate must be greater than the startDate
 
+a null value for the accessConditionOptions attribute mean that the upload step doens't allow the user to set a policy for the file. The file will get only the policies inherited from the collection.
+
 Exposed links:
 * metadata: it is a link to the submission-form to use for the files metadata
 
