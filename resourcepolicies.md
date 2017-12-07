@@ -15,8 +15,8 @@ Provide detailed information about a specific resource policy. The JSON response
   "id": 2844,
   "name": null,
   "description": null,
-  "resourceType": "TYPE_SUBMISSION",
-  "action": "DEFAULT_BITSTREAM_READ",
+  "policyType": "TYPE_SUBMISSION",
+  "action": "READ",
   "type": "resourcePolicy"
 }
 ```
