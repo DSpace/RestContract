@@ -45,7 +45,7 @@ Returns whether the item resource is available.
 Replaces the state of the target resource with the supplied request body.
 
 - PATCH
-Similar to PUT but partially updating the resources state.
+Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
 
 - DELETE
 Deletes the resource exposed.

@@ -48,18 +48,24 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   	 		"url": "http://dspace7.4science.it/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
   	 		"accessConditions": [
   	 			{
-	  	 			"type": "openaccess"
+  	 				"id": 123,
+	  	 			"name": "openaccess",
+	  	 			"groupUUID": "uuid-of-the-anonymous-group"
   	 			},
   	 			{
-	  	 			"type": "administrator"
+  	 				"id": 126,
+	  	 			"name": "administrator",
+	  	 			"groupUUID": "uuid-of-the-administrator-group"
   	 			},
   	 			{
-	  	 			"type": "embargo",
+  	 				"id": 127,
+	  	 			"name": "embargo",
 	  	 			"groupUUID": "1faf7c51-2a14-4826-b0b1-f1c1d2d82dd7",
-	  	 			"endDate": "2018-06-24T00:40:54.970+0000"
+	  	 			"startDate": "2018-06-24T00:40:54.970+0000"
   	 			},
   	 			{
-	  	 			"type": "lease",
+  	 				"id": 128,
+	  	 			"name": "lease",
 	  	 			"groupUUID": "38ecd5ae-af12-4144-a276-81532e1679f8",
 	  	 			"endDate": "2017-12-24T00:40:54.970+0000"
   	 			}
@@ -69,14 +75,14 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   	},
   	 "cclicense": {
   	 	"image-url": "https://i.creativecommons.org/l/by/4.0/88x31.png",
-  	 	"text-url": "https://creativecommons.org/licenses/by/4.0/"
+  	 	"license-uri": "https://creativecommons.org/licenses/by/4.0/"
   	 }
   },
   "type": "workspaceitem"
 }
 ```
 
-The actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure  
+The actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure. See the [out-of-box submission section types](submissionsection-types.md) page for details.
 
 Exposed links:
 * collection: the collection where the inprogress submission will be created
@@ -114,3 +120,7 @@ In addition, it allows in future to change the 1:1 association between collectio
 **/api/submission/workspaceitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
 It returns the workspaceitem created by the specified submitter
+
+## Multipart POST Method
+Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
+If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.   
