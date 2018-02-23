@@ -14,20 +14,22 @@
 * /api/core/epersons
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
+* [/api/authn/login](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+* [/api/authn/logout](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+* [/api/authn/status](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
+* [/api/config/submissionuploads](submissionuploads.md)
 * [/api/discover/browses](browses.md)
+* [/api/discover/search](search-endpoint.md)
+* [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/integration/authorities](authorities.md)
 
 ## Endpoints Under Development/Discussion
-* [/api/discover/search](search-endpoint.md)
-* [/api/config/submissionuploads](submissionforms.md)
-* [/api/integration/authorities](authorities.md)
-* [/api/submission/workspaceitems](workspaceitems.md)
-* /api/authn/login
-* /api/authn/logout
-* /api/authn/status
+* [/api/workflow/workflowitems](workflowitems.md)
+* [/api/workflow/pooltasks](pooltasks.md)
+* [/api/workflow/claimedtasks](claimedtasks.md)
 * /api/authz/resourcepolicies
  
 ## Other Endpoints (raw list)
