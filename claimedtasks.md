@@ -51,8 +51,8 @@ using http request parameters to instruct the workflow action class about the sp
 
 | action | command options | parameter to trigger the command | additional parameters |
 | --- | --- | --- | --- |
-| editcation | approve | submit\_approve=true | _none_ |
-| editcation | reject | submit\_reject=true | reason=<text to send to the submitter> |
+| editaction | approve | submit\_approve=true | _none_ |
+| editaction | reject | submit\_reject=true | reason=<text to send to the submitter> |
 | finaleditaction | approve | submit\_approve=true | _none_ |
 | selectrevieweraction | choose a reviewer | submit\_select\_reviewer\_<uuid>=true | no extra parameters needed but the primary parameter name define the selected eperson |
 | scorereviewaction |record the score | submit_score=true | score=<int value of the score> |
