@@ -57,10 +57,11 @@ using http request parameters to instruct the workflow action class about the sp
 | selectrevieweraction | choose a reviewer | submit\_select\_reviewer\_<uuid>=true | no extra parameters needed but the primary parameter name define the selected eperson |
 | scorereviewaction |record the score | submit_score=true | score=<int value of the score> |
 
-###Return code
-204 No content is returned if the request succeed
-403 Not authorized if the task cannot be performed by the logged in user
-404 if the task is not longer available
+## Return code
+* 204 No content is returned if the request succeed
+* 403 Not authorized if the task cannot be performed by the logged in user
+* 404 if the task is not longer available
+* 422 validation errors (e.g. no "reason" parameter provided)
 
 ## DELETE Method 
 To unclaim a task it is sufficient to issue a DELETE request
