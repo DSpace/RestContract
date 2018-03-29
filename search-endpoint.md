@@ -17,45 +17,133 @@ The JSON response document is as follow
   "filters": [
     {
       "filter" : "title",
+      "hasFacets": false,
+      "type": "text",
       "operators": [
         {
-          "operator" : "contains",
+          "operator": "equals"
         },
         {
-          "operator" : "notcontains",
+          "operator": "notequals"
         },
         {
-          "operator" : "authority",
+          "operator": "authority"
+        },
+        {
+          "operator": "notauthority"
+        },
+        {
+          "operator": "contains"
+        },
+        {
+          "operator": "notcontains"
         }
-      ]
+      ],
+      "openByDefault": false
     },
     {
       "filter" : "author",
+      "hasFacets": true,
+      "type": "text",
       "operators": [
         {
-          "operator" : "contains",
+          "operator": "equals"
         },
         {
-          "operator" : "notcontains",
+          "operator": "notequals"
         },
         {
-          "operator" : "authority",
+          "operator": "authority"
+        },
+        {
+          "operator": "notauthority"
+        },
+        {
+          "operator": "contains"
+        },
+        {
+          "operator": "notcontains"
         }
-      ]
+      ],
+      "openByDefault": true
     },
     {
-      "filter" : "type",
+      "filter": "subject",
+      "hasFacets": true,
+      "type": "hierarchical",
       "operators": [
         {
-          "operator" : "contains",
+          "operator": "equals"
         },
         {
-          "operator" : "notcontains",
+          "operator": "notequals"
         },
         {
-          "operator" : "authority",
+          "operator": "authority"
+        },
+        {
+          "operator": "notauthority"
+        },
+        {
+          "operator": "contains"
+        },
+        {
+          "operator": "notcontains"
         }
-      ]
+      ],
+      "openByDefault": false
+    },
+    {
+      "filter": "dateIssued",
+      "hasFacets": true,
+      "type": "date",
+      "operators": [
+        {
+          "operator": "equals"
+        },
+        {
+          "operator": "notequals"
+        },
+        {
+          "operator": "authority"
+        },
+        {
+          "operator": "notauthority"
+        },
+        {
+          "operator": "contains"
+        },
+        {
+          "operator": "notcontains"
+        }
+      ],
+      "openByDefault": false
+    },
+    {
+      "filter": "has_content_in_original_bundle",
+      "hasFacets": true,
+      "type": "standard",
+      "operators": [
+        {
+          "operator": "equals"
+        },
+        {
+          "operator": "notequals"
+        },
+        {
+          "operator": "authority"
+        },
+        {
+          "operator": "notauthority"
+        },
+        {
+          "operator": "contains"
+        },
+        {
+          "operator": "notcontains"
+        }
+      ],
+      "openByDefault": false
     }
   ],
   "sortOptions": [
@@ -72,6 +160,7 @@ The JSON response document is as follow
       "name": "dc.date.accessioned"
     }
   ],
+  "type": "discover"
 }
 ```
 
@@ -124,160 +213,148 @@ The returned JSON response will be like:
     "by" : "dc.date.issued",
     "order" : "asc"
   },
-  "page": {
-    	"size": 5,
-    	"totalElements": 14,
-    	"totalPages": 3,
-    	"number": 0
-  },
   "_embedded" : {
-    "searchResults" : [
-      {
-        "hitHighlights": {
-          "dc.description.abstract" : "This is the <em>very cool</em> abstract of this item",
-          "dc.publisher" : "My <em>very cool</em> publisher",
-        },
-        "_links" : {
-          "dspaceObject" : {
-            "href": "/api/core/items/9f3288b2-f2ad-454f-9f4c-70325646dcee"
+    "searchResults": {
+      "_embedded": {
+        "objects" : [
+          {
+            "hitHighlights": {
+              "dc.description.abstract" : "This is the <em>very cool</em> abstract of this item",
+              "dc.publisher" : "My <em>very cool</em> publisher"
+            },
+            "_links" : {
+              "dspaceObject" : {
+                "href": "/api/core/items/9f3288b2-f2ad-454f-9f4c-70325646dcee"
+              }
+            },
+            "_embedded" : {
+              "dspaceObject" : {
+                "uuid": "9f3288b2-f2ad-454f-9f4c-70325646dcee",
+                "name": "Test Webpage",
+                "handle": "10673/4"
+              }
+            }
+          },
+          {
+            "hitHighlights": { },
+            "_links" : {
+              "dspaceObject" : {
+                "href": "/api/core/items/ff7ec3a4-0aab-418b-94fc-d0e8189084db"
+              }
+            },
+            "_embedded" : {
+              "dspaceObject" : {
+                "uuid": "ff7ec3a4-0aab-418b-94fc-d0e8189084db",
+                "name": "Test Item with no hit highlights",
+                "handle": "10673/5"
+              }
+            }
           }
+        ]
+      },
+      "_links": {
+        "first": {
+          "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
         },
-        "_embedded" : {
-          "dspaceObject" : {
-            "uuid": "9f3288b2-f2ad-454f-9f4c-70325646dcee",
-            "name": "Test Webpage",
-            "handle": "10673/4"
-          }
+        "self": {
+          "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
+        },
+        "next": {
+          "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
+        },
+        "last": {
+          "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=2&size=5"
         }
       },
-      {
-        "hitHighlights": { },
-        "_links" : {
-          "dspaceObject" : {
-            "href": "/api/core/items/ff7ec3a4-0aab-418b-94fc-d0e8189084db"
-          }
-        },
-        "_embedded" : {
-          "dspaceObject" : {
-            "uuid": "ff7ec3a4-0aab-418b-94fc-d0e8189084db",
-            "name": "Test Item with no hit highlights",
-            "handle": "10673/5"
-          }
-        }
+      "page": {
+        "number": 0,
+        "size": 20,
+        "totalElements": 12,
+        "totalPages": 3
       }
-    ],
-    "facets" : [
+    },
+    "facets": [
       {
         "name" : "author",
         "facetType": "text",
-        "facetLimit": 5,
-        "_links": {
-          "next" : {
-            "href": "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
-          },
-          "self" : {
-            "href":  "/api/discover/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority"
-          }
-        },
-        "page": {
-          "number": 0,
-          "size": 5
-        },
+        "facetLimit": 10,
         "_embedded" : {
           "values" : [
-              {
-                "label" : "Smith, Donald 2",
-                "count" : 100,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
-                  }
-                }
-              },
-              {
-                "label" : "Smith, Donald 1",
-                "count" : 80,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
-                  }
-                }
-              },
-              {
-                "label" : "Smith, Donald 3",
-                "count" : 10,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
-                  }
-                }
+            {
+              "value" : "Smith, Donald 2",
+              "count" : 100,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
               }
+            },
+            {
+              "value" : "Smith, Donald 1",
+              "count" : 80,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
+              }
+            },
+            {
+              "value" : "Smith, Donald 3",
+              "count" : 10,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
+              }
+            }
           ]
+        },
+        "_links": {
+          "self": {
+            "href": "/api/discover/search/facets/author?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority"
+          }
         }
-      },
-      {
+      },{
         "name" : "subject",
-        "facetType": "text",
-        "facetLimit": 5,
-        "_links": {
-          "next" : {
-            "href": "/api/discover/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
-          },
-          "self" : {
-            "href":  "/api/discover/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority"
-          }
-        },
-        "page": {
-          "number": 0,
-          "size": 5
-        },
+        "facetType": "hierarchical",
+        "facetLimit": 10,
         "_embedded" : {
           "values" : [
-              {
-                "label" : "Java",
-                "count" : 100,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
-                  }
-                }
-              },
-              {
-                "label" : "SQL",
-                "count" : 80,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
-                  }
-                }
-              },
-              {
-                "label" : "CSS",
-                "count" : 10,
-                "_links": {
-                  "search" : {
-                    "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
-                  }
-                }
+            {
+              "value" : "Java",
+              "count" : 100,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=Java"
               }
+            },
+            {
+              "value" : "SQL",
+              "count" : 80,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=SQL"
+              }
+            },
+            {
+              "value" : "CSS",
+              "count" : 10,
+              "_links": {
+                "search" : "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&subject.equals=CSS"
+              }
+            }
           ]
+        },
+        "_links": {
+          "self": {
+            "href": "/api/discover/search/facets/subject?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority"
+          }
         }
       }
-    ]
+    ]  
   },
   "_links": {
-      "first": {
-        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
-      },
-      "self": {
-        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
-      },
-      "next": {
-        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=1&size=5"
-      },
-      "last": {
-        "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=2&size=5"
-      }
+    "self": {
+      "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
+    },
+    "facets": {
+      "href": "/api/discover/search/facets?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority"
+    },
+    "objects": {
+      "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&page=0&size=5"
+    }
   }
 }
 ```
@@ -444,39 +521,70 @@ The list of returned facet fields will depend on the Discovery configuration: ht
 The JSON response document is as follow
 ```json
 {
+  "id": null,
   "scope": null,
+  "query": null,
+  "appliedFilters": null,
+  "sort": null,
   "configurationName": null,
+  "type": "discover",
   "_links": {
+    "first": {
+      "href": "/api/discover/search/facets?page=0&size=10"
+    },
     "self": {
-      "href": "/api/discover/facets"
+      "href": "/api/discover/search/facets"
+    },
+    "next": {
+      "href": "/api/discover/search/facets?page=1&size=10"
+    },
+    "last": {
+      "href": "/api/discover/search/facets?page=9&size=10"
     }
   },
+  "page" : {
+    "size": 10,
+    "number": 0
+  },  
   "_embedded": {
     "facets": [
       {
         "name" : "author",
-        "facetType" : "string",
-        "_links" : {
+        "facetType": "text",
+        "facetLimit": 10,
+        "_links": {
           "self": {
             "href": "/api/discover/facets/author"
           }
-        }
+        }   
       },
       {
-        "name" : "dateIssued",
-        "facetType" : "date",
-        "_links" : {
+        "name" : "subject",
+        "facetType": "hierarchical",
+        "facetLimit": 10,
+        "_links": {
           "self": {
-            "href": "/api/discover/facets/dateIssued"
+            "href": "/api/discover/facets/subject"
           }
         }
       },
       {
-        "name" : "subject",
-        "facetType" : "string",
-        "_links" : {
+        "name" : "dateissued",
+        "facetType": "date",
+        "facetLimit": 10,
+        "_links": {
           "self": {
-            "href": "/api/discover/facets/subject"
+            "href": "http://localhost:8080/dspace7-rest/api/discover/facets/dateissued"
+          }
+        }
+      },
+      {
+        "name" : "has_content_in_original_bundle",
+        "facetType": "standard",
+        "facetLimit": 2,
+        "_links": {
+          "self": {
+            "href": "http://localhost:8080/dspace7-rest/api/discover/facets/has_content_in_original_bundle"
           }
         }
       }
@@ -521,12 +629,11 @@ The returned JSON response will be like:
   },
   "page" : {
     	"size": 5,
-    	"totalElements": 14,
-    	"totalPages": 3,
     	"number": 0
   },
   "name" : "author",
-  "type" : "string",
+  "facetType": "text",
+  "facetLimit": 10,
   "_embedded" : {
     "values" : [
         {
