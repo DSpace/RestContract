@@ -46,6 +46,10 @@ Exposed links:
 * items: link to get the actual list of items associated with the index
 * entries (**only for metadata browse index**): link to get the list of entries in the metadata index
 
+Error codes:
+
+**404** if the browse index doesn't exist
+
 ## Browse entries
 ### Metadata browse 1st level
 **/api/discover/browses/<:index-name>/entries**
@@ -82,11 +86,13 @@ It returns a collection of BrowseEntryResource the JSON document looks like
 
 The supported parameters are:
 * page, size & sort [see pagination](README.md#Pagination): the sort parameter must be specified as default,(asc|desc) as 1st level browse doesn't support sorting by option other than the natural sorting of the entries
+* startsWith: the value to use to calculate the offset. Each value in the page will be greater or equals than the specified value  
 * scope: limit the browse to the items included in a specific DSpace container. It could be the UUID of a community or a collection. For example scope=9076bd16-e69a-48d6-9e41-0238cb40d863 
 
 Error codes:
 
-**404** if the browse index is not a metadata browse
+**404** if the browse index is not a metadata browse or the browse index doesn't exist at all
+**422** if both the page and startsWith parameters are present in the request 
 
 ### Item browse or 2nd level metadata browse
 **/api/discover/browses/<:index-name>/items**
@@ -99,6 +105,7 @@ item browse: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4sci
 
 The supported parameters are:
 * page, size & sort [see pagination](README.md#Pagination): the sort name must be one of the name specified in the sortOptions.name of the browse index or *default*, followed by a comma and the order direction. For example sort=default,asc or sort=dateissued,desc
+* startsWith: the value to use to calculate the offset. Each value in the page will be greater or equals than the specified value
 * scope: limit the browse to the items included in a specific DSpace container. It could be the UUID of a community or a collection. For example scope=9076bd16-e69a-48d6-9e41-0238cb40d863 
 
 **On metadata browse** exactly one of the following parameter must be specified 
@@ -108,6 +115,8 @@ The supported parameters are:
 
 Error codes:
 
+**404** if the browse index doesn't exist
+**422** if both the page and startsWith parameters are present in the request
 **500** 
 
 1.  if a value or authority parameter **has been** specified and the browse index **is NOT** a metadata browse
