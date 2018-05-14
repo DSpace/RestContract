@@ -49,8 +49,19 @@ Provide detailed information about a specific community. The JSON response docum
 ```
 
 Exposed links:
+* subcommunities: list of sub-communities within this community
 * collections: list of collections within this community
 * logo: link to the bitstream that represent the community's logo
+
+### SubCommunities
+**/api/core/communities/<:uuid>/subcommunities**
+
+Example: t.b.p
+
+It returns the sub-communities within this community
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
  
 
 ### Collections
