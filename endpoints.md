@@ -9,8 +9,8 @@
 * [/api/core/bitstreams](bitstreams.md)
 * /api/core/bitstreamformats
 * /api/core/sites
-* /api/core/metadatafields
-* /api/core/metadataschemas
+* [/api/core/metadatafields](metadatafields.md)
+* [/api/core/metadataschemas](metadataschemas.md)
 * /api/core/epersons
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
