@@ -31,6 +31,7 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * /api/authz/resourcepolicies
+* [/api/core/item-requests](item-requests.md)
  
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)
