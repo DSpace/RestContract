@@ -31,8 +31,8 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * /api/authz/resourcepolicies
-* [/api/core/item-requests](item-requests.md)
- 
+* [/api/tools/copyrequests](item-requests.md)
+
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)
 * /api/curate
@@ -55,4 +55,3 @@
     * statistics viewing
   * return the status of features that are enabled for authorized users
     * item versioning
-
