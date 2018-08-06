@@ -74,6 +74,9 @@ Unbinds the association. Return 405 Method Not Allowed if the association is non
 
 405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
 
+## On the Naming of Endpoints
+Names should be descriptive but reasonably short.  Form compounds by concatenating words without punctuation or changes in case.
+
 ## HATEOAS & HAL
 The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
 
