@@ -245,6 +245,162 @@ Status codes:
 * 404 Not found - if the item doesn't exist
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
+### Mapping Collections
+**/api/core/items/<:uuid>/mappingCollections**
+
+Example:
+```json
+    "mappingCollections":
+    [
+      {
+        "id": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
+        "uuid": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
+        "name": "Bachelor theses",
+        "handle": "123456789/5287",
+        "metadata": [
+          {
+            "key": "dc.description.abstract",
+            "value": "",
+            "language": null
+          },
+          {
+            "key": "dc.title",
+            "value": "Bachelor theses",
+            "language": null
+          }
+        ],
+        "type": "collection",
+        "_links": {
+          "license": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
+          },
+          "exportToZip": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/exportToZip"
+          },
+          "defaultAccessConditions": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+          },
+          "logo": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/logo"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"
+          }
+        },
+        "_embedded": {
+          "logo": null,
+          "defaultAccessConditions": {
+            "_embedded": {
+              "defaultAccessConditions": [
+                {
+                  "id": 28054,
+                  "name": null,
+                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
+                  "action": "DEFAULT_BITSTREAM_READ",
+                  "type": "resourcePolicy",
+                  "_links": {
+                    "self": {
+                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28054"
+                    }
+                  }
+                }
+              ]
+            },
+            "_links": {
+              "self": {
+                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+              }
+            },
+            "page": {
+              "number": 0,
+              "size": 1,
+              "totalPages": 1,
+              "totalElements": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "320c0492-de1d-4646-9e69-193d36b366e9",
+        "uuid": "320c0492-de1d-4646-9e69-193d36b366e9",
+        "name": "Biology",
+        "handle": "123456789/5285",
+        "metadata": [
+          {
+            "key": "dc.description.abstract",
+            "value": "",
+            "language": null
+          },
+          {
+            "key": "dc.title",
+            "value": "Biology",
+            "language": null
+          }
+        ],
+        "type": "collection",
+        "_links": {
+          "license": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/license"
+          },
+          "exportToZip": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/exportToZip"
+          },
+          "defaultAccessConditions": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+          },
+          "logo": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/logo"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9"
+          }
+        },
+        "_embedded": {
+          "logo": null,
+          "defaultAccessConditions": {
+            "_embedded": {
+              "defaultAccessConditions": [
+                {
+                  "id": 28050,
+                  "name": null,
+                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
+                  "action": "DEFAULT_BITSTREAM_READ",
+                  "type": "resourcePolicy",
+                  "_links": {
+                    "self": {
+                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28050"
+                    }
+                  }
+                }
+              ]
+            },
+            "_links": {
+              "self": {
+                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+              }
+            },
+            "page": {
+              "number": 0,
+              "size": 1,
+              "totalPages": 1,
+              "totalElements": 1
+            }
+          }
+        }
+      }
+    ]
+  }
+```
+
+It returns all the mapping collections the item is included in
+
+On the item page, it should be referenced similar to:
+```json
+    "mappingCollections": {
+      "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappingCollections"
+    }
+```
+
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
 
