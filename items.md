@@ -246,7 +246,7 @@ Status codes:
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapping Collections
-**/api/core/items/<:uuid>/mappingCollections**
+**GET /api/core/items/<:uuid>/mappingCollections**
 
 Example:
 ```json
@@ -400,6 +400,16 @@ On the item page, it should be referenced similar to:
       "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappingCollections"
     }
 ```
+
+**POST /api/core/items/<item:uuid>/mappingCollections/<collection:uuid>**
+
+A POST request will result in creating a new mapping between the item and collection
+If the collection exists and is neither the owning nor mapping collection for the item, the relation should be created
+
+**DELETE /api/core/items/<item:uuid>/mappingCollections/<collection:uuid>**
+
+A DELETE request will result in removing an existing mapping between the item and collection
+If the collection exists and is a mapping collection for the item, the relation should be deleted
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
