@@ -55,3 +55,4 @@ the replace operation `[{ "op": "replace", "path": "/password", "value": "newpas
 ```json
   "password": "newpassword",
 ```
+Note: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
