@@ -131,7 +131,7 @@ This endpoint will return details on the requested process.
 }
 ```
 
-The possible `status` values are `RUNNING`, `STOPPED` and `FAILED`.
+The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`.
 
 ## Execution Console Output
 **GET /api/system/processes/<:process-id>/output**
@@ -212,4 +212,4 @@ Delayed scripts using a  `startTime` can be supported in a future version.
 }
 ```
 
-The possible `status` values are `RUNNING`, `STOPPED` and `FAILED`.
+The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`.
