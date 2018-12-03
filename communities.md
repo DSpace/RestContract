@@ -100,3 +100,85 @@ Example: not available
 The supported parameters are:
 * **(mandatory)** parent, the UUID of the parent community
 * page, size [see pagination](README.md#Pagination)
+
+## Creating communities
+
+### Creating top level community
+
+**POST /api/core/communities**
+
+To create a top level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
+
+```
+{
+    "name": "test creation",
+    "metadata": [
+        {
+            "key": "dc.title",
+            "value": "test creation",
+            "language": null
+        }
+    ]
+}
+```
+
+### Creating subCommunity
+
+**POST /api/core/communities**
+
+To create a sub level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
+
+```
+{
+    "name": "test subcommunity",
+    "owningCommunity": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+    "metadata": [
+        {
+            "key": "dc.title",
+            "value": "test subcommunity",
+            "language": null
+        }
+    ]
+}
+```
+
+
+## Updating a community
+
+**PUT /api/core/communities/<:uuid>**
+
+Provide updated metadata information about a specific community, when the update is completed the updated object will be returned. The JSON to update can be found below.
+```
+{
+    "id": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+    "uuid": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+    "name": "test new title",
+    "handle": "123456789/60631",
+    "metadata": [
+        {
+            "key": "dc.title",
+            "value": "test new title",
+            "language": null
+        },
+        {
+            "key": "dc.description",
+            "value": "An example description",
+            "language": "en"
+        }
+    ],
+    "owningCommunity": null,
+    "type": "community"
+}
+```  
+
+
+## Deleting a community
+
+**DELETE /api/core/communities/<:uuid>**
+
+Delete a community.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the community doesn't exist (or was already deleted)

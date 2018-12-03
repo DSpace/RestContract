@@ -124,3 +124,58 @@ The json representation is as follow
 ```
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
+## Creating a collection
+
+**POST /api/core/collections**
+
+To create a collection, perform as post with the JSON below when logged in as admin.
+
+```
+{
+"name": "test collection",
+"owningCommunity": "2c949018-c3bd-447e-8657-4121d0c48625",
+"metadata": [
+    {
+        "key": "dc.title",
+        "value": "test collection",
+        "language": null
+    }
+    ]
+}
+```
+
+## Updating a collection
+
+**PUT /api/core/collections/<:uuid>**
+
+Provide updated metadata information about a specific collection, when the update is completed the updated object will be returned. The JSON to update can be found below.
+```
+{
+"uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
+"name": "test collection",
+"owningCommunity": "2c949018-c3bd-447e-8657-4121d0c48625",
+"metadata": [
+    {
+        "key": "dc.title",
+        "value": "test collection",
+        "language": null
+    },
+    {
+        "key": "dc.description",
+        "value": "Test description",
+        "language": null
+    }
+    ]
+}
+```  
+
+## Deleting a collection
+
+**DELETE /api/core/collections/<:uuid>**
+
+Delete a community.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the community doesn't exist (or was already deleted)
