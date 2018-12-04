@@ -11,7 +11,7 @@
 * /api/core/sites
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
-* /api/core/epersons
+* [/api/core/epersons](epersons.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
 * [/api/authn/login](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
