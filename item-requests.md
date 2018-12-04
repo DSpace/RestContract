@@ -4,14 +4,14 @@
 This supports the Request a Copy feature.
 
 ## Main Endpoint
-**/api/tools/copyrequests**
+**/api/tools/itemrequests**
 
 Provide access to requests. It returns the list of existing requests.
 
 Example: to be provided
 
 ## Single Request
-**/api/tools/copyrequests/<:id>**
+**/api/tools/itemrequests/<:id>**
 
 Provide detailed information about a specific request. The JSON response document will resemble this:
 ```json
@@ -38,6 +38,6 @@ Exposed links:
 
 ## Linked entities
 ### item entries
-**/api/tools/copyrequests/<:id>/item **
+**/api/tools/itemrequests/<:id>/item **
 ### bitstream entries
-**/api/tools/copyrequests/<:id>/bitstream **
+**/api/tools/itemrequests/<:id>/bitstream **
