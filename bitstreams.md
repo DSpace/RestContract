@@ -58,3 +58,12 @@ The supported **Request Headers** are:
 * If-Modified-Since: not implemented yet. Support for cache control
 * Range: not implemented yet. Provide support to partial content download
 * If-None-Match: not implemented yet. Support for cache control
+
+## DELETE Method
+Delete a bitstream. Only works for normal bitstreams in an Item (bundle), to delete a community or collection logo it is needed to interact with the community or collection endpoints
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not loggedin with sufficient permissions
+* 404 Not found - if the bitstream doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if the bitstream is a community or collection logo

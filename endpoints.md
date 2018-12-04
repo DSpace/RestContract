@@ -9,8 +9,8 @@
 * [/api/core/bitstreams](bitstreams.md)
 * /api/core/bitstreamformats
 * /api/core/sites
-* /api/core/metadatafields
-* /api/core/metadataschemas
+* [/api/core/metadatafields](metadatafields.md)
+* [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/epersons](epersons.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
@@ -31,7 +31,8 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * /api/authz/resourcepolicies
- 
+* [/api/tools/copyrequests](item-requests.md)
+
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)
 * /api/curate
@@ -54,4 +55,3 @@
     * statistics viewing
   * return the status of features that are enabled for authorized users
     * item versioning
-

@@ -93,21 +93,21 @@ Exposed links:
 
 ### Linked entities
 #### collection
-**/api/submission/workflowitems/<:id>/collection** (READ-ONLY)
+**/api/workflow/workflowitems/<:id>/collection** (READ-ONLY)
 
 Example: to be provided
 
 It returns the collection where the inprogress submission is occuring. This is a **read-only** endpoint, once the inprogress submission is created the collection cannot be changed directly. Specific section, like the enhanced select-collection section planned for DSpace7 will be able to alter the collection manipulating the *sections* data.
 
 #### item
-**/api/submission/workflowitems/<:id>/item** (READ-ONLY)
+**/api/workflow/workflowitems/<:id>/item** (READ-ONLY)
 
 Example: to be provided
 
 It returns the backend item holds by the submission. See the [item endpoint for more info](items.md). This is a **read-only** endpoint, once the inprogress submission is created the backend item cannot be changed. Update to the backend item will be reflected automatically on the inprogress submission but are not subject to the submission validation, i.e. they correspond to administrative edits
 
 #### submissionDefinition
-**/api/submission/workflowitems/<:id>/submissionDefinition** (READ-ONLY)
+**/api/workflow/workflowitems/<:id>/submissionDefinition** (READ-ONLY)
 
 Example: to be provided
 
@@ -118,7 +118,7 @@ In addition, it allows in future to change the 1:1 association between collectio
 
 ### Search methods
 #### findBySubmitter
-**/api/submission/workflowitems/search/findBySubmitter?uuid=<:submitter-uuid>**
+**/api/workflow/workflowitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
 It returns the workflowitems created by the specified submitter
 
