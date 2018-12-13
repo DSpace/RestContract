@@ -17,33 +17,36 @@ Provide detailed information about a specific item. The JSON response document i
   "uuid": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
   "handle": "10673/20",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Stvilia, Besiki",
-      "language": "en"
-    },
-    {
-      "key": "dc.contributor.author",
-      "value": "Lee, Dong Joon",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-      "language": "en"
-    },
-    {
-      "key": "dc.type",
-      "value": "Journal Article",
-      "language": "en"
-    },
-    {
-      "key": "dc.identifier.url",
-      "value": "http://europepmc.org/abstract/MED/28301533",
-      "language": "en"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Stvilia, Besiki",
+        "language": "en"
+      },
+      {
+        "value": "Lee, Dong Joon",
+        "language": "en"
+      },
+    ],
+    "dc.identifier.url": [
+      {
+        "value": "http://europepmc.org/abstract/MED/28301533",
+        "language": "en"
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+        "language": "en"
+      }
+    ],
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en"
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,

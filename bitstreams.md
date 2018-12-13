@@ -17,7 +17,7 @@ Provide detailed information about a specific bitstream. The JSON response docum
   "uuid": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
   "name": null,
   "handle": null,
-  "metadata": [],
+  "metadata": {},
   "bundleName": null,
   "sizeBytes": 8528,
   "checkSum": {

@@ -17,32 +17,41 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "7669c72a-3f2a-451f-a3b9-9210e7a4c02f",
   "name": "OR2017 - Demonstration",
   "handle": "10673/11",
-  "metadata": [
-    {
-      "key": "dc.description",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.description.abstract",
-      "value": "This is a test community to hold content for the OR2017 demostration",
-      "language": null
-    },
-    {
-      "key": "dc.description.tableofcontents",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.rights",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.title",
-      "value": "OR2017 - Demonstration",
-      "language": null
-    }
+  "metadata": {
+    "dc.description": [
+      {
+        "value": "First description",
+        "language": null
+      },
+      {
+        "value": "Second description",
+        "language": null
+      }
+    ],
+    "dc.description.abstract": [
+      {
+        "value": "This is a test community to hold content for the OR2017 demostration",
+        "language": null
+      }
+    ],
+    "dc.description.tableofcontents": [
+      {
+        "value": "",
+        "language": null
+      }
+    ],
+    "dc.rights": [
+      {
+        "value": "",
+        "language": null
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "OR2017 - Demonstration",
+        "language": null
+      }
+    ]
   ],
   "type": "community"
 }

@@ -17,43 +17,54 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
   "name": "Collection of Sample Items",
   "handle": "10673/2",
-  "metadata": [
-    {
-      "key": "dc.provenance",
-      "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
-      "language": null
-    },
-    {
-      "key": "dc.rights.license",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.description",
-      "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
-      "language": null
-    },
-    {
-      "key": "dc.description.abstract",
-      "value": "This collection contains sample items.",
-      "language": null
-    },
-    {
-      "key": "dc.description.tableofcontents",
-      "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
-      "language": null
-    },
-    {
-      "key": "dc.rights",
-      "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
-      "language": null
-    },
-    {
-      "key": "dc.title",
-      "value": "Collection of Sample Items",
-      "language": null
-    }
-  ],
+  "metadata": {
+    "dc.description": [
+      {
+        "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
+        "language": null
+      }
+    ],
+    "dc.description.abstract": [
+      {
+        "value": "This collection contains sample items.",
+        "language": null
+      }
+    ],
+    "dc.description.tableofcontents": [
+      {
+        "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
+        "language": null
+      }
+    ],
+    "dc.provenance": [
+      {
+        "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
+        "language": null
+      },
+      {
+        "value": "Second provenance value",
+        "language": null
+      }
+    ],
+    "dc.rights": [
+      {
+        "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
+        "language": null
+      }
+    ],
+    "dc.rights.license": [
+      {
+        "value": "",
+        "language": null
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Collection of Sample Items",
+        "language": null
+      }
+    ]
+  },
   "type": "collection"
 }
 ```
