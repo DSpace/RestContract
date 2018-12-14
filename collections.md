@@ -126,7 +126,7 @@ see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 ## Creating a collection
 
-**POST /api/core/collections?community=<:communityUUId>**
+**POST /api/core/collections?parentCommunity=<:communityUUID>**
 
 To create a collection, perform as post with the JSON below when logged in as admin.
 
