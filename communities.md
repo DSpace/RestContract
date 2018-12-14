@@ -131,7 +131,11 @@ To create a sub level community, perform as post with the JSON below to the comm
 ```
 {
     "name": "test subcommunity",
-    "owningCommunity": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+    "parentCommunities": [
+    {
+        "community": {URI: "/api/core/communities/b8872eba-1a79-4b8b-a8f6-55fa8f73197b"}
+    }
+    ],
     "metadata": [
         {
             "key": "dc.title",
@@ -166,7 +170,6 @@ Provide updated metadata information about a specific community, when the update
             "language": "en"
         }
     ],
-    "owningCommunity": null,
     "type": "community"
 }
 ```  
