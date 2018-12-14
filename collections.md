@@ -126,18 +126,13 @@ see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 ## Creating a collection
 
-**POST /api/core/collections**
+**POST /api/core/collections?community=<:communityUUId>**
 
 To create a collection, perform as post with the JSON below when logged in as admin.
 
 ```
 {
 "name": "test collection",
-"parentCommunities": [
-    {
-        "community": {URI: "/api/core/communities/2c949018-c3bd-447e-8657-4121d0c48625"}
-    }
-    ],
 "metadata": [
     {
         "key": "dc.title",
