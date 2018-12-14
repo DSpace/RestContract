@@ -99,7 +99,7 @@ The json representation is as follow
         "id": 2844,
         "name": null,
         "groupUUID": "11cc35e5-a11d-4b64-b5b9-0052a5d15509",
-        "action": "DEFAULT\_BITSTREAM\_READ",
+        "action": "DEFAULT_BITSTREAM_READ",
         "type": "resourcePolicy",
         "_links": {
           "self": {
