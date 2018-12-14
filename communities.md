@@ -124,18 +124,13 @@ To create a top level community, perform as post with the JSON below to the comm
 
 ### Creating subCommunity
 
-**POST /api/core/communities**
+**POST /api/core/communities?parentCommunity=<:communityUUID>**
 
 To create a sub level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
 
 ```
 {
     "name": "test subcommunity",
-    "parentCommunities": [
-    {
-        "community": {URI: "/api/core/communities/b8872eba-1a79-4b8b-a8f6-55fa8f73197b"}
-    }
-    ],
     "metadata": [
         {
             "key": "dc.title",
