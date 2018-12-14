@@ -137,9 +137,9 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 
 It returns the collection where the item belong to
 
-**PUT /api/core/items/<:uuid>/owningCollection/<:collection:uuid>**
+**PUT /api/core/items/<:uuid>/owningCollection?collection=<:collection:uuid>**
 
-Example: <https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/owningCollection/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9>
+Example: <https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/owningCollection?collection=16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9>
 
 It updates the owning collection (moves the item)
 
