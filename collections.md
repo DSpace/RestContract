@@ -133,7 +133,11 @@ To create a collection, perform as post with the JSON below when logged in as ad
 ```
 {
 "name": "test collection",
-"owningCommunity": "2c949018-c3bd-447e-8657-4121d0c48625",
+"parentCommunities": [
+    {
+        "community": {URI: "/api/core/communities/2c949018-c3bd-447e-8657-4121d0c48625"}
+    }
+    ],
 "metadata": [
     {
         "key": "dc.title",
@@ -153,7 +157,6 @@ Provide updated metadata information about a specific collection, when the updat
 {
 "uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
 "name": "test collection",
-"owningCommunity": "2c949018-c3bd-447e-8657-4121d0c48625",
 "metadata": [
     {
         "key": "dc.title",
@@ -173,7 +176,7 @@ Provide updated metadata information about a specific collection, when the updat
 
 **DELETE /api/core/collections/<:uuid>**
 
-Delete a community.
+Delete a collection.
 
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
