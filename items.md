@@ -401,12 +401,12 @@ On the item page, it should be referenced similar to:
     }
 ```
 
-**POST /api/core/items/<item:uuid>/mappingCollections/<collection:uuid>**
+**POST /api/core/items/<item:uuid>/mappingCollections?collection=<collection:uuid>**
 
 A POST request will result in creating a new mapping between the item and collection
 If the collection exists and is neither the owning nor mapping collection for the item, the relation should be created
 
-**DELETE /api/core/items/<item:uuid>/mappingCollections/<collection:uuid>**
+**DELETE /api/core/items/<item:uuid>/mappingCollections?collection=<collection:uuid>**
 
 A DELETE request will result in removing an existing mapping between the item and collection
 If the collection exists and is a mapping collection for the item, the relation should be deleted
