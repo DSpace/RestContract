@@ -4,6 +4,9 @@
 ## Main Endpoint
 **GET /api/eperson/epersons**
 
+## Single EPerson
+**GET /api/eperson/epersons/<:uuid>**
+
 ```json
 {
   "id": "028dcbb8-0da2-4122-a0ea-254be49ca107",
@@ -47,9 +50,6 @@
   }
 }
 ```
-
-## Single EPerson
-**GET /api/eperson/epersons/<:uuid>**
 
 ## Patch operations
 
