@@ -113,13 +113,11 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
   "metadata": [
     {
       "key": "eperson.firstname",
-      "value": "John",
-      "language": null
+      "value": "John"
     },
     {
       "key": "eperson.lastname",
-      "value": "Doe",
-      "language": null
+      "value": "Doe"
     }
   ],
   "canLogIn": true,
