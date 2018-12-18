@@ -2,10 +2,54 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/eperson/epersons**  
+**GET /api/eperson/epersons**
+
+```json
+{
+  "id": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "uuid": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "name": "user@institution.edu",
+  "handle": null,
+  "metadata": [
+    {
+      "key": "eperson.firstname",
+      "value": "John",
+      "language": null
+    },
+    {
+      "key": "eperson.lastname",
+      "value": "Doe",
+      "language": null
+    },
+    {
+      "key": "eperson.phone",
+      "value": "",
+      "language": null
+    },
+    {
+      "key": "eperson.language",
+      "value": "en",
+      "language": null
+    }
+  ],
+  "netid": null,
+  "lastActive": null,
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "groups": null,
+  "type": "eperson",
+  "_links": {
+    "self": {
+      "href": "https://dspace7-internal.atmire.com/rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+    }
+  }
+}
+```
 
 ## Single EPerson
-**/api/eperson/epersons/<:uuid>**
+**GET /api/eperson/epersons/<:uuid>**
 
 ## Patch operations
 
@@ -56,3 +100,32 @@ the replace operation `[{ "op": "replace", "path": "/password", "value": "newpas
   "password": "newpassword",
 ```
 Note: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
+
+## Create new EPerson
+
+**POST /api/eperson/epersons**
+
+To create a new EPerson, perform a post with the JSON below to the epersons endpoint when logged in as admin.
+
+```json
+{
+  "name": "user@institution.edu",
+  "metadata": [
+    {
+      "key": "eperson.firstname",
+      "value": "John",
+      "language": null
+    },
+    {
+      "key": "eperson.lastname",
+      "value": "Doe",
+      "language": null
+    }
+  ],
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "type": "eperson"
+}
+```
