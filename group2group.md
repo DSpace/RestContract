@@ -94,7 +94,7 @@ Samples:
             },
             "_links": {
               "self": {
-                "href": "https://dspace7-internal.atmire.com/rest/api/eperson/groups/1cbf084f-a3d1-423c-949c-b5ae96859d8b/groups"
+                "href": "https://dspace7-internal.atmire.com/rest/api/eperson/groups/1cbf084f-a3d1-423c-949c-b5ae96859d8b"
               }
             },
             "page": {
