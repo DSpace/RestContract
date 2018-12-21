@@ -49,21 +49,20 @@ Provide detailed information about a specific community. The JSON response docum
 ```
 
 Exposed links:
-* communities: list of sub-communities within this community (not yet implemented see [DS-3650](https://jira.duraspace.org/browse/DS-3650)
+* subcommunities: list of sub-communities within this community
 * collections: list of collections within this community
 * logo: link to the bitstream that represent the community's logo
- 
 
-## Linked entities
-### Sub-Communties
-**/api/core/communities/<:uuid>/communities**
+### SubCommunities
+**/api/core/communities/<:uuid>/subcommunities**
 
-Example: not available 
+Example: t.b.p
 
-It returns the sub communities within this community
+It returns the sub-communities within this community
 
 The supported parameters are:
-* page, size
+* page, size [see pagination](README.md#Pagination)
+ 
 
 ### Collections
 **/api/core/communities/<:uuid>/collections**
@@ -81,3 +80,23 @@ The supported parameters are:
 Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
 
 [It returns the bitstream representing the logo of this community. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+### Search methods
+#### top
+**/api/core/communities/search/top**
+
+Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/search/top>
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+
+It returns the top level communities in the repository (i.e. the communities that doesn't have a parent)
+
+#### subCommunities
+**/api/core/communities/search/subCommunities?parent=<:uuid>**
+
+Example: not available
+
+The supported parameters are:
+* **(mandatory)** parent, the UUID of the parent community
+* page, size [see pagination](README.md#Pagination)

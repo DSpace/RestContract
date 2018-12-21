@@ -45,7 +45,7 @@ Returns whether the item resource is available.
 Replaces the state of the target resource with the supplied request body.
 
 - PATCH
-Similar to PUT but partially updating the resources state.
+Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
 
 - DELETE
 Deletes the resource exposed.
@@ -73,6 +73,9 @@ Unbinds the association. Return 405 Method Not Allowed if the association is non
 404 Not found - if the requested entity or collection doesn't exists
 
 405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
+
+## On the Naming of Endpoints
+Names should be descriptive but reasonably short.  Form compounds by concatenating words, all lower case, without punctuation.  For example:  `metadatafields`, not `metadata-fields` or `MetadataFields`.
 
 ## HATEOAS & HAL
 The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
