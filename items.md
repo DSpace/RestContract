@@ -100,7 +100,7 @@ the reinstate operation will result in:
   "type": "item"
 ```
 
-To make an item private (or discoverable), `curl --data '{[ { "op": "replace", "path": "/discoverable", "value": false}]}' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The discoverable operation also requires an Authorization header.
+To make an item private (or discoverable), `curl --data '[ { "op": "replace", "path": "/discoverable", "value": false}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The discoverable operation also requires an Authorization header.
 
 
 For example, starting with the following item data:
