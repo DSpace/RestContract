@@ -137,6 +137,20 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 
 It returns the collection where the item belong to
 
+#### PUT operation
+To move an item a PUT request using the text/uri-list mime-type can be used
+Example
+```
+curl -i -X PUT -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+  -H "Content-Type:text/uri-list" https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection
+``` 
+
+It updates the owning collection (moves the item) to the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb`
+
+Return codes:
+- 204: if the update succeed
+- 400: when multiple URIs were given or not valid data are sent 
+
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
 
