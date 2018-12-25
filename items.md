@@ -62,7 +62,7 @@ Exposed links:
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
 
-To withdraw an item, `curl --data '{[ { "op": "replace", "path": "/withdrawn", "value": true}]}' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The withdraw operation also requires an Authorization header.
+To withdraw an item, `curl --data '[ { "op": "replace", "path": "/withdrawn", "value": true}]' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The withdraw operation also requires an Authorization header.
 
 For example, starting with the following item data:
 ```json
@@ -81,7 +81,7 @@ the withdraw operation will result in:
   "type": "item"
 ```
 
-To reinstate an item, `curl --data '{[ { "op": "replace", "path": "/withdrawn", "value": false}]}' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The reinstate operation also requires an Authorization header.
+To reinstate an item, `curl --data '[ { "op": "replace", "path": "/withdrawn", "value": false}]' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The reinstate operation also requires an Authorization header.
 
 For example, starting with the following item data:
 ```json
