@@ -149,7 +149,12 @@ It updates the owning collection (moves the item) to the collection with uuid `1
 
 Return codes:
 - 204: if the update succeed
-- 400: when multiple URIs were given or not valid data are sent 
+- 400: when multiple URIs were given or not valid data are sent
+- 405: if the item is a template item
+
+#### DELETE operation
+The owningCollection relation (where defined item != template item) is not optional
+Return code is always 405
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
