@@ -55,6 +55,7 @@ Provide detailed information about a specific item. The JSON response document i
 Exposed links:
 * bitstreams: list of bitstreams within the item
 * owningCollection: the collection where the item belong to
+* mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
  
 ## Creating an archived item
@@ -201,6 +202,73 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 
 It returns the collection where the item belong to
 
+### Mapped Collections
+**/api/core/items/<:uuid>/mappedCollections**
+
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections>
+
+It returns the collections where the item is mapped to. The owningCollection is NOT included in such list.
+
+#### POST operation
+To map the item to one or multiple collections a POST request using the text/uri-list mime-type can be used. Each URI goes on a different line
+
+ Example
+ ```
+ curl -i -X POST -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+   -H "Content-Type:text/uri-list" https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ ``` 
+ 
+  It adds the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` to the list of collections where the item is mapped to
+ 
+  Return codes:
+ * 204: if the mapping succeed (including the case of no-op if the mapping was already in place) 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection or one of the specified collections is not found or is the owningCollection of the item
+
+#### PUT operation
+To completely override the collections where the item is mapped to a PUT request using the text/uri-list mime-type can be used
+ Example
+ ```
+ curl -i -X PUT -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+   -H "Content-Type:text/uri-list" https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ ``` 
+ 
+  It will make the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` the only collection where the item is mapped to
+ 
+  Return codes:
+ * 204: if the update succeed (including the case of no-op if the mapping was already as requested) 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection or one of the specified collections is not found or is the owningCollection of the item
+  
+#### DELETE operations
+To remove any mapping for the item a DELETE request can be used.
+
+ Example
+ ```
+ curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ ``` 
+ 
+It is also possible to remove a single mapping using the URL
+**/api/core/items/<:uuid>/mappedCollections/<:collectionUUID>**
+
+Example
+ ```
+ curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb
+ ``` 
+ 
+  It will remove the mapping (if any) to the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` for the item `1911e8a4-6939-490c-b58b-a5d70f8d91fb`
+ 
+  Return codes:
+ * 204: if the delete succeed (including the case of no-op if the mapping was not set) 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection or one of the specified collections is not found or is the owningCollection of the item
+
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
 
@@ -208,7 +276,7 @@ Example: to be provided
 
 It returns the collection that have the item as template
 
-## Deleting a collection
+## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**
 
