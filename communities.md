@@ -21,35 +21,47 @@ Provide detailed information about a specific community. The JSON response docum
     "dc.description": [
       {
         "value": "First description",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       },
       {
         "value": "Second description",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.description.abstract": [
       {
         "value": "This is a test community to hold content for the OR2017 demostration",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.description.tableofcontents": [
       {
         "value": "",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.rights": [
       {
         "value": "",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.title": [
       {
         "value": "OR2017 - Demonstration",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ]
   ],

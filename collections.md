@@ -21,47 +21,63 @@ Provide detailed information about a specific community. The JSON response docum
     "dc.description": [
       {
         "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.description.abstract": [
       {
         "value": "This collection contains sample items.",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.description.tableofcontents": [
       {
         "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.provenance": [
       {
         "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       },
       {
         "value": "Second provenance value",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.rights": [
       {
         "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.rights.license": [
       {
         "value": "",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.title": [
       {
         "value": "Collection of Sample Items",
-        "language": null
+        "language": null,
+        "authority": null,
+        "confidence": -1
       }
     ]
   },

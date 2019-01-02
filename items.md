@@ -21,29 +21,39 @@ Provide detailed information about a specific item. The JSON response document i
     "dc.contributor.author": [
       {
         "value": "Stvilia, Besiki",
-        "language": "en"
+        "language": "en",
+        "authority": null,
+        "confidence": -1
       },
       {
         "value": "Lee, Dong Joon",
-        "language": "en"
+        "language": "en",
+        "authority": null,
+        "confidence": -1
       },
     ],
     "dc.identifier.url": [
       {
         "value": "http://europepmc.org/abstract/MED/28301533",
-        "language": "en"
+        "language": "en",
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.title": [
       {
         "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-        "language": "en"
+        "language": "en",
+        "authority": null,
+        "confidence": -1
       }
     ],
     "dc.type": [
       {
         "value": "Journal Article",
-        "language": "en"
+        "language": "en",
+        "authority": null,
+        "confidence": -1
       }
     ]
   },
