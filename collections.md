@@ -126,7 +126,7 @@ see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 ## Creating a collection
 
-**POST /api/core/collections?parentCommunity=<:communityUUID>**
+**POST /api/core/collections?parent=<:communityUUID>**
 
 To create a collection, perform as post with the JSON below when logged in as admin.
 
@@ -142,6 +142,12 @@ To create a collection, perform as post with the JSON below when logged in as ad
     ]
 }
 ```
+
+ Error messages:
+ * 200 OK - if the operation succeed
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions
+ * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
 
 ## Updating a collection
 
@@ -166,6 +172,13 @@ Provide updated metadata information about a specific collection, when the updat
     ]
 }
 ```  
+
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
 
 ## Deleting a collection
 
