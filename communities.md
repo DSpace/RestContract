@@ -124,7 +124,7 @@ To create a top level community, perform as post with the JSON below to the comm
 
 ### Creating subCommunity
 
-**POST /api/core/communities?parentCommunity=<:communityUUID>**
+**POST /api/core/communities?parent=<:communityUUID>**
 
 To create a sub level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
 
@@ -141,12 +141,18 @@ To create a sub level community, perform as post with the JSON below to the comm
 }
 ```
 
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/communities still exists)
 
 ## Updating a community
 
 **PUT /api/core/communities/<:uuid>**
 
 Provide updated metadata information about a specific community, when the update is completed the updated object will be returned. The JSON to update can be found below.
+
 ```
 {
     "id": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
@@ -169,6 +175,12 @@ Provide updated metadata information about a specific community, when the update
 }
 ```  
 
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the community doesn't exist
+* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
 
 ## Deleting a community
 
