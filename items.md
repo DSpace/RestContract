@@ -152,6 +152,10 @@ Provide updated metadata information for an item, when the update is completed t
  
 ## Patch operations
 
+Item metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
+Additional properties can be modified via Patch as described below.
+
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
 

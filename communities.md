@@ -122,6 +122,7 @@ The supported parameters are:
 * **(mandatory)** parent, the UUID of the parent community
 * page, size [see pagination](README.md#Pagination)
 
+<<<<<<< HEAD
 ## Creating communities
 
 ### Creating top level community
@@ -213,3 +214,7 @@ Delete a community.
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the community doesn't exist (or was already deleted)
+
+## Patch operations
+
+Community metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
