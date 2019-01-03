@@ -68,6 +68,7 @@ Provide detailed information about a specific item. The JSON response document i
 Exposed links:
 * bitstreams: list of bitstreams within the item
 * owningCollection: the collection where the item belong to
+* mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
  
 ## Creating an archived item
@@ -245,12 +246,12 @@ Status codes:
 * 404 Not found - if the item doesn't exist
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
-### Mapping Collections
-**GET /api/core/items/<:uuid>/mappingCollections**
+### Mapped Collections
+**GET /api/core/items/<:uuid>/mappedCollections**
 
 Example:
 ```json
-    "mappingCollections":
+    "mappedCollections":
     [
       {
         "id": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
@@ -273,9 +274,6 @@ Example:
         "_links": {
           "license": {
             "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
-          },
-          "exportToZip": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/exportToZip"
           },
           "defaultAccessConditions": {
             "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
@@ -392,24 +390,24 @@ Example:
   }
 ```
 
-It returns all the mapping collections the item is included in
+It returns all the mapped collections the item is included in
 
 On the item page, it should be referenced similar to:
 ```json
-    "mappingCollections": {
-      "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappingCollections"
+    "mappedCollections": {
+      "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
     }
 ```
 
-**POST /api/core/items/<item:uuid>/mappingCollections?collection=<collection:uuid>**
+**POST /api/core/items/<item:uuid>/mappedCollections?collection=<collection:uuid>**
 
 A POST request will result in creating a new mapping between the item and collection
-If the collection exists and is neither the owning nor mapping collection for the item, the relation should be created
+If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created
 
-**DELETE /api/core/items/<item:uuid>/mappingCollections?collection=<collection:uuid>**
+**DELETE /api/core/items/<item:uuid>/mappedCollections?collection=<collection:uuid>**
 
 A DELETE request will result in removing an existing mapping between the item and collection
-If the collection exists and is a mapping collection for the item, the relation should be deleted
+If the collection exists and is a mapped collection for the item, the relation should be deleted
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
