@@ -46,7 +46,7 @@ Note:
 * When values already exist for a metadata key, it is necessary to specify the new value's
   position at the end of the `path` (`/0` means first position, `/-` means last).
 * When creating new metadata values, if unspecified, the `language` and `authority` properties
-  default to `null`, and `confidence` defaults to `0`.
+  default to `null`, and `confidence` defaults to `-1`.
 
 Example request, adding three values:
 
@@ -152,6 +152,8 @@ Example request, replacing the `value` and `language` of the first `dc.title`:
 ]
 ```
 
+New metadata state:
+
 ```json
 {
   "metadata": {
@@ -178,6 +180,8 @@ Example request, moving the last `dc.title` value to the first position:
   }
 ]
 ```
+
+New metadata state:
 
 ```json
 {
