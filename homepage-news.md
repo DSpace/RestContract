@@ -120,7 +120,7 @@ The supported **Request Headers** are:
 * If-None-Match: 
 
 ### Languages
-**/api/config/pages/<:uuid>/languages**
+**/api/config/pages/<:page-name>/languages**
 
 Example:
 ```json
