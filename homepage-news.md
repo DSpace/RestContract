@@ -78,7 +78,7 @@ Exposed links:
 * languages: link to language alternatives of this page
 
 ### Edit page: Multipart POST Method
-**POST /api/config/pages/<:uuid>**
+**POST /api/config/pages**
 
 A multipart POST request will result in creating a new file identified by the name.
 
@@ -86,7 +86,7 @@ Send detailed information about a static page, and the actual file. The sizeByte
 
 **PUT /api/config/pages/<:uuid>**
 
-A multipart POST request will result in an update of the file identified by the uuid.
+A multipart PUT request will result in an update of the file identified by the uuid.
 
 Send detailed information about a static page, and the actual file. The sizeBytes is not required, but the other attributes are applicable
 
