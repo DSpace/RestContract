@@ -93,6 +93,39 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
 The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
+## Creating a relationship
+
+**POST /api/core/relationships?leftItem=<:itemuuid>&rightItem=<:itemuuid>&relationshipType=<:relationshipType>**
+
+A new relationship between 2 items can be created by specifying both items and the relationshipType
+
+A sample CURL command would be:
+```
+curl -D - -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?leftItem=12623672-25a9-4df2-ab36-699c4c240c7e&rightItem=5a3f7c7a-d3df-419c-8a2-f00ede62c60a&relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json"  --data '{}'
+```
+
+No JSON data is required since all information is included in the 3 parameters
+
+## Updating a relationship
+
+**PUT /api/core/relationships/<:id>?leftItem=<:itemuuid>&rightItem=<:itemuuid>&relationshipType=<:relationshipType>**
+
+Update the parameters in the relationship (e.g. changing the item)
+
+A sample CURL command would be:
+```
+curl -D - -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891?leftItem=12623672-25a9-4df2-ab36-699c4c240c7e&rightItem=5a3f7c7a-d3df-419c-8a2-f00ede62c60a&relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json"  --data '{}'
+```
+
+No JSON data is required since all information is included in the 3 parameters
+
+## Relationships per item
+**/api/core/items/<:uuid>/relationships**
+
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
+
+It embeds all relationships where either the left or the right item matches the given uuid
+
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
 
@@ -278,3 +311,19 @@ It embeds all relationships where the relationship type has the given label on e
 This can be further filtered to a single DSO using 
 https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
+
+## Deleting a relationship
+
+**DELETE /api/core/relationships/<:id>**
+
+Delete a relationship between 2 items.
+
+A sample CURL command would be:
+```
+curl -D - -XDELETE 'https://dspace7-entities.atmire.com/rest/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
+```
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist (or was already deleted)
