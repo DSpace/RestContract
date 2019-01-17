@@ -27,52 +27,70 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
 
 ## Use of the HTTP Verbs and HTTP Response CODE
 
+_Please note that within this section, all terms used are meant to reference RESTful terminology and/or terminology borrowed from [Spring Data REST](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#repository-resources)._ 
+ - `resource` - anything that can be identified via a URI. It's a representation of an underlying object. e.g. `/items/123-456-789` is a resource that represents a single DSpace Item. For additional examples see https://restful-api-design.readthedocs.io/en/latest/resources.html
+ - `object` - we use this term to mean the actual object *behind* the resource. In other words, a resource is a JSON representation of some object (often a DSpaceObject) stored in the database. This is also sometimes called an "entity".
+ - `collection` - a group of resources e.g. `/items` is a collection of all DSpace Item resources. This is also sometimes called a "collection resource" (e.g. in Spring Data REST)
+     - Somewhat confusingly, Spring Data REST likes to use the phrase "item resources" for individual resources within a collection. Below, we've just called them "resources".
+ - `association` - a link or relationship between two resources. This is also sometimes called an "association resource" (e.g. in Spring Data REST).
+ 
 ### On collection of resources endpoints
+
+Collection Of Resources Example: `/items`
+
 - POST
-Adds a new element to the collection.
+Adds a new resource to the collection. This creates a new object.
 
 - GET
 Returns the first page of the resources in the collection
 
 ### On single resource endpoints
+
+Single Resource Example: `/items/123-456-789`
+
 - GET
-Returns a single entity.
+Returns a single resource.
 
 - HEAD
-Returns whether the item resource is available.
+Returns whether the target resource is available.
 
 - PUT
-Replaces the state of the target resource with the supplied request body.
+Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement)
 
 - PATCH
 Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
 
 - DELETE
-Deletes the resource exposed.
+Deletes the target resource and object.
 
-### On sub-path of a single resource endpoint)
+### On sub-path of a single resource endpoint
+
+Sub-path of Single Resource Example: `/items/123-456-789/mappedCollections`
+
 - GET
-Returns the state of the association resource
+Returns the state of the association (for the single resource)
 
 - PUT
-Binds the resource pointed to by the given URI(s) to the resource. Return 400 Bad Request if multiple URIs were given for a to-one-association
+Binds (or links) the resource(s) pointed to by the given URI(s) to the single resource. Return 400 Bad Request if multiple URIs were given for a *-to-one-association
 
 - POST
-Only supported for collection associations. Adds a new element to the collection.
+Only supported for collection associations. Adds a new resource to the collection.
 
 - DELETE
-Unbinds the association. Return 405 Method Not Allowed if the association is non-optional
+Unbinds (unlinks) the association. Return 405 Method Not Allowed if the association is required (and cannot be removed)
 
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association
 
-401 Unauthenticated - if the request require a logged-in user
+401 Unauthorized (Unauthenticated) - if the request requires a logged-in user
 
-403 Unauthorized - if the requester doesn't have enough privilege to execute the request
+403 Forbidden - if the requester doesn't have enough privilege to execute the request
 
-404 Not found - if the requested entity or collection doesn't exists
+404 Not Found - if the requested entity or collection doesn't exists
 
-405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
+405 Method Not Allowed - if the methods is not implemented or a DELETE method is called on a non-optional association
+
+422 Unprocessable Entity - if the request is well-formed, but is invalid based on the given data. For example, if you attempt to create a resource under a non-existent parent resource, or attempt to update a read-only (non-editable) field.
 
 ## On the Naming of Endpoints
 Names should be descriptive but reasonably short.  Form compounds by concatenating words, all lower case, without punctuation.  For example:  `metadatafields`, not `metadata-fields` or `MetadataFields`.
