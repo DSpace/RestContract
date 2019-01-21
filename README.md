@@ -11,7 +11,6 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
   * DSpace 7 Angular UI work is occurring at https://github.com/DSpace/dspace-angular
 ***
 
-
 ## Community resources
 
 * [REST Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
@@ -36,17 +35,17 @@ _Please note that within this section, all terms used are meant to reference RES
  
 ### On collection of resources endpoints
 
-Collection Of Resources Example: `/items`
+Collection Of Resources Example: `/api/core/items`
 
 - POST
-Adds a new resource to the collection. This creates a new object.
+Adds a new resource to the collection. This creates a new object. The data for the new object _should be included_ in the request body.
 
 - GET
 Returns the first page of the resources in the collection
 
 ### On single resource endpoints
 
-Single Resource Example: `/items/123-456-789`
+Single Resource Example: `/api/core/items/123-456-789`
 
 - GET
 Returns a single resource.
@@ -55,7 +54,7 @@ Returns a single resource.
 Returns whether the target resource is available.
 
 - PUT
-Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement)
+Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _should be included_ in the request body.
 
 - PATCH
 Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
@@ -65,7 +64,7 @@ Deletes the target resource and object.
 
 ### On sub-path of a single resource endpoint
 
-Sub-path of Single Resource Example: `/items/123-456-789/mappedCollections`
+Sub-path of Single Resource Example: `/api/core/items/123-456-789/mappedCollections`
 
 - GET
 Returns the state of the association (for the single resource)
@@ -91,12 +90,6 @@ Unbinds (unlinks) the association. Return 405 Method Not Allowed if the associat
 405 Method Not Allowed - if the methods is not implemented or a DELETE method is called on a non-optional association
 
 422 Unprocessable Entity - if the request is well-formed, but is invalid based on the given data. For example, if you attempt to create a resource under a non-existent parent resource, or attempt to update a read-only (non-editable) field.
-
-## On the Naming of Endpoints
-Names should be descriptive but reasonably short.  Form compounds by concatenating words, all lower case, without punctuation.  For example:  `metadatafields`, not `metadata-fields` or `MetadataFields`.
-
-## HATEOAS & HAL
-The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
 
 ## Pagination
 Each endpoints that expose a collection of resources, including sub-paths for embedded or linked collections (aka list of items of a collection, etc.), MUST implement the pagination with the following common behavior
@@ -151,6 +144,40 @@ In the case that the request parameters lead to a page outside the result set an
 ### Error Code
 400 Bad Request. If an unknown sort criteria is requested or a not valid ordering keyword is specified
 
+## Design Principles
+In the creation of the REST API, we've tried to follow a few specific design principles listed below
+
+### On the Naming of Endpoints
+Names should be descriptive but reasonably short. Use nouns instead of verbs. Form compounds by concatenating words, all lower case, without punctuation.  For example: `metadatafields`, not `metadata-fields` or `MetadataFields`.
+
+### HATEOAS & HAL
+The REST API supports the [HATEOAS paradigm](https://restfulapi.net/hateoas/) and adopt the [HAL format](http://stateless.co/hal_specification.html) to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
+
+Because the API responds using the HAL Format, we distribute it with an [embedded HAL Browser provided by Spring](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser).
+
+### Statelessness
+The REST API is [stateless](https://restfulapi.net/statelessness/), meaning the client is responsible for sending any state information to the server when it is needed (there is no session kept on the server between requests).
+
+#### JSON Web Tokens
+[JSON Web Tokens (JWT)](https://jwt.io/) are used to retain state (and authentication) information between requests.
+
+### ALPS - Application Level Profile Semantics
+While not yet implemented, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
+A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. The ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
+
+### Spring Technology alignment
+While it's an implementation detail, the new REST API uses many Spring REST (Java) libraries, including:
+
+* [Spring Boot](https://spring.io/projects/spring-boot) - Provides base Spring webapp functionality
+* [Spring MVC](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/web.html#mvc) - Provides Spring web framework
+* [Spring REST](https://spring.io/understanding/REST) - Provides base REST tools/libraries for building REST APIs on Spring MVC
+* [Spring HATEOAS](https://spring.io/projects/spring-hateoas) - Provides tools to create REST APIs following HATEOAS principles, and returning HAL Format responses.
+* [Spring Data REST](https://spring.io/projects/spring-data-rest) (_alignment_) - We do **NOT** directly use Spring Data REST at this time (because of incompatibilities with our data layer). However, we have chosen to _align our implementation with Spring Data REST_ where possible.
+* [Spring Data REST Hal Browser](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser) - Provides the out-of-the-box HAL Browser you see when accessing our REST API
+* [Spring REST Docs](https://spring.io/projects/spring-restdocs) - Provides tools to help document REST APIs in Spring MVC
+
+Each of these libraries were chosen based on design principles above, and based on the fact that much of our underlying Java APIs use or align with Spring technologies.
+
 ## ETags & conditional headers
 The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a way to tag resources. This can prevent clients from overriding each other while also making it possible to reduce unnecessary calls. It is expected that all the returned document have an ETag
 
@@ -160,10 +187,6 @@ The ETag value can be also used with DELETE, POST, PUT and PATCH with the *If-Ma
 
 Finally, when possible the If-Modified-Since header in GET request should be respected. If the resource has been not modified since the value of the Header the API should return an
 HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response, such header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.  
-
-## ALPS - Application Level Profile Semantics
-It is expected support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
-A profile link as defined in RFC 6906 (<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. The ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
 
 ## Endpoints
 At the root of the api a HAL document MUST list all the primary endpoints allowing full discovery of the current version of the API.
