@@ -20,7 +20,7 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "id": 1,
   "leftLabel": "isAuthorOfPublication",
   "rightLabel": "isPublicationOfAuthor",
-  "leftMinCardinality": 5,
+  "leftMinCardinality": 0,
   "leftMaxCardinality": 2147483647,
   "rightMinCardinality": 0,
   "rightMaxCardinality": 20000,
