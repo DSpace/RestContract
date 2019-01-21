@@ -35,48 +35,48 @@ _Please note that within this section, all terms used are meant to reference RES
  
 ### On collection of resources endpoints
 
-Collection Of Resources Example: `/api/core/items`
+This type of endpoint interacts with a group (or collection) of resources (objects). For example: `/api/core/items` references *all* Items in the system. 
 
-- POST
-Adds a new resource to the collection. This creates a new object. The data for the new object _should be included_ in the request body.
+- `POST`:
+Adds a new resource to the group (or collection). This creates a new object. The data for the new object _should be included_ in the request body. Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is required to create the object._
 
-- GET
-Returns the first page of the resources in the collection
+- `GET`:
+Returns the first page of the resources in the group (or collection). See [Pagination](#pagination) section. 
 
 ### On single resource endpoints
 
-Single Resource Example: `/api/core/items/123-456-789`
+This type of endpoint interacts with a single resource (object). For example: `/api/core/items/123-456-789` references a single Item.
 
-- GET
+- `GET`:
 Returns a single resource.
 
-- HEAD
+- `HEAD`:
 Returns whether the target resource is available.
 
-- PUT
-Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _should be included_ in the request body.
+- `PUT`:
+Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _should be included_ in the request body. Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is necessary to update the object._
 
-- PATCH
+- `PATCH`:
 Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
 
-- DELETE
+- `DELETE`:
 Deletes the target resource and object.
 
-### On sub-path of a single resource endpoint
+### On sub-path of a single resource endpoint (associations)
 
-Sub-path of Single Resource Example: `/api/core/items/123-456-789/mappedCollections`
+This type of endpoint interacts with (one or more) resources that are *associated with* a single resource. For that reason, it is sometimes called an "association" endpoint. For example: `/api/core/items/123-456-789/mappedCollections` references all Collections that are mapped to a single Item.
 
-- GET
-Returns the state of the association (for the single resource)
+- `GET`:
+Returns the state of the association (for the current resource)
 
-- PUT
-Binds (or links) the resource(s) pointed to by the given URI(s) to the single resource. Return 400 Bad Request if multiple URIs were given for a *-to-one-association
+- `PUT`:
+Binds (or links) the resource(s) pointed to by the given URI(s) to the current resource. Resource URIs to link must sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships). Return `400 Bad Request` if multiple URIs were given for a *-to-one-association
 
-- POST
-Only supported for collection associations. Adds a new resource to the collection.
+- `POST`:
+Only supported for collection associations (i.e. associations allowing for multiple resources). Adds/Links a new resource (via its URI) to the association. Resource URIs to link must sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships)
 
-- DELETE
-Unbinds (unlinks) the association. Return 405 Method Not Allowed if the association is required (and cannot be removed)
+- `DELETE`:
+Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed)
 
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association
