@@ -57,6 +57,70 @@ Exposed links:
 * owningCollection: the collection where the item belong to
 * templateItemOf: the collection that have the item as template
  
+## Creating an archived item
+
+**POST /api/core/items?owningCollection:<:uuid>**
+
+Administrators can directly create an archived item (bypassing the workflow). An example JSON can be seen below:
+
+```
+{
+  "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+  "metadata": [
+    {
+      "key": "dc.contributor.author",
+      "value": "Stvilia, Besiki",
+      "language": "en"
+    },
+    {
+      "key": "dc.title",
+      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+      "language": "en"
+    },
+    {
+      "key": "dc.type",
+      "value": "Journal Article",
+      "language": "en"
+    }
+  ],
+  "inArchive": true,
+  "discoverable": true,
+  "withdrawn": false,
+  "type": "item"
+}
+```
+
+## Updating item metadata
+
+**PUT /api/core/items/<:uuid>**
+
+Provide updated metadata information for an item, when the update is completed the updated object will be returned. The JSON to update can be found below.
+
+```
+{
+  "id": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
+  "uuid": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
+  "name": "Test new title",
+  "handle": "123456789/60636",
+  "metadata": [
+    {
+      "key": "dc.contributor.author",
+      "value": "Velasco, Mercedes",
+      "language": "en"
+    },
+    {
+      "key": "dc.title",
+      "value": "Test new title",
+      "language": "pt_BR"
+    }
+  ],
+  "inArchive": true,
+  "discoverable": true,
+  "withdrawn": false,
+  "type": "item"
+}
+```
+ 
 ## Patch operations
 
 ### Replace
@@ -100,7 +164,7 @@ the reinstate operation will result in:
   "type": "item"
 ```
 
-To make an item private (or discoverable), `curl --data '{[ { "op": "replace", "path": "/discoverable", "value": false}]}' -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The discoverable operation also requires an Authorization header.
+To make an item private (or discoverable), `curl --data '[ { "op": "replace", "path": "/discoverable", "value": false}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/core/items/${item-uuid}`.  The discoverable operation also requires an Authorization header.
 
 
 For example, starting with the following item data:
@@ -143,3 +207,14 @@ It returns the collection where the item belong to
 Example: to be provided
 
 It returns the collection that have the item as template
+
+## Deleting a collection
+
+**DELETE /api/core/items/<:uuid>**
+
+Delete an item.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist (or was already deleted)
