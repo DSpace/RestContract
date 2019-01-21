@@ -93,13 +93,6 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
 The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
-## Relationships per item
-**/api/core/items/<:uuid>/relationships**
-
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
-
-It embeds all relationships where either the left or the right item matches the given uuid
-
 ## Relationships per Relationship type
 **/api/core/relationships/<:relationshipname>**
 
