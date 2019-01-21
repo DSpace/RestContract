@@ -41,7 +41,7 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
       "id": 1,
       "leftLabel": "isAuthorOfPublication",
       "rightLabel": "isPublicationOfAuthor",
-      "leftMinCardinality": 5,
+      "leftMinCardinality": 0,
       "leftMaxCardinality": 2147483647,
       "rightMinCardinality": 0,
       "rightMaxCardinality": 20000,
