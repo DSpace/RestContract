@@ -137,11 +137,21 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 
 It returns the collection where the item belong to
 
-**PUT /api/core/items/<:uuid>/owningCollection?collection=<:collection:uuid>**
+**PUT /api/core/items/<:uuid>/owningCollection**
 
-Example: <https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/owningCollection?collection=16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9>
+The actual collection is part of the body using the uri-list
+Example:
+
+```curl -i -X PUT "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"```
 
 It updates the owning collection (moves the item)
+
+Status codes:
+* 204 No content - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+* 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
