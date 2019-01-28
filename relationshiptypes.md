@@ -21,9 +21,9 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "leftLabel": "isAuthorOfPublication",
   "rightLabel": "isPublicationOfAuthor",
   "leftMinCardinality": 0,
-  "leftMaxCardinality": 2147483647,
+  "leftMaxCardinality": null,
   "rightMinCardinality": 0,
-  "rightMaxCardinality": 20000,
+  "rightMaxCardinality": null,
   "type": "relationshiptype",
   "_links": {
     "leftType": {
