@@ -59,7 +59,7 @@ Exposed links:
  
 ## Creating an archived item
 
-**POST /api/core/items?owningCollection:<:uuid>**
+**POST /api/core/items?owningCollection=<:uuid>**
 
 Administrators can directly create an archived item (bypassing the workflow). An example JSON can be seen below:
 
