@@ -97,6 +97,7 @@ The 2 items are included as HAL links but are not embedded
 **/api/core/relationships/search/byName?relationshipname=<:relationshipname>**
 
 A sample search would be https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byName?relationshipname=isPersonOfOrgUnit
+The relationshipname parameter is mandatory
 
 It would respond with
 ```json
@@ -276,3 +277,4 @@ It embeds all relationships where the relationship type has the given name on ei
 
 This can be further filtered to a single DSO using 
 https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byName?relationshipname=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
+The dso parameter is optional
