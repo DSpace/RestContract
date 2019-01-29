@@ -42,9 +42,9 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
       "leftLabel": "isAuthorOfPublication",
       "rightLabel": "isPublicationOfAuthor",
       "leftMinCardinality": 0,
-      "leftMaxCardinality": 2147483647,
+      "leftMaxCardinality": null,
       "rightMinCardinality": 0,
-      "rightMaxCardinality": 20000,
+      "rightMaxCardinality": null,
       "type": "relationshiptype",
       "_links": {
         "leftType": {
@@ -94,9 +94,9 @@ The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
 ## Relationships per Relationship type
-**/api/core/relationships/search/byName?relationshipname=<:relationshipname>**
+**/api/core/relationships/search/byLabel?label=<:relationshipname>**
 
-A sample search would be https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byName?relationshipname=isPersonOfOrgUnit
+A sample search would be https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit
 The relationshipname parameter is mandatory
 
 It would respond with
@@ -132,9 +132,9 @@ It would respond with
             "leftLabel": "isOrgUnitOfPerson",
             "rightLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
-            "leftMaxCardinality": 2147483647,
+            "leftMaxCardinality": null,
             "rightMinCardinality": 0,
-            "rightMaxCardinality": 2147483647,
+            "rightMaxCardinality": null,
             "type": "relationshiptype",
             "_links": {
               "leftType": {
@@ -206,9 +206,9 @@ It would respond with
             "leftLabel": "isOrgUnitOfPerson",
             "rightLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
-            "leftMaxCardinality": 2147483647,
+            "leftMaxCardinality": null,
             "rightMinCardinality": 0,
-            "rightMaxCardinality": 2147483647,
+            "rightMaxCardinality": null,
             "type": "relationshiptype",
             "_links": {
               "leftType": {
@@ -257,7 +257,7 @@ It would respond with
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byName?relationshipname=isPersonOfOrgUnit"
+      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit"
     }
   },
   "page": {
@@ -272,9 +272,9 @@ It would respond with
 This is similar to
 https://dspace7-internal.atmire.com/rest/#/rest/api/core/communities/search/subCommunities?parent=daa2657d-5f39-4876-9536-ace42e96b440
 
-It embeds all relationships where the relationship type has the given name on either the left or the right label
+It embeds all relationships where the relationship type has the given label on either the left or the right label
 
 
 This can be further filtered to a single DSO using 
-https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byName?relationshipname=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
+https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
