@@ -95,29 +95,31 @@ The 2 items are included as HAL links but are not embedded
 
 ## Creating a relationship
 
-**POST /api/core/relationships?leftItem=<:itemuuid>&rightItem=<:itemuuid>&relationshipType=<:relationshipType>**
+**POST /api/core/relationships?relationshipType=<:relationshipType>**
 
-A new relationship between 2 items can be created by specifying both items and the relationshipType
+A new relationship between 2 items can be created by specifying both items in a uri-list body and specifying the relationshipType as a parameter
 
 A sample CURL command would be:
 ```
-curl -D - -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?leftItem=12623672-25a9-4df2-ab36-699c4c240c7e&rightItem=5a3f7c7a-d3df-419c-8a2-f00ede62c60a&relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json"  --data '{}'
+curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
-No JSON data is required since all information is included in the 3 parameters
+The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
+The relationshipType parameter is mandatory as well
 
 ## Updating a relationship
 
-**PUT /api/core/relationships/<:id>?leftItem=<:itemuuid>&rightItem=<:itemuuid>&relationshipType=<:relationshipType>**
+**PUT /api/core/relationships/<:id>?relationshipType=<:relationshipType>**
 
-Update the parameters in the relationship (e.g. changing the item)
+Update the items in the relationship
 
 A sample CURL command would be:
 ```
-curl -D - -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891?leftItem=12623672-25a9-4df2-ab36-699c4c240c7e&rightItem=5a3f7c7a-d3df-419c-8a2-f00ede62c60a&relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json"  --data '{}'
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
-No JSON data is required since all information is included in the 3 parameters
+The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
+The relationshipType is not modifiable
 
 ## Relationships per item
 **/api/core/items/<:uuid>/relationships**
