@@ -35,17 +35,25 @@ _Please note that within this section, all terms used are meant to reference RES
  
 ### On collection of resources endpoints
 
-This type of endpoint interacts with a group (or collection) of resources (objects). For example: `/api/core/items` references *all* Items in the system. 
+This type of endpoint interacts with a group (or collection) of resources (objects). For example: `/api/core/items` references *all* Items in the system.
 
 - `POST`:
-Adds a new resource to the group (or collection). This creates a new object. The data for the new object _should be included_ in the request body. Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is required to create the object._
+Creates a new resource (object) and adds it to the group. Any required data (i.e. attributes) for the new object _must be included_ in the request body. An empty request body is not allowed, unless you are creating an empty object with no attributes.
+    - Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is required to create the object._
+        ```
+        # For example, creating a Collection *requires* linking it to a parent Community
+        # In this scenario, we must have a querystring param to specify the parent Community UUID
+        curl -i -X POST "http://localhost:8080/rest/api/core/collections?parent=<:communityUUID>" 
+            -H "Content-Type:application/json" 
+            -d "[{ ... attributes of new Collection ... }]"
+        ```
 
 - `GET`:
 Returns the first page of the resources in the group (or collection). See [Pagination](#pagination) section. 
 
 ### On single resource endpoints
 
-This type of endpoint interacts with a single resource (object). For example: `/api/core/items/123-456-789` references a single Item.
+This type of endpoint interacts with a single, existing resource (object). For example: `/api/core/items/<:uuid>` references a single Item resource.
 
 - `GET`:
 Returns a single resource.
@@ -54,17 +62,17 @@ Returns a single resource.
 Returns whether the target resource is available.
 
 - `PUT`:
-Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _should be included_ in the request body. Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is necessary to update the object._
+Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _must be included_ in the request body. An empty request body is not allowed, unless you are updating the object to be an empty object (with no attributes). Querystring parameters are not allowed, as `PUT` requests should always be performed on an existing object.
 
 - `PATCH`:
 Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
 
 - `DELETE`:
-Deletes the target resource and object.
+Deletes the target resource (object).
 
 ### On sub-path of a single resource endpoint (associations)
 
-This type of endpoint interacts with (one or more) resources that are *associated with* a single resource. For that reason, it is sometimes called an "association" endpoint. For example: `/api/core/items/123-456-789/mappedCollections` references all Collections that are mapped to a single Item.
+This type of endpoint interacts with (one or more) resources that are *associated with* a single resource. For that reason, it is sometimes called an "association" endpoint. For example: `/api/core/items/<:uuid>/mappedCollections` references all Collections that are mapped to a single Item resource.
 
 - `GET`:
 Returns the state of the association (for the current resource)
