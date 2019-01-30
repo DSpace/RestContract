@@ -70,10 +70,23 @@ This type of endpoint interacts with (one or more) resources that are *associate
 Returns the state of the association (for the current resource)
 
 - `PUT`:
-Binds (or links) the resource(s) pointed to by the given URI(s) to the current resource. Resource URIs to link must sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships). Return `400 Bad Request` if multiple URIs were given for a *-to-one-association
+Binds (or links) the resource(s) pointed to by the given URI(s) to the current resource. This replaces any existing links with the URIs passed in the request. Resource URIs to link must be sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships). Return `400 Bad Request` if multiple URIs were given for a *-to-one-association
+   ```
+   # Example curl command to replace Item-to-Collection mappings with the two listed
+   # Notice the two Collection URIs are separated by a newline (\n)
+   curl -i -X PUT "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+        -H "Content-Type:text/uri-list" 
+        -d "http://localhost:8080/rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \n http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"
+   ```
 
 - `POST`:
 Only supported for collection associations (i.e. associations allowing for multiple resources). Adds/Links a new resource (via its URI) to the association. Resource URIs to link must sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships)
+   ```
+   # Example curl command to add a *new* Collection mapping for an Item
+   curl -i -X POST "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+        -H "Content-Type:text/uri-list" 
+        -d "http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"
+   ```
 
 - `DELETE`:
 Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed)
@@ -85,7 +98,7 @@ Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the associ
 
 403 Forbidden - if the requester doesn't have enough privilege to execute the request
 
-404 Not Found - if the requested entity or collection doesn't exists
+404 Not Found - if the requested entity or collection doesn't exist
 
 405 Method Not Allowed - if the methods is not implemented or a DELETE method is called on a non-optional association
 
@@ -156,14 +169,14 @@ The REST API supports the [HATEOAS paradigm](https://restfulapi.net/hateoas/) an
 Because the API responds using the HAL Format, we distribute it with an [embedded HAL Browser provided by Spring](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser).
 
 ### Statelessness
-The REST API is [stateless](https://restfulapi.net/statelessness/), meaning the client is responsible for sending any state information to the server when it is needed (there is no session kept on the server between requests).
+The REST API is considered [stateless](https://restfulapi.net/statelessness/), meaning the client is responsible for keeping state information and sending it to the server when it is needed. Because the server stores no state (or session) information internally, it will return a "token" (which contains any state information) to the client. The client must then return that token in *each subsequent request*, if the client wants that state information preserved.
 
 #### JSON Web Tokens
-[JSON Web Tokens (JWT)](https://jwt.io/) are used to retain state (and authentication) information between requests.
+[JSON Web Tokens (JWT)](https://jwt.io/) are used to store state (and authentication) information between requests. This is the format of token the REST API returns to the client. The client should return the JWT to the server in subsequent requests.
 
 ### ALPS - Application Level Profile Semantics
-While not yet implemented, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
-A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. The ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
+**While not yet implemented**, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
+A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. See the ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
 
 ### Spring Technology alignment
 While it's an implementation detail, the new REST API uses many Spring REST (Java) libraries, including:
