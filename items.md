@@ -17,33 +17,46 @@ Provide detailed information about a specific item. The JSON response document i
   "uuid": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
   "handle": "10673/20",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Stvilia, Besiki",
-      "language": "en"
-    },
-    {
-      "key": "dc.contributor.author",
-      "value": "Lee, Dong Joon",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-      "language": "en"
-    },
-    {
-      "key": "dc.type",
-      "value": "Journal Article",
-      "language": "en"
-    },
-    {
-      "key": "dc.identifier.url",
-      "value": "http://europepmc.org/abstract/MED/28301533",
-      "language": "en"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Stvilia, Besiki",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      },
+      {
+        "value": "Lee, Dong Joon",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      },
+    ],
+    "dc.identifier.url": [
+      {
+        "value": "http://europepmc.org/abstract/MED/28301533",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
@@ -66,23 +79,32 @@ Administrators can directly create an archived item (bypassing the workflow). An
 ```
 {
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Stvilia, Besiki",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-      "language": "en"
-    },
-    {
-      "key": "dc.type",
-      "value": "Journal Article",
-      "language": "en"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Stvilia, Besiki",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
@@ -102,18 +124,24 @@ Provide updated metadata information for an item, when the update is completed t
   "uuid": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
   "name": "Test new title",
   "handle": "123456789/60636",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Velasco, Mercedes",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Test new title",
-      "language": "pt_BR"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Velasco, Mercedes",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Test new title",
+        "language": "pt_BR",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
