@@ -142,7 +142,7 @@ It returns the collection where the item belong to
 The actual collection is part of the body using the uri-list
 Example:
 
-```curl -i -X PUT "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"```
+```curl -i -X PUT "https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/8e0928a0-047a-4369-8883-12669f32dd64"```
 
 It updates the owning collection (moves the item)
 
