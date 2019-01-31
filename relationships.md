@@ -109,7 +109,7 @@ The relationshipType parameter is mandatory as well
 
 ## Updating a relationship
 
-**PUT /api/core/relationships/<:id>?relationshipType=<:relationshipType>**
+**PUT /api/core/relationships/<:id>**
 
 Update the items in the relationship
 
@@ -120,13 +120,6 @@ curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/
 
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
 The relationshipType is not modifiable
-
-## Relationships per item
-**/api/core/items/<:uuid>/relationships**
-
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
-
-It embeds all relationships where either the left or the right item matches the given uuid
 
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
