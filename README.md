@@ -27,10 +27,11 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
 ## Use of the HTTP Verbs and HTTP Response CODE
 
 _Please note that within this section, all terms used are meant to reference RESTful terminology and/or terminology borrowed from [Spring Data REST](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#repository-resources)._ 
- - `resource` - anything that can be identified via a URI. It's a representation of an underlying object. e.g. `/items/123-456-789` is a resource that represents a single DSpace Item. For additional examples see https://restful-api-design.readthedocs.io/en/latest/resources.html
- - `object` - we use this term to mean the actual object *behind* the resource. In other words, a resource is a JSON representation of some object (often a DSpaceObject) stored in the database. This is also sometimes called an "entity".
+ - `resource` - anything that can be identified via a URI. It's a representation of an underlying object. e.g. `/items/123-456-789` is a resource that represents a single DSpace Item object. For additional examples see https://restful-api-design.readthedocs.io/en/latest/resources.html
+ - `object` - we use this term to mean the actual object *behind* the resource. In other words, a resource is a JSON representation of some object (often a DSpaceObject) stored in the database. This is also sometimes called an "entity" in REST terminology.
  - `collection` - a group of resources e.g. `/items` is a collection of all DSpace Item resources. This is also sometimes called a "collection resource" (e.g. in Spring Data REST)
-     - Somewhat confusingly, Spring Data REST likes to use the phrase "item resources" for individual resources within a collection. Below, we've just called them "resources".
+     - Be aware that the term "collection" in this document has nothing to do with a DSpace Collection object. In REST terminology, a "collection" endpoint is simply an endpoint that returns multiple resources (objects), often in a paginated list.
+     - NOTE: Spring Data REST likes to use the phrase "item resources" for individual resources within a "collection resource". We've simplified this terminology and just call them "resources" and "collections", respectively.
  - `association` - a link or relationship between two resources. This is also sometimes called an "association resource" (e.g. in Spring Data REST).
  
 ### On collection of resources endpoints
@@ -183,7 +184,7 @@ The REST API is considered [stateless](https://restfulapi.net/statelessness/), m
 [JSON Web Tokens (JWT)](https://jwt.io/) are used to store state (and authentication) information between requests. This is the format of token the REST API returns to the client. The client should return the JWT to the server in subsequent requests.
 
 ### ALPS - Application Level Profile Semantics
-**While not yet implemented**, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
+**While not yet implemented**, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exist from the root of API.
 A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. See the ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
 
 ### Spring Technology alignment
