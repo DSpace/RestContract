@@ -94,9 +94,9 @@ The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
 ## Relationships per Relationship type
-**/api/core/relationships/search/byLabel?label=<:relationshipname>**
+**/api/core/relationships/search?label=<:relationshipname>**
 
-A sample search would be https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit
+A sample search would be https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search?label=isPersonOfOrgUnit
 The relationshipname parameter is mandatory
 
 It would respond with
@@ -257,7 +257,7 @@ It would respond with
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit"
+      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/search?label=isPersonOfOrgUnit"
     }
   },
   "page": {
@@ -276,5 +276,5 @@ It embeds all relationships where the relationship type has the given label on e
 
 
 This can be further filtered to a single DSO using 
-https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
+https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
