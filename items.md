@@ -72,7 +72,7 @@ Exposed links:
  
 ## Creating an archived item
 
-**POST /api/core/items?owningCollection:<:uuid>**
+**POST /api/core/items?owningCollection=<:uuid>**
 
 Administrators can directly create an archived item (bypassing the workflow). An example JSON can be seen below:
 
@@ -251,6 +251,13 @@ Status codes:
 Example: to be provided
 
 It returns the collection that have the item as template
+
+### Relationships per item
+**/api/core/items/<:uuid>/relationships**
+
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
+
+It embeds all relationships where either the left or the right item matches the given uuid
 
 ## Deleting a collection
 
