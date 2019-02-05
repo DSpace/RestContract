@@ -68,6 +68,7 @@ Provide detailed information about a specific item. The JSON response document i
 Exposed links:
 * bitstreams: list of bitstreams within the item
 * owningCollection: the collection where the item belong to
+* mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
  
 ## Creating an archived item
@@ -244,6 +245,198 @@ Status codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
+
+### Mapped Collections
+**GET /api/core/items/<:uuid>/mappedCollections**
+
+Example:
+```json
+    "mappedCollections":
+    [
+      {
+        "id": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
+        "uuid": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
+        "name": "Bachelor theses",
+        "handle": "123456789/5287",
+        "metadata": [
+          {
+            "key": "dc.description.abstract",
+            "value": "",
+            "language": null
+          },
+          {
+            "key": "dc.title",
+            "value": "Bachelor theses",
+            "language": null
+          }
+        ],
+        "type": "collection",
+        "_links": {
+          "license": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
+          },
+          "defaultAccessConditions": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+          },
+          "logo": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/logo"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"
+          }
+        },
+        "_embedded": {
+          "logo": null,
+          "defaultAccessConditions": {
+            "_embedded": {
+              "defaultAccessConditions": [
+                {
+                  "id": 28054,
+                  "name": null,
+                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
+                  "action": "DEFAULT_BITSTREAM_READ",
+                  "type": "resourcePolicy",
+                  "_links": {
+                    "self": {
+                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28054"
+                    }
+                  }
+                }
+              ]
+            },
+            "_links": {
+              "self": {
+                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+              }
+            },
+            "page": {
+              "number": 0,
+              "size": 1,
+              "totalPages": 1,
+              "totalElements": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "320c0492-de1d-4646-9e69-193d36b366e9",
+        "uuid": "320c0492-de1d-4646-9e69-193d36b366e9",
+        "name": "Biology",
+        "handle": "123456789/5285",
+        "metadata": [
+          {
+            "key": "dc.description.abstract",
+            "value": "",
+            "language": null
+          },
+          {
+            "key": "dc.title",
+            "value": "Biology",
+            "language": null
+          }
+        ],
+        "type": "collection",
+        "_links": {
+          "license": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/license"
+          },
+          "exportToZip": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/exportToZip"
+          },
+          "defaultAccessConditions": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+          },
+          "logo": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/logo"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9"
+          }
+        },
+        "_embedded": {
+          "logo": null,
+          "defaultAccessConditions": {
+            "_embedded": {
+              "defaultAccessConditions": [
+                {
+                  "id": 28050,
+                  "name": null,
+                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
+                  "action": "DEFAULT_BITSTREAM_READ",
+                  "type": "resourcePolicy",
+                  "_links": {
+                    "self": {
+                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28050"
+                    }
+                  }
+                }
+              ]
+            },
+            "_links": {
+              "self": {
+                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+              }
+            },
+            "page": {
+              "number": 0,
+              "size": 1,
+              "totalPages": 1,
+              "totalElements": 1
+            }
+          }
+        }
+      }
+    ]
+  }
+```
+
+It returns all the mapped collections the item is included in
+
+On the item page, it should be referenced similar to:
+```json
+    "mappedCollections": {
+      "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
+    }
+```
+
+**POST /api/core/items/<item:uuid>/mappedCollections**
+
+A POST request will result in creating a new mapping between the item and collection
+If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created
+
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
+ -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ ```
+
+The collection should be included in the body using a uri-list. It is mandatory
+ 
+Return codes:
+ * 204: if the update succeeded 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection is not found or is the owningCollection of the item
+
+**DELETE /api/core/items/<item:uuid>/mappedCollections**
+
+A DELETE request will result in removing an existing mapping between the item and collection
+If the collection exists and is a mapped collection for the item, the relation should be deleted
+
+```
+ curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
+ -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ ```
+
+The collection should be included in the body using a uri-list. It is mandatory
+ 
+Return codes:
+ * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection is not found or is the owningCollection of the item
+
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
