@@ -258,8 +258,8 @@ To map the item to one or multiple collections a POST request using the text/uri
 
  Example
  ```
- curl -i -X POST -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
-   -H "Content-Type:text/uri-list" https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+   -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
  ``` 
  
   It adds the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` to the list of collections where the item is mapped to
@@ -275,8 +275,8 @@ To map the item to one or multiple collections a POST request using the text/uri
 To completely override the collections where the item is mapped to a PUT request using the text/uri-list mime-type can be used
  Example
  ```
- curl -i -X PUT -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
-   -H "Content-Type:text/uri-list" https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ curl -i -X PUT https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+   -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
  ``` 
  
   It will make the collection with uuid `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` the only collection where the item is mapped to
