@@ -399,15 +399,44 @@ On the item page, it should be referenced similar to:
     }
 ```
 
-**POST /api/core/items/<item:uuid>/mappedCollections?collection=<collection:uuid>**
+**POST /api/core/items/<item:uuid>/mappedCollections**
 
 A POST request will result in creating a new mapping between the item and collection
 If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created
 
-**DELETE /api/core/items/<item:uuid>/mappedCollections?collection=<collection:uuid>**
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
+ -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ ```
+
+The collection should be included in the body using a uri-list. It is mandatory
+ 
+Return codes:
+ * 204: if the update succeeded 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection is not found or is the owningCollection of the item
+
+**DELETE /api/core/items/<item:uuid>/mappedCollections**
 
 A DELETE request will result in removing an existing mapping between the item and collection
 If the collection exists and is a mapped collection for the item, the relation should be deleted
+
+```
+ curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
+ -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+ ```
+
+The collection should be included in the body using a uri-list. It is mandatory
+ 
+Return codes:
+ * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection is not found or is the owningCollection of the item
+
 
 ### Template Item
 **/api/core/items/<:uuid>/templateItemOf**
