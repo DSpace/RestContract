@@ -17,43 +17,70 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
   "name": "Collection of Sample Items",
   "handle": "10673/2",
-  "metadata": [
-    {
-      "key": "dc.provenance",
-      "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
-      "language": null
-    },
-    {
-      "key": "dc.rights.license",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.description",
-      "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
-      "language": null
-    },
-    {
-      "key": "dc.description.abstract",
-      "value": "This collection contains sample items.",
-      "language": null
-    },
-    {
-      "key": "dc.description.tableofcontents",
-      "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
-      "language": null
-    },
-    {
-      "key": "dc.rights",
-      "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
-      "language": null
-    },
-    {
-      "key": "dc.title",
-      "value": "Collection of Sample Items",
-      "language": null
-    }
-  ],
+  "metadata": {
+    "dc.description": [
+      {
+        "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description.abstract": [
+      {
+        "value": "This collection contains sample items.",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description.tableofcontents": [
+      {
+        "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.provenance": [
+      {
+        "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      },
+      {
+        "value": "Second provenance value",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.rights": [
+      {
+        "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.rights.license": [
+      {
+        "value": "",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Collection of Sample Items",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "type": "collection"
 }
 ```
@@ -99,7 +126,7 @@ The json representation is as follow
         "id": 2844,
         "name": null,
         "groupUUID": "11cc35e5-a11d-4b64-b5b9-0052a5d15509",
-        "action": "DEFAULT\_BITSTREAM\_READ",
+        "action": "DEFAULT_BITSTREAM_READ",
         "type": "resourcePolicy",
         "_links": {
           "self": {
@@ -124,3 +151,69 @@ The json representation is as follow
 ```
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
+## Creating a collection
+
+**POST /api/core/collections?parent=<:communityUUID>**
+
+To create a collection, perform as post with the JSON below when logged in as admin.
+
+```
+{
+"name": "test collection",
+"metadata": [
+    {
+        "key": "dc.title",
+        "value": "test collection",
+        "language": null
+    }
+    ]
+}
+```
+
+ Error messages:
+ * 200 OK - if the operation succeed
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions
+ * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
+
+## Updating a collection
+
+**PUT /api/core/collections/<:uuid>**
+
+Provide updated metadata information about a specific collection, when the update is completed the updated object will be returned. The JSON to update can be found below.
+```
+{
+"uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
+"name": "test collection",
+"metadata": [
+    {
+        "key": "dc.title",
+        "value": "test collection",
+        "language": null
+    },
+    {
+        "key": "dc.description",
+        "value": "Test description",
+        "language": null
+    }
+    ]
+}
+```  
+
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
+
+## Deleting a collection
+
+**DELETE /api/core/collections/<:uuid>**
+
+Delete a collection.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the community doesn't exist (or was already deleted)

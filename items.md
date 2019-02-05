@@ -17,33 +17,46 @@ Provide detailed information about a specific item. The JSON response document i
   "uuid": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
   "handle": "10673/20",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Stvilia, Besiki",
-      "language": "en"
-    },
-    {
-      "key": "dc.contributor.author",
-      "value": "Lee, Dong Joon",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-      "language": "en"
-    },
-    {
-      "key": "dc.type",
-      "value": "Journal Article",
-      "language": "en"
-    },
-    {
-      "key": "dc.identifier.url",
-      "value": "http://europepmc.org/abstract/MED/28301533",
-      "language": "en"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Stvilia, Besiki",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      },
+      {
+        "value": "Lee, Dong Joon",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      },
+    ],
+    "dc.identifier.url": [
+      {
+        "value": "http://europepmc.org/abstract/MED/28301533",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
@@ -67,23 +80,32 @@ Administrators can directly create an archived item (bypassing the workflow). An
 ```
 {
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Stvilia, Besiki",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
-      "language": "en"
-    },
-    {
-      "key": "dc.type",
-      "value": "Journal Article",
-      "language": "en"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Stvilia, Besiki",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
@@ -103,18 +125,24 @@ Provide updated metadata information for an item, when the update is completed t
   "uuid": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
   "name": "Test new title",
   "handle": "123456789/60636",
-  "metadata": [
-    {
-      "key": "dc.contributor.author",
-      "value": "Velasco, Mercedes",
-      "language": "en"
-    },
-    {
-      "key": "dc.title",
-      "value": "Test new title",
-      "language": "pt_BR"
-    }
-  ],
+  "metadata": {
+    "dc.contributor.author": [
+      {
+        "value": "Velasco, Mercedes",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Test new title",
+        "language": "pt_BR",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "inArchive": true,
   "discoverable": true,
   "withdrawn": false,
@@ -201,6 +229,22 @@ The supported parameters are:
 Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection>
 
 It returns the collection where the item belong to
+
+**PUT /api/core/items/<:uuid>/owningCollection**
+
+The actual collection is part of the body using the uri-list
+Example:
+
+```curl -i -X PUT "https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/8e0928a0-047a-4369-8883-12669f32dd64"```
+
+It updates the owning collection (moves the item)
+
+Status codes:
+* 204 No content - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+* 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapped Collections
 **/api/core/items/<:uuid>/mappedCollections**
