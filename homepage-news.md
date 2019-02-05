@@ -26,7 +26,7 @@ Example:
           "format": {
             "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/pages/004a297e-fd06-4662-ae51-73e4b7c165c8/format"
           },
-          "format": {
+          "languages": {
             "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/pages/004a297e-fd06-4662-ae51-73e4b7c165c8/languages"
           },
           "self": {
