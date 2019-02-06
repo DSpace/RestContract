@@ -401,20 +401,41 @@ On the item page, it should be referenced similar to:
 
 **POST /api/core/items/<item:uuid>/mappedCollections**
 
-A POST request will result in creating a new mapping between the item and collection
-If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created
+A POST request will result in creating a new mapping between the item and collection.
+If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created.
 
 ```
  curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
  -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
- ```
+```
 
-The collection should be included in the body using a uri-list. It is mandatory
+The collection(s) MUST be included in the body using the `text/uri-list` content type
  
 Return codes:
- * 204: if the update succeeded 
+ * 204: if the update succeeded (including the case of no-op if the mapping was already as requested)
  * 401 Forbidden - if you are not authenticated
  * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 405: if the item is a template item
+ * 422: if the specified collection is not found or is the owningCollection of the item
+
+**PUT /api/core/items/<item:uuid>/mappedCollections**
+
+A PUT request will replace the list collections where an item is mapped with the list provided in the request.
+
+```
+ curl -i -X PUT https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
+ -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+```
+
+For example, in the above request, the item with UUID 1911e8a4-6939-490c-b58b-a5d70f8d91fb will now only be mapped to the collection with UUID 1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb.
+Any previous mappings are removed/replaced.
+
+The collection(s) MUST be included in the body using the `text/uri-list` content type.
+
+Return codes:
+ * 204: if the update succeeded (including the case of no-op if the mapping was already as requested)
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
@@ -428,7 +449,7 @@ If the collection exists and is a mapped collection for the item, the relation s
  -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
  ```
 
-The collection should be included in the body using a uri-list. It is mandatory
+The collection(s) MUST be included in the body using the `text/uri-list` content type.
  
 Return codes:
  * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
@@ -445,7 +466,7 @@ Example: to be provided
 
 It returns the collection that have the item as template
 
-## Deleting a collection
+## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**
 
