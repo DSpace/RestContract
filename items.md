@@ -273,16 +273,16 @@ Example:
         "type": "collection",
         "_links": {
           "license": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
           },
           "defaultAccessConditions": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
           },
           "logo": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/logo"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/logo"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"
           }
         },
         "_embedded": {
@@ -298,7 +298,7 @@ Example:
                   "type": "resourcePolicy",
                   "_links": {
                     "self": {
-                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28054"
+                      "href": "https://dspace7.4science.it/dspace-spring-rest/api/authz/resourcePolicies/28054"
                     }
                   }
                 }
@@ -306,7 +306,7 @@ Example:
             },
             "_links": {
               "self": {
-                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
+                "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
               }
             },
             "page": {
@@ -338,19 +338,19 @@ Example:
         "type": "collection",
         "_links": {
           "license": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/license"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/license"
           },
           "exportToZip": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/exportToZip"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/exportToZip"
           },
           "defaultAccessConditions": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
           },
           "logo": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/logo"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/logo"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9"
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9"
           }
         },
         "_embedded": {
@@ -366,7 +366,7 @@ Example:
                   "type": "resourcePolicy",
                   "_links": {
                     "self": {
-                      "href": "https://dspace7-internal.atmire.com/rest/api/authz/resourcePolicies/28050"
+                      "href": "https://dspace7.4science.it/dspace-spring-rest/api/authz/resourcePolicies/28050"
                     }
                   }
                 }
@@ -374,7 +374,7 @@ Example:
             },
             "_links": {
               "self": {
-                "href": "https://dspace7-internal.atmire.com/rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
+                "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
               }
             },
             "page": {
@@ -395,7 +395,7 @@ It returns all the mapped collections the item is included in
 On the item page, it should be referenced similar to:
 ```json
     "mappedCollections": {
-      "href": "https://dspace7-internal.atmire.com/rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
     }
 ```
 
