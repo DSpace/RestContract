@@ -24,10 +24,13 @@
   "type": "group",
   "_links": {
     "groups": {
-      "href": "https://dspace7-internal.atmire.com/rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+    },
+    "epersons": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
     },
     "self": {
-      "href": "https://dspace7-internal.atmire.com/rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
     }
   },
   "_embedded": {
@@ -37,7 +40,7 @@
       },
       "_links": {
         "self": {
-          "href": "https://dspace7-internal.atmire.com/rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
         }
       },
       "page": {
@@ -59,12 +62,249 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
 
 ```json
 {
-  "name": "Administrator",
   "metadata": [
     {
       "key": "dc.title",
-      "value": "Administrator"
+      "value": "New Group 1"
     }
   ]
 }
 ```
+
+## Sub Groups in a single parent EPerson Group
+
+### Get Sub Groups in a single parent EPerson Group
+
+**GET /api/eperson/groups/<:uuid>/groups**
+
+Filter using parameter:
+* all : retrieve indirect groups as well
+
+Samples:
+* GET /rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/groups
+* GET /rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/groups?all=true
+
+
+```json
+{
+    "_embedded": {
+      "groups": [
+        {
+          "id": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
+          "uuid": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
+          "name": "Administrator",
+          "handle": null,
+          "metadata": [
+            {
+              "key": "dc.title",
+              "value": "Administrator",
+              "language": null
+            }
+          ],
+          "permanent": true,
+          "type": "group",
+          "_links": {
+            "groups": {
+              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+            },
+            "epersons": {
+              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+            },
+            "self": {
+              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
+            }
+          },
+          "_embedded": {
+            "groups": {
+              "_embedded": {
+                "groups": []
+              },
+              "_links": {
+                "self": {
+                  "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+                }
+              },
+              "page": {
+                "number": 0,
+                "size": 0,
+                "totalPages": 1,
+                "totalElements": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "self": {
+        "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/groups"
+      }
+    },
+    "page": {
+      "number": 0,
+      "size": 10,
+      "totalPages": 1,
+      "totalElements": 10
+    }
+}
+```
+
+### Add a Group to a parent Group
+
+**POST /api/eperson/groups/<:parentgroupuuid>/groups**
+
+To add a child group to a parent group, perform a POST to the Sub groups of a Group endpoint when logged in as admin.
+
+The actual sub group is part of the body using the uri-list
+
+Example:
+```bash
+curl -i -X POST "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+  -H "Content-Type:text/uri-list"
+  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
+```
+
+The group is mandatory
+
+Return codes:
+* 204: if the update succeeded 
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 422: if the specified group is not found
+
+### Remove a Group from a parent Group
+
+**DELETE /api/eperson/groups/<:parentgroupuuid>/groups**
+
+The actual sub group is part of the body using the uri-list
+
+Example:
+```bash
+curl -i -X DELETE "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+  -H "Content-Type:text/uri-list"
+  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
+```
+
+The group is mandatory
+
+Return codes:
+* 204: if the update succeeded 
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 422: if the specified group is not found
+
+## Epeople in a single EPerson Group
+
+### Get Epeople for a single EPerson Group
+
+**GET /api/eperson/groups/<:uuid>/epersons**
+
+Filter using parameter:
+* all : retrieve indirect epeople as well
+
+Samples:
+* GET /rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons
+* GET /rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons?all=true
+
+
+```json
+{
+    "_embedded": {
+      "epersons": [
+        {
+          "id": "a6086b34-3918-45b7-8ddd-9329a702a26a",
+          "uuid": "a6086b34-3918-45b7-8ddd-9329a702a26a",
+          "name": "atmirenv@gmail.com",
+          "handle": null,
+          "metadata": [
+            {
+              "key": "eperson.firstname",
+              "value": "Atmire",
+              "language": null
+            },
+            {
+              "key": "eperson.lastname",
+              "value": "NV",
+              "language": null
+            },
+            {
+              "key": "eperson.language",
+              "value": "en",
+              "language": null
+            }
+          ],
+          "netid": null,
+          "lastActive": "2018-12-19T11:06:43.404+0000",
+          "canLogIn": true,
+          "email": "atmirenv@gmail.com",
+          "requireCertificate": false,
+          "selfRegistered": false,
+          "groups": null,
+          "type": "eperson",
+          "_links": {
+            "self": {
+              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+            }
+          }
+        }
+      ]
+    },
+    "_links": {
+      "self": {
+        "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons"
+      }
+    },
+    "page": {
+      "number": 0,
+      "size": 10,
+      "totalPages": 1,
+      "totalElements": 10
+    }
+}
+```
+
+### Add an EPerson to a parent Group
+
+**POST /api/eperson/groups/<:groupuuid>/epersons**
+
+To add an eperson to a parent group, perform a POST to the Epeople of a Group endpoint when logged in as admin.
+
+The actual eperson is part of the body using the uri-list
+
+Example:
+```bash
+curl -i -X POST "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+  -H "Content-Type:text/uri-list"
+  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+```
+
+The eperson is mandatory
+
+Return codes:
+* 204: if the update succeeded 
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 422: if the specified eperson is not found
+
+### Remove an EPerson from a parent Group
+
+**DELETE /api/eperson/groups/<:groupuuid>/epersons**
+
+To remove an eperson from a parent group, perform a DELETE to the Epeople of a Group endpoint when logged in as admin.
+
+The actual eperson is part of the body using the uri-list
+
+Example:
+```bash
+curl -i -X DELETE "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+  -H "Content-Type:text/uri-list"
+  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+```
+
+The eperson is mandatory
+
+Return codes:
+* 204: if the update succeeded 
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 422: if the specified eperson is not found

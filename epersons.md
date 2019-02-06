@@ -41,11 +41,10 @@
   "email": "user@institution.edu",
   "requireCertificate": false,
   "selfRegistered": true,
-  "groups": null,
   "type": "eperson",
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
     }
   }
 }
