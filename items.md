@@ -249,148 +249,7 @@ Status codes:
 ### Mapped Collections
 **GET /api/core/items/<:uuid>/mappedCollections**
 
-Example:
-```json
-    "mappedCollections":
-    [
-      {
-        "id": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
-        "uuid": "16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9",
-        "name": "Bachelor theses",
-        "handle": "123456789/5287",
-        "metadata": [
-          {
-            "key": "dc.description.abstract",
-            "value": "",
-            "language": null
-          },
-          {
-            "key": "dc.title",
-            "value": "Bachelor theses",
-            "language": null
-          }
-        ],
-        "type": "collection",
-        "_links": {
-          "license": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/license"
-          },
-          "defaultAccessConditions": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
-          },
-          "logo": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/logo"
-          },
-          "self": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9"
-          }
-        },
-        "_embedded": {
-          "logo": null,
-          "defaultAccessConditions": {
-            "_embedded": {
-              "defaultAccessConditions": [
-                {
-                  "id": 28054,
-                  "name": null,
-                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
-                  "action": "DEFAULT_BITSTREAM_READ",
-                  "type": "resourcePolicy",
-                  "_links": {
-                    "self": {
-                      "href": "https://dspace7.4science.it/dspace-spring-rest/api/authz/resourcePolicies/28054"
-                    }
-                  }
-                }
-              ]
-            },
-            "_links": {
-              "self": {
-                "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/16a4b65b-3b3f-4ef5-8058-ef6f5a653ef9/defaultAccessConditions"
-              }
-            },
-            "page": {
-              "number": 0,
-              "size": 1,
-              "totalPages": 1,
-              "totalElements": 1
-            }
-          }
-        }
-      },
-      {
-        "id": "320c0492-de1d-4646-9e69-193d36b366e9",
-        "uuid": "320c0492-de1d-4646-9e69-193d36b366e9",
-        "name": "Biology",
-        "handle": "123456789/5285",
-        "metadata": [
-          {
-            "key": "dc.description.abstract",
-            "value": "",
-            "language": null
-          },
-          {
-            "key": "dc.title",
-            "value": "Biology",
-            "language": null
-          }
-        ],
-        "type": "collection",
-        "_links": {
-          "license": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/license"
-          },
-          "exportToZip": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/exportToZip"
-          },
-          "defaultAccessConditions": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
-          },
-          "logo": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/logo"
-          },
-          "self": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9"
-          }
-        },
-        "_embedded": {
-          "logo": null,
-          "defaultAccessConditions": {
-            "_embedded": {
-              "defaultAccessConditions": [
-                {
-                  "id": 28050,
-                  "name": null,
-                  "groupUUID": "9e1794b8-45e0-4869-9c2c-36c4b25ce856",
-                  "action": "DEFAULT_BITSTREAM_READ",
-                  "type": "resourcePolicy",
-                  "_links": {
-                    "self": {
-                      "href": "https://dspace7.4science.it/dspace-spring-rest/api/authz/resourcePolicies/28050"
-                    }
-                  }
-                }
-              ]
-            },
-            "_links": {
-              "self": {
-                "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/320c0492-de1d-4646-9e69-193d36b366e9/defaultAccessConditions"
-              }
-            },
-            "page": {
-              "number": 0,
-              "size": 1,
-              "totalPages": 1,
-              "totalElements": 1
-            }
-          }
-        }
-      }
-    ]
-  }
-```
-
-It returns all the mapped collections the item is included in
+It returns all the mapped collections the item is included in.
 
 On the item page, it should be referenced similar to:
 ```json
@@ -420,37 +279,19 @@ Return codes:
 
 **PUT /api/core/items/<item:uuid>/mappedCollections**
 
-A PUT request will replace the list collections where an item is mapped with the list provided in the request.
+PUT is NOT SUPPORTED at this time. You may replace or update mapped collections using DELETE requests and/or POST requests.
 
-```
- curl -i -X PUT https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections
- -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
-```
-
-For example, in the above request, the item with UUID 1911e8a4-6939-490c-b58b-a5d70f8d91fb will now only be mapped to the collection with UUID 1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb.
-Any previous mappings are removed/replaced.
-
-The collection(s) MUST be included in the body using the `text/uri-list` content type.
-
-Return codes:
- * 204: if the update succeeded (including the case of no-op if the mapping was already as requested)
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions
- * 405: if the item is a template item
- * 422: if the specified collection is not found or is the owningCollection of the item
-
-**DELETE /api/core/items/<item:uuid>/mappedCollections**
+**DELETE /api/core/items/<item:uuid>/mappedCollections/<collection:uuid>**
 
 A DELETE request will result in removing an existing mapping between the item and collection
 If the collection exists and is a mapped collection for the item, the relation should be deleted
 
 ```
- curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections 
- -H "Content-Type:text/uri-list" --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
- ```
+ curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
+```
 
-The collection(s) MUST be included in the body using the `text/uri-list` content type.
- 
+The above request would remove the mapping between Collection with UUID `1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb` and Item with UUID `1911e8a4-6939-490c-b58b-a5d70f8d91fb`.
+
 Return codes:
  * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
  * 401 Forbidden - if you are not authenticated
