@@ -98,7 +98,15 @@ Only supported for collection associations (i.e. associations allowing for multi
    ```
 
 - `DELETE`:
-Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed).  DELETE requests should _not_ contain a body as some clients do not support sending a DELETE request with a body. Therefore, if an individual association needs to be removed, the DELETE request should include the association ID in the URI of the request.
+Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed).  DELETE requests should _not_ contain a request body as some clients do not support sending a DELETE request with a body. Therefore, if an individual association needs to be removed, the DELETE request should reference that individual association in the URI of the request. For example:
+   ```
+   # Example curl command to delete a *single* Collection mapping for an Item
+   curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections/<:collection_uuid>"
+   
+   # Example curl command to delete *ALL* Collection mappings for an item (unsupported at this time)
+   curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections
+   ```
+
 
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association
