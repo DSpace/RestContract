@@ -247,7 +247,7 @@ Status codes:
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapped Collections
-**GET /api/core/items/<item:uuid>/mappedCollections**
+**GET /api/core/items/<:uuid>/mappedCollections**
 
 It returns all the mapped collections the item is included in.
 
@@ -258,11 +258,11 @@ On the item page, it should be referenced similar to:
     }
 ```
 
-**GET /api/core/items/<item:uuid>/mappedCollections/<collection:uuid>**
+**GET /api/core/items/<:uuid>/mappedCollections/<:collection_uuid>**
 
-Unsupported. If you want detailed information about a single mapped collection, use the `/api/core/collections/<collection:uuid>` endpoint.
+_Unsupported._ If you want detailed information about a single mapped collection, use the `/api/core/collections/<collection:uuid>` endpoint.
 
-**POST /api/core/items/<item:uuid>/mappedCollections**
+**POST /api/core/items/<:uuid>/mappedCollections**
 
 A POST request will result in creating a new mapping between the item and collection.
 If the collection exists and is neither the owning nor mapped collection for the item, the relation should be created.
@@ -281,11 +281,11 @@ Return codes:
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
-**PUT /api/core/items/<item:uuid>/mappedCollections**
+**PUT /api/core/items/<:uuid>/mappedCollections**
 
 PUT is NOT SUPPORTED at this time. You may replace or update mapped collections using DELETE requests and/or POST requests.
 
-**DELETE /api/core/items/<item:uuid>/mappedCollections/<collection:uuid>**
+**DELETE /api/core/items/<:uuid>/mappedCollections/<:collection_uuid>**
 
 A DELETE request will result in removing an existing mapping between the item and collection
 If the collection exists and is a mapped collection for the item, the relation should be deleted
