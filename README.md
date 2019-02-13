@@ -98,7 +98,7 @@ Only supported for collection associations (i.e. associations allowing for multi
    ```
 
 - `DELETE`:
-Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed)
+Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed).  DELETE requests should _not_ contain a body as some clients do not support sending a DELETE request with a body. Therefore, if an individual association needs to be removed, the DELETE request should include the association ID in the URI of the request.
 
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association

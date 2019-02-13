@@ -247,7 +247,7 @@ Status codes:
 * 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapped Collections
-**GET /api/core/items/<:uuid>/mappedCollections**
+**GET /api/core/items/<item:uuid>/mappedCollections**
 
 It returns all the mapped collections the item is included in.
 
@@ -257,6 +257,10 @@ On the item page, it should be referenced similar to:
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/items/95e5d7d9-ef4e-4e35-86cc-07bfe2f0e355/mappedCollections"
     }
 ```
+
+**GET /api/core/items/<item:uuid>/mappedCollections/<collection:uuid>**
+
+Unsupported. If you want detailed information about a single mapped collection, use the `/api/core/collections/<collection:uuid>` endpoint.
 
 **POST /api/core/items/<item:uuid>/mappedCollections**
 
