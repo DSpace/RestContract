@@ -283,12 +283,16 @@ Return codes:
 
 **PUT /api/core/items/<:uuid>/mappedCollections**
 
-PUT is NOT SUPPORTED at this time. You may replace or update mapped collections using DELETE requests and/or POST requests.
+_Unsupported._ You may replace or update mapped collections using DELETE requests and/or POST requests.
+
+**DELETE /api/core/items/<:uuid>/mappedCollections**
+
+_Unsupported._ At this time, we do not support removing all mapped Collections in a single request. Please use `DELETE /api/core/items/<:uuid>/mappedCollections/<:collection_uuid>` to remove mapped Collections one by one.
 
 **DELETE /api/core/items/<:uuid>/mappedCollections/<:collection_uuid>**
 
-A DELETE request will result in removing an existing mapping between the item and collection
-If the collection exists and is a mapped collection for the item, the relation should be deleted
+A DELETE request will result in removing an existing mapping between the item and collection.
+If the collection exists and is a mapped collection for the item, the relation should be deleted.
 
 ```
  curl -i -X DELETE https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/mappedCollections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb"
