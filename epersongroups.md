@@ -170,28 +170,39 @@ Return codes:
 * 204: if the update succeeded 
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions 
-* 422: if the specified group is not found
+* 404 Not found - if the parent group doesn't exist
+* 409 Conflict - if adding the group would create a cyclic reference (ie. A -> B -> C, -> mean contains we cannot add A to C)
+* 422 Unprocessable Entity - if the specified group is not found
 
 ### Remove a Group from a parent Group
 
-**DELETE /api/eperson/groups/<:parentgroupuuid>/groups**
+**GET /api/eperson/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>**
 
-The actual sub group is part of the body using the uri-list
+_Unsupported._ If you want detailed information about a single group, use the `/api/eperson/groups/<:uuid>` endpoint.
+
+**DELETE /api/eperson/groups/<:parent_group_uuid>/groups**
+
+_Unsupported._ At this time, we do not support removing all subgroups in a single request. Please use `DELETE /api/core/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>` to remove child groups one by one.
+
+**DELETE /api/eperson/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>**
+
+A DELETE request will result in removing a subgroup from the parent group
 
 Example:
 ```bash
-curl -i -X DELETE "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
-  -H "Content-Type:text/uri-list"
-  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
+curl -i -X DELETE 
+  "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
 ```
 
-The group is mandatory
+The above request would remove the mapping between the parent group with UUID `617cf46b-535c-42d5-9d22-327ce2eff6dc`
+ and the child group with UUID `05e3dbb8-332b-4487-a3f9-d78431b6cc02`.
 
 Return codes:
-* 204: if the update succeeded 
+* 204: if the delete succeeded (including the case of no-op if the child group was not a subgroup) 
 * 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions 
-* 422: if the specified group is not found
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the parent group doesn't exist
+* 422 Unprocessable Entity - if the child group doesn't exist
 
 ## Epeople in a single EPerson Group
 
@@ -290,21 +301,26 @@ Return codes:
 
 **DELETE /api/eperson/groups/<:groupuuid>/epersons**
 
-To remove an eperson from a parent group, perform a DELETE to the Epeople of a Group endpoint when logged in as admin.
+_Unsupported._ At this time, we do not support removing all epersons in a single request. Please use `DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>` to remove the epersons one by one.
 
-The actual eperson is part of the body using the uri-list
+**DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>**
+
+To remove an eperson from a parent group, perform a DELETE to the Epeople of a Group endpoint when logged in as admin.
 
 Example:
 ```bash
-curl -i -X DELETE "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
-  -H "Content-Type:text/uri-list"
-  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+curl -i -X DELETE 
+  "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
 ```
 
-The eperson is mandatory
+The above request would remove the mapping between the group with UUID `617cf46b-535c-42d5-9d22-327ce2eff6dc`
+ and the eperson with UUID `a6086b34-3918-45b7-8ddd-9329a702a26a`.
+
 
 Return codes:
-* 204: if the update succeeded 
+* 204: if the update succeeded (including the case of no-op if the eperson was not a member)
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions 
-* 422: if the specified eperson is not found
+* 404 Not found - if the parent group doesn't exist
+* 422 Unprocessable Entity - if the child group doesn't exist
+* 422 Unprocessable Entity - if the specified eperson doesn't exist
