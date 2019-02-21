@@ -35,16 +35,24 @@ The examples in each section below build on each other, assuming an initial meta
 }
 ```
 
+Note: The metadata of items _in submission_ is modeled in the same way described here -- as a map
+of metadata keys to an ordered array of values. The primary difference is where the metadata
+is located within the JSON representation. The documentation and examples below apply to archived
+items and other DSpace object types, whereas the [WorkspaceItem Metadata](workspaceitem-data-metadata.md)
+document describes how item metadata can be modified during submission.
+
 ## Adding metadata
 
 With the `add` operation, you can add any number of metadata values in a single request.
 
 Note:
 
-* When no values exist yet for a metadata key, you must add the key and value array with one
-  or more values.
-* When values already exist for a metadata key, it is necessary to specify the new value's
-  position at the end of the `path` (`/0` means first position, `/-` means last).
+* According to the [JSON Patch specification](https://tools.ietf.org/html/rfc6902), to initialize the first
+  value for any array, the `add` operation must receive an array of values. Therefore, in the first operation
+  below, since it is not possible to add a single value to the not yet initialized `/metadata/dc.description`
+  array, we initialize it with an array with one value.
+* When values already exist for a metadata key, as in the second operation below, it is necessary to specify
+  the new value's position at the end of the `path` (`/0` means first position, `/-` means last).
 * When creating new metadata values, if unspecified, the `language` and `authority` properties
   default to `null`, and `confidence` defaults to `-1`.
 
