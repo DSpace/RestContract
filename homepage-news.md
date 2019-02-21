@@ -128,13 +128,28 @@ Example:
   "_embedded": {
     "languages": [
       {
-        "lang": "en"
+        "lang": "en",
+        "_links": {
+          "self": {
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/pages/004a297e-fd06-4662-ae51-73e4b7c165c8"
+          }
+        }
       },
       {
-        "lang": "es"
+        "lang": "es",
+        "_links": {
+          "self": {
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/pages/e942550b-0362-4b11-920b-44a6e80a69f9"
+          }
+        }
       },
       {
-        "lang": "fr"
+        "lang": "fr",
+        "_links": {
+          "self": {
+            "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/pages/6fdd5b9f-ffc7-4896-8d01-5ff33aba589f"
+          }
+        }
       }
     ],
     "_links": {
