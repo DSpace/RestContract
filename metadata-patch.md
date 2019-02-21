@@ -149,13 +149,8 @@ Example request, replacing the `value` and `language` of the first `dc.title`:
 [
   {
     "op": "replace",
-    "path": "/metadata/dc.title/0/value",
-    "value": "最後のタイトル"
-  },
-  {
-    "op": "replace",
-    "path": "/metadata/dc.title/0/language",
-    "value": "ja_JP"
+    "path": "/metadata/dc.title/0",
+    "value": { "value": "最後のタイトル", "language": "ja_JP" }
   }
 ]
 ```
