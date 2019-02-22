@@ -15,7 +15,7 @@ This use of the add operation to replace a value could be counter intuitive but 
 
 ### Remove
 The remove operation is expected to be supported by all the endpoints that implement the Patch method for all the json path not flagged as **READ-ONLY**.
-Support for remove operation is expected to be provided also to the array index path level for each attribute or list where position is meaningful. This include for instance the metadata values or the uploaded bitstreams so that an author or a bitstrems can be removed individually.  
+Support for remove operation is expected to be provided also to the array index path level for each attribute or list where position is meaningful. This include for instance the metadata values or the uploaded bitstreams so that an author or a bitstream can be removed individually.  
 The path specified will be nullified deleting all the children objects if any.
 
 ### Replace
