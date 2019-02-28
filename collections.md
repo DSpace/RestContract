@@ -90,6 +90,10 @@ Exposed links:
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
 
+## Patch operations
+
+Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
 ## Linked entities
 ### Logo
 **/api/core/collections/<:uuid>/logo**
