@@ -122,7 +122,6 @@ The supported parameters are:
 * **(mandatory)** parent, the UUID of the parent community
 * page, size [see pagination](README.md#Pagination)
 
-<<<<<<< HEAD
 ## Creating communities
 
 ### Creating top level community
