@@ -223,12 +223,12 @@ The returned JSON response will be like:
               "dc.publisher" : "My <em>very cool</em> publisher"
             },
             "_links" : {
-              "rObject" : {
+              "resultObject" : {
                 "href": "/api/core/items/9f3288b2-f2ad-454f-9f4c-70325646dcee"
               }
             },
             "_embedded" : {
-              "rObject" : {
+              "resultObject" : {
                 "uuid": "9f3288b2-f2ad-454f-9f4c-70325646dcee",
                 "name": "Test Webpage",
                 "handle": "10673/4"
@@ -238,12 +238,12 @@ The returned JSON response will be like:
           {
             "hitHighlights": { },
             "_links" : {
-              "rObject" : {
+              "resultObject" : {
                 "href": "/api/core/items/ff7ec3a4-0aab-418b-94fc-d0e8189084db"
               }
             },
             "_embedded" : {
-              "rObject" : {
+              "resultObject" : {
                 "uuid": "ff7ec3a4-0aab-418b-94fc-d0e8189084db",
                 "name": "Test Item with no hit highlights",
                 "handle": "10673/5"
@@ -824,12 +824,12 @@ Example
           "hitHighlights" : null,
           "type" : "discover",
           "_links" : {
-            "rObject" : {
+            "resultObject" : {
               "href" : "https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems/8"
             }
           },
           "_embedded" : {
-            "rObject" : {
+            "resultObject" : {
               "id" : 8,
               "lastModified" : "2019-03-07T18:19:45.187+0000",
               "sections" : {
@@ -894,12 +894,12 @@ Example
           "hitHighlights" : null,
           "type" : "discover",
           "_links" : {
-            "rObject" : {
+            "resultObject" : {
               "href" : "https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems/9"
             }
           },
           "_embedded" : {
-            "rObject" : {
+            "resultObject" : {
               "id" : 9,
               "lastModified" : "2019-03-07T18:19:45.245+0000",
               "sections" : {
@@ -964,12 +964,12 @@ Example
           "hitHighlights" : null,
           "type" : "discover",
           "_links" : {
-            "rObject" : {
+            "resultObject" : {
               "href" : "https://dspace7.4science.it/dspace-spring-rest/api/workflow/workflowitems/3"
             }
           },
           "_embedded" : {
-            "rObject" : {
+            "resultObject" : {
               "id" : 3,
               "lastModified" : "2019-03-07T18:19:45.282+0000",
               "sections" : {
@@ -1147,12 +1147,12 @@ Example
           "hitHighlights" : null,
           "type" : "discover",
           "_links" : {
-            "rObject" : {
+            "resultObject" : {
               "href" : "http://localhost/api/workflow/pooltasks/1"
             }
           },
           "_embedded" : {
-            "rObject" : {
+            "resultObject" : {
               "id" : 1,
               "step" : "reviewstep",
               "action" : "claimaction",
@@ -1186,12 +1186,12 @@ Example
           "hitHighlights" : null,
           "type" : "discover",
           "_links" : {
-            "rObject" : {
+            "resultObject" : {
               "href" : "http://localhost/api/workflow/pooltasks/3"
             }
           },
           "_embedded" : {
-            "rObject" : {
+            "resultObject" : {
               "id" : 3,
               "step" : "reviewstep",
               "action" : "claimaction",
