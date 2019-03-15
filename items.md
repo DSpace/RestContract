@@ -23,21 +23,24 @@ Provide detailed information about a specific item. The JSON response document i
         "value": "Stvilia, Besiki",
         "language": "en",
         "authority": null,
-        "confidence": -1
+        "confidence": -1,
+        "place": 0
       },
       {
         "value": "Lee, Dong Joon",
         "language": "en",
         "authority": null,
-        "confidence": -1
-      },
+        "confidence": -1,
+        "place": 1
+      }
     ],
     "dc.identifier.url": [
       {
         "value": "http://europepmc.org/abstract/MED/28301533",
         "language": "en",
         "authority": null,
-        "confidence": -1
+        "confidence": -1,
+        "place": 0
       }
     ],
     "dc.title": [
@@ -45,7 +48,8 @@ Provide detailed information about a specific item. The JSON response document i
         "value": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
         "language": "en",
         "authority": null,
-        "confidence": -1
+        "confidence": -1,
+        "place": 0
       }
     ],
     "dc.type": [
@@ -53,7 +57,8 @@ Provide detailed information about a specific item. The JSON response document i
         "value": "Journal Article",
         "language": "en",
         "authority": null,
-        "confidence": -1
+        "confidence": -1,
+        "place": 0
       }
     ]
   },
@@ -77,7 +82,7 @@ Exposed links:
 
 Administrators can directly create an archived item (bypassing the workflow). An example JSON can be seen below:
 
-```
+```json
 {
   "name": "Practices of research data curation in institutional repositories: A qualitative view from repository staff",
   "metadata": {
@@ -119,7 +124,7 @@ Administrators can directly create an archived item (bypassing the workflow). An
 
 Provide updated metadata information for an item, when the update is completed the updated object will be returned. The JSON to update can be found below.
 
-```
+```json
 {
   "id": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
   "uuid": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
