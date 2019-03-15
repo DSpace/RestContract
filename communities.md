@@ -130,16 +130,19 @@ The supported parameters are:
 
 To create a top level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
 
-```
+```json
 {
-    "name": "test creation",
-    "metadata": [
-        {
-            "key": "dc.title",
-            "value": "test creation",
-            "language": null
-        }
+  "name": "test creation",
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "test creation",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
     ]
+  }
 }
 ```
 
@@ -149,16 +152,19 @@ To create a top level community, perform as post with the JSON below to the comm
 
 To create a sub level community, perform as post with the JSON below to the communities endpoint when logged in as admin.
 
-```
+```json
 {
-    "name": "test subcommunity",
-    "metadata": [
-        {
-            "key": "dc.title",
-            "value": "test subcommunity",
-            "language": null
-        }
+  "name": "test subcommunity",
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "test subcommunity",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
     ]
+  }
 }
 ```
 
@@ -174,25 +180,31 @@ Error messages:
 
 Provide updated metadata information about a specific community, when the update is completed the updated object will be returned. The JSON to update can be found below.
 
-```
+```json
 {
-    "id": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
-    "uuid": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
-    "name": "test new title",
-    "handle": "123456789/60631",
-    "metadata": [
-        {
-            "key": "dc.title",
-            "value": "test new title",
-            "language": null
-        },
-        {
-            "key": "dc.description",
-            "value": "An example description",
-            "language": "en"
-        }
+  "id": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+  "uuid": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
+  "name": "test new title",
+  "handle": "123456789/60631",
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "test new title",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
     ],
-    "type": "community"
+    "dc.description": [
+      {
+        "value": "An example description",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
+  "type": "community"
 }
 ```  
 
@@ -213,3 +225,7 @@ Delete a community.
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the community doesn't exist (or was already deleted)
+
+## Patch operations
+
+Community metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
