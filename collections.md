@@ -90,6 +90,10 @@ Exposed links:
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
 
+## Patch operations
+
+Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
 ## Linked entities
 ### Logo
 **/api/core/collections/<:uuid>/logo**
@@ -157,16 +161,19 @@ see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 To create a collection, perform as post with the JSON below when logged in as admin.
 
-```
+```json
 {
-"name": "test collection",
-"metadata": [
-    {
-        "key": "dc.title",
+  "name": "test collection",
+  "metadata": {
+    "dc.title": [
+      {
         "value": "test collection",
-        "language": null
-    }
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
     ]
+  }
 }
 ```
 
@@ -181,22 +188,29 @@ To create a collection, perform as post with the JSON below when logged in as ad
 **PUT /api/core/collections/<:uuid>**
 
 Provide updated metadata information about a specific collection, when the update is completed the updated object will be returned. The JSON to update can be found below.
-```
+
+```json
 {
-"uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
-"name": "test collection",
-"metadata": [
-    {
-        "key": "dc.title",
+  "uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
+  "name": "test collection",
+  "metadata": {
+    "dc.title": [
+      {
         "value": "test collection",
-        "language": null
-    },
-    {
-        "key": "dc.description",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description": [
+      {
         "value": "Test description",
-        "language": null
-    }
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
     ]
+  }
 }
 ```  
 

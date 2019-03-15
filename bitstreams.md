@@ -33,6 +33,10 @@ Exposed links:
 * format: link to the bitstream format resource associated with the bitstream (Adobe PDF, MS Word, etc.)
 * content: link to access the actual content of the bitstream
 
+## Patch operations
+
+Bitstream metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
 ## Linked entities
 ### Format
 **/api/core/bitstreams/<:uuid>/format**
