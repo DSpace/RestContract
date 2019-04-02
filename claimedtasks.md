@@ -6,7 +6,7 @@
 
 Not allowed. Only subset of claimed tasks can be retrieved using specific filters see below
 
-## Single Pool Task
+## Single Claimed Task
 **/api/workflow/claimedtasks/<:id>**
 
 Provide details about a specific task in the pool. The JSON response document is as follow

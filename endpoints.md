@@ -25,11 +25,11 @@
 * [/api/discover/search](search-endpoint.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/integration/authorities](authorities.md)
-
-## Endpoints Under Development/Discussion
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
+
+## Endpoints Under Development/Discussion
 * /api/authz/resourcepolicies
 * [/api/tools/itemrequests](item-requests.md)
 
