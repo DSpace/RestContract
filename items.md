@@ -75,6 +75,7 @@ Exposed links:
 * owningCollection: the collection where the item belong to
 * mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
+* relationships: the relationships to other items
  
 ## Creating an archived item
 

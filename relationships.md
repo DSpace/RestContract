@@ -107,6 +107,12 @@ curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
 The relationshipType parameter is mandatory as well
 
+* 201 Created - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if one of the items doesn't exist
+* 500 Internal Server Error - Other errors
+
 ## Updating a relationship
 
 **PUT /api/core/relationships/<:id>**
@@ -117,6 +123,12 @@ A sample CURL command would be:
 ```
 curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
+
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the relationship doesn't exist
+* 422 Unprocessable Entity - if one of the items doesn't exist
 
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
 The relationshipType is not modifiable
@@ -321,4 +333,4 @@ curl -D - -XDELETE 'https://dspace7-entities.atmire.com/rest/api/core/relationsh
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
-* 404 Not found - if the item doesn't exist (or was already deleted)
+* 404 Not found - if the relationships doesn't exist (or was already deleted)
