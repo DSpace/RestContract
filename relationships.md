@@ -111,7 +111,6 @@ The relationshipType parameter is mandatory as well
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if one of the items doesn't exist
-* 500 Internal Server Error - Other errors
 
 ## Updating a relationship
 
