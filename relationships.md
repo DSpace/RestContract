@@ -116,7 +116,9 @@ The relationshipType parameter is mandatory as well
 
 **PUT /api/core/relationships/<:id>**
 
-Update the items in the relationship
+Update the items in the relationship.
+
+This contract will be discussed again in https://jira.duraspace.org/browse/DS-4230 and may be updated in the future
 
 A sample CURL command would be:
 ```
