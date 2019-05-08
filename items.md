@@ -11,6 +11,10 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 ## Single Item
 **/api/core/items/<:uuid>**
 
+***
+:warning: In the below example response, the existence of the `place` field for specific metadata values is still under analysis. We are determining whether it can be removed entirely in favor of using the array index (as the `place` field represents the index of each value in an ordered array). For more details see https://jira.duraspace.org/browse/DS-4242
+***
+
 Provide detailed information about a specific item. The JSON response document is as follow
 ```json
 {
