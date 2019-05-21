@@ -7,7 +7,7 @@
 * /api/core/collections
 * [/api/core/items](items.md)
 * [/api/core/bitstreams](bitstreams.md)
-* /api/core/bitstreamformats
+* [/api/core/bitstreamformats](bitstreamformats.md)
 * /api/core/sites
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
