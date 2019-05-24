@@ -18,7 +18,7 @@ The JSON should be similar to:
   "shortDescription": "XML",
   "description": "Extensible Markup Language",
   "mimetype": "text/xml",
-  "supportLevel": 1,
+  "supportLevel": "KNOWN",
   "internal": false,
   "extensions": [
           "xml"
@@ -42,7 +42,7 @@ Provide detailed information about a specific bitstream format. The JSON respons
   "shortDescription": "XML",
   "description": "Extensible Markup Language",
   "mimetype": "text/xml",
-  "supportLevel": 1,
+  "supportLevel": "KNOWN",
   "internal": false,
   "extensions": [
     "xml"
@@ -68,7 +68,7 @@ Updates a specific bitstream format. Requires an admin account. The JSON should 
   "shortDescription": "Text",
   "description": "Plain Text",
   "mimetype": "text/plain",
-  "supportLevel": 1,
+  "supportLevel": "KNOWN",
   "internal": false,
   "extensions": [
     "txt",
