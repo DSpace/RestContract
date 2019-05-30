@@ -132,6 +132,13 @@ The uri-list should always contain exactly 1 item. This item will be used as to 
 
 The relationshipType is not modifiable
 
+Error codes:
+* 200 OK - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the relationships doesn't exist
+* 422 Unprocessable Entity - if the item doesn't exist
+
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
 
