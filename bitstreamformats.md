@@ -29,6 +29,7 @@ The JSON should be similar to:
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 
@@ -80,7 +81,8 @@ Updates a specific bitstream format. Requires an admin account. The JSON should 
 ```
 
 Status codes:
-* 201 Created - if the operation succeed
+* 200 Created - if the operation succeed
+* 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream format doesn't exist
