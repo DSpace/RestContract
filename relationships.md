@@ -137,7 +137,7 @@ Error codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist
-* 422 Unprocessable Entity - if the item doesn't exist
+* 422 Unprocessable Entity - if the item doesn't exist, or if the amount of items is not 1
 
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
