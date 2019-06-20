@@ -138,6 +138,57 @@ Provide detailed information about a specific input-form. The JSON response docu
           "languageCodes": []
         }
       ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "relationship": true
+          },
+          "label": "Journal",
+          "mandatory": false,
+          "repeatable": false,
+          "hints": "Select the journal related to this volume.",
+          "selectableRelationship": [
+            {
+              "relationship": "isVolumeOfJournal",
+              "filter": "creativework.publisher:somepublishername",
+              "search-configuration": "periodicalConfiguration"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "name",
+            "relationship": true
+          },
+          "label": "Author",
+          "mandatory": true,
+          "repeatable": true,
+          "mandatoryMessage": "At least one author (plain text or relationship) is required",
+          "hints": "Add an author",
+          "selectableRelationship": [
+            {
+              "relationship": "isAuthorOfPublication",
+              "filter": null,
+              "search-configuration": "personConfiguration"
+            }
+          ],
+          "selectableMetadata": [
+            {
+              "metadata": "dc.contributor.author",
+              "label": null,
+              "authority": null,
+              "closed": false
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
     }
   ],
   "type": "submissionform"
