@@ -34,7 +34,7 @@ The sections below describe the parameters for a user interaction request. All o
 ### Status codes:
 
 - `201` Created: if the operation succeeded
-- `400` Bad request: if any of the parameters are missing or invalid.
+- `422` Unprocessable Entity: if any of the parameters are missing or invalid.
 
 ### Example item page view:
 
