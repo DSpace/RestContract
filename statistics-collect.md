@@ -1,14 +1,8 @@
-# Statistics Endpoint
+# Collecting user interactions
 [Back to the list of all defined endpoints](endpoints.md)
 
-## Main Endpoint
-**GET /api/core/statistics**
-
-This endpoint doesn't do anything but provide the link to `/api/core/statistics/collect` for now. Will be extended as support for generating reports is added.
-
-## Collecting user interactions
-
-**POST /api/core/statistics/collect**
+## Collect Endpoint
+**POST /api/statistics/collect**
 
 To track a user interaction, make an HTTP POST request to this endpoint.
 
