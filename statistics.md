@@ -47,10 +47,8 @@ The sections below describe the parameters for a user interaction request. All o
 ```json
 {
   "type": "view",
-  "viewPayload": {
-    "id": "43f9bb3e-f90d-458f-9858-7e4589481d18",
-    "type": "item",
-  }
+  "targetId": "43f9bb3e-f90d-458f-9858-7e4589481d18",
+  "targetType": "item",
 }
 ```
 
@@ -59,34 +57,32 @@ The sections below describe the parameters for a user interaction request. All o
 ```json
 {
   "type": "search",
-  "searchPayload": {
-    "query": "Lorem ipsum",
-    "scope": "a3e80c6d-a83f-4c35-9f27-8718598c6c17",
-    "configuration": "default",
-    "appliedFilters": [
-        {
-          "filter" : "title",
-          "operator" : "notcontains",
-          "value" : "dolor sit",
-          "label" : "dolor sit"
-        },
-        {
-          "filter" : "author",
-          "operator" : "authority",
-          "value" : "9zvxzdm4qru17or5a83wfgac",
-          "label" : "Amet, Consectetur"
-        }
-    ],
-    "sort" : {
-      "by" : "dc.date.issued",
-      "order" : "asc"
-    },
-    "page": {
-      "size": 5,
-      "totalElements": 14,
-      "totalPages": 3,
-      "number": 0
-    }
+  "query": "Lorem ipsum",
+  "scope": "a3e80c6d-a83f-4c35-9f27-8718598c6c17",
+  "configuration": "default",
+  "appliedFilters": [
+      {
+        "filter" : "title",
+        "operator" : "notcontains",
+        "value" : "dolor sit",
+        "label" : "dolor sit"
+      },
+      {
+        "filter" : "author",
+        "operator" : "authority",
+        "value" : "9zvxzdm4qru17or5a83wfgac",
+        "label" : "Amet, Consectetur"
+      }
+  ],
+  "sort" : {
+    "by" : "dc.date.issued",
+    "order" : "asc"
+  },
+  "page": {
+    "size": 5,
+    "totalElements": 14,
+    "totalPages": 3,
+    "number": 0
   }
 }
 ```
