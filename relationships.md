@@ -114,7 +114,30 @@ The relationshipType parameter is mandatory as well
 
 ## Updating a relationship
 
-**TODO**: This is temporarily removed until https://jira.duraspace.org/browse/DS-4230 is resolved
+**PUT /api/core/relationships/<:id>/<:leftVsRightItem>**
+
+Update the items in the relationship
+
+A sample CURL command to update the left item would be:
+```
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891/leftItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e'
+```
+
+A sample CURL command to update the right item would be:
+```
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891/rightItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+```
+
+The uri-list should always contain exactly 1 item. This item will be used as to replace the left of right item, depending on whether the URL ends with /leftItem or /rightItem
+
+The relationshipType is not modifiable
+
+Error codes:
+* 200 OK - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the relationships doesn't exist
+* 422 Unprocessable Entity - if the item doesn't exist, or if the amount of items is not 1
 
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
