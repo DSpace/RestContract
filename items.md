@@ -271,7 +271,7 @@ curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/items/2f4ec582-
   "bundleName": "ORIGINAL"
 }
 ```
-The bitstream metadata can contain:
+The bitstream properties can contain:
 * The filename to be stored (optional)
 * metadata for the bitstream (optional)
 * bundleName (mandatory)
