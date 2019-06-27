@@ -275,11 +275,11 @@ The bitstream metadata can contain:
 * The filename to be stored (optional)
 * metadata for the bitstream (optional)
 * bundleName (mandatory)
-* sizeBytes (optional, can be verified on the server to verify successful transfer)
-* checkSum (optional, can be verified on the server to verify successful transfer)
-* sequenceId (optional, ca, be assigned if not used yet in the given item)
+* sequenceId (optional, can be assigned if not used yet in the given item)
 
 It returns the created bitstream. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+The REST API can support Content-Length and Content-MD5 headers to verify integrity
 
 If the bundle doesn't exist yet, it will be created
 
@@ -288,6 +288,7 @@ Status codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
+* 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
 * 422 Unprocessable Entity - if the amount of files was not 1, or the bundleName was omitted
 
 ### Owning Collection
