@@ -228,7 +228,8 @@ the discoverable operation will result in:
 ```
 ## Linked entities
 ### Bitstreams
-**/api/core/items/<:uuid>/bitstreams**
+
+**GET /api/core/items/<:uuid>/bitstreams**
 
 Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bitstreams>
 
@@ -236,6 +237,59 @@ It returns the bitstreams within this item. See the bitstream endpoint for more 
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
+
+**POST /api/core/items/<:uuid>/bitstreams**
+
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bitstreams>
+
+Curl example:
+```
+curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/items/2f4ec582-109e-4952-a94a-b7d7615a8c69/bitstreams' \
+ -XPOST -H 'Content-Type: multipart/form-data' \
+ -H 'Authorization: Bearer eyJhbGciOiJI...' \
+ -F "file=@Downloads/test.html" \
+ -F 'properties={ "name": "test.html", "metadata": { "dc.description": [ { "value": "example file", "language": null, "authority": null, "confidence": -1, "place": 0 } ]}, "bundleName": "ORIGINAL" };type=application/json'
+```
+
+* The item is determined using the ID in the URL
+* The file is uploaded using multipart/form-data
+* The metadata of the bitstream is included as a json property, and with layout, it looks like:
+```json
+{
+  "name": "test.html",
+  "metadata": {
+    "dc.description": [
+      {
+        "value": "example file",
+        "language": null,
+        "authority": null,
+        "confidence": -1,
+        "place": 0
+      }
+    ]
+  },
+  "bundleName": "ORIGINAL"
+}
+```
+The bitstream properties can contain:
+* The filename to be stored (optional)
+* metadata for the bitstream (optional)
+* bundleName (mandatory)
+* sequenceId (optional, can be assigned if not used yet in the given item)
+
+It returns the created bitstream. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+The REST API can support Content-Length and Content-MD5 headers to verify integrity
+
+If the bundle doesn't exist yet, it will be created
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+* 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
+* 422 Unprocessable Entity - if the amount of files was not 1, or the bundleName was omitted
 
 ### Owning Collection
 **/api/core/items/<:uuid>/owningCollection**
