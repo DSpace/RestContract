@@ -39,8 +39,8 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
   "_embedded": {
     "relationshipType": {
       "id": 1,
-      "leftLabel": "isAuthorOfPublication",
-      "rightLabel": "isPublicationOfAuthor",
+      "leftWardLabel": "isAuthorOfPublication",
+      "rightWardLabel": "isPublicationOfAuthor",
       "leftMinCardinality": 0,
       "leftMaxCardinality": null,
       "rightMinCardinality": 0,
@@ -175,8 +175,8 @@ It would respond with
         "_embedded": {
           "relationshipType": {
             "id": 5,
-            "leftLabel": "isOrgUnitOfPerson",
-            "rightLabel": "isPersonOfOrgUnit",
+            "leftWardLabel": "isOrgUnitOfPerson",
+            "rightWardLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
             "leftMaxCardinality": null,
             "rightMinCardinality": 0,
@@ -249,8 +249,8 @@ It would respond with
         "_embedded": {
           "relationshipType": {
             "id": 5,
-            "leftLabel": "isOrgUnitOfPerson",
-            "rightLabel": "isPersonOfOrgUnit",
+            "leftWardLabel": "isOrgUnitOfPerson",
+            "rightWardLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
             "leftMaxCardinality": null,
             "rightMinCardinality": 0,
