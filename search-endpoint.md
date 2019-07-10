@@ -176,7 +176,7 @@ Exposed links:
 **/api/discover/search/objects**
 
 This endpoint returns a list of DSpace Objects that match the given type. The result can be refined using the following parameters:
-* `query`: The discovery search string to will be used to match records.
+* `query`: The discovery search string to will be used to match records. Please note that this will be treat as a lucene/SOLR query so if special characters need to be literally searched escape them. 
 * `dsoType`: Limit the search to a specific DSpace Object type:
      * all: Execute a query over all available DSO types.
      * item: Only search the DSpace items.
@@ -422,7 +422,7 @@ The returned JSON response will be like:
 **/api/discover/search/facets**
 
 This endpoint returns a list of configured facets with their respective values. The result can be refined using the following parameters:
-* `query`: The discovery search string to will be used to match records.
+* `query`: The discovery search string to will be used to match records. Please note that this will be treat as a lucene/SOLR query so if special characters need to be literally searched escape them.
 * `dsoType`: Limit the search to a specific DSpace Object type:
      * all: Execute a query over all available DSO types.
      * item: Only search the DSpace items.
@@ -717,7 +717,7 @@ The JSON response document is as follow
 **/api/discover/facets/<:facet-name>**
 
 This endpoint returns a list of values that correspond to the given facet name. The result can be refined using the following parameters:
-* `query`: The discovery search string to will be used to match records.
+* `query`: The discovery search string to will be used to match records. Please note that this will be treat as a lucene/SOLR query so if special characters need to be literally searched escape them.
 * `scope`: UUID of a specific DSpace container (site, community or collection) to which the search has to be limited, e.g. `scope=9076bd16-e69a-48d6-9e41-0238cb40d863`.
 * `f.<:filter-name>=<:filter-value>,<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by parent search endpoint (see above). For example `f.author=5df05073-3be7-410d-8166-e254369e4166,authority` or `f.title=rainbows,notcontains`.
 * `page`, `size` & `sort` [see pagination](README.md#Pagination): the sort name be "count" (results ordered descending by the number of matching records) or "index" (results order alphabetically).
