@@ -142,9 +142,7 @@ Provide detailed information about a specific input-form. The JSON response docu
     {
       "fields": [
         {
-          "input": {
-            "relationship": true
-          },
+          "input": { },
           "label": "Journal",
           "mandatory": false,
           "repeatable": false,
@@ -163,8 +161,7 @@ Provide detailed information about a specific input-form. The JSON response docu
       "fields": [
         {
           "input": {
-            "type": "name",
-            "relationship": true
+            "type": "name"
           },
           "label": "Author",
           "mandatory": true,
