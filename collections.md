@@ -155,6 +155,129 @@ The json representation is as follow
 ```
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
+### Collection Harvesting Settings
+**GET /api/core/collections/<:uuid>/harvestingSettings**
+
+It returns the harvesting settings for the current collection. This information is only accessible for users with collection administration permissions
+
+A sample json response:
+
+```json
+{
+  "harvest_type": "METADATA_ONLY",
+  "oai_source": "https://dspace.mit.edu/oai/request",
+  "oai_set_id": "col_1721.1_114174",
+  "harvest_message": null,
+  "metadata_config_id": "dc",
+  "harvest_status": "ready",
+  "harvest_start_time": null,
+  "last_harvested": null,
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvestingSettings"
+    }
+  },
+  "_embedded": {
+    "metadata_configs": {
+      "configs": [
+        {
+           "id": "dc",
+           "label": "Simple Dublin Core",
+           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+        },
+        {
+           "id": "qdc",
+           "label": "Qualified Dublin Core",
+           "nameSpace": "http://purl.org/dc/terms/"
+        },
+        {
+           "id": "dim",
+           "label": "DSpace Intermediate Metadata",
+           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+        }
+      ],
+      "_links": {
+        "self": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvesting_metadata_configs"
+        }
+      }
+    }
+    
+  }
+}
+```
+
+A sample json response if no harvesting is enabled:
+
+```json
+{
+  "harvest_type": "NONE",
+  "oai_source": null,
+  "oai_set_id": null,
+  "harvest_message": null,
+  "metadata_config_id": null,
+  "harvest_status": null,
+  "harvest_start_time": null,
+  "last_harvested": null,
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvestingSettings"
+    }
+  },
+  "_embedded": {
+    "metadata_configs": {
+      "configs": [
+        {
+           "id": "dc",
+           "label": "Simple Dublin Core",
+           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+        },
+        {
+           "id": "qdc",
+           "label": "Qualified Dublin Core",
+           "nameSpace": "http://purl.org/dc/terms/"
+        },
+        {
+           "id": "dim",
+           "label": "DSpace Intermediate Metadata",
+           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+        }
+      ],
+      "_links": {
+        "self": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvesting_metadata_configs"
+        }
+      }
+    }
+    
+  }
+}
+```
+
+### Changing Collection Harvesting Settings
+**PUT /api/core/collections/<:uuid>/harvestingSettings**
+
+It updates the harvesting settings for the current collection. This information can only be updated by users with collection administration permissions
+
+A sample json request:
+
+```json
+{
+  "harvest_type": "METADATA_ONLY",
+  "oai_source": "https://dspace.mit.edu/oai/request",
+  "oai_set_id": "col_1721.1_114174",
+  "metadata_config_id": "dc"
+}
+```
+
+A sample json request to disable harvesting is:
+
+```json
+{
+  "harvest_type": "NONE"
+}
+```
+
 ## Creating a collection
 
 **POST /api/core/collections?parent=<:communityUUID>**
