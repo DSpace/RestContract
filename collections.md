@@ -160,6 +160,21 @@ see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 It returns the harvesting settings for the current collection. This information is only accessible for users with collection administration permissions
 
+The harvest_type can be any of:
+* NONE
+* METADATA_ONLY
+* METADATA_AND_REF
+* METADATA_AND_BITSTREAMS
+
+The harvest_status can be any of:
+* READY
+* BUSY
+* QUEUED
+* OAI_ERROR
+* UNKNOWN_ERROR
+
+The metadata_config_id can be one of the ids from [Harvesting metadata configuration Endpoints](harvesting_metadata_configs.md)
+
 A sample json response:
 
 ```json
@@ -169,7 +184,7 @@ A sample json response:
   "oai_set_id": "col_1721.1_114174",
   "harvest_message": null,
   "metadata_config_id": "dc",
-  "harvest_status": "ready",
+  "harvest_status": "READY",
   "harvest_start_time": null,
   "last_harvested": null,
   "_links": {
@@ -277,6 +292,13 @@ A sample json request to disable harvesting is:
   "harvest_type": "NONE"
 }
 ```
+
+Status codes:
+* 200 OK - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 Unprocessable Entity - if the harvest_type or the metadata_config_id is not valid
 
 ## Creating a collection
 
