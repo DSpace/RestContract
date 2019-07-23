@@ -12,14 +12,14 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 ## Single Relationship
 **/api/core/relationships/<:id>**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/530
-The leftId and rightId parameter in JSON may still be present, but they will be removed soon (requires other PRs to be merged first)
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/1117
 
 ```json
 {
   "id": 530,
   "relationshipTypeId": 0,
   "leftPlace": 1,
+  "leftWardLabel": "Name variant 1",
   "rightPlace": 1,
   "type": "relationship",
   "_links": {
@@ -93,6 +93,8 @@ The leftId and rightId parameter in JSON may still be present, but they will be 
 The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
+An optional leftWardLabel and rightWardLabel property can be present. It's omitted when it's null.
+
 ## Creating a relationship
 
 **POST /api/core/relationships?relationshipType=<:relationshipType>**
@@ -104,6 +106,11 @@ A sample CURL command would be:
 curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
+Including a name variant would result in:
+```
+curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?relationshipType=1&leftWardLabel=Name%20variant%201' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+```
+
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
 The relationshipType parameter is mandatory as well
 
@@ -112,7 +119,7 @@ The relationshipType parameter is mandatory as well
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if one of the items doesn't exist
 
-## Updating a relationship
+## Updating the items in a relationship
 
 **PUT /api/core/relationships/<:id>/<:leftVsRightItem>**
 
@@ -138,6 +145,23 @@ Error codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist
 * 422 Unprocessable Entity - if the item doesn't exist, or if the amount of items is not 1
+
+## Updating the metadata of a relationship
+
+**PUT /api/core/relationships/<:id>**
+
+Update the name variant or the place:
+```
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:application/json" --data '{ "leftPlace": 1, "leftWardLabel": "Name variant 1", "rightPlace": 1, "rightWardLabel": null }'
+```
+
+Omitted properties will not be updated. Removing a name variant would require setting it to null.
+
+Error codes:
+* 200 OK - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the relationship doesn't exist
 
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
