@@ -156,7 +156,7 @@ The json representation is as follow
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 ### Collection Harvesting Settings
-**GET /api/core/collections/<:uuid>/harvestingSettings**
+**GET /api/core/collections/<:uuid>/harvester**
 
 It returns the harvesting settings for the current collection. This information is only accessible for users with collection administration permissions
 
@@ -189,7 +189,7 @@ A sample json response:
   "last_harvested": null,
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvestingSettings"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
     }
   },
   "_embedded": {
@@ -213,7 +213,7 @@ A sample json response:
       ],
       "_links": {
         "self": {
-          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvesting_metadata_configs"
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
         }
       }
     }
@@ -236,7 +236,7 @@ A sample json response if no harvesting is enabled:
   "last_harvested": null,
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvestingSettings"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
     }
   },
   "_embedded": {
@@ -260,7 +260,7 @@ A sample json response if no harvesting is enabled:
       ],
       "_links": {
         "self": {
-          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvesting_metadata_configs"
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
         }
       }
     }
@@ -270,7 +270,7 @@ A sample json response if no harvesting is enabled:
 ```
 
 ### Changing Collection Harvesting Settings
-**PUT /api/core/collections/<:uuid>/harvestingSettings**
+**PUT /api/core/collections/<:uuid>/harvester**
 
 It updates the harvesting settings for the current collection. This information can only be updated by users with collection administration permissions
 
