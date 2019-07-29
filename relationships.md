@@ -19,7 +19,7 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "id": 530,
   "relationshipTypeId": 0,
   "leftPlace": 1,
-  "leftWardLabel": "Name variant 1",
+  "leftwardLabel": "Name variant 1",
   "rightPlace": 1,
   "type": "relationship",
   "_links": {
@@ -39,8 +39,8 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "_embedded": {
     "relationshipType": {
       "id": 1,
-      "leftWardLabel": "isAuthorOfPublication",
-      "rightWardLabel": "isPublicationOfAuthor",
+      "leftwardLabel": "isAuthorOfPublication",
+      "rightwardLabel": "isPublicationOfAuthor",
       "leftMinCardinality": 0,
       "leftMaxCardinality": null,
       "rightMinCardinality": 0,
@@ -93,7 +93,7 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 The [relationship type](relationshiptypes.md) is embedded
 The 2 items are included as HAL links but are not embedded
 
-An optional leftWardLabel and rightWardLabel property can be present. It's omitted when it's null.
+An optional leftwardLabel and rightwardLabel property can be present. It's omitted when it's null.
 
 ## Creating a relationship
 
@@ -108,7 +108,7 @@ curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships
 
 Including a name variant would result in:
 ```
-curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?relationshipType=1&leftWardLabel=Name%20variant%201' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+curl -i -X POST 'https://dspace7-entities.atmire.com/rest/api/core/relationships?relationshipType=1&leftwardLabel=Name%20variant%201' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
@@ -152,10 +152,10 @@ Error codes:
 
 Update the name variant or the place:
 ```
-curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:application/json" --data '{ "leftPlace": 1, "leftWardLabel": "Name variant 1", "rightPlace": 1, "rightWardLabel": null }'
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:application/json" --data '{ "leftPlace": 1, "leftwardLabel": "Name variant 1", "rightPlace": 1, "rightwardLabel": null }'
 ```
 
-Omitted properties will not be updated. Removing a name variant would require setting it to null.
+Omitted properties will be removed.
 
 Error codes:
 * 200 OK - if the operation succeeded
@@ -199,8 +199,8 @@ It would respond with
         "_embedded": {
           "relationshipType": {
             "id": 5,
-            "leftWardLabel": "isOrgUnitOfPerson",
-            "rightWardLabel": "isPersonOfOrgUnit",
+            "leftwardLabel": "isOrgUnitOfPerson",
+            "rightwardLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
             "leftMaxCardinality": null,
             "rightMinCardinality": 0,
@@ -273,8 +273,8 @@ It would respond with
         "_embedded": {
           "relationshipType": {
             "id": 5,
-            "leftWardLabel": "isOrgUnitOfPerson",
-            "rightWardLabel": "isPersonOfOrgUnit",
+            "leftwardLabel": "isOrgUnitOfPerson",
+            "rightwardLabel": "isPersonOfOrgUnit",
             "leftMinCardinality": 0,
             "leftMaxCardinality": null,
             "rightMinCardinality": 0,

@@ -18,8 +18,8 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 ```json
 {
   "id": 1,
-  "leftWardLabel": "isAuthorOfPublication",
-  "rightWardLabel": "isPublicationOfAuthor",
+  "leftwardLabel": "isAuthorOfPublication",
+  "rightwardLabel": "isPublicationOfAuthor",
   "leftMinCardinality": 0,
   "leftMaxCardinality": null,
   "rightMinCardinality": 0,
