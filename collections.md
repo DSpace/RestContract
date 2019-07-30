@@ -173,7 +173,7 @@ The harvest_status can be any of:
 * OAI_ERROR
 * UNKNOWN_ERROR
 
-The metadata_config_id can be one of the ids from [Harvesting metadata configuration Endpoints](harvestermetadata.md)
+The metadata_config_id can be one of the ids from the [Harvester Metadata Endpoint](harvestermetadata.md)
 
 A sample json response:
 
