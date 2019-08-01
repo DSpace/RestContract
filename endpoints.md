@@ -31,7 +31,7 @@
 
 ## Endpoints Under Development/Discussion
 * /api/authz/resourcepolicies
-* [/api/statistics/collect](statistics-collect.md)
+* [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
 ## Other Endpoints (raw list)
