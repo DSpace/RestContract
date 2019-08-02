@@ -17,6 +17,7 @@
 * [/api/authn/login](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
 * [/api/authn/logout](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
 * [/api/authn/status](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+* [/api/config/harvestermetadata](harvestermetadata.md)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
