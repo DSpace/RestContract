@@ -147,13 +147,11 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatory": false,
           "repeatable": false,
           "hints": "Select the journal related to this volume.",
-          "selectableRelationship": [
-            {
-              "relationship": "isVolumeOfJournal",
-              "filter": "creativework.publisher:somepublishername",
-              "search-configuration": "periodicalConfiguration"
-            }
-          ]
+          "selectableRelationship": {
+            "relationship": "isVolumeOfJournal",
+            "filter": "creativework.publisher:somepublishername",
+            "search-configuration": "periodicalConfiguration"
+          }
         }
       ]
     },
@@ -168,13 +166,11 @@ Provide detailed information about a specific input-form. The JSON response docu
           "repeatable": true,
           "mandatoryMessage": "At least one author (plain text or relationship) is required",
           "hints": "Add an author",
-          "selectableRelationship": [
-            {
-              "relationship": "isAuthorOfPublication",
-              "filter": null,
-              "search-configuration": "personConfiguration"
-            }
-          ],
+          "selectableRelationship": {
+            "relationship": "isAuthorOfPublication",
+            "filter": null,
+            "search-configuration": "personConfiguration"
+          },
           "selectableMetadata": [
             {
               "metadata": "dc.contributor.author",
