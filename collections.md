@@ -155,6 +155,15 @@ The json representation is as follow
 ```
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
+### Mapped items
+**/api/core/collections/<:uuid>/mappedItems**
+
+This is a Read-only endpoint to retrieve the mapped items for this collection.
+
+Item mappings can only be modified via [/items/[uuid]/mappedCollections](items.md#mapped-collections)
+
+The request will return a list of items 
+
 ### Collection Harvesting Settings
 **GET /api/core/collections/<:uuid>/harvester**
 
