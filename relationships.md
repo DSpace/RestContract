@@ -17,7 +17,6 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 ```json
 {
   "id": 530,
-  "relationshipTypeId": 0,
   "leftPlace": 1,
   "leftwardLabel": "Name variant 1",
   "rightPlace": 1,
@@ -177,7 +176,6 @@ It would respond with
       {
         "id": 590,
         "leftId": "f2235aa6-6fe7-4174-a690-598b72dd8e44",
-        "relationshipTypeId": 0,
         "rightId": "d30de96b-1e76-40ae-8ef9-ab426b6f9763",
         "leftPlace": 1,
         "rightPlace": 2,
@@ -251,7 +249,6 @@ It would respond with
       {
         "id": 589,
         "leftId": "5a3f7c7a-d3df-419c-b8a2-f00ede62c60a",
-        "relationshipTypeId": 0,
         "rightId": "c216201f-ed10-4361-b0e0-5a065405bd3e",
         "leftPlace": 2,
         "rightPlace": 1,
