@@ -42,27 +42,6 @@ Additional bitstream properties can be modified via Patch as described below.
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
 
-To change the bundle of a bitstream:
-
-`curl --data '[ { "op": "replace", "path": "/bundleName", "value": "TEST"}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/core/bitstreams/${uuid}`
-
-For example, starting with the following bitstream data:
-```json
-{
-  "name" : "test.zip",
-  "bundleName" : "ORIGINAL",
-  "sequenceId" : 5
-}
-```
-the change bundleName operation will result in:
-```json
-{
-  "name" : "test.zip",
-  "bundleName" : "TEST",
-  "sequenceId" : 5
-}
-```
-
 To change the sequenceId:
 
 `curl --data '[ { "op": "replace", "path": "/sequenceId", "value": 2}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/core/bitstreams/${uuid}`
@@ -90,7 +69,7 @@ Status codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist
-* 422 Unprocessable Entity - if the bundleName was removed, or the sequenceId already exists for the item containing the bitstream
+* 422 Unprocessable Entity - if the sequenceId already exists for the item containing the bitstream
 
 ## Linked entities
 ### Format
@@ -106,17 +85,17 @@ Update the bitstream format of the bitstream
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreamformats/6'
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreamformats/6'
 ```
 
 The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
 
 Error codes:
 * 200 OK - if the operation succeeded
+* 400 Bad Request - if the bitstream format doesn't exist, or if the amount of bitstream formats is not 1
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist
-* 422 Unprocessable Entity - if the bitstream format doesn't exist, or if the amount of bitstream formats is not 1
 
 ### Content
 **/api/core/bitstreams/<:uuid>/content**
