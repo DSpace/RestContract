@@ -8,14 +8,15 @@ To track a page view, make an HTTP POST request to this endpoint.
 
 The sections below describe the parameters for a page view request. All other information about the interaction can be derived from the request itself.
 
-### Parameters
+### Required Parameters
 - `targetId`: The id of the object the user viewed
 - `targetType`: The type of the object the user viewed
 
 ### Status codes:
 
 - `201` Created: if the operation succeeded
-- `422` Unprocessable Entity: if any of the parameters are missing or invalid.
+- `400` Bad request: if any of the parameters are missing or invalid.
+- `422` Unprocessable Entity: if the parameters don't refer to a valid object.
 
 ### Example item page view:
 
@@ -34,8 +35,12 @@ To track a search, make an HTTP POST request to this endpoint.
 
 The sections below describe the parameters for a search request. All other information about the interaction can be derived from the request itself.
 
-### Parameters
+### Required Parameters
 - `query`: The discovery search string.
+- `page`: An object that describes the pagination status. For more information take a look at the [pagination documentation](README.md#Pagination).
+- `sort`: An object that describes the sort status. For more information take a look at the [pagination documentation](README.md#Pagination).
+
+### Optional Parameters
 - `dsoType`: Limits the search to a specific DSpace Object type. Possible values:
      - `all`
      - `item`
@@ -44,13 +49,11 @@ The sections below describe the parameters for a search request. All other infor
 - `scope`: The UUID of a specific DSpace container (site, community or collection) to which the search has to be limited.
 - `configuration`: The name of a Discovery configuration that was used by the search.
 - `appliedFilters`: An array of search filters  used to filter the result set. For more information take a look at the [search documentation](search-endpoint.md#matching-dspace-objects-search-results).
-- `page`: An object that describes the pagination status. For more information take a look at the [pagination documentation](README.md#Pagination).
-- `sort`: An object that describes the sort status. For more information take a look at the [pagination documentation](README.md#Pagination).
 
 ### Status codes:
 
 - `201` Created: if the operation succeeded
-- `422` Unprocessable Entity: if any of the parameters are missing or invalid.
+- `400` Bad request: if any of the required parameters are missing, or any parameters are invalid.
 
 ### Example search:
 
