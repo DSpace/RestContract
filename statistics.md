@@ -1,12 +1,12 @@
 # Collecting user interactions
 [Back to the list of all defined endpoints](endpoints.md)
 
-## Views endpoint
-**POST /api/statistics/views**
+## View events endpoint
+**POST /api/statistics/viewevents**
 
 To track a page view, make an HTTP POST request to this endpoint.
 
-The sections below describe the parameters for a page view request. All other information about the interaction can be derived from the request itself.
+The sections below describe the parameters for a page view event. All other information about the interaction can be derived from the request itself.
 
 ### Required Parameters
 - `targetId`: The id of the object the user viewed
@@ -28,12 +28,12 @@ The sections below describe the parameters for a page view request. All other in
 ```
 
 
-## Search Endpoint
-**POST /api/statistics/searches**
+## Search events Endpoint
+**POST /api/statistics/searchevents**
 
 To track a search, make an HTTP POST request to this endpoint.
 
-The sections below describe the parameters for a search request. All other information about the interaction can be derived from the request itself.
+The sections below describe the parameters for a search event. All other information about the interaction can be derived from the request itself.
 
 ### Required Parameters
 - `query`: The discovery search string.
