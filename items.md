@@ -329,7 +329,6 @@ Status codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
-* 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapped Collections
 **GET /api/core/items/<:uuid>/mappedCollections**
