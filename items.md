@@ -283,6 +283,31 @@ This endpoint is relevant to:
 * Retrieve only the bitstreams from a given bundle from an item (e.g. only the thumbnails)
 * Retrieve or update the order of the bitstreams in a bundle
 
+**POST /api/core/items/<:uuid>/bundles**
+
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
+
+Creating a new bundle in an item would use JSON similar to the example below:
+
+```json
+{
+  "name": "ORIGINAL",
+  "metadata": {}
+}
+```
+
+It returns the created bundle.
+
+If a bundle with the given doesn't exist yet in the item, it will be created
+
+Status codes:
+* 201 Created - if the operation succeed
+* 400 Bad Request - if the bundle name already exists in the item
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+* 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
+
 ### Owning Collection
 **/api/core/items/<:uuid>/owningCollection**
 
