@@ -249,11 +249,11 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
       "primarybitstream" : {
         "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
-      "orderedbitstreams" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      "bitstreams" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
       },
       "self" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb"
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
       }
     }
   },
@@ -267,11 +267,11 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
       "primarybitstream" : {
         "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
-      "orderedbitstreams" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      "bitstreams" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
       },
       "self" : {
-        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb"
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
       }
     }
   }

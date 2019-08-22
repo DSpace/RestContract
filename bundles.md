@@ -22,10 +22,10 @@ Provide detailed information about a specific bundle. A sample JSON response doc
       "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
     },
     "bitstreams" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
     },
     "self" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundle/d3599177-0408-403b-9f8d-d300edd79edb"
+      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
     }
   },
    "_embedded" : {
@@ -137,7 +137,7 @@ Exposed links:
 
 Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
-It returns the bitstreams within this bundle. See the [bitstream endpoint](bitstreams.md#Single Bitstream) for more info
+It returns the bitstreams within this bundle. See the [bitstream endpoint](bitstreams.md#Single-Bitstream) for more info
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
