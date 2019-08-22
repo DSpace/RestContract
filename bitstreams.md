@@ -63,6 +63,13 @@ Error codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist
 
+Keep in mind that there's a change to dc.format in the API related to bitstream formats:
+* setting the bitstream format to a known type removes dc.format in the bitstream metadata
+* setting the bitstream format to unknown also removes dc.format in the bitstream metadata
+* setting dc.format in the metadata will never implicitly change the bitstream format to unknown
+* setting dc.format in the metadata will require a separate REST call, it's not part of the /format request
+* setting dc.format will currently not be denied when the format is known, but it's not recommended to set it as such
+
 ### Content
 **/api/core/bitstreams/<:uuid>/content**
 
