@@ -37,40 +37,6 @@ Exposed links:
 
 Bitstream metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
 
-Additional bitstream properties can be modified via Patch as described below.
-
-### Replace
-The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
-
-To change the sequenceId:
-
-`curl --data '[ { "op": "replace", "path": "/sequenceId", "value": 2}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/core/bitstreams/${uuid}`
-
-
-For example, starting with the following bitstream data:
-```json
-{
-  "name" : "test.zip",
-  "bundleName" : "ORIGINAL",
-  "sequenceId" : 5
-}
-```
-the change sequenceId operation will result in:
-```json
-{
-  "name" : "test.zip",
-  "bundleName" : "ORIGINAL",
-  "sequenceId" : 2
-}
-```
-
-Status codes:
-* 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
-* 404 Not found - if the bitstream doesn't exist
-* 422 Unprocessable Entity - if the sequenceId already exists for the item containing the bitstream
-
 ## Linked entities
 ### Format
 **GET /api/core/bitstreams/<:uuid>/format**
