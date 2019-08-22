@@ -39,11 +39,36 @@ Bitstream metadata can be modified as described in [Modifying metadata via Patch
 
 ## Linked entities
 ### Format
-**/api/core/bitstreams/<:uuid>/format**
+**GET /api/core/bitstreams/<:uuid>/format**
 
 Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
 
 It returns the format of the bitstream
+
+**PUT /api/core/bitstreams/<:uuid>/format**
+
+Update the bitstream format of the bitstream
+
+Sample CURL command:
+```
+curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreamformats/6'
+```
+
+The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
+
+Error codes:
+* 200 OK - if the operation succeeded
+* 400 Bad Request - if the bitstream format doesn't exist, or if the amount of bitstream formats is not 1
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the bitstream doesn't exist
+
+Keep in mind that there's a change to dc.format in the API related to bitstream formats:
+* setting the bitstream format to a known type removes dc.format in the bitstream metadata
+* setting the bitstream format to unknown also removes dc.format in the bitstream metadata
+* setting dc.format in the metadata will never implicitly change the bitstream format to unknown
+* setting dc.format in the metadata will require a separate REST call, it's not part of the /format request
+* setting dc.format will currently not be denied when the format is known, but it's not recommended to set it as such
 
 ### Content
 **/api/core/bitstreams/<:uuid>/content**
