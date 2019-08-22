@@ -179,7 +179,6 @@ curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/bundles/d359917
 The bitstream properties can contain:
 * The filename to be stored (optional)
 * metadata for the bitstream (optional)
-* sequenceId (optional, can be assigned if not used yet in the given item)
 
 It returns the created bitstream. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
