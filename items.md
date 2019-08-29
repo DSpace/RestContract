@@ -227,69 +227,86 @@ the discoverable operation will result in:
   "type": "item"
 ```
 ## Linked entities
-### Bitstreams
 
-**GET /api/core/items/<:uuid>/bitstreams**
+### Bundles
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bitstreams>
+**GET /api/core/items/<:uuid>/bundles**
 
-It returns the bitstreams within this item. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
 
-The supported parameters are:
-* page, size [see pagination](README.md#Pagination)
+It returns the bundles within this item. See the [bundle endpoint](bundles.md) for more info
 
-**POST /api/core/items/<:uuid>/bitstreams**
-
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bitstreams>
-
-Curl example:
-```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/items/2f4ec582-109e-4952-a94a-b7d7615a8c69/bitstreams' \
- -XPOST -H 'Content-Type: multipart/form-data' \
- -H 'Authorization: Bearer eyJhbGciOiJI...' \
- -F "file=@Downloads/test.html" \
- -F 'properties={ "name": "test.html", "metadata": { "dc.description": [ { "value": "example file", "language": null, "authority": null, "confidence": -1, "place": 0 } ]}, "bundleName": "ORIGINAL" };type=application/json'
-```
-
-* The item is determined using the ID in the URL
-* The file is uploaded using multipart/form-data
-* The metadata of the bitstream is included as a json property, and with layout, it looks like:
 ```json
 {
-  "name": "test.html",
-  "metadata": {
-    "dc.description": [
-      {
-        "value": "example file",
-        "language": null,
-        "authority": null,
-        "confidence": -1,
-        "place": 0
+  "bundles" : [
+  {
+    "uuid": "d3599177-0408-403b-9f8d-d300edd79edb",
+    "name": "ORIGINAL",
+    "handle": null,
+    "metadata": {},
+    "type": "bundle",
+    "_links" : {
+      "primarybitstream" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+      },
+      "bitstreams" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      },
+      "self" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
       }
-    ]
+    }
   },
-  "bundleName": "ORIGINAL"
+  {
+    "uuid": "d3599177-0408-403b-9f8d-d300edd79edb",
+    "name": "THUMBNAIL",
+    "handle": null,
+    "metadata": {},
+    "type": "bundle",
+    "_links" : {
+      "primarybitstream" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+      },
+      "bitstreams" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      },
+      "self" : {
+        "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+      }
+    }
+  }
+  ]
 }
 ```
-The bitstream properties can contain:
-* The filename to be stored (optional)
-* metadata for the bitstream (optional)
-* bundleName (mandatory)
-* sequenceId (optional, can be assigned if not used yet in the given item)
 
-It returns the created bitstream. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+This endpoint is relevant to:
+* Retrieve only the bitstreams from a given bundle from an item (e.g. only the thumbnails)
+* Retrieve or update the order of the bitstreams in a bundle
 
-The REST API can support Content-Length and Content-MD5 headers to verify integrity
+**POST /api/core/items/<:uuid>/bundles**
 
-If the bundle doesn't exist yet, it will be created
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/bundles>
+
+Creating a new bundle in an item would use JSON similar to the example below:
+
+```json
+{
+  "name": "ORIGINAL",
+  "metadata": {}
+}
+```
+
+It returns the created bundle.
+
+If a bundle with the given doesn't exist yet in the item, it will be created
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad Request - if the bundle name already exists in the item
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
-* 422 Unprocessable Entity - if the amount of files was not 1, or the bundleName was omitted
 
 ### Owning Collection
 **/api/core/items/<:uuid>/owningCollection**
@@ -312,7 +329,6 @@ Status codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
-* 422 Unprocessable Entity - if the collection doesn't exist or the data cannot be resolved to a collection
 
 ### Mapped Collections
 **GET /api/core/items/<:uuid>/mappedCollections**
