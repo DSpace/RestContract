@@ -6,7 +6,80 @@
 
 Provide access to the configured authorities. It returns the list of existent authorities.
 
-Example: to be provided
+Example:
+```json
+{
+  "_embedded": {
+    "authorities": [
+      {
+        "id": "srsc",
+        "name": "srsc",
+        "scrollable": false,
+        "hierarchical": true,
+        "type": "authority",
+        "_links": {
+          "entryValues": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues"
+          },
+          "entries": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entries"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc"
+          }
+        }
+      },
+      {
+        "id": "common_types",
+        "name": "common_types",
+        "scrollable": false,
+        "hierarchical": false,
+        "type": "authority",
+        "_links": {
+          "entryValues": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
+          },
+          "entries": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types"
+          }
+        }
+      },
+      {
+        "id": "common_iso_languages",
+        "name": "common_iso_languages",
+        "scrollable": false,
+        "hierarchical": false,
+        "type": "authority",
+        "_links": {
+          "entryValues": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entryValues"
+          },
+          "entries": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entries"
+          },
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 3,
+    "totalPages": 1,
+    "number": 0
+  }
+}
+```
 
 ## Single Authority
 **/api/integration/authorities/<:authority-name>**
