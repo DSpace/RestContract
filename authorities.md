@@ -107,7 +107,7 @@ It returns the entries managed by the authority eventually filtered, see below
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* metadata: the metadata that use the authority: mandatory
+* metadata: the metadata field for which the authority is used: mandatory
 * query: the terms, keywords or prefix to search: mandatory
 * parent: the key of the parent authority when searching in a hierarchical authority 
 * collection: the uuid of the collection where the item belong to
