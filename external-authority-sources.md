@@ -14,7 +14,6 @@ Example:
       {
         "id": "orcid",
         "name": "orcid",
-        "scrollable": false,
         "hierarchical": false,
         "type": "authority",
         "_links": {
@@ -32,7 +31,6 @@ Example:
       {
         "id": "ciencia",
         "name": "ciencia",
-        "scrollable": false,
         "hierarchical": false,
         "type": "authority",
         "_links": {
@@ -50,7 +48,6 @@ Example:
       {
         "id": "my_staff_db",
         "name": "my_staff_db",
-        "scrollable": false,
         "hierarchical": false,
         "type": "authority",
         "_links": {
@@ -89,7 +86,6 @@ Provide detailed information about a specific external source. The JSON response
 {
   "id": "orcid",
   "name": "orcid",
-  "scrollable": false,
   "hierarchical": false,
   "type": "authority"
 }
@@ -97,7 +93,7 @@ Provide detailed information about a specific external source. The JSON response
 
 Exposed links:
 * entries: the list of values managed by the external source
-* entryValues: To be removed, not functional?
+* entryValues: the endpoint to retrieve a single value
 
 ## Linked entities
 ### external source entries
@@ -122,7 +118,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "id": "Smith, Dean",
         "display": "Smith, Dean",
         "value": "Smith, Dean",
-        "otherInformation": {
+        "metadata": {
             "dc.identifier.orcid": "0000-0002-4271-0436",
             "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
             "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
@@ -132,10 +128,10 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "type": "externalSource",
         "_links": {
           "authority": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/authors/entries/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/authors/entryValues/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436"
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
           }
         }
       },
@@ -143,7 +139,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "id": "Smith, Charles",
         "display": "Smith, Charles",
         "value": "Smith, Charles",
-        "otherInformation": {
+        "metadata": {
             "dc.identifier.orcid": "0000-0003-3681-2038",
             "dc.identifier.uri": "https://orcid.org/0000-0003-3681-2038",
             "dc.contributor.other": "University of Mississippi: University, MS, US",
@@ -156,7 +152,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
             "href": "https://dspace7-internal.atmire.com/server/api/core/item/6fd90bf5-b84f-47b3-aaec-a55bde3a2a5a"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/externalSourceEntries/entries/0000-0003-3681-2038"
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues/0000-0003-3681-2038"
           }
         }
       }
@@ -166,17 +162,17 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
 ```
 
 ### single entry
-**GET /api/integration/externalsources/<:authority-name>/entries/<:entry-id>**
+**GET /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>**
 
-It returns the data from one entry in an external source 
+It returns the data from one entry in an external source
 
-sample for an external source /api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436 
+sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436 
 ```json
 {
   "id": "Smith, Dean",
   "display": "Smith, Dean",
   "value": "Smith, Dean",
-  "otherInformation": {
+  "metadata": {
       "dc.identifier.orcid": "0000-0002-4271-0436",
       "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
       "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
@@ -186,23 +182,23 @@ sample for an external source /api/integration/externalsources/externalSourceEnt
   "type": "externalSource",
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436"
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
     }
   }
 }
 ```
 
-**POST /api/integration/externalsources/<:authority-name>/entries/<:entry-id>/authority**
+**POST /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>/authority**
 
 It creates an authority records from the external source 
 
-sample for an external source /api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436/authority
+sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/authority
 ```json
 {
   "id": "Smith, Dean",
   "display": "Smith, Dean",
   "value": "Smith, Dean",
-  "otherInformation": {
+  "metadata": {
       "dc.identifier.orcid": "0000-0002-4271-0436",
       "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
       "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
@@ -215,17 +211,17 @@ sample for an external source /api/integration/externalsources/externalSourceEnt
       "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/authors/entries/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
     },
     "externalsource": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436"
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
     }
   }
 }
 ```
 
-**POST /api/integration/externalsources/<:authority-name>/entries/<:entry-id>/entity**
+**POST /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>/entity**
 
 It creates an entity from the external source 
 
-sample for an external source /api/integration/externalsources/externalSourceEntries/entries/0000-0002-4271-0436/entity
+sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/entity
 ```json
 {
   "uuid": "83914286-666b-450c-9c42-0d276b30c2f2",
