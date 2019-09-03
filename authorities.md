@@ -233,7 +233,7 @@ sample for an authority /server/api/integration/authorities/common_types/entryVa
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authoritieses/common_types/entryValues"
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
     }
   },
   "page": {
