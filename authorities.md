@@ -97,13 +97,13 @@ Provide detailed information about a specific authority. The JSON response docum
 
 Exposed links:
 * entries: the list of values managed by the authority
-* entryValues: To be removed, not functional?
+* entryValues: the endpoint to retrieve a single value
 
 ## Linked entities
 ### authority entries
 **/api/integration/authorities/<:authority-name>/entries**
 
-It returns the entries managed by the authority eventually filtered, see below 
+It returns the filtered entries managed by the authority, see below 
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -206,6 +206,39 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
   "page": {
     "size": 2,
     "totalElements": 2,
+    "totalPages": 1,
+    "number": 0
+  }
+}
+```
+
+### authority entry values
+**/api/integration/authorities/<:authority-name>/entryValues/<:entry-id>**
+
+It returns the filtered entries managed by the authority, see below 
+
+sample for an authority /server/api/integration/authorities/common_types/entryValues/Book 
+```json
+{
+  "_embedded": {
+    "authorityEntries": [
+      {
+        "id": "Book",
+        "display": "Book",
+        "value": "Book",
+        "otherInformation": {},
+        "type": "authority"
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/authoritieses/common_types/entryValues"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 1,
     "totalPages": 1,
     "number": 0
   }
