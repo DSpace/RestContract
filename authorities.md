@@ -215,7 +215,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
 ### authority entry values
 **/api/integration/authorities/<:authority-name>/entryValues/<:entry-id>**
 
-It returns the filtered entries managed by the authority, see below 
+It returns the data from one entry in an authority
 
 sample for an authority /server/api/integration/authorities/common_types/entryValues/Book 
 ```json
