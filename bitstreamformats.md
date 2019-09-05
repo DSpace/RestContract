@@ -30,8 +30,8 @@ The JSON should be similar to:
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 
 ## Single Bitstream Format
 **GET /api/core/bitstreamformats/<:id>**
