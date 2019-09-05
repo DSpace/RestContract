@@ -8,6 +8,7 @@
 * [/api/core/items](items.md)
 * [/api/core/bitstreams](bitstreams.md)
 * [/api/core/bitstreamformats](bitstreamformats.md)
+* [/api/core/bundles](bundles.md)
 * /api/core/sites
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
@@ -32,6 +33,7 @@
 
 ## Endpoints Under Development/Discussion
 * /api/authz/resourcepolicies
+* [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
 ## Other Endpoints (raw list)
