@@ -190,6 +190,9 @@ Status codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the bundle doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
+* 422 Unprocessable Entity - if there was no file
+
+This endpoint only accepts one file at a time. If multiple files are uploaded, any extra files will be ignored.
 
 ## Ordering bitstreams
 
