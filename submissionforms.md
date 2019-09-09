@@ -30,6 +30,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatory": false,
           "repeatable": true,
           "hints": "Enter the names of the authors of this item.",
+          "nameVariants": true,
           "selectableMetadata": [
             {
               "metadata": "dc.contributor.author",
@@ -53,6 +54,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "repeatable": false,
           "mandatoryMessage": "You must enter a main title for this item.",
           "hints": "Enter the main title of the item.",
+          "nameVariants": false,
           "selectableMetadata": [
             {
               "metadata": "dc.title",
@@ -75,6 +77,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatory": false,
           "repeatable": true,
           "hints": "If the item has any identification numbers or codes associated with\n                        it, please enter the types and the actual numbers or codes.",
+          "nameVariants": false,
           "selectableMetadata": [
             {
               "metadata": "dc.identifier.issn",
@@ -127,6 +130,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatory": false,
           "repeatable": true,
           "hints": "Select the type(s) of content of the item. To select more than one value in the list, you may\n                        have to hold down the \"CTRL\" or \"Shift\" key.",
+          "nameVariants": false,
           "selectableMetadata": [
             {
               "metadata": "dc.type",
@@ -147,6 +151,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatory": false,
           "repeatable": false,
           "hints": "Select the journal related to this volume.",
+          "nameVariants": false,
           "selectableRelationship": {
             "relationship": "isVolumeOfJournal",
             "filter": "creativework.publisher:somepublishername",
@@ -166,6 +171,7 @@ Provide detailed information about a specific input-form. The JSON response docu
           "repeatable": true,
           "mandatoryMessage": "At least one author (plain text or relationship) is required",
           "hints": "Add an author",
+          "nameVariants": true,
           "selectableRelationship": {
             "relationship": "isAuthorOfPublication",
             "filter": null,
@@ -198,3 +204,6 @@ The visibility attributes can assume one of the following values
 * *null* : editable
 * *readonly*: visible but not alterable
 * *hidden*: not visible
+
+The *nameVariants* attribute can be used in combination with authority control or entities.
+It defines whether an alternative name can be used for the stored relation with the authority (in the metadata) or entity (in the relationship).
