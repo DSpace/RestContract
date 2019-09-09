@@ -357,6 +357,12 @@ A sample CURL command would be:
 curl -D - -XDELETE 'https://dspace7-entities.atmire.com/rest/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
 ```
 
+An optional parameter for populating virtual metadata in related items can be included (only authorized by admins): `populateVirtualMetadata`. This can contain values:
+* all: both items are verified, and the virtual metadata in both items is migrated to actual metadata
+* left: only the left item will receive actual metadata
+* right: only the right item will receive actual metadata
+
+Return codes:
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
