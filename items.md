@@ -412,6 +412,11 @@ It embeds all relationships where either the left or the right item matches the 
 
 Delete an item.
 
+An optional parameter for populating virtual metadata in related items can be included (only authorized by admins): `populateVirtualMetadata`. This can contain values:
+* all (all relationships are verified, and the virtual metadata in all related items is migrated to actual metadata)
+* relationship type ID: only relationship types with the given ID(s) are migrated. The `populateVirtualMetadata` can be included multiple times to support multiple IDs
+
+Return codes:
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
