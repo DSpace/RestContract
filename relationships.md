@@ -357,7 +357,7 @@ A sample CURL command would be:
 curl -D - -XDELETE 'https://dspace7-entities.atmire.com/rest/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
 ```
 
-An optional parameter for populating virtual metadata in related items can be included (only authorized by admins): `populateVirtualMetadata`. This can contain values:
+An optional parameter for populating virtual metadata in related items can be included (only authorized if the user has permissions to update the metadata of the given items): `populateVirtualMetadata`. This can contain values:
 * all: both items are verified, and the virtual metadata in both items is migrated to actual metadata
 * left: only the left item will receive actual metadata
 * right: only the right item will receive actual metadata
