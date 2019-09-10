@@ -6,7 +6,7 @@ DSpace has functionality to import and export items in CSV and ZIP format, to st
 ## Scripts Endpoint
 **GET /api/system/scripts**
 
-This endpoint will list all (REST supported) scripts defined in `dspace/config/launcher.xml`. The script entries are embedded with a name, description and a self link. By "REST supported" we mean all scripts that have been updated to allow invocations from the REST API.
+This endpoint will list all (REST supported) scripts defined in `dspace/config/spring/rest/scripts.xml`. The script entries are embedded with a name, description and a self link. By "REST supported" we mean all scripts that have been updated to allow invocations from the REST API.
 
 The JSON response document is as follows
 ```json
@@ -17,14 +17,11 @@ The JSON response document is as follows
       	"totalPages": 3,
       	"number": 0
   },
-  "sort" : {
-    "by" : "name",
-    "order" : "asc"
-  },
   "_embedded" : {
     "scripts" : [
       {
         "name" : "import",
+        "type" : "script",
         "description" : "Import items into DSpace",
         "_links" : {
           "self" : {
@@ -34,6 +31,7 @@ The JSON response document is as follows
       },
       {
         "name" : "metadata-import",
+        "type" : "script",
         "description" : "Import metadata after batch editing",
         "_links" : {
           "self" : {
@@ -58,80 +56,81 @@ The JSON response document is as follows
 {
    "name" : "import",
    "description" : "Import items into DSpace",
+   "type" : "script",
    "parameters" : [
     {
-      "name" : "a",
+      "name" : "-a",
       "description" : "add items to DSpace",
       "type" : "boolean"
     },
     {
-      "name" : "b",
+      "name" : "-b",
       "description" : "add items to DSpace via Biblio-Transformation-Engine (BTE)",
       "type" : "boolean"
     },
     {
-      "name" : "c",
+      "name" : "-c",
       "description" : "destination collection(s) database ID",
       "type" : "id"
     },
     {
-      "name" : "d",
+      "name" : "-d",
       "description" : "delete items listed in mapfile",
       "type" : "file"
     },
     {
-      "name" : "e",
+      "name" : "-e",
       "description" : "email of eperson doing importing",
       "type" : "string"
     },
     {
-      "name" : "i",
+      "name" : "-i",
       "description" : "input type in case of BTE import",
       "type" : "string"
     },
     {
-      "name" : "n",
+      "name" : "-n",
       "description" : "if sending submissions through the workflow, send notification emails",
       "type" : "boolean"
     },
     {
-      "name" : "p",
+      "name" : "-p",
       "description" : "apply template",
       "type" : "string"
     },
     {
-      "name" : "q",
+      "name" : "-q",
       "description" : "don't display metadata",
       "type" : "boolean"
     },
     {
-      "name" : "m",
+      "name" : "-m",
       "description" : "mapfile items in mapfile",
       "type" : "file"
     },
     {
-      "name" : "r",
+      "name" : "-r",
       "description" : "replace items in mapfile",
       "type" : "boolean"
     },
     {
-      "name" : "R",
+      "name" : "-R",
       "description" : "resume a failed import (add only)",
       "type" : "boolean"
     },
     {
-      "name" : "t",
+      "name" : "-t",
       "description" : "test run - do not actually import items",
       "type" : "boolean"
     },
     {
-      "name" : "w",
+      "name" : "-w",
       "description" : "send submission through collection's workflow",
       "type" : "boolean"
     },
     {
-      "name" : "z",
-      "description" : "zip file containig the import",
+      "name" : "-z",
+      "description" : "zip file containing the import",
       "type" : "file"
     }
    ]

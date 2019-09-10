@@ -16,65 +16,65 @@ This endpoint will return a list of all created processes. The JSON response doc
       	"totalPages": 3,
       	"number": 0
   },
-  "sort" : {
-    "by" : "script",
-    "order" : "asc"
-  },
   "_embedded" : {
     "processes" : [
       {
-        "processId" : "000003f1-a850-49de-af03-997272d834c9",
+        "processId" : "1",
         "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
         "startTime" : "2017-11-22T10:29:11Z",
-        "status" : "RUNNING",
+        "endTime" : null,
+        "scriptName": "metadata-import",
+        "processStatus" : "RUNNING",
         "parameters" : [
           {
-            "name" : "c",
+            "name" : "-c",
             "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
           },
           {
-            "name" : "n",
+            "name" : "-n",
             "value" : "true"
           }
         ],
         "_links" : {
           "self" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9"
+            "href" : "/api/system/processes/1"
           },
           "script" : {
             "href" : "/api/system/scripts/import"
           },
           "output" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/output"
+            "href" : "/api/system/processes/1/output"
           },
           "files" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files"
+            "href" : "/api/system/processes/1/files"
           }
         }
       },
       {
-        "processId" : "d3007ea8-1cc0-481d-914a-06720a200edf",
+        "processId" : "2",
         "userId" : "c7d85e7f-63e5-4bc0-96cb-5d80be48d62e",
         "startTime" : "2017-11-20T10:29:11Z",
-        "status" : "FAILED",
+        "endTime" : "2017-11-20T10:30:11Z",
+        "scriptName": "metadata-import",
+        "processStatus" : "FAILED",
         "parameters" : [
           {
-            "name" : "i",
+            "name" : "-i",
             "value" : "c70893a6-ac55-48c7-9447-61e026b62929"
           }
         ],
         "_links" : {
           "self" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9"
+            "href" : "/api/system/processes/2"
           },
           "script" : {
             "href" : "/api/system/scripts/metadata-export"
           },
           "output" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/output"
+            "href" : "/api/system/processes/2/output"
           },
           "files" : {
-            "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files"
+            "href" : "/api/system/processes/2/files"
           }
         }
       }
@@ -89,10 +89,6 @@ Optional parameters to query the processes:
 * `status`: The status of the script
 * `parameter.xyz`: Which parameters have been used, and their value
 
-Sort options should support:
-* `script`
-* `startTime`
-
 ## Execution Details
 **GET /api/system/processes/<:process-id>**
 
@@ -100,32 +96,34 @@ This endpoint will return details on the requested process.
 
 ```json
 {
-  "processId" : "000003f1-a850-49de-af03-997272d834c9",
+  "processId" : "3",
   "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
   "startTime" : "2017-11-22T10:29:11Z",
-  "status" : "RUNNING",
+  "endTime" : null,              
+  "scriptName": "metadata-import",
+  "processStatus" : "RUNNING",
   "parameters" : [
     {
-    "name" : "c",
+    "name" : "-c",
     "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
     },
     {
-    "name" : "n",
+    "name" : "-n",
     "value" : "true"
     }
   ],
   "_links" : {
     "self" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9"
+      "href" : "/api/system/processes/3"
     },
     "script" : {
       "href" : "/api/system/scripts/import"
     },
     "output" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/output"
+      "href" : "/api/system/processes/3/output"
     },
     "files" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files"
+      "href" : "/api/system/processes/3/files"
     }
   }
 }
@@ -146,16 +144,16 @@ This endpoint will let an administrator download an output file created by a pro
 
 ```json
 {
-  "processId" : "000003f1-a850-49de-af03-997272d834c9",
+  "processId" : "4",
   "_links" : {
     "self" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files"
+      "href" : "/api/system/processes/4/files"
     },
     "mapfile" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files/mapfile"
+      "href" : "/api/system/processes/4/files/mapfile"
     },
     "zipfile" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/files/zipfile"
+      "href" : "/api/system/processes/4/files/zipfile"
     }
   }
 }
@@ -172,9 +170,15 @@ Required parameters:
 ## Execution Deletion
 **DELETE /api/system/processes/<:process-id>**
 
-The will delete the process and associated files and output.
+The will delete the process and associated files and output. Only processes with states of `SCHEDULED`, `COMPLETED` and `FAILED` can be deleted. 
 
-Support for stopping a process can be included in a future version
+Support for stopping a process can be included in a future version.
+
+Status codes:
+* 201 Created - if the operation succeed
+* 404 Not found - if the processes doesn't exist
+* 422 Unprocessable Entity - If the process is running
+
 
 ### Script Invocation
 **POST /api/system/scripts/<:script-name>/processes**
@@ -185,31 +189,31 @@ Delayed scripts using a  `startTime` can be supported in a future version.
 
 ```json
 {
-  "processId" : "000003f1-a850-49de-af03-997272d834c9",
+  "processId" : "5",
   "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
-  "status" : "RUNNING",
+  "processStatus" : "RUNNING",
   "parameters" : [
     {
-    "name" : "c",
+    "name" : "-c",
     "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
     },
     {
-    "name" : "n",
+    "name" : "-n",
     "value" : "true"
     }
   ],
   "_links" : {
     "self" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9"
+      "href" : "/api/system/processes/5"
     },
     "script" : {
       "href" : "/api/system/scripts/import"
     },
     "output" : {
-      "href" : "/api/system/processes/000003f1-a850-49de-af03-997272d834c9/output"
+      "href" : "/api/system/processes/5/output"
     }
   }
 }
 ```
 
-The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`.
+The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`.
