@@ -217,3 +217,7 @@ Delayed scripts using a  `startTime` can be supported in a future version.
 ```
 
 The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`.
+
+Status codes:
+* 202 Accepted - if the task is accepted for processing
+* 404 Not found - if the script doesn't exist

@@ -20,6 +20,7 @@ The JSON response document is as follows
   "_embedded" : {
     "scripts" : [
       {
+        "id" : "import",
         "name" : "import",
         "type" : "script",
         "description" : "Import items into DSpace",
@@ -54,6 +55,7 @@ This endpoint will return information on all the parameters that are required to
 The JSON response document is as follows
 ```json
 {
+   "id" : "import",
    "name" : "import",
    "description" : "Import items into DSpace",
    "type" : "script",
