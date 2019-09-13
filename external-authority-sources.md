@@ -115,7 +115,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
   "_embedded": {
     "externalSourceEntries": [
       {
-        "id": "Smith, Dean",
+        "id": "0000-0002-4271-0436",
         "display": "Smith, Dean",
         "value": "Smith, Dean",
         "metadata": {
@@ -136,7 +136,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         }
       },
       {
-        "id": "Smith, Charles",
+        "id": "0000-0003-3681-2038",
         "display": "Smith, Charles",
         "value": "Smith, Charles",
         "metadata": {
@@ -169,7 +169,7 @@ It returns the data from one entry in an external source
 sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436 
 ```json
 {
-  "id": "Smith, Dean",
+  "id": "0000-0002-4271-0436",
   "display": "Smith, Dean",
   "value": "Smith, Dean",
   "metadata": {
@@ -195,7 +195,7 @@ It creates an authority records from the external source
 sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/authority
 ```json
 {
-  "id": "Smith, Dean",
+  "id": "0000-0002-4271-0436",
   "display": "Smith, Dean",
   "value": "Smith, Dean",
   "metadata": {
