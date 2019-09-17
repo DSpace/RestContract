@@ -361,7 +361,7 @@ An optional parameter for populating virtual metadata in related items can be in
 * all: both items are verified, and the virtual metadata in both items is migrated to actual metadata
 * left: only the left item will receive actual metadata
 * right: only the right item will receive actual metadata
-* default: the behavior will be retrieved from a configuration parameter
+* configured: the behavior will be retrieved from a configuration parameter
 * not specified: no virtual metadata is expanded to actual metadata
 
 Return codes:
