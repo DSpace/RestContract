@@ -416,7 +416,7 @@ An optional parameter for populating virtual metadata in related items can be in
 * all (all relationships are verified, and the virtual metadata in all related items is migrated to actual metadata)
 * relationship type ID: only relationship types with the given ID(s) are migrated. The `populateVirtualMetadata` can be included multiple times to support multiple IDs
 * configured: the behavior will be retrieved from a configuration parameter
-* not specified: no virtual metadata is expanded to actual metadata
+* _not specified_: no virtual metadata is expanded to actual metadata
 
 Return codes:
 * 204 No content - if the operation succeed
