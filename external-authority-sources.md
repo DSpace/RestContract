@@ -103,13 +103,12 @@ It returns the filtered entries managed by the externally, see below
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination) if supported by the external source
-* metadata: the metadata field for which the authority is used: mandatory
 * query: the terms, keywords or prefix to search: mandatory
 * parent: the key of the parent authority when searching in a hierarchical authority 
 
 It returns the entries in the external source matching the query
 
-sample for an external source /server/api/integration/externalsources/orcid/entries?metadata=dc.contributor.author&query=Smith&size=2 
+sample for an external source /server/api/integration/externalsources/orcid/entries?query=Smith&size=2 
 ```json
 {
   "_embedded": {
@@ -190,9 +189,12 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
 
 **POST /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>/authority**
 
-It creates an authority records from the external source 
+It creates an authority records from the external source.
 
-sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/authority
+The supported parameters are:
+* metadata: the metadata field for which the authority should be created: mandatory
+
+sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/authority?metadata=dc.contributor.author
 ```json
 {
   "id": "0000-0002-4271-0436",
@@ -219,7 +221,10 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
 
 **POST /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>/entity**
 
-It creates an entity from the external source 
+It creates an entity from the external source
+
+The supported parameters are:
+* owningCollection: the collection used to create the item: mandatory
 
 sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436/entity
 ```json
