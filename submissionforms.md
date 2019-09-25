@@ -17,65 +17,174 @@ Example: to be provided
 Provide detailed information about a specific input-form. The JSON response document is as follow
 ```json
 {
-  "name": "traditional-page1",
-  "type": "submissionform",
-  "fields": [
-  		{
-  			label: "Authors",
-  			repeatable: false,
-  			mandatory: null,
-  			hints: "Enter the names of the authors of this item.",
-  			input: {
-  				type: "name"
-  			},
-  			selectableMetadata: [
-  				{
-  					"metadata": "dc.contributor.author",
-  					"authority": "SolrAuthorAuthority",
-  					"closed": false
-  				}
-  			],
-  			scope: null, 
-  			visibility: {
-  				main: null,
-  				other: null
-  			},
-  			typeBind: [],
-  			languageCodes: []
-  		},
-  		{
-			label: "Title",
-  			repeatable: false,
-  			mandatory: "You must enter a main title for this item.",
-  			hints: "Enter the main title of the item.",
-  			input: {
-  				type: "onebox",
-  				regex: null
-  			},
-  			selectableMetadata: [
-  				{
-  					metadata: "dc.title"
-  				}
-  			],
-  			scope: null, 
-  			visibility: {
-  				main: null,
-  				other: null
-  			},
-  			typeBind: [],
-  			languageCodes: [
-  				{
-  					display: "English",
-  					code: "en_US"
-				},
-				{
-  					display: "Italian",
-  					code: "it_IT"
-				}
-  			]
-  		},
-  		...
-  ]
+  "id": "traditionalpageone",
+  "name": "traditionalpageone",
+  "rows": [
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "name"
+          },
+          "label": "Authors",
+          "mandatory": false,
+          "repeatable": true,
+          "hints": "Enter the names of the authors of this item.",
+          "selectableMetadata": [
+            {
+              "metadata": "dc.contributor.author",
+              "label": null,
+              "authority": null,
+              "closed": null
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "onebox"
+          },
+          "label": "Title",
+          "mandatory": true,
+          "repeatable": false,
+          "mandatoryMessage": "You must enter a main title for this item.",
+          "hints": "Enter the main title of the item.",
+          "selectableMetadata": [
+            {
+              "metadata": "dc.title",
+              "label": null,
+              "authority": null,
+              "closed": null
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "onebox"
+          },
+          "label": "Identifiers",
+          "mandatory": false,
+          "repeatable": true,
+          "hints": "If the item has any identification numbers or codes associated with\n                        it, please enter the types and the actual numbers or codes.",
+          "selectableMetadata": [
+            {
+              "metadata": "dc.identifier.issn",
+              "label": "ISSN",
+              "authority": null,
+              "closed": null
+            },
+            {
+              "metadata": "dc.identifier.other",
+              "label": "Other",
+              "authority": null,
+              "closed": null
+            },
+            {
+              "metadata": "dc.identifier.ismn",
+              "label": "ISMN",
+              "authority": null,
+              "closed": null
+            },
+            {
+              "metadata": "dc.identifier.govdoc",
+              "label": "Gov't Doc #",
+              "authority": null,
+              "closed": null
+            },
+            {
+              "metadata": "dc.identifier.uri",
+              "label": "URI",
+              "authority": null,
+              "closed": null
+            },
+            {
+              "metadata": "dc.identifier.isbn",
+              "label": "ISBN",
+              "authority": null,
+              "closed": null
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "dropdown"
+          },
+          "label": "Type",
+          "mandatory": false,
+          "repeatable": true,
+          "hints": "Select the type(s) of content of the item. To select more than one value in the list, you may\n                        have to hold down the \"CTRL\" or \"Shift\" key.",
+          "selectableMetadata": [
+            {
+              "metadata": "dc.type",
+              "label": null,
+              "authority": "common_types",
+              "closed": false
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": { },
+          "label": "Journal",
+          "mandatory": false,
+          "repeatable": false,
+          "hints": "Select the journal related to this volume.",
+          "selectableRelationship": {
+            "relationship": "isVolumeOfJournal",
+            "filter": "creativework.publisher:somepublishername",
+            "search-configuration": "periodicalConfiguration"
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "input": {
+            "type": "name"
+          },
+          "label": "Author",
+          "mandatory": true,
+          "repeatable": true,
+          "mandatoryMessage": "At least one author (plain text or relationship) is required",
+          "hints": "Add an author",
+          "selectableRelationship": {
+            "relationship": "isAuthorOfPublication",
+            "filter": null,
+            "search-configuration": "personConfiguration"
+          },
+          "selectableMetadata": [
+            {
+              "metadata": "dc.contributor.author",
+              "label": null,
+              "authority": null,
+              "closed": false
+            }
+          ],
+          "languageCodes": []
+        }
+      ]
+    }
+  ],
+  "type": "submissionform"
 }
 
 ```

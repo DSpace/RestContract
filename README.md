@@ -11,7 +11,6 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
   * DSpace 7 Angular UI work is occurring at https://github.com/DSpace/dspace-angular
 ***
 
-
 ## Community resources
 
 * [REST Code Branch](https://github.com/DSpace/DSpace/tree/master/dspace-spring-rest)
@@ -27,58 +26,101 @@ Repository to discuss the new REST API contract for DSpace 7. The code to implem
 
 ## Use of the HTTP Verbs and HTTP Response CODE
 
+_Please note that within this section, all terms used are meant to reference RESTful terminology and/or terminology borrowed from [Spring Data REST](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#repository-resources)._ 
+ - `resource` - anything that can be identified via a URI. It's a representation of an underlying object. e.g. `/items/123-456-789` is a resource that represents a single DSpace Item object. For additional examples see https://restful-api-design.readthedocs.io/en/latest/resources.html
+ - `object` - we use this term to mean the actual object *behind* the resource. In other words, a resource is a JSON representation of some object (often a DSpaceObject) stored in the database. This is also sometimes called an "entity" in REST terminology.
+ - `collection` - a group of resources e.g. `/items` is a collection of all DSpace Item resources. This is also sometimes called a "collection resource" (e.g. in Spring Data REST)
+     - Be aware that the term "collection" in this document has nothing to do with a DSpace Collection object. In REST terminology, a "collection" endpoint is simply an endpoint that returns multiple resources (objects), often in a paginated list.
+     - NOTE: Spring Data REST likes to use the phrase "item resources" for individual resources within a "collection resource". We've simplified this terminology and just call them "resources" and "collections", respectively.
+ - `association` - a link or relationship between two resources. This is also sometimes called an "association resource" (e.g. in Spring Data REST).
+ 
 ### On collection of resources endpoints
-- POST
-Adds a new element to the collection.
 
-- GET
-Returns the first page of the resources in the collection
+This type of endpoint interacts with a group (or collection) of resources (objects). For example: `/api/core/items` references *all* Items in the system.
+
+- `POST`:
+Creates a new resource (object) and adds it to the group. Any required data (i.e. attributes) for the new object _must be included_ in the request body. An empty request body is not allowed, unless you are creating an empty object with no attributes.
+    - Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is required to create the object._
+        ```
+        # For example, creating a Collection *requires* linking it to a parent Community
+        # In this scenario, we must have a querystring param to specify the parent Community UUID
+        curl -i -X POST "http://localhost:8080/rest/api/core/collections?parent=<:communityUUID>" 
+            -H "Content-Type:application/json" 
+            -d "[{ ... attributes of new Collection ... }]"
+        ```
+
+- `GET`:
+Returns the first page of the resources in the group (or collection). See [Pagination](#pagination) section. 
 
 ### On single resource endpoints
-- GET
-Returns a single entity.
 
-- HEAD
-Returns whether the item resource is available.
+This type of endpoint interacts with a single, existing resource (object). For example: `/api/core/items/<:uuid>` references a single Item resource.
 
-- PUT
-Replaces the state of the target resource with the supplied request body.
+- `GET`:
+Returns a single resource.
 
-- PATCH
-Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) see the [General rules for the Patch operation](patch.md) for more details.
+- `HEAD`:
+Returns whether the target resource is available.
 
-- DELETE
-Deletes the resource exposed.
+- `PUT`:
+Replaces the state of the target resource with the supplied request body. This updates the object (via full replacement). The updated information _must be included_ in the request body. An empty request body is not allowed, unless you are updating the object to be an empty object (with no attributes). Querystring parameters are not allowed, as `PUT` requests should always be performed on an existing object.
 
-### On sub-path of a single resource endpoint)
-- GET
-Returns the state of the association resource
+- `PATCH`
+Similar to PUT but partially updating the resources state. We adhere to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902).
+See [General rules for the Patch operation](patch.md) and [Modifying metadata via Patch](metadata-patch.md) for more details.
 
-- PUT
-Binds the resource pointed to by the given URI(s) to the resource. Return 400 Bad Request if multiple URIs were given for a to-one-association
+- `DELETE`:
+Deletes the target resource (object).
 
-- POST
-Only supported for collection associations. Adds a new element to the collection.
+### On sub-path of a single resource endpoint (associations)
 
-- DELETE
-Unbinds the association. Return 405 Method Not Allowed if the association is non-optional
+This type of endpoint interacts with (one or more) resources that are *associated with* a single resource. For that reason, it is sometimes called an "association" endpoint. For example: `/api/core/items/<:uuid>/mappedCollections` references all Collections that are mapped to a single Item resource.
+
+- `GET`:
+Returns the state of the association (for the current resource)
+
+- `PUT`:
+Binds (or links) the resource(s) pointed to by the given URI(s) to the current resource. This replaces any existing links with the URIs passed in the request. Resource URIs to link must be sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships). Return `400 Bad Request` if multiple URIs were given for a *-to-one-association
+   ```
+   # Example curl command to replace Item-to-Collection mappings with the two listed
+   # Notice the two Collection URIs are separated by a newline (\n)
+   curl -i -X PUT "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+        -H "Content-Type:text/uri-list" 
+        -d "http://localhost:8080/rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \n http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"
+   ```
+
+- `POST`:
+Only supported for collection associations (i.e. associations allowing for multiple resources). Adds/Links a new resource (via its URI) to the association. Resource URIs to link must sent in the body of the request using `Content-Type:text/uri-list`. [See example from Spring Data REST Relationships](https://www.baeldung.com/spring-data-rest-relationships)
+   ```
+   # Example curl command to add a *new* Collection mapping for an Item
+   curl -i -X POST "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+        -H "Content-Type:text/uri-list" 
+        -d "http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"
+   ```
+
+- `DELETE`:
+Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the association is required (and cannot be removed).  DELETE requests should _not_ contain a request body as some clients do not support sending a DELETE request with a body. Therefore, if an individual association needs to be removed, the DELETE request should reference that individual association in the URI of the request. For example:
+   ```
+   # Example curl command to delete a *single* Collection mapping for an Item
+   curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections/<:collection_uuid>"
+   
+   # Example curl command to delete *ALL* Collection mappings for an item (unsupported at this time)
+   curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections
+   ```
+
 
 ### Error codes
 400 Bad Request - if multiple URIs were given for a to-one-association
 
-401 Unauthenticated - if the request require a logged-in user
+401 Unauthorized (Unauthenticated) - if the request requires a logged-in user
 
-403 Unauthorized - if the requester doesn't have enough privilege to execute the request
+403 Forbidden - if the requester doesn't have enough privilege to execute the request
 
-404 Not found - if the requested entity or collection doesn't exists
+404 Not Found - if the requested entity or collection doesn't exist
 
-405 Method Not Allowed - if the methods is not implemented or a DELETE methods is called on a non-optional association
+405 Method Not Allowed - if the methods is not implemented or a DELETE method is called on a non-optional association
 
-## On the Naming of Endpoints
-Names should be descriptive but reasonably short.  Form compounds by concatenating words, all lower case, without punctuation.  For example:  `metadatafields`, not `metadata-fields` or `MetadataFields`.
-
-## HATEOAS & HAL
-The new REST DSpace API supports the HATEOAS paradigm and adopt the HAL format to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
+422 Unprocessable Entity - if the request is well-formed, but is invalid based on the given data. For example, if you attempt to create a resource under a non-existent parent resource, or attempt to update a read-only (non-editable) field.
 
 ## Pagination
 Each endpoints that expose a collection of resources, including sub-paths for embedded or linked collections (aka list of items of a collection, etc.), MUST implement the pagination with the following common behavior
@@ -133,6 +175,40 @@ In the case that the request parameters lead to a page outside the result set an
 ### Error Code
 400 Bad Request. If an unknown sort criteria is requested or a not valid ordering keyword is specified
 
+## Design Principles
+In the creation of the REST API, we've tried to follow a few specific design principles listed below
+
+### On the Naming of Endpoints
+Names should be descriptive but reasonably short. Use nouns instead of verbs. Form compounds by concatenating words, all lower case, without punctuation.  For example: `metadatafields`, not `metadata-fields` or `MetadataFields`.
+
+### HATEOAS & HAL
+The REST API supports the [HATEOAS paradigm](https://restfulapi.net/hateoas/) and adopt the [HAL format](http://stateless.co/hal_specification.html) to express links and embedded resources. Links are always expected to be **absolute** to make easier the implementation of "follow link" methods on the REST client side.
+
+Because the API responds using the HAL Format, we distribute it with an [embedded HAL Browser provided by Spring](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser).
+
+### Statelessness
+The REST API is considered [stateless](https://restfulapi.net/statelessness/), meaning the client is responsible for keeping state information and sending it to the server when it is needed. Because the server stores no state (or session) information internally, it will return a "token" (which contains any state information) to the client. The client must then return that token in *each subsequent request*, if the client wants that state information preserved.
+
+#### JSON Web Tokens
+[JSON Web Tokens (JWT)](https://jwt.io/) are used to store state (and authentication) information between requests. This is the format of token the REST API returns to the client. The client should return the JWT to the server in subsequent requests.
+
+### ALPS - Application Level Profile Semantics
+**While not yet implemented**, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exist from the root of API.
+A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. See the ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
+
+### Spring Technology alignment
+While it's an implementation detail, the new REST API uses many Spring REST (Java) libraries, including:
+
+* [Spring Boot](https://spring.io/projects/spring-boot) - Provides base Spring webapp functionality
+* [Spring MVC](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/web.html#mvc) - Provides Spring web framework
+* [Spring REST](https://spring.io/understanding/REST) - Provides base REST tools/libraries for building REST APIs on Spring MVC
+* [Spring HATEOAS](https://spring.io/projects/spring-hateoas) - Provides tools to create REST APIs following HATEOAS principles, and returning HAL Format responses.
+* [Spring Data REST](https://spring.io/projects/spring-data-rest) (_alignment_) - We do **NOT** directly use Spring Data REST at this time (because of incompatibilities with our data layer). However, we have chosen to _align our implementation with Spring Data REST_ where possible.
+* [Spring Data REST Hal Browser](https://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser) - Provides the out-of-the-box HAL Browser you see when accessing our REST API
+* [Spring REST Docs](https://spring.io/projects/spring-restdocs) - Provides tools to help document REST APIs in Spring MVC
+
+Each of these libraries were chosen based on design principles above, and based on the fact that much of our underlying Java APIs use or align with Spring technologies.
+
 ## ETags & conditional headers
 The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a way to tag resources. This can prevent clients from overriding each other while also making it possible to reduce unnecessary calls. It is expected that all the returned document have an ETag
 
@@ -142,10 +218,6 @@ The ETag value can be also used with DELETE, POST, PUT and PATCH with the *If-Ma
 
 Finally, when possible the If-Modified-Since header in GET request should be respected. If the resource has been not modified since the value of the Header the API should return an
 HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response, such header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.  
-
-## ALPS - Application Level Profile Semantics
-It is expected support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exists from the root of API.
-A profile link as defined in RFC 6906 (<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. The ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
 
 ## Endpoints
 At the root of the api a HAL document MUST list all the primary endpoints allowing full discovery of the current version of the API.

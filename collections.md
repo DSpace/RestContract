@@ -17,43 +17,70 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
   "name": "Collection of Sample Items",
   "handle": "10673/2",
-  "metadata": [
-    {
-      "key": "dc.provenance",
-      "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
-      "language": null
-    },
-    {
-      "key": "dc.rights.license",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "dc.description",
-      "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
-      "language": null
-    },
-    {
-      "key": "dc.description.abstract",
-      "value": "This collection contains sample items.",
-      "language": null
-    },
-    {
-      "key": "dc.description.tableofcontents",
-      "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
-      "language": null
-    },
-    {
-      "key": "dc.rights",
-      "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
-      "language": null
-    },
-    {
-      "key": "dc.title",
-      "value": "Collection of Sample Items",
-      "language": null
-    }
-  ],
+  "metadata": {
+    "dc.description": [
+      {
+        "value": "<p>This is a <em>DSpace Collection</em> which contains sample DSpace Items.</p>\r\n<p><strong>Collections in DSpace may only contain Items.</strong></p>\r\n<p>This particular Collection has its own logo (the <a href=\"http://www.opensource.org/\">Open Source Initiative</a> logo).</p>\r\n<p>This introductory text is editable by System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection).</p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description.abstract": [
+      {
+        "value": "This collection contains sample items.",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description.tableofcontents": [
+      {
+        "value": "<p>This is the <strong>news</strong> section for this Collection. System Administrators, Community Administrators (of a parent Community) or Collection Administrators (of this Collection) can edit this News field.</p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.provenance": [
+      {
+        "value": "This field is for private provenance information. It is only visible to Administrative users and is not displayed in the user interface by default.",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      },
+      {
+        "value": "Second provenance value",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.rights": [
+      {
+        "value": "<p><em>If this collection had a specific copyright statement, it would be placed here.</em></p>",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.rights.license": [
+      {
+        "value": "",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.title": [
+      {
+        "value": "Collection of Sample Items",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
   "type": "collection"
 }
 ```
@@ -62,6 +89,10 @@ Exposed links:
 * logo: link to the bitstream that represent the collection's logo
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
+
+## Patch operations
+
+Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
 
 ## Linked entities
 ### Logo
@@ -99,7 +130,7 @@ The json representation is as follow
         "id": 2844,
         "name": null,
         "groupUUID": "11cc35e5-a11d-4b64-b5b9-0052a5d15509",
-        "action": "DEFAULT\_BITSTREAM\_READ",
+        "action": "DEFAULT_BITSTREAM_READ",
         "type": "resourcePolicy",
         "_links": {
           "self": {
@@ -124,3 +155,233 @@ The json representation is as follow
 ```
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
+### Mapped items
+**/api/core/collections/<:uuid>/mappedItems**
+
+This is a Read-only endpoint to retrieve the mapped items for this collection.
+
+Item mappings can only be modified via [/items/[uuid]/mappedCollections](items.md#mapped-collections)
+
+The request will return a list of items 
+
+### Collection Harvesting Settings
+**GET /api/core/collections/<:uuid>/harvester**
+
+It returns the harvesting settings for the current collection. This information is only accessible for users with collection administration permissions
+
+The harvest_type can be any of:
+* NONE
+* METADATA_ONLY
+* METADATA_AND_REF
+* METADATA_AND_BITSTREAMS
+
+The harvest_status can be any of:
+* READY
+* BUSY
+* QUEUED
+* OAI_ERROR
+* UNKNOWN_ERROR
+
+The metadata_config_id can be one of the ids from the [Harvester Metadata Endpoint](harvestermetadata.md)
+
+A sample json response:
+
+```json
+{
+  "harvest_type": "METADATA_ONLY",
+  "oai_source": "https://dspace.mit.edu/oai/request",
+  "oai_set_id": "col_1721.1_114174",
+  "harvest_message": null,
+  "metadata_config_id": "dc",
+  "harvest_status": "READY",
+  "harvest_start_time": null,
+  "last_harvested": null,
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
+    }
+  },
+  "_embedded": {
+    "metadata_configs": {
+      "configs": [
+        {
+           "id": "dc",
+           "label": "Simple Dublin Core",
+           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+        },
+        {
+           "id": "qdc",
+           "label": "Qualified Dublin Core",
+           "nameSpace": "http://purl.org/dc/terms/"
+        },
+        {
+           "id": "dim",
+           "label": "DSpace Intermediate Metadata",
+           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+        }
+      ],
+      "_links": {
+        "self": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
+        }
+      }
+    }
+    
+  }
+}
+```
+
+A sample json response if no harvesting is enabled:
+
+```json
+{
+  "harvest_type": "NONE",
+  "oai_source": null,
+  "oai_set_id": null,
+  "harvest_message": null,
+  "metadata_config_id": null,
+  "harvest_status": null,
+  "harvest_start_time": null,
+  "last_harvested": null,
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
+    }
+  },
+  "_embedded": {
+    "harvestermetadata": {
+      "configs": [
+        {
+           "id": "dc",
+           "label": "Simple Dublin Core",
+           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+        },
+        {
+           "id": "qdc",
+           "label": "Qualified Dublin Core",
+           "nameSpace": "http://purl.org/dc/terms/"
+        },
+        {
+           "id": "dim",
+           "label": "DSpace Intermediate Metadata",
+           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+        }
+      ],
+      "_links": {
+        "self": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
+        }
+      }
+    }
+    
+  }
+}
+```
+
+### Changing Collection Harvesting Settings
+**PUT /api/core/collections/<:uuid>/harvester**
+
+It updates the harvesting settings for the current collection. This information can only be updated by users with collection administration permissions
+
+A sample json request:
+
+```json
+{
+  "harvest_type": "METADATA_ONLY",
+  "oai_source": "https://dspace.mit.edu/oai/request",
+  "oai_set_id": "col_1721.1_114174",
+  "metadata_config_id": "dc"
+}
+```
+
+A sample json request to disable harvesting is:
+
+```json
+{
+  "harvest_type": "NONE"
+}
+```
+
+Status codes:
+* 200 OK - if the operation succeeded
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 Unprocessable Entity - if the harvest_type or the metadata_config_id is not valid
+
+## Creating a collection
+
+**POST /api/core/collections?parent=<:communityUUID>**
+
+To create a collection, perform as post with the JSON below when logged in as admin.
+
+```json
+{
+  "name": "test collection",
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "test collection",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  }
+}
+```
+
+ Error messages:
+ * 200 OK - if the operation succeed
+ * 401 Forbidden - if you are not authenticated
+ * 403 Unauthorized - if you are not logged in with sufficient permissions
+ * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
+
+## Updating a collection
+
+**PUT /api/core/collections/<:uuid>**
+
+Provide updated metadata information about a specific collection, when the update is completed the updated object will be returned. The JSON to update can be found below.
+
+```json
+{
+  "uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
+  "name": "test collection",
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "test collection",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ],
+    "dc.description": [
+      {
+        "value": "Test description",
+        "language": null,
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  }
+}
+```  
+
+Error messages:
+* 200 OK - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
+
+## Deleting a collection
+
+**DELETE /api/core/collections/<:uuid>**
+
+Delete a collection.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the community doesn't exist (or was already deleted)

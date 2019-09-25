@@ -46,3 +46,44 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 The supported parameters are:
 * **(mandatory)** schema, the prefix of the metadata schema (i.e. "dc", "dcterms", "eperson, etc.)
 * page, size [see pagination](README.md#Pagination)
+
+## Creating a Metadata Field
+
+**POST /api/core/metadatafields?schemaId=<:schemaId>**
+
+To create a metadata field, perform a post with the JSON below when logged in as admin.
+
+```
+{
+  "element": "contributor",
+  "qualifier": "tester",
+  "scopeNote": "An agent which provided illustrations for the resource",
+  "type": "metadatafield"
+}
+```
+
+## Updating a Metadata Field
+
+**PUT /api/core/metadatafields/<:id>**
+
+Provide updated information about a specific metadata field, when the update is completed the updated object will be returned. The JSON to update can be found below.
+```
+{
+  "id": 7,
+  "element": "coverageUpdated",
+  "qualifier": "spatialUpdated",
+  "scopeNote": null,
+  "type": "metadatafield"
+}
+```  
+
+## Deleting a Metadata Field
+
+**DELETE /api/core/metadatafields/<:id>**
+
+Delete a metadata field.
+
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the metadata field doesn't exist (or was already deleted)
