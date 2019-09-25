@@ -116,6 +116,80 @@ Return information about the license template in use by the collection. The json
 * custom (**READ-ONLY**): can be true or false. True means that a custom license has been set for the collection otherwise the site license template is used and returned in the text attribute
 * text: contains the textual value of the license template to use for submission in the collection
 
+### Item template
+#### Retrieve Item template
+**GET /api/core/collections/<:uuid>/itemtemplate**
+
+Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate>
+
+It returns the item representing the item template of this collection. [See the item endpoint for more info](items.md#Single Item)
+
+#### Create Item template
+**POST /api/core/collections/<:uuid>/itemtemplate**
+
+To be used on a collection without a item template.
+The metadata is included in JSON
+
+```json
+{
+  "metadata": {
+    "dc.type": [
+      {
+        "value": "Journal Article",
+        "language": "en",
+        "authority": null,
+        "confidence": -1
+      }
+    ]
+  },
+  "inArchive": false,
+  "discoverable": false,
+  "withdrawn": false,
+  "type": "item"
+}
+```
+
+* The collection is determined using the ID in the URL
+* The metadata is uploaded using JSON
+* The properties inArchive, discoverable, withdrawn can be omitted or false, but not true
+
+It returns the created item. [See the item endpoint for more info](items.md#Single Item)
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422 Unprocessable Entity - if inArchive, discoverable, withdrawn was set to true, or if the collection already contains a itemtemplate
+
+#### Replace Item template
+**PATCH /api/core/collections/<:uuid>/itemtemplate**
+
+Item metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
+To be used on a collection with an item template
+
+#### Delete Item template
+**DELETE /api/core/collections/<:uuid>/itemtemplate**
+
+To be used on a collection with an item template
+
+Curl example:
+```
+curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate' \
+ -XDELETE \
+ -H 'Authorization: Bearer eyJhbGciOiJI...'
+```
+
+* The collection is determined using the ID in the URL
+
+Status codes:
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422: if the collection didn't contain an item template
+
 ### Default Access Conditions
 **/api/core/collections/<:uuid>/defaultAccessConditions**
 
