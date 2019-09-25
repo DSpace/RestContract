@@ -101,7 +101,7 @@ Collection metadata can be modified as described in [Modifying metadata via Patc
 
 Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo>
 
-[It returns the bitstream representing the logo of this collection. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+It returns the bitstream representing the logo of this collection. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
 #### Create Logo
 **POST /api/core/collections/<:uuid>/logo**
