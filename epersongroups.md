@@ -44,7 +44,13 @@
       },
       "_links": {
         "self": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
+        },
+        "subgroups": {
           "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+        },
+        "epersons": {
+          "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
         }
       },
       "page": {
@@ -348,14 +354,6 @@ Return codes:
 * 404 Not found - if the parent group doesn't exist
 * 422 Unprocessable Entity - if the child group doesn't exist
 * 422 Unprocessable Entity - if the specified eperson doesn't exist
-
-## Search
-**GET /api/eperson/groups/search/byMetadata?query=<:name>**
-
-This supports a basic search in the metadata.
-It will search in:
-* UUID (exact match)
-* group name
 
 ## Search
 **GET /api/eperson/groups/search/byMetadata?query=<:name>**
