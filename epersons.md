@@ -187,6 +187,9 @@ It will search in:
 A HAL link to retrieve the eperson groups of an eperson is included.
 This will return a pageable list of the groups this person is a direct member of
 
+> TODO: A solution to retrieve direct and indirect groups of an eperson is also required.
+> This would use GroupService.allMemberGroupsSet() and is used e.g. when viewing an EPerson as an admin
+
 ## Search
 **GET /api/eperson/epersons/search/byMetadata?query=<:name>**
 
