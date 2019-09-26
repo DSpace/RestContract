@@ -180,44 +180,6 @@ Status codes:
 * 422 Unprocessable Entity - If the process is running
 
 
-### Script Invocation
-**POST /api/system/scripts/<:script-name>/processes**
+## Script Invocation
 
-POST requests to this endpoint will start the corresponding script with the provided parameters. All parameter values should be provided in the body that has to use the `multipart/form-data` content type. Once the upload is complete and the script was started successfully, this endpoint will return details on the scripts execution
-
-Delayed scripts using a  `startTime` can be supported in a future version.
-
-```json
-{
-  "processId" : "5",
-  "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
-  "processStatus" : "RUNNING",
-  "parameters" : [
-    {
-    "name" : "-c",
-    "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
-    },
-    {
-    "name" : "-n",
-    "value" : "true"
-    }
-  ],
-  "_links" : {
-    "self" : {
-      "href" : "/api/system/processes/5"
-    },
-    "script" : {
-      "href" : "/api/system/scripts/import"
-    },
-    "output" : {
-      "href" : "/api/system/processes/5/output"
-    }
-  }
-}
-```
-
-The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`.
-
-Status codes:
-* 202 Accepted - if the task is accepted for processing
-* 404 Not found - if the script doesn't exist
+See the [scripts endpoint](scripts-endpoint.md#script-invocation) for details on how to start a script
