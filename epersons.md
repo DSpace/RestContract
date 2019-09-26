@@ -143,7 +143,7 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
         "value": "John",
         "language": null,
         "authority": "",
-        "confidence": -1,
+        "confidence": -1
       }
     ],
     "eperson.lastname": [
@@ -151,7 +151,7 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
         "value": "Doe",
         "language": null,
         "authority": "",
-        "confidence": -1,
+        "confidence": -1
       }
     ]
   },
