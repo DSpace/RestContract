@@ -13,30 +13,37 @@
   "uuid": "028dcbb8-0da2-4122-a0ea-254be49ca107",
   "name": "user@institution.edu",
   "handle": null,
-  "metadata": [
-    {
-      "key": "eperson.firstname",
-      "value": "John",
-      "language": null
-    },
-    {
-      "key": "eperson.lastname",
-      "value": "Doe",
-      "language": null
-    },
-    {
-      "key": "eperson.phone",
-      "value": "",
-      "language": null
-    },
-    {
-      "key": "eperson.language",
-      "value": "en",
-      "language": null
-    }
-  ],
+  "metadata": {
+      "eperson.firstname": [
+        {
+          "value": "John",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.language": [
+        {
+          "value": "en",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.lastname": [
+        {
+          "value": "Doe",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ]
+  },
   "netid": null,
-  "lastActive": null,
+  "lastActive": "2019-09-25T15:59:28.000+0000",
   "canLogIn": true,
   "email": "user@institution.edu",
   "requireCertificate": false,
@@ -45,6 +52,9 @@
   "_links": {
     "self": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+    },
+    "groups": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107/groups"
     }
   }
 }
@@ -127,16 +137,24 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
 ```json
 {
   "name": "user@institution.edu",
-  "metadata": [
-    {
-      "key": "eperson.firstname",
-      "value": "John"
-    },
-    {
-      "key": "eperson.lastname",
-      "value": "Doe"
-    }
-  ],
+  "metadata": {
+    "eperson.firstname": [
+      {
+        "value": "John",
+        "language": null,
+        "authority": "",
+        "confidence": -1,
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "Doe",
+        "language": null,
+        "authority": "",
+        "confidence": -1,
+      }
+    ]
+  },
   "canLogIn": true,
   "email": "user@institution.edu",
   "requireCertificate": false,
@@ -144,3 +162,37 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
   "type": "eperson"
 }
 ```
+
+## Linked entities
+### Groups
+**GET /api/eperson/epersons/<:uuid>/groups**
+
+A HAL link to retrieve the eperson groups of an eperson is included.
+This will return a pageable list of the groups this person is a direct member of
+
+## Search
+**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* first name
+* last name
+* email address
+
+## Linked entities
+### Groups
+**GET /api/eperson/epersons/<:uuid>/groups**
+
+A HAL link to retrieve the eperson groups of an eperson is included.
+This will return a pageable list of the groups this person is a direct member of
+
+## Search
+**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* first name
+* last name
+* email address

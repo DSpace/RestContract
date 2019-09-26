@@ -13,13 +13,17 @@
   "uuid": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
   "name": "Administrator",
   "handle": null,
-  "metadata": [
-    {
-      "key": "dc.title",
-      "value": "Administrator",
-      "language": null
-    }
-  ],
+  "metadata": {
+    "dc.title": [
+      {
+        "value": "Administrator",
+        "language": null,
+        "authority": "",
+        "confidence": -1,
+        "place": 0
+      }
+    ]
+  },
   "permanent": true,
   "type": "group",
   "_links": {
@@ -62,12 +66,16 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
 
 ```json
 {
-  "metadata": [
-    {
-      "key": "dc.title",
-      "value": "New Group 1"
-    }
-  ]
+  "metadata": {
+      "dc.title": [
+        {
+          "value": "New Group 1",
+          "language": null,
+          "authority": "",
+          "confidence": -1
+        }
+      ]
+  }
 }
 ```
 
@@ -94,13 +102,17 @@ Samples:
           "uuid": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
           "name": "Administrator",
           "handle": null,
-          "metadata": [
-            {
-              "key": "dc.title",
-              "value": "Administrator",
-              "language": null
-            }
-          ],
+          "metadata": {
+              "dc.title": [
+                {
+                  "value": "Administrator",
+                  "language": null,
+                  "authority": "",
+                  "confidence": -1,
+                  "place": 0
+                }
+              ]
+          },
           "permanent": true,
           "type": "group",
           "_links": {
@@ -227,27 +239,39 @@ Samples:
           "uuid": "a6086b34-3918-45b7-8ddd-9329a702a26a",
           "name": "atmirenv@gmail.com",
           "handle": null,
-          "metadata": [
-            {
-              "key": "eperson.firstname",
-              "value": "Atmire",
-              "language": null
-            },
-            {
-              "key": "eperson.lastname",
-              "value": "NV",
-              "language": null
-            },
-            {
-              "key": "eperson.language",
-              "value": "en",
-              "language": null
-            }
-          ],
+          "metadata": {
+            "eperson.firstname": [
+              {
+                "value": "John",
+                "language": null,
+                "authority": "",
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "eperson.language": [
+              {
+                "value": "en",
+                "language": null,
+                "authority": "",
+                "confidence": -1,
+                "place": 0
+              }
+            ],
+            "eperson.lastname": [
+              {
+                "value": "Doe",
+                "language": null,
+                "authority": "",
+                "confidence": -1,
+                "place": 0
+              }
+            ]
+          },
           "netid": null,
-          "lastActive": "2018-12-19T11:06:43.404+0000",
+          "lastActive": "2019-09-25T15:59:28.000+0000",
           "canLogIn": true,
-          "email": "atmirenv@gmail.com",
+          "email": "user@institution.edu",
           "requireCertificate": false,
           "selfRegistered": false,
           "groups": null,
@@ -324,3 +348,19 @@ Return codes:
 * 404 Not found - if the parent group doesn't exist
 * 422 Unprocessable Entity - if the child group doesn't exist
 * 422 Unprocessable Entity - if the specified eperson doesn't exist
+
+## Search
+**GET /api/eperson/groups/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* group name
+
+## Search
+**GET /api/eperson/groups/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* group name
