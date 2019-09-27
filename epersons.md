@@ -170,23 +170,6 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
 A HAL link to retrieve the eperson groups of an eperson is included.
 This will return a pageable list of the groups this person is a direct member of
 
-## Search
-**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
-
-This supports a basic search in the metadata.
-It will search in:
-* UUID (exact match)
-* first name
-* last name
-* email address
-
-## Linked entities
-### Groups
-**GET /api/eperson/epersons/<:uuid>/groups**
-
-A HAL link to retrieve the eperson groups of an eperson is included.
-This will return a pageable list of the groups this person is a direct member of
-
 > TODO: A solution to retrieve direct and indirect groups of an eperson is also required.
 > This would use GroupService.allMemberGroupsSet() and is used e.g. when viewing an EPerson as an admin
 
