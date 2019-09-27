@@ -64,7 +64,7 @@ Provide detailed information about a specific community. The JSON response docum
         "confidence": -1
       }
     ]
-  ],
+  },
   "type": "community"
 }
 ```
