@@ -18,9 +18,6 @@ Example:
         "hierarchical": true,
         "type": "authority",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entries"
           },
@@ -36,9 +33,6 @@ Example:
         "hierarchical": false,
         "type": "authority",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries"
           },
@@ -54,9 +48,6 @@ Example:
         "hierarchical": false,
         "type": "authority",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entries"
           },
@@ -97,7 +88,6 @@ Provide detailed information about a specific authority. The JSON response docum
 
 Exposed links:
 * entries: the list of values managed by the authority
-* entryValues: the endpoint to retrieve a single value
 
 ## Linked entities
 ### authority entries
@@ -126,21 +116,36 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "display": "Dataset",
         "value": "Dataset",
         "otherInformation": {},
-        "type": "authority"
+        "type": "authority",
+        "_links": {
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Dataset"
+          }
+        }
       },
       {
         "id": "Image, 3-D",
         "display": "Image, 3-D",
         "value": "Image, 3-D",
         "otherInformation": {},
-        "type": "authority"
+        "type": "authority",
+        "_links": {
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Image,%203-D"
+          }
+        }
       },
       {
         "id": "Book",
         "display": "Book",
         "value": "Book",
         "otherInformation": {},
-        "type": "authority"
+        "type": "authority",
+        "_links": {
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Book"
+          }
+        }
       }
     ]
   },
@@ -182,9 +187,12 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         },
         "type": "authority",
         "_links": {
-          "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/SCB1314": {
-            "href": "parent"
-          }
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/VR131402"
+          },
+          "parent": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/SCB1314"
+          },
         }
       },
       {
@@ -194,7 +202,12 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         "otherInformation": {
           "note": "Ämneskategorier för vetenskapliga publikationer"
         },
-        "type": "authority"
+        "type": "authority",
+        "_links": {
+          "self": {
+            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/ResearchSubjectCategories"
+          }
+		}
       }
     ]
   },
@@ -233,7 +246,7 @@ sample for an authority /server/api/integration/authorities/common_types/entryVa
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
+      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Book"
     }
   },
   "page": {
