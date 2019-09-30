@@ -207,7 +207,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
           "self": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/ResearchSubjectCategories"
           }
-		}
+        }
       }
     ]
   },
