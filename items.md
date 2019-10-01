@@ -412,6 +412,13 @@ It embeds all relationships where either the left or the right item matches the 
 
 Delete an item.
 
+An optional parameter for copying virtual metadata to actual metadata in the related items can be included (only authorized by admins): `copyVirtualMetadata`. This can contain values:
+* all (all relationships are verified, and the virtual metadata in all related items is migrated to actual metadata)
+* relationship type ID: only relationship types with the given ID(s) are migrated. The `copyVirtualMetadata` can be included multiple times to support multiple IDs
+* configured: the behavior will be retrieved from a configuration parameter
+* _not specified_: no virtual metadata is expanded to actual metadata
+
+Return codes:
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
