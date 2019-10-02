@@ -96,11 +96,93 @@ Collection metadata can be modified as described in [Modifying metadata via Patc
 
 ## Linked entities
 ### Logo
-**/api/core/collections/<:uuid>/logo**
+#### Retrieve Logo
+**GET /api/core/collections/<:uuid>/logo**
 
 Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo>
 
-[It returns the bitstream representing the logo of this collection. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+It returns the bitstream representing the logo of this collection. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+#### Create Logo
+**POST /api/core/collections/<:uuid>/logo**
+
+To be used on a collection without a logo
+
+Curl example:
+```
+curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+ -XPOST -H 'Content-Type: multipart/form-data' \
+ -H 'Authorization: Bearer eyJhbGciOiJI...' \
+ -F "file=@Downloads/test.png"
+```
+
+* The collection is determined using the ID in the URL
+* The file is uploaded using multipart/form-data
+
+It returns the created bitstream. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+The REST API can support Content-Length and Content-MD5 headers to verify integrity
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
+* 422 Unprocessable Entity - if there was no file, or if the collection already contains a logo
+
+This endpoint only accepts one file at a time. If multiple files are uploaded, any extra files will be ignored.
+
+#### Replace Logo
+**PUT /api/core/collections/<:uuid>/logo**
+
+To be used on a collection with a logo
+
+Curl example:
+```
+curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+ -XPUT -H 'Content-Type: multipart/form-data' \
+ -H 'Authorization: Bearer eyJhbGciOiJI...' \
+ -F "file=@Downloads/test.png"
+```
+
+* The collection is determined using the ID in the URL
+* The file is uploaded using multipart/form-data
+
+It returns the created bitstream. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+
+The REST API can support Content-Length and Content-MD5 headers to verify integrity
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
+* 422 Unprocessable Entity - if there was no file, or if the collection didn't contain a logo
+
+This endpoint only accepts one file at a time. If multiple files are uploaded, any extra files will be ignored.
+
+#### Delete Logo
+**DELETE /api/core/collections/<:uuid>/logo**
+
+To be used on a collection with a logo
+
+Curl example:
+```
+curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+ -XDELETE \
+ -H 'Authorization: Bearer eyJhbGciOiJI...'
+```
+
+* The collection is determined using the ID in the URL
+
+Status codes:
+* 204 No content - if the operation succeed
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 404 Not found - if the collection doesn't exist
+* 422: if the collection didn't contain a logo
 
 ### License
 **/api/core/collections/<:uuid>/license**
