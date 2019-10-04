@@ -15,11 +15,8 @@ Example:
         "id": "orcid",
         "name": "orcid",
         "hierarchical": false,
-        "type": "authority",
+        "type": "externalsource",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entries"
           },
@@ -32,11 +29,8 @@ Example:
         "id": "ciencia",
         "name": "ciencia",
         "hierarchical": false,
-        "type": "authority",
+        "type": "externalsource",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/ciencia/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/ciencia/entries"
           },
@@ -49,11 +43,8 @@ Example:
         "id": "my_staff_db",
         "name": "my_staff_db",
         "hierarchical": false,
-        "type": "authority",
+        "type": "externalsource",
         "_links": {
-          "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/my_staff_db/entryValues"
-          },
           "entries": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/my_staff_db/entries"
           },
@@ -87,13 +78,12 @@ Provide detailed information about a specific external source. The JSON response
   "id": "orcid",
   "name": "orcid",
   "hierarchical": false,
-  "type": "authority"
+  "type": "externalsource"
 }
 ```
 
 Exposed links:
 * entries: the list of values managed by the external source
-* entryValues: the endpoint to retrieve a single value
 
 ## Linked entities
 ### external source entries
@@ -118,13 +108,44 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "display": "Smith, Dean",
         "value": "Smith, Dean",
         "metadata": {
-            "dc.identifier.orcid": "0000-0002-4271-0436",
-            "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
-            "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
-            "person.familyName": "Smith",
-            "person.givenName": "Dean"
+            "dc.identifier.orcid": [
+              {
+                "value": "0000-0002-4271-0436",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "dc.identifier.uri": [
+              {
+                "value": "https://orcid.org/0000-0002-4271-0436",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "person.familyName": [
+              {
+                "value": "Smith",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "person.givenName": [
+              {
+                "value": "Dean",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ]
         },
-        "type": "externalSource",
+        "type": "externalSourceEntry",
         "_links": {
           "authority": {
             "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/authors/entryValues/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
@@ -139,13 +160,44 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "display": "Smith, Charles",
         "value": "Smith, Charles",
         "metadata": {
-            "dc.identifier.orcid": "0000-0003-3681-2038",
-            "dc.identifier.uri": "https://orcid.org/0000-0003-3681-2038",
-            "dc.contributor.other": "University of Mississippi: University, MS, US",
-            "person.familyName": "Smith",
-            "person.givenName": "Charles"
+            "dc.identifier.orcid": [
+              {
+                "value": "0000-0003-3681-2038",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "dc.identifier.uri": [
+              {
+                "value": "https://orcid.org/0000-0003-3681-2038",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "person.familyName": [
+              {
+                "value": "Smith",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ],
+            "person.givenName": [
+              {
+                "value": "Charles",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": -1
+              }
+            ]
         },
-        "type": "externalSource",
+        "type": "externalSourceEntry",
         "_links": {
           "entity": {
             "href": "https://dspace7-internal.atmire.com/server/api/core/item/6fd90bf5-b84f-47b3-aaec-a55bde3a2a5a"
@@ -171,14 +223,46 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
   "id": "0000-0002-4271-0436",
   "display": "Smith, Dean",
   "value": "Smith, Dean",
+  "type": "externalSourceEntry",
+  "externalSource": "orcid",
   "metadata": {
-      "dc.identifier.orcid": "0000-0002-4271-0436",
-      "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
-      "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
-      "person.familyName": "Smith",
-      "person.givenName": "Dean"
+    "dc.identifier.orcid": [
+      {
+        "value": "0000-0002-4271-0436",
+        "language": null,
+        "authority": null,
+        "confidence": 0,
+        "place": -1
+      }
+    ],
+    "dc.identifier.uri": [
+      {
+        "value": "https://orcid.org/0000-0002-4271-0436",
+        "language": null,
+        "authority": null,
+        "confidence": 0,
+        "place": -1
+      }
+    ],
+    "person.familyName": [
+      {
+        "value": "Smith",
+        "language": null,
+        "authority": null,
+        "confidence": 0,
+        "place": -1
+      }
+    ],
+    "person.givenName": [
+      {
+        "value": "Dean",
+        "language": null,
+        "authority": null,
+        "confidence": 0,
+        "place": -1
+      }
+    ]
   },
-  "type": "externalSource",
   "_links": {
     "self": {
       "href": "https://dspace7-internal.atmire.com/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
@@ -201,11 +285,42 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
   "display": "Smith, Dean",
   "value": "Smith, Dean",
   "metadata": {
-      "dc.identifier.orcid": "0000-0002-4271-0436",
-      "dc.identifier.uri": "https://orcid.org/0000-0002-4271-0436",
-      "dc.contributor.other": "University of Texas Southwestern Medical Center: TX, TX, US",
-      "person.familyName": "Smith",
-      "person.givenName": "Dean"
+    "dc.identifier.orcid": [
+    {
+      "value": "0000-0002-4271-0436",
+      "language": null,
+      "authority": null,
+      "confidence": -1,
+      "place": -1
+    }
+    ],
+    "dc.identifier.uri": [
+    {
+      "value": "https://orcid.org/0000-0002-4271-0436",
+      "language": null,
+      "authority": null,
+      "confidence": -1,
+      "place": -1
+    }
+    ],
+    "person.familyName": [
+    {
+      "value": "Smith",
+      "language": null,
+      "authority": null,
+      "confidence": -1,
+      "place": -1
+    }
+    ],
+    "person.givenName": [
+    {
+      "value": "Dean",
+      "language": null,
+      "authority": null,
+      "confidence": -1,
+      "place": -1
+    }
+    ]
   },
   "type": "authority",
   "_links": {
