@@ -150,7 +150,8 @@ Provide detailed information about a specific input-form. The JSON response docu
           "selectableRelationship": {
             "relationship": "isVolumeOfJournal",
             "filter": "creativework.publisher:somepublishername",
-            "search-configuration": "periodicalConfiguration"
+            "search-configuration": "periodicalConfiguration",
+            "nameVariants": false
           }
         }
       ]
@@ -169,7 +170,8 @@ Provide detailed information about a specific input-form. The JSON response docu
           "selectableRelationship": {
             "relationship": "isAuthorOfPublication",
             "filter": null,
-            "search-configuration": "personConfiguration"
+            "search-configuration": "personConfiguration",
+            "nameVariants": true
           },
           "selectableMetadata": [
             {
@@ -198,3 +200,6 @@ The visibility attributes can assume one of the following values
 * *null* : editable
 * *readonly*: visible but not alterable
 * *hidden*: not visible
+
+The *nameVariants* attribute can only be used in combination with entities.
+It defines whether an alternative name can be used for the stored relation with the entity (in the relationship).
