@@ -163,32 +163,14 @@ Status codes:
 * 422 Unprocessable Entity - if inArchive, discoverable, withdrawn was set to true, or if the collection already contains a itemtemplate
 
 #### Replace Item template
-**PATCH /api/core/collections/<:uuid>/itemtemplate**
+**PATCH /api/core/itemtemplates/<:uuid>**
 
-Item metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
-
-To be used on a collection with an item template
+See the [item template endpoint](itemtemplates.md#updating-item-template-metadata) for details
 
 #### Delete Item template
-**DELETE /api/core/collections/<:uuid>/itemtemplate**
+**DELETE /api/core/itemtemplates/<:uuid>**
 
-To be used on a collection with an item template
-
-Curl example:
-```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate' \
- -XDELETE \
- -H 'Authorization: Bearer eyJhbGciOiJI...'
-```
-
-* The collection is determined using the ID in the URL
-
-Status codes:
-* 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
-* 404 Not found - if the collection doesn't exist
-* 422: if the collection didn't contain an item template
+See the [item template endpoint](itemtemplates.md#delete-item-template) for details
 
 ### Default Access Conditions
 **/api/core/collections/<:uuid>/defaultAccessConditions**

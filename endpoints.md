@@ -6,6 +6,7 @@
 * [/api/core/communities](communities.md)
 * /api/core/collections
 * [/api/core/items](items.md)
+* [/api/core/itemtemplates](itemtemplates.md)
 * [/api/core/bitstreams](bitstreams.md)
 * [/api/core/bitstreamformats](bitstreamformats.md)
 * [/api/core/bundles](bundles.md)
