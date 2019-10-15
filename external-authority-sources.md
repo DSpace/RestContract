@@ -70,7 +70,7 @@ Example:
 ```
 
 ## Single Authority
-**/api/integration/externalsources/<:authority-name>**
+**/api/integration/externalsources/<:source-name>**
 
 Provide detailed information about a specific external source. The JSON response document is as follow
 ```json
@@ -87,7 +87,7 @@ Exposed links:
 
 ## Linked entities
 ### external source entries
-**/api/integration/externalsources/<:authority-name>/entries**
+**/api/integration/externalsources/<:source-name>/entries**
 
 It returns the filtered entries managed by the externally, see below 
 
@@ -213,7 +213,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
 ```
 
 ### single entry
-**GET /api/integration/externalsources/<:authority-name>/entryValues/<:entry-id>**
+**GET /api/integration/externalsources/<:source-name>/entryValues/<:entry-id>**
 
 It returns the data from one entry in an external source
 
