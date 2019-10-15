@@ -14,6 +14,7 @@ Example:
       {
         "id": "srsc",
         "name": "srsc",
+        "scrollable": false,
         "hierarchical": true,
         "type": "authority",
         "_links": {
@@ -31,6 +32,7 @@ Example:
       {
         "id": "common_types",
         "name": "common_types",
+        "scrollable": false,
         "hierarchical": false,
         "type": "authority",
         "_links": {
@@ -48,6 +50,7 @@ Example:
       {
         "id": "common_iso_languages",
         "name": "common_iso_languages",
+        "scrollable": false,
         "hierarchical": false,
         "type": "authority",
         "_links": {
@@ -86,6 +89,7 @@ Provide detailed information about a specific authority. The JSON response docum
 {
   "id": "srsc",
   "name": "srsc",
+  "scrollable": false,
   "hierarchical": true,
   "type": "authority"
 }
@@ -121,7 +125,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "id": "Dataset",
         "display": "Dataset",
         "value": "Dataset",
-        "metadata": {},
+        "otherInformation": {},
         "type": "authority",
         "_links": {
           "self": {
@@ -133,7 +137,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "id": "Image, 3-D",
         "display": "Image, 3-D",
         "value": "Image, 3-D",
-        "metadata": {},
+        "otherInformation": {},
         "type": "authority",
         "_links": {
           "self": {
@@ -145,7 +149,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "id": "Book",
         "display": "Book",
         "value": "Book",
-        "metadata": {},
+        "otherInformation": {},
         "type": "authority",
         "_links": {
           "self": {
@@ -187,7 +191,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         "id": "VR131402",
         "display": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work::Family research",
         "value": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work::Family research",
-        "metadata": {
+        "otherInformation": {
           "parent": "SCB1314",
           "note": "Familjeforskning"
         },
@@ -205,7 +209,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         "id": "ResearchSubjectCategories",
         "display": "Research Subject Categories",
         "value": "Research Subject Categories",
-        "metadata": {
+        "otherInformation": {
           "note": "Ämneskategorier för vetenskapliga publikationer"
         },
         "type": "authority",
