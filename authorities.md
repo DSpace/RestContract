@@ -19,13 +19,13 @@ Example:
         "type": "authority",
         "_links": {
           "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entryValues"
           },
           "entries": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entries"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entries"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc"
           }
         }
       },
@@ -37,13 +37,13 @@ Example:
         "type": "authority",
         "_links": {
           "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entryValues"
           },
           "entries": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entries"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types"
           }
         }
       },
@@ -55,13 +55,13 @@ Example:
         "type": "authority",
         "_links": {
           "entryValues": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entryValues"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_iso_languages/entryValues"
           },
           "entries": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages/entries"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_iso_languages/entries"
           },
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_iso_languages"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_iso_languages"
           }
         }
       }
@@ -69,7 +69,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities"
     }
   },
   "page": {
@@ -129,7 +129,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "type": "authority",
         "_links": {
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Dataset"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entryValues/Dataset"
           }
         }
       },
@@ -141,7 +141,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "type": "authority",
         "_links": {
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Image%2C%203-D"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entryValues/Image%2C%203-D"
           }
         }
       },
@@ -153,7 +153,7 @@ sample for an authority /server/api/integration/authorities/common_types/entries
         "type": "authority",
         "_links": {
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues/Book"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entryValues/Book"
           }
         }
       }
@@ -161,16 +161,16 @@ sample for an authority /server/api/integration/authorities/common_types/entries
   },
   "_links": {
     "first": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=0&size=2"
     },
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&size=2"
     },
     "next": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=1&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=1&size=2"
     },
     "last": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=10&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entries?metadata=dc.type&query=Book&page=10&size=2"
     }
   },
   "page": {
@@ -198,10 +198,10 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         "type": "authority",
         "_links": {
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/VR131402"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entryValues/VR131402"
           },
           "parent": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/SCB1314"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entryValues/SCB1314"
           }
         }
       },
@@ -215,7 +215,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
         "type": "authority",
         "_links": {
           "self": {
-            "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entryValues/ResearchSubjectCategories"
+            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entryValues/ResearchSubjectCategories"
           }
         }
       }
@@ -223,7 +223,7 @@ sample for a hierarchical authority  (srsc): /server/api/integration/authorities
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/srsc/entries?metadata=dc.subject&query=Research&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/srsc/entries?metadata=dc.subject&query=Research&size=2"
     }
   },
   "page": {
@@ -256,7 +256,7 @@ sample for an authority /server/api/integration/authorities/common_types/entryVa
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-internal.atmire.com/server/api/integration/authorities/common_types/entryValues"
+      "href": "https://dspace7.4science.cloud/server/api/integration/authorities/common_types/entryValues"
     }
   },
   "page": {
