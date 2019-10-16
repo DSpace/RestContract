@@ -114,7 +114,7 @@ The supported **Request Headers** are:
 * If-None-Match: not implemented yet. Support for cache control
 
 ## DELETE Method
-Delete a bitstream. Only works for normal bitstreams in an Item (bundle), to delete a community or collection logo it is needed to interact with the community or collection endpoints
+Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a community or collection logo
 
 * 204 No content - if the operation succeed
 * 401 Forbidden - if you are not authenticated
