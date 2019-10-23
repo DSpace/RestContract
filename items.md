@@ -123,19 +123,17 @@ Administrators can directly create an archived item (bypassing the workflow). Th
 ```
 
 ### Creating an archived item from an external source
-**POST /api/core/items**
+**POST /api/core/items?owningCollection=<:uuid>**
 
 Administrators can directly create an archived item (bypassing the workflow) from an external source. The content-type is uri-list.
 
-The URI-list should contain:
-* The owning collection
-* The [external entry value](external-authority-sources.md) whose metadata should be imported
+The URI-list should contain the [external entry value](external-authority-sources.md) whose metadata should be imported
 
 An example curl call:
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items \
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
  -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \n https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 
 ## Updating item metadata
