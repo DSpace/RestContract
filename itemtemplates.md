@@ -1,4 +1,4 @@
-# Items Endpoints
+# Collection Item Template Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
