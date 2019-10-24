@@ -136,6 +136,8 @@ An example curl call:
  --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 
+Only one external entry value should be present. If multiple external entry values are present, a 400 bad request will be thrown
+
 ## Updating item metadata
 
 **PUT /api/core/items/<:uuid>**
