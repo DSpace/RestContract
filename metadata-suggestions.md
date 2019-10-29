@@ -158,7 +158,6 @@ Exposed links:
 ## Linked entities
 ### External source entries
 **/api/integration/metadata-suggestions/<:suggestion-name>/entries**
-**/api/submission/workflowitems/<:id>/metadata-suggestions/<:suggestion-name>/entries**
 
 It returns the filtered entries managed by the external source, see below
 
