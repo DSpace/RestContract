@@ -22,9 +22,6 @@ The user can choose an external source to use for suggesting the metadata (e.g. 
 The external source will suggest matches, and will suggest metadata changes if the match is accepted by the user.
 A full metadata description of the data from the external source is displayed in combination to the suggested changes to the current item.
 
-TODO:
-* start a new submission based on a external source record
-
 ## Main Endpoint
 **/api/integration/metadata-suggestions**
 
