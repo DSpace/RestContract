@@ -7,10 +7,10 @@
 - [Main Endpoint](#main-endpoint)
 - [Single suggestion endpoint](#single-suggestion-endpoint)
 - [Linked entities](#linked-entities)
-	- [External source entries](#external-source-entries)
+	- [Live import entries](#live-import-entries)
 	- [Single entry](#single-entry)
 	- [Changes for a single entry](#changes-for-a-single-entry)
-- [Changes suggested from the external source](#changes-suggested-from-the-external-source)
+- [Changes suggested from the live import](#changes-suggested-from-the-live-import)
 	- [Introduction](#introduction)
 	- [Adding metadata](#adding-metadata)
 	- [Replacing metadata](#replacing-metadata)
@@ -18,15 +18,15 @@
 ## Introduction
 
 This contract allows for suggesting metadata changes to an in-submission or in-workflow item.
-The user can choose an external source to use for suggesting the metadata (e.g. PubMed for a medical publication, ORCID for an author, a RIS file for uploaded metadata).
-The external source will suggest matches, and will suggest metadata changes if the match is accepted by the user.
-A full metadata description of the data from the external source is displayed in combination to the suggested changes to the current item.
+The user can choose a live import source to use for suggesting the metadata (e.g. PubMed for a medical publication, ORCID for an author, a RIS file for uploaded metadata).
+The live import source will suggest matches, and will suggest metadata changes if the match is accepted by the user.
+A full metadata description of the data from the live import source is displayed in combination to the suggested changes to the current item.
 
 ## Main Endpoint
 **/api/integration/metadata-suggestions**
 
-Provide access to the configured external sources which can suggest metadata.
-It returns the list of existent external sources.
+Provide access to the configured live import sources which can suggest metadata.
+It returns the list of existent live import sources.
 
 Parameters (or should this be retrieved from the submission forms?):
 * workspaceitem
@@ -124,7 +124,7 @@ Example:
 ## Single suggestion endpoint
 **/api/integration/metadata-suggestions/<:suggestion-name>**
 
-Provide detailed information about a specific external source. The JSON response document is as follow
+Provide detailed information about a specific live import source. The JSON response document is as follow
 ```json
 {
     "id": "pubmed",
@@ -145,30 +145,30 @@ Provide detailed information about a specific external source. The JSON response
 ```
 
 Properties:
-* query-based: if the external source uses a query to suggest information to import
-* file-based: if the external source uses a file to suggest information to import
-* metadata-based: if the external source uses the current item metadata to suggest information to import
+* query-based: if the live import source uses a query to suggest information to import
+* file-based: if the live import source uses a file to suggest information to import
+* metadata-based: if the live import source uses the current item metadata to suggest information to import
 
 Exposed links:
-* entries: the list of values managed by the external source
+* entries: the list of values managed by the live import source
 
 ## Linked entities
-### External source entries
+### Live import entries
 **/api/integration/metadata-suggestions/<:suggestion-name>/entries**
 
-It returns the filtered entries managed by the external source, see below
+It returns the filtered entries managed by the live import source, see below
 
 The supported parameters are:
-* page, size [see pagination](README.md#Pagination) if supported by the external source
+* page, size [see pagination](README.md#Pagination) if supported by the live import source
 * query: the terms, keywords or prefix to search. Applicable for sources where "query-based" is true
 * bitstream: the bitstream ID to process. Applicable for sources where "file-based" is true
 * use-metadata: enable metadata based search (true or false, defaults to false). Applicable for sources where "metadata-based" is true
 * workspaceitem: the current workspace item ID (mutually exclusive with workflowitem)
 * workflowitem: the current workflow item ID (mutually exclusive with workspaceitem)
 
-It returns the entries in the external source matching the query, bitstream or item metadata
+It returns the entries in the live import source matching the query, bitstream or item metadata
 
-sample for an external source /api/integration/metadata-suggestions/orcid/entries?query=Smith&size=2
+sample for a live import source /api/integration/metadata-suggestions/orcid/entries?query=Smith&size=2
 ```json
 {
   "_embedded": {
@@ -291,9 +291,9 @@ Parameters:
 * workspaceitem: the current workspace item ID (mutually exclusive with workflowitem)
 * workflowitem: the current workflow item ID (mutually exclusive with workspaceitem)
 
-It returns the data from one entry in an external source
+It returns the data from one entry in a live import source
 
-sample for an external source /api/integration/metadata-suggestions/orcid/entryValues/0000-0002-4271-0436
+sample for a live import source /api/integration/metadata-suggestions/orcid/entryValues/0000-0002-4271-0436
 ```json
 {
   "id": "0000-0002-4271-0436",
@@ -375,7 +375,7 @@ Parameters:
 
 It returns the suggested metadata changes from one entry to be applied to the given item
 
-sample for an external source /api/integration/metadata-suggestions/orcid/entryValues/0000-0002-4271-0436/changes
+sample for a live import source /api/integration/metadata-suggestions/orcid/entryValues/0000-0002-4271-0436/changes
 ```json
 {
   "changes" : [
@@ -402,7 +402,7 @@ The suggested changes are based on the current item:
 * It takes the current metadata of the item into account (don't suggest to add a title which is already present)
 * It takes the submission forms into account (don't suggest to change metadata fields which are not editable based on input forms, only one value for a non-repeatable field)
 
-## Changes suggested from the external source
+## Changes suggested from the live import
 ### Introduction
 
 The live import can suggest metadata changes.
