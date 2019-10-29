@@ -33,7 +33,7 @@
 * [/api/workflow/claimedtasks](claimedtasks.md)
 
 ## Endpoints Under Development/Discussion
-* /api/authz/resourcepolicies
+* [/api/authz/resourcepolicies](resourcepolicies.md)
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
