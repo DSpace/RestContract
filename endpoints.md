@@ -16,9 +16,9 @@
 * [/api/core/epersons](epersons.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
-* [/api/authn/login](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
-* [/api/authn/logout](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
-* [/api/authn/status](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+* [/api/authn/login](authentication.md#Login)
+* [/api/authn/logout](authentication.md#Logout)
+* [/api/authn/status](authentication.md#Status)
 * [/api/config/harvestermetadata](harvestermetadata.md)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/config/submissionsections](submissionsections.md)
