@@ -96,6 +96,23 @@ Return codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators, users member of the group specified in the uuid parameter or user with ADMIN permission over it can use the endpoint
 * 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
+#### authorizeAnyOf
+**/api/authz/resourcepolicies/search/authorizeAnyOf?resource=<:resource>&action=<:action>&action=<:actionN>[&useInheritance=<:boolean>]**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination). MUST be size = 0, the endpoint *currently* never return a list of resourcepolicies, in future it could be possible to return the list of resourcepolicy that collectively grant the current user the requested actions
+* resource: mandatory, the uuid of the resource that need to be checked for permission
+* action: multiple, at least one required. The actions that need to be verified
+* useInheritance: optional, assume false as default. True mean that policies on parents objects are considered, false will focus only on policy attached directly to the resource
+
+It would returns the list of resource policies that grant to the user the requested actions of the resource. When size = 0 the pagination totalElements attribute in the response can be used to discriminate if all the actions are allowed or not.
+If allowed the totalElements attribute will be 1 otherwise 0.  
+
+Return codes:
+* 200 OK - if the operation succeed. The totalElements attribute in the pagination information will be 1 if the actions are granted to the current user, otherwise 0.
+* 401 Forbidden - if you are not authenticated
+* 422 UNPROCESSABLE ENTITY - if the resource and/or action parameters are missing or invalid (including the case of unexisting resource uuid)
+
 ## Creating a resource policy
 **POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:eperson>|group=<:group>]**
 
