@@ -28,11 +28,12 @@ Attributes
 * name: a short name associated to describe the policy
 * description: a description for the policy, i.e. the reason for the policy
 * policyType: a classification of the policy meanly from the process that has set it. One of 
-** TYPE_SUBMISSION: a policy in place during the submission 
-** TYPE_WORKFLOW: a policy in place during the approval workflow
-** TYPE_INHERITED: a policy that has been inherited from a container (the collection)
-** TYPE_CUSTOM: a policy defined by the user during the submission or workflow phase
-* action: the action grant by the policy. One of READ, WRITE, ADD, REMOVE, ADMIN, DEFAULT_BITSTREAM_READ, DEFAULT_ITEM_READ as defined in the Constants class
+    * TYPE_SUBMISSION: a policy in place during the submission
+    * TYPE_WORKFLOW: a policy in place during the approval workflow
+    * TYPE_INHERITED: a policy that has been inherited from a container (the collection)
+    * TYPE_CUSTOM: a policy defined by the user during the submission or workflow phase
+    * null: if the information is not available
+* action: the action grant by the policy. One of READ, WRITE, ADD, REMOVE, ADMIN, DELETE, WITHDRAWN_READ, DEFAULT_BITSTREAM_READ, DEFAULT_ITEM_READ as defined in the Constants class
 * startDate: the first day of validity of the policy, if null the policy is assumed valid from ever. The date will be in the format YYYY-MM-DD
 * endDate: the last day of validity of the policy, if null the policy is assumed valid for ever. The date will be in the format YYYY-MM-DD
 
@@ -43,13 +44,13 @@ Exposed links:
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated
+* 401 Forbidden - if you are not authenticated and the policy is not related to the ANONYMOUS group
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the resourcepolicy
 * 404 Not found - if the resourcepolicy doesn't exist (or was already deleted)
 
 ### Search methods
 #### resource
-**/api/authz/resourcepolicies/search/resource?uuid=<:uuid>[&action=<:action>]**
+**/api/authz/resourcepolicies/search/resource?uuid=<:uuid>[&action=<:string>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -65,47 +66,47 @@ Return codes:
 * 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### eperson
-**/api/authz/resourcepolicies/search/eperson?uuid=<:uuid>[&resource=<:resource>]**
+**/api/authz/resourcepolicies/search/eperson?uuid=<:uuid>[&resource=<:uuid>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, the uuid of the eperson that benefit of the policy
 * resource: optional, limit the returned policies to the ones related to the specified resource
 
-It returns the list of matching resource policies
+It returns the list of explicit matching resource policies, no inherited or broader resource policies will be included in the list nor policies derived by groups' membership
 
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators, the user specified in the uuid parameter or user with ADMIN permission over such user can use the endpoint
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
 * 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### group
-**/api/authz/resourcepolicies/search/group?uuid=<:uuid>[&resource=<:resource>]**
+**/api/authz/resourcepolicies/search/group?uuid=<:uuid>[&resource=<:uuid>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, the uuid of the eperson that benefit of the policy
 * resource: optional, limit the returned policies to the ones related to the specified resource
 
-It returns the list of matching resource policies
+It returns the list of explicit matching resource policies, no inherited or broader resource policies will be included in the list nor policies derived by groups' membership
 
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators, users member of the group specified in the uuid parameter or user with ADMIN permission over it can use the endpoint
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
 * 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### authorizeAnyOf
-**/api/authz/resourcepolicies/search/authorizeAnyOf?resource=<:resource>&action=<:action>&action=<:actionN>[&useInheritance=<:boolean>]**
+**/api/authz/resourcepolicies/search/authorizeAnyOf?resource=<:uuid>&action=<:string>&action=<:stringN>[&useInheritance=<:boolean>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination). MUST be size = 0, the endpoint *currently* never return a list of resourcepolicies, in future it could be possible to return the list of resourcepolicy that collectively grant the current user the requested actions
 * resource: mandatory, the uuid of the resource that need to be checked for permission
-* action: multiple, at least one required. The actions that need to be verified
+* action: multiple, at least one required. The actions that need to be verified (see GET description for allowed values)
 * useInheritance: optional, assume false as default. True mean that policies on parents objects are considered, false will focus only on policy attached directly to the resource
 
-It would returns the list of resource policies that grant to the user the requested actions of the resource. When size = 0 the pagination totalElements attribute in the response can be used to discriminate if all the actions are allowed or not.
+It would returns the list of resource policies that grant to the current loggedin user the requested actions of the resource. When size = 0 the pagination totalElements attribute in the response can be used to discriminate if all the actions are allowed or not. Policies derived by groups' membership are always included.
 If allowed the totalElements attribute will be 1 otherwise 0.  
 
 Return codes:
@@ -114,7 +115,7 @@ Return codes:
 * 422 UNPROCESSABLE ENTITY - if the resource and/or action parameters are missing or invalid (including the case of unexisting resource uuid)
 
 ## Creating a resource policy
-**POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:eperson>|group=<:group>]**
+**POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:uuid>|group=<:uuid>]**
 
 Request body:
 ```json
@@ -131,8 +132,8 @@ Request body:
 
 The parameters are:
 * resource: mandatory, the uuid of the resource target of the policy
-* eperson: the eperson that will be grant of the permission. Exactly one of eperson or group is required
-* group: the group that will be grant of the permission. Exactly one of eperson or group is required
+* eperson: the uuid of the eperson that will be grant of the permission. Exactly one of eperson or group is required
+* group: the uuid of the group that will be grant of the permission. Exactly one of eperson or group is required
 
 The json body must be valid that mean
 - type must be resourcepolicy
@@ -200,6 +201,12 @@ the add operation will result in:
   "type": "resourcepolicy"
 ```
 
+Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
+* 200 Ok if the path operation succeed. The updated resource policy is included in the response
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
+
 ### Remove
 With the `remove` operation, you can delete:
 - startDate
@@ -238,7 +245,11 @@ in
   "type": "resourcepolicy"
 ```
 
-Use of the remove operation over a not acceptable path will result in a 422 Unprocessable Entity return code
+Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
+* 200 Ok if the path operation succeed. The updated resource policy is included in the response
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
@@ -272,6 +283,12 @@ the replace operation will result in:
   "type": "resourcepolicy"
 ```
 
+Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
+* 200 Ok if the path operation succeed. The updated resource policy is included in the response
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
+
 ## Deleting a resource policy
 **DELETE /api/authz/resourcepolicies/<:id>**
 
@@ -290,6 +307,12 @@ Provide access to the eperson linked by this resource policy
 
 The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
+Return codes:
+* 200 Ok if the operation succeed and an eperson is set for this policy
+* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
+
 
 ### Group
 **/api/authz/resourcepolicies/<:id>/group**
@@ -298,6 +321,11 @@ Provide access to the group linked by this resource policy
 
 The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
+Return codes:
+* 200 Ok if the operation succeed and a group is linked to this resource policy
+* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ### Resource
 **/api/authz/resourcepolicies/<:id>/resource**
@@ -305,3 +333,9 @@ The recipient of the policy, eperson or group, cannot be modified. If you need t
 Provide access to the resource target of this resource policy.
 
 The resource target cannot be modified. If you need to do so please delete the policy and create a new one.
+
+Return codes:
+* 200 Ok if the operation succeed
+* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
