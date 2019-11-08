@@ -61,9 +61,9 @@ It returns the list of matching resource policies
 
 Return codes:
 * 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right on the target resource can use the endpoint
-* 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### eperson
 **/api/authz/resourcepolicies/search/eperson?uuid=<:uuid>[&resource=<:uuid>]**
@@ -77,9 +77,9 @@ It returns the list of explicit matching resource policies, no inherited or broa
 
 Return codes:
 * 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
-* 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### group
 **/api/authz/resourcepolicies/search/group?uuid=<:uuid>[&resource=<:uuid>]**
@@ -93,9 +93,9 @@ It returns the list of explicit matching resource policies, no inherited or broa
 
 Return codes:
 * 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
-* 422 UNPROCESSABLE ENTITY - if the uuid parameter is missing or invalid
 
 #### authorizeAnyOf
 **/api/authz/resourcepolicies/search/authorizeAnyOf?resource=<:uuid>&action=<:string>&action=<:stringN>[&useInheritance=<:boolean>]**
@@ -111,8 +111,8 @@ If allowed the totalElements attribute will be 1 otherwise 0.
 
 Return codes:
 * 200 OK - if the operation succeed. The totalElements attribute in the pagination information will be 1 if the actions are granted to the current user, otherwise 0.
+* 400 Bad Request - if the resource and/or action parameters are missing or invalid (including the case of unexisting resource uuid)
 * 401 Forbidden - if you are not authenticated
-* 422 UNPROCESSABLE ENTITY - if the resource and/or action parameters are missing or invalid (including the case of unexisting resource uuid)
 
 ## Creating a resource policy
 **POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:uuid>|group=<:uuid>]**
