@@ -4,12 +4,12 @@
 A workflow definition is defined globally or per collection.  
 It defines the list of steps to use in the workflow per collection, and the default steps.
 
-All endpoints mentioned here require authentication
+All endpoints mentioned here require authentication, but no specific permissions
 
 ## Main Endpoint
 **/api/config/workflowdefinitions**   
 
-Provide access to the configured workflow definitions. It returns the list of existent workflow-definitions.
+Provide access to the configured workflow definitions. It returns the list of configured workflow-definitions.
 
 ## Single Workflow Definition
 **/api/config/workflowdefinitions/<:definition-name>**

@@ -3,12 +3,12 @@
 
 A workflow step represents a single step in the reviewing process, e.g. the accept/reject step.  
 
-All endpoints mentioned here require authentication
+All endpoints mentioned here require authentication, but no specific permissions
 
 ## Main Endpoint
 **/api/config/workflowsteps**   
 
-Provide access to the configured workflow steps. It returns the list of existent workflow-steps.
+Provide access to the configured workflow steps. It returns the list of configured workflow-steps.
 
 ## Single Workflow Step Definition
 **/api/config/workflowsteps/<:step-name>**
@@ -17,11 +17,11 @@ Provide detailed information about a specific workflow step. An example JSON res
 ```json
 {
   	"id": "editstep",
-    "actions": [
-        "approve",
-        "reject",
-        "edit_metadata"
-    ],
+  	"actions": [
+  	    "approve",
+  	    "reject",
+  	    "edit_metadata"
+  	],
   	"type": "workflowstep"
 }
 ```
