@@ -97,23 +97,6 @@ Return codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
 
-#### authorizeAnyOf
-**/api/authz/resourcepolicies/search/authorizeAnyOf?resource=<:uuid>&action=<:string>&action=<:stringN>[&useInheritance=<:boolean>]**
-
-The supported parameters are:
-* page, size [see pagination](README.md#Pagination). MUST be size = 0, the endpoint *currently* never return a list of resourcepolicies, in future it could be possible to return the list of resourcepolicy that collectively grant the current user the requested actions
-* resource: mandatory, the uuid of the resource that need to be checked for permission
-* action: multiple, at least one required. The actions that need to be verified (see GET description for allowed values)
-* useInheritance: optional, assume false as default. True mean that policies on parents objects are considered, false will focus only on policy attached directly to the resource
-
-It would returns the list of resource policies that grant to the current loggedin user the requested actions of the resource. When size = 0 the pagination totalElements attribute in the response can be used to discriminate if all the actions are allowed or not. Policies derived by groups' membership are always included.
-If allowed the totalElements attribute will be 1 otherwise 0.  
-
-Return codes:
-* 200 OK - if the operation succeed. The totalElements attribute in the pagination information will be 1 if the actions are granted to the current user, otherwise 0.
-* 400 Bad Request - if the resource and/or action parameters are missing or invalid (including the case of unexisting resource uuid)
-* 401 Forbidden - if you are not authenticated
-
 ## Creating a resource policy
 **POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:uuid>|group=<:uuid>]**
 
@@ -308,7 +291,8 @@ Provide access to the eperson linked by this resource policy
 The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
 Return codes:
-* 200 Ok if the operation succeed and an eperson is set for this policy
+* 200 Ok - if the operation succeed and an eperson is set for this policy
+* 204 No content - if the operation succeed but no eperson is set for this policy
 * 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
 * 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
@@ -323,6 +307,7 @@ The recipient of the policy, eperson or group, cannot be modified. If you need t
 
 Return codes:
 * 200 Ok if the operation succeed and a group is linked to this resource policy
+* 204 No content - if the operation succeed but no group is set for this policy
 * 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
 * 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
