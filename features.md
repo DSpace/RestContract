@@ -1,7 +1,7 @@
 # Features Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
-A feature is the representation of a business goal used in the [Authorization endpoint](authorizations.md) to declare what an user can do in a specific scope.
+A feature is the representation of a business goal used in the [Authorization endpoint](authorizations.md) to declare what an user can do on a specific object.
 
 ## Main Endpoint
 **/api/authz/features**
@@ -23,8 +23,8 @@ Provide detailed information about a specific feature. Access is restricted to s
 
 ```json
 {
-  "id": "withdrawnitem",
-  "description": "The feature allows to withdrawn an item from the repository without deleting it. The restoreitem feature allow to undo the process",
+  "id": "withdrawItem",
+  "description": "The feature allows to withdrawn an item from the repository without deleting it. The restoreItem feature allow to undo the process",
   "resourcetypes": [
   	"item"
   ],

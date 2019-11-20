@@ -1,33 +1,33 @@
 # Authorizations Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
-An authorizations is the representation of some rights that are available to a specific user (eperson) in a defined scope, eventually the whole repository (site object).
+An authorizations is the representation of some rights that are available to a specific user (eperson) on a defined object, eventually the whole repository (site object).
 All the authorizations are always explicitly listed regardless to how they are grant, by direct policies via groups' membership or open to everyone (anonymous users).
 
 ## Main Endpoint
 **/api/authz/authorizations**
 
-As we don't have yet an use case to iterate over all the existent authorizations the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error codes).
+As we don't have yet an use case to iterate over all the existent authorizations the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single Authorization
-**/api/authz/resourcepolicies/<:id>**
+**/api/authz/authorizations/<:id>**
 
 Provide detailed information about a specific authorization. The JSON response document is as follow
 
 ```json
 {
-  "id": [eperson_uuid-]feature_id-scope_uuid,
+  "id": [eperson-uuid_]feature-id_object-uuid,
   "type": "authorization"
 }
 ```
 
 Attributes
-* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the scope uuid joined with a minus 
+* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the object uuid joined with an underscore 
 
 Exposed links:
 * eperson: link to the eperson that the authorization belong to. Can be null for authorizations grant to unlogged users
 * feature: link to the feature enabled by this authorization
-* scope: link to the object scope where this authorization apply. Not limited to DSpace objects, see [features endpoint](features.md) for more details
+* object: link to the object where this authorization apply. Not limited to DSpace objects, see the controlled list defined for the type attribute in the [features endpoint](features.md) for more details
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -36,12 +36,12 @@ Return codes:
 * 404 Not found - if the authorization doesn't exist (or was already deleted)
 
 ### Search methods
-#### resource
-**/api/authz/authorizations/search/scope?uri=<:uri>[&eperson=<:uuid>&feature=<:string>]**
+#### object
+**/api/authz/authorizations/search/object?uri=<:uri>[&eperson=<:uuid>&feature=<:string>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* uri: mandatory, the scope to use for the authorization check. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/api/core/community/{uuid}
+* uri: mandatory, the object to use for the authorization check. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/api/core/community/{uuid}
 * eperson: optional, the uuid of the eperson to evaluate for authorization. If not specified authorization of anonymous users will be returned
 * feature: optional, limit the returned authorization to the specified feature (this provide an alternative to codify the authorization id rule on the client side)
 
@@ -69,8 +69,8 @@ Return codes:
 * 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Authorization endpoint
 * 404 Not found - if the authorization doesn't exist
 
-### Scope
-**/api/authz/authorizations/<:string>/scope**
+### Object
+**/api/authz/authorizations/<:string>/object**
 
 Provide access to the resource where the authorization is scoped.
 
