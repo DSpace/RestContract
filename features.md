@@ -44,7 +44,7 @@ Return codes:
 * 404 Not found - if the authorization doesn't exist (or was already deleted)
 
 ### Search methods
-#### resource
+#### resourcetype
 **/api/authz/features/search/resourcetype?type=<:string>**
 
 The supported parameters are:

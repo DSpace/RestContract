@@ -27,7 +27,7 @@ Attributes
 Exposed links:
 * eperson: link to the eperson that the authorization belong to. Can be null for authorizations grant to unlogged users
 * feature: link to the feature enabled by this authorization
-* object: link to the object where this authorization apply. Not limited to DSpace objects, see the controlled list defined for the type attribute in the [features endpoint](features.md) for more details
+* object: link to the object where this authorization apply. Not limited to DSpace objects, see the controlled list defined for the type attribute in the [features endpoint](features.md#resourcetype) for more details
 
 Return codes:
 * 200 OK - if the operation succeed
