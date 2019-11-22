@@ -318,8 +318,8 @@ If a bundle with the given doesn't exist yet in the item, it will be created
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the bundle name already exists in the item
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
 
@@ -341,8 +341,8 @@ It updates the owning collection (moves the item)
 
 Status codes:
 * 204 No content - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 
 ### Mapped Collections
@@ -375,8 +375,8 @@ The collection(s) MUST be included in the body using the `text/uri-list` content
  
 Return codes:
  * 204: if the update succeeded (including the case of no-op if the mapping was already as requested)
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 401  Unauthorized - if you are not authenticated
+ * 403  Forbidden - if you are not logged in with sufficient permissions 
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
@@ -401,8 +401,8 @@ The above request would remove the mapping between Collection with UUID `1c11f3f
 
 Return codes:
  * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 401  Unauthorized - if you are not authenticated
+ * 403  Forbidden - if you are not logged in with sufficient permissions 
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
@@ -435,6 +435,6 @@ An optional parameter for copying virtual metadata to actual metadata in the rel
 
 Return codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist (or was already deleted)

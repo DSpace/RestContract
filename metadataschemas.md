@@ -63,6 +63,6 @@ Provide updated information about a specific metadata schema, when the update is
 Delete a metadata schema.
 
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the metadata schema doesn't exist (or was already deleted)
