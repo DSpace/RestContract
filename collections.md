@@ -125,8 +125,8 @@ The REST API can support Content-Length and Content-MD5 headers to verify integr
 
 Status codes:
 * 201 Created - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
 * 422 Unprocessable Entity - if there was no file, or if the collection already contains a logo
@@ -199,8 +199,8 @@ It returns the created item. [See the item endpoint for more info](items.md#Sing
 
 Status codes:
 * 201 Created - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
 * 422 Unprocessable Entity - if inArchive, discoverable, withdrawn was set to true, or if the collection already contains a itemtemplate
 
@@ -402,8 +402,8 @@ A sample json request to disable harvesting is:
 
 Status codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
 * 422 Unprocessable Entity - if the harvest_type or the metadata_config_id is not valid
 
@@ -431,8 +431,8 @@ To create a collection, perform as post with the JSON below when logged in as ad
 
  Error messages:
  * 200 OK - if the operation succeed
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions
+ * 401 Unauthorized - if you are not authenticated
+ * 403 Forbidden - if you are not logged in with sufficient permissions
  * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
 
 ## Updating a collection
@@ -468,8 +468,8 @@ Provide updated metadata information about a specific collection, when the updat
 
 Error messages:
 * 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
 * 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
 
@@ -480,6 +480,6 @@ Error messages:
 Delete a collection.
 
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the community doesn't exist (or was already deleted)

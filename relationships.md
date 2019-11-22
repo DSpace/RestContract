@@ -114,8 +114,8 @@ The uri-list should always contain exactly 2 items. The first item will be used 
 The relationshipType parameter is mandatory as well
 
 * 201 Created - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if one of the items doesn't exist
 
 ## Updating the items in a relationship
@@ -140,8 +140,8 @@ The relationshipType is not modifiable
 
 Error codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist
 * 422 Unprocessable Entity - if the item doesn't exist, or if the amount of items is not 1
 
@@ -158,8 +158,8 @@ Omitted properties will be removed.
 
 Error codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationship doesn't exist
 
 ## Relationships per Relationship type
@@ -366,6 +366,6 @@ An optional parameter for copying virtual metadata to actual metadata in the rel
 
 Return codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist (or was already deleted)
