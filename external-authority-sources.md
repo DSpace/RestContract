@@ -150,6 +150,9 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
           "authority": {
             "href": "https://dspace7.4science.cloud/server/api/integration/authorities/authors/entryValues/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
           },
+          "parent": {
+            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+          },
           "self": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
           }
@@ -202,6 +205,9 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
           "entity": {
             "href": "https://dspace7.4science.cloud/server/api/core/item/6fd90bf5-b84f-47b3-aaec-a55bde3a2a5a"
           },
+          "parent": {
+            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+          },          
           "self": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0003-3681-2038"
           }
@@ -267,6 +273,9 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
     "entity": {
       "href": "https://dspace7.4science.cloud/server/api/core/item/00167e74-c027-4984-8564-85c3fe513d45"
     },
+    "parent": {
+      "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+    },    
     "self": {
       "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
     }
