@@ -293,7 +293,7 @@ Return codes:
 ### EPerson
 **/api/authz/resourcepolicies/<:id>/eperson**
 
-Provide access to the eperson linked by this resource policy
+Return the eperson linked by this resource policy
 
 The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
@@ -308,7 +308,7 @@ Return codes:
 ### Group
 **/api/authz/resourcepolicies/<:id>/group**
 
-Provide access to the group linked by this resource policy
+Return the group linked by this resource policy
 
 The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
@@ -322,7 +322,7 @@ Return codes:
 ### Resource
 **/api/authz/resourcepolicies/<:id>/resource**
 
-Provide access to the resource target of this resource policy.
+Return the resource target of this resource policy.
 
 The resource target cannot be modified. If you need to do so please delete the policy and create a new one.
 
