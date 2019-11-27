@@ -44,8 +44,8 @@ Exposed links:
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated and the policy is not related to the ANONYMOUS group
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the resourcepolicy
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the ANONYMOUS group
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the resourcepolicy
 * 404 Not found - if the resourcepolicy doesn't exist (or was already deleted)
 
 ### Search methods
@@ -62,8 +62,8 @@ It returns the list of matching resource policies
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right on the target resource can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right on the target resource can use the endpoint
 
 #### eperson
 **/api/authz/resourcepolicies/search/eperson?uuid=<:uuid>[&resource=<:uuid>]**
@@ -78,8 +78,8 @@ It returns the list of explicit matching resource policies, no inherited or broa
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
 
 #### group
 **/api/authz/resourcepolicies/search/group?uuid=<:uuid>[&resource=<:uuid>]**
@@ -94,8 +94,8 @@ It returns the list of explicit matching resource policies, no inherited or broa
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
 
 ## Creating a resource policy
 **POST /api/authz/resourcepolicies?resource=<:uuid>&[eperson=<:uuid>|group=<:uuid>]**
@@ -127,8 +127,8 @@ The json body must be valid that mean
 Return codes:
 * 200 OK - if the operation succeed, the created resourcepolicy is returned
 * 400 Bad Request - if both the group and the eperson uuid parameters are specified or missing or aren't uuid
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators can create resourcepolicy
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can create resourcepolicy
 
 
 ## Patch operations
@@ -193,8 +193,8 @@ the add operation will result in:
 
 Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
 * 200 Ok if the path operation succeed. The updated resource policy is included in the response
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ### Remove
@@ -237,8 +237,8 @@ in
 
 Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
 * 200 Ok if the path operation succeed. The updated resource policy is included in the response
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ### Replace
@@ -275,8 +275,8 @@ the replace operation will result in:
 
 Return codes, see also general [return codes for PATCH requests](patch.md#error-codes):
 * 200 Ok if the path operation succeed. The updated resource policy is included in the response
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ## Deleting a resource policy
@@ -284,8 +284,8 @@ Return codes, see also general [return codes for PATCH requests](patch.md#error-
 
 Return codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or user with ADMIN permission over the target resource can use the endpoint
 * 404 Not found - if the item doesn't exist (or was already deleted)
 
 
@@ -300,8 +300,8 @@ The recipient of the policy, eperson or group, cannot be modified. If you need t
 Return codes:
 * 200 Ok - if the operation succeed and an eperson is set for this policy
 * 204 No content - if the operation succeed but no eperson is set for this policy
-* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
-* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 
@@ -315,8 +315,8 @@ The recipient of the policy, eperson or group, cannot be modified. If you need t
 Return codes:
 * 200 Ok if the operation succeed and a group is linked to this resource policy
 * 204 No content - if the operation succeed but no group is set for this policy
-* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
-* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 ### Resource
@@ -328,6 +328,6 @@ The resource target cannot be modified. If you need to do so please delete the p
 
 Return codes:
 * 200 Ok if the operation succeed
-* 401 Forbidden - if you are not authenticated and the policy is not related to the Anonymous group
-* 403 Unauthorized - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
