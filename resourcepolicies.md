@@ -86,7 +86,7 @@ Return codes:
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* uuid: mandatory, the uuid of the eperson that benefit of the policy
+* uuid: mandatory, the uuid of the group that benefit of the policy
 * resource: optional, limit the returned policies to the ones related to the specified resource
 
 It returns the list of explicit matching resource policies, no inherited or broader resource policies will be included in the list nor policies derived by groups' membership
@@ -123,6 +123,13 @@ The json body must be valid that mean
 - policyType must be one of the value specified in the GET description
 - action must be one of the value specified in the GET description
 - startDate / endDate if present must respect the format specified in the GET description
+
+Return codes:
+* 200 OK - if the operation succeed, the created resourcepolicy is returned
+* 400 Bad Request - if both the group and the eperson uuid parameters are specified or missing or aren't uuid
+* 401 Forbidden - if you are not authenticated
+* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators can create resourcepolicy
+
 
 ## Patch operations
 
