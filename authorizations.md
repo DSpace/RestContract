@@ -61,7 +61,7 @@ No other verbs are supported right now, these endpoints are all READ-ONLY. Autho
 ### EPerson
 **/api/authz/authorizations/<:string>/eperson**
 
-Provide access to the eperson linked by this authorization
+Return the eperson linked by this authorization
 
 Return codes:
 * 200 Ok - if the operation succeed and an eperson is set for this policy
@@ -73,7 +73,7 @@ Return codes:
 ### Object
 **/api/authz/authorizations/<:string>/object**
 
-Provide access to the resource where the authorization is scoped.
+Return the resource where the authorization is scoped.
 
 Return codes:
 * 200 Ok if the operation succeed
@@ -84,7 +84,7 @@ Return codes:
 ### Feature
 **/api/authz/authorizations/<:string>/feature**
 
-Provide access to the feature resource that the user can access thanks to this authorization.
+Return the feature resource that the user can access thanks to this authorization.
 
 Return codes:
 * 200 Ok if the operation succeed
