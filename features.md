@@ -13,8 +13,8 @@ Parameters:
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators can access
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access
 
 ## Single Feature
 **/api/authz/features/<:string>**
@@ -39,8 +39,8 @@ Attributes
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators can access
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access
 * 404 Not found - if the authorization doesn't exist (or was already deleted)
 
 ### Search methods
@@ -56,5 +56,5 @@ It returns the list of features that apply to the specified type.
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the type parameter is missing or invalid
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions. Only system administrators can access 
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access 
