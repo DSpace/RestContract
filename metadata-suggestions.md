@@ -355,7 +355,7 @@ sample for a live import source /api/integration/metadata-suggestions/orcid/entr
            "currentvalues" : [],
            "suggestions" : [
              {
-               "operations": [ "add" ],
+               "operations": [ "add/metadata/dc.identifier.orcid/-" ],
                "newvalue": "0000-0002-4271-0436"
              }
            ]
@@ -364,7 +364,7 @@ sample for a live import source /api/integration/metadata-suggestions/orcid/entr
            "currentvalues" : [ "https://profiles.utsouthwestern.edu/profile/16780/dean-smith.html" ],
            "suggestions" : [
              {
-               "operations": [ "add", "replace/0" ],
+               "operations": [ "add/metadata/dc.identifier.uri/-", "replace/metadata/dc.identifier.uri/0" ],
                "newvalue": "https://orcid.org/0000-0002-4271-0436"
              }
            ]
@@ -393,7 +393,7 @@ sample for a live import source /api/integration/metadata-suggestions/orcid/entr
       "currentvalues" : [],
       "suggestions" : [
         {
-          "operations": [ "add" ],
+          "operations": [ "add/metadata/dc.identifier.orcid/-" ],
           "newvalue": "0000-0002-4271-0436"
         }
       ]
@@ -402,7 +402,7 @@ sample for a live import source /api/integration/metadata-suggestions/orcid/entr
       "currentvalues" : [ "https://profiles.utsouthwestern.edu/profile/16780/dean-smith.html" ],
       "suggestions" : [
         {
-          "operations": [ "add", "replace/0" ],
+          "operations": [ "add/metadata/dc.identifier.uri/-", "replace/metadata/dc.identifier.uri/0" ],
           "newvalue": "https://orcid.org/0000-0002-4271-0436"
         }
       ]
@@ -424,15 +424,15 @@ sample for a live import source /api/integration/metadata-suggestions/pubmed/ent
       "currentvalues" : [ "D. Pollard", "C. E. Wylie[virtual::1373]" ],
       "suggestions" : [
         {
-          "operations": [ "replace/0", "add" ],
+          "operations": [ "replace/metadata/dc.contributor.author/0", "add/metadata/dc.contributor.author/-" ],
           "newvalue": "Pollard, D"
         },
         {
-          "operations": [ "namevariant/1", "add" ],
+          "operations": [ "namevariant/metadata/dc.contributor.author/1", "add/metadata/dc.contributor.author/-" ],
           "newvalue": "Wylie, C E"
         },
         {
-          "operations": [ "add-relationship" ],
+          "operations": [ "add-relationship/metadata/dc.contributor.author/-" ],
           "newvalue": "Newton, J R",
           "item": "1f8b3dd7-f5ae-4153-bf17-808d3a5379ac",
           "relationship-type" : 1
@@ -443,7 +443,7 @@ sample for a live import source /api/integration/metadata-suggestions/pubmed/ent
       "currentvalues": [ "2019" ],
       "suggestions": [
         {
-          "operations": [ "replace/0" ],
+          "operations": [ "replace/metadata/dc.date.issued/0" ],
           "newvalue": "2019-09-23"
         }
       ]
@@ -452,11 +452,11 @@ sample for a live import source /api/integration/metadata-suggestions/pubmed/ent
       "currentvalues" : [],
       "suggestions": [
         {
-          "operations": [ "add" ],
+          "operations": [ "add/metadata/dc.subject/-" ],
           "newvalue": "DNA replication inhibitors"
         },
         {
-          "operations": [ "add" ],
+          "operations": [ "add/metadata/dc.subject/-" ],
           "newvalue": "Mycobacterium"
         }
       ]
@@ -523,11 +523,11 @@ Example response, suggestion the addition of three values:
     "currentvalues" : [],
     "suggestions": [
       {
-        "operations": [ "add" ],
+        "operations": [ "add/metadata/dc.subject/-" ],
         "newvalue": "DNA replication inhibitors"
       },
       {
-        "operations": [ "add" ],
+        "operations": [ "add/metadata/dc.subject/-" ],
         "newvalue": "Mycobacterium"
       }
     ]
@@ -568,7 +568,7 @@ Example response, replacing the the first `dc.date.issued`:
       "currentvalues": [ "2019" ],
       "suggestions": [
         {
-          "operations": [ "replace/0" ],
+          "operations": [ "replace/metadata/dc.date.issued/0" ],
           "newvalue": "2019-09-23"
         }
       ]
@@ -609,7 +609,7 @@ Example response, replacing the the second `dc.contributor.author` name variant:
       "currentvalues" : [ "D. Pollard", "C. E. Wylie[virtual::1373]" ],
       "suggestions" : [
         {
-          "operations": [ "namevariant/1", "add" ],
+          "operations": [ "namevariant/metadata/dc.contributor.author/1", "add/metadata/dc.contributor.author/-" ],
           "newvalue": "Wylie, C E"
         }
       ]
@@ -650,7 +650,7 @@ Example response, adding a `dc.contributor.author` relationship:
       "currentvalues" : [ "D. Pollard", "C. E. Wylie[virtual::1373]" ],
       "suggestions" : [
         {
-          "operations": [ "add-relationship" ],
+          "operations": [ "add-relationship/metadata/dc.contributor.author/-" ],
           "newvalue": "Newton, J R",
           "item": "1f8b3dd7-f5ae-4153-bf17-808d3a5379ac",
           "relationship-type" : 1
