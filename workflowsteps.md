@@ -17,7 +17,7 @@ Provide detailed information about a specific workflow step. An example JSON res
 ```json
 {
   	"id": "editstep",
-  	"actions": [
+  	"options": [
   	    "approve",
   	    "reject",
   	    "edit_metadata"
@@ -26,6 +26,6 @@ Provide detailed information about a specific workflow step. An example JSON res
 }
 ```
 
-The **actions** property contains the list of actions the user is authorized to perform in this step:
-* The **edit_metadata** action implies the user can use the PATCH on the workflow item's submission sections to edit the metadata.
-* Other actions are considered to be actions sent to REST using a [POST to the claimed task](claimedtasks.md#post-method-single-resource-level)
+The **options** property contains the list of actions the user is authorized to perform in this step:
+* The **edit_metadata** option implies the user can use the PATCH on the workflow item's submission sections to edit the metadata.
+* Other options are considered to be command options sent to REST using a [POST to the claimed task](claimedtasks.md#post-method-single-resource-level)
