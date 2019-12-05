@@ -125,15 +125,16 @@ It returns the workspaceitem created by the specified submitter
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
 If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.
 
+An attribute to define the owning collection can be included. If omitted, the first collection the user can submit to will be used
+
 The Multipart POST can include a uri-list containing:
-* the owning collection to be used
 * The [external entry value](external-authority-sources.md) whose metadata should be imported
 
 An example curl call:
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems \
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
  -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \n https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 
 No confirmation, user has confirmed they want this record, and the previous state of the item is empty
