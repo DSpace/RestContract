@@ -17,13 +17,13 @@ Provide detailed information about a specific authorization. The JSON response d
 
 ```json
 {
-  "id": [eperson-uuid_]feature-id_object-uuid,
+  "id": [eperson-uuid_]feature-id_object-type_object-id,
   "type": "authorization"
 }
 ```
 
 Attributes
-* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the object uuid joined with an underscore 
+* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the object type and (uu)id joined with an underscore 
 
 Exposed links:
 * eperson: link to the eperson that the authorization belong to. Can be null for authorizations grant to unlogged users
