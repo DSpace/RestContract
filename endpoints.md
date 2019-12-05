@@ -24,6 +24,8 @@
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/config/submissionuploads](submissionuploads.md)
+* [/api/config/workflowdefinitions](workflowdefinitions.md)
+* [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
 * [/api/discover/search](search-endpoint.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
@@ -33,7 +35,7 @@
 * [/api/workflow/claimedtasks](claimedtasks.md)
 
 ## Endpoints Under Development/Discussion
-* /api/authz/resourcepolicies
+* [/api/authz/resourcepolicies](resourcepolicies.md)
 * [/api/authz/authorizations](authorizations.md)
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)

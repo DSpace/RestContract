@@ -62,6 +62,6 @@ curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/itemtemplates/3
 
 Status codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item template doesn't exist
