@@ -36,6 +36,8 @@
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
+* [/api/authz/authorizations](authorizations.md)
+* [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
