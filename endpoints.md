@@ -24,6 +24,8 @@
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/config/submissionuploads](submissionuploads.md)
+* [/api/config/workflowdefinitions](workflowdefinitions.md)
+* [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
 * [/api/discover/search](search-endpoint.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
