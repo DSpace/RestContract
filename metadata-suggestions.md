@@ -592,7 +592,7 @@ Example response, replacing the the second `dc.contributor.author` name variant:
 }
 ```
 
-The above example includes two possible operations: an option to replace the namevariant, and an option to add the newvalue as an additional author.
+The above example includes two possible operations: an option to replace the `namevariant`, and an option to add the `newvalue` as an additional author.
 Assuming the client chooses the first operation (replace the namevariant), the new metadata state is:
 
 ```json
