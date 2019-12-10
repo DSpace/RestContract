@@ -4,9 +4,9 @@
 This endpoint contains the various types of items (publication, person, journal, …)
 
 ## Main Endpoint
-**/api/core/itemtypes**
+**/api/core/entitytypes**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/itemtypes
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes
 
 ```json
 {
@@ -55,21 +55,21 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 ```
 
 ## Single Item Type
-**/api/core/itemtypes/<:id>**
+**/api/core/entitytypes/<:id>**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1
 
 ```json
 {
   "id": 1,
   "label": "Publication",
-  "type": "itemtype",
+  "type": "entitytype",
   "_links": {
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1"
+      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1"
     },
     "relationshiptypes": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1/relationshiptypes"
+      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1/relationshiptypes"
     }
   }
 }
@@ -78,9 +78,9 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 It contains a HAL link to the Relationship Types for the current Item Type (not embedded)
 
 ## Relationship Types for the current Item Type
-**/api/core/itemtypes/<:id>/relationshiptypes**
+**/api/core/entitytypes/<:id>/relationshiptypes**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1/relationshiptypes
+A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1/relationshiptypes
 It embeds the [relationshiptypes](relationshiptypes.md) which are linked to the given item type (either on the left or right side)
 
 ## Get Entity type from label
