@@ -8,7 +8,7 @@ All endpoints mentioned here require authentication, but no specific permissions
 ## Main Endpoint
 **/api/config/workflowsteps**   
 
-Provide access to the configured workflow steps. It returns the list of configured workflow-steps.
+The main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single Workflow Step Definition
 **/api/config/workflowsteps/<:step-name>**
