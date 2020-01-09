@@ -35,6 +35,13 @@ It returns the underlying workflowitem holds by the task. See the [workflowitem 
 
 It returns the eperson that own the task. See the [eperson endpoint for more info](epersons.md). This is a **read-only** endpoint, once the task is claimed the owner cannot be changed. To unclaim a task see the DELETE method below
 
+#### workflow action
+**/api/workflow/claimedtasks/<:id>/action** (READ-ONLY)
+
+It returns the workflow action currently assigned to the task.
+See the [workflow actions](workflowactions.md) endpoint for more info.
+This is a **read-only** endpoint, the [POST to the claimed task](#post-method-single-resource-level) is used to perform the action
+
 ### Search methods
 #### findByUser
 **/api/workflow/claimedtasks/search/findByUser?uuid=<:user-uuid>**

@@ -8,7 +8,7 @@ All endpoints mentioned here require authentication, but no specific permissions
 ## Main Endpoint
 **/api/config/workflowsteps**   
 
-Provide access to the configured workflow steps. It returns the list of configured workflow-steps.
+The main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single Workflow Step Definition
 **/api/config/workflowsteps/<:step-name>**
@@ -17,15 +17,27 @@ Provide detailed information about a specific workflow step. An example JSON res
 ```json
 {
   	"id": "editstep",
-  	"options": [
-  	    "approve",
-  	    "reject",
-  	    "edit_metadata"
-  	],
-  	"type": "workflowstep"
+  	"type": "workflowstep",
+    "_links": {
+      "workflowactions": {
+        "href": "https://dspace7-entities.atmire.com/rest/api/config/workflowsteps/<:step-name>/workflowactions"
+      }
+    },
+    "_embedded": {
+      "workflowactions": 
+        [
+          {
+            "id": "editaction",
+            "options": [
+                "approve",
+                "reject",
+                "edit_metadata"
+            ],
+            "type": "workflowaction"
+          }
+        ]
+    }
 }
 ```
 
-The **options** property contains the list of actions the user is authorized to perform in this step:
-* The **edit_metadata** option implies the user can use the PATCH on the workflow item's submission sections to edit the metadata.
-* Other options are considered to be command options sent to REST using a [POST to the claimed task](claimedtasks.md#post-method-single-resource-level)
+It includes the list of workflow actions used in the workflow step. See [Workflow Actions Endpoints](workflowactions.md) for more details
