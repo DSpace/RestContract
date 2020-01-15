@@ -30,6 +30,8 @@
 * [/api/discover/search](search-endpoint.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/integration/authorities](authorities.md)
+* [/api/versioning/version](version.md)
+* [/api/versioning/versionhistory](versionhistory.md)
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
