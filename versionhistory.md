@@ -7,10 +7,6 @@ This endpoint represents all related versions.
 Whether version history information is accessible depends on versioning.item.history.view.admin configuration
 If this is set to true, the version history can only be retrieved if the user is an admin of the last version's item
 
-## Create version
-
-TODO
-
 ## Get version history
 
 **GET /api/versioning/versionhistory/<:versionHistoryId>**
