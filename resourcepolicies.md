@@ -61,7 +61,7 @@ It returns the list of matching resource policies
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the uuid parameter is missing or invalid
+* 422 Unprocessable Entity - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right on the target resource can use the endpoint
 
@@ -77,7 +77,7 @@ It returns the list of explicit matching resource policies, no inherited or broa
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the uuid parameter is missing or invalid
+* 422 Unprocessable Entity - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
 
@@ -93,7 +93,7 @@ It returns the list of explicit matching resource policies, no inherited or broa
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the uuid parameter is missing or invalid
+* 422 Unprocessable Entity - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
 
