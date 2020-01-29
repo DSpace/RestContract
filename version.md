@@ -57,7 +57,7 @@ Status codes:
 
 **GET /api/versioning/item/<:item-uuid>**
 
-Provide version information for the item uuid.
+Provide version information based on a given Item UUID. An Item UUID will only match one version.
 
 The JSON response and status codes are the same as the endpoint above.
 
