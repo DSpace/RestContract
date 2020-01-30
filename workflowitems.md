@@ -122,6 +122,19 @@ In addition, it allows in future to change the 1:1 association between collectio
 
 It returns the workflowitems created by the specified submitter
 
+## Get Single Workflow Item from Item UUID
+
+**/api/submission/workflowitems/item/<:uuid>**
+
+https://dspace7.4science.cloud/server/api/submission/workflowitems/item/cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+The item uuid is mandatory
+
+There's always at most one workflow item per Item.
+
+It would respond with:
+* The workflow item if there's a match
+* 404 if the workflow item doesn't exist
+
 ## POST Method
 To create a workflowitem, i.e. to start a workflow, a workspaceitem must be posted to the workflowitems resource collection endpoint (/api/submission/workflowitems).
 The workspaceitem must be supplied as URI in the request body using the text/uri-list content-type

@@ -8,7 +8,7 @@ Provide access to the workspaceitems. It returns the list of existent workspacei
 
 Example: to be provided
 
-## Single Item
+## Single Workspace Item
 **/api/submission/workspaceitems/<:id>**
 
 Provide detailed information about a specific workspaceitem. The JSON response document is as follow
@@ -120,6 +120,19 @@ In addition, it allows in future to change the 1:1 association between collectio
 **/api/submission/workspaceitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
 It returns the workspaceitem created by the specified submitter
+
+## Get Single Workspace Item from Item UUID
+
+**/api/submission/workspaceitems/item/<:uuid>**
+
+https://dspace7.4science.cloud/server/api/submission/workspaceitems/item/cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+The item uuid is mandatory
+
+There's always at most one workspace item per Item.
+
+It would respond with:
+* The workspace item if there's a match
+* 404 if the workspace item doesn't exist
 
 ## Multipart POST Method
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.

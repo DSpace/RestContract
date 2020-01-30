@@ -36,12 +36,6 @@ Provide version information for the version id.
     },
     "item": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101/item"
-    },
-    "workspaceitem": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101/workspaceitem"
-    },
-    "workflowitem": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101/workflowitem"
     }
   }
 }
@@ -82,13 +76,3 @@ The [EPerson](epersons.md) who created the version
 ### Item
 
 The [Item](items.md) matching this specific version
-
-### Workspace Item
-
-If the Item matching this specific version is part of the workspace, the [Workspace Item](workspaceitems.md) linked to that item  
-Otherwise a 404 is returned
-
-### Workflow Item
-
-If the Item matching this specific version is part of the workflow, the [Workflow Item](workflowitems.md) linked to that item  
-Otherwise a 404 is returned
