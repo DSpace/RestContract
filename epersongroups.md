@@ -28,7 +28,7 @@
   "type": "group",
   "_links": {
     "subgroups": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
     },
     "epersons": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
@@ -60,8 +60,6 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
   }
 }
 ```
-
-## Parent Groups of a single parent EPerson Group
 
 ## Sub Groups in a single parent EPerson Group
 
