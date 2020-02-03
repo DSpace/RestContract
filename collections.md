@@ -89,6 +89,7 @@ Exposed links:
 * logo: link to the bitstream that represent the collection's logo
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
+* parentCommunity: the community containing this collection
 
 ## Patch operations
 
@@ -406,6 +407,19 @@ Status codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
 * 422 Unprocessable Entity - if the harvest_type or the metadata_config_id is not valid
+
+### Parent Community
+**/api/core/collections/<:uuid>/parentCommunity**
+
+It returns the community containing this collection, e.g. for trail purposes.  
+If a collection is part of multiple parent communities, it only returns one community.
+
+Return codes:
+* 200 OK - if the parent community exists and returned
+* 204 No content - if the collection exists but the parent community doesn't exist
+* 401 Unauthorized - if you are not authenticated and the current collection or parent community is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the current collection or parent community
+* 404 Not found - if the current collection doesn't exist
 
 ## Creating a collection
 
