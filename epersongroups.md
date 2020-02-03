@@ -160,9 +160,9 @@ Return codes:
 
 _Unsupported._ If you want detailed information about a single group, use the `/api/eperson/groups/<:uuid>` endpoint.
 
-**DELETE /api/eperson/groups/<:parent_group_uuid>/subgroups**
+**PUT /api/eperson/groups/<:parent_group_uuid>/subgroups**
 
-_Unsupported._ At this time, we do not support removing all subgroups in a single request. Please use `DELETE /api/core/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>` to remove child groups one by one.
+_Unsupported._ At this time, we do not support removing or replacing all subgroups in a single request. Please use `DELETE /api/core/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>` to remove child groups one by one.
 
 **DELETE /api/eperson/groups/<:parent_group_uuid>/subgroups/<:sub_group_uuid>**
 
@@ -290,9 +290,9 @@ Return codes:
 
 ### Remove an EPerson from a parent Group
 
-**DELETE /api/eperson/groups/<:groupuuid>/epersons**
+**PUT /api/eperson/groups/<:groupuuid>/epersons**
 
-_Unsupported._ At this time, we do not support removing all epersons in a single request. Please use `DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>` to remove the epersons one by one.
+_Unsupported._ At this time, we do not support removing or replacing all epersons in a single request. Please use `DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>` to remove the epersons one by one.
 
 **DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>**
 
