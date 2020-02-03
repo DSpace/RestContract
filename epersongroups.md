@@ -30,9 +30,6 @@
     "subgroups": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
     },
-    "parentgroups": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/parentgroups"
-    },
     "epersons": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
     },
@@ -65,69 +62,6 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
 ```
 
 ## Parent Groups of a single parent EPerson Group
-
-### Get Parent Groups of a single parent EPerson Group
-
-**GET /api/eperson/groups/<:uuid>/parentgroups**
-
-Retrieves direct parent groups of the given group.
-Requesting indirect parent groups is not supported
-
-Sample:
-* GET /rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/parentgroups
-
-```json
-{
-    "_embedded": {
-      "groups": [
-        {
-          "id": "3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42",
-          "uuid": "3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42",
-          "name": "Parent group",
-          "handle": null,
-          "metadata": {
-              "dc.title": [
-                {
-                  "value": "Parent group",
-                  "language": null,
-                  "authority": "",
-                  "confidence": -1,
-                  "place": 0
-                }
-              ]
-          },
-          "permanent": true,
-          "type": "group",
-          "_links": {
-            "subgroups": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/groups"
-            },
-            "parentgroups": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/parentgroups"
-            },
-            "epersons": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons"
-            },
-            "self": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42"
-            }
-          }
-        }
-      ]
-    },
-    "_links": {
-      "self": {
-        "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/groups"
-      }
-    },
-    "page": {
-      "number": 0,
-      "size": 10,
-      "totalPages": 1,
-      "totalElements": 10
-    }
-}
-```
 
 ## Sub Groups in a single parent EPerson Group
 
@@ -166,9 +100,6 @@ Sample:
           "_links": {
             "subgroups": {
               "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
-            },
-            "parentgroups": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/parentgroups"
             },
             "epersons": {
               "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
