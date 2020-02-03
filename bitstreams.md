@@ -59,8 +59,8 @@ The uri-list should always contain exactly 1 bitstream format. This bitstream fo
 Error codes:
 * 200 OK - if the operation succeeded
 * 400 Bad Request - if the bitstream format doesn't exist, or if the amount of bitstream formats is not 1
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist
 
 Keep in mind that there's a change to dc.format in the API related to bitstream formats:
@@ -90,8 +90,8 @@ The uri-list should always contain exactly 1 bitstream format. This bitstream fo
 
 Error codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist
 * 422 Unprocessable Entity - if the bundle doesn't exist, or if the amount of bundles is not 1
 
@@ -114,10 +114,10 @@ The supported **Request Headers** are:
 * If-None-Match: not implemented yet. Support for cache control
 
 ## DELETE Method
-Delete a bitstream. Only works for normal bitstreams in an Item (bundle), to delete a community or collection logo it is needed to interact with the community or collection endpoints
+Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a community or collection logo
 
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not loggedin with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not loggedin with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist (or was already deleted)
 * 422 Unprocessable Entity - if the bitstream is a community or collection logo

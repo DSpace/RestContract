@@ -114,8 +114,8 @@ The uri-list should always contain exactly 2 items. The first item will be used 
 The relationshipType parameter is mandatory as well
 
 * 201 Created - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if one of the items doesn't exist
 
 ## Updating the items in a relationship
@@ -140,8 +140,8 @@ The relationshipType is not modifiable
 
 Error codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist
 * 422 Unprocessable Entity - if the item doesn't exist, or if the amount of items is not 1
 
@@ -158,8 +158,8 @@ Omitted properties will be removed.
 
 Error codes:
 * 200 OK - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationship doesn't exist
 
 ## Relationships per Relationship type
@@ -357,7 +357,15 @@ A sample CURL command would be:
 curl -D - -XDELETE 'https://dspace7-entities.atmire.com/rest/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
 ```
 
+An optional parameter for copying virtual metadata to actual metadata in the related items can be included (only authorized if the user has permissions to update the metadata of the given items): `copyVirtualMetadata`. This can contain values:
+* all: both items are verified, and the virtual metadata in both items is migrated to actual metadata
+* left: only the left item will receive actual metadata
+* right: only the right item will receive actual metadata
+* configured: the behavior will be retrieved from a configuration parameter
+* _not specified_: no virtual metadata is expanded to actual metadata
+
+Return codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the relationships doesn't exist (or was already deleted)

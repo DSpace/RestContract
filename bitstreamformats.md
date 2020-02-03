@@ -30,8 +30,8 @@ The JSON should be similar to:
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 
 ## Single Bitstream Format
 **GET /api/core/bitstreamformats/<:id>**
@@ -83,8 +83,8 @@ Updates a specific bitstream format. Requires an admin account. The JSON should 
 Status codes:
 * 200 Created - if the operation succeed
 * 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream format doesn't exist
 
 **DELETE /api/core/bitstreamformats/<:id>**
@@ -93,6 +93,6 @@ Deletes a specific bitstream format. Requires an admin account. No JSON details 
 
 Status codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream format doesn't exist (or was already deleted)

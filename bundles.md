@@ -15,7 +15,17 @@ Provide detailed information about a specific bundle. A sample JSON response doc
   "uuid": "d3599177-0408-403b-9f8d-d300edd79edb",
   "name": "ORIGINAL",
   "handle": null,
-  "metadata": {},
+  "metadata": {
+      "dc.title": [
+        {
+          "value": "ORIGINAL",
+          "language": null,
+          "authority": null,
+          "confidence": -1,
+          "place": 0
+        }
+      ]
+  },
   "type": "bundle",
   "_links" : {
     "primarybitstream" : {
@@ -131,6 +141,14 @@ Exposed links:
 * primarybitstream: link to the primary bitstream if present, it will be embedded
 * bitstreams: link to the list of bitstreams displayed according to the order specified by the bundle, it will be embedded
 
+## Creating a bundle
+Bundles are only created as part of an item, the contract can be found at the [item endpoint](items.md#bundles)
+
+## Deleting a bundle
+**DELETE /api/core/bundles/<:uuid>**
+
+Deleting a bundle will delete all bitstreams in the bundle
+
 ## Bitstreams
 
 **GET /api/core/bundles/<:uuid>/bitstreams**
@@ -186,8 +204,8 @@ The REST API can support Content-Length and Content-MD5 headers to verify integr
 
 Status codes:
 * 201 Created - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bundle doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
 * 422 Unprocessable Entity - if there was no file

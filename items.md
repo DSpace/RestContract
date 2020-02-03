@@ -82,10 +82,9 @@ Exposed links:
 * relationships: the relationships to other items
  
 ## Creating an archived item
-
 **POST /api/core/items?owningCollection=<:uuid>**
 
-Administrators can directly create an archived item (bypassing the workflow). An example JSON can be seen below:
+Administrators can directly create an archived item (bypassing the workflow). The content-type is JSON. An example JSON can be seen below:
 
 ```json
 {
@@ -122,6 +121,22 @@ Administrators can directly create an archived item (bypassing the workflow). An
   "type": "item"
 }
 ```
+
+### Creating an archived item from an external source
+**POST /api/core/items?owningCollection=<:uuid>**
+
+Administrators can directly create an archived item (bypassing the workflow) from an external source. The content-type is uri-list.
+
+The URI-list should contain the [external entry value](external-authority-sources.md) whose metadata should be imported
+
+An example curl call:
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ -H "Content-Type:text/uri-list" \
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+```
+
+Only one external entry value should be present. If multiple external entry values are present, a 400 bad request will be thrown
 
 ## Updating item metadata
 
@@ -303,8 +318,8 @@ If a bundle with the given doesn't exist yet in the item, it will be created
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the bundle name already exists in the item
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
 
@@ -326,8 +341,8 @@ It updates the owning collection (moves the item)
 
 Status codes:
 * 204 No content - if the operation succeeded
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 
 ### Mapped Collections
@@ -360,8 +375,8 @@ The collection(s) MUST be included in the body using the `text/uri-list` content
  
 Return codes:
  * 204: if the update succeeded (including the case of no-op if the mapping was already as requested)
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 401  Unauthorized - if you are not authenticated
+ * 403  Forbidden - if you are not logged in with sufficient permissions 
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
@@ -386,8 +401,8 @@ The above request would remove the mapping between Collection with UUID `1c11f3f
 
 Return codes:
  * 204: if the delete succeeded (including the case of no-op if the collection was not mapped) 
- * 401 Forbidden - if you are not authenticated
- * 403 Unauthorized - if you are not logged in with sufficient permissions 
+ * 401  Unauthorized - if you are not authenticated
+ * 403  Forbidden - if you are not logged in with sufficient permissions 
  * 405: if the item is a template item
  * 422: if the specified collection is not found or is the owningCollection of the item
 
@@ -412,7 +427,14 @@ It embeds all relationships where either the left or the right item matches the 
 
 Delete an item.
 
+An optional parameter for copying virtual metadata to actual metadata in the related items can be included (only authorized by admins): `copyVirtualMetadata`. This can contain values:
+* all (all relationships are verified, and the virtual metadata in all related items is migrated to actual metadata)
+* relationship type ID: only relationship types with the given ID(s) are migrated. The `copyVirtualMetadata` can be included multiple times to support multiple IDs
+* configured: the behavior will be retrieved from a configuration parameter
+* _not specified_: no virtual metadata is expanded to actual metadata
+
+Return codes:
 * 204 No content - if the operation succeed
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist (or was already deleted)
