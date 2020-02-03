@@ -163,6 +163,12 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
 }
 ```
 
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if the email address was omitted or already exists
+
 ## Linked entities
 ### Groups
 **GET /api/eperson/epersons/<:uuid>/groups**

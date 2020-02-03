@@ -61,6 +61,12 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
 }
 ```
 
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if the dc.title was omitted or already exists
+
 ## Sub Groups in a single parent EPerson Group
 
 ### Get Sub Groups in a single parent EPerson Group
