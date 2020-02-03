@@ -14,15 +14,6 @@
   "name": "Administrator",
   "handle": null,
   "metadata": {
-    "dc.title": [
-      {
-        "value": "Administrator",
-        "language": null,
-        "authority": "",
-        "confidence": -1,
-        "place": 0
-      }
-    ]
   },
   "permanent": true,
   "type": "group",
@@ -48,10 +39,11 @@ To create a new EPerson Group, perform a post with the JSON below to the eperson
 
 ```json
 {
+  "name": "New Group 1",
   "metadata": {
-      "dc.title": [
+      "dc.description": [
         {
-          "value": "New Group 1",
+          "value": "Test group",
           "language": null,
           "authority": "",
           "confidence": -1
@@ -65,7 +57,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 422 Unprocessable Entity - if the dc.title was omitted or already exists, if permanent was set to true
+* 422 Unprocessable Entity - if the name was omitted or already exists, if permanent was set to true
 
 ## Sub Groups in a single parent EPerson Group
 
@@ -88,17 +80,7 @@ Sample:
           "uuid": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
           "name": "Administrator",
           "handle": null,
-          "metadata": {
-              "dc.title": [
-                {
-                  "value": "Administrator",
-                  "language": null,
-                  "authority": "",
-                  "confidence": -1,
-                  "place": 0
-                }
-              ]
-          },
+          "metadata": {},
           "permanent": true,
           "type": "group",
           "_links": {
