@@ -65,7 +65,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 422 Unprocessable Entity - if the dc.title was omitted or already exists
+* 422 Unprocessable Entity - if the dc.title was omitted or already exists, if permanent was set to true
 
 ## Sub Groups in a single parent EPerson Group
 
