@@ -132,7 +132,9 @@ The item uuid is mandatory
 There's always at most one workflow item per Item.
 
 It would respond with:
-* The workflow item if there's a match
+* 200 OK - Returning the workflow item if there's a match
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to view the workflow item
 * 404 if the workflow item doesn't exist
 
 ## POST Method

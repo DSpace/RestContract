@@ -131,7 +131,9 @@ The item uuid is mandatory
 There's always at most one workspace item per Item.
 
 It would respond with:
-* The workspace item if there's a match
+* 200 OK - Returning the workspace item if there's a match
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to view the workspace item
 * 404 if the workspace item doesn't exist
 
 ## Multipart POST Method
