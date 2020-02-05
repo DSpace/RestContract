@@ -114,8 +114,12 @@ Sample:
 }
 ```
 
-### Add a Group to a parent Group
+### Changing subgroups
+**PUT /api/eperson/groups/<:parent_group_uuid>/subgroups**
 
+_Unsupported._ At this time, we do not support removing or replacing all subgroups in a single request. Please use `DELETE /api/core/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>` to remove child groups one by one.
+
+### Add a Group to a parent Group
 **POST /api/eperson/groups/<:parentgroupuuid>/subgroups**
 
 To add a child group to a parent group, perform a POST to the Sub groups of a Group endpoint when logged in as admin.
@@ -139,15 +143,6 @@ Return codes:
 * 422 Unprocessable Entity - if the specified group is not found, or if adding the group would create a cyclic reference (ie. A -> B -> C, -> mean contains we cannot add A to C)
 
 ### Remove a Group from a parent Group
-
-**GET /api/eperson/groups/<:parent_group_uuid>/subgroups/<:sub_group_uuid>**
-
-_Unsupported._ If you want detailed information about a single group, use the `/api/eperson/groups/<:uuid>` endpoint.
-
-**PUT /api/eperson/groups/<:parent_group_uuid>/subgroups**
-
-_Unsupported._ At this time, we do not support removing or replacing all subgroups in a single request. Please use `DELETE /api/core/groups/<:parent_group_uuid>/groups/<:sub_group_uuid>` to remove child groups one by one.
-
 **DELETE /api/eperson/groups/<:parent_group_uuid>/subgroups/<:sub_group_uuid>**
 
 A DELETE request will result in removing a subgroup from the parent group
@@ -249,8 +244,12 @@ Sample:
 }
 ```
 
-### Add an EPerson to a parent Group
+### Changing Epeople in a Group
+**PUT /api/eperson/groups/<:groupuuid>/epersons**
 
+_Unsupported._ At this time, we do not support removing or replacing all epersons in a single request. Please use `DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>` to remove the epersons one by one.
+
+### Add an EPerson to a parent Group
 **POST /api/eperson/groups/<:groupuuid>/epersons**
 
 To add an eperson to a parent group, perform a POST to the Epeople of a Group endpoint when logged in as admin.
@@ -273,11 +272,6 @@ Return codes:
 * 422: if the specified eperson is not found
 
 ### Remove an EPerson from a parent Group
-
-**PUT /api/eperson/groups/<:groupuuid>/epersons**
-
-_Unsupported._ At this time, we do not support removing or replacing all epersons in a single request. Please use `DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>` to remove the epersons one by one.
-
 **DELETE /api/eperson/groups/<:groupuuid>/epersons/<:epersonuuid>**
 
 To remove an eperson from a parent group, perform a DELETE to the Epeople of a Group endpoint when logged in as admin.
