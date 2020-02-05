@@ -136,8 +136,7 @@ Return codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions 
 * 404 Not found - if the parent group doesn't exist
-* 409 Conflict - if adding the group would create a cyclic reference (ie. A -> B -> C, -> mean contains we cannot add A to C)
-* 422 Unprocessable Entity - if the specified group is not found
+* 422 Unprocessable Entity - if the specified group is not found, or if adding the group would create a cyclic reference (ie. A -> B -> C, -> mean contains we cannot add A to C)
 
 ### Remove a Group from a parent Group
 
