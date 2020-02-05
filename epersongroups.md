@@ -31,6 +31,9 @@
 }
 ```
 
+The "permanent" attribute will be "true" if the group is a required system group (e.g. the 'Administrator' group).  
+A permanent group cannot be removed or have its name altered.
+
 ## Create new EPerson Group
 
 **POST /api/eperson/groups**
