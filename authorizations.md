@@ -1,7 +1,7 @@
 # Authorizations Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
-An authorizations is the representation of some rights that are available to a specific user (eperson) on a defined object, eventually the whole repository (site object).
+An authorization is the representation of some rights that are available to a specific user (eperson) on a defined object, eventually the whole repository (site object).
 All the authorizations are always explicitly listed regardless to how they are grant, by direct policies via groups' membership or open to everyone (anonymous users).
 Please note that these endpoints are all READ-ONLY, authorizations are granted and withdrawn as result of business processes, configurations and resource policies.
 
