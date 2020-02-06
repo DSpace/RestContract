@@ -44,7 +44,7 @@ Exposed links:
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Unauthorized - if you are not authenticated and the policy is not related to the ANONYMOUS group
+* 401 Unauthorized - if you are not authenticated. Please note that this also apply to resource policy related to the Anonymous group
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right on the target resource, users mentioned in the policy (eperson or member of the group) can access the resourcepolicy
 * 404 Not found - if the resourcepolicy doesn't exist (or was already deleted)
 
@@ -94,7 +94,7 @@ It returns the list of explicit matching resource policies, no inherited or broa
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
-* 401 Unauthorized - if you are not authenticated
+* 401 Unauthorized - if you are not authenticated. Please note that this also apply to search related to the Anonymous group
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or users member of the group specified in the uuid parameter
 
 ## Creating a resource policy
