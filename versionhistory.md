@@ -40,7 +40,8 @@ Status codes:
 
 **GET /api/versioning/versionhistory/<:versionHistoryId>/versions**
 
-Retrieve a pageable list of versions for the provided version history identifier.
+Retrieve a pageable list of versions for the provided version history identifier.  
+The versions are ordered by version number descending.
 
 ```json
 {
