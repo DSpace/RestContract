@@ -9,7 +9,7 @@ If this is set to true, the version history can only be retrieved if the user is
 
 ## Get version history
 
-**GET /api/versioning/versionhistory/<:versionHistoryId>**
+**GET /api/versioning/versionhistories/<:versionHistoryId>**
 
 Provide version information for the version history id.
 

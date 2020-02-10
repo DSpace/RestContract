@@ -13,7 +13,7 @@ TODO
 
 ## Get single version
 
-**GET /api/versioning/version/<:versionId>**
+**GET /api/versioning/versions/<:versionId>**
 
 Provide version information for the version id.
 
