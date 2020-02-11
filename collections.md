@@ -91,6 +91,29 @@ Exposed links:
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
 * parentCommunity: the community containing this collection
 
+### Search methods
+#### findAuthorized
+**/api/core/collections/search/findAuthorized**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+It returns the list of collections where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+
+#### findAuthorizedByCommunity
+**/api/core/collections/search/findAuthorizedByCommunity?uuid=<:uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the community
+It returns the list of collections direct children of the specified community where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
+
 ## Patch operations
 
 Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).

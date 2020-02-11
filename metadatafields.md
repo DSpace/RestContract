@@ -47,6 +47,10 @@ The supported parameters are:
 * **(mandatory)** schema, the prefix of the metadata schema (i.e. "dc", "dcterms", "eperson, etc.)
 * page, size [see pagination](README.md#Pagination)
 
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the email parameter is missing or invalid
+
 ## Creating a Metadata Field
 
 **POST /api/core/metadatafields?schemaId=<:schemaId>**

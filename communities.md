@@ -220,6 +220,10 @@ The supported parameters are:
 * **(mandatory)** parent, the UUID of the parent community
 * page, size [see pagination](README.md#Pagination)
 
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
+
 ## Creating communities
 
 ### Creating top level community
