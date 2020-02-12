@@ -26,16 +26,16 @@ Provide version information for the version id.
   "summary": "Fixing some typos in the abstract",
   "_links": {
     "versionhistory": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistory/10"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/10"
     },
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101"
     },
     "eperson": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101/eperson"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101/eperson"
     },
     "item": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/version/101/item"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101/item"
     }
   }
 }
@@ -49,11 +49,9 @@ Status codes:
 
 ## Get single version for item
 
-**GET /api/versioning/item/<:item-uuid>**
+**GET /api/core/items/{:item-uuid}/version**
 
-Provide version information based on a given Item UUID. An Item UUID will only match one version.
-
-The JSON response and status codes are the same as the endpoint above.
+See [the item endpoint](items.md#get-single-version-for-item)
 
 ## Remove version
 

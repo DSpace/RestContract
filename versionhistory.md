@@ -19,10 +19,10 @@ Provide version information for the version history id.
   "type": "versionhistory",
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistory/1"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1"
     },
     "versions": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistory/1/versions"
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1/versions"
     }
   }
 }
@@ -38,7 +38,7 @@ Status codes:
 
 ### Versions
 
-**GET /api/versioning/versionhistory/<:versionHistoryId>/versions**
+**GET /api/versioning/versionhistories/<:versionHistoryId>/versions**
 
 Retrieve a pageable list of versions for the provided version history identifier.  
 The versions are ordered by version number descending.
@@ -64,7 +64,7 @@ The versions are ordered by version number descending.
     ],
     "_links": {
      "self": {
-       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistory/1/versions"
+       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1/versions"
      }
     },
     "page": {

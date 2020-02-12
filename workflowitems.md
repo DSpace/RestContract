@@ -124,18 +124,18 @@ It returns the workflowitems created by the specified submitter
 
 ## Get Single Workflow Item from Item UUID
 
-**/api/submission/workflowitems/item/<:uuid>**
+**/api/workflow/workflowitems/search/item?uuid=<:item-uuid>**
 
-https://dspace7.4science.cloud/server/api/submission/workflowitems/item/cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+/api/workflow/workflowitems/search/item?uuid=cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
 The item uuid is mandatory
 
-There's always at most one workflow item per Item.
+There's always at most one workflow item per Item, so this endpoint will return a single workflow item, not a list
 
 It would respond with:
 * 200 OK - Returning the workflow item if there's a match
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions to view the workflow item
-* 404 if the workflow item doesn't exist
+* 204 if the workflow item doesn't exist
 
 ## POST Method
 To create a workflowitem, i.e. to start a workflow, a workspaceitem must be posted to the workflowitems resource collection endpoint (/api/submission/workflowitems).

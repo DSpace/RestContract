@@ -421,6 +421,13 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 
 It embeds all relationships where either the left or the right item matches the given uuid
 
+### Get single version for item
+**GET /api/core/items/{:item-uuid}/version**
+
+Provide version information based on a given Item UUID. An Item UUID will only match one version.
+
+The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**

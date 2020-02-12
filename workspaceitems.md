@@ -123,18 +123,18 @@ It returns the workspaceitem created by the specified submitter
 
 ## Get Single Workspace Item from Item UUID
 
-**/api/submission/workspaceitems/item/<:uuid>**
+**/api/submission/workspaceitems/search/item?uuid=<:item-uuid>**
 
-https://dspace7.4science.cloud/server/api/submission/workspaceitems/item/cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+/server/api/submission/workspaceitems/search/item?uuid=cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
 The item uuid is mandatory
 
-There's always at most one workspace item per Item.
+There's always at most one workspace item per Item, so this endpoint will return a single workspace item, not a list
 
 It would respond with:
 * 200 OK - Returning the workspace item if there's a match
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions to view the workspace item
-* 404 if the workspace item doesn't exist
+* 204 if the workspace item doesn't exist
 
 ## Multipart POST Method
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
