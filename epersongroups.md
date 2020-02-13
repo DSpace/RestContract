@@ -267,8 +267,8 @@ The eperson is mandatory
 
 Return codes:
 * 204: if the update succeeded 
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions 
 * 422: if the specified eperson is not found
 
 ### Remove an EPerson from a parent Group
@@ -288,11 +288,10 @@ The above request would remove the mapping between the group with UUID `617cf46b
 
 Return codes:
 * 204: if the update succeeded (including the case of no-op if the eperson was not a member)
-* 401 Forbidden - if you are not authenticated
-* 403 Unauthorized - if you are not logged in with sufficient permissions 
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions 
 * 404 Not found - if the parent group doesn't exist
-* 422 Unprocessable Entity - if the child group doesn't exist
-* 422 Unprocessable Entity - if the specified eperson doesn't exist
+* 422 Unprocessable Entity - if the child group doesn't exist or if the specified eperson doesn't exist
 
 ## Search
 **GET /api/eperson/groups/search/byMetadata?query=<:name>**
