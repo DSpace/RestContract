@@ -2,10 +2,63 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/eperson/epersons**  
+**GET /api/eperson/epersons**
 
 ## Single EPerson
-**/api/eperson/epersons/<:uuid>**
+**GET /api/eperson/epersons/<:uuid>**
+
+```json
+{
+  "id": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "uuid": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "name": "user@institution.edu",
+  "handle": null,
+  "metadata": {
+      "eperson.firstname": [
+        {
+          "value": "John",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.language": [
+        {
+          "value": "en",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.lastname": [
+        {
+          "value": "Doe",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ]
+  },
+  "netid": null,
+  "lastActive": "2019-09-25T15:59:28.000+0000",
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "type": "eperson",
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+    },
+    "groups": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107/groups"
+    }
+  }
+}
+```
 
 ## Patch operations
 
@@ -74,3 +127,64 @@ the replace operation `[{ "op": "replace", "path": "/password", "value": "newpas
   "password": "newpassword",
 ```
 NOTE: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
+
+## Create new EPerson
+
+**POST /api/eperson/epersons**
+
+To create a new EPerson, perform a post with the JSON below to the epersons endpoint when logged in as admin.
+
+```json
+{
+  "name": "user@institution.edu",
+  "metadata": {
+    "eperson.firstname": [
+      {
+        "value": "John",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "Doe",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ]
+  },
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "type": "eperson"
+}
+```
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if the email address was omitted or already exists
+
+## Linked entities
+### Groups
+**GET /api/eperson/epersons/<:uuid>/groups**
+
+A HAL link to retrieve the eperson groups of an eperson is included.
+This will return a pageable list of the groups this person is a direct member of
+
+> TODO: A solution to retrieve direct and indirect groups of an eperson is also required.
+> This would use GroupService.allMemberGroupsSet() and is used e.g. when viewing an EPerson as an admin
+
+## Search
+**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* first name
+* last name
+* email address
