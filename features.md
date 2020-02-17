@@ -41,7 +41,7 @@ Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access
-* 404 Not found - if the authorization doesn't exist (or was already deleted)
+* 404 Not found - if the feature doesn't exist
 
 ### Search methods
 #### resourcetype
