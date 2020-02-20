@@ -16,7 +16,7 @@ There are two standard projections available in all DSpace 7+ instances:
 ### Default Projection
 
 The _default_ projection makes no changes to the normal representation of the resource and **excludes all
-subresource embeds**, omitting altogether the `_embed` section of the HAL representation.
+subresource embeds**, omitting altogether the `_embedded` section of the HAL representation.
 
 This is the implicit projection for all individual resource endpoints, such as `/api/core/items/<:uuid>`,
 if no projection is specified.
