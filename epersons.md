@@ -60,6 +60,35 @@
 }
 ```
 
+### Search methods
+#### byEmail
+**/api/eperson/epersons/search/byEmail?email=<:string>**
+
+The supported parameters are:
+* email: mandatory, EPerson's email to search
+
+It returns the EPersonRest instance, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the email parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
+
+#### byName
+**/api/eperson/epersons/search/byName?q=<:string>**
+
+The supported parameters are:
+* q: mandatory, the search string
+
+It returns the list of EPersonRest instances, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the email parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
+
 ## Patch operations
 
 EPerson metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
@@ -112,8 +141,7 @@ For example, starting with the following eperson field data:
 the replace operation `[{ "op": "replace", "path": "/email", "value": "new@email"]` will result in :
 ```json
   "email": "new@email",
-  ```
-  
+  ```  
 #### This operation can be performed by administrators and by the authenticated user.
 
 To replace the password value, `curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  The operation also requires an Authorization header.
