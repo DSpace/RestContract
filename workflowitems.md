@@ -87,6 +87,7 @@ Provide detailed information about a specific workflowitem. The JSON response do
 Similary  to the [Workspace Item](workspaceitems.md) the actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure. See the [out-of-box submission section types](submissionsection-types.md) page for details. An additional step attribute containing the id of the reached step in the workflow is present
 
 Exposed links:
+* step: the workflow step
 * collection: the collection where the inprogress submission will be created
 * item: the item that hold the submission data
 * submissionDefinition: the [submission definition](submissiondefinitions.md) used by this inprogress submission
@@ -115,6 +116,13 @@ It returns the submission definition used by the inprogress submission. See the 
 The submission definition used by the inprogress submission is derived from the inprogress submission attributes. In the default implementation the definition is derived from the collection where the submission is created and is updated if it changes. 
 Please note that this endpoint is not strictly necessary as you can currently retrieve the same definition using [/api/config/submissiondefinitions/search/findByCollection?uuid=<:workspaceitem-collection-uuid>](submissiondefinitions.md#findByCollection) but it allows the client to find the submissionDefinition embedded in the workspaceitem without the need to make a separate call. 
 In addition, it allows in future to change the 1:1 association between collections and submissionDefinition without breaking the client
+
+#### workflow step
+**/api/workflow/claimedtasks/<:id>/step** (READ-ONLY)
+
+It returns the workflow step currently assigned to the task.
+See the [workflow steps](workflowsteps.md) endpoint for more info.
+This is a **read-only** endpoint
 
 ### Search methods
 #### findBySubmitter
