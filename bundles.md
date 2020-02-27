@@ -204,11 +204,11 @@ The REST API can support Content-Length and Content-MD5 headers to verify integr
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad Request - if there was no file
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bundle doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
-* 422 Unprocessable Entity - if there was no file
 
 This endpoint only accepts one file at a time. If multiple files are uploaded, any extra files will be ignored.
 
