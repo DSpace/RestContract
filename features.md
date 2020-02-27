@@ -26,7 +26,7 @@ Provide detailed information about a specific feature. Access is restricted to s
   "id": "withdrawItem",
   "description": "The feature allows to withdrawn an item from the repository without deleting it. The restoreItem feature allow to undo the process",
   "resourcetypes": [
-  	"item"
+  	"core.item"
   ],
   "type": "feature"
 }
@@ -35,7 +35,7 @@ Provide detailed information about a specific feature. Access is restricted to s
 Attributes
 * id: the id of the feature is an unique shortname
 * description: an human readable description of the feature purpose 
-* resourcetypes: an array of types of objects where this feature apply in the textual, singular, lowercase, form. See org.dspace.core.Constants.typeText can be one of site, community, collection, item, bundle, bitstream, eperson, group, workspaceitem, workflowitem, pooltask, claimedtask
+* resourcetypes: an array of types of objects where this feature apply in the form of category.model as used in the REST API. Please note that the model is in its singular form (i.e. core.item, core.site, submission.workspaceitem, etc.)
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -49,7 +49,7 @@ Return codes:
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* type: see org.dspace.core.Constants.typeText can be one of site, community, collection, item, bundle, bitstream, eperson, group, workspaceitem, workflowitem, pooltask, claimedtask
+* type: in the form of category.model as used in the REST API. Please note that the model is in its singular form (i.e. core.item, core.site, submission.workspaceitem, etc.)
 
 It returns the list of features that apply to the specified type. 
 
