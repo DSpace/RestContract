@@ -118,9 +118,9 @@ Please note that this endpoint is not strictly necessary as you can currently re
 In addition, it allows in future to change the 1:1 association between collections and submissionDefinition without breaking the client
 
 #### workflow step
-**/api/workflow/claimedtasks/<:id>/step** (READ-ONLY)
+**/api/workflow/workflowitems/<:id>/step** (READ-ONLY)
 
-It returns the workflow step currently assigned to the task.
+It returns the workflow step of the workflow item
 See the [workflow steps](workflowsteps.md) endpoint for more info.
 This is a **read-only** endpoint
 
