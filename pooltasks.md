@@ -44,7 +44,7 @@ It returns the eperson that can claim the task. See the [eperson endpoint for mo
 It returns the group of epersons that can claim the task. See the [group endpoint for more info](epersongroups.md). This is a **read-only** endpoint, once the task is created the backend group cannot be changed.
 
 #### workflow step
-**/api/workflow/claimedtasks/<:id>/step** (READ-ONLY)
+**/api/workflow/pooltasks/<:id>/step** (READ-ONLY)
 
 It returns the workflow step currently assigned to the task.
 See the [workflow steps](workflowsteps.md) endpoint for more info.
@@ -55,7 +55,7 @@ This is a **read-only** endpoint
 
 It returns the workflow action currently assigned to the task.
 See the [workflow actions](workflowactions.md) endpoint for more info.
-This is a **read-only** endpoint, the [POST to the claimed task](#post-method-single-resource-level) is used to perform the action
+This is a **read-only** endpoint.
 
 ### Search methods
 #### findByUser
