@@ -74,7 +74,7 @@ Exposed links:
 * collections: list of collections within this community
 * logo: link to the bitstream that represent the community's logo
 * parentCommunity: the community containing this community
-* groups/admin: the Community Administrator group
+* adminGroup: the Community Administrator group
 
 ## Linked entities
 
@@ -203,14 +203,14 @@ Return codes:
 
 ### Groups
 #### Community administrators
-**/api/core/communities/<:uuid>/groups/admin**
+**/api/core/communities/<:uuid>/adminGroup**
 
 Endpoints for managing the Community administrators
 
 ##### Retrieve Community administrators
-**GET /api/core/communities/<:uuid>/groups/admin**
+**GET /api/core/communities/<:uuid>/adminGroup**
 
-Example: /server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/groups/admin
+Example: /server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/adminGroup
 
 It returns the EPerson Group representing the administrators of this community. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
 
@@ -222,7 +222,7 @@ Return codes:
 * 404 Not found - if the current community doesn't exist
 
 ##### Create Community administrators group
-**POST /api/core/communities/<:uuid>/groups/admin**
+**POST /api/core/communities/<:uuid>/adminGroup**
 
 To be used on a community without Community administrators
 
@@ -260,7 +260,7 @@ All modifications to the group will be performed directly on the Group endpoint:
 Modifying the Community administrators group will be authorized for admins and (parent) community admins
 
 ##### Delete the Community administrators group
-**DELETE /api/core/communities/<:uuid>/groups/admin**
+**DELETE /api/core/communities/<:uuid>/adminGroup**
 
 To be used on a community with an administrator group
 

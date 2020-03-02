@@ -90,11 +90,11 @@ Exposed links:
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
 * parentCommunity: the community containing this collection
-* groups/admin: the Collection Administrator group
-* groups/submit: the Collection Submitters group
-* groups/itemread: the Collection Default item READ rights group
-* groups/bitstreamread: the Collection Default bitstream READ rights group
-* groups/workflow/<:workflow-role>: the Collection Workflow groups
+* adminGroup: the Collection Administrator group
+* submittersGroup: the Collection Submitters group
+* itemReadGroup: the Collection Default item READ rights group
+* bitstreamReadGroup: the Collection Default bitstream READ rights group
+* workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 ### Search methods
 #### findAuthorized
@@ -452,21 +452,21 @@ Return codes:
 ### Groups
 
 This includes group management for the type of groups:
-* groups/admin: the Collection Administrator group
-* groups/submit: the Collection Submitters group
-* groups/itemread: the Collection Default item READ rights group
-* groups/bitstreamread: the Collection Default bitstream READ rights group
-* groups/workflow/<:workflow-role>: the Collection Workflow groups
+* adminGroup: the Collection Administrator group
+* submittersGroup: the Collection Submitters group
+* itemReadGroup: the Collection Default item READ rights group
+* bitstreamReadGroup: the Collection Default bitstream READ rights group
+* workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 #### Collection administrators
-**/api/core/collections/<:uuid>/groups/admin**
+**/api/core/collections/<:uuid>/adminGroup**
 
 Endpoints for managing the collection administrators
 
 ##### Retrieve collection administrators
-**GET /api/core/collections/<:uuid>/groups/admin**
+**GET /api/core/collections/<:uuid>/adminGroup**
 
-Example: /server/api/core/collections/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/groups/admin
+Example: /server/api/core/collections/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/adminGroup
 
 It returns the EPerson Group representing the administrators of this collection. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
 
@@ -478,7 +478,7 @@ Return codes:
 * 404 Not found - if the current collection doesn't exist
 
 ##### Create collection administrators group
-**POST /api/core/collections/<:uuid>/groups/admin**
+**POST /api/core/collections/<:uuid>/adminGroup**
 
 To be used on a collection without collection administrators
 
@@ -516,7 +516,7 @@ All modifications to the group will be performed directly on the Group endpoint:
 Modifying the collection administrators group will be authorized for admins, parent community admins and collection admins
 
 ##### Delete the collection administrators group
-**DELETE /api/core/collections/<:uuid>/groups/admin**
+**DELETE /api/core/collections/<:uuid>/adminGroup**
 
 To be used on a collection with an administrator group
 
@@ -528,7 +528,7 @@ Status codes:
 * 422: if the collection didn't contain an administrator group
 
 #### Collection Submitters
-**/api/core/communities/<:uuid>/groups/submit**
+**/api/core/communities/<:uuid>/submittersGroup**
 
 Endpoints for managing the Collection Submitters group
 
@@ -536,7 +536,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the submitters group.
 
 #### Collection Default item READ rights group
-**/api/core/communities/<:uuid>/groups/itemread**
+**/api/core/communities/<:uuid>/itemReadGroup**
 
 Endpoints for managing the Collection Default item READ rights group
 
@@ -544,7 +544,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default item READ rights group.
 
 #### Collection Default bitstream READ rights group
-**/api/core/communities/<:uuid>/groups/bitstreamread**
+**/api/core/communities/<:uuid>/bitstreamReadGroup**
 
 Endpoints for managing the Collection Default bitstream READ rights group
 
@@ -552,7 +552,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default bitstream READ rights group
 
 #### Collection Workflow groups
-**/api/core/communities/<:uuid>/groups/workflow/<:workflow-role>**
+**/api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
 
 Endpoints for managing the Collection Workflow groups
 
