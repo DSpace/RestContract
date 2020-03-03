@@ -74,6 +74,7 @@ That request will embed:
 * The bundles of the mappedItems
 * The bitstreams of the bundles of the mappedItems
 * The logo of the item's owningCollection
+
 This will **not** embed:
 * The bundles of the main item
 * The item's mappedCollections
