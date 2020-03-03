@@ -521,7 +521,7 @@ Modifying the collection administrators group will be authorized for admins, par
 To be used on a collection with an administrator group
 
 Status codes:
-* 204 No content - if the operation succeed
+* 204 No content - if the delete succeeded (including the case of no-op if the collection didn't contain an administrator group) 
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only admins, parent community admins and collection admins can delete the group
 * 404 Not found - if the collection doesn't exist

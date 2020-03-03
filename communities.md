@@ -265,11 +265,10 @@ Modifying the Community administrators group will be authorized for admins and (
 To be used on a community with an administrator group
 
 Status codes:
-* 204 No content - if the operation succeed
+* 204 No content - if the delete succeeded (including the case of no-op if the community didn't contain an administrator group) 
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and (parent) community admins can delete the group
 * 404 Not found - if the community doesn't exist
-* 422: if the community didn't contain an administrator group
 
 ### Search methods
 #### top
