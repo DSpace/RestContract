@@ -90,6 +90,11 @@ Exposed links:
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
 * parentCommunity: the community containing this collection
+* adminGroup: the Collection Administrator group
+* submittersGroup: the Collection Submitters group
+* itemReadGroup: the Collection Default item READ rights group
+* bitstreamReadGroup: the Collection Default bitstream READ rights group
+* workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 ### Search methods
 #### findAuthorized
@@ -443,6 +448,124 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated and the current collection or parent community is not public
 * 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the current collection or parent community
 * 404 Not found - if the current collection doesn't exist
+
+### Groups
+
+This includes group management for the type of groups:
+* adminGroup: the Collection Administrator group
+* submittersGroup: the Collection Submitters group
+* itemReadGroup: the Collection Default item READ rights group
+* bitstreamReadGroup: the Collection Default bitstream READ rights group
+* workflowGroups/<:workflow-role>: the Collection Workflow groups
+
+#### Collection administrators
+**/api/core/collections/<:uuid>/adminGroup**
+
+Endpoints for managing the collection administrators
+
+##### Retrieve collection administrators
+**GET /api/core/collections/<:uuid>/adminGroup**
+
+Example: /server/api/core/collections/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/adminGroup
+
+It returns the EPerson Group representing the administrators of this collection. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
+
+Return codes:
+* 200 OK - if the admin group exists and is returned
+* 204 No content - if the current collection exists but the admin group doesn't exist
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the groups, parent community admins and collection admins can retrieve the group
+* 404 Not found - if the current collection doesn't exist
+
+##### Create collection administrators group
+**POST /api/core/collections/<:uuid>/adminGroup**
+
+To be used on a collection without collection administrators
+
+Perform a post with the JSON below.
+
+```json
+{
+  "metadata": {
+      "dc.description": [
+        {
+          "value": "Test group",
+          "language": null,
+          "authority": "",
+          "confidence": -1
+        }
+      ]
+  }
+}
+```
+Contrary to the [EPerson Group endpoint](epersongroups.md#create-new-eperson-group), the name cannot be set here
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and parent community admins can retrieve the group
+* 404 Not found - if the collection doesn't exist
+* 422 Unprocessable Entity - if the name was included, if permanent was set to true, or if the collection already contains an administrator group
+
+##### Modifying the collection administrators group
+
+All modifications to the group will be performed directly on the Group endpoint:
+* Adding members will need to use the [EPerson Group endpoint](epersongroups.md#add-an-eperson-to-a-parent-group)
+* Adding sub-groups will need to use the [EPerson Group endpoint](epersongroups.md#add-a-group-to-a-parent-group)
+
+Modifying the collection administrators group will be authorized for admins, parent community admins and collection admins
+
+##### Delete the collection administrators group
+**DELETE /api/core/collections/<:uuid>/adminGroup**
+
+To be used on a collection with an administrator group
+
+Status codes:
+* 204 No content - if the delete succeeded (including the case of no-op if the collection didn't contain an administrator group) 
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins, parent community admins and collection admins can delete the group
+* 404 Not found - if the collection doesn't exist
+* 422: if the collection didn't contain an administrator group
+
+#### Collection Submitters
+**/api/core/communities/<:uuid>/submittersGroup**
+
+Endpoints for managing the Collection Submitters group
+
+This works identical to the [Collection administrators](#collection-administrators),
+except the collection administrators can also create the submitters group.
+
+#### Collection Default item READ rights group
+**/api/core/communities/<:uuid>/itemReadGroup**
+
+Endpoints for managing the Collection Default item READ rights group
+
+This works identical to the [Collection administrators](#collection-administrators),
+except the collection administrators can also create the Collection Default item READ rights group.
+
+#### Collection Default bitstream READ rights group
+**/api/core/communities/<:uuid>/bitstreamReadGroup**
+
+Endpoints for managing the Collection Default bitstream READ rights group
+
+This works identical to the [Collection administrators](#collection-administrators),
+except the collection administrators can also create the Collection Default bitstream READ rights group
+
+#### Collection Workflow groups
+**/api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
+
+Endpoints for managing the Collection Workflow groups
+
+This works similar to the [Collection administrators](#collection-administrators).  
+The differences are:
+* The collection administrators can also create the Collection Workflow groups
+* The <:workflow-role> can be any role configured in the workflow with scope Collection. A HAL link for each of these groups will be included
+
+The workflow role can be e.g.:
+* reviewer
+* editor
+* finaleditor
+* reviewmanagers
 
 ## Creating a collection
 

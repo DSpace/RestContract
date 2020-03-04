@@ -74,6 +74,7 @@ Exposed links:
 * collections: list of collections within this community
 * logo: link to the bitstream that represent the community's logo
 * parentCommunity: the community containing this community
+* adminGroup: the Community Administrator group
 
 ## Linked entities
 
@@ -199,6 +200,75 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated and the current community or parent community is not public
 * 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the current community or parent community
 * 404 Not found - if the current community doesn't exist
+
+### Groups
+#### Community administrators
+**/api/core/communities/<:uuid>/adminGroup**
+
+Endpoints for managing the Community administrators
+
+##### Retrieve Community administrators
+**GET /api/core/communities/<:uuid>/adminGroup**
+
+Example: /server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/adminGroup
+
+It returns the EPerson Group representing the administrators of this community. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
+
+Return codes:
+* 200 OK - if the admin group exists and is returned
+* 204 No content - if the current community exists but the admin group doesn't exist
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the groups. Only admins and (parent) community admins can retrieve the group
+* 404 Not found - if the current community doesn't exist
+
+##### Create Community administrators group
+**POST /api/core/communities/<:uuid>/adminGroup**
+
+To be used on a community without Community administrators
+
+Perform a post with the JSON below.
+
+```json
+{
+  "metadata": {
+      "dc.description": [
+        {
+          "value": "Test group",
+          "language": null,
+          "authority": "",
+          "confidence": -1
+        }
+      ]
+  }
+}
+```
+Contrary to the [EPerson Group endpoint](epersongroups.md#create-new-eperson-group), the name cannot be set here
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and parent community admins can retrieve the group
+* 404 Not found - if the community doesn't exist
+* 422 Unprocessable Entity - if the name was included, if permanent was set to true, or if the community already contains an administrator group
+
+##### Modifying the Community administrators group
+
+All modifications to the group will be performed directly on the Group endpoint:
+* Adding members will need to use the [EPerson Group endpoint](epersongroups.md#add-an-eperson-to-a-parent-group)
+* Adding sub-groups will need to use the [EPerson Group endpoint](epersongroups.md#add-a-group-to-a-parent-group)
+
+Modifying the Community administrators group will be authorized for admins and (parent) community admins
+
+##### Delete the Community administrators group
+**DELETE /api/core/communities/<:uuid>/adminGroup**
+
+To be used on a community with an administrator group
+
+Status codes:
+* 204 No content - if the delete succeeded (including the case of no-op if the community didn't contain an administrator group) 
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and (parent) community admins can delete the group
+* 404 Not found - if the community doesn't exist
 
 ### Search methods
 #### top
