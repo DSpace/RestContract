@@ -21,6 +21,8 @@ Provide details about a specific task in the pool. The JSON response document is
 ```
 
 Exposed links:
+* step: the workflow step
+* action: the workflow action
 * workflowitem: the workflowitem underlying the task
 * owner: the eperson that own the task
 
@@ -34,6 +36,13 @@ It returns the underlying workflowitem holds by the task. See the [workflowitem 
 **/api/workflow/claimedtasks/<:id>/owner** (READ-ONLY)
 
 It returns the eperson that own the task. See the [eperson endpoint for more info](epersons.md). This is a **read-only** endpoint, once the task is claimed the owner cannot be changed. To unclaim a task see the DELETE method below
+
+#### workflow step
+**/api/workflow/claimedtasks/<:id>/step** (READ-ONLY)
+
+It returns the workflow step currently assigned to the task.
+See the [workflow steps](workflowsteps.md) endpoint for more info.
+This is a **read-only** endpoint
 
 #### workflow action
 **/api/workflow/claimedtasks/<:id>/action** (READ-ONLY)
