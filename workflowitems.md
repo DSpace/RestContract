@@ -149,9 +149,15 @@ If fails the following status code are expected
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
 If succeed a 201 code will be returned and the new state of the workflowitem serialized in the body
 
-## DELETE Method 
+## DELETE Method
+**DELETE /api/submission/workflowitems/<:id>**
+
 Reset a workflow sending back the item to the workspace regardless to the step reached.
 
-204 No content - if the operation succeed
-403 Unauthorized - if you are not loggedin as an administrator
-404 Not found - if the workflow doesn't longer exist
+If an optional parameter `?expunge=true` is included, the workflow item is deleted instead of being returned to the workflow.
+
+It would respond with:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in as an administrator
+* 404 Not found - if the workflow doesn't exist
