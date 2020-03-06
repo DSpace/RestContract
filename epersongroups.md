@@ -93,6 +93,7 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions, only general admins can patch a group
 * 404 Not found - if the Group doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if the name cannot be modified (e.g. if permanent was set to true or the group is part of a DSpace Object)
 
 ## Sub Groups in a single parent EPerson Group
 
@@ -334,7 +335,7 @@ It will search in:
 * group name
 
 ## Related DSpace Object of group
-**GET /api/eperson/groups/<:uuid>/dso**
+**GET /api/eperson/groups/<:uuid>/object** (READ-ONLY)
 
 This returns the DSpace Object (Community, Collection) belonging to this Group.
 This is only applicable for roles in that DSpace Object, e.g. the Community Administrator or Collection Submitter Group
