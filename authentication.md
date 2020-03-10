@@ -9,9 +9,12 @@ Information about the underline implementation are [available on the wiki](https
 
 This endpoint only accept the POST method. Parameters and body structure depend on the authentication method to use.
 
-A WWW-Authenticate header is returned listing the different authentication method supported by the system. Below an example listing the password and shibboleth authentication
-
+A WWW-Authenticate header is returned listing the different authentication method supported by the system.
+Below an example listing the password and shibboleth authentication:  
 `WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://dspace7.4science.cloud/Shibboleth.sso/Login?target=https%3A%2F%2Fdspace7.4science.cloud", password realm="DSpace REST API"`
+
+An alternative response when Login-as and password login are available:  
+`WWW-Authenticate: loginas realm="DSpace REST API", password realm="DSpace REST API"`
 
 Return codes
 - 200 Ok. If the authentication succeed. The JWT will be returned in the response Header Authorization. 
