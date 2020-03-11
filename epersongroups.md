@@ -62,6 +62,39 @@ Status codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if the name was omitted or already exists, if permanent was set to true
 
+## Deleting an EPerson Group
+
+**DELETE /api/eperson/groups/<:uuid>**
+
+Deletes the EPerson Group
+
+Status codes:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions, only general admins can delete a group
+* 404 Not found - if the Group doesn't exist (or was already deleted)
+
+## Patch operations
+**PATCH /api/eperson/groups/<:uuid>**
+
+EPerson Group metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
+
+Additional properties can be modified via Patch as described below.
+
+### Replace
+The replace operation allows to replace *existent* information with new one.
+The only property which can be modified is the group name.
+
+To change the name of an EPerson Group, use
+`curl --data '[ { "op": "replace", "path": "/name", "value": "New Name"}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api//eperson/groups/${group-uuid}`.
+
+Status codes:
+* 200 OK - if the operation succeeded
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions, only general admins can patch a group
+* 404 Not found - if the Group doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if the name cannot be modified (e.g. if permanent was set to true or the group is part of a DSpace Object)
+
 ## Sub Groups in a single parent EPerson Group
 
 ### Get Sub Groups in a single parent EPerson Group
@@ -300,3 +333,9 @@ This supports a basic search in the metadata.
 It will search in:
 * UUID (exact match)
 * group name
+
+## Related DSpace Object of group
+**GET /api/eperson/groups/<:uuid>/object** (READ-ONLY)
+
+This returns the DSpace Object (Community, Collection) belonging to this Group.
+This is only applicable for roles in that DSpace Object, e.g. the Community Administrator or Collection Submitter Group
