@@ -1,4 +1,4 @@
-# Collecting user interactions
+# Collecting/Reporting user interactions
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## View events endpoint
@@ -26,7 +26,30 @@ The sections below describe the parameters for a page view event. All other info
   "targetType": "item"
 }
 ```
+## Report View Events endpoint
+**GET /api/statistics/viewevents**
 
+To get a report for the usage statistics of a page view, make an HTTP GET request to this endpoint.
+
+The sections below describe the parameters for a page view event report.
+
+### Required Parameters
+
+### Status codes:
+
+- `200` Succes: if the operation succeeded
+- `400` Bad request: if any of the parameters are missing or invalid.
+- `422` Unprocessable Entity: if the parameters don't refer to a valid object.
+
+### Example item page view:
+
+
+```json
+{
+
+}
+
+```
 
 ## Search events Endpoint
 **POST /api/statistics/searchevents**
