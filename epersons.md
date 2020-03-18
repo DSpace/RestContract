@@ -160,6 +160,9 @@ the replace operation `[{ "op": "replace", "path": "/password", "value": "newpas
 ```
 NOTE: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
 
+Any EPerson metadata can be modified by both the administrator and by the authenticated user.  
+This includes, but is not limited to, last name, first name, phone, language
+
 ## Create new EPerson
 
 **POST /api/eperson/epersons**
