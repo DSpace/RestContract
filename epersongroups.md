@@ -73,6 +73,7 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions, only general admins can delete a group
 * 404 Not found - if the Group doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if you attempt to delete a permanent group or a group that has a parent (community admins, collection submitters, ... these have separate endpoints to delete them)
 
 ## Patch operations
 **PATCH /api/eperson/groups/<:uuid>**
