@@ -62,78 +62,107 @@ The JSON response document is as follows
    "parameters" : [
     {
       "name" : "-a",
+      "nameLong" : "--add",
       "description" : "add items to DSpace",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
-      "name" : "-b",
+      "name" : "-b", 
+      "nameLong" : "--add-bte",
       "description" : "add items to DSpace via Biblio-Transformation-Engine (BTE)",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
-      "name" : "-c",
+      "name" : "-c",      
+      "nameLong" : "--collection",
       "description" : "destination collection(s) database ID",
-      "type" : "id"
+      "type" : "id",
+      "mandatory" : false
     },
     {
-      "name" : "-d",
+      "name" : "-d", 
+      "nameLong" : "--delete",
       "description" : "delete items listed in mapfile",
-      "type" : "file"
+      "type" : "file",
+      "mandatory" : false
     },
     {
       "name" : "-e",
+      "nameLong" : "--eperson",
       "description" : "email of eperson doing importing",
-      "type" : "string"
+      "type" : "string",
+      "mandatory" : false
     },
     {
       "name" : "-i",
+      "nameLong" : "--inputtype",
       "description" : "input type in case of BTE import",
-      "type" : "string"
+      "type" : "string",
+      "mandatory" : false
     },
     {
       "name" : "-n",
+      "nameLong" : "--notify",
       "description" : "if sending submissions through the workflow, send notification emails",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
       "name" : "-p",
+      "nameLong" : "--template",
       "description" : "apply template",
-      "type" : "string"
+      "type" : "string",
+      "mandatory" : false
     },
     {
       "name" : "-q",
+      "nameLong" : "--quiet",
       "description" : "don't display metadata",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
-      "name" : "-m",
+      "name" : "-m",    
+      "nameLong" : "--mapfile",
       "description" : "mapfile items in mapfile",
-      "type" : "file"
+      "type" : "file",
+      "mandatory" : true
     },
     {
-      "name" : "-r",
+      "name" : "-r",   
+      "nameLong" : "--replace",
       "description" : "replace items in mapfile",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
-      "name" : "-R",
+      "name" : "-R",    
+      "nameLong" : "--resume",
       "description" : "resume a failed import (add only)",
       "type" : "boolean"
     },
     {
       "name" : "-t",
+      "nameLong" : "--test",
       "description" : "test run - do not actually import items",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
-      "name" : "-w",
+      "name" : "-w",      
+      "nameLong" : "--workflow",
       "description" : "send submission through collection's workflow",
-      "type" : "boolean"
+      "type" : "boolean",
+      "mandatory" : false
     },
     {
       "name" : "-z",
+      "nameLong" : "--zip",
       "description" : "zip file containing the import",
-      "type" : "file"
+      "type" : "file",
+      "mandatory" : false
     }
    ]
 }
