@@ -9,8 +9,8 @@ Information about the underline implementation are [available on the wiki](https
 
 This endpoint only accept the POST method. Parameters and body structure depend on the authentication method to use.
 
-A WWW-Authenticate header is returned listing the different authentication method supported by the system. Below an example listing the password and shibboleth authentication
-
+A WWW-Authenticate header is returned listing the different authentication method supported by the system.
+Below an example listing the password and shibboleth authentication:  
 `WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://dspace7.4science.cloud/Shibboleth.sso/Login?target=https%3A%2F%2Fdspace7.4science.cloud", password realm="DSpace REST API"`
 
 Return codes
@@ -121,3 +121,21 @@ Embedded
 
 Return code
 - 200 Ok in all the scenario both authenticated than not authenticated (valid token, invalid token or missing token)
+
+## Log in as
+
+For any request, an `X-On-Behalf-Of` header can be included.
+If the user is authorized to use this header (the user is an admin and login as is allowed), the request will be processed using the account of the provided user.  
+Verifying whether the user is authorized to use this header can happen using the "loginOnBehalfOf" [feature](features.md), verified against the site
+
+Sample request: 
+```
+curl -v "http://{dspace-server.url}/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb" -H "Authorization: Bearer eyJhbG...COdbo" -H "X-On-Behalf-Of: 028dcbb8-0da2-4122-a0ea-254be49ca107"
+```
+
+The Authorization header remains the same, still linked to the actual admin using the `X-On-Behalf-Of` header.
+
+Status codes:
+* 400 Bad Request - if the X-On-Behalf-Of header doesn't contain a valid EPerson UUID
+* 403 Forbidden - if you are not authorized to act on behalf of the given user
+* Any status code of the functionality being used
