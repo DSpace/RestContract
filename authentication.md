@@ -91,7 +91,6 @@ This will return the authentication status, E.G.:
 {
   "okay" : true,
   "authenticated" : true,
-  "allowOnBehalfOf" : false,
   "type" : "status",
   "_links" : {
     "eperson" : {
@@ -112,7 +111,6 @@ This will return the authentication status, E.G.:
 Fields
 - Okay: True if REST API is up and running, should never return false
 - Authenticated: True if the token is valid, false if there was no token or the token wasn't valid
-- allowOnBehalfOf: True if the user is an admin and login as is allowed
 - Type: Type of the endpoint, "status" in this case
 
 Links	
@@ -126,17 +124,18 @@ Return code
 
 ## Log in as
 
-For any request, an `x-on-behalf-of` header can be included.
-If the user is authorized to use this header (the user is an admin and login as is allowed), the request will be processed using the account of the provided user
+For any request, an `X-On-Behalf-Of` header can be included.
+If the user is authorized to use this header (the user is an admin and login as is allowed), the request will be processed using the account of the provided user.  
+Verifying whether the user is authorized to use this header can happen using the "loginOnBehalfOf" [feature](features.md), verified against the site
 
 Sample request: 
 ```
-curl -v "http://{dspace-server.url}/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb" -H "Authorization: Bearer eyJhbG...COdbo" -H "x-on-behalf-of: 028dcbb8-0da2-4122-a0ea-254be49ca107"
+curl -v "http://{dspace-server.url}/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb" -H "Authorization: Bearer eyJhbG...COdbo" -H "X-On-Behalf-Of: 028dcbb8-0da2-4122-a0ea-254be49ca107"
 ```
 
-The Authorization header remains the same, still linked to the actual admin using the `x-on-behalf-of` header.
+The Authorization header remains the same, still linked to the actual admin using the `X-On-Behalf-Of` header.
 
 Status codes:
-* 400 Bad Request - if the x-on-behalf-of header doesn't contain a valid EPerson UUID
+* 400 Bad Request - if the X-On-Behalf-Of header doesn't contain a valid EPerson UUID
 * 403 Forbidden - if you are not authorized to act on behalf of the given user
 * Any status code of the functionality being used
