@@ -113,3 +113,13 @@ Some licenses contain questions, e.g. standard retrieved from https://api.creati
 ```
 
 The fields are questions to be answered when assigning the license
+
+## Search CC License 
+**/api/config/submissioncclicenses/search/rightsByQuestions**
+
+Parameters:
+* license: the ID of the license (e.g. standard, publicdomain, …)
+* answer_X: List of answers (e.g. answer_commercial=y&answer_derivatives=sa)
+
+If the combination of the license and the answers is valid, it will return the license URI (e.g. http://creativecommons.org/licenses/by-nc-sa/3.0/us/ or http://creativecommons.org/publicdomain/zero/1.0/)
+

@@ -47,29 +47,19 @@ The PATCH method expects a JSON body according to the [JSON Patch specification 
 Each successful Patch operation will return a HTTP 200 CODE with the new workspaceitem as body
 
 ### Add
-To accept a CC license the client must send a JSON Patch ADD operation to the *granted* path
+To accept a CC license the client must send a JSON Patch ADD operation of the uri retrieved from the [Search CC License](submissioncclicenses.md#search-cc-license)
 
 ```json
 [
   {
     "op": "add",
-    "path": "/sections/<:name-of-the-form>/granted",
-    "value": {
-      "license": "standard",
-      "fields": [
-          {
-            "id": "commercial",
-            "answer": "y"
-          },
-          {
-            "id": "derivatives",
-            "answer": "sa"
-          }
-        ]
-    }
+    "path": "/sections/<:name-of-the-form>/license",
+    "value": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/"
   }
 ]
 ```
+
+TODO: there's currently no way to extract the dc.rights or the RDF bitstream when the original answers are not present
 
 Please note that according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) a subsequent add operation on the granted will have the effect to replace the previous granted license with a new one. 
 In this case a new CC license will be added to the item and the previous license deleted.
