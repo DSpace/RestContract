@@ -5,7 +5,6 @@ The section data represents the data about the CC license
 
 ```json
 {
-  	"granted": true,
   	"uri": "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
   	"rights": "Attribution-NonCommercial-ShareAlike 3.0 United States",
 	"file":  
@@ -36,10 +35,9 @@ The section data represents the data about the CC license
 ```
 
 The following attributes can be defined:
-* granted: true if a CC License has been specified
-* uri: the URI of the CC License, typically stored in dc.rights.uri, can be null
-* rights: the rights name of the CC License, typically stored in dc.rights, can be null
-* file: the bitstream containing the license, can be null
+* uri: the URI of the CC License, typically stored in dc.rights.uri, null is no license is granted
+* rights: the rights name of the CC License, typically stored in dc.rights, null is no license is granted
+* file: the bitstream containing the license, null is no license is granted
 
 ## Patch operations
 The PATCH method expects a JSON body according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902)
@@ -61,14 +59,12 @@ To accept a CC license the client must send a JSON Patch ADD operation of the ur
 
 The dc.rights, dc.rights.uri and RDF bitstream will be retrieved from e.g. https://api.creativecommons.org/rest/1.5/details?license-uri=http://creativecommons.org/licenses/by-nc-sa/3.0/ 
 
-Please note that according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) a subsequent add operation on the granted will have the effect to replace the previous granted license with a new one. 
+Please note that according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902) a subsequent add operation on the `/sections/<:name-of-the-form>/uri` will have the effect to replace the previous granted license with a new one. 
 In this case a new CC license will be added to the item and the previous license deleted.
-
-It is also possible to send a PATH add operation using *false* as value to reject / remove a license.
 
 This use of the add operation to replace the license could be counter intuitive but it is done according to the [RFC section 4.1](https://tools.ietf.org/html/rfc6902#section-4.1)
 > If the target location specifies an object member that does exist, that member's value is replaced.
 
 ### Remove
 It is possible to remove a previously granted CC license 
-`curl --data '{[ { "op": "remove", "path": "/sections/cclicense/granted"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
+`curl --data '{[ { "op": "remove", "path": "/sections/<:name-of-the-form>/uri"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
