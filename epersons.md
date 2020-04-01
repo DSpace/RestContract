@@ -167,7 +167,7 @@ NOTE: The new password is currently returned after an update but this could be r
 The currently authenticated user can modify their EPerson metadata. An administrator can modify any EPerson's metadata.  
 This includes, but is not limited to, last name, first name, phone, language
 
-## Create new EPerson as admin
+## Create new EPerson (requires admin permissions)
 **POST /api/eperson/epersons**
 
 To create a new EPerson, perform a post with the JSON below to the epersons endpoint when logged in as admin.
@@ -245,8 +245,8 @@ The selfRegistered property can be set, but would need to be true
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
 * 401 Unauthorized - if the token doesn't allow you to create this account
-* 422 Unprocessable Entity - if the email address didn't match the token or already exists
 
 ## Linked entities
 ### Groups

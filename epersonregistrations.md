@@ -2,16 +2,16 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**GET /api/eperson/epersonregistrations**
+**GET /api/eperson/registrations**
 
-As we don't have a use case to iterate over all the existent epersonregistrations, the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
+As we don't have a use case to iterate over all the existent registrations, the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single EPerson registration
 
 As we don't have a use case to retrieve an epersonregistration based on the email, the single endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Search EPerson registration
-**/api/eperson/epersonregistrations/search/findByToken?token=<:token>**
+**/api/eperson/registrations/search/findByToken?token=<:token>**
 
 Exposes the registered email address based on the token.  
 Also exposes whether it's a new user registration, or a password reset for an existing user.
@@ -33,7 +33,7 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ```
 
 ## Create new EPerson registration
-**POST /api/eperson/epersonregistrations**
+**POST /api/eperson/registrations**
 
 To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
 
@@ -47,8 +47,11 @@ To create a new EPerson registration, perform a post with the JSON below to the 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
 
+Verifying whether a new registration can be created can happen using the "epersonRegistration" [feature](features.md), verified against the site
+
 Status codes:
 * 201 Created - if the operation succeed
+* 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
 * 422 Unprocessable Entity - if the email address was omitted
 
 ## Forgot password
