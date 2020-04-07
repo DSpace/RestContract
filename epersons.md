@@ -146,9 +146,13 @@ the replace operation `[{ "op": "replace", "path": "/email", "value": "new@email
 ```json
   "email": "new@email",
   ```  
-#### This operation can be performed by administrators and by the authenticated user.
+#### These operations can be performed by administrators and by the authenticated user.
 
-To replace the password value, `curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  The operation also requires an Authorization header.
+To replace the password value while authenticated, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
+To replace the password value based on a registration token, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
+The operation requires an Authorization header or a token.
 
 For example, starting with the following eperson field data:
 ```json
@@ -163,8 +167,7 @@ NOTE: The new password is currently returned after an update but this could be r
 The currently authenticated user can modify their EPerson metadata. An administrator can modify any EPerson's metadata.  
 This includes, but is not limited to, last name, first name, phone, language
 
-## Create new EPerson
-
+## Create new EPerson (requires admin permissions)
 **POST /api/eperson/epersons**
 
 To create a new EPerson, perform a post with the JSON below to the epersons endpoint when logged in as admin.
@@ -203,6 +206,47 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if the email address was omitted or already exists
+
+## Create new EPerson based on registration token
+**POST /api/eperson/epersons?token=<:token>**
+
+To create a new EPerson, perform a post with the JSON below to the epersons endpoint while including a token.
+The token will be sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
+
+```json
+{
+  "metadata": {
+    "eperson.firstname": [
+      {
+        "value": "John",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "Doe",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ]
+  },
+  "canLogIn": true,
+  "requireCertificate": false,
+  "type": "eperson"
+}
+```
+
+The "eperson.firstname" and "eperson.lastname" metadata are mandatory. The phone number, language, … are optional metadata.  
+The email property can be set, but would need to be identical to the value from the registration.  
+The selfRegistered property can be set, but would need to be true
+
+Status codes:
+* 201 Created - if the operation succeed
+* 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
+* 401 Unauthorized - if the token doesn't allow you to create this account
 
 ## Linked entities
 ### Groups
