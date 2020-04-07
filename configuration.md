@@ -16,15 +16,9 @@ The DSpace server will have a whitelist of properties that can be retrieved by t
 {
   "name": "curate.ui.tasknames",
   "values": [ 
-    {
-      "value": "profileformats = Profile Bitstream Formats"   
-    },
-    {
-      "value": "requiredmetadata = Check for Required Metadata"
-    },
-    {
-      "value": "checklinks = Check Links in Metadata"     
-    }
+      "profileformats = Profile Bitstream Formats",   
+      "requiredmetadata = Check for Required Metadata",
+      "checklinks = Check Links in Metadata"     
    ]
 }
 ```          
