@@ -8,7 +8,7 @@ As we don't have a use case to iterate over all the existent registrations, the 
 
 ## Single EPerson registration
 
-As we don't have a use case to retrieve an epersonregistration based on the email, the single endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
+As we don't have a use case to retrieve an eperson registration based on the email, the single endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Search EPerson registration
 **/api/eperson/registrations/search/findByToken?token=<:token>**
@@ -20,7 +20,7 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 {
   "email": "user@institution.edu",
   "user": null,
-  "type": "epersonregistration"
+  "type": "registration"
 }
 ```
 
@@ -28,7 +28,7 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 {
   "email": "user@institution.edu",
   "user": "028dcbb8-0da2-4122-a0ea-254be49ca107",
-  "type": "epersonregistration"
+  "type": "registration"
 }
 ```
 
@@ -40,7 +40,7 @@ To create a new EPerson registration, perform a post with the JSON below to the 
 ```json
 {
   "email": "user@institution.edu",
-  "type": "epersonregistration"
+  "type": "registration"
 }
 ```
 
