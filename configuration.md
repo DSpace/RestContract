@@ -14,11 +14,9 @@ The DSpace server will have a whitelist of properties that can be retrieved by t
 
 ```json
 {
-  "name": "curate.ui.tasknames",
+  "name": "google.analytics.key",
   "values": [ 
-      "profileformats = Profile Bitstream Formats",   
-      "requiredmetadata = Check for Required Metadata",
-      "checklinks = Check Links in Metadata"     
+      "UA-XXXXXX-X"
    ]
 }
 ```          
