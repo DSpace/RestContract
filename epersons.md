@@ -76,7 +76,11 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
 
 #### byMetadata
-**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
+**GET /api/eperson/epersons/search/byMetadata?query=<:name>&group=<:id>**
+
+The supported parameters are:
+* query: the query to filter the epersons on, if empty all eperson objects are returned
+* group: optional, this parameter will be used to determine if the logged in user has rights to search for people that need to be added to a certain group. For example a community admin could be editing the submitter role of a collection of that community.
 
 This supports a basic search in the metadata.
 It will search in:
@@ -91,7 +95,7 @@ Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the email parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
+* 403 Forbidden - if you are not logged in with sufficient permissions. System administrators have rights to the entire endpoint, community/collection admins can also use the endpoint if they are editing a community/collection role. 
 
 ## Patch operations
 

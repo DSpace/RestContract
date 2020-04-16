@@ -327,7 +327,12 @@ Return codes:
 * 422 Unprocessable Entity - if the child group doesn't exist or if the specified eperson doesn't exist
 
 ## Search
-**GET /api/eperson/groups/search/byMetadata?query=<:name>**
+**GET /api/eperson/groups/search/byMetadata?query=<:name>&group=<:id>**
+
+The supported parameters are:
+* query: the query to filter the groups on, if empty all groups objects are returned
+* group: optional, this parameter will be used to determine if the logged in user has rights to search for groups that need to be added to a certain group. For example a community admin could be editing the submitter role of a collection of that community.
+
 
 This supports a basic search in the metadata.
 It will search in:
