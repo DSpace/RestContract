@@ -61,7 +61,7 @@ sg | Contains the id's of the special groups to which a user belongs
 exp | Contains the expiration date when a token will expire
 
 ## Logout
-** /api/authn/logout **
+**/api/authn/logout**
 
 To logout and invalidate the JWT token, send the token in the Authorization header with the bearer scheme to the endpoint either with a GET or POST request
 
@@ -69,10 +69,11 @@ To logout and invalidate the JWT token, send the token in the Authorization head
 curl -v "http://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo"
 ```
 
-This invalidate the token on the server side with the result to log the user out on every device or browser.
+This invalidate the token on the server side with the result to log the user out on every device or browser. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
 
 Return code
 - 204 No content
+- 302 Found. If a successful logout ocurs and a logout page URL is configured
 
 Invalid or missing token are not reported, i.e. the endpoint will always return 204 also if no token is supplied or the token is invalid
 
