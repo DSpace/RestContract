@@ -2,7 +2,7 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Statistics for a DSpaceObject
-**GET /api/statistics/reports**
+**GET /api/statistics/usage-reports**
 
 This endpoint provides a paginated list of statistics for a DSpaceObject. 
 
@@ -14,15 +14,15 @@ The usual parameters for paginated lists are supported as well:
 - `page` The page number 
 - `size` The number of statistics in a page
 
-An example JSON response document to `/api/statistics/reports?page=0&size=2&scopeType=site&scope=6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
+An example JSON response document to `/api/statistics/usage-reports?page=0&size=2&scopeType=site&scope=6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
 
 ```json
 {
     "_embedded": {
-        "reports": [
+        "usage-reports": [
             {
                 "id": "TotalVisits",
-                "type": "report",
+                "type": "usage-report",
                 "report-type": "TotalVisits",
                 "points": [
                     {
@@ -56,14 +56,16 @@ An example JSON response document to `/api/statistics/reports?page=0&size=2&scop
 }
 ```
 
-An example JSON response document to `/api/statistics/reports?scopeType=item&scope=1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
+An example JSON response document to `/api/statistics/usage-reports?scopeType=item&scope=1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
 
 ```json
 {
     "_embedded": {
-        "reports": [
+        "usage-reports": [
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
+                "type": "usage-report",
+                "report-type": "TotalVisits",
                 "points": [
                     {
                         "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
@@ -77,6 +79,8 @@ An example JSON response document to `/api/statistics/reports?scopeType=item&sco
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
+                "type": "usage-report",
+                "report-type": "TotalVisits",
                 "points": [
                     {
                         "label": "March 2020",
@@ -106,6 +110,8 @@ An example JSON response document to `/api/statistics/reports?scopeType=item&sco
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
+                "type": "usage-report",
+                "report-type": "TotalVisits",
                 "points": [
                     {
                         "label": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
@@ -119,6 +125,8 @@ An example JSON response document to `/api/statistics/reports?scopeType=item&sco
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
+                "type": "usage-report",
+                "report-type": "TotalVisits",
                 "points": [
                     {
                         "label": "United States",
@@ -148,14 +156,16 @@ Possible response status:
 * 400 Bad Request - The scope or scopeType parameter format is incorrect
 
 ## Single statistic
-**GET /api/statistics/reports/<:id>**
+**GET /api/statistics/usage-reports/<:id>**
 
 This endpoint provides a specific statistic
 
-An example JSON response document to `/api/statistics/reports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries`:
-```
+An example JSON response document to `/api/statistics/usage-reports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries`:
+```json
 {
     "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
+    "type": "usage-report",
+    "report-type": "TotalVisits",
     "points": [
         {
             "label": "United States",
