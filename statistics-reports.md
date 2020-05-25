@@ -2,21 +2,21 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Statistics for a DSpaceObject
-**GET /api/statistics/usage-reports**
+**GET /api/statistics/usagereports**
 
 As we don't have a use case to iterate over all the existing usage reports, the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single statistic
-**GET /api/statistics/usage-reports/<:id>**
+**GET /api/statistics/usagereports/<:id>**
 
 This endpoint provides a specific statistic
 
-An example JSON response document to `/api/statistics/usage-reports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries`:
+An example JSON response document to `/api/statistics/usagereports/1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries`:
 ```json
 {
     "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
-    "type": "usage-report",
-    "report-type": "TotalVisits",
+    "type": "usagereport",
+    "report-type": "TopCountries",
     "points": [
         {
             "label": "United States",
@@ -38,6 +38,24 @@ An example JSON response document to `/api/statistics/usage-reports/1911e8a4-693
 }
 ```
 
+The ID is built from a concatenation of the UUID and the type of report for the given UUID
+
+The type of point can be:
+* country
+* city
+* bitstream
+* item
+* collection
+* community
+* date
+
+The report-type specifies what data is returned, relevant e.g. to add a label to report. The current statistics support:
+* TotalVisits
+* TotalVisitsPerMonth
+* TotalDownloads
+* TopCountries
+* TopCities
+
 Possible response status
 
 - 200 OK - The specific statistics data was found, and the data has been properly returned.
@@ -46,7 +64,7 @@ Possible response status
 - 404 Not Found - The specified ID was not found
 
 ## Search Statistics for a DSpaceObject
-**GET /api/statistics/usage-reports/search/object**
+**GET /api/statistics/usagereports/search/object**
 
 This endpoint provides a paginated list of statistics for a DSpaceObject. 
 
@@ -56,17 +74,17 @@ The DSpaceObject is given through the following parameters:
 
 The usual parameters for paginated lists are supported as well:
 - `page` The page number 
-- `size` The number of statistics in a page
+- `size` The number of reports in a page
 
-An example JSON response document to `/api/statistics/usage-reports/search/object?page=0&size=2&scopeType=site&scope=6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
+An example JSON response document to `/api/statistics/usagereports/search/object?page=0&size=2&scopeType=site&scope=6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
 
 ```json
 {
     "_embedded": {
-        "usage-reports": [
+        "usagereports": [
             {
-                "id": "TotalVisits",
-                "type": "usage-report",
+                "id": "6d65c6a2-3fe7-44dd-bacb-79271257c35d_TotalVisits",
+                "type": "usagereport",
                 "report-type": "TotalVisits",
                 "points": [
                     {
@@ -100,15 +118,15 @@ An example JSON response document to `/api/statistics/usage-reports/search/objec
 }
 ```
 
-An example JSON response document to `/api/statistics/usage-reports/search/object?scopeType=item&scope=1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
+An example JSON response document to `/api/statistics/usagereports/search/object?scopeType=item&scope=1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
 
 ```json
 {
     "_embedded": {
-        "usage-reports": [
+        "usagereports": [
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisits",
-                "type": "usage-report",
+                "type": "usagereport",
                 "report-type": "TotalVisits",
                 "points": [
                     {
@@ -123,39 +141,25 @@ An example JSON response document to `/api/statistics/usage-reports/search/objec
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalVisitsPerMonth",
-                "type": "usage-report",
-                "report-type": "TotalVisits",
+                "type": "usagereport",
+                "report-type": "TotalVisitsPerMonth",
                 "points": [
                     {
-                        "label": "March 2020",
+                        "label": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
                         "type": "date",
-                        "id": "2020-03",
+                        "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb",
                         "values": {
-                            "views": 0
-                        }
-                    },
-                    {
-                        "label": "April 2020",
-                        "type": "date",
-                        "id": "2020-04",
-                        "values": {
-                            "views": 0
-                        }
-                    },
-                    {
-                        "label": "May 2020",
-                        "type": "date",
-                        "id": "2020-05",
-                        "values": {
-                            "views": 3
+                            "2020-03": 0,
+                            "2020-04": 0,
+                            "2020-05": 3
                         }
                     }
                 ]
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TotalDownloads",
-                "type": "usage-report",
-                "report-type": "TotalVisits",
+                "type": "usagereport",
+                "report-type": "TotalDownloads",
                 "points": [
                     {
                         "label": "8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2",
@@ -169,8 +173,8 @@ An example JSON response document to `/api/statistics/usage-reports/search/objec
             },
             {
                 "id": "1911e8a4-6939-490c-b58b-a5d70f8d91fb_TopCountries",
-                "type": "usage-report",
-                "report-type": "TotalVisits",
+                "type": "usagereport",
+                "report-type": "TopCountries",
                 "points": [
                     {
                         "label": "United States",
