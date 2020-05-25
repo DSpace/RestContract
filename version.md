@@ -24,6 +24,7 @@ Provide version information for the version id.
   "type": "version",
   "created": "2015-11-03T09:44:46.617",
   "summary": "Fixing some typos in the abstract",
+  "submitterName": "LastName, FirstName",
   "_links": {
     "versionhistory": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/10"
@@ -31,15 +32,14 @@ Provide version information for the version id.
     "self": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101"
     },
-    "eperson": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101/eperson"
-    },
     "item": {
       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versions/101/item"
     }
   }
 }
-```
+```         
+
+The `submitterName` attribute is only exposed if you are logged in as an administrator or if the `versioning.item.history.include.submitter` configuration property is set to true.
 
 Status codes:
 * 200 OK - if the version exists and is accessible by the current user
@@ -66,10 +66,6 @@ TODO
 ### Version History
 
 Retrieves the relation versions, for details see [Version history](versionhistory.md)
-
-### EPerson
-
-The [EPerson](epersons.md) who created the version
 
 ### Item
 

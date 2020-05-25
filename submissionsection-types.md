@@ -9,7 +9,7 @@ collection | n/a | ```json { collection: 'uuid-of-the-collection'}```
 submission-form | [/config/submissionforms](submissionforms.md) | [example](workspaceitem-data-metadata.md)
 upload | [/config/submissionuploads](submissionuploads.md) | [example](workspaceitem-data-upload.md)
 license | [it is retrieved from the collection following the *license* link](collections.md#License) | [example](workspaceitem-data-license.md)
-cclicense | t.b.d | t.b.d
+cclicense | [/config/submissioncclicenses](submissioncclicenses.md) | [example](workspaceitem-data-cclicense.md)
 access | t.b.d | t.b.d
 
 n/a --> not applicable. The sectionType doesn't require/support any extra configuration

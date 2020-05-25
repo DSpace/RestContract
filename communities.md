@@ -281,19 +281,6 @@ The supported parameters are:
 
 It returns the top level communities in the repository (i.e. the communities that doesn't have a parent)
 
-#### subCommunities
-**/api/core/communities/search/subCommunities?parent=<:uuid>**
-
-Example: not available
-
-The supported parameters are:
-* **(mandatory)** parent, the UUID of the parent community
-* page, size [see pagination](README.md#Pagination)
-
-Return codes:
-* 200 OK - if the operation succeed
-* 400 Bad Request - if the uuid parameter is missing or invalid
-
 ## Creating communities
 
 ### Creating top level community
