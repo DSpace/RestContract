@@ -152,7 +152,7 @@ The token follows the "JSON Web Token structure", same as the login tokens.
  
  ```json
 {
-  "token": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
   "_links": {
     "self": {
       "href": "http://${dspace-server.url}/api/authn/download-token"
