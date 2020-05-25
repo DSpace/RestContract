@@ -121,3 +121,27 @@ Embedded
 
 Return code
 - 200 Ok in all the scenario both authenticated than not authenticated (valid token, invalid token or missing token)
+
+## Request download token
+
+** POST /api/authn/download-token **
+
+When clicking on a link to download a protected file in the UI no authentication header will be sent along. This endpoint can provide a short lived token (MAX 2 seconds) that the UI can append to file downloads.
+ 
+The token follows the "JSON Web Token structure", same as the login tokens.
+  
+ 
+ ```json
+{
+  "token": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
+  "_links": {
+    "self": {
+      "href": "http://${dspace-server.url}/api/authn/download-token"
+    }             
+  }
+}
+```  
+
+Return codes
+- 200 Ok. 
+- 401 Unauthorized. If no user is logged in
