@@ -69,14 +69,13 @@ Possible response status
 This endpoint provides a paginated list of statistics for a DSpaceObject. 
 
 The DSpaceObject is given through the following parameters:
-- `scope` The UUID of the DSpaceObject
-- `scopeType` The string type of the DSpaceObject 
+- `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
 
 The usual parameters for paginated lists are supported as well:
 - `page` The page number 
 - `size` The number of reports in a page
 
-An example JSON response document to `/api/statistics/usagereports/search/object?page=0&size=2&scopeType=site&scope=6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
+An example JSON response document to `/api/statistics/usagereports/search/object?page=0&size=2&uri=https://{dspace.url}/server/api/core/site/6d65c6a2-3fe7-44dd-bacb-79271257c35d`:
 
 ```json
 {
@@ -118,7 +117,7 @@ An example JSON response document to `/api/statistics/usagereports/search/object
 }
 ```
 
-An example JSON response document to `/api/statistics/usagereports/search/object?scopeType=item&scope=1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
+An example JSON response document to `/api/statistics/usagereports/search/object?uri=https://{dspace.url}/server/api/core/item/1911e8a4-6939-490c-b58b-a5d70f8d91fb`:
 
 ```json
 {
@@ -201,6 +200,6 @@ An example JSON response document to `/api/statistics/usagereports/search/object
 
 Possible response status:
 * 200 OK - The DSpaceObject was found, and the data has been properly returned.
-* 400 Bad Request - The scope or scopeType parameter format is incorrect
+* 400 Bad Request - The uri parameter format is incorrect
 * 401 Unauthorized - if you are not authenticated and the statistics are not available to the Anonymous user
 * 403 Forbidden - if you are not logged in with sufficient permissions and the statistics are not available to the Anonymous user
