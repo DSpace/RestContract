@@ -149,6 +149,9 @@ When clicking on a link to download a protected file in the UI no authentication
  
 The token follows the "JSON Web Token structure", same as the login tokens.
   
+ ```
+ curl -v -X POST https://{dspace-server.url}/api/authn/download-token -H "Authorization: Bearer eyJhbG...COdbo"
+ ```
  
  ```json
 {
