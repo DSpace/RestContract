@@ -141,16 +141,16 @@ Status codes:
 * Any status code of the functionality being used
 
 
-## Request download token
+## Request short lived token
 
-** POST /api/authn/download-token **
+** POST /api/authn/shortlivedtokens **
 
 When clicking on a link to download a protected file in the UI no authentication header will be sent along. This endpoint can provide a short lived token (MAX 2 seconds) that the UI can append to file downloads.
  
 The token follows the "JSON Web Token structure", same as the login tokens.
   
  ```
- curl -v -X POST https://{dspace-server.url}/api/authn/download-token -H "Authorization: Bearer eyJhbG...COdbo"
+ curl -v -X POST https://{dspace-server.url}/api/authn/shortlivedtokens -H "Authorization: Bearer eyJhbG...COdbo"
  ```
  
  ```json
@@ -158,7 +158,7 @@ The token follows the "JSON Web Token structure", same as the login tokens.
   "token": "eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
   "_links": {
     "self": {
-      "href": "http://${dspace-server.url}/api/authn/download-token"
+      "href": "http://${dspace-server.url}/api/authn/shortlivedtokens"
     }             
   }
 }
