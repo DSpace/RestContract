@@ -192,7 +192,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```
 
 it is important to note that the field definition contains special attribute that in an ideal HAL representation should be replaced with links but for simplicity we have preferred to expose as string
-* authority: the name of the authority used to retrieve value for the input [see authorities](authorities.md) 
+* vocabulary: the name of the controlled vocabulary used to retrieve value for the input [see controlled vocabularies](vocabularies.md) 
 * metadata: the key of the metadata field to use to store the input
 
 The *scope* attribute can be null or one of the values: workflow or submission. A value other than null mean that the visibility of the field in the specified scope is defined by the value of the attribute *visibility.main* and *visibility.other* in the other scope. *Null* mean that the field will be visible in both the submission and workflow with the visibility specified in *visibility.main* 
