@@ -16,6 +16,7 @@ Example:
         "name": "srsc",
         "scrollable": false,
         "hierarchical": true,
+        "preloadLevel": 1,
         "type": "vocabulary",
         "_links": {
           "entries": {
@@ -214,6 +215,7 @@ sample for a hierarchical authority  (srsc):
         "otherInformation": {
           "id": "VR131402",
           "parent": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work",
+          "hasChildrens": "false",
           "note": "Familjeforskning"
         },
         "type": "vocabularySuggestion",
@@ -229,6 +231,7 @@ sample for a hierarchical authority  (srsc):
         "otherInformation": {
           "id": "VR131403",
           "parent": Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work,
+          "hasChildrens": "false",
           "note": "Ungdomsforskning"
         },
         "type": "vocabularySuggestion",
