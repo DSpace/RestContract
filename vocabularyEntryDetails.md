@@ -4,12 +4,12 @@
 All the endpoints here described are restricted to authenticated users.
 
 ## Main Endpoint
-**/api/integration/vocabularyEntries**   
+**/api/integration/vocabularyEntryDetails**   
 
 Not allowed. Only subset of vocabulary entries can be retrieved using specific filters see below
 
 ## Single Authority
-**/api/integration/vocabularyEntries/<vocabulary-name><:entry-id>**
+**/api/integration/vocabularyEntryDetails/<vocabulary-name><:entry-id>**
 
 Provide detailed information about a specific vocabulary entry. The JSON response document is as follow
 ```json
@@ -23,19 +23,19 @@ Provide detailed information about a specific vocabulary entry. The JSON respons
           "parent": "HUMANITIES and RELIGION",
           "hasChildrens": "true"
       },
-      "type" : "vocabularyEntry",
+      "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB110"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110"
         },
         "vocabulary" : {
           "href" : "http://localhost/api/integration/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularies/srsc:SCB110/parent"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/parent"
         },
         "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB110/childrens"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/childrens"
         },
       }
     }
@@ -49,8 +49,8 @@ Attributes:
 
 Exposed links:
 * vocabulary: the vocabulary that the entry belong to
-* parent: for hierarchical vocabulary, the entry parent of the current entry, if any
-* childrens: for hierarchical vocabulary, the list of children entries, if any
+* parent: for hierarchical vocabulary, the detail entry parent of the current detail entry, if any
+* childrens: for hierarchical vocabulary, the list of children detail entries, if any
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -59,7 +59,7 @@ Return codes:
 
 ## Search methods
 ### top
-**/api/integration/vocabularyEntries/search/top?vocabulary=<:vocabulary-id>**
+**/api/integration/vocabularyEntryDetails/search/top?vocabulary=<:vocabulary-id>**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -84,19 +84,19 @@ Provide detailed information about all top entries of a specific hierarchical vo
           "note" : "HUMANIORA och RELIGIONSVETENSKAP",
           "hasChildrens": "true"
       },
-      "type" : "vocabularyEntry",
+      "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB11"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11"
         },
         "vocabulary" : {
           "href" : "http://localhost/api/integration/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB11/parent"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/parent"
         },
         "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB11/childrens"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/childrens"
         },
       }
     }, {
@@ -108,19 +108,19 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "note" : "RÄTTSVETENSKAP/JURIDIK",
         "hasChildrens" : "true"
       },
-      "type" : "vocabularyEntry",
+      "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB12"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12"
         },
         "vocabulary" : {
           "href" : "http://localhost/api/integration/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB12/parent"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/parent"
         },
         "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB12/childrens"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/childrens"
         },
       }
     }, 
@@ -134,26 +134,26 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "note" : "TVÄRVETENSKAPLIGA FORSKNINGSOMRÅDEN",
         "hasChildrens" : "true"
       },
-      "type" : "vocabularyEntry",
+      "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB23"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23"
         },
         "vocabulary" : {
           "href" : "http://localhost/api/integration/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB23/parent"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/parent"
         },
         "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntries/srsc:SCB23/childrens"
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/childrens"
         },
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "http://localhost/api/integration/authorities/srsc/entries/search/top"
+      "href" : "http://localhost/api/integration/vocabularyEntryDetails/search/top?vocabulary=srsc"
     }
   },
   "page" : {
