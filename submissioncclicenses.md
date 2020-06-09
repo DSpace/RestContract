@@ -121,5 +121,18 @@ Parameters:
 * license: the ID of the license (e.g. standard, publicdomain, …)
 * answer_X: List of answers (e.g. answer_commercial=y&answer_derivatives=sa)
 
-If the combination of the license and the answers is valid, it will return the license URI (e.g. http://creativecommons.org/licenses/by-nc-sa/3.0/us/ or http://creativecommons.org/publicdomain/zero/1.0/)
+If the combination of the license and the answers is valid, it will return the license URI.
+
+```json
+{
+  "url": "http://creativecommons.org/licenses/by-sa/3.0/us/",
+  "type": "submissioncclicenseUrl",
+  "_links": {
+    "self": {
+      "href": "https://dspace7-internal.atmire.com/server/api/config/submissioncclicenses/search/rightsByQuestions?license=standard&answer_commercial=y&answer_derivatives=sa"
+    }
+  }
+}
+```
+
 
