@@ -73,7 +73,7 @@ This invalidate the token on the server side with the result to log the user out
 
 Return code
 - 204 No content
-- 302 Found. If a successful logout ocurs and a logout page URL is configured
+- 302 Found. If a successful logout occurs and a logout page URL is configured
 
 Invalid or missing token are not reported, i.e. the endpoint will always return 204 also if no token is supplied or the token is invalid
 
