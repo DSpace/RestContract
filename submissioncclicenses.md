@@ -117,6 +117,9 @@ The fields are questions to be answered when assigning the license
 ## Search CC License 
 **/api/config/submissioncclicenseurl/search/rightsByQuestions**
 
+The endpoints above don't return the url that will also be needed to add the license to the metadata. 
+It cannot be provided in the endpoints above as the url can differ depending on the answers that are provided. The answers are only required if the endpoints above return them.
+
 Parameters:
 * license: the ID of the license (e.g. standard, publicdomain, …)
 * answer_X: List of answers (e.g. answer_commercial=y&answer_derivatives=sa)
