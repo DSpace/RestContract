@@ -274,7 +274,7 @@ The files are grouped by the metadata field "dspace.process.filetype", the type 
 }
 ```
 
-## Execution File Output List (type filter)
+## Execution File Output (using type identifier)
 **GET /api/system/processes/<:process-id>/files/<:type>**
 
 Returns a single file of the specified process with the provided type (the type matches on the dspace.process.filetype metadata field of the bitstream)
