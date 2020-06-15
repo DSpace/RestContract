@@ -115,7 +115,7 @@ Some licenses contain questions, e.g. standard retrieved from https://api.creati
 The fields are questions to be answered when assigning the license
 
 ## Search CC License 
-**/api/config/submissioncclicenses/search/rightsByQuestions**
+**/api/config/submissioncclicenseurl/search/rightsByQuestions**
 
 Parameters:
 * license: the ID of the license (e.g. standard, publicdomain, …)
