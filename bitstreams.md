@@ -4,9 +4,8 @@
 ## Main Endpoint
 **/api/core/bitstreams**   
 
-Provide access to the bitstreams (DBMS based). It returns the list of existent bitstreams.
+_Unsupported._ As bitstreams are used for more than just storing the files of items (thumbnails, scripts & processes file output, ...) a general endpoint to loop over these has little added value. 
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/bitstreams>
 
 ## Single Bitstream
 **/api/core/bitstreams/<:uuid>**
