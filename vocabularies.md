@@ -1,8 +1,10 @@
 # Controlled Vocabularies Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
+All the endpoints here described are restricted to authenticated users.
+
 ## Main Endpoint
-**/api/integration/vocabularies**   
+**/api/submission/vocabularies**   
 
 Provide access to the configured controlled vocabularies. It returns the list of existent controlled vocabularies.
 
@@ -20,10 +22,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/srsc/entries"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/srsc/entries"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/srsc"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/srsc"
           }
         }
       },
@@ -35,10 +37,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/srsc/entries"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/srsc"
           }
         }
       },
@@ -50,10 +52,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_iso_languages/entries"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_iso_languages/entries"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_iso_languages"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_iso_languages"
           }
         }
       }
@@ -61,7 +63,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies"
     }
   },
   "page": {
@@ -74,7 +76,7 @@ Example:
 ```
 
 ## Single Vocabulary
-**/api/integration/vocabularies/<:vocabulary-name>**
+**/api/submission/vocabularies/<:vocabulary-name>**
 
 Provide detailed information about a specific controlled vocabulary. The JSON response document is as follow
 ```json
@@ -91,40 +93,39 @@ Provide detailed information about a specific controlled vocabulary. The JSON re
 Attributes
 * id: the id of the vocabulary, it is the same than the name
 * name: see id
-* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a query parameter, see (vocabulary entries)[vocabularies.md#vocabulary-entries]
+* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see (vocabulary entries)[vocabularies.md#vocabulary-entries]
 * hierarchical: if true means that the vocabulary expose a tree structure where some entries are parent of others
-* preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0 only the top nodes are shown, 1 also their childrens are preloaded and so on)
+* preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0 only the top nodes are shown, 1 also their children are preloaded and so on)
 
 Exposed links:
 * entries: get entries from the controlled vocabulary
 
 ## Linked entities
 ### controlled vocabulary entries
-**/api/integration/vocabularies/<:vocabulary-name>/entries**
+**/api/submission/vocabularies/<:vocabulary-name>/entries**
 
-It returns the entries suggested by the vocabulary in response to the user query or a scrollable list, see below 
+It returns the entries in the vocabulary in response to either a user input or a scrollable list, see below 
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* metadata: the metadata field for which the authority is used: mandatory
-* collection: the uuid of the collection where the item belong to: mandatory
-* query: the terms, keywords or prefix to search
-* exact: can be true or false (default if absent). If true force the vocabulary to provide only entries that match exactly with the query
-* entryID: get the suggestions related to a specific vocabulary entry 
-* collection: the uuid of the collection where the item belong to
+* metadata: the metadata field name (e.g. "dc.type") for which the controlled vocabulary is used: mandatory. The entries returned by a vocabulary may be different for different metadata fields.
+* collection: the uuid of the collection where the item is being submitted: mandatory. The entries returned by a vocabulary may differ per collection based on your submission configuration.
+* filter: the terms, keywords or prefix to use to filter the entries
+* exact: can be true or false (default if absent). If true force the vocabulary to provide only entries that match exactly with the filter
+* entryID: get just those entries related to a specific vocabulary entry ID. Multiple entries may be returned, e.g. if two entries are just different terms/phrases for the same thing. 
 
-It returns the entries suggested by the controlled vocabulary according to the query or the entryID. 
-The query and entryID parameters are alternatively, exactly one of them must be used except than for scrollable 
-vocabularies than can provide free suggestions.
+It returns the entries suggested by the controlled vocabulary according to the filter or the entryID. 
+The filter and entryID parameters are alternatively, exactly one of them must be used except than for scrollable 
+vocabularies than can provide free consultation of the entries.
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the metadata or collection parameters are missing or if the query and entryID parameters are both provided or if the exact parameter is provided with an invalid value or without the query parameter
+* 400 Bad Request - if the metadata or collection parameters are missing or if the filter and entryID parameters are both provided or if the exact parameter is provided with an invalid value or without the filter parameter
 * 401 Unauthorized - if you are not authenticated
-* 422 Unprocessable Entity - if the metadata and collection parameters don't resolve to the queried vocabulary or if the query and entryID are both absent and the vocabulary is NOT scrollable
+* 422 Unprocessable Entity - if the metadata and collection parameters don't resolve to the queried vocabulary or if the filter and entryID are both absent and the vocabulary is NOT scrollable
 
 sample for the vocabulary common_types defined via a value pairs in the submission-forms.xml 
-/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&size=2 
+/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2 
 
 ```json
 {
@@ -139,20 +140,20 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
         "display": "Article",
         "value": "Article",
         "type": "vocabularyEntry"
-      }
+      }]
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2"
     },
     "next": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&page=1&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=1&size=2"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&page=10&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=10&size=2"
     }
   },
   "page": {
@@ -164,8 +165,8 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
 }
 ```
 
-extra sample filtering the suggestion with the query Book
-/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&size=2&query=Book
+extra sample filtering the suggestion with the term Book
+/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2&filter=Book
 
 ```json
 {
@@ -180,17 +181,17 @@ extra sample filtering the suggestion with the query Book
         "display": "Book chapter",
         "value": "Book chapter",
         "type": "vocabularySuggestion"
-      }
+      }]
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
     }
   },
   "page": {
@@ -203,7 +204,7 @@ extra sample filtering the suggestion with the query Book
 ```
 
 sample for a hierarchical authority  (srsc): 
-/server/api/integration/vocabularies/srsc/entries?metadata=dc.subject&query=Research&size=2
+/server/api/submission/vocabularies/srsc/entries?metadata=dc.subject&filter=Research&size=2
 
 ```json
 {
@@ -215,13 +216,13 @@ sample for a hierarchical authority  (srsc):
         "otherInformation": {
           "id": "VR131402",
           "parent": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work",
-          "hasChildrens": "false",
+          "hasChildren": "false",
           "note": "Familjeforskning"
         },
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularyEntryDetails/srsc:VR131402"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularyEntryDetails/srsc:VR131402"
           }
         }
       },
@@ -231,13 +232,13 @@ sample for a hierarchical authority  (srsc):
         "otherInformation": {
           "id": "VR131403",
           "parent": Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work,
-          "hasChildrens": "false",
+          "hasChildren": "false",
           "note": "Ungdomsforskning"
         },
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/vocabularyEntryDetails/srsc:VR131403"
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularyEntryDetails/srsc:VR131403"
           }
         }
       }
@@ -245,16 +246,16 @@ sample for a hierarchical authority  (srsc):
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.subject&query=Research&size=2&page=0"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=0"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.subject&query=Research&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2"
     },
     "next": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.subject&query=Research&size=2&page=1"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=1"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/vocabularies/common_types/entries?metadata=dc.subject&query=Research&size=2&page=12"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=12"
     }
   },
   "page": {
@@ -268,7 +269,7 @@ sample for a hierarchical authority  (srsc):
 
 ## Search methods
 ### Get controlled vocabulary by metadata and collection
-**/api/integration/vocabularies/search/byMetadataAndCollection?metadata=<schema.element[.qualifier]>&collection=<:collection-uuid>**
+**/api/submission/vocabularies/search/byMetadataAndCollection?metadata=<schema.element[.qualifier]>&collection=<:collection-uuid>**
 
 Return the controlled vocabulary configured for the specified metadata and collection if any.
 

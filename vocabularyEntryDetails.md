@@ -4,24 +4,25 @@
 All the endpoints here described are restricted to authenticated users.
 
 ## Main Endpoint
-**/api/integration/vocabularyEntryDetails**   
+**/api/submission/vocabularyEntryDetails**   
 
 Not allowed. Only subset of vocabulary entries can be retrieved using specific filters see below
 
 ## Single Authority
-**/api/integration/vocabularyEntryDetails/<vocabulary-name><:entry-id>**
+**/api/integration/vocabularyEntryDetails/<vocabulary-name>:<entry-id>**
 
 Provide detailed information about a specific vocabulary entry. The JSON response document is as follow
 ```json
 {
       "id" : "srsc:SCB110",
-      "value" : "Religion/Theology",
+      "value" : "Research Subject Categories::HUMANITIES and RELIGION::Religion/Theology",
+      "display" : "Religion/Theology",
       "selectable" : true,
       "otherInformation" : {
           "id": "SCB110",
           "note" : "Religionsvetenskap/Teologi",
           "parent": "HUMANITIES and RELIGION",
-          "hasChildrens": "true"
+          "hasChildren": "true"
       },
       "type" : "vocabularyEntryDetail",
       "_links" : {
@@ -34,8 +35,8 @@ Provide detailed information about a specific vocabulary entry. The JSON respons
         "parent" : {
           "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/parent"
         },
-        "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/childrens"
+        "children" : {
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/children"
         },
       }
     }
@@ -43,14 +44,15 @@ Provide detailed information about a specific vocabulary entry. The JSON respons
 
 Attributes:
 * id: the unique id of the entry
-* value: the textual value of the entry
+* value: the preferred value to store for the entry
+* display: the preferred value to display for the entry
 * selectable: in an hierachical vocabulary it could be required to allow the selection only of leaves in the tree 
 * otherInformation: an map of additional string attributes useful to provide more context in the UI for the selection
 
 Exposed links:
 * vocabulary: the vocabulary that the entry belong to
 * parent: for hierarchical vocabulary, the detail entry parent of the current detail entry, if any
-* childrens: for hierarchical vocabulary, the list of children detail entries, if any
+* children: for hierarchical vocabulary, the list of children detail entries, if any
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -82,7 +84,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "otherInformation" : {
           "id": "SCB11",
           "note" : "HUMANIORA och RELIGIONSVETENSKAP",
-          "hasChildrens": "true"
+          "hasChildren": "true"
       },
       "type" : "vocabularyEntryDetail",
       "_links" : {
@@ -95,8 +97,8 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "parent" : {
           "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/parent"
         },
-        "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/childrens"
+        "children" : {
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/children"
         },
       }
     }, {
@@ -106,7 +108,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "otherInformation" : {
         "id" : "SCB12",
         "note" : "RÄTTSVETENSKAP/JURIDIK",
-        "hasChildrens" : "true"
+        "hasChildren" : "true"
       },
       "type" : "vocabularyEntryDetail",
       "_links" : {
@@ -119,8 +121,8 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "parent" : {
           "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/parent"
         },
-        "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/childrens"
+        "children" : {
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/children"
         },
       }
     }, 
@@ -132,7 +134,7 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "otherInformation" : {
         "id" : "SCB23",
         "note" : "TVÄRVETENSKAPLIGA FORSKNINGSOMRÅDEN",
-        "hasChildrens" : "true"
+        "hasChildren" : "true"
       },
       "type" : "vocabularyEntryDetail",
       "_links" : {
@@ -145,8 +147,8 @@ Provide detailed information about all top entries of a specific hierarchical vo
         "parent" : {
           "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/parent"
         },
-        "childrens" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/childrens"
+        "children" : {
+          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/children"
         },
       }
     } ]
