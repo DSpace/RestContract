@@ -115,14 +115,15 @@ Some licenses contain questions, e.g. standard retrieved from https://api.creati
 The fields are questions to be answered when assigning the license
 
 ## Search CC License 
-**/api/config/submissioncclicenseurl/search/rightsByQuestions**
+**/api/config/submissioncclicenseurls/search/rightsByQuestions**
 
-The endpoints above don't return the url that will also be needed to add the license to the metadata. 
-It cannot be provided in the endpoints above as the url can differ depending on the answers that are provided. The answers are only required if the endpoints above return them.
+This endpoint is used to obtain the final CC License URI after (optionally) providing answers for the given license. 
+The URI may differ depending on the answers that are provided, and answers are only required if the given license requires them. 
+To use this endpoint, you must first request information about a specific license using the `/api/config/submissioncclicenses/<:license-name>` endpoint above.
 
 Parameters:
-* license: the ID of the license (e.g. standard, publicdomain, …)
-* answer_X: List of answers (e.g. answer_commercial=y&answer_derivatives=sa)
+* license: the ID of the license. This identifier must be a license returned from the `/api/config/submissioncclicenses` endpoint (e.g. standard, publicdomain, …)
+* answer_X: List of answers. X must be a valid field ID returned from `/api/config/submissioncclicenses/<:license-name>`, and the answer value must be a valid value ID for that field.  (e.g. answer_commercial=y&answer_derivatives=sa)
 
 If the combination of the license and the answers is valid, it will return the license URI.
 
@@ -138,4 +139,8 @@ If the combination of the license and the answers is valid, it will return the l
 }
 ```
 
-
+Response codes:
+* 200 OK - if the operation succeeded
+* 400 Bad Request - If the answers provided aren't valid or if a required answer is missing  
+* 401 Unauthorized - if you are not logged in
+* 404 Not found - if the provided license isn't valid
