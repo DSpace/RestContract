@@ -220,12 +220,14 @@ While most i18n (internationalization) settings exist in the UI layer, there are
 If the support for multiple locales is enabled in the DSpace instance, a request with an **Accept-Language** header is expected to be processed as follow
 * if none of the requested locales is supported, the server will ignore the header. This provides more user friendly behavior when browsing the REST API via a browser (see https://tools.ietf.org/html/rfc7231#section-5.3.5)
 * if at least one acceptable locale is requested, the server will use the one with the higher priority in the Accept-Language header to process the request
-* if the requested endpoint is able to provide a different response for the requested locale compared to the other supported locales this will be noted in a Content-language Response Header otherwise such header will list all the supported locales. This also imply that the ROOT endpoint exposes, when such support is enabled, the supported locales via the **Content-Language** response header.
-The REST client are expected to use the Content-Language Response Header as part of their caching strategy.
+* if the requested endpoint is configured to respond differently based on the selected locale, then the **Content-Language** response header will detail which locale was used to generate the response.
+* if the requested endpoint responds the same no matter which locale is requested, then the **Content-Language** response will return the list of all supported locales.  This also implies that the ROOT endpoint will return the list of supported locales via the **Content-Language** response header
 
-Please note that a REST client MUST always send the Accept-Language header after that the user has make a choice in the UI for all the subsequent requests.
+The REST client is expected to use the **Content-Language** Response Header as part of their caching strategy.
 
-If no explicit locale is requested or no requested locales are supported, the DSpace instance will assume the configured default locale (configuration key _default.locale _). For loggedin users the system will use as default, the language stored, if any, in the user preference otherwise the configured default locale will be used as fallback.
+Please note that a REST client MUST always send the **Accept-Language** header for all the subsequent requests _after_ a user has chosen a preferred language/locale.
+
+If no explicit locale is requested by the client, or the requested locale is not supported, then DSpace will check if the current user is authenticated and has a preferred language stored (if any).  If so, DSpace will respond in the preferred locale. If not (or if the user is not authenticated), DSpace will respond with the configured default locale (configuration key _default.locale_) as a fallback.
 
 ## ETags & conditional headers
 The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a way to tag resources. This can prevent clients from overriding each other while also making it possible to reduce unnecessary calls. It is expected that all the returned document have an ETag
