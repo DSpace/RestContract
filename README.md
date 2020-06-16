@@ -209,6 +209,24 @@ While it's an implementation detail, the new REST API uses many Spring REST (Jav
 
 Each of these libraries were chosen based on design principles above, and based on the fact that much of our underlying Java APIs use or align with Spring technologies.
 
+## Content negotiation
+The DSpace REST API only support the application/json response format at the current stage so there is no real content negotiation according to the broad meaning of the term.
+Nevertheless, some concepts of content negotiation still apply.
+For the POST requests the request content-type usually drive the creation of resource process according to different input format other than the preferred application/json such as text/uri-list and multipart/form-data. PUT requests on association endpoint accepts text/uri-list according to the Spring Data best practice.
+
+### Language supports
+While most i18n (internationalization) settings exist in the UI layer, there are some backend features which also require i18n, such as Submission forms, Controlled Vocabularies, Authorities. For such features the **Accept-Language** header can be used by the REST client to force the use of a specific locale, if supported by the DSpace instance and endpoint in the response. Please note that not all the dspace instances support multiple locales, this can be discovered querying the configuration endpoints for the _webui.supported.locales_ key.
+
+If the support for multiple locales is enabled in the DSpace instance, a request with an **Accept-Language** header is expected to be processed as follow
+* if none of the requested locales is supported, the server will ignore the header. This provides more user friendly behavior when browsing the REST API via a browser (see https://tools.ietf.org/html/rfc7231#section-5.3.5)
+* if at least one acceptable locale is requested, the server will use the one with the higher priority in the Accept-Language header to process the request
+* if the requested endpoint is able to provide a different response for the requested locale compared to the other supported locales this will be noted in a Content-language Response Header otherwise such header will list all the supported locales. This also imply that the ROOT endpoint exposes, when such support is enabled, the supported locales via the **Content-Language** response header.
+The REST client are expected to use the Content-Language Response Header as part of their caching strategy.
+
+Please note that a REST client MUST always send the Accept-Language header after that the user has make a choice in the UI for all the subsequent requests.
+
+If no explicit locale is requested or no requested locales are supported, the DSpace instance will assume the configured default locale (configuration key _default.locale _). For loggedin users the system will use as default, the language stored, if any, in the user preference otherwise the configured default locale will be used as fallback.
+
 ## ETags & conditional headers
 The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a way to tag resources. This can prevent clients from overriding each other while also making it possible to reduce unnecessary calls. It is expected that all the returned document have an ETag
 
@@ -217,7 +235,7 @@ The ETag value can be used with in GET request with the *If-None-Match* conditio
 The ETag value can be also used with DELETE, POST, PUT and PATCH with the *If-Match* conditional header to avoid to perform action on changed resources (concurrency issues, optimistic lock approach).
 
 Finally, when possible the If-Modified-Since header in GET request should be respected. If the resource has been not modified since the value of the Header the API should return an
-HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response, such header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.  
+HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response, such header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.
 
 ## Endpoints
 At the root of the api a HAL document MUST list all the primary endpoints allowing full discovery of the current version of the API.
