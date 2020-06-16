@@ -231,7 +231,7 @@ sample for a hierarchical authority  (srsc):
         "value": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work::Youth research",
         "otherInformation": {
           "id": "VR131403",
-          "parent": Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work,
+          "parent": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work",
           "hasChildren": "false",
           "note": "Ungdomsforskning"
         },
