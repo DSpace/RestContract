@@ -97,8 +97,8 @@ Exposed links:
 * workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 ### Search methods
-#### findAuthorized
-**/api/core/collections/search/findAuthorized**
+#### findSubmitAuthorized
+**/api/core/collections/search/findSubmitAuthorized**
 
 The supported parameters are:
 * query limit the returned collection to those with metadata values matching the query terms.
@@ -110,8 +110,8 @@ It returns the list of collections where the current user is authorized to submi
 Return codes:
 * 200 OK - if the operation succeed
 
-#### findAuthorizedByCommunity
-**/api/core/collections/search/findAuthorizedByCommunity?uuid=<:uuid>**
+#### findSubmitAuthorizedByCommunity
+**/api/core/collections/search/findSubmitAuthorizedByCommunity?uuid=<:uuid>**
 
 The supported parameters are:
 * query limit the returned collection to those with metadata values matching the query terms.
