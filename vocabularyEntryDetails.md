@@ -9,7 +9,7 @@ All the endpoints here described are restricted to authenticated users.
 Not allowed. Only subset of vocabulary entries can be retrieved using specific filters see below
 
 ## Single Authority
-**/api/integration/vocabularyEntryDetails/<vocabulary-name>:<entry-id>**
+**/api/submission/vocabularyEntryDetails/<vocabulary-name>:<entry-id>**
 
 Provide detailed information about a specific vocabulary entry. The JSON response document is as follow
 ```json
@@ -27,16 +27,16 @@ Provide detailed information about a specific vocabulary entry. The JSON respons
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB110"
         },
         "vocabulary" : {
-          "href" : "http://localhost/api/integration/vocabularies/srsc"
+          "href" : "http://localhost/api/submission/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/parent"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB110/parent"
         },
         "children" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB110/children"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB110/children"
         },
       }
     }
@@ -61,7 +61,7 @@ Return codes:
 
 ## Search methods
 ### top
-**/api/integration/vocabularyEntryDetails/search/top?vocabulary=<:vocabulary-id>**
+**/api/submission/vocabularyEntryDetails/search/top?vocabulary=<:vocabulary-id>**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -89,16 +89,16 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB11"
         },
         "vocabulary" : {
-          "href" : "http://localhost/api/integration/vocabularies/srsc"
+          "href" : "http://localhost/api/submission/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/parent"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB11/parent"
         },
         "children" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB11/children"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB11/children"
         },
       }
     }, {
@@ -113,16 +113,16 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB12"
         },
         "vocabulary" : {
-          "href" : "http://localhost/api/integration/vocabularies/srsc"
+          "href" : "http://localhost/api/submission/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/parent"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB12/parent"
         },
         "children" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB12/children"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB12/children"
         },
       }
     }, 
@@ -139,23 +139,23 @@ Provide detailed information about all top entries of a specific hierarchical vo
       "type" : "vocabularyEntryDetail",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB23"
         },
         "vocabulary" : {
-          "href" : "http://localhost/api/integration/vocabularies/srsc"
+          "href" : "http://localhost/api/submission/vocabularies/srsc"
         },
         "parent" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/parent"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB23/parent"
         },
         "children" : {
-          "href" : "http://localhost/api/integration/vocabularyEntryDetails/srsc:SCB23/children"
+          "href" : "http://localhost/api/submission/vocabularyEntryDetails/srsc:SCB23/children"
         },
       }
     } ]
   },
   "_links" : {
     "self" : {
-      "href" : "http://localhost/api/integration/vocabularyEntryDetails/search/top?vocabulary=srsc"
+      "href" : "http://localhost/api/submission/vocabularyEntryDetails/search/top?vocabulary=srsc"
     }
   },
   "page" : {
