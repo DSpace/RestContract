@@ -290,8 +290,8 @@ This endpoint will return a list of files that are associated with the process, 
 
 **GET /api/system/processes/<:process-id>/filetypes**
 
-Files can have a different "type", the type can be anything it refers to what the file represents, is it a mapping file, an exported csv file, ...
-This endpoint will return all the different types  
+Individual processes can have files of different "types". The types can be anything. It refers to what the file represents: e.g. mappingFile, exportCSV, etc.
+This endpoint will return all the different file types for the given process.  The `/api/system/processes/<:process-id>/files/<:type>` endpoint can be used to find the file of that type.
 
 ```json
 {
