@@ -144,7 +144,7 @@ Status codes:
 
 ## Request short lived token
 
-** POST /api/authn/shortlivedtokens **
+**POST /api/authn/shortlivedtokens**
 
 When clicking on a link to download a protected file in the UI no authentication header will be sent along. This endpoint can provide a short lived token (MAX 2 seconds) that the UI can append to file downloads.
  
