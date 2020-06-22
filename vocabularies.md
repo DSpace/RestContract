@@ -91,9 +91,9 @@ Provide detailed information about a specific controlled vocabulary. The JSON re
 ```
 
 Attributes
-* id: the id of the vocabulary, it is the same than the name
+* id: the id of the vocabulary, it is the same than the name. The id must be Alphanumeric, i.e [A-z0-9]
 * name: see id
-* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see (vocabulary entries)[vocabularies.md#vocabulary-entries]
+* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see (vocabulary entries)[vocabularies.md#controlled-vocabulary-entries]
 * hierarchical: if true means that the vocabulary expose a tree structure where some entries are parent of others
 * preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0 only the top nodes are shown, 1 also their children are preloaded and so on)
 
@@ -125,7 +125,7 @@ Return codes:
 * 422 Unprocessable Entity - if the metadata and collection parameters don't resolve to the queried vocabulary or if the filter and entryID are both absent and the vocabulary is NOT scrollable
 
 sample for the vocabulary common_types defined via a value pairs in the submission-forms.xml 
-/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2 
+/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&size=2 
 
 ```json
 {
@@ -144,16 +144,16 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&page=0&size=2"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&size=2"
     },
     "next": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=1&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&page=1&size=2"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=10&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&page=10&size=2"
     }
   },
   "page": {
@@ -166,7 +166,7 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
 ```
 
 extra sample filtering the suggestion with the term Book
-/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2&filter=Book
+/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&size=2&filter=Book
 
 ```json
 {
@@ -185,13 +185,13 @@ extra sample filtering the suggestion with the term Book
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&page=0&size=2"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&size=2"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.type&page=0&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.type&page=0&size=2"
     }
   },
   "page": {
@@ -204,7 +204,7 @@ extra sample filtering the suggestion with the term Book
 ```
 
 sample for a hierarchical authority  (srsc): 
-/server/api/submission/vocabularies/srsc/entries?metadata=dc.subject&filter=Research&size=2
+/server/api/submission/vocabularies/srsc/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.subject&filter=Research&size=2
 
 ```json
 {
@@ -246,16 +246,16 @@ sample for a hierarchical authority  (srsc):
   },
   "_links": {
     "first": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=0"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.subject&filter=Research&size=2&page=0"
     },
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.subject&filter=Research&size=2"
     },
     "next": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=1"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.subject&filter=Research&size=2&page=1"
     },
     "last": {
-      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?metadata=dc.subject&filter=Research&size=2&page=12"
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/common_types/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.subject&filter=Research&size=2&page=12"
     }
   },
   "page": {
@@ -266,6 +266,46 @@ sample for a hierarchical authority  (srsc):
   }
 }
 ```
+
+sample for a vocabulary providing an authority value
+/server/api/submission/vocabularies/SolrAuthorAuthority/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.contributor.author&size=1&filter=Bollini
+
+```json
+{
+  "_embedded": {
+    "vocabularyEntries": [
+      {
+        "authority": "42768ba6-0ba1-4aa3-971e-9c4e27fd7558",
+        "display": "Bollini, Andrea",
+        "value": "Bollini, Andrea",
+        "type": "vocabularyEntry",
+        "_links": {
+          "vocabularyEntryDetail": {
+            "href": "https://dspace7.4science.cloud/server/api/submission/vocabularyEntryDetails/SolrAuthorAuthority:42768ba6-0ba1-4aa3-971e-9c4e27fd7558"
+          }
+        }
+      }]
+  },
+  "_links": {
+    "first": {
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/SolrAuthorAuthority/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.contributor.author&page=0&size=1"
+    },
+    "self": {
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/SolrAuthorAuthority/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.contributor.author&size=1"
+    },
+    "last": {
+      "href": "https://dspace7.4science.cloud/server/api/submission/vocabularies/SolrAuthorAuthority/entries?collection=0f58a9e3-254a-4a38-a6ea-8c1922762475&metadata=dc.contributor.author&page=0&size=1"
+    }
+  },
+  "page": {
+    "size": 1,
+    "totalElements": 1,
+    "totalPages": 1,
+    "number": 0
+  }
+}
+```
+
 
 ## Search methods
 ### Get controlled vocabulary by metadata and collection
