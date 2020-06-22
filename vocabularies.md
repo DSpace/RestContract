@@ -130,7 +130,7 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
 ```json
 {
   "_embedded": {
-    "vocabularyEntries": [
+    "entries": [
       {
         "display": "Animation",
         "value": "Animation",
@@ -171,7 +171,7 @@ extra sample filtering the suggestion with the term Book
 ```json
 {
   "_embedded": {
-    "vocabularyEntries": [
+    "entries": [
       {
         "display": "Book",
         "value": "Book",
@@ -209,7 +209,7 @@ sample for a hierarchical authority  (srsc):
 ```json
 {
   "_embedded": {
-    "vocabularyEntries": [
+    "entries": [
       {
         "display": "Family research",
         "value": "Research Subject Categories::SOCIAL SCIENCES::Social sciences::Social work::Family research",
@@ -273,7 +273,7 @@ sample for a vocabulary providing an authority value
 ```json
 {
   "_embedded": {
-    "vocabularyEntries": [
+    "entries": [
       {
         "authority": "42768ba6-0ba1-4aa3-971e-9c4e27fd7558",
         "display": "Bollini, Andrea",
