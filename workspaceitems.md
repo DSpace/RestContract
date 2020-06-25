@@ -1,3 +1,4 @@
+
 # WorkspaceItem Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
@@ -136,14 +137,22 @@ It would respond with:
 * 403 Forbidden - if you are not logged in with sufficient permissions to view the workspace item
 * 204 if the workspace item doesn't exist
 
-## Multipart POST Method
+## Multipart POST Method on a single workspaceitem
 
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
 If succeed a 201 code will be returned and the new state of the workspaceitem serialized in the body.
 
 An attribute to define the owning collection can be included. If omitted, the first collection the user can submit to will be used
 
-The Multipart POST can include a uri-list containing:
+
+## Multipart POST Method
+
+Multipart POST on collections supports two differents operation mode:
+
+* Import from remote resource
+* Import from file
+
+In the remote resource scenario, Multipart POST can include a uri-list containing:
 * The [external entry value](external-authority-sources.md) whose metadata should be imported
 
 An example curl call:
@@ -160,15 +169,14 @@ There's no need for a preview of the expected changes similar to the [Metadata S
  * This is a new submission, it starts from an empty item
 
 
-## Multipart POST Method on a single workspaceitem
-In this scenario, all works in the same way as "Multipart POST Method", but user submits one or more file(s) containing metadata instead of remote resource id.  
-
+In files scenario, all works in the same way as "remote resource",  but user submits one or more file(s) instead of remote resource id.
 There are some constraints to import files:
- * File which doesn't have a valid parser will be discarded.
- * If multiple files are attached, only the first valid one will parsed. Others will be just saved in the WorkspaceItem.
- * All the files attached must have only one entry. Parsing files with more than one entry will result in exception throwing and 422 (Unprocessable Entity) HTTP status.
+*   File which doesn't have a valid parser will be discarded.
+*   If multiple files are attached, only the first valid one will parsed. Others will be just saved in the WorkspaceItem.
+*   All the files attached must have only one entry. Parsing files with more than one entry will result in exception throwing and 422 (Unprocessable Entity) HTTP status.
 
 An example curl call:
 
     curl --location --request POST 'https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems' 
     --form 'file=@/path/to/bibtex-test.bib' --form 'file=@/path/to/pubmed-test.xml'
+
