@@ -93,7 +93,7 @@ Provide detailed information about a specific controlled vocabulary. The JSON re
 Attributes
 * id: the id of the vocabulary, it is the same than the name. The id must be Alphanumeric, i.e [A-z0-9]
 * name: see id
-* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see (vocabulary entries)[vocabularies.md#controlled-vocabulary-entries]
+* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see [vocabulary entries](vocabularies.md#controlled-vocabulary-entries)
 * hierarchical: if true means that the vocabulary expose a tree structure where some entries are parent of others
 * preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0 only the top nodes are shown, 1 also their children are preloaded and so on)
 

@@ -9,7 +9,7 @@ All the endpoints here described are restricted to authenticated users.
 Not allowed. Only subset of vocabulary entries can be retrieved using specific filters see below
 
 ## Single Authority
-**/api/submission/vocabularyEntryDetails/<vocabulary-name>:<entry-id>**
+**/api/submission/vocabularyEntryDetails/<:vocabulary-name>:<:entry-id>**
 
 Provide detailed information about a specific vocabulary entry. The JSON response document is as follow
 ```json
