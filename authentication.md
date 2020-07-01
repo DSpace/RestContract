@@ -168,3 +168,12 @@ The token follows the "JSON Web Token structure", same as the login tokens.
 Return codes
 - 200 Ok. 
 - 401 Unauthorized. If no user is logged in
+
+### Using short lived token
+
+The request parameter below can be used for nearly every REST endpoint to perform it with authentication but without needing the authentication header:
+* **authentication-token**: optional parameter that authenticates a user, a token needs to be requested from the [following endpoint](authentication.md#Request-short-lived-token) 
+
+The following endpoints are not allowed to use the authentication-token:
+* **POST /api/authn/login**: refreshing your long-lived authentication header is not allowed using the short lived token
+* **POST /api/authn/shortlivedtokens**: creating a new short lived token is not allowed using the short lived token
