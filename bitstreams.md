@@ -102,7 +102,7 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/8d33
 It returns the actual content (bits) described by the bitstream
 
 Supported Request Parameter:
-* **token**: optional parameter that allows downloads for restricted files, a token needs to be requested from the [following endpoint](authentication.md#Request-short-lived-token) 
+* **authentication-token**: optional parameter that allows downloads for restricted files, a token needs to be requested from the [following endpoint](authentication.md#Request-short-lived-token) 
 
 Response Headers:
 
