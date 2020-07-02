@@ -191,12 +191,16 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```
 
 The json has an ordered array named rows containing the fields that need to be rendered. The structure of each field is as follow
-* input contains the details about the widget *type* to use (onebox, dropdown, date, etc.) and if applicable a *regex* to use to validate user input. Some input types, such as lookup and lookup-name require the use of controlled vocabulary. The onebox input type can act as a simple online text input or with suggestion capabilities when associated to a controlled vocabulary. If the controlled vocabulary is hierarchical the onebox input type provides access to the hierarchical selection tree
+* input: contains the details about the widget `type` to use (onebox, dropdown, date, etc.) and if applicable a `regex` to use to validate user input.  Some input types provide specific behaviors:
+    * `dropdown` type: requires use of a (non-hierarchical) controlled vocabulary. Provides a selectbox/dropdown of entries within that vocabulary.
+    * `lookup` type: requires use of a controlled vocabulary. Provides searching capabilities across that vocabulary to select a specific entry or entries.
+    * `lookup-name` type: Same as `lookup`, but specific to names.
+    * `onebox` type: acts as a single text input field. Would provide auto-suggest capabilities when associated with a (non-hierarchical) controlled vocabulary.  If the associated controlled vocabulary is hierarchical (`hieararchical=true`), then the onebox input type provides access to the hierarchical selection tree for that vocabulary.
 * scope: the *scope* attribute can be null or one of the values: workflow or submission. A value other than null mean that the visibility of the field in the specified scope is defined by the value of the attribute *visibility.main* and *visibility.other* in the other scope. *Null* mean that the field will be visible in both the submission and workflow with the visibility specified in *visibility.main* 
 * visibility: the visibility attributes can assume one of the following values
-    * *null* : editable
-    * *readonly*: visible but not alterable
-    * *hidden*: not visible
+    * `null` : editable
+    * `readonly`: visible but not alterable
+    * `hidden`: not visible
 * label: the label to present to the user for this field 
 * mandatory: *true* if the user must provides a value for this field
 * repeatable: *true* if the field allows multiple values
