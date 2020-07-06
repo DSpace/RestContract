@@ -10,10 +10,10 @@ _Unsupported._ As sitemaps don't have a JSON representation, there's no use in t
 **/api/discover/sitemaps/<:name>**
 
 This will return the contents of a given sitemap, typically as HTML or XML. Sample URLs
-* /api/discover/sitemaps/htmlmap contains a list of links to other maps (links to REST) with content type HTML
-* /api/discover/sitemaps/htmlmap_0 contains a list of links to items (links to Angular) with content type HTML
-* /api/discover/sitemaps/xmlmap contains an XML with links to other maps (links to REST) with content type XML
-* /api/discover/sitemaps/xmlmap_0 contains an XML with links to items (links to Angular) with content type XML
+* /api/discover/sitemaps/sitemap_index.html contains a list of links to other maps (links to REST) with content type HTML
+* /api/discover/sitemaps/sitemap0.html contains a list of links to items (links to Angular) with content type HTML
+* /api/discover/sitemaps/sitemap_index.xml contains an XML with links to other maps (links to REST) with content type XML
+* /api/discover/sitemaps/sitemap0.xml contains an XML with links to items (links to Angular) with content type XML
 
 Response Headers:
 * **Content-Type**: the mimetype of the sitemap 
