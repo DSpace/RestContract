@@ -49,7 +49,7 @@ The supported parameters are:
 Return codes:
 * 200 OK - if the operation succeed
 
-#### byLabel
+#### byFieldName
 **/api/core/metadatafields/search/byFieldName**
 
 This endpoint supports the parameters (any combination of parameters is allowed):
