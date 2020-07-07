@@ -50,18 +50,18 @@ Return codes:
 * 200 OK - if the operation succeed
 
 #### byLabel
-**/api/core/metadatafields/search/byLabel**
+**/api/core/metadatafields/search/byFieldName**
 
 This endpoint supports the parameters (any combination of parameters is allowed):
 * schema, an exact match of the prefix of the metadata schema (e.g. "dc", "dcterms", "eperson")
 * element, an exact match of the field's element (e.g. "contributor", "title")
 * qualifier, an exact match of the field's qualifier (e.g. "author", "alternative")
-* label, part of the fully qualified field, should start with the start of the schema, element or qualifier (e.g. "dc.ti", "contributor", "auth", "contributor.ot")
+* query, part of the fully qualified field, should start with the start of the schema, element or qualifier (e.g. "dc.ti", "contributor", "auth", "contributor.ot")
 * page, size [see pagination](README.md#Pagination)
 
 Examples:
-* /api/core/metadatafields/search/byLabel?schema=dc&label=author
-* /api/core/metadatafields/search/byLabel?label=id&qualifier=uri
+* /api/core/metadatafields/search/byLabel?schema=dc&query=author
+* /api/core/metadatafields/search/byLabel?query=id&qualifier=uri
 
 Return codes:
 * 200 OK - if the operation succeed
