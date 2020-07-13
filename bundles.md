@@ -34,6 +34,9 @@ Provide detailed information about a specific bundle. A sample JSON response doc
     "bitstreams" : {
       "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
     },
+    "item" : {
+      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
+    },
     "self" : {
       "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
     }
@@ -140,6 +143,7 @@ Provide detailed information about a specific bundle. A sample JSON response doc
 Exposed links:
 * primarybitstream: link to the primary bitstream if present, it will be embedded
 * bitstreams: link to the list of bitstreams displayed according to the order specified by the bundle, it will be embedded
+* item: link to the item
 
 ## Creating a bundle
 Bundles are only created as part of an item, the contract can be found at the [item endpoint](items.md#bundles)
