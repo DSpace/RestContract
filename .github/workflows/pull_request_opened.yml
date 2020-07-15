@@ -16,8 +16,6 @@ jobs:
     # See https://github.com/marketplace/actions/pull-request-assigner
     - name: Assign PR to creator
       uses: thomaseizinger/assign-pr-creator-action@v1.0.0
-      # Make sure we only run this if PR is newly opened. This should always be the case though
-      #if: github.event_name == 'pull_request' && github.event.action == 'opened'
       # Note, this authentication token is created automatically
       # See: https://docs.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token
       with:
