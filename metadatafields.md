@@ -14,7 +14,6 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 Provide detailed information about a specific metadata schema. The JSON response document is as follow
 ```json
 {
-  {
   "id": 8,
   "element": "contributor",
   "qualifier": "advisor",
@@ -49,7 +48,23 @@ The supported parameters are:
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the email parameter is missing or invalid
+
+#### byFieldName
+**/api/core/metadatafields/search/byFieldName**
+
+This endpoint supports the parameters (any combination of parameters is allowed):
+* schema, an exact match of the prefix of the metadata schema (e.g. "dc", "dcterms", "eperson")
+* element, an exact match of the field's element (e.g. "contributor", "title")
+* qualifier, an exact match of the field's qualifier (e.g. "author", "alternative")
+* query, part of the fully qualified field, should start with the start of the schema, element or qualifier (e.g. "dc.ti", "contributor", "auth", "contributor.ot")
+* page, size [see pagination](README.md#Pagination)
+
+Examples:
+* /api/core/metadatafields/search/byFieldName?schema=dc&query=author
+* /api/core/metadatafields/search/byFieldName?query=id&qualifier=uri
+
+Return codes:
+* 200 OK - if the operation succeed
 
 ## Creating a Metadata Field
 
