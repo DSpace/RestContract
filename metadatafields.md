@@ -60,8 +60,8 @@ This endpoint supports the parameters (any combination of parameters is allowed)
 * page, size [see pagination](README.md#Pagination)
 
 Examples:
-* /api/core/metadatafields/search/byLabel?schema=dc&query=author
-* /api/core/metadatafields/search/byLabel?query=id&qualifier=uri
+* /api/core/metadatafields/search/byFieldName?schema=dc&query=author
+* /api/core/metadatafields/search/byFieldName?query=id&qualifier=uri
 
 Return codes:
 * 200 OK - if the operation succeed
