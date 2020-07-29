@@ -11,21 +11,47 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 ## Single Metadata Field
 **/api/core/metadatafields/<:id>**
 
-Provide detailed information about a specific metadata schema. The JSON response document is as follow
+Provide detailed information about a specific metadata field. The JSON response document is as follows
 ```json
 {
   "id": 8,
   "element": "contributor",
   "qualifier": "advisor",
   "scopeNote": "Use primarily for thesis advisor.",
-  "type": "metadatafield",
-   "_links": {...},
-   "_embedded": {...}
+  "type": "metadatafield"
 }
 ```
 
 Exposed links:
 * schema: the metadata schema to which the item belongs 
+
+## Single Metadata Field by name
+**/api/core/metadatafields/name/<:metadata-field-full-name>**
+
+Provide detailed information about a specific metadata field based on the name.  
+This is not a search, it will only return one value if there's an exact match, or a 404 if the requested field doesn't exist
+
+The JSON response document for /api/core/metadatafields/name/dc.contributor.advisor is
+
+```json
+{
+  "id": 8,
+  "element": "contributor",
+  "qualifier": "advisor",
+  "scopeNote": "Use primarily for thesis advisor.",
+  "type": "metadatafield"
+}
+```
+
+
+When using /api/core/metadatafields/name/dc.title, it will only return the field without a qualifier
+
+Exposed links:
+* schema: the metadata schema to which the item belongs
+
+Return codes:
+* 200 OK - if the field exists
+* 404 Not found - if the field doesn't exist
 
 ## Linked entities
 ### Schema
