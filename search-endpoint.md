@@ -423,7 +423,7 @@ The returned JSON response will be like:
 
 This endpoint returns a list of configured facets with their respective values. The result can be refined using the following parameters:
 * `query`: The discovery search string to will be used to match records. Please note that this will be treat as a lucene/SOLR query so if special characters need to be literally searched escape them.
-* `dsoType`: Limit the search to a specific DSpace Object type:
+* `dsoType`: Limit the search to a specific or multiple DSpace Object types. This field is repeatable to define multiple types:
      * all: Execute a query over all available DSO types.
      * item: Only search the DSpace items.
      * community: Search within the DSpace community records.
