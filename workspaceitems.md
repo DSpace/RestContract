@@ -36,7 +36,7 @@ There's no need for a preview of the expected changes similar to the [Metadata S
 In files scenario, all works in the same way as "remote resource",  but user submits one or more file(s) instead of remote resource id.
 There are some constraints to import files:
 *   File which doesn't have a valid parser will be discarded.
-*   If multiple files are attached, only the first valid one will parsed. Others will be just saved in the WorkspaceItem.
+*   If one or more files contain parseable metadata, the first file that is able to be parsed will be used to prepopulate the metadata. Others will just be saved to the WorkspaceItem
 *   All the files attached must have only one entry. Parsing files with more than one entry will result in exception throwing and 422 (Unprocessable Entity) HTTP status.
 
 An example curl call:
