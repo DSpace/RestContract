@@ -25,34 +25,6 @@ Provide detailed information about a specific metadata field. The JSON response 
 Exposed links:
 * schema: the metadata schema to which the item belongs 
 
-## Single Metadata Field by name
-**/api/core/metadatafields/name/<:metadata-field-full-name>**
-
-Provide detailed information about a specific metadata field based on the name.  
-This is not a search, it will only return one value if there's an exact match, or a 404 if the requested field doesn't exist
-
-The JSON response document for /api/core/metadatafields/name/dc.contributor.advisor is
-
-```json
-{
-  "id": 8,
-  "element": "contributor",
-  "qualifier": "advisor",
-  "scopeNote": "Use primarily for thesis advisor.",
-  "type": "metadatafield"
-}
-```
-
-
-When using /api/core/metadatafields/name/dc.title, it will only return the field without a qualifier
-
-Exposed links:
-* schema: the metadata schema to which the item belongs
-
-Return codes:
-* 200 OK - if the field exists
-* 404 Not found - if the field doesn't exist
-
 ## Linked entities
 ### Schema
 **/api/core/metadatafields/<:id>/schema**
@@ -83,6 +55,7 @@ This endpoint supports the parameters (any combination of parameters is allowed)
 * element, an exact match of the field's element (e.g. "contributor", "title")
 * qualifier, an exact match of the field's qualifier (e.g. "author", "alternative")
 * query, part of the fully qualified field, should start with the start of the schema, element or qualifier (e.g. "dc.ti", "contributor", "auth", "contributor.ot")
+* exactName, The exact fully qualified field, should use the syntax schema.element.qualifier or schema.element if no qualifier exists (e.g. "dc.title", "dc.contributor.author"). It will only return one value if there's an exact match
 * page, size [see pagination](README.md#Pagination)
 
 Examples:
