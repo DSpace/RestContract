@@ -314,6 +314,23 @@ This endpoint will return all the different file types for the given process.  T
 
 Returns a single file of the specified process with the provided type (the type matches on the dspace.process.filetype metadata field of the bitstream)
 
+## Search processes
+**GET /api/system/processes/search/byProperty**
+
+This supports a basic search of the processes
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* sort, options are startTime, endTime
+* userId: optional, the uuid of the eperson who started the process. If not specified, all processes will be returned
+* scriptName: optional, limit the returned processes to the specified script
+* processStatus: optional, limit the returned processes to the specified status. The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access the processes
+
 ## Execution Deletion
 **DELETE /api/system/processes/<:process-id>**
 
