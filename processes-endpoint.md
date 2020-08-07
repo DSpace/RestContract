@@ -322,9 +322,9 @@ This supports a basic search of the processes
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * sort, options are startTime, endTime
-* eperson: optional, the uuid of the eperson who started the process. If not specified, all processes will be returned
-* script: optional, limit the returned processes to the specified script
-* status: optional, limit the returned processes to the specified status. The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`
+* userId: optional, the uuid of the eperson who started the process. If not specified, all processes will be returned
+* scriptName: optional, limit the returned processes to the specified script
+* processStatus: optional, limit the returned processes to the specified status. The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`
 
 Return codes:
 * 200 OK - if the operation succeed
