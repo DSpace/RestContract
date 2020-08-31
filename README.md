@@ -1,6 +1,6 @@
 # DSpace 7 REST Contract
 
-This repository documents new REST API Contract for DSpace 7. The code to implement this contract in on the DSpace [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
+This repository documents the new REST API Contract for DSpace 7. The code to implement this contract is on the DSpace [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
 
 ***
 :warning: **As the DSpace 7 REST API is under active development, this REST Contract is expected to change rapidly.** REST Contract contributors will be rapidly adding ideas (via Pull Requests) to this repository in order to enable the detailed discussions necessary to finalize the REST Contract. Once the REST Contract stabilizes, we will remove this warning and more actively publicize it.
