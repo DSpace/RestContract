@@ -32,6 +32,7 @@ This repository documents the new REST API Contract for DSpace 7. The code to im
     * [Spring Technology Alignment](#spring-technology-alignment)
 * [Content Negotiation](#content-negotiation)
     * [Language Support](#language-support)
+* [Proxies](#proxies)
 * [ETags & Conditional Headers](#etags--conditional-headers)
 * [API Versioning](#api-versioning)
 * [Community Resources](#community-resources)
@@ -247,6 +248,13 @@ The REST client is expected to use the `Content-Language` Response Header as par
 Please note that a REST client MUST always send the `Accept-Language` header for all the subsequent requests _after_ a user has chosen a preferred language/locale.
 
 If no explicit locale is requested by the client, or the requested locale is not supported, then DSpace will check if the current user is authenticated and has a preferred language stored (if any).  If so, DSpace will respond in the preferred locale. If not (or if the user is not authenticated), DSpace will respond with the configured default locale (configuration key `default.locale`) as a fallback.
+
+## Proxies
+The DSpace REST API supports the `X-Forwarded-For` header by default for all requests coming from localhost (127.0.0.1). This allows any clients running on the same server to immediately proxy requests for other IP addresses.
+
+If your client (or User Interface) is on a different server, you may add additional "trusted" IP addresses (or ranges) which are allowed to use the `X-Forwarded-For` header. To do so, modify the `proxies.trusted.ipranges` setting in your `local.cfg`. This configuration accepts a comma-separated list of IPs and/or you may specify a range by listing the first three blocks of the IP range (e.g. 123.45.67)
+
+Keep in mind, the `X-Forwarded-For` header is ONLY read if `useProxies=true` (default value) is also set in your DSpace configuration (either `dspace.cfg` or `local.cfg`).
 
 ## ETags & conditional headers
 The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a way to tag resources. This can prevent clients from overriding each other while also making it possible to reduce unnecessary calls. It is expected that all the returned document have an ETag
