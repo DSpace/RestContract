@@ -22,6 +22,7 @@ This endpoint will return a list of all created processes. The JSON response doc
         "processId" : "1",
         "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
         "startTime" : "2017-11-22T10:29:11Z",
+        "creationTime" : "2017-11-22T10:29:00Z",
         "endTime" : null,
         "scriptName": "metadata-import",
         "processStatus" : "RUNNING",
@@ -53,7 +54,8 @@ This endpoint will return a list of all created processes. The JSON response doc
       {
         "processId" : "2",
         "userId" : "c7d85e7f-63e5-4bc0-96cb-5d80be48d62e",
-        "startTime" : "2017-11-20T10:29:11Z",
+        "startTime" : "2017-11-20T10:29:11Z",  
+        "creationTime" : "2017-11-22T10:29:00Z",
         "endTime" : "2017-11-20T10:30:11Z",
         "scriptName": "metadata-import",
         "processStatus" : "FAILED",
@@ -98,7 +100,8 @@ This endpoint will return details on the requested process.
 {
   "processId" : "3",
   "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
-  "startTime" : "2017-11-22T10:29:11Z",
+  "startTime" : "2017-11-22T10:29:11Z",  
+  "creationTime" : "2017-11-22T10:29:00Z",
   "endTime" : null,              
   "scriptName": "metadata-import",
   "processStatus" : "RUNNING",
