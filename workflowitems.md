@@ -87,6 +87,7 @@ Provide detailed information about a specific workflowitem. The JSON response do
 Similary  to the [Workspace Item](workspaceitems.md) the actual data of the inprogress submission are arranged in *sections* map following the sections configured in the submissionDefinition. This map is *open for extension*, each type of section will expose a different JSON structure. See the [out-of-box submission section types](submissionsection-types.md) page for details. An additional step attribute containing the id of the reached step in the workflow is present
 
 Exposed links:
+* step: the workflow step
 * collection: the collection where the inprogress submission will be created
 * item: the item that hold the submission data
 * submissionDefinition: the [submission definition](submissiondefinitions.md) used by this inprogress submission
@@ -116,11 +117,33 @@ The submission definition used by the inprogress submission is derived from the 
 Please note that this endpoint is not strictly necessary as you can currently retrieve the same definition using [/api/config/submissiondefinitions/search/findByCollection?uuid=<:workspaceitem-collection-uuid>](submissiondefinitions.md#findByCollection) but it allows the client to find the submissionDefinition embedded in the workspaceitem without the need to make a separate call. 
 In addition, it allows in future to change the 1:1 association between collections and submissionDefinition without breaking the client
 
+#### workflow step
+**/api/workflow/workflowitems/<:id>/step** (READ-ONLY)
+
+It returns the workflow step of the workflow item
+See the [workflow steps](workflowsteps.md) endpoint for more info.
+This is a **read-only** endpoint
+
 ### Search methods
 #### findBySubmitter
 **/api/workflow/workflowitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
 It returns the workflowitems created by the specified submitter
+
+## Get Single Workflow Item from Item UUID
+
+**/api/workflow/workflowitems/search/item?uuid=<:item-uuid>**
+
+/api/workflow/workflowitems/search/item?uuid=cd67ce0e-7f9a-42fc-b8e7-c8bb83ef58ca
+The item uuid is mandatory
+
+There's always at most one workflow item per Item, so this endpoint will return a single workflow item, not a list
+
+It would respond with:
+* 200 OK - Returning the workflow item if there's a match
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions to view the workflow item
+* 204 if the workflow item doesn't exist
 
 ## POST Method
 To create a workflowitem, i.e. to start a workflow, a workspaceitem must be posted to the workflowitems resource collection endpoint (/api/submission/workflowitems).
@@ -134,9 +157,15 @@ If fails the following status code are expected
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
 If succeed a 201 code will be returned and the new state of the workflowitem serialized in the body
 
-## DELETE Method 
+## DELETE Method
+**DELETE /api/submission/workflowitems/<:id>**
+
 Reset a workflow sending back the item to the workspace regardless to the step reached.
 
-204 No content - if the operation succeed
-403 Unauthorized - if you are not loggedin as an administrator
-404 Not found - if the workflow doesn't longer exist
+If an optional parameter `?expunge=true` is included, the workflow item is deleted instead of being returned to the workflow.
+
+It would respond with:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in as an administrator
+* 404 Not found - if the workflow doesn't exist

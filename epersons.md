@@ -2,10 +2,96 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/eperson/epersons**  
+**GET /api/eperson/epersons**
 
 ## Single EPerson
-**/api/eperson/epersons/<:uuid>**
+**GET /api/eperson/epersons/<:uuid>**
+
+```json
+{
+  "id": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "uuid": "028dcbb8-0da2-4122-a0ea-254be49ca107",
+  "name": "user@institution.edu",
+  "handle": null,
+  "metadata": {
+      "eperson.firstname": [
+        {
+          "value": "John",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.language": [
+        {
+          "value": "en",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ],
+      "eperson.lastname": [
+        {
+          "value": "Doe",
+          "language": null,
+          "authority": "",
+          "confidence": -1,
+          "place": 0
+        }
+      ]
+  },
+  "netid": null,
+  "lastActive": "2019-09-25T15:59:28.000+0000",
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "type": "eperson",
+  "_links": {
+    "self": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+    },
+    "groups": {
+      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107/groups"
+    }
+  }
+}
+```
+
+### Search methods
+#### byEmail
+**/api/eperson/epersons/search/byEmail?email=<:string>**
+
+The supported parameters are:
+* email: mandatory, EPerson's email to search
+
+It returns the EPersonRest instance, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the email parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
+
+#### byMetadata
+**GET /api/eperson/epersons/search/byMetadata?query=<:name>**
+
+This supports a basic search in the metadata.
+It will search in:
+* UUID (exact match)
+* first name
+* last name
+* email address
+
+It returns the list of EPersonRest instances, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the email parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
 
 ## Patch operations
 
@@ -59,11 +145,14 @@ For example, starting with the following eperson field data:
 the replace operation `[{ "op": "replace", "path": "/email", "value": "new@email"]` will result in :
 ```json
   "email": "new@email",
-  ```
-  
-#### This operation can be performed by administrators and by the authenticated user.
+  ```  
+#### These operations can be performed by administrators and by the authenticated user.
 
-To replace the password value, `curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  The operation also requires an Authorization header.
+To replace the password value while authenticated, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
+To replace the password value based on a registration token, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
+The operation requires an Authorization header or a token.
 
 For example, starting with the following eperson field data:
 ```json
@@ -74,3 +163,97 @@ the replace operation `[{ "op": "replace", "path": "/password", "value": "newpas
   "password": "newpassword",
 ```
 NOTE: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
+
+The currently authenticated user can modify their EPerson metadata. An administrator can modify any EPerson's metadata.  
+This includes, but is not limited to, last name, first name, phone, language
+
+## Create new EPerson (requires admin permissions)
+**POST /api/eperson/epersons**
+
+To create a new EPerson, perform a post with the JSON below to the epersons endpoint when logged in as admin.
+
+```json
+{
+  "name": "user@institution.edu",
+  "metadata": {
+    "eperson.firstname": [
+      {
+        "value": "John",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "Doe",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ]
+  },
+  "canLogIn": true,
+  "email": "user@institution.edu",
+  "requireCertificate": false,
+  "selfRegistered": true,
+  "type": "eperson"
+}
+```
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if the email address was omitted or already exists
+
+## Create new EPerson based on registration token
+**POST /api/eperson/epersons?token=<:token>**
+
+To create a new EPerson, perform a post with the JSON below to the epersons endpoint while including a token.
+The token will be sent via Email from the [Create new EPerson registration](epersonregistrations.md#create-new-eperson-registration).
+
+```json
+{
+  "metadata": {
+    "eperson.firstname": [
+      {
+        "value": "John",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ],
+    "eperson.lastname": [
+      {
+        "value": "Doe",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ]
+  },
+  "canLogIn": true,
+  "requireCertificate": false,
+  "type": "eperson"
+}
+```
+
+The "eperson.firstname" and "eperson.lastname" metadata are mandatory. The phone number, language, … are optional metadata.  
+The email property can be set, but would need to be identical to the value from the registration.  
+The selfRegistered property can be set, but would need to be true
+
+Status codes:
+* 201 Created - if the operation succeed
+* 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
+* 401 Unauthorized - if the token doesn't allow you to create this account
+
+## Linked entities
+### Groups
+**GET /api/eperson/epersons/<:uuid>/groups**
+
+A HAL link to retrieve the eperson groups of an eperson is included.
+This will return a pageable list of the groups this person is a direct member of
+
+> TODO: A solution to retrieve direct and indirect groups of an eperson is also required.
+> This would use GroupService.allMemberGroupsSet() and is used e.g. when viewing an EPerson as an admin

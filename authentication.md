@@ -9,8 +9,8 @@ Information about the underline implementation are [available on the wiki](https
 
 This endpoint only accept the POST method. Parameters and body structure depend on the authentication method to use.
 
-A WWW-Authenticate header is returned listing the different authentication method supported by the system. Below an example listing the password and shibboleth authentication
-
+A WWW-Authenticate header is returned listing the different authentication method supported by the system.
+Below an example listing the password and shibboleth authentication:  
 `WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://dspace7.4science.cloud/Shibboleth.sso/Login?target=https%3A%2F%2Fdspace7.4science.cloud", password realm="DSpace REST API"`
 
 Return codes
@@ -61,7 +61,7 @@ sg | Contains the id's of the special groups to which a user belongs
 exp | Contains the expiration date when a token will expire
 
 ## Logout
-** /api/authn/logout **
+**/api/authn/logout**
 
 To logout and invalidate the JWT token, send the token in the Authorization header with the bearer scheme to the endpoint either with a GET or POST request
 
@@ -69,10 +69,11 @@ To logout and invalidate the JWT token, send the token in the Authorization head
 curl -v "http://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo"
 ```
 
-This invalidate the token on the server side with the result to log the user out on every device or browser.
+This invalidate the token on the server side with the result to log the user out on every device or browser. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
 
 Return code
 - 204 No content
+- 302 Found. If a successful logout occurs and a logout page URL is configured
 
 Invalid or missing token are not reported, i.e. the endpoint will always return 204 also if no token is supplied or the token is invalid
 
@@ -121,3 +122,58 @@ Embedded
 
 Return code
 - 200 Ok in all the scenario both authenticated than not authenticated (valid token, invalid token or missing token)
+
+## Log in as
+
+For any request, an `X-On-Behalf-Of` header can be included.
+If the user is authorized to use this header (the user is an admin and login as is allowed), the request will be processed using the account of the provided user.  
+Verifying whether the user is authorized to use this header can happen using the "loginOnBehalfOf" [feature](features.md), verified against the site
+
+Sample request: 
+```
+curl -v "http://{dspace-server.url}/server/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb" -H "Authorization: Bearer eyJhbG...COdbo" -H "X-On-Behalf-Of: 028dcbb8-0da2-4122-a0ea-254be49ca107"
+```
+
+The Authorization header remains the same, still linked to the actual admin using the `X-On-Behalf-Of` header.
+
+Status codes:
+* 400 Bad Request - if the X-On-Behalf-Of header doesn't contain a valid EPerson UUID
+* 403 Forbidden - if you are not authorized to act on behalf of the given user
+* Any status code of the functionality being used
+
+
+## Request short lived token
+
+**POST /api/authn/shortlivedtokens**
+
+When clicking on a link to download a protected file in the UI no authentication header will be sent along. This endpoint can provide a short lived token (MAX 2 seconds) that the UI can append to file downloads.
+ 
+The token follows the "JSON Web Token structure", same as the login tokens.
+  
+ ```
+ curl -v -X POST https://{dspace-server.url}/api/authn/shortlivedtokens -H "Authorization: Bearer eyJhbG...COdbo"
+ ```
+ 
+ ```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJlaWQiOiJjZDgyNGE2MS05NWJlLTRlMTYtYmNjZC01MWZlYTI2NzA3ZDAiLCJzZyI6W10sImV4cCI6MTU5MDQxMzUwNn0.XRK4ldh9l4My45gJzLtcW97hVUpbtM5oAQsxuQ2V37c",
+  "_links": {
+    "self": {
+      "href": "http://${dspace-server.url}/api/authn/shortlivedtokens"
+    }             
+  }
+}
+```  
+
+Return codes
+- 200 Ok. 
+- 401 Unauthorized. If no user is logged in
+
+### Using short lived token
+
+The request parameter below can be used for nearly every REST endpoint to perform it with authentication but without needing the authentication header:
+* **authentication-token**: optional parameter that authenticates a user, a token needs to be requested from the [following endpoint](authentication.md#Request-short-lived-token) 
+
+The following endpoints are not allowed to use the authentication-token:
+* **POST /api/authn/login**: refreshing your long-lived authentication header is not allowed using the short lived token
+* **POST /api/authn/shortlivedtokens**: creating a new short lived token is not allowed using the short lived token

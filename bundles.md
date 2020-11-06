@@ -34,6 +34,9 @@ Provide detailed information about a specific bundle. A sample JSON response doc
     "bitstreams" : {
       "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
     },
+    "item" : {
+      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
+    },
     "self" : {
       "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
     }
@@ -140,6 +143,7 @@ Provide detailed information about a specific bundle. A sample JSON response doc
 Exposed links:
 * primarybitstream: link to the primary bitstream if present, it will be embedded
 * bitstreams: link to the list of bitstreams displayed according to the order specified by the bundle, it will be embedded
+* item: link to the item
 
 ## Creating a bundle
 Bundles are only created as part of an item, the contract can be found at the [item endpoint](items.md#bundles)
@@ -204,11 +208,11 @@ The REST API can support Content-Length and Content-MD5 headers to verify integr
 
 Status codes:
 * 201 Created - if the operation succeed
+* 400 Bad Request - if there was no file
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bundle doesn't exist
 * 412 Precondition Failed - if there is a discrepancy between the declared size or checksum and the computed one
-* 422 Unprocessable Entity - if there was no file
 
 This endpoint only accepts one file at a time. If multiple files are uploaded, any extra files will be ignored.
 

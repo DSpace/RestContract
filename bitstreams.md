@@ -4,9 +4,8 @@
 ## Main Endpoint
 **/api/core/bitstreams**   
 
-Provide access to the bitstreams (DBMS based). It returns the list of existent bitstreams.
+_Unsupported._ As bitstreams are used for more than just storing the files of items (thumbnails, scripts & processes file output, ...) a general endpoint to loop over these has little added value. 
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/bitstreams>
 
 ## Single Bitstream
 **/api/core/bitstreams/<:uuid>**
@@ -101,6 +100,9 @@ Error codes:
 Example: <http://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
 
 It returns the actual content (bits) described by the bitstream
+
+Supported Request Parameter:
+* **authentication-token**: optional parameter that allows downloads for restricted files, a token needs to be requested from the [following endpoint](authentication.md#Request-short-lived-token) 
 
 Response Headers:
 

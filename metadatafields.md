@@ -11,17 +11,14 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 ## Single Metadata Field
 **/api/core/metadatafields/<:id>**
 
-Provide detailed information about a specific metadata schema. The JSON response document is as follow
+Provide detailed information about a specific metadata field. The JSON response document is as follows
 ```json
 {
-  {
   "id": 8,
   "element": "contributor",
   "qualifier": "advisor",
   "scopeNote": "Use primarily for thesis advisor.",
-  "type": "metadatafield",
-   "_links": {...},
-   "_embedded": {...}
+  "type": "metadatafield"
 }
 ```
 
@@ -46,6 +43,27 @@ Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4scien
 The supported parameters are:
 * **(mandatory)** schema, the prefix of the metadata schema (i.e. "dc", "dcterms", "eperson, etc.)
 * page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+
+#### byFieldName
+**/api/core/metadatafields/search/byFieldName**
+
+This endpoint supports the parameters (any combination of parameters is allowed):
+* schema, an exact match of the prefix of the metadata schema (e.g. "dc", "dcterms", "eperson")
+* element, an exact match of the field's element (e.g. "contributor", "title")
+* qualifier, an exact match of the field's qualifier (e.g. "author", "alternative")
+* query, part of the fully qualified field, should start with the start of the schema, element or qualifier (e.g. "dc.ti", "contributor", "auth", "contributor.ot")
+* exactName, The exact fully qualified field, should use the syntax schema.element.qualifier or schema.element if no qualifier exists (e.g. "dc.title", "dc.contributor.author"). It will only return one value if there's an exact match
+* page, size [see pagination](README.md#Pagination)
+
+Examples:
+* /api/core/metadatafields/search/byFieldName?schema=dc&query=author
+* /api/core/metadatafields/search/byFieldName?query=id&qualifier=uri
+
+Return codes:
+* 200 OK - if the operation succeed
 
 ## Creating a Metadata Field
 
