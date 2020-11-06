@@ -17,18 +17,18 @@ Provide detailed information about a specific authorization. The JSON response d
 
 ```json
 {
-  "id": [eperson-uuid_]feature-id_object-type_object-id,
+  "id": [eperson-uuid_]feature-id_restobjectcategory.restobjectname_object-id,
   "type": "authorization"
 }
 ```
 
 Attributes
-* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the object type and (uu)id joined with an underscore 
+* id: the id of the authorization resource is defined by the combination of the eperson uuid (if not null), the feature id and the rest object category and name (combined with a dot) and (uu)id joined with an underscore 
 
 Exposed links:
 * eperson: link to the eperson that the authorization belong to. Can be null for authorizations grant to unlogged users
 * feature: link to the feature enabled by this authorization
-* object: link to the object where this authorization apply. Not limited to DSpace objects, see the controlled list defined for the type attribute in the [features endpoint](features.md#resourcetype) for more details
+* object: link to the rest object where this authorization apply. Not limited to DSpace objects, potentially any BaseObjectRest (i.e. an addressable rest object with an Id) can be used
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -49,7 +49,7 @@ The supported parameters are:
 It returns the list of matching authorizations. Please note that all the matching authorizations available for the requested user will be returned including the one available to anonymous users. There is no need on the client side to combine the authorizations of the current, logged-in, user with the authorizations of anonymous users. 
 
 Return codes:
-* 200 OK - if the operation succeed
+* 200 OK - if the operation succeed. It could eventually result in an empty list
 * 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated and an eperson is specified
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and the user specified in the eperson parameter can access
