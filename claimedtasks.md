@@ -57,8 +57,44 @@ This is a **read-only** endpoint, the [POST to the claimed task](#post-method-si
 
 It returns the tasks claimed by the specified user
 
-## POST Method (collection level)
-The creation of claimed tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
+#### findAllByItem
+**/api/workflow/claimedtasks/search/findAllByItem?uuid=<:item-uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+It returns the list of matching  claimedtasks
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right can use the endpoint
+
+#### findByItem
+**/api/workflow/claimedtasks/search/findByItem?uuid=<:item-uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+It returns the claimedtask of matching item provided
+
+Return codes:
+* 200 OK - if the operation succeed
+* 204 No Content - if the uuid parameter invalid or the claimedtask is not of the current user
+* 401 Unauthorized - if you are not authenticated
+
+## POST Method
+To create a claimedtask, i.e. to clam a poooltask. 
+The pooltask must be supplied as URI in the request body using the text/uri-list content-type
+If succeed a 201 code will be returned and the new claimedtask and the pooltask will removed.
+
+Return codes:
+201 Created - if the operation succeed
+401 Unauthorized - if you are not authenticated
+403 Forbidden -  if the loggedin user is not the reviewer of the pooltask
+404 Not found - if the pooltask doesn't exist
 
 ## POST Method (single resource level)
 To perform a claimed task a POST request must be issued against the single claimed task URL
