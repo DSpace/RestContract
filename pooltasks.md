@@ -63,6 +63,34 @@ This is a **read-only** endpoint.
 
 It returns the tasks available for the specified user
 
+#### findAllByItem
+**/api/workflow/pooltasks/search/findAllByItem?uuid=<:item-uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+It returns the list of matching  pooltasks
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right can use the endpoint
+
+#### findByItem
+**/api/workflow/pooltasks/search/findByItem?uuid=<:item-uuid>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+It returns the pooltask of matching item provided
+
+Return codes:
+* 200 OK - if the operation succeed
+* 204 No Content - if the uuid parameter invalid or the pooltask is not of the current user
+* 401 Unauthorized - if you are not authenticated
+
 ## POST Method (collection level)
 The creation of pool tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
 
