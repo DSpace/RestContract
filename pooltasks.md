@@ -65,30 +65,28 @@ It returns the tasks available for the specified user
 
 #### findAllByItem
 **/api/workflow/pooltasks/search/findAllByItem?uuid=<:item-uuid>**
+It returns all the pool tasks related to the specified item
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, the uuid of the item object
-
-It returns the list of matching  pooltasks
 
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with ADMIN right can use the endpoint
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
 
 #### findByItem
 **/api/workflow/pooltasks/search/findByItem?uuid=<:item-uuid>**
+It returns, if any, the single pooltask related to the specified item
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, the uuid of the item object
 
-It returns the pooltask of matching item provided
-
 Return codes:
 * 200 OK - if the operation succeed
-* 204 No Content - if the uuid parameter invalid or the pooltask is not of the current user
+* 204 No Content - if there is no pool task for the specified item and the current user
 * 401 Unauthorized - if you are not authenticated
 
 ## POST Method (collection level)
