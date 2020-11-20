@@ -146,26 +146,32 @@ the replace operation `[{ "op": "replace", "path": "/email", "value": "new@email
 ```json
   "email": "new@email",
   ```  
+  
 #### These operations can be performed by administrators and by the authenticated user.
 
-To replace the password value while authenticated, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
-To replace the password value based on a registration token, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "replace", "path": "/password", "value": "newpassword"]'`.  
+The currently authenticated user can modify their EPerson metadata. An administrator can modify any EPerson's metadata.  
+This includes, but is not limited to, last name, first name, phone, language
+  
+### Add
+The add operation allows adding or replacing information in the EPerson. Password changes are currently required to use "add" requests.
+  
+#### These operations can be performed by administrators and by the authenticated user.
+
+To add/replace the password value while authenticated, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"]'`.  
+To add/replace the password value based on a registration token, use
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"]'`.  
 The operation requires an Authorization header or a token.
 
 For example, starting with the following eperson field data:
 ```json
  "password": "oldpassword",
 ```
-the replace operation `[{ "op": "replace", "path": "/password", "value": "newpassword"]` will result in :
+the replace operation `[{ "op": "add", "path": "/password", "value": "newpassword"]` will result in :
 ```json
   "password": "newpassword",
 ```
-NOTE: The new password is currently returned after an update but this could be revisited later, see [#30]((https://github.com/DSpace/Rest7Contract/issues/30))
-
-The currently authenticated user can modify their EPerson metadata. An administrator can modify any EPerson's metadata.  
-This includes, but is not limited to, last name, first name, phone, language
+NOTE: The new password is currently returned after an update but this could be revisited later, see [#30](https://github.com/DSpace/Rest7Contract/issues/30)
 
 ## Create new EPerson (requires admin permissions)
 **POST /api/eperson/epersons**
