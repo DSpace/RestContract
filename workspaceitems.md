@@ -86,24 +86,20 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,
-	  	 			"name": "openaccess",
-	  	 			"groupUUID": "uuid-of-the-anonymous-group"
+	  	 			"name": "openaccess"
   	 			},
   	 			{
   	 				"id": 126,
-	  	 			"name": "administrator",
-	  	 			"groupUUID": "uuid-of-the-administrator-group"
+	  	 			"name": "administrator"
   	 			},
   	 			{
   	 				"id": 127,
 	  	 			"name": "embargo",
-	  	 			"groupUUID": "1faf7c51-2a14-4826-b0b1-f1c1d2d82dd7",
 	  	 			"startDate": "2018-06-24T00:40:54.970+0000"
   	 			},
   	 			{
   	 				"id": 128,
 	  	 			"name": "lease",
-	  	 			"groupUUID": "38ecd5ae-af12-4144-a276-81532e1679f8",
 	  	 			"endDate": "2017-12-24T00:40:54.970+0000"
   	 			}
   	 		]

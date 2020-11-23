@@ -20,24 +20,20 @@ The section data represent the data about the user uploaded files
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,
-	  	 			"name": "openaccess",
-	  	 			"groupUUID": "uuid-of-the-anonymous-group"
+	  	 			"name": "openaccess"
   	 			},
   	 			{
   	 				"id": 126,
-	  	 			"name": "administrator",
-	  	 			"groupUUID": "uuid-of-the-administrator-group"
+	  	 			"name": "administrator"
   	 			},
   	 			{
   	 				"id": 127,
 	  	 			"name": "embargo",
-	  	 			"groupUUID": "1faf7c51-2a14-4826-b0b1-f1c1d2d82dd7",
 	  	 			"startDate": "2018-06-24T00:40:54.970+0000"
   	 			},
   	 			{
   	 				"id": 128,
 	  	 			"name": "lease",
-	  	 			"groupUUID": "38ecd5ae-af12-4144-a276-81532e1679f8",
 	  	 			"endDate": "2017-12-24T00:40:54.970+0000"
   	 			}
   	 		]
@@ -107,24 +103,20 @@ will set the title of the first uploaded file to MyFile.pdf returning the follow
 	  	 		"accessConditions": [
 	  	 			{
 	  	 				"id": 123,
-		  	 			"name": "openaccess",
-		  	 			"groupUUID": "uuid-of-the-anonymous-group"
+		  	 			"name": "openaccess"
 	  	 			},
 	  	 			{
 	  	 				"id": 126,
-		  	 			"name": "administrator",
-		  	 			"groupUUID": "uuid-of-the-administrator-group"
+		  	 			"name": "administrator"
 	  	 			},
 	  	 			{
 	  	 				"id": 127,
 		  	 			"name": "embargo",
-		  	 			"groupUUID": "1faf7c51-2a14-4826-b0b1-f1c1d2d82dd7",
 		  	 			"startDate": "2018-06-24T00:40:54.970+0000"
 	  	 			},
 	  	 			{
 	  	 				"id": 128,
 		  	 			"name": "lease",
-		  	 			"groupUUID": "38ecd5ae-af12-4144-a276-81532e1679f8",
 		  	 			"endDate": "2017-12-24T00:40:54.970+0000"
 	  	 			}
 	  	 		]
@@ -140,11 +132,11 @@ you can find more example to manipulate metadata in the documentation about [the
 #### Access Condition
 To add an access condition the client must send a JSON Patch ADD operation as follow
 
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/-", "value": {name: "...", groupUUID: "...", endDate: ".."}}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/-", "value": {name: "...", endDate: ".."}}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 to **replace completely** the access conditions applied to a specific file
 
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessCondition", "value": [{name: "...", groupUUID: "...", endDate: ".."}]}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>
+`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessCondition", "value": [{name: "...", endDate: ".."}]}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>
 
 The exact attributes that the access condition to add must have depend on the name attribute that will identify the access condition configuration as exposed by the [submissionupload configuration endpoint](submissionuploads.md).
 For instance the following request is valid
