@@ -59,6 +59,7 @@ It returns the tasks claimed by the specified user
 
 #### findAllByItem
 **/api/workflow/claimedtasks/search/findAllByItem?uuid=<:item-uuid>**
+Accessible only by Admin
 It returns all the claimed tasks related to the specified item
 
 The supported parameters are:
@@ -86,7 +87,7 @@ Return codes:
 ## POST Method
 To create a claimedtask, i.e. to clam a poooltask. 
 The pooltask must be supplied as URI in the request body using the text/uri-list content-type
-If succeed a 201 code will be returned and the new claimedtask and the pooltask will removed.
+If successful a 201 code will be returned along with the new claimedtask. The pooltask will also be removed.
 
 Return codes:
 201 Created - if the operation succeed

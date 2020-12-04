@@ -65,6 +65,7 @@ It returns the tasks available for the specified user
 
 #### findAllByItem
 **/api/workflow/pooltasks/search/findAllByItem?uuid=<:item-uuid>**
+Accessible only by Admin
 It returns all the pool tasks related to the specified item
 
 The supported parameters are:
