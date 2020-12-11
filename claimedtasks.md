@@ -85,7 +85,7 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 
 ## POST Method
-To create a claimedtask, i.e. to clam a poooltask. 
+To create a claimedtask, i.e. to clam a pooltask. 
 The pooltask must be supplied as URI in the request body using the text/uri-list content-type
 If successful a 201 code will be returned along with the new claimedtask. The pooltask will also be removed.
 
