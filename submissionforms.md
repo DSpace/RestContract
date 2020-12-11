@@ -148,9 +148,10 @@ Provide detailed information about a specific input-form. The JSON response docu
           "repeatable": false,
           "hints": "Select the journal related to this volume.",
           "selectableRelationship": {
-            "relationship": "isVolumeOfJournal",
+            "relationshipType": "isVolumeOfJournal",
             "filter": "creativework.publisher:somepublishername",
-            "search-configuration": "periodicalConfiguration",
+            "searchConfiguration": "periodicalConfiguration",
+            "externalSources": [ "sherpaJournal" ],
             "nameVariants": false
           }
         }
@@ -168,9 +169,10 @@ Provide detailed information about a specific input-form. The JSON response docu
           "mandatoryMessage": "At least one author (plain text or relationship) is required",
           "hints": "Add an author",
           "selectableRelationship": {
-            "relationship": "isAuthorOfPublication",
+            "relationshipType": "isAuthorOfPublication",
             "filter": null,
-            "search-configuration": "personConfiguration",
+            "searchConfiguration": "personConfiguration",
+            "externalSources": [ "orcid", "my_staff_db" ],
             "nameVariants": true
           },
           "selectableMetadata": [
@@ -212,9 +214,10 @@ The json has an ordered array named rows containing the fields that need to be r
     * controlledVocabulary: the name of the controlled vocabulary used to retrieve value for the input [see controlled vocabularies](vocabularies.md)
     * label: an optional label to associate with the selector of the metadata
 * selectableRelationship: it is similar to the selectableMetadata but used when the field use relations underhood
-    * relationshipType: the name of the relationship
+    * relationshipType: the name of the [relationship](relationshiptypes.md)
     * filter: a filter to apply searching for candidate related items
-    * searchConfiguration: the name of the discovery configuration to use to search for candidate related items
+    * searchConfiguration: the name of the [discovery configuration](search-endpoint.md#matching-dspace-objects-search-results) to use to search for candidate related items
+    * externalSources: a list of [external source](external-authority-sources.md) names which can be used in a lookup. This can be empty to state no external sources should be used
     * nameVariants: It defines whether an alternative name can be used for the stored relation with the entity (in the relationship)
 * languageCodes contains the array of languages that can be assigned to an user input. For each language it is present a *display* string (i.e. English, Italian, etc.) and a *code* (i.e. en, it).
   
