@@ -68,8 +68,10 @@ The supported parameters are:
 
 Return codes:
 * 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
 #### findByItem
 **/api/workflow/claimedtasks/search/findByItem?uuid=<:item-uuid>**
@@ -82,18 +84,27 @@ The supported parameters are:
 Return codes:
 * 200 OK - if the operation succeed
 * 204 No Content - if there is no claimed task for the specified item and the current user
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
 ## POST Method
-To create a claimedtask, i.e. to clam a pooltask. 
+To create a claimedtask, i.e. to claim a pooltask. 
 The pooltask must be supplied as URI in the request body using the text/uri-list content-type
 If successful a 201 code will be returned along with the new claimedtask. The pooltask will also be removed.
+
+An example curl call:
+```
+curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/workflow/claimedtasks
+\ -H "Content-Type:text/uri-list" \
+--data "https://dspace7.4science.it/dspace-spring-rest/api/workflow/pooltasks/1"
+```
 
 Return codes:
 201 Created - if the operation succeed
 401 Unauthorized - if you are not authenticated
 403 Forbidden -  if the loggedin user is not the reviewer of the pooltask
-404 Not found - if the pooltask doesn't exist
+422 Unprocessable Entity - if the pooltask provided doesn't exist
 
 ## POST Method (single resource level)
 To perform a claimed task a POST request must be issued against the single claimed task URL

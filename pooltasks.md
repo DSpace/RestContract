@@ -74,8 +74,10 @@ The supported parameters are:
 
 Return codes:
 * 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
 #### findByItem
 **/api/workflow/pooltasks/search/findByItem?uuid=<:item-uuid>**
@@ -88,7 +90,9 @@ The supported parameters are:
 Return codes:
 * 200 OK - if the operation succeed
 * 204 No Content - if there is no pool task for the specified item and the current user
+* 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
 ## POST Method (collection level)
 The creation of pool tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
