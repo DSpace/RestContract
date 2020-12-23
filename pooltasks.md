@@ -73,7 +73,7 @@ The supported parameters are:
 * uuid: mandatory, the uuid of the item object
 
 Return codes:
-* 200 OK - if the operation succeed
+* 200 OK - if the operation succeed. This include the case of no matching tasks where a 0-size page json representation is returned.
 * 400 Bad Request - if the uuid parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
