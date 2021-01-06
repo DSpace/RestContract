@@ -57,8 +57,54 @@ This is a **read-only** endpoint, the [POST to the claimed task](#post-method-si
 
 It returns the tasks claimed by the specified user
 
-## POST Method (collection level)
-The creation of claimed tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
+#### findAllByItem
+**/api/workflow/claimedtasks/search/findAllByItem?uuid=<:item-uuid>**
+Accessible only by Admin
+It returns all the claimed tasks related to the specified item
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+Return codes:
+* 200 OK - if the operation succeed. This include the case of no matching tasks where a 0-size page json representation is returned.
+* 400 Bad Request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only users with ADMIN right can use the endpoint
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
+
+#### findByItem
+**/api/workflow/claimedtasks/search/findByItem?uuid=<:item-uuid>**
+It returns, if any, the single task related to the specified item claimed by the current user
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the item object
+
+Return codes:
+* 200 OK - if the operation succeed
+* 204 No Content - if there is no claimed task for the specified item and the current user
+* 400 Bad Request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
+
+## POST Method
+To create a claimedtask, i.e. to claim a pooltask. 
+The pooltask must be supplied as URI in the request body using the text/uri-list content-type
+If successful a 201 code will be returned along with the new claimedtask. The pooltask will also be removed.
+
+An example curl call:
+```
+curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/workflow/claimedtasks
+\ -H "Content-Type:text/uri-list" \
+--data "https://dspace7.4science.it/dspace-spring-rest/api/workflow/pooltasks/1"
+```
+
+Return codes:
+201 Created - if the operation succeed
+401 Unauthorized - if you are not authenticated
+403 Forbidden -  if the loggedin user is not the reviewer of the pooltask
+422 Unprocessable Entity - if the pooltask provided doesn't exist
 
 ## POST Method (single resource level)
 To perform a claimed task a POST request must be issued against the single claimed task URL
