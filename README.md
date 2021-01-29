@@ -1,15 +1,8 @@
 # DSpace 7 REST Contract
 
-This repository documents the new REST API Contract for DSpace 7. The code to implement this contract is on the DSpace [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
-
-***
-:warning: **As the DSpace 7 REST API is under active development, this REST Contract is expected to change rapidly.** REST Contract contributors will be rapidly adding ideas (via Pull Requests) to this repository in order to enable the detailed discussions necessary to finalize the REST Contract. Once the REST Contract stabilizes, we will remove this warning and more actively publicize it.
-
-**If you would like to get involved in our DSpace 7 development effort, we welcome new contributors.**
-  * DSpace 7 Meetings can be found on the [DSpace 7 Working Group](https://wiki.lyrasis.org/display/DSPACE/DSpace+7+Working+Group) wiki page.
-  * DSpace 7 REST API development work (corresponding to this contract) is occurring on the DSpace [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
-  * DSpace 7 Angular UI work is occurring at https://github.com/DSpace/dspace-angular
-***
+This repository documents new DSpace REST API Contract beginning with version 7.0.
+* The code that implements this contract is on the  [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp) of the DSpace backend.
+* One example client which utilizes this contract is the [DSpace User Interface](https://github.com/DSpace/dspace-angular/), built in [Angular.io](https://angular.io/).
 
 ## Table of Contents
 * [REST Endpoints](#rest-endpoints)
@@ -42,6 +35,7 @@ At the ROOT of the API a HAL document lists all the primary endpoints allowing f
 * [Endpoints](endpoints.md) - Documentation for all available endpoints
 * [Search Options and Relationships (on Endpoints)](search-rels.md) - How to use `/search` sub-paths on many endpoints
 * [Projections (on Endpoints)](projections.md) - How to use projections to return a subset or custom view of content
+* [CSRF Protection (on Endpoints)](csrf-tokens.md) - When using modifying verbs (POST, PUT, PATCH, DELETE), you *must* pass a CSRF token in the request.
 
 ## Use of HTTP Verbs and Response Codes
 
@@ -130,7 +124,7 @@ Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the associ
 ### Error Codes
 * `400 Bad Request` - if multiple URIs were given for a to-one-association
 * `401 Unauthorized` (Unauthenticated) - if the request requires a logged-in user
-* `403 Forbidden` - if the requester doesn't have enough privilege to execute the request
+* `403 Forbidden` - if the requester doesn't have enough privilege to execute the request, or the request requires [CSRF protection](csrf-tokens.md) and the CSRF token was missing or invalid.
 * `404 Not Found` - if the requested entity or collection doesn't exist
 * `405 Method Not Allowed` - if the method is not implemented, or a DELETE method is called on a non-optional association
 * `422 Unprocessable Entity` - if the request is well-formed, but is invalid based on the given data. For example, if you attempt to create a resource under a non-existent parent resource, or attempt to update a read-only (non-editable) field.
