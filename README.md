@@ -6,7 +6,7 @@ This repository documents the new REST API Contract for DSpace 7. The code to im
 :warning: **As the DSpace 7 REST API is under active development, this REST Contract is expected to change rapidly.** REST Contract contributors will be rapidly adding ideas (via Pull Requests) to this repository in order to enable the detailed discussions necessary to finalize the REST Contract. Once the REST Contract stabilizes, we will remove this warning and more actively publicize it.
 
 **If you would like to get involved in our DSpace 7 development effort, we welcome new contributors.**
-  * DSpace 7 Meetings and subteams can be found on the [DSpace 7 Working Group](https://wiki.lyrasis.org/display/DSPACE/DSpace+7+Working+Group) wiki page.
+  * DSpace 7 Meetings can be found on the [DSpace 7 Working Group](https://wiki.lyrasis.org/display/DSPACE/DSpace+7+Working+Group) wiki page.
   * DSpace 7 REST API development work (corresponding to this contract) is occurring on the DSpace [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
   * DSpace 7 Angular UI work is occurring at https://github.com/DSpace/dspace-angular
 ***
@@ -132,7 +132,7 @@ Unbinds (unlinks) the association. Return `405 Method Not Allowed` if the associ
 * `401 Unauthorized` (Unauthenticated) - if the request requires a logged-in user
 * `403 Forbidden` - if the requester doesn't have enough privilege to execute the request
 * `404 Not Found` - if the requested entity or collection doesn't exist
-* `405 Method Not Allowed` - if the method is not implemented or a DELETE method is called on a non-optional association
+* `405 Method Not Allowed` - if the method is not implemented, or a DELETE method is called on a non-optional association
 * `422 Unprocessable Entity` - if the request is well-formed, but is invalid based on the given data. For example, if you attempt to create a resource under a non-existent parent resource, or attempt to update a read-only (non-editable) field.
 
 ## Pagination
@@ -159,7 +159,7 @@ An example
     "number": 0
 }
 ```
-and, when applicable, the following links
+When applicable, the following links may also appear:
 - `self` - a parameterized link to the requested collection page
 - `next` - the link to the next page of resources in the collection, if any, keeping the same option for size and sorting
 - `previous` - the link to the previous page of resources in the collection, if any, keeping the same option for size and sorting
@@ -185,10 +185,10 @@ An example
 ```
 
 ### Out of Bound Pages
-If the request parameters lead to a page outside the result set, then an empty page should be returned with the links needed to go to the first and last page of the result set (if the results set is not empty) and the total number of resources in the collection.
+If the request parameters lead to a page outside the result set, then an empty page should be returned with the links needed to go to the first and last page of the result set (if the results set is not empty), and the total number of resources in the collection.
 
 ### Pagination Error Codes
-`400 Bad Request` - If an unknown sort criteria is requested or a not valid ordering keyword is specified
+`400 Bad Request` - If an unknown sort criteria is requested, or a not valid ordering keyword is specified
 
 ## REST Design Principles
 In the creation of the REST API, we've tried to follow a few specific design principles listed below
@@ -237,7 +237,7 @@ While most i18n (internationalization) settings exist in the UI layer, there are
 For such features the `Accept-Language` header may be used by the REST client to force the use of a specific locale, if supported by the DSpace instance and endpoint in the response. (Please note that not all the DSpace instances support multiple locales. This can be discovered by querying the configuration endpoint for the `webui.supported.locales` key.)
 
 If the support for multiple locales is enabled in the DSpace instance, a request with an `Accept-Language` header is expected to be processed as follows:
-* If none of the requested locales is supported, the server will ignore the header. This provides more user friendly behavior when browsing the REST API via a browser (see https://tools.ietf.org/html/rfc7231#section-5.3.5)
+* If none of the requested locales is supported, the server will ignore the header. This provides more user-friendly behavior when browsing the REST API via a browser (see https://tools.ietf.org/html/rfc7231#section-5.3.5)
 * If at least one acceptable locale is requested, the server will use the one with the higher priority in the `Accept-Language` header to process the request
 * If the requested endpoint is configured to respond differently based on the selected locale, then the `Content-Language` response header will detail which locale was used to generate the response.
 * If the requested endpoint responds the same no matter which locale is requested, then the `Content-Language` response will return the list of all supported locales.
@@ -261,17 +261,15 @@ The ETag header (<http://tools.ietf.org/html/rfc7232#section-2.3>) provides a wa
 
 The ETag value can be used with in GET request with the *If-None-Match* conditional header. If the header MATCHES the ETag, the API will conclude nothing has changed, and instead of sending a copy of the resource, an HTTP 304 Not Modified status code is returned.
 
-The ETag value can be also used with DELETE, POST, PUT and PATCH with the *If-Match* conditional header to avoid to perform action on changed resources (concurrency issues, optimistic lock approach).
+The ETag value can be also used with DELETE, POST, PUT and PATCH with the *If-Match* conditional header to avoid performing an action on changed resources (concurrency issues, optimistic lock approach).
 
 Finally, when possible the If-Modified-Since header in GET request should be respected. If the resource has been not modified since the value of the Header the API should return an
-HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response, such header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.
+HTTP 304 Not Modified status code. Resources that support the *If-Modified-Since* header *MUST* return the Last-Modified Header in the GET response. That header *MUST BE NOT* returned by resources not able to manage the If-Modified-Since header.
 
 ## API Versioning
-... here we will describe our strategy to provide access overtime to a specific version of the REST API...
-### Deprecated endpoints & methods
-... how we want to let know the client about deprecated endpoints & methods?
-### Experimental endpoints & methods
-... do we want/need to introduce endpoints keeping the right to change behavior and other aspects without face with the self-imposed guarantee about backward compatibilty and versioning?
+
+At this time, DSpace REST API is versioned alongside DSpace software (e.g. DSpace v7.x comes with REST API v7).
+Please check the Release Notes for information around any deprecations / breaking changes to the API between major versions of DSpace.
 
 ## Community Resources
 * [REST Code Branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp)
