@@ -5,6 +5,7 @@ All modifying requests (`POST`, `PUT`, `PATCH`, `DELETE`, etc) **require** that 
 in the `X-XSRF-TOKEN` header, otherwise a `403 Forbidden` error will occur. 
 
 The CSRF token is sent to the client in a prior request (often a `GET`) and may be changed during your session at any time.
+See [How does CSRF protection work in DSpace?](#how-does-csrf-protection-work-in-dspace) below for more details.
 
 ## What is CSRF and why is this necessary?
 
