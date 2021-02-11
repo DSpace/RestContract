@@ -7,9 +7,9 @@ Information about the underline implementation are [available on the wiki](https
 ## Login
 **POST /api/authn/login**
 
-This endpoint only accept the POST method. Parameters and body structure depend on the authentication method to use.
+This endpoint only accepts the `POST` method. Parameters and body structure depend on the authentication method to use.
 
-A WWW-Authenticate header is returned listing the different authentication method supported by the system.
+A `WWW-Authenticate` header is returned listing the different authentication method supported by the system.
 Below an example listing the password and shibboleth authentication:  
 `WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://dspace7.4science.cloud/Shibboleth.sso/Login?target=https%3A%2F%2Fdspace7.4science.cloud", password realm="DSpace REST API"`
 
@@ -18,7 +18,7 @@ Return codes
 - 401 Unauthorized. If the login fails. The response Header WWW-Authentication must be inspected to discover the supported authentication method
 
 ### Username Password based authentication
-Parameters must be sent in the body of a x-www-form-urlencoded request, i.e
+Parameters must be sent in the body of a `x-www-form-urlencoded` request, i.e
 
 ```
 curl -v -X POST https://{dspace-server.url}/server/api/authn/login --data "user=dspacedemo%2Badmin%40gmail.com&password=dspace"
@@ -61,24 +61,26 @@ sg | Contains the id's of the special groups to which a user belongs
 exp | Contains the expiration date when a token will expire
 
 ## Logout
-**/api/authn/logout**
+**POST /api/authn/logout**
 
-To logout and invalidate the JWT token, send the token in the Authorization header with the bearer scheme to the endpoint either with a GET or POST request
+This endpoint only accepts the `POST` method.
+
+To logout and invalidate the JWT token, send the token in the `Authorization` header with the bearer scheme.
 
 ```
-curl -v "http://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo"
+curl -v -X POST "http://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo"
 ```
 
-This invalidate the token on the server side with the result to log the user out on every device or browser. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
+This invalidates the token on the server side with the result to log the user out on every device or browser. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
 
 Return code
-- 204 No content
-- 302 Found. If a successful logout occurs and a logout page URL is configured
+- 204 No content.
+- 302 Found. If a successful logout occurs, and a logout page URL is configured
 
-Invalid or missing token are not reported, i.e. the endpoint will always return 204 also if no token is supplied or the token is invalid
+Invalid or missing tokens are not reported, i.e. the endpoint will always return 204 also if no token is supplied, or the token is invalid
 
 ## Status
-** /api/authn/status **
+**/api/authn/status**
 
 The authentication status can be checked by sending your received token to the status endpoint in the Authorization header in a GET request:
 
