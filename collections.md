@@ -125,6 +125,19 @@ Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
 
+#### findAdminAuthorized
+**/api/core/collections/search/findAdminAuthorized**
+
+The supported parameters are:
+* query - limit the returned collections to those with metadata values matching the query terms.
+  The terms are used to make also a prefix query on SOLR so it can be used to implement
+  an autosuggest feature over the collection name
+* page, size - [see pagination](README.md#Pagination)
+  It returns the list of collections where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+
 ## Patch operations
 
 Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).

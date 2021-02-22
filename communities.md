@@ -281,6 +281,19 @@ The supported parameters are:
 
 It returns the top level communities in the repository (i.e. the communities that doesn't have a parent)
 
+#### findAdminAuthorized
+**/api/core/communities/search/findAdminAuthorized**
+
+The supported parameters are:
+* query - limit the returned communities to those with metadata values matching the query terms.
+  The terms are used to make also a prefix query on SOLR so it can be used to implement
+  an autosuggest feature over the community name
+* page, size - [see pagination](README.md#Pagination)
+  It returns the list of collections where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+
 ## Creating communities
 
 ### Creating top level community
