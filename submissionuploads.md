@@ -16,7 +16,7 @@ Example: to be provided
 
 *:upload-name* is initially hard-coded to *default*
 
-Provide detailed information about a specific input-form. The JSON response document is as follow
+Provide detailed information about a specific input-form. The JSON response document is as follows:
 ```json
 {
   "id": "default",
@@ -31,13 +31,11 @@ Provide detailed information about a specific input-form. The JSON response docu
 		},  	 			
 		{
  			"name": "embargo",
- 			"selectGroupUUID": "1faf7c51-2a14-4826-b0b1-f1c1d2d82dd7",
  			"hasStartDate": true,
  			"maxStartDate": "2018-06-24T00:40:54.970+0000"
 		},
 		{
  			"name": "lease",
- 			"selectGroupUUID": "38ecd5ae-af12-4144-a276-81532e1679f8",
  			"hasEndDate": true,
  			"maxEndDate": "2017-12-24T00:40:54.970+0000"
 		}
@@ -47,11 +45,10 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```
 The attributes of the objects in the accessConditionOptions arrays are as follow:
 * The *name* attribute is an identifier that can be used by the REST client (the UI) to present the different options to the user, maybe translating it in an human readable format using i18n, and by the backend to create the ResourcePolicy to apply to the uploaded file using and validating the additional inputs provided by the user where required.
-* If there is a *selectGroupUUID* attribute, the access condition to be applied requires to specify a group that need to be a direct descending of the group with the uuid specified by the attribute.
 * If there is a *hasStartDate* attribute and it is true, the access condition to be applied requires to specify a startDate that must be less or equal than the value of the *maxStartDate* attribute (if null any date is acceptable)
 * If there is a *hasEndDate* attribute and it is true, the access condition to be applied requires to specify an endDate that must be less or equal than the value of the *maxEndDate* attribute (if null any date is acceptable). If a startDate is supplied the endDate must be greater than the startDate
 
-a null value for the accessConditionOptions attribute mean that the upload step doens't allow the user to set a policy for the file. The file will get only the policies inherited from the collection.
+A null value for the accessConditionOptions attribute means that the upload step doesn't allow the user to set a policy for the file. The file will get only the policies inherited from the collection.
 
 Exposed links:
 * metadata: it is a link to the submission-form to use for the files metadata
