@@ -759,6 +759,7 @@ The returned JSON response will be like:
         {
           "label" : "Smith, Donald 2",
           "count" : 100,
+          "authorityKey" : "authority_1",
           "_links": {
             "search" : {
               "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+2,equals"
@@ -768,6 +769,7 @@ The returned JSON response will be like:
         {
           "label" : "Smith, Donald 1",
           "count" : 80,
+          "authorityKey" : "authority_2",
           "_links": {
             "search" : {
               "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+1,equals"
@@ -777,6 +779,7 @@ The returned JSON response will be like:
         {
           "label" : "Smith, Donald 3",
           "count" : 10,
+          "authorityKey" : "authority_3",
           "_links": {
             "search" : {
               "href": "/api/discover/search/objects?query=my+query&scope=9076bd16-e69a-48d6-9e41-0238cb40d863&f.title=abcd,notcontains&f.author=1234,authority&f.author=Smith,+Donald+3,equals"
