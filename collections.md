@@ -101,29 +101,45 @@ Exposed links:
 **/api/core/collections/search/findSubmitAuthorized**
 
 The supported parameters are:
-* query limit the returned collection to those with metadata values matching the query terms.
-  The terms are used to make also a prefix query on SOLR so it can be used to implement
+* `query`: limit the returned collections to those with metadata values matching the query terms.
+  The query is also used to build a prefix query. It can be used to implement
   an autosuggest feature over the collection name
-* page, size [see pagination](README.md#Pagination)
+* `page`, `size` [see pagination](README.md#Pagination)
+
 It returns the list of collections where the current user is authorized to submit
 
 Return codes:
-* 200 OK - if the operation succeed
+* 200 OK - if the operation succeeds
 
 #### findSubmitAuthorizedByCommunity
 **/api/core/collections/search/findSubmitAuthorizedByCommunity?uuid=<:uuid>**
 
 The supported parameters are:
-* query limit the returned collection to those with metadata values matching the query terms.
-  The terms are used to make also a prefix query on SOLR so it can be used to implement
+* `query`: limit the returned collections to those with metadata values matching the query terms.
+  The query is also used to build a prefix query. It can be used to implement
   an autosuggest feature over the collection name
-* page, size [see pagination](README.md#Pagination)
-* uuid: mandatory, the uuid of the community
-It returns the list of collections direct children of the specified community where the current user is authorized to submit
+* `page`, `size` [see pagination](README.md#Pagination)
+* `uuid`: mandatory, the uuid of the community
+
+It returns the list of collections which are direct children of the specified community where the current user is authorized to submit
 
 Return codes:
-* 200 OK - if the operation succeed
+* 200 OK - if the operation succeeds
 * 400 Bad Request - if the uuid parameter is missing or invalid
+
+#### findAdminAuthorized
+**/api/core/collections/search/findAdminAuthorized**
+
+Get the list of all collections the current user is admin for.
+
+The supported parameters are:
+* `query`: limit the returned collections to those with metadata values matching the query terms.
+  The query is also used to build a prefix query. It can be used to implement
+  an autosuggest feature over the collection name
+* `page`, `size` [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeeds
 
 ## Patch operations
 
