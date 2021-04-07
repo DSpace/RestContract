@@ -140,6 +140,7 @@ The supported parameters are:
 
 Return codes:
 * 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated
 
 ## Patch operations
 
