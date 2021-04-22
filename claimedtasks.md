@@ -1,4 +1,4 @@
-# Claimed Taks Endpoints
+# Claimed Tasks Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
