@@ -1,4 +1,4 @@
-# Pool Taks Endpoints
+# Pool Tasks Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
@@ -98,12 +98,7 @@ Return codes:
 The creation of pool tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
 
 ## POST Method (single resource level)
-To claim a pool task a POST request must be issued against the single pool task URL
-/api/workflow/pooltasks/:id
-
-204 No content is returned if the request succeed
-403 Not authorized if the task cannot be claimed by the logged in user
-404 if the task is not longer available
+This method has been moved to the [claimed tasks](claimedtasks.md#post-method) resource.
 
 ## DELETE Method 
 Not allowed. To reset a workflow it is possible to issue a DELETE against the [workflowitem endpoint](workflowitem.md)
