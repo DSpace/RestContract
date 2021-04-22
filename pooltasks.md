@@ -98,7 +98,7 @@ Return codes:
 The creation of pool tasks is managed by the underline workflow system. No methods are exposed to manually trigger such creation to avoid workflow hjack and inconsistency.
 
 ## POST Method (single resource level)
-This method has been moved to the [claimed tasks](claimedtasks.md#post-method) resource.
+Not allowed. To claim a pool task, please POST against the [claimed tasks](claimedtasks.md#post-method) endpoint.
 
 ## DELETE Method 
 Not allowed. To reset a workflow it is possible to issue a DELETE against the [workflowitem endpoint](workflowitem.md)
