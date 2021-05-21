@@ -30,6 +30,7 @@ it back to the client in a header named `DSPACE-XSRF-TOKEN`.
    * If your REST API is running via HTTPS, then the `DSPACE-XSRF-COOKIE` Cookie will be created with `SameSite=None; Secure`. This setting means the cookie will be sent cross domain, but only for HTTPS requests. This is recommended for all Production environments.
 2. The client **MUST** store/keep a copy of this CSRF token (usually by watching for the `DSPACE-XSRF-TOKEN` header in every response),
 and update that stored copy whenever a new token is sent.
+   * For example, the [DSpace Angular UI](https://github.com/DSpace/dspace-angular) stores watches for this token from the `DSPACE-XSRF-TOKEN` header, and stores it in a client-side cookie named `XSRF-TOKEN` (as this is the default cookie name that Angular apps use for reading a CSRF token).
 3. Whenever the client wishes to make a modifying request (`POST`, `PUT`, `PATCH`, `DELETE`, etc), 
 the current CSRF token **MUST** be sent back in the `X-XSRF-TOKEN` header of the request.
    * Keep in mind that [authentication](authentication.md) (via `/api/authn/login`) requires `POST` and therefore also requires a valid CSRF token.
