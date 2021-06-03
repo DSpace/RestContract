@@ -75,11 +75,12 @@ Provide detailed information about a specific item. The JSON response document i
 ```
 
 Exposed links:
-* bitstreams: list of bitstreams within the item
+* bundles: list of bundles within the item
 * owningCollection: the collection where the item belong to
 * mappedCollections: the collections where the item is mapped to
 * templateItemOf: the collection that have the item as template
 * relationships: the relationships to other items
+* thumbnail: the main thumbnail of the item
  
 ## Creating an archived item
 **POST /api/core/items?owningCollection=<:uuid>**
@@ -420,6 +421,18 @@ It returns the collection that have the item as template
 A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a/relationships
 
 It embeds all relationships where either the left or the right item matches the given uuid
+
+### Main Thumbnail
+**/api/core/items/<:uuid>/thumbnail**
+
+It returns the bitstream which represents the main thumbnail of the item
+
+Status codes:
+* 200 OK - returning the thumbnail
+* 204 No Content - if there is no thumbnail for the specified item
+* 401 Unauthorized - if you are not authenticated and don't have permissions on the item or the thumbnail's metadata
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
 
 ### Get single version for item
 **GET /api/core/items/{:item-uuid}/version**
