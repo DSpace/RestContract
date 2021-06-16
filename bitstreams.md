@@ -119,7 +119,8 @@ The supported **Request Headers** are:
 ### Main Thumbnail
 **/api/core/bitstreams/<:uuid>/thumbnail**
 
-It returns the bitstream which represents the thumbnail of the bitstream
+It returns the bitstream which represents the thumbnail of the specified bitstream.  
+At this time, thumbnails are only supported for bitstreams in the `ORIGINAL` bundle.
 
 Status codes:
 * 200 OK - returning the thumbnail
