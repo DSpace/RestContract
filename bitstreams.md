@@ -31,6 +31,7 @@ Exposed links:
 * format: link to the bitstream format resource associated with the bitstream (Adobe PDF, MS Word, etc.)
 * content: link to access the actual content of the bitstream
 * bundle: link to the bundle, not embedded
+* thumbnail: the thumbnail of the bitstream
 
 ## Patch operations
 
@@ -114,6 +115,19 @@ The supported **Request Headers** are:
 * If-Modified-Since: not implemented yet. Support for cache control
 * Range: not implemented yet. Provide support to partial content download
 * If-None-Match: not implemented yet. Support for cache control
+
+### Main Thumbnail
+**/api/core/bitstreams/<:uuid>/thumbnail**
+
+It returns the bitstream which represents the thumbnail of the specified bitstream.  
+At this time, thumbnails are only supported for bitstreams in the `ORIGINAL` bundle.
+
+Status codes:
+* 200 OK - returning the thumbnail
+* 204 No Content - if there is no thumbnail for the specified bitstream
+* 401 Unauthorized - if you are not authenticated and don't have permissions on the bitstream or the thumbnail's metadata
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bitstream doesn't exist
 
 ## Search methods
 ### byItemHandle
