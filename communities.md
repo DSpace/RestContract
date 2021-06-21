@@ -274,12 +274,25 @@ Status codes:
 #### top
 **/api/core/communities/search/top**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/search/top>
-
 The supported parameters are:
-* page, size [see pagination](README.md#Pagination)
+* `page`, `size` [see pagination](README.md#Pagination)
 
 It returns the top level communities in the repository (i.e. the communities that doesn't have a parent)
+
+#### findAdminAuthorized
+**/api/core/communities/search/findAdminAuthorized**
+
+Get the list of all communities the current user is admin for.
+
+The supported parameters are:
+* `query`: limit the returned communities to those with metadata values matching the query terms.
+  The query is also used to build a prefix query. It can be used to implement
+  an autosuggest feature over the community name
+* `page`, `size` [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated
 
 ## Creating communities
 

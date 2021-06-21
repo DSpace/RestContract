@@ -11,7 +11,7 @@ This endpoint only accepts the `POST` method. Parameters and body structure depe
 
 A `WWW-Authenticate` header is returned listing the different authentication method supported by the system.
 Below an example listing the password and shibboleth authentication:  
-`WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://dspace7.4science.cloud/Shibboleth.sso/Login?target=https%3A%2F%2Fdspace7.4science.cloud", password realm="DSpace REST API"`
+`WWW-Authenticate: shibboleth realm="DSpace REST API", location="https://api7.dspace.org/Shibboleth.sso/Login?target=https%3A%2F%2Fapi7.dspace.org", password realm="DSpace REST API"`
 
 Return codes
 - 200 Ok. If the authentication succeed. The JWT will be returned in the response Header Authorization. 
@@ -21,12 +21,12 @@ Return codes
 Parameters must be sent in the body of a `x-www-form-urlencoded` request, i.e
 
 ```
-curl -v -X POST https://{dspace-server.url}/server/api/authn/login --data "user=dspacedemo%2Badmin%40gmail.com&password=dspace"
+curl -v -X POST https://{dspace-server.url}/server/api/authn/login --data "user=dspacedemo%2Badmin%40gmail.com&password=dspace" -H "X-XSRF-TOKEN: {csrf-token}"
 ```
 
-Please note that curl assume `-H 'Content-Type: application/x-www-form-urlencoded'` for POST request as default.
+Please note that authentication requires passing a valid [CSRF token](csrf-tokens.md), previously obtained from the REST API. Also note that `curl` assumes `-H 'Content-Type: application/x-www-form-urlencoded'` for a POST request as default. 
 
-This call will return a JWT (JSON Web Token) in the response in the Authorization header according to the bearer scheme. This token has to be used in subsequent calls to provide your authentication details. For example:
+This call will return a JWT (JSON Web Token) in the response in the Authorization header according to the [bearer scheme](https://datatracker.ietf.org/doc/html/rfc6750#section-2.1). This token has to be used in subsequent calls to provide your authentication details. For example:
 
 ```
 curl -v "https://{dspace-server.url}/api/core/items" -H "Authorization: Bearer eyJhbG...COdbo"
@@ -41,7 +41,7 @@ Tokens are only valid for a configurable amount of time (see below). When a toke
 i.e
 
 ```
-curl -v "http://{dspace-server.url}/api/authn/login" -H "Authorization: Bearer eyJhbG...COdbo"
+curl -v -X POST "http://{dspace-server.url}/api/authn/login" -H "Authorization: Bearer eyJhbG...COdbo" -H "X-XSRF-TOKEN: {csrf-token}"
 ```
 
 Which will return something like this:
@@ -68,10 +68,12 @@ This endpoint only accepts the `POST` method.
 To logout and invalidate the JWT token, send the token in the `Authorization` header with the bearer scheme.
 
 ```
-curl -v -X POST "http://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo"
+curl -v -X POST "https://{dspace-server.url}/api/authn/logout" -H "Authorization: Bearer eyJhbG...COdbo" -H "X-XSRF-TOKEN: {csrf-token}"
 ```
 
-This invalidates the token on the server side with the result to log the user out on every device or browser. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
+This invalidates the token on the server side which will results in logging out the user _on every device or browser_. It can also be called with params **action** and **return**, required by the Shibboleth Single Logout (front channel), with the same behaviour.
+
+As this endpoint requires a POST, it requires passing a valid [CSRF token](csrf-tokens.md).
 
 Return code
 - 204 No content.
@@ -85,7 +87,7 @@ Invalid or missing tokens are not reported, i.e. the endpoint will always return
 The authentication status can be checked by sending your received token to the status endpoint in the Authorization header in a GET request:
 
 ```
-curl -v "http://{spring-rest.url}/api/authn/status" -H "Authorization: Bearer eyJhbG...COdbo"
+curl -v "http://{dspace-server.url}/api/authn/status" -H "Authorization: Bearer eyJhbG...COdbo"
 ```
 
 This will return the authentication status, E.G.:
@@ -153,7 +155,7 @@ When clicking on a link to download a protected file in the UI no authentication
 The token follows the "JSON Web Token structure", same as the login tokens.
   
  ```
- curl -v -X POST https://{dspace-server.url}/api/authn/shortlivedtokens -H "Authorization: Bearer eyJhbG...COdbo"
+ curl -v -X POST https://{dspace-server.url}/api/authn/shortlivedtokens -H "Authorization: Bearer eyJhbG...COdbo" -H "X-XSRF-TOKEN: {csrf-token}"
  ```
  
  ```json
