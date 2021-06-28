@@ -68,3 +68,27 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 ```
 
 The 2 [item types](itemtypes.md) are embedded
+
+## Property-based projections
+
+[Property-based projections](projections.md#property-based-projections) can add new JSON properties to the response. When requesting the projection, any `relationshiptype` in the response will add these properties.  
+The REST request doesn't have to be on the `relationshiptype` endpoint directly, it can be on another endpoint which simply embeds relationship types.
+
+### Verify whether a given entity type is the left or right
+**?projection=CheckSideEntityInRelationshipType&checkSideEntityInRelationshipType=<:entitytype>**
+
+This is a projection for relationship types, to indicate on which side of the relationship type the given entity type resides
+
+When using the `projection=CheckSideEntityInRelationshipType`, it is possible to check on which side the given entity type resides.
+The parameter `checkSideEntityInRelationshipType` determines which entity type should be checked.
+The parameter `checkSideEntityInRelationshipType` is not repeatable.
+
+Sample value:
+* `checkSideEntityInRelationshipType=Publication`: check whether the current relationship type contains the type `Publication` on the left or right side
+
+Response:
+* The response will contain 2 extra JSON properties `relatedTypeRight` and `relatedTypeLeft` in the relationship type object
+* Both new properties are booleans, defaulting to false
+* If the given entity type occurs on the left side, `relatedTypeLeft` will be set to true
+* If the given entity type occurs on the right side, `relatedTypeRight` will be set to true
+* If the given entity type doesn't occur, both will be false
