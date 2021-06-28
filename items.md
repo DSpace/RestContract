@@ -479,6 +479,30 @@ Provide version information based on a given Item UUID. An Item UUID will only m
 
 The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
 
+## Property-based projections
+
+[Property-based projections](projections.md#property-based-projections) can add new JSON properties to the response. When requesting the projection, any `item` in the response will add these properties.  
+The REST request doesn't have to be on the `item` endpoint directly, it can be on another endpoint which simply embeds items.
+
+### Verify whether there's a relationship with another given item
+**?projection=CheckRelatedItem&checkRelatedItem=<:other-item>**
+
+This is a projection for items, to indicate whether the item is related to the given item with the optional given relationship type.
+
+When using the `projection=CheckRelatedItem`, it is possible to check for related items.
+The parameter `checkRelatedItem` determines which items (and optionally which relationship types) should be checked.
+The parameter `checkRelatedItem` is repeatable, allowing for multiple items to be checked at once
+
+Sample values are:
+* `checkRelatedItem=f727a6a4-5541-4148-ad0a-1ab9596d981f`: check whether the current item has a relationship with item `f727a6a4-5541-4148-ad0a-1ab9596d981f`
+* `checkRelatedItem=isPublicationOfAuthor=f727a6a4-5541-4148-ad0a-1ab9596d981f`: check whether the current item has a relationship with item `f727a6a4-5541-4148-ad0a-1ab9596d981f` using relationship type `isPublicationOfAuthor`
+
+Response:
+* The response will contain an extra JSON property `relatedItems` in the item object
+* If there's no relationship to the given item, it will be an empty array: `relatedItems:[]`
+* If there is a relationship to the given item, it will contain the related item: `relatedItems:['f727a6a4-5541-4148-ad0a-1ab9596d981f']`
+* If multiple items are requested in `checkRelatedItem`, the property will contain all items which have a relationship
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**

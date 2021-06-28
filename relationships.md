@@ -346,6 +346,30 @@ This can be further filtered to a single DSO using
 https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
 
+## Property-based projections
+
+[Property-based projections](projections.md#property-based-projections) can add new JSON properties to the response. When requesting the projection, any `relationship` in the response will add these properties.  
+The REST request doesn't have to be on the `relationship` endpoint directly, it can be on another endpoint which simply embeds relationships.
+
+### Verify whether a given item is the left or right
+**?projection=CheckSideItemInRelationship&checkSideItemInRelationship=<:item-uuid>**
+
+This is a projection for relationships, to indicate on which side of the relationship the given item resides
+
+When using the `projection=CheckSideItemInRelationship`, it is possible to check on which side the given item resides.
+The parameter `checkSideItemInRelationship` determines which item should be checked.
+The parameter `checkSideItemInRelationship` is not repeatable.
+
+Sample value:
+* `checkSideItemInRelationship=f727a6a4-5541-4148-ad0a-1ab9596d981f`: check whether the current relationship contains the item `f727a6a4-5541-4148-ad0a-1ab9596d981f` on the left or right side
+
+Response:
+* The response will contain 2 extra JSON properties `relatedItemRight` and `relatedItemLeft` in the relationship object
+* Both new properties are booleans, defaulting to false
+* If the given item occurs on the left side, `relatedItemLeft` will be set to true
+* If the given item occurs on the right side, `relatedItemRight` will be set to true
+* If the given item doesn't occur, both will be false
+
 ## Deleting a relationship
 
 **DELETE /api/core/relationships/<:id>**
