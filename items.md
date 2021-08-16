@@ -473,12 +473,12 @@ Status codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist
 
-### Get single version for item
-**GET /api/core/items/{:item-uuid}/version**
+### Get version history for item
+**GET /api/core/items/{:item-uuid}/versionhistory**
 
-Provide version information based on a given Item UUID. An Item UUID will only match one version.
+Provide version history information based on a given Item UUID. An Item UUID will only match one version history.
 
-The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
+The JSON response and status codes are the same as the [Version History endpoint](versionhistory.md#get-version-history).
 
 ## Deleting an item
 

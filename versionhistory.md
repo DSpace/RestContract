@@ -2,7 +2,7 @@
 
 [Back to the list of all defined endpoints](endpoints.md)
 
-This endpoint represents all related versions.
+This endpoint represents the version history that group all related versions.
 
 Whether version history information is accessible depends on versioning.item.history.view.admin configuration
 If this is set to true, the version history can only be retrieved if the user is an admin of the last version's item
@@ -19,10 +19,16 @@ Provide version information for the version history id.
   "type": "versionhistory",
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1"
+      "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1"
     },
-    "versions": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1/versions"
+    "oldestversion": {
+      "href": "https://demo7.dspace.org/server/api/versioning/versions/1"
+    },
+    "currentversion": {
+      "href": "https://demo7.dspace.org/server/api/versioning/versions/100"
+    },
+    "lastversion": {
+      "href": "https://demo7.dspace.org/server/api/versioning/versions/101"
     }
   }
 }
@@ -32,47 +38,28 @@ Status codes:
 * 200 OK - if the version history exists and is accessible by the current user
 * 401 Unauthorized - if you are not authenticated and versioning is not public
 * 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
-* 404 Not found - if the version history doesn't exist
+* 404 Not found - if you have the permission to review the version history and it doesn't exist
 
 ## Linked entities
 
+### Oldest Version
+
+**GET /api/versioning/versionhistories/<:versionHistoryId>/oldestversion**
+
+Retrieve the oldest version in the history 
+
+### Current Version
+
+**GET /api/versioning/versionhistories/<:versionHistoryId>/currentversion**
+
+Retrieve the most recent archived version in the history
+
+### Last Version
+
+**GET /api/versioning/versionhistories/<:versionHistoryId>/lastversion**
+
+Retrieve the most recent version in the history that could live eventually in the workspace or workflow 
+
 ### Versions
 
-**GET /api/versioning/versionhistories/<:versionHistoryId>/versions**
-
-Retrieve a pageable list of versions for the provided version history identifier.  
-The versions are ordered by version number descending.
-
-```json
-{
-  "_embedded": {
-    "versions": [
-      {
-          "id": "102",
-          "version": "2",
-          "type": "version",
-          "created": "2019-10-31T09:44:46.617",
-          "summary": "Author order"
-      },
-      {
-        "id": "101",
-        "version": "1",
-        "type": "version",
-        "created": "2015-11-03T09:44:46.617",
-        "summary": "Fixing some typos in the abstract"
-      }
-    ],
-    "_links": {
-     "self": {
-       "href": "https://dspace7.4science.it/dspace-spring-rest/api/versioning/versionhistories/1/versions"
-     }
-    },
-    "page": {
-     "size": 20,
-     "totalElements": 2,
-     "totalPages": 1,
-     "number": 0
-    }
-  }
-}
-```
+To avoid a bidirectional link between the versions and the history that they belong to a search method is available in the [version endpoint](version.md) to retrieve all the versions by history id
