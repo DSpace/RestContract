@@ -135,7 +135,6 @@ Return codes:
 * 200 OK - if the operation succeeds
 * 401 Unauthorized - if you are not authenticated and versioning is not public
 * 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
-* 204 No Content - if there are no versions related to the specified history
 * 400 Bad Request - if the history id param is missing or invalid (not an Integer)
 
 ## Remove version
