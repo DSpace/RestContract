@@ -282,3 +282,16 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
   }
 }
 ```
+
+### Search methods
+#### findByEntityType
+**/api/integration/externalsources/search/findByEntityType?entityType=<:type-label>**
+
+The supported parameters are:
+* entityType (mandatory) the label of the entity type
+* page, size [see pagination](README.md#Pagination)
+It returns a list of external sources that support the requested entity type
+
+Return codes:
+* 200 OK - if the operation succeed, a 0 size list can be returned
+* 400 Bad Request - if the entityType parameter is missing

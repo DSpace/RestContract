@@ -111,6 +111,26 @@ It returns the list of collections where the current user is authorized to submi
 Return codes:
 * 200 OK - if the operation succeeds
 
+#### findSubmitAuthorizedByEntityType
+**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?query=<:query>&entityType=<:entityTypeLabel>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* entityType: mandatory, the label of the entity type  field the collection must have
+
+It returns the list of collections where the current user is authorized to submit and deal with the request entity type
+
+eg:
+/api/core/collections/search/findSubmitAuthorizedByEntityType?entityType=<:entityType>
+/api/core/collections/search/findSubmitAuthorizedByEntityType?entityType=Publication
+
+retrieve all the collections that deal with the entity type 'Publication'  where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the entityType parameter is missing or invalid
+
+
 #### findSubmitAuthorizedByCommunity
 **/api/core/collections/search/findSubmitAuthorizedByCommunity?uuid=<:uuid>**
 
@@ -126,6 +146,26 @@ It returns the list of collections which are direct children of the specified co
 Return codes:
 * 200 OK - if the operation succeeds
 * 400 Bad Request - if the uuid parameter is missing or invalid
+
+#### findSubmitAuthorizedByCommunityAndEntityType
+**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&query=<:query>&entityType=<:entityTypeLabel>**
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* uuid: mandatory, the uuid of the community
+* entityType: mandatory, the label of the entity type  field the collection must have
+
+It returns the list of collections where the current user is authorized to submit and deal with the request entity type
+
+eg:
+/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&entityType=<:entityType>
+/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&entityType=Publication
+
+retrieve all children collections of the community that deal with the entity type 'Publication' where the current user is authorized to submit
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the uuid or entityType parameters are missing or invalid
 
 #### findAdminAuthorized
 **/api/core/collections/search/findAdminAuthorized**
