@@ -94,6 +94,23 @@ The 2 items are included as HAL links but are not embedded
 
 An optional leftwardValue and rightwardValue property can be present. It's omitted when it's null.
 
+## Search methods
+
+### Relationship involving specified items
+**/api/core/relationshiptypes/search/byItemsAndType?typeId=<:relationship-type-id>&leftItem=<item-uuid1>[&...&&leftItem=<item-uuidN>]&rightItem=<item-uuid1>[&...&&rightItem=<item-uuidN>]**
+
+This method is intended to be used when giving an item (focus) and a list of potentially related items we need to know which of these other items are already in a specific relationship with the focus item and, by exclusion which ones are not yet related.
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+* typeId: mandatory, the relationship type id to apply as a filter to the returned relationships
+* leftItem; mandatory, repeatable if the rightItem parameter is not repeated. The uuid of the items to be checked on the left side of returned relationships
+* rightItem; mandatory, repeatable if the leftItem parameter is not repeated. The uuid of the items to be found on the right side of returned relationships
+
+Return codes:
+* 200 OK - if the operation succeed. This include the case of no matching relationships where a 0-size page json representation is returned.
+* 400 Bad Request - if the type parameter, leftItem and rightItem parameters are missing or invalid or multiple values are provided for both the leftItem and rightItem parameters
+
 ## Creating a relationship
 
 **POST /api/core/relationships?relationshipType=<:relationshipType>**
