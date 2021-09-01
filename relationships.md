@@ -97,7 +97,7 @@ An optional leftwardValue and rightwardValue property can be present. It's omitt
 ## Search methods
 
 ### Relationship involving specified items
-**/api/core/relationshiptypes/search/byItemsAndType?typeId=<:relationship-type-id>&leftItem=<item-uuid1>[&...&&leftItem=<item-uuidN>]&rightItem=<item-uuid1>[&...&&rightItem=<item-uuidN>]**
+**/api/core/relationships/search/byItemsAndType?typeId=<:relationship-type-id>&leftItem=<item-uuid1>[&...&&leftItem=<item-uuidN>]&rightItem=<item-uuid1>[&...&&rightItem=<item-uuidN>]**
 
 This method is intended to be used when giving an item (focus) and a list of potentially related items we need to know which of these other items are already in a specific relationship with the focus item and, by exclusion which ones are not yet related.
 

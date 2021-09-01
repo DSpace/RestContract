@@ -98,8 +98,8 @@ It would respond with
       },
       {
         "id": 1,
-        "leftwardType": "isAuthorOfPublication",
-        "rightwardType": "isPublicationOfAuthor",
+        "leftwardType": "isProjectOfPerson",
+        "rightwardType": "isPersonOfProject",
         "copyToLeft": false,
         "copyToRight": false,
         "leftMinCardinality": 0,
