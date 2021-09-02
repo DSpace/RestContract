@@ -97,19 +97,26 @@ An optional leftwardValue and rightwardValue property can be present. It's omitt
 ## Search methods
 
 ### Relationship involving specified items
-**/api/core/relationships/search/byItemsAndType?typeId=<:relationship-type-id>&leftItem=<item-uuid1>[&...&&leftItem=<item-uuidN>]&rightItem=<item-uuid1>[&...&&rightItem=<item-uuidN>]**
+**/api/core/relationships/search/byItemsAndType?typeId=<:relationship-type-id>&relationshipLabel=<:relationship-label>&focusItem=<:item-uuid>&relatedItem=<:item-uuid1>[&...&&relatedItem=<:item-uuidN>]**
 
 This method is intended to be used when giving an item (focus) and a list of potentially related items we need to know which of these other items are already in a specific relationship with the focus item and, by exclusion which ones are not yet related.
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * typeId: mandatory, the relationship type id to apply as a filter to the returned relationships
-* leftItem; mandatory, repeatable if the rightItem parameter is not repeated. The uuid of the items to be checked on the left side of returned relationships
-* rightItem; mandatory, repeatable if the leftItem parameter is not repeated. The uuid of the items to be found on the right side of returned relationships
+* relationshipLabel: mandatory, the name of the relation as defined from the side of the `focusItem`
+* focusItem; mandatory. The uuid of the item to be checked on the side defined by `relationshipLabel`
+* relatedItem; mandatory, repeatable. The uuid of the items to be found on the other side of returned relationships
 
+For example the request
+```/api/core/relationships/search/byItemsAndType?typeId=<:type-id>&relationshipLable=isAuthorOfPublication&focusItem=<:publication-uuid>&relatedItem=<:one-person-uuid>&relatedItem=<:two-person-uuid>&relatedItem=<:three-person-uuid>```
+
+would return a list of relationship with the specified publication (focusItem) on the left side (as isAuthorOfPublication is the leftwardType of the relationshiptype with typeId) and on the right side there is one of the specified person (relatedItem params).
+ 
 Return codes:
 * 200 OK - if the operation succeed. This include the case of no matching relationships where a 0-size page json representation is returned.
-* 400 Bad Request - if the type parameter, leftItem and rightItem parameters are missing or invalid or multiple values are provided for both the leftItem and rightItem parameters
+* 400 Bad Request - if one of the parameters is missing or syntactically invalid (i.e. not an uuid, integer) 
+* 422 Unprocessable Entity - if the focusSide doesn't match the relationship type.
 
 ## Creating a relationship
 
