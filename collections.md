@@ -112,7 +112,7 @@ Return codes:
 * 200 OK - if the operation succeeds
 
 #### findSubmitAuthorizedByEntityType
-**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?query=<:query>&entityType=<:entityTypeLabel>**
+**/api/core/collections/search/findSubmitAuthorizedByEntityType?query=<:query>&entityType=<:entityTypeLabel>**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
