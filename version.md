@@ -15,7 +15,9 @@ If this is set to true, the version can only be retrieved if the user is an admi
 
 Item administrators or, according to the `versioning.submitterCanCreateNewVersion` configuration, the original submitter can create a new version of an item. The content-type is uri-list.
 
-The URI-list should contain the uri of the item that should be used to create the new version. It can be an item without an existing version history or an item part of an existing history. In the latest case it is possible to use an item representing an older version than the current one to facilitate the restore. 
+The URI-list should contain the uri of the item that should be used to create the new version. It can be an item without an existing version history or an item part of an existing history. In the latest case it is possible to use an item representing an older version than the current one to facilitate the restore.
+
+The new created version will be returned in the response, see the [get single version](#get-single-version) endpoint for an example of response.
 
 An example curl call:
 
@@ -26,7 +28,7 @@ An example curl call:
 ```
 
 Status codes:
-* 200 OK - if the new version has been created
+* 201 Created - if the new version has been created
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 400 Bad Request - if the uri doesn't resolve to an item
@@ -45,6 +47,7 @@ Provide version information for the version id.
   "type": "version",
   "created": "2015-11-03T09:44:46.617",
   "summary": "Fixing some typos in the abstract",
+  "submitterName": "LastName, FirstName",
   "_links": {
     "versionhistory": {
       "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1"
@@ -58,6 +61,8 @@ Provide version information for the version id.
   }
 }         
 ```
+
+The `submitterName` attribute is only exposed if you are logged in as an administrator or if the `versioning.item.history.include.submitter` configuration property is set to true.
 
 Status codes:
 * 200 OK - if the version exists and is accessible by the current user
