@@ -109,14 +109,14 @@ The supported parameters are:
 * relatedItem; mandatory, repeatable. The uuid of the items to be found on the other side of returned relationships
 
 For example the request
-```/api/core/relationships/search/byItemsAndType?typeId=<:type-id>&relationshipLable=isAuthorOfPublication&focusItem=<:publication-uuid>&relatedItem=<:one-person-uuid>&relatedItem=<:two-person-uuid>&relatedItem=<:three-person-uuid>```
+```/api/core/relationships/search/byItemsAndType?typeId=<:type-id>&relationshipLabel=isAuthorOfPublication&focusItem=<:publication-uuid>&relatedItem=<:one-person-uuid>&relatedItem=<:two-person-uuid>&relatedItem=<:three-person-uuid>```
 
 would return a list of relationship with the specified publication (focusItem) on the left side (as isAuthorOfPublication is the leftwardType of the relationshiptype with typeId) and on the right side there is one of the specified person (relatedItem params).
  
 Return codes:
 * 200 OK - if the operation succeed. This include the case of no matching relationships where a 0-size page json representation is returned.
 * 400 Bad Request - if one of the parameters is missing or syntactically invalid (i.e. not an uuid, integer) 
-* 422 Unprocessable Entity - if the focusSide doesn't match the relationship type.
+* 422 Unprocessable Entity - if the relationshipLabel doesn't match the relationship type.
 
 ## Creating a relationship
 
