@@ -20,6 +20,9 @@ Example:
           "entries": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entries"
           },
+          "entityTypes": {
+            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entityTypes"
+          },
           "self": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
           }
@@ -34,6 +37,9 @@ Example:
           "entries": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia/entries"
           },
+          "entityTypes": {
+            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia/entityTypes"
+          },
           "self": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia"
           }
@@ -47,6 +53,9 @@ Example:
         "_links": {
           "entries": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db/entries"
+          },
+          "entityTypes": {
+            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db/entityTypes"
           },
           "self": {
             "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db"
@@ -84,6 +93,7 @@ Provide detailed information about a specific external source. The JSON response
 
 Exposed links:
 * entries: the list of values managed by the external source
+* entityTypes: the list of entity types that are compatible with the provider
 
 ## Linked entities
 ### external source entries
@@ -282,6 +292,11 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
   }
 }
 ```
+
+### supported entity types
+**/api/integration/externalsources/<:source-name>/entityTypes**
+
+Return the list of entity types that are supported by this external provider. For example a Pubmed provider can return "Publication" and "Dataset" as supported entity types assuming that a separate Dataset entity type has been configured in DSpace
 
 ### Search methods
 #### findByEntityType
