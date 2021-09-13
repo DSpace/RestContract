@@ -6,7 +6,7 @@ This supports the Request a Copy feature.
 ## Main Endpoint
 **/api/tools/itemrequests**
 
-Provide access to requests. It returns the list of existing requests.
+Provide access to requests. It returns the list of existing requests.  **NOT IMPLEMENTED**
 
 Example: to be provided
 
@@ -16,25 +16,56 @@ Example: to be provided
 Provide detailed information about a specific request. The JSON response document will resemble this:
 ```json
 {
-  "id": "12ef",
   "token": "56cd",
   "allfiles": true,
-  "request_email": "jqpublic@example.com",
-  "request_name": "John Q. Public",
-  "request_date": "20180718T205000",
-  "accept_request": false,
-  "decision_date": "20180718T295100",
+  "requestEmail": "jqpublic@example.com",
+  "requestName": "John Q. Public",
+  "requestMessage": "Please send this to me.",
+  "requestDate": "20180718T205000",
+  "acceptRequest": false,
+  "decisionDate": "20180718T295100",
   "expires": "20181231T235959",
-  "request_message": "Please send this to me.",
-  "item_id": "36ab",
-  "bitstream_id": "44cd"
+  "itemId": "36ab",
+  "bitstreamId": "44cd"
 }
 ```
+
+Item properties:
+
+  * token: opaque string which uniquely identifies this request.
+  * allfiles: true if the request is for all bitstreams of the item.
+  * requestEmail: email address of the person requesting the files.
+  * requestName: Human-readable name of the person requesting the files.
+  * requestMessage: arbitrary message provided by the person requesting the files.
+  * requestDate: date that the request was recorded.
+  * acceptRequest: true if the request has been granted.
+  * decisionDate: date that the request was granted or denied.
+  * expires: date on which the request is considered expired.
+  * itemId: UUID of the requested Item.
+  * bitstreamId: UUID of the requested bitstream.
 
 Exposed links:
 
   * item: the item requested
   * bitstream: the bitstream requested
+
+## Creating a Request
+**POST /api/tools/itemrequests**
+
+Anyone may create an item request.  The Content-Type is JSON.  Example:
+```json
+{
+    "itemId": "3cab",
+    "allfiles": false,
+    "bitstreamId": "44cd",
+    "requestEmail": "jqpublic@example.com",
+    "requestName": "John Q. Public",
+    "requestMessage": "Please send this to me."
+}
+```
+The response contains the complete request in JSON format, as shown in Single Request.
+
+An appropriate person will be notified that the request has been filed.
 
 ## Linked entities
 ### item entries
