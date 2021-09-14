@@ -32,14 +32,14 @@ Provide detailed information about a specific request. The JSON response documen
 
 Item properties:
 
-  * token: opaque string which uniquely identifies this request.
+  * token: opaque string which uniquely identifies this request.  READ-ONLY
   * allfiles: true if the request is for all bitstreams of the item.
   * requestEmail: email address of the person requesting the files.
   * requestName: Human-readable name of the person requesting the files.
   * requestMessage: arbitrary message provided by the person requesting the files.
-  * requestDate: date that the request was recorded.
+  * requestDate: date that the request was recorded.  READ-ONLY.
   * acceptRequest: true if the request has been granted.
-  * decisionDate: date that the request was granted or denied.
+  * decisionDate: date that the request was granted or denied.  READ-ONLY.
   * expires: date on which the request is considered expired.
   * itemId: UUID of the requested Item.
   * bitstreamId: UUID of the requested bitstream.
@@ -66,6 +66,18 @@ Anyone may create an item request.  The Content-Type is JSON.  Example:
 The response contains the complete request in JSON format, as shown in Single Request.
 
 An appropriate person will be notified that the request has been filed.
+
+## Accepting / Denying a Request
+**PUT /api/tools/itemrequests/<:token>**
+
+Anyone may accept or deny a request.  Access is controlled by keeping the token confidential.  The Content-Type is JSON.  Example:
+```json
+{
+    "acceptRequest": true,
+    "responseMessage": "Approved.  Documents attached."
+}
+```
+"acceptRequest" is required to set the status of a request.  "responseMessage" is optional.  "responseMessage" is not a part of the request and is not stored.  Other fields will be ignored -- requests are not updatable.
 
 ## Linked entities
 ### item entries
