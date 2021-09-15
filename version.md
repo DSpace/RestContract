@@ -88,8 +88,6 @@ Please follow the version link in [the item endpoint](items.md#get-single-versio
 
 ## Remove version
 
-**DELETE /api/versioning/versions/<:versionId>**
-
 To delete a version you need to [delete the item](items.md#deleting-an-item) linked to it.
 
 ## Update version (patch operations)
