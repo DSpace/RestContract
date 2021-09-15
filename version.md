@@ -96,7 +96,7 @@ Only the summary property can be updated by item administrators, all the other p
 
 To update the metadata of the corresponding item the appropriate method in the items, workspaceitems or workflowitems endpoints need to be used according to the item status.
 
-**PATCH **
+**PATCH**
 
 To update the summary property a patch request over the `/summary` path is needed.
 According to the [general patch rules](patch.md)
