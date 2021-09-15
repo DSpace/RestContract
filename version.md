@@ -9,6 +9,8 @@ If this is set to true, the version can only be retrieved if the user is a commu
 Please note that the security of the single version is in no way related to the linked item. 
 It is eventually possible to retrieve a version related to a not accessible item, as the version doesn't expose any sensitive information this pose no security risks.
 
+**WARNING**: this feature currently address only normal DSpace item, by default, it cannot be used with Entity item (`versioning.block.entity = true'). The versioning feature is not considered complete for Entity items as the relationships are currently ignored when new version are created but the decision about how to deal with them is undergoing. The related authorization features: canManageVersions, canCreateVersion, canEditVersion, canDeleteVersion, if the versioning for entity is disallowed will always return false
+
 ## Main Endpoint
 **/api/versioning/versions**   
 
@@ -40,7 +42,7 @@ An example curl call:
 Status codes:
 * 201 Created - if the new version has been created
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions
+* 403 Forbidden - if you are not logged in with sufficient permissions or if you are trying to create a new version for an entity item and the `versioning.block.entity` configuration property is `true` or unset
 * 400 Bad Request - if the uri doesn't resolve to an item
 * 422 Unprocessable Entity - if there are already an inprogress submission representing a new version in the same version history of the item 
 
