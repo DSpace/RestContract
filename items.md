@@ -476,9 +476,15 @@ Status codes:
 ### Get single version for item
 **GET /api/core/items/{:item-uuid}/version**
 
-Provide version information based on a given Item UUID. An Item UUID will only match one version.
+Provide version information based on a given Item UUID. An Item UUID will only match one version. READ permissions over the item in addition to the version permissions are checked.
+The JSON response is the same as the [Version endpoint](version.md#get-single-version).
 
-The JSON response and status codes are the same as the [Version endpoint](version.md#get-single-version).
+Return codes:
+* 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated and versioning is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
+* 204 No Content - if the specified item is not yet versioned
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid)
 
 ## Deleting an item
 
