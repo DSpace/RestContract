@@ -16,33 +16,48 @@ Example: to be provided
 Provide detailed information about a specific request. The JSON response document will resemble this:
 ```json
 {
-  "token": "56cd",
-  "allfiles": true,
-  "requestEmail": "jqpublic@example.com",
-  "requestName": "John Q. Public",
-  "requestMessage": "Please send this to me.",
-  "requestDate": "20180718T205000",
-  "acceptRequest": false,
-  "decisionDate": "20180718T295100",
-  "expires": "20181231T235959",
-  "itemId": "36ab",
-  "bitstreamId": "44cd"
+  "id":1,
+  "decisionDate":null,
+  "expires":null,
+  "requestDate":"2021-09-17T14:55:50.089+00:00",
+  "token":"c19e820ea0b270f0ec98323864dcc8b8",
+  "acceptRequest":false,
+  "allfiles":false,
+  "type":"itemrequest",
+  "bitstreamId":"dca2dadb-7028-40a9-ab39-1a47726df7ef",
+  "itemId":"71d9fb0c-cc36-41c1-b1d3-63887b414fca",
+  "requestEmail":"jsmith@example.com",
+  "requestMessage":"Please send me a copy of this.",
+  "requestName":"John Smith",
+  "_links":{
+    "bitstream":{
+      "href":"http://localhost/api/tools/itemrequests/1/bitstream"
+    },
+    "item":{
+      "href":"http://localhost/api/tools/itemrequests/1/item"
+    },
+    "self":{
+      "href":"http://localhost/api/tools/itemrequests/1"
+    }
+  }
 }
 ```
 
 Item properties:
 
-  * token: opaque string which uniquely identifies this request.  READ-ONLY
+  * type: always "itemrequest".  READ-ONLY
+  * id: internal unique identifier of the request.  READ-ONLY
+  * itemId: UUID of the requested Item.
+  * bitstreamId: UUID of the requested bitstream.
   * allfiles: true if the request is for all bitstreams of the item.
   * requestEmail: email address of the person requesting the files.
   * requestName: Human-readable name of the person requesting the files.
   * requestMessage: arbitrary message provided by the person requesting the files.
   * requestDate: date that the request was recorded.  READ-ONLY.
+  * expires: date on which the request is considered expired.
   * acceptRequest: true if the request has been granted.
   * decisionDate: date that the request was granted or denied.  READ-ONLY.
-  * expires: date on which the request is considered expired.
-  * itemId: UUID of the requested Item.
-  * bitstreamId: UUID of the requested bitstream.
+  * token: opaque string which uniquely identifies this request.  READ-ONLY
 
 Exposed links:
 
@@ -55,9 +70,9 @@ Exposed links:
 Anyone may create an item request.  The Content-Type is JSON.  Example:
 ```json
 {
-    "itemId": "3cab",
+    "itemId": "71d9fb0c-cc36-41c1-b1d3-63887b414fca",
     "allfiles": false,
-    "bitstreamId": "44cd",
+    "bitstreamId": "dca2dadb-7028-40a9-ab39-1a47726df7ef",
     "requestEmail": "jqpublic@example.com",
     "requestName": "John Q. Public",
     "requestMessage": "Please send this to me."
