@@ -176,7 +176,7 @@ Exposed links:
 **/api/discover/search/objects**
 
 This endpoint returns a list of DSpace Objects that match the given type. The result can be refined using the following parameters:
-* `query`: The discovery search string to will be used to match records. Please note that this will be treat as a lucene/SOLR query so if special characters need to be literally searched escape them. 
+* `query`: The discovery search string to will be used to match records. Please note that this will be treated as a Solr/lucene query, which means Solr query syntax is available. However, any special characters must be URL or percent encoded (i.e. %xx).
 * `dsoType`: Limit the search to a specific DSpace Object type:
      * all: Execute a query over all available DSO types.
      * item: Only search the DSpace items.
