@@ -60,7 +60,7 @@ Return codes:
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, repeatable. Represents the list of objects to be used for the authorization check. For each of them, the UUID must be specified.2
-* type: mandatory. Represents the type of item(s) on which authorizations are checked.
+* type: mandatory. Represents the type of resource(s) (i.e. "core.item", "workflow.workflowitem",...)  on which authorizations are checked.
 * eperson: optional, the uuid of the eperson to evaluate for authorization. If not specified authorization of anonymous users will be returned
 * feature: optional, repeatable. Represents the list of features. Limits the returned authorizations to the specified features (this provide an alternative to codify the authorization id rule on the client side)
 
