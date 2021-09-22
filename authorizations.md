@@ -55,11 +55,12 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and the user specified in the eperson parameter can access
 
 #### objects
-**/api/authz/authorizations/search/objects?uuid=<:uri>[&eperson=<:uuid>&feature=<:string>]**
+**/api/authz/authorizations/search/objects?uuid=<:uuid>&type=<:type>[&eperson=<:uuid>&feature=<:string>]**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* uuid: mandatory, repeatable. Represents the list of objects to be used for the authorization check. For each of them, the UUID must be specified.
+* uuid: mandatory, repeatable. Represents the list of objects to be used for the authorization check. For each of them, the UUID must be specified.2
+* type: mandatory. Represents the type of item(s) on which authorizations are checked.
 * eperson: optional, the uuid of the eperson to evaluate for authorization. If not specified authorization of anonymous users will be returned
 * feature: optional, repeatable. Represents the list of features. Limits the returned authorizations to the specified features (this provide an alternative to codify the authorization id rule on the client side)
 
