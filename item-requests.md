@@ -78,6 +78,8 @@ Anyone may create an item request.  The Content-Type is JSON.  Example:
     "requestMessage": "Please send this to me."
 }
 ```
+`bitstreamId` is ignored and may be omitted if `allfiles` is `false`.  `requestMessage` is optional.  `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson.
+
 The response contains the complete request in JSON format, as shown in Single Request.
 
 An appropriate person will be notified that the request has been filed.
