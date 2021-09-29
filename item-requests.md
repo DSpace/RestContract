@@ -107,7 +107,8 @@ Anyone may accept or deny a request.  Access is controlled by keeping the token 
 
 Return codes:
 * 200 OK - if the operation succeeded
-* 4?? ??? - if the current session is not authenticated to one of the configured approvers
+* 401 UNAUTHORIZED - if the current session is anonymous
+* 403 FORBIDDEN - if the current session is not authenticated to one of the configured approvers
 * 422 UNPROCESSABLE ENTITY - if the request could not be found or `acceptRequest` was not specified.
 
 ## Linked entities
