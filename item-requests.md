@@ -11,7 +11,7 @@ Provide access to requests. It returns the list of existing requests.  **NOT IMP
 Example: to be provided
 
 ## Single Request
-**/api/tools/itemrequests/<:id>**
+**/api/tools/itemrequests/<:token>**
 
 Provide detailed information about a specific request. The JSON response document will resemble this:
 ```json
@@ -64,6 +64,10 @@ Exposed links:
   * item: the item requested
   * bitstream: the bitstream requested
 
+Return codes:
+* 200 OK - if the operation succeeded
+* 404 NOT FOUND - if the token is unknown (no such request exists)
+
 ## Creating a Request
 **POST /api/tools/itemrequests**
 
@@ -78,11 +82,16 @@ Anyone may create an item request.  The Content-Type is JSON.  Example:
     "requestMessage": "Please send this to me."
 }
 ```
-`bitstreamId` is ignored and may be omitted if `allfiles` is `false`.  `requestMessage` is optional.  `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson.
+`bitstreamId` is ignored and may be omitted if `allfiles` is `false`.  `requestMessage` is optional.  `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson.  If the session is anonymous then `requestEmail` is required.  `bitstreamId` is required if `allfiles` is false.  `itemId` is always required.
 
 The response contains the complete request in JSON format, as shown in Single Request.
 
 An appropriate person will be notified that the request has been filed.
+
+Return codes:
+* 201 CREATED - if the operation succeeded
+* 401 UNAUTHORIZED - if anonymous requests are disabled and the session is unauthenticated
+* 422 UNPROCESSABLE ENTITY - if the POSTed document could not be interpreted, the Item or Bitstream could not be found, or required fields are missing
 
 ## Accepting / Denying a Request
 **PUT /api/tools/itemrequests/<:token>**
@@ -95,6 +104,11 @@ Anyone may accept or deny a request.  Access is controlled by keeping the token 
 }
 ```
 "acceptRequest" is required to set the status of a request.  "responseMessage" is optional.  "responseMessage" is not a part of the request and is not stored.  Other fields will be ignored -- requests are not updatable.
+
+Return codes:
+* 200 OK - if the operation succeeded
+* 4?? ??? - if the current session is not authenticated to one of the configured approvers
+* 422 UNPROCESSABLE ENTITY - if the request could not be found or `acceptRequest` was not specified.
 
 ## Linked entities
 ### item entries
