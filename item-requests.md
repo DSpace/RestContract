@@ -100,10 +100,11 @@ Anyone may accept or deny a request.  Access is controlled by keeping the token 
 ```json
 {
     "acceptRequest": true,
+    "subject": "Request copy of document"
     "responseMessage": "Approved.  Documents attached."
 }
 ```
-"acceptRequest" is required to set the status of a request.  "responseMessage" is optional.  "responseMessage" is not a part of the request and is not stored.  Other fields will be ignored -- requests are not updatable.
+"acceptRequest" is required to set the status of a request.  "responseMessage" and "subject" are optional.  "responseMessage" and "subject" are not part of the request and are not stored.  Other fields will be ignored -- requests are not updatable.
 
 Return codes:
 * 200 OK - if the operation succeeded
