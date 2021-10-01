@@ -65,6 +65,7 @@ Exposed links:
   * bitstream: the bitstream requested
 
 Return codes:
+
 * 200 OK - if the operation succeeded
 * 404 NOT FOUND - if the token is unknown (no such request exists)
 
@@ -89,6 +90,7 @@ The response contains the complete request in JSON format, as shown in Single Re
 An appropriate person will be notified that the request has been filed.
 
 Return codes:
+
 * 201 CREATED - if the operation succeeded
 * 401 UNAUTHORIZED - if anonymous requests are disabled and the session is unauthenticated
 * 422 UNPROCESSABLE ENTITY - if the POSTed document could not be interpreted, the Item or Bitstream could not be found, or required fields are missing
@@ -100,13 +102,21 @@ Anyone may accept or deny a request.  Access is controlled by keeping the token 
 ```json
 {
     "acceptRequest": true,
-    "subject": "Request copy of document"
-    "responseMessage": "Approved.  Documents attached."
+    "subject": "Request copy of document",
+    "responseMessage": "Approved.  Documents attached.",
+    "suggestOpenAccess": "false"
 }
 ```
-"acceptRequest" is required to set the status of a request.  "responseMessage" and "subject" are optional.  "responseMessage" and "subject" are not part of the request and are not stored.  Other fields will be ignored -- requests are not updatable.
+`acceptRequest` is required to set the status of a request.  `responseMessage`, `subject` and `suggestOpenAccess` are not part of the request and are not stored.  Other fields will be ignored -- requests are not updatable.
+
+Additional Fields:
+
+* responseMessage:  included in the body of the message sent to the requester.  OPTIONAL.
+* subject:  a subject line for the response message.  OPTIONAL.
+* suggestOpenAccess:  if `true`, trigger a message to repository administrators suggesting that access to the requested object(s) be opened.  OPTIONAL.
 
 Return codes:
+
 * 200 OK - if the operation succeeded
 * 401 UNAUTHORIZED - if the current session is anonymous
 * 403 FORBIDDEN - if the current session is not authenticated to one of the configured approvers
