@@ -28,7 +28,7 @@ The section data represent the data about the access condition
   ]
 }
 ```
-* private: indicates whether the current item should be private or not. For access configurations that do not allow the user to specify the visibility of the item, this value must be false.
+* private: indicates whether the current item should be private or not.
 * accessConditions: an array of all the policies that has been applied by the user to the item. 
 
 ## Patch operations
@@ -87,6 +87,7 @@ the replace operation `[{ "op": "replace", "path": "/sections/<:name-of-the-form
 ```json
   "private": false,
 ```
+ For access configurations that do not allow the user to specify the visibility of the item, attempts to change the private flag result in a response with 422 status from the server.
 
 #### Access Condition
 You can replace an existent access condition with a new one or update some settings of an existent access condition using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionaccesses configuration endpoint](submissionaccesses.md).
@@ -106,4 +107,4 @@ to transform an existent *openaccess* access condition to an *administrator* acc
 please note that the above works only because of openaccess and administrator have the same settings needs (no need of addition information). Indeed, the backend is expected to remove the existent policy and create a new policy. If the settings of the previous and new access condition differs the request must fail with a 422 error code
 
 ## Relationship between the access conditions of the item and the bitstreams
-Access conditions set on an item can be overwritten by specific access conditions set directly on the bitstreams via [workspaceitem data upload](workspaceitem-data-upload.md). If a bistream has no specific access conditions then it inherits those of the item; if it does, then those of the item are ignored and are not applied to it.
+Access conditions set on an item can be overwritten by specific access conditions set directly on the bitstreams via [workspaceitem data upload](workspaceitem-data-upload.md). If a bistream has no specific access conditions then it inherits those of the item; if an access conditions is inplace for the bitstream, then thos of the item are ignored and are not applied to it.
