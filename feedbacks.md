@@ -30,3 +30,4 @@ The json body must be valid that mean
 Return codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if some of the fields e-mail or message is missing
+* 404 Not found - if the property 'feedback.recipient' is not configured
