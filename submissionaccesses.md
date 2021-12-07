@@ -16,7 +16,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```json
 {
   "id": "default",
-  "private": true,
+  "discoverable": true,
   "accessConditionOptions": [
 		{
  			"name": "openaccess"
@@ -38,7 +38,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 }
 
 ```
-The **private** flag indicates whether or not the user has the opportunity to indicate that the current item must be private, i.e. not searchable
+The **discoverable** flag indicates whether or not the user has the opportunity to indicate that the current item must be private, i.e. not searchable
 
 The attributes of the objects in the **accessConditionOptions** arrays are as follow:
 * The *name* attribute is an identifier that can be used by the REST client (the UI) to present the different options to the user, maybe translating it in an human readable format using i18n, and by the backend to create the ResourcePolicy to apply to the accessed item using and validating the additional inputs provided by the user where required.

@@ -5,7 +5,7 @@ The section data represent the data about the access condition
 
 ```json
 {
-  "private": true,
+  "discoverable": true,
   "accessConditions": [
     {
       "id": 123,
@@ -28,7 +28,7 @@ The section data represent the data about the access condition
   ]
 }
 ```
-* private: indicates whether the current item should be private or not.
+* discoverable: if the current item not discoverable, this meaning that It's simply hidden from all search/browse/OAI results, and is therefore only accessible via direct link (or bookmark). To manage the access restriction (aka resource policies) see the accessCondition property below.
 * accessConditions: an array of all the policies that has been applied by the user to the item. 
 
 ## Patch operations
@@ -74,20 +74,20 @@ the following request will reset the access condition to the empty array
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation without a previous value must return an error. See [general errors on PATCH requests](patch.md)
 
-#### Private
-To replace a previous private flag value it is sufficient to invoke a replace operation on the private position path, i.e.
+#### Discoverable
+To replace a previous discoverable flag value it is sufficient to invoke a replace operation on the discoverable position path, i.e.
 
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/private", "value": true|false }]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/discoverable", "value": true|false }]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 For example, starting with the following eperson field data:
 ```json
- "private": true,
+ "discoverable": true,
 ```
-the replace operation `[{ "op": "replace", "path": "/sections/<:name-of-the-form>/private", "value": false]` will result in :
+the replace operation `[{ "op": "replace", "path": "/sections/<:name-of-the-form>/discoverable", "value": false]` will result in :
 ```json
-  "private": false,
+  "discoverable": false,
 ```
- For access configurations that do not allow the user to specify the visibility of the item, attempts to change the private flag result in a response with 422 status from the server.
+ For access configurations that do not allow the user to specify the visibility of the item, attempts to change the discoverable flag result in a response with 422 status from the server.
 
 #### Access Condition
 You can replace an existent access condition with a new one or update some settings of an existent access condition using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionaccesses configuration endpoint](submissionaccesses.md).
