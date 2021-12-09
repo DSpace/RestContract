@@ -14,7 +14,9 @@ Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api
 Provide detailed information about a specific browse index and access to the list of items and entries in the index. The JSON response document is as follow
 ```json
 {
+  "id": "title",
   "metadataBrowse": false,
+  "dataType": "title",
   "sortOptions": [
     {
       "name": "title",
@@ -37,7 +39,9 @@ Provide detailed information about a specific browse index and access to the lis
 } 
 ```
 
+* id: the identifier for the browse index
 * metadataBrowse: true if the browse index have two level, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
+* dataType: the kind of data indexed. Can have the values "title" for item titles, "date" for date fields or "text" for other metadata
 * sortOptions: the sort options available for this index
 * order: the default order applied to the index
 * metadata: the list of metadata used to build this index
