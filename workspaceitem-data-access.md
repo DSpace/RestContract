@@ -45,7 +45,7 @@ to **replace completely** the access conditions applied to a specific workspaceI
 
 `curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/accessCondition", "value": [{name: "...", endDate: ".."}]}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
-The exact attributes that the access condition to add must have depend on the name attribute that will identify the access condition configuration as exposed by the [submissionaccesses configuration endpoint](submissionaccesses.md).
+The exact attributes that the access condition to add must have depend on the name attribute that will identify the access condition configuration as exposed by the [submissionaccessoptions configuration endpoint](submissionaccessoptions.md).
 For instance the following request is valid
 
 `curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/accessConditions/-", "value": {name: "openaccess"}}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
@@ -54,7 +54,7 @@ instead the request
 
 `curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/accessConditions/-", "value": {name: "embargo"}}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
-will be rejected because a startDate attribute is also expected when an embargo is applied (according to the example configuration listed in this doc for the [submissionaccesses configuration endpoint](submissionaccesses.md). 
+will be rejected because a startDate attribute is also expected when an embargo is applied (according to the example configuration listed in this doc for the [submissionaccessoptions configuration endpoint](submissionaccessoptions.md). 
 
 The right request will be
 
@@ -90,7 +90,7 @@ the replace operation `[{ "op": "replace", "path": "/sections/<:name-of-the-form
  For access configurations that do not allow the user to specify the visibility of the item, attempts to change the discoverable flag result in a response with 422 status from the server.
 
 #### Access Condition
-You can replace an existent access condition with a new one or update some settings of an existent access condition using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionaccesses configuration endpoint](submissionaccesses.md).
+You can replace an existent access condition with a new one or update some settings of an existent access condition using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionaccessoptions configuration endpoint](submissionaccessoptions.md).
 
 To replace an access condition with a new one
 
