@@ -77,7 +77,7 @@ The replace operation allows to replace *existent* information with new one. Att
 #### Discoverable
 To replace a previous discoverable flag value it is sufficient to invoke a replace operation on the discoverable position path, i.e.
 
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/discoverable", "value": true|false }]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+`curl --data '{[ { "op": "replace", "path": "/sections/<:name-of-the-form>/discoverable", "value": true|false }]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 For example, starting with the following eperson field data:
 ```json

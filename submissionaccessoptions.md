@@ -2,13 +2,13 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/config/submissionaccesses**   
+**/api/config/submissionaccessoptions**   
 
 Provide access to the existent configurations for the submission access. It returns the list of existent SubmissionAccessConfig.
 The SubmissionAccessConfig aggregates in a single place the configuration needed to the access section.
 
 ## Single Submission-Form 
-**/api/config/submissionaccesses/<:access-name>**
+**/api/config/submissionaccessoptions/<:option-name>**
 
 *:access-name* the access configuration name to retrieve
 
@@ -38,7 +38,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 }
 
 ```
-The **discoverable** flag indicates whether or not the user has the opportunity to indicate that the current item must be private, i.e. not searchable
+The **discoverable** flag indicates whether or not the user has the opportunity to indicate that the current item must be findable via search or browse.
 
 The attributes of the objects in the **accessConditionOptions** arrays are as follow:
 * The *name* attribute is an identifier that can be used by the REST client (the UI) to present the different options to the user, maybe translating it in an human readable format using i18n, and by the backend to create the ResourcePolicy to apply to the accessed item using and validating the additional inputs provided by the user where required.
