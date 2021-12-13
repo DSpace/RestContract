@@ -1,4 +1,4 @@
-# SubmissionAccesses Endpoints
+# SubmissionAccessOptions Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
@@ -10,7 +10,7 @@ The SubmissionAccessConfig aggregates in a single place the configuration needed
 ## Single Submission-Form 
 **/api/config/submissionaccessoptions/<:option-name>**
 
-*:access-name* the access configuration name to retrieve
+*:option-name* the access configuration name to retrieve
 
 Provide detailed information about a specific input-form. The JSON response document is as follows:
 ```json
