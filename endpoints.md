@@ -35,6 +35,7 @@
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
+* [/api/tools/feedbacks](feedbacks.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
