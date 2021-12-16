@@ -16,7 +16,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 ```json
 {
   "id": "default",
-  "discoverable": true,
+  "canChangeDiscoverable": true,
   "accessConditionOptions": [
 		{
  			"name": "openaccess"
