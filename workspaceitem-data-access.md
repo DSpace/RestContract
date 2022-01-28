@@ -1,7 +1,8 @@
 # WorkspaceItem data of access sectionType
 [Back to the definition of the workspaceitems endpoint](workspaceitems.md)
 
-The section data represent the data about the access condition
+The section data represent the data about the access condition.
+This section will have the same name as the configuration available off the /api/config/submissionaccessoptions/. As an example, a WorkspaceItem section here named itemAccessConditions would correspond to a configuration /api/config/submissionaccessoptions/itemAccessConditions.
 
 ```json
 {
