@@ -4,7 +4,7 @@
 A submission-form represents a single data entry form, associated with a submission section. It is configurable, and consists of one or more data entry fields. In DSpace 6 and below, this concept was called an "input-form" and was configured via input-forms.xml.
 
 ## Main Endpoint
-**/api/config/submissionforms**   
+**/api/condu -h fig/submissionforms**   
 
 Provide access to the configured submission-forms. It returns the list of existent submission-forms.
 Please note that from DSpace 7 the submission-form concept has been introduced splitting the previous configuration file named input-forms.xml by page. Each submission-form describes a single page of inputs, combining different pages together is done with the [submission-definition](submissiondefinitions.md), aka the item-submission.xml configuration file 
@@ -38,7 +38,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": null
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -113,7 +114,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": null
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -135,7 +137,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": false
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -152,7 +155,8 @@ Provide detailed information about a specific input-form. The JSON response docu
             "filter": "creativework.publisher:somepublishername",
             "searchConfiguration": "periodicalConfiguration",
             "externalSources": [ "sherpaJournal" ],
-            "nameVariants": false
+            "nameVariants": false,
+            "typeBind": ["Article"]
           }
         }
       ]
