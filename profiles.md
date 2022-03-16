@@ -6,12 +6,12 @@ with which the profile is modeled depends on the dspace configuration (by defaul
 type then the whole repository is disabled.
 
 ## Get all Profile
-**GET /api/cris/profiles/**
+**GET /api/eperson/profiles/**
 
 This operation is not currently supported.
 
 ## Single Profile
-**GET /api/cris/profiles/<:eperson-uuid>**
+**GET /api/eperson/profiles/<:eperson-uuid>**
 
 Provide information about a specific profile. Only the Administrators or the owner eperson can access this endpoint.
 
@@ -44,7 +44,7 @@ It would respond with:
 ## Linked entities
 
 ### Item
-**GET /api/cris/profiles/<:eperson-uuid>/item**
+**GET /api/eperson/profiles/<:eperson-uuid>/item**
 
 Returns the item that model the profile of the eperson with the given uuid. The JSON response document is as follow
 
@@ -112,7 +112,7 @@ It would respond with:
 * 404 Not found - if the item doesn't exist
 
 ### EPerson
-**GET /api/cris/profiles/<:eperson-uuid>/eperson**
+**GET /api/eperson/profiles/<:eperson-uuid>/eperson**
 
 Returns the eperson owning the profile. The JSON response document is as follow
 
@@ -155,7 +155,7 @@ It would respond with:
 * 404 Not found - if the eperson doesn't exist
 
 ## Creating a new Profile
-**POST /api/cris/profiles?eperson=<:eperson-uuid>**
+**POST /api/eperson/profiles?eperson=<:eperson-uuid>**
 
 Create a new profile for the specified person or for the current user. This action can only be done by the EPerson themselves or an Administrator.
 
@@ -173,11 +173,11 @@ In case of response with status 201 the endpoint returns the newly created resou
 
 To create a new profile use 
 ```bash
-curl -i -X POST ${dspace-url}/api/cris/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:application/json"
+curl -i -X POST ${dspace-url}/api/eperson/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:application/json"
 ```
 
 ## Claim an existing Profile
-**POST /api/cris/profiles?eperson=<:eperson-uuid>**
+**POST /api/eperson/profiles?eperson=<:eperson-uuid>**
 
 Modify the profile item specified in the request content to make the given eperson its owner. The content-type is uri-list with the url of the item's profile to be claimed.
 This action can only be done by the EPerson themselves or an Administrator.
@@ -194,18 +194,18 @@ Status codes:
 
 An example curl call:
 ```bash
- curl -i -X POST ${dspace-url}/api/cris/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/core/items/cec6ee1b-7730-44da-a224-a7c5af63f821
+ curl -i -X POST ${dspace-url}/api/eperson/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:text/uri-list" \
+ --data ${dspace-url}/api/core/items/cec6ee1b-7730-44da-a224-a7c5af63f821
 ```
 
 ## Hide/unhide a profile
-**PATCH /api/cris/profiles/<:eperson-uuid>**
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
 
 This operation allow to change the visibility of one profile. This action can only be done by the EPerson themselves or an Administrator.
 
 To hide or unhide a profile use 
 ```bash
-curl -i -X PATCH ${dspace-url}/api/cris/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069 --data '[ { "op": "replace", "path": "/visible", "value": true }]' -H "Content-Type:application/json"
+curl -i -X PATCH ${dspace-url}/api/eperson/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069 --data '[ { "op": "replace", "path": "/visible", "value": true }]' -H "Content-Type:application/json"
 ```
 
 Status codes:
@@ -218,14 +218,14 @@ Status codes:
 If the operation succeed the endpoint returns the updated resource.
 
 ## Delete a profile
-**DELETE /api/cris/profiles/<:eperson-uuid>**
+**DELETE /api/eperson/profiles/<:eperson-uuid>**
 
 Delete the profile related to the given eperson. This action can only be done by the EPerson themselves or an Administrator.
 The type of deletion depends on a configuration property: it can be soft, only the link is canceled, or hard, with which the item is canceled. I can express this behavior in the contract.
 
 To delete a profile use
 ```bash
-curl -i -X DELETE ${dspace-url}/api/cris/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069
+curl -i -X DELETE ${dspace-url}/api/eperson/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069
 ```
 
 Return codes:
