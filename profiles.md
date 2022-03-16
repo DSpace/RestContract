@@ -1,6 +1,15 @@
 # Researcher profiles Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
+This repository allows to manage the profile item linked to a particular eperson. The specific type of item 
+with which the profile is modeled depends on the dspace configuration (by default it is the Person type). If the particular dspace instance doesn't handle the "profile" 
+type then the whole repository is disabled.
+
+## Get all Profile
+**GET /api/cris/profiles/**
+
+This operation is not currently supported.
+
 ## Single Profile
 **GET /api/cris/profiles/<:eperson-uuid>**
 
@@ -17,8 +26,9 @@ The JSON response document is as follow
 ```
 
 Attributes:
-* id: the profile id that corresponds to the id of the eperson associated
-* visible: indicates whether the profile is public (visible: true) or private (otherwise)
+* id: the UUID of the EPerson who owns the profile. This also corresponds to the ID of the profile.
+* visible: indicates whether the profile is public (visible: true) or private (otherwise). If private only 
+Administrators & the EPerson themselves can search/access the profile.
 * type: the resource type (profile)
 
 Exposed links:
@@ -29,7 +39,7 @@ It would respond with:
 * 200 OK - Returning the profile if there's a match
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions to view the profile
-* 404 Not found - if the profile doesn't exist
+* 404 Not found - if the profile or the eperson doesn't exist
 
 ## Linked entities
 
@@ -45,18 +55,11 @@ Returns the item that model the profile of the eperson with the given uuid. The 
   "name": null,
   "handle": "123456789/511",
   "metadata": {
-    "cris.owner": [{
+    "dspace.object.owner": [{
         "value": "Mortimer Smith",
         "language": null,
         "authority": "eb645ef8-1373-41eb-bf67-6afcea7e2069",
         "confidence": 600,
-        "place": 0
-      }],
-    "cris.sourceId": [{
-        "value": "eb645ef8-1373-41eb-bf67-6afcea7e2069",
-        "language": null,
-        "authority": null,
-        "confidence": -1,
         "place": 0
       }],
     "dc.date.accessioned": [{
@@ -87,7 +90,7 @@ Returns the item that model the profile of the eperson with the given uuid. The 
         "confidence": -1,
         "place": 0
       }],
-    "relationship.type": [{
+    "dspace.entity.type": [{
         "value": "Person",
         "language": null,
         "authority": null,
@@ -154,7 +157,7 @@ It would respond with:
 ## Creating a new Profile
 **POST /api/cris/profiles?eperson=<:eperson-uuid>**
 
-Create a new profile for the specified person or for the current user. Only an administrator can create a profile for another eperson.
+Create a new profile for the specified person or for the current user. This action can only be done by the EPerson themselves or an Administrator.
 
 Parameters:
 * eperson-uuid (optional): the uuid of eperson for which the profile is to be created; if not specified, the eperson is the authenticated one
@@ -164,7 +167,7 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 409 Conflict - if for the specified eperson a profile already exists
-* 422 Unprocessable Entity - if the specified person does not exist
+* 422 Unprocessable Entity - if the specified eperson does not exist
 
 In case of response with status 201 the endpoint returns the newly created resource, while in case of 409 it returns the resource that generated the conflict.
 
@@ -173,10 +176,32 @@ To create a new profile use
 curl -i -X POST ${dspace-url}/api/cris/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:application/json"
 ```
 
+## Claim an existing Profile
+**POST /api/cris/profiles?eperson=<:eperson-uuid>**
+
+Modify the profile item specified in the request content to make the given eperson its owner. The content-type is uri-list with the url of the item's profile to be claimed.
+This action can only be done by the EPerson themselves or an Administrator.
+
+Parameters:
+* eperson-uuid (optional): the uuid of eperson for which the profile is to be claimed; if not specified, the eperson is the authenticated one
+
+Status codes:
+* 201 Created - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 409 Conflict - if the specified eperson has already a profile or if the profile to be claimed is already owned
+* 404 Unprocessable Entity - if the specified eperson does not exist
+
+An example curl call:
+```bash
+ curl -i -X POST ${dspace-url}/api/cris/profiles?eperson=eb645ef8-1373-41eb-bf67-6afcea7e2069 -H "Content-Type:text/uri-list" \
+ --data "https://dspace7.4science.it/dspace-spring-rest/api/core/items/cec6ee1b-7730-44da-a224-a7c5af63f821
+```
+
 ## Hide/unhide a profile
 **PATCH /api/cris/profiles/<:eperson-uuid>**
 
-This operation allow to change the visibility of one profile. Only an administrator can modify the profile of another eperson.
+This operation allow to change the visibility of one profile. This action can only be done by the EPerson themselves or an Administrator.
 
 To hide or unhide a profile use 
 ```bash
@@ -195,7 +220,8 @@ If the operation succeed the endpoint returns the updated resource.
 ## Delete a profile
 **DELETE /api/cris/profiles/<:eperson-uuid>**
 
-Delete the profile related to the given eperson. Only an administrator can delete the profile of another eperson.
+Delete the profile related to the given eperson. This action can only be done by the EPerson themselves or an Administrator.
+The type of deletion depends on a configuration property: it can be soft, only the link is canceled, or hard, with which the item is canceled. I can express this behavior in the contract.
 
 To delete a profile use
 ```bash
