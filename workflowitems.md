@@ -2,14 +2,14 @@
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/submission/workflowitems**   
+**/api/workflow/workflowitems**
 
 Provide access to the workflowitems. It returns the list of existent workflowitems.
 
 Example: to be provided
 
 ## Single Workflow Item
-**/api/submission/workflowitems/<:id>**
+**/api/workflow/workflowitems/<:id>**
 
 Provide detailed information about a specific workflowitem. The JSON response document is as follow
 
@@ -142,19 +142,30 @@ It would respond with:
 * 204 if the workflow item doesn't exist
 
 ## POST Method
-To create a workflowitem, i.e. to start a workflow, a workspaceitem must be posted to the workflowitems resource collection endpoint (/api/submission/workflowitems).
-The workspaceitem must be supplied as URI in the request body using the text/uri-list content-type
-If succeed a 201 code will be returned and the new state of the workflowitem serialized in the body.
-If fails the following status code are expected
-403 Unauthorized - if the loggedin user is not the submitter of the workspaceitem
-422 Unprocessable Entity - if the workspace is not yet ready to be send through the workflow (i.e. there are validation errors)
+To create a WorkflowItem, i.e. to start a workflow, a WorkspaceItem must be posted to the `/workflowitems` resource
+collection endpoint (`/api/workflow/workflowitems`).
+The WorkspaceItem must be supplied as URI in the request body using the `text/uri-list` content-type.
+
+An example curl call:
+```
+ curl -i -X POST http://localhost:8080/server/api/workflow/workflowitems \
+ -H "Content-Type:text/uri-list" \
+ --data "https://localhost:8080/server/api/submission/workspaceitems/1234"
+```
+
+It would respond with:
+* 201 OK - If WorkflowItem was created successfully. The new state of the WorkflowItem is returned in the body.
+If the body is empty, this means that no workflow was enabled & the Item is immediately available in the system.
+* 401 Unauthorized - if you are not authenticated
+* 403 Unauthorized - if the loggedin user is not the submitter of the WorkspaceItem
+* 422 Unprocessable Entity - if the WorkspaceItem is not yet ready to be send through the workflow (i.e. there are validation errors)
 
 ## Multipart POST Method
 Multipart POST request will typically result in the creation of a new file in the section identified by the name of the variable used for the upload (uploads is the default name of the user uploaded content). The process will be managed by the implementation bind with the identified section.
 If succeed a 201 code will be returned and the new state of the workflowitem serialized in the body
 
 ## DELETE Method
-**DELETE /api/submission/workflowitems/<:id>**
+**DELETE /api/workflow/workflowitems/<:id>**
 
 Reset a workflow sending back the item to the workspace regardless to the step reached.
 
