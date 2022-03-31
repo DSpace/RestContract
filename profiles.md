@@ -3,7 +3,7 @@
 
 This repository allows to manage the profile item linked to a particular eperson. The specific type of item 
 with which the profile is modeled depends on the dspace configuration (by default it is the Person type). If the particular dspace instance doesn't handle the "profile" 
-type then the whole repository is disabled.
+type then these endpoints are disabled.
 
 ## Get all Profile
 **GET /api/eperson/profiles/**
@@ -221,7 +221,9 @@ If the operation succeed the endpoint returns the updated resource.
 **DELETE /api/eperson/profiles/<:eperson-uuid>**
 
 Delete the profile related to the given eperson. This action can only be done by the EPerson themselves or an Administrator.
-The type of deletion depends on a configuration property: it can be soft, only the link is canceled, or hard, with which the item is canceled. I can express this behavior in the contract.
+The type of deletion depends on a configuration property. It can be a soft deletion, where only the link between the EPerson and Profile object is removed 
+(so the Profile object remains). Or, it can be a hard deletion, where the Profile object is permanently deleted.
+
 
 To delete a profile use
 ```bash
