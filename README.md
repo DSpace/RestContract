@@ -33,6 +33,7 @@ This repository documents new DSpace REST API Contract beginning with version 7.
 ## REST Endpoints
 At the ROOT of the API a HAL document lists all the primary endpoints allowing full discovery of the API.
 * [Endpoints](endpoints.md) - Documentation for all available endpoints
+* [Submission / Deposit](submission.md) - How to deposit (or submit) a new Item into DSpace.
 * [Search Options and Relationships (on Endpoints)](search-rels.md) - How to use `/search` sub-paths on many endpoints
 * [Projections (on Endpoints)](projections.md) - How to use projections to return a subset or custom view of content
 * [CSRF Protection (on Endpoints)](csrf-tokens.md) - When using modifying verbs (POST, PUT, PATCH, DELETE), you *must* pass a CSRF token in the request.
