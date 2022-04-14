@@ -40,6 +40,7 @@
 * [/api/tools/feedbacks](feedbacks.md)
 
 ## Endpoints Under Development/Discussion
+* [/api/accessStatus/find](access-status.md)
 * [/api/authz/resourcepolicies](resourcepolicies.md)
 * [/api/authz/authorizations](authorizations.md)
 * [/api/authz/features](features.md)
