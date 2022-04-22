@@ -167,7 +167,7 @@ Status codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 422 Unprocessable Entity - if the specified eperson does not exist or if for the specified eperson a profile already exists
 
-In case of response with status 201 the endpoint returns the newly created resource, while in case of 409 it returns the resource that generated the conflict.
+In case of response with status 201 the endpoint returns the newly created resource, while in case of 422 it returns the resource that generated the conflict.
 
 To create a new profile use 
 ```bash
