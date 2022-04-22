@@ -6,7 +6,7 @@ It is a json object with the following structure:
 
 ```json
 "sherpaPolicies" : {
-      "retrievalTime" : null,
+      "retrievalTime" : "2022-04-20T09:44:39.870+00:00",
       "sherpaResponse" : [ {
         "error" : false,
         "message" : null,
@@ -102,10 +102,13 @@ It is a json object with the following structure:
     }
 ```
 
+Please note that the sherpaResponse attribute will be never null but could eventually contains only the isError flag set to false when nothing is found on Sherpa.
+The section data will be not included at all if the item has not information (i.e. issns) suitable to query Sherpa/RoMEO.
+
 ## Patch operations
 The PATCH method expects a JSON body according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902)
 
 ### Remove
-It is possible to clear the cache, consequently will be updated sherpa policies with the retrievalTime
+This section is almost readonly. To limit the load on the Sherpa webservices and improve performance sherpa data are cached. It is possible to force a fresh call removing the retrievalTime from the section as follow
 `curl --data '[{ "op": "remove", "path": "/sections/sherpaPolicies/retrievalTime"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
 
