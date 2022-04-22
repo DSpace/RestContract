@@ -165,8 +165,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 409 Conflict - if for the specified eperson a profile already exists
-* 422 Unprocessable Entity - if the specified eperson does not exist
+* 422 Unprocessable Entity - if the specified eperson does not exist or if for the specified eperson a profile already exists
 
 In case of response with status 201 the endpoint returns the newly created resource, while in case of 409 it returns the resource that generated the conflict.
 
@@ -188,8 +187,8 @@ Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 409 Conflict - if the specified eperson has already a profile or if the profile to be claimed is already owned
-* 404 Unprocessable Entity - if the specified eperson does not exist
+* 404 Not Found - if the specified eperson does not exist
+* 422 Unprocessable Entity - if the specified eperson has already a profile or if the profile to be claimed is already owned
 
 An example curl call:
 ```bash
@@ -201,6 +200,8 @@ An example curl call:
 **PATCH /api/eperson/profiles/<:eperson-uuid>**
 
 This operation allow to change the visibility of one profile. This action can only be done by the EPerson themselves or an Administrator.
+A value of true means the Profile is given Anonymous READ access. A value of false, means the Profile is not accessible Anonymously.
+Using the ResourcePolicies endpoint directly is possible to give more complex permissions.
 
 To hide or unhide a profile use 
 ```bash

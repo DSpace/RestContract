@@ -14,6 +14,7 @@
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/epersons](epersons.md)
+* [/api/eperson/profiles](profiles.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
 * [/api/authn/login](authentication.md#Login)
@@ -37,7 +38,6 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
-* [/api/eperson/profiles](profiles.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
