@@ -7,7 +7,7 @@ It is a json object with the following structure:
 ```json
 "sherpaPolicies" : {
       "retrievalTime" : "2022-04-20T09:44:39.870+00:00",
-      "sherpaResponse" : [ {
+      "sherpaResponse" : {
         "error" : false,
         "message" : null,
         "metadata" : {
@@ -98,7 +98,7 @@ It is a json object with the following structure:
           } ],
           "inDOAJ" : false
         } ]
-      } ]
+      }
     }
 ```
 
