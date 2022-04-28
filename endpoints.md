@@ -14,6 +14,8 @@
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/epersons](epersons.md)
+* [/api/eperson/orcidqueues](orcidqueues.md)
+* [/api/eperson/orcidhistories](orcidhistories.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
 * [/api/authn/login](authentication.md#Login)
