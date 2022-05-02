@@ -317,11 +317,14 @@ Exposed links:
 - self: The valid URL to the item's access status
 
 Default access status values
-- metadata.only
-- open.access
-- embargo
-- restricted
-- unknown
+- metadata.only = Item doesn't contain a primary file
+- open.access = Item's primary file is downloadable to anonymous users
+- embargo = Item's primary file is under an embargo
+- restricted = Item's primary file is not downloadable to anonymous users
+- unknown = Item's status is indeterminable or unknown
+
+_Note: the calculation of those default values is based on the policies of the item's primary file._
+_The term primary file also refers to the first file in the original bundle if no primary file is defined._
 
 Return code
 - 200 Ok if the parameter is a valid item UUID
