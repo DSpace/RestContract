@@ -37,6 +37,9 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
+* [/api/integration/suggestions](suggestions.md)
+* [/api/integration/suggestionsources](suggestionsources.md)
+* [/api/integration/suggestiontargets](suggestiontargets.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
