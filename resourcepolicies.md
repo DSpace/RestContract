@@ -305,7 +305,7 @@ Return codes:
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 #### Update eperson
-**POST /api/authz/resourcepolicies/<:id>/eperson**
+**PUT /api/authz/resourcepolicies/<:id>/eperson**
 
 Update the eperson linked by this resource policy 
 
@@ -337,7 +337,7 @@ Return codes:
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
 #### Update group
-**POST /api/authz/resourcepolicies/<:id>/group**
+**PUT /api/authz/resourcepolicies/<:id>/group**
 
 Update the group linked by this resource policy 
 
