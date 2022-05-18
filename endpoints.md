@@ -50,7 +50,7 @@ The following endpoints are implemented using [Spring Boot Actuator](https://doc
 * /actuator/info 
 * /actuator/health
 
-More details [here](actuator.md)
+For more details see the [/actuator endpoint](actuator.md)
 
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)

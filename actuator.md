@@ -1,10 +1,10 @@
 # Actuator
 Actuator endpoints let you monitor and interact with DSpace. By default the following endpoints are enabled:
 
-**info**: Displays arbitrary application info. Only administrators can access this endpoint. 
+**/actuator/info**: Displays arbitrary application info. Only administrators can access this endpoint. 
 To modify the data exposed by the info endpoint, you can add properties with info prefix to the actuator.cfg configuration file.
 
-**health**: Shows application health information. The status is calculated based on the aggregation of the status of the configured components; only the administrator can see the detail of the components. 
+**/actuator/health**: Shows application health information. The status is calculated based on the aggregation of the status of the configured components; only the administrator can see the detail of the components. 
 To see the status of a single component, contact the endpoint /actuator/health/{component}.
 The statuses that the application can have are:
 * UP: the application is up and running without issues.
