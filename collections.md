@@ -630,6 +630,16 @@ The workflow role can be e.g.:
 * finaleditor
 * reviewmanagers
 
+##### Delete a collection workflow group
+**DELETE /api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
+
+Delete the Group associated with a Workflow role.
+
+Error messages:
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable entity - if the role still has pending workflow tasks (deleting the group in that case may cause tasks to end up in an invalid state)
+
 ## Creating a collection
 
 **POST /api/core/collections?parent=<:communityUUID>**
@@ -705,4 +715,4 @@ Delete a collection.
 * 204 No content - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 404 Not found - if the community doesn't exist (or was already deleted)
+* 404 Not found - if the collection doesn't exist (or was already deleted)
