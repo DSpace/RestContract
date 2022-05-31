@@ -102,13 +102,16 @@ It is a json object with the following structure:
     }
 ```
 
-Please note that the sherpaResponse attribute will be never null but could eventually contains only the isError flag set to false when nothing is found on Sherpa.
+Please note that the sherpaResponse section will never be empty. If no results are returned, minimally an error and message field will be returned.
 The section data will be not included at all if the item has not information (i.e. issns) suitable to query Sherpa/RoMEO.
 
 ## Patch operations
 The PATCH method expects a JSON body according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902)
 
+This section is almost readonly, because the data in this section is provided directly from Sherpa, it is not editable by default.  So, most PATCH actions are not accepted, with the exception of removing `retrievalTime` which is described below
+
+
 ### Remove
-This section is almost readonly. To limit the load on the Sherpa webservices and improve performance sherpa data are cached. It is possible to force a fresh call removing the retrievalTime from the section as follow
+To limit the load on the Sherpa webservices and improve performance sherpa data are cached. It is possible to force a fresh call removing the retrievalTime from the section as follow
 `curl --data '[{ "op": "remove", "path": "/sections/sherpaPolicies/retrievalTime"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
 
