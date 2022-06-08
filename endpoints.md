@@ -46,6 +46,13 @@
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
 
+## Actuator endpoints
+The following endpoints are implemented using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.enabling) and are enabled by default:
+* /actuator/info 
+* /actuator/health
+
+For more details see the [/actuator endpoint](actuator.md)
+
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)
 * /api/curate
