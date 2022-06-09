@@ -76,3 +76,6 @@ For more details see the [/actuator endpoint](actuator.md)
     * statistics viewing
   * return the status of features that are enabled for authorized users
     * item versioning
+* /api/eperson/orcid/{itemId}
+  * endpoint endpoint to which ORCID redirects when the user logs in on ORCID to associate a profile already existing on dspace to his orcid account
+  * the itemId is the uuid of the profile item to be linked

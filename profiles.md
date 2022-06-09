@@ -223,9 +223,9 @@ If the operation succeed the endpoint returns the updated resource.
 This operation allow to change the ORCID synchronization mode and preferences of a given profile. Only an administrator can modify the profile of another eperson.
 To do this, REPLACE operations must be used with one of the following paths:
 * **/orcid/mode** - to update synchronization mode; allowed values are 'BATCH', 'MANUAL'
-* **/orcid/publications** - to update the preference relative to the publications synchronization; allowed values are 'DISABLED', 'ALL', 'MY_SELECTED' and 'MINE'
-* **/orcid/projects** - to update the preference relative to the projects synchronization; allowed values are 'DISABLED', 'ALL', 'MY_SELECTED' and 'MINE'
-* **/orcid/profile** - to update the preference relative to the profile synchronization; allowed values are a 'AFFILIATION', 'EDUCATION', 'BIOGRAPHICAL' and 'IDENTIFIERS'. It is possible to specify multiple values using ',' as separator.
+* **/orcid/publications** - to update the preference relative to the publications synchronization; allowed values are 'DISABLED', 'ALL'
+* **/orcid/projects** - to update the preference relative to the projects synchronization; allowed values are 'DISABLED', 'ALL'
+* **/orcid/profile** - to update the preference relative to the profile synchronization; allowed values are a 'BIOGRAPHICAL' (to synchronize other names, country and keywords) and 'IDENTIFIERS' (to synchronize external ids and urls). It is possible to specify multiple values using ',' as separator.
 
 
 To modify the synchronization preferences use
