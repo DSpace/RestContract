@@ -27,7 +27,7 @@ The JSON response document is as follow
 
 Attributes:
 * id: the UUID of the EPerson who owns the profile. This also corresponds to the ID of the profile.
-* visible: this property provides a quick way to add/remove the Anonymous READ policy. When set to "true", then the Anonymous READ Policy is added (and the profile becomes accessible to anonymous users). When set to "false", then the Anonymous READ policy is removed (and the profile is no longer accessible anonymously).
+* visible: this property provides a quick way to add/remove the Anonymous READ policy. When set to "true", then the Anonymous READ Policy is added (and the profile becomes accessible to anonymous users). When set to "false", then the Anonymous READ policy is removed (and the profile is no longer accessible anonymously). Keep in mind, this setting only impacts the Anonymous READ policy. So, if other custom READ policies exist on the profile, those policies will take effect when "visible=false".
 * type: the resource type (profile)
 
 Exposed links:
