@@ -23,7 +23,7 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "type": "relationship",
   "_links": {
     "relationshipType": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes/1"
+      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/530/relationshipType"
     },
     "self": {
       "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/530"
@@ -206,7 +206,7 @@ It would respond with
         "type": "relationship",
         "_links": {
           "relationshipType": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes/5"
+            "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/590/relationshipType"
           },
           "self": {
             "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/590"
@@ -279,7 +279,7 @@ It would respond with
         "type": "relationship",
         "_links": {
           "relationshipType": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes/5"
+            "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/589/relationshipType"
           },
           "self": {
             "href": "https://dspace7-entities.atmire.com/rest/api/core/relationships/589"
