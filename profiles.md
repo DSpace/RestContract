@@ -21,6 +21,13 @@ The JSON response document is as follow
 {
   "id": "eb645ef8-1373-41eb-bf67-6afcea7e2069",
   "visible": true,
+  "orcid": "0000-0002-8310-6788",
+  "orcidSynchronization": {
+    "mode": "MANUAL",
+    "publicationsPreference": "ALL",
+    "projectsPreference": "ALL",
+    "profilePreferences": ["AFFILIATION", "EDUCATION", "BIOGRAPHICAL", "IDENTIFIERS"]
+  },
   "type": "profile"
 }
 ```
@@ -28,7 +35,11 @@ The JSON response document is as follow
 Attributes:
 * id: the UUID of the EPerson who owns the profile. This also corresponds to the ID of the profile.
 * visible: this property provides a quick way to add/remove the Anonymous READ policy. When set to "true", then the Anonymous READ Policy is added (and the profile becomes accessible to anonymous users). When set to "false", then the Anonymous READ policy is removed (and the profile is no longer accessible anonymously). Keep in mind, this setting only impacts the Anonymous READ policy. So, if other custom READ policies exist on the profile, those policies will take effect when "visible=false".
+* orcid: the orcid id 
+* orcidSynchronization: contains the orcid synchronization mode and preferences 
 * type: the resource type (profile)
+
+The orcid and orcidSynchronization attributes are not showed if the given profile is not linked to any ORCID account.
 
 Exposed links:
 * item: the item with which the profile is modeled
