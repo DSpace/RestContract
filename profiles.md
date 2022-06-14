@@ -26,7 +26,7 @@ The JSON response document is as follow
     "mode": "MANUAL",
     "publicationsPreference": "ALL",
     "projectsPreference": "ALL",
-    "profilePreferences": ["AFFILIATION", "EDUCATION", "BIOGRAPHICAL", "IDENTIFIERS"]
+    "profilePreferences": ["BIOGRAPHICAL", "IDENTIFIERS"]
   },
   "type": "profile"
 }
@@ -248,6 +248,43 @@ Status codes:
 
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the given profile is not already linked to an ORCID account
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
+* 422 Unprocessable entity - if the provided path or value is not valid
+
+## Connect a profile with ORCID
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
+
+This operation allow to connect an ORCID account with a given profile. Only an administrator can modify the profile of another eperson.
+To do this, ADD operations must be used with one of the following path:
+* **/orcid** - the allowed value is the authorization code for an ORCID iD and 3-legged access token.
+
+```bash
+curl -X PATCH http://${dspace.server.url}/api/eperson/profiles/<:id-eperson> -H "* Content-Type: application/json" -d '[{ "op": "add", "path": "/orcid", value: <code> }]'
+```
+
+Status codes:
+
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the given code is not valid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
+* 422 Unprocessable entity - if the provided path or value is not valid
+
+## Disconnect a profile from ORCID
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
+
+This operation allow to disconnect an ORCID account from a given profile. Only an administrator can modify the profile of another eperson.
+To do this, REMOVE operations must be used with one of the path **/orcid**
+
+```bash
+curl -X PATCH http://${dspace.server.url}/api/eperson/profiles/<:id-eperson> -H "* Content-Type: application/json" -d '[{ "op": "remove", "path": "/orcid" }]'
+```
+Status codes:
+
+* 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if a profile for the specified eperson does not exist
