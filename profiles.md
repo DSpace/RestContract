@@ -267,11 +267,11 @@ curl -X PATCH http://${dspace.server.url}/api/eperson/profiles/<:id-eperson> -H 
 Status codes:
 
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the given code is not valid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if a profile for the specified eperson does not exist
-* 422 Unprocessable entity - if the provided path or value is not valid
+* 422 Unprocessable entity - if the given code is not valid
+* 500 Internal server error - if there are integration configuration errors or if the orcid service is down
 
 ## Disconnect a profile from ORCID
 **PATCH /api/eperson/profiles/<:eperson-uuid>**
@@ -288,7 +288,6 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if a profile for the specified eperson does not exist
-* 422 Unprocessable entity - if the provided path or value is not valid
 
 ## Delete a profile
 **DELETE /api/eperson/profiles/<:eperson-uuid>**
