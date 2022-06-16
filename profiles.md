@@ -21,6 +21,13 @@ The JSON response document is as follow
 {
   "id": "eb645ef8-1373-41eb-bf67-6afcea7e2069",
   "visible": true,
+  "orcid": "0000-0002-8310-6788",
+  "orcidSynchronization": {
+    "mode": "MANUAL",
+    "publicationsPreference": "ALL",
+    "projectsPreference": "ALL",
+    "profilePreferences": ["BIOGRAPHICAL", "IDENTIFIERS"]
+  },
   "type": "profile"
 }
 ```
@@ -28,7 +35,11 @@ The JSON response document is as follow
 Attributes:
 * id: the UUID of the EPerson who owns the profile. This also corresponds to the ID of the profile.
 * visible: this property provides a quick way to add/remove the Anonymous READ policy. When set to "true", then the Anonymous READ Policy is added (and the profile becomes accessible to anonymous users). When set to "false", then the Anonymous READ policy is removed (and the profile is no longer accessible anonymously). Keep in mind, this setting only impacts the Anonymous READ policy. So, if other custom READ policies exist on the profile, those policies will take effect when "visible=false".
+* orcid: the orcid id 
+* orcidSynchronization: contains the orcid synchronization mode and preferences 
 * type: the resource type (profile)
+
+The orcid and orcidSynchronization attributes are not showed if the given profile is not linked to any ORCID account.
 
 Exposed links:
 * item: the item with which the profile is modeled
@@ -216,6 +227,67 @@ Status codes:
 * 404 Not found - if a profile for the specified eperson does not exist
 
 If the operation succeed the endpoint returns the updated resource.
+
+## Modify ORCID synchronization preferences
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
+
+This operation allow to change the ORCID synchronization mode and preferences of a given profile. Only an administrator can modify the profile of another eperson.
+To do this, REPLACE operations must be used with one of the following paths:
+* **/orcid/mode** - to update synchronization mode; allowed values are 'BATCH', 'MANUAL'
+* **/orcid/publications** - to update the preference relative to the publications synchronization; allowed values are 'DISABLED', 'ALL'
+* **/orcid/projects** - to update the preference relative to the projects synchronization; allowed values are 'DISABLED', 'ALL'
+* **/orcid/profile** - to update the preference relative to the profile synchronization; allowed values are a 'BIOGRAPHICAL' (to synchronize other names, country and keywords) and 'IDENTIFIERS' (to synchronize external ids and urls). It is possible to specify multiple values using ',' as separator.
+
+
+To modify the synchronization preferences use
+```bash
+curl -i -X PATCH ${dspace-url}/api/eperson/profiles/eb645ef8-1373-41eb-bf67-6afcea7e2069 --data '[ { "op": "replace", "path": "/orcid/mode", "value": "MANUAL" }]' -H "Content-Type:application/json"
+```
+
+Status codes:
+
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the given profile is not already linked to an ORCID account
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
+* 422 Unprocessable entity - if the provided path or value is not valid
+
+## Connect a profile with ORCID
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
+
+This operation allow to connect an ORCID account with a given profile. Only an administrator can modify the profile of another eperson.
+To do this, ADD operations must be used with one of the following path:
+* **/orcid** - the allowed value is the authorization code for an ORCID iD and 3-legged access token.
+
+```bash
+curl -X PATCH http://${dspace.server.url}/api/eperson/profiles/<:id-eperson> -H "* Content-Type: application/json" -d '[{ "op": "add", "path": "/orcid", value: <code> }]'
+```
+
+Status codes:
+
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
+* 422 Unprocessable entity - if the given code is not valid
+* 500 Internal server error - if there are integration configuration errors or if the orcid service is down
+
+## Disconnect a profile from ORCID
+**PATCH /api/eperson/profiles/<:eperson-uuid>**
+
+This operation allow to disconnect an ORCID account from a given profile. Only an administrator can modify the profile of another eperson.
+To do this, REMOVE operations must be used with one of the path **/orcid**
+
+```bash
+curl -X PATCH http://${dspace.server.url}/api/eperson/profiles/<:id-eperson> -H "* Content-Type: application/json" -d '[{ "op": "remove", "path": "/orcid" }]'
+```
+Status codes:
+
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if a profile for the specified eperson does not exist
 
 ## Delete a profile
 **DELETE /api/eperson/profiles/<:eperson-uuid>**
