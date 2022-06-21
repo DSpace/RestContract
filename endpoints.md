@@ -16,6 +16,7 @@
 * [/api/core/epersons](epersons.md)
 * [/api/eperson/orcidqueues](orcidqueues.md)
 * [/api/eperson/orcidhistories](orcidhistories.md)
+* [/api/eperson/profiles](profiles.md)
 * /api/core/groups
 * [/api/core/{model}/search](search-rels.md)
 * [/api/authn/login](authentication.md#Login)
@@ -26,6 +27,7 @@
 * [/api/config/submissionsections](submissionsections.md)
 * [/api/config/submissionforms](submissionforms.md)
 * [/api/config/submissionuploads](submissionuploads.md)
+* [/api/config/submissionaccessoptions](submissionaccessoptions.md)
 * [/api/config/workflowdefinitions](workflowdefinitions.md)
 * [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
@@ -46,6 +48,13 @@
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
+
+## Actuator endpoints
+The following endpoints are implemented using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.enabling) and are enabled by default:
+* /actuator/info 
+* /actuator/health
+
+For more details see the [/actuator endpoint](actuator.md)
 
 ## Other Endpoints (raw list)
 * /api/authorize/(dso)

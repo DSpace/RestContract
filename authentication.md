@@ -107,9 +107,27 @@ This will return the authentication status, E.G.:
       "uuid" : "2245f2c5-1bed-414b-a313-3fd2d2ec89d6",
       "email" : "test@dspace.com",
       ...
-      }
+      },
+    "specialGroups" : {
+        "_embedded" : {
+           "specialGroups" : [ {
+             "id" : "3d07510c-2c33-48f5-8a04-f63bc9a63296",
+             "uuid" : "3d07510c-2c33-48f5-8a04-f63bc9a63296",
+             "name" : "A Special Group",
+             ... } ],
+        "page" : {
+            "number" : 0,
+            "size" : 20,
+            "totalPages" : 1,
+            "totalElements" : 1
+        },
+        "_links" : {
+            "self" : {
+                "href" : "http://${dspace-server.url}/api/authn/status/specialGroups"
+            }
+        }
     }
-  }
+   }
 }
 ```
 
@@ -120,6 +138,7 @@ Fields
 
 Links	
 - returns a link to the authenticated eperson
+- specialGroups: return the special groups associated with the current authentication context. Please note that specialGroups can be present also without an authenticated user (i.e. via IPAuthentication)
 
 Embedded
 - Embeds the authenticated eperson
