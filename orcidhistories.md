@@ -8,7 +8,7 @@ Provide detailed information about a specific ORCID history entry. The JSON resp
 ```json
 {
   "id": 20,
-  "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
+  "profileItemId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
   "entityId": "66e0d773-ddeb-4b6b-bcac-ced2ae67141c",
   "status": "201",
   "putCode": "123456",
@@ -29,7 +29,7 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if an ORCID queue entry with the given id doesn't exist
 
-The `ownerId` attribute represent the id of the researcher profile item that is associated with the the entity item with id `entityId`; the entity is the item that should be sent to the ORCID register. The `putCode` attribute, if presente, represent the unique code that ORCID registry associate to the stored entity. The `status` attribute is the response status of the related call to ORCID to send the entity. The `responseMessage` is the complete response body coming from the ORCID api when the call to send the entity is made. The `lastAttempt` and the `sucessAttempt` are two timestamps that represent respectively the last attempt to send the entity info to ORCID and the last moment in which that send was successful.
+The `profileItemId` attribute represent the id of the researcher profile item that is associated with the the entity item with id `entityId`; the entity is the item that should be sent to the ORCID register. The `putCode` attribute, if presente, represent the unique code that ORCID registry associate to the stored entity. The `status` attribute is the response status of the related call to ORCID to send the entity. The `responseMessage` is the complete response body coming from the ORCID api when the call to send the entity is made. The `lastAttempt` and the `sucessAttempt` are two timestamps that represent respectively the last attempt to send the entity info to ORCID and the last moment in which that send was successful.
 
 ## Send to ORCID registry
 **POST /api/eperson/orcidhistories**

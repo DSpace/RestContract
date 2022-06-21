@@ -8,7 +8,7 @@ Provide detailed information about a specific ORCID queue entry. The JSON respon
 ```json
 {
   "id": 73,
-  "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
+  "profileItemId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
   "entityId": "66e0d773-ddeb-4b6b-bcac-ced2ae67141c",
   "description": "My Publication",
   "recordType": "Publication",
@@ -28,19 +28,19 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if an ORCID queue entry with the given id doesn't exist
 
-The `ownerId` attribute represent the id of the researcher profile item that is associated with the the entity item with id `entityId` that should be sent to the ORCID register.
+The `profileItemId` attribute represent the id of the researcher profile item that is associated with the the entity item with id `entityId` that should be sent to the ORCID register.
 
-## Search ORCID Queue entries by owner id
-**GET /api/eperson/orcidqueues/search/findByOwner?ownerId=<:item-uuid>**
+## Search ORCID Queue entries by profileItem id
+**GET /api/eperson/orcidqueues/search/findByProfileItem?profileItemId=<:item-uuid>**
 
-Provide detailed information about all the ORCID queue entries related to the owner with the given uuid. The JSON response document is as follow
+Provide detailed information about all the ORCID queue entries related to the profileItem with the given uuid. The JSON response document is as follow
 ```json
 {
   "_embedded": {
     "orcidQueues": [
       {
         "id": 68,
-        "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
+        "profileItemId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
         "entityId": "3eed1cf2-552d-491a-9a1f-ef941a0cafcd",
         "description": "ABC-54321",
         "recordType": "Project",
@@ -54,7 +54,7 @@ Provide detailed information about all the ORCID queue entries related to the ow
       },
       {
         "id": 73,
-        "ownerId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
+        "profileItemId": "87d24f06-0ca5-4abe-84f9-bfd36a8236d8",
         "entityId": "66e0d773-ddeb-4b6b-bcac-ced2ae67141c",
         "description": "My Publication",
         "recordType": "Publication",
@@ -70,7 +70,7 @@ Provide detailed information about all the ORCID queue entries related to the ow
   },
   "_links": {
     "self": {
-      "href": "http://localhost:8080/server/api/eperson/orcidQueues/search/findByOwner"
+      "href": "http://localhost:8080/server/api/eperson/orcidQueues/search/findByProfileItem"
     }
   },
   "page": {
