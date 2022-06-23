@@ -1,6 +1,14 @@
 # ORCID Queue Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
+These endpoints allow to handle the Orcid Queue records associated with a specific profile.
+Only the EPerson who is the owner of the Profile Item can access them.
+
+When these records are processed lead to the creation of Orcid History records
+(see [orcid history contract](orcidhistories.md) for more details). 
+
+These endpoints are only available when orcid.sychronization-enabled=true. 
+
 ## Single ORCID Queue entry
 **GET /api/eperson/orcidqueues/<:id>**
 
@@ -25,7 +33,7 @@ Provide detailed information about a specific ORCID queue entry. The JSON respon
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions
+* 403 Forbidden - if you are not logged in with sufficient permissions  (only the owner of the profile is allowed)
 * 404 Not found - if an ORCID queue entry with the given id doesn't exist
 
 The `profileItemId` attribute represent the id of the researcher profile item that is associated with the the entity item with id `entityId` that should be sent to the ORCID register.
@@ -85,7 +93,7 @@ Provide detailed information about all the ORCID queue entries related to the pr
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions
+* 403 Forbidden - if you are not logged in with sufficient permissions (only the owner of the profile is allowed)
 
 ## Delete an ORCID Queue entry
 **DELETE /api/eperson/orcidqueues/<:id>**
@@ -95,4 +103,4 @@ Delete a single ORCID queue entry by id. The provided response has no content.
 Return codes:
 * 204 No content - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions
+* 403 Forbidden - if you are not logged in with sufficient permissions  (only the owner of the profile is allowed)
