@@ -41,6 +41,9 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
+* [/api/integration/qasources](qasources.md)
+* [/api/integration/qatopics](qatopics.md)
+* [/api/integration/qaevents](qaevents.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)

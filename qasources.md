@@ -1,19 +1,19 @@
 ## Main Endpoint
-**GET /api/integration/nbsources**
+**GET /api/integration/qasources**
 
-Provide access to the Notification sources. It returns the list of the Notification sources.
+Provide access to the Quality Assurance sources. It returns the list of the Quality Assurance sources.
 
 ```json
 [
 
   {
     id: "openaire",
-    type: "nbsource",
+    type: "qasource",
     totalEvents: "33"
   },
   {
     id: "another-source",
-    type: "nbsource",
+    type: "qasource",
     lastEvent: "2020/10/09 10:11 UTC",
     totalEvents: "21"
   },
@@ -21,8 +21,8 @@ Provide access to the Notification sources. It returns the list of the Notificat
 ]
 ```
 Attributes:
-* lastEvent: the date of the last update from the specific Notification source
-* totalEvents: the total number of suggestions provided by the Notification source
+* lastEvent: the date of the last update from the specific Quality Assurance source
+* totalEvents: the total number of suggestions provided by the Quality Assurance source
 * id: is the identifier to use in GET Single Source
 
 Return codes:
@@ -31,14 +31,14 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
 
 ## GET Single Source
-**GET /api/integration/nbsources/<:nbsource-id>**
+**GET /api/integration/qasources/<:qasource-id>**
 ​
-Provide detailed information about a specific Notification source. The JSON response document is as follow
+Provide detailed information about a specific Quality Assurance source. The JSON response document is as follow
 ​
 ```json
 {
   id: "openaire",
-  type: "nbsource",
+  type: "qasource",
   totalEvents: "33"
 }
  ```

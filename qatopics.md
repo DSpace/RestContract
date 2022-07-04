@@ -1,21 +1,21 @@
 ## Main Endpoint
-**GET /api/integration/nbtopics**
+**GET /api/integration/qatopics**
 
-Provide access to the Notification Broker topics. It returns the list of the Notification Broker topics.
+Provide access to the Quality Assurance Broker topics. It returns the list of the Quality Assurance Broker topics.
 
 ```json
 [
 
   {
     id: "ENRICH!MORE!PID",
-    type: "nbtopic",
+    type: "qatopic",
     name: "ENRICH/MORE/PID",
     lastEvent: "2020/10/09 10:11 UTC",
     totalSuggestions: "33"
   },
   {
     id: "ENRICH!MISSING!ABSTRACT",
-    type: "nbtopic",
+    type: "qatopic",
     name: "ENRICH/MISSING/ABSTRACT",
     lastEvent: "2020/10/09 10:11 UTC",
     totalSuggestions: "21"
@@ -25,8 +25,8 @@ Provide access to the Notification Broker topics. It returns the list of the Not
 ```
 Attributes:
 * name: the name of the topic to display on the frontend user interface
-* lastEvent: the date of the last update from Notification Broker
-* totalEvents: the total number of suggestions provided by Notification Broker for this topic
+* lastEvent: the date of the last update from Quality Assurance Broker
+* totalEvents: the total number of suggestions provided by Quality Assurance Broker for this topic
 * id: is the identifier to use in GET Single Topic
 
 Return codes:
@@ -35,14 +35,14 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
 
 ## GET Single Topic
-**GET /api/integration/nbtopics/<:nbtopic-id>**
+**GET /api/integration/qatopics/<:qatopic-id>**
 ​
-Provide detailed information about a specific Notification Broker topic. The JSON response document is as follow
+Provide detailed information about a specific Quality Assurance Broker topic. The JSON response document is as follow
 ​
 ```json
 {
   id: "ENRICH!MORE!PID",
-  type: "nbtopic",
+  type: "qatopic",
   name: "ENRICH/MORE/PID",
   lastEvent: "2020/10/09 10:11 UTC",
   totalEvents: 33
@@ -56,10 +56,10 @@ Return codes:
 * 404 Not found - if the topic doesn't exist
 
 ## Search methods
-### Get nbtopics by a given source
+### Get qatopics by a given source
 **/api/core/entitytypes/search/bySource**
 
-It returns the list of nb topics from a specific source
+It returns the list of qa topics from a specific source
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -71,4 +71,4 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
 
-Provide paginated list of the nb topics available.
+Provide paginated list of the qa topics available.

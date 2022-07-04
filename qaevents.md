@@ -1,10 +1,10 @@
 ## Main Endpoint
-**GET /api/integration/nbevents**
+**GET /api/integration/qaevents**
 
 _Unsupported._ The suggestions can be retrieved only by source and target or via direct link, see the single entry and search method below. 
 
 ## GET Single suggestion
-** GET /api/integration/nbevents/<:nbevent-id>
+** GET /api/integration/qaevents/<:qaevent-id>
 
 Return a single suggestion:
 
@@ -27,7 +27,7 @@ Return a single suggestion:
     "jurisdiction":"EU",
     "title":"Elliptic Pdes and Symmetry of Interfaces and Layers for Odd Nonlinearities"
   },
-  type: "nbevent"
+  type: "qaevent"
 }
 ```
 
@@ -47,19 +47,19 @@ Attributes
 Exposed links:
 * topic: link to the topic to which the event belong to
 * target: link to the item that represent the targe to whom the suggestion apply
-* related: link to a second item that is involved in the nb events (i.e. the project item)
+* related: link to a second item that is involved in the qa events (i.e. the project item)
 
 Status codes:
 * 200 Ok - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
-* 404 Not found - if no nb event exists with such id 
+* 404 Not found - if no qa event exists with such id 
 
 ## Search methods
-### Get nbevents by a given topic
-**/api/integration/nbevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
+### Get qaevents by a given topic
+**/api/integration/qaevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
 
-It returns the list of nb events from a specific topic
+It returns the list of qa events from a specific topic
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -69,13 +69,13 @@ Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the topic parameter is missing or invalid
 
-Provide paginated list of the nb events available.
+Provide paginated list of the qa events available.
 
 ## PATCH 
 ### To record a decision 
-PATCH /api/integration/nbevents/<:nbevent-id>
+PATCH /api/integration/qaevents/<:qaevent-id>
 
-This method allow users to Accept, Reject or Discard a nb event. The PATCH body must follow the JSON PATCH specification
+This method allow users to Accept, Reject or Discard a qa event. The PATCH body must follow the JSON PATCH specification
 
 ```json
 [
@@ -87,30 +87,30 @@ This method allow users to Accept, Reject or Discard a nb event. The PATCH body 
 ]
 ```
 
-As response, the modified nb event will be returned.
+As response, the modified qa event will be returned.
  
 ## POST
-### To associated a related item to the nb event
-POST /api/integration/nbevents/<:nbevent-id>/related?item=<:item-uri>
+### To associated a related item to the qa event
+POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uri>
 
 Return codes:
 * 201 Created - if the operation succeed
-* 400 Bad Request - if the nb event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
+* 400 Bad Request - if the qa event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
-* 404 Not found - if no nb event exists with such id
+* 404 Not found - if no qa event exists with such id
 
-### To remove a related item to the nb event
-DELETE /api/integration/nbevents/<:nbevent-id>/related
+### To remove a related item to the qa event
+DELETE /api/integration/qaevents/<:qaevent-id>/related
 
-Only the association between the nb event and the related item id deleted. The related item stays untouched
+Only the association between the qa event and the related item id deleted. The related item stays untouched
 
 Return codes:
-* 204 No content - if the delete succeeded (including the case of no-op if the nb event didn't contain a related item)
-* 400 Bad Request - if the nb event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
+* 204 No content - if the delete succeeded (including the case of no-op if the qa event didn't contain a related item)
+* 400 Bad Request - if the qa event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
-* 404 Not found - if no nb event exists with such id
+* 404 Not found - if no qa event exists with such id
 
 ### To replace a related item
 Replacing a related item will require deleting the related association and creating a new association hereafter
