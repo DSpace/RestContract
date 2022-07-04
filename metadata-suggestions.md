@@ -1,3 +1,10 @@
+---
+⚠️ **NOT YET IMPLEMENTED**
+
+This page represents a metadata enhancement feature of the Submission process which was initially designed but never fully implemented (because of its complexity). The initial implementation is unfinished but may be found at https://github.com/DSpace/DSpace/pull/2712. _Until that ticket moves forward this documentation is INVALID._
+
+---
+
 # Metadata suggestions from live import
 [Back to the index](README.md)
 

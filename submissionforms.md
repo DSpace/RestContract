@@ -38,7 +38,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": null
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -113,7 +114,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": null
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -135,7 +137,8 @@ Provide detailed information about a specific input-form. The JSON response docu
               "closed": false
             }
           ],
-          "languageCodes": []
+          "languageCodes": [],
+          "typeBind": []
         }
       ]
     },
@@ -152,7 +155,8 @@ Provide detailed information about a specific input-form. The JSON response docu
             "filter": "creativework.publisher:somepublishername",
             "searchConfiguration": "periodicalConfiguration",
             "externalSources": [ "sherpaJournal" ],
-            "nameVariants": false
+            "nameVariants": false,
+            "typeBind": ["Article"]
           }
         }
       ]
@@ -220,5 +224,6 @@ The json has an ordered array named rows containing the fields that need to be r
     * externalSources: a list of [external source](external-authority-sources.md) names which can be used in a lookup. This can be empty to state no external sources should be used
     * nameVariants: It defines whether an alternative name can be used for the stored relation with the entity (in the relationship)
 * languageCodes contains the array of languages that can be assigned to an user input. For each language it is present a *display* string (i.e. English, Italian, etc.) and a *code* (i.e. en, it).
+* typeBind contains an array of publication type values for which this field applies (eg. Book, Article). This field should be hidden and ignored if the item has a different or empty type. An empty typeBind array indicates that this field applies to *all* publication types.
   
 It is important to note that the field definition contains special attributes in selectableMetadata and selectableRelationship that in an ideal HAL representation should be replaced with links but for simplicity we have preferred to expose as string.

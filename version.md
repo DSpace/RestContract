@@ -9,8 +9,6 @@ If this is set to true, the version can only be retrieved if the user is a commu
 Please note that the security of the single version is in no way related to the linked item. 
 It is eventually possible to retrieve a version related to a not accessible item, as the version doesn't expose any sensitive information this pose no security risks.
 
-**WARNING**: this feature currently address only normal DSpace item, by default, it cannot be used with Entity item (`versioning.block.entity = true'). The versioning feature is not considered complete for Entity items as the relationships are currently ignored when new version are created but the decision about how to deal with them is undergoing. The related authorization features: canManageVersions, canCreateVersion, canEditVersion, canDeleteVersion, if the versioning for entity is disallowed will always return false
-
 ## Main Endpoint
 **/api/versioning/versions**   
 

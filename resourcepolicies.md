@@ -304,6 +304,23 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
 
+#### Update eperson
+**PUT /api/authz/resourcepolicies/<:id>/eperson**
+
+Update the eperson linked by this resource policy 
+
+Sample CURL command:
+```
+curl -i -X PUT 'https://api7.dspace.org/server/api/authz/resourcepolicies/3/eperson' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/eperson/epersons/ba05e3dd-aa20-4441-ac05-8ceef6f67ac7'
+```
+The uri-list should always contain exactly 1 eperson. This eperson will be assigned to the resource policy
+
+Return codes:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if the resourcepolicy is not related to an eperson or for empty uri-list or uri-list contains many strings or uri-list contains group instead of eperson
 
 ### Group
 **/api/authz/resourcepolicies/<:id>/group**
@@ -318,6 +335,24 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
 * 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
 * 404 Not found - if the resource policy doesn't exist (or was already deleted)
+
+#### Update group
+**PUT /api/authz/resourcepolicies/<:id>/group**
+
+Update the group linked by this resource policy 
+
+Sample CURL command:
+```
+curl -i -X PUT 'https://api7.dspace.org/server/api/authz/resourcepolicies/4/group' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/eperson/groups/db337ae5-abd2-4a28-b4ad-918cf7779e25'
+```
+The uri-list should always contain exactly 1 group. This group will be assigned to the resource policy
+
+Return codes:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated and the policy is not related to the Anonymous group
+* 403 Forbidden - if you are not logged in with sufficient permissions. See the requirement in the GET Single Resource Policy endpoint
+* 404 Not found - if the resource policy doesn't exist (or was already deleted)
+* 422 Unprocessable Entity - if the resourcepolicy is not related to group or for empty uri-list or uri-list contains many strings or uri-list contains eperson instead of group
 
 ### Resource
 **/api/authz/resourcepolicies/<:id>/resource**
