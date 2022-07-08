@@ -57,7 +57,7 @@ Return codes:
 
 ## Search methods
 ### Get qatopics by a given source
-**/api/core/entitytypes/search/bySource**
+**/api/integration/qatopics/search/bySource**
 
 It returns the list of qa topics from a specific source
 
