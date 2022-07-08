@@ -91,14 +91,14 @@ As response, the modified qa event will be returned.
  
 ## POST
 ### To associated a related item to the qa event
-POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uri>
+POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uuid>
 
 Return codes:
 * 201 Created - if the operation succeed
-* 400 Bad Request - if the qa event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
 * 404 Not found - if no qa event exists with such id
+* 422 Unprocessable entity - if the qa event doesn't allow a related item (for example it is an openaire event not related to a */PROJECT topic)
 
 ### To remove a related item to the qa event
 DELETE /api/integration/qaevents/<:qaevent-id>/related
@@ -107,10 +107,10 @@ Only the association between the qa event and the related item id deleted. The r
 
 Return codes:
 * 204 No content - if the delete succeeded (including the case of no-op if the qa event didn't contain a related item)
-* 400 Bad Request - if the qa event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
 * 404 Not found - if no qa event exists with such id
+* 422 Unprocessable entity - if the qa event doesn't allow a related item (i.e. it is not related to a */PROJECT topic)
 
 ### To replace a related item
 Replacing a related item will require deleting the related association and creating a new association hereafter
