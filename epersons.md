@@ -253,6 +253,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
 * 401 Unauthorized - if the token doesn't allow you to create this account
+* 422 Unprocessable Entity - If password validation is enabled and the password of respects the rules configured in the regular expression
 
 ## Linked entities
 ### Groups
