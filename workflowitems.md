@@ -20,6 +20,7 @@ Provide detailed information about a specific workflowitem. The JSON response do
   "step": "editstep",
   "sections": {
   	 "collection": "05457c63-b392-4629-a373-f2d66ee9ee33",
+	 "detect-duplicate": {},
   	 "traditional-page1": {
   	 	"dc.title" : [{value: "Sample Workflow Item"}],
   	 	"dc.contributor.author" : [

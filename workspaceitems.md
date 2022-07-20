@@ -55,6 +55,7 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   "lastModified": "2017-06-24T00:40:54.970+0000",
   "sections": {
   	 "collection": "05457c63-b392-4629-a373-f2d66ee9ee33",
+	 "detect-duplicate": {},
   	 "traditional-page1": {
   	 	"dc.title" : [{value: "Sample Submission Item"}],
   	 	"dc.contributor.author" : [

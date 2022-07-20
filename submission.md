@@ -52,6 +52,7 @@ Each `sectionType` is separately described below, including notes on how to edit
 * ["access" section type](workspaceitem-data-access.md) - Used to edit access rights / embargo
 * ["license" section type](workspaceitem-data-license.md) - Used to sign off on the required license agreement
 * ["cclicense" section type](workspaceitem-data-cclicense.md) - Use to optionally apply a Creative Commons license
+* ["detect-duplicate" section type](workspaceitem-data-detect-duplicate.md) - Use to optionally apply a Creative Commons license
 
 ## Completing the Submission / Starting Workflow
 
