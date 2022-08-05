@@ -158,16 +158,16 @@ The add operation allows adding or replacing information in the EPerson. Passwor
 #### These operations can be performed by administrators and by the authenticated user.
 
 To add/replace the password value while authenticated, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"},{ "op": "add", "path": "/challenge", "value": "oldpassword"}]'`.  
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": {"password": "newpassword", "challenge":"oldpassword"}}]'`.  
 To add/replace the password value based on a registration token, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"},{ "op": "add", "path": "/challenge", "value": "oldpassword"}]'`.  
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": {"password": "newpassword"}}]'`.  
 The operation requires an Authorization header or a token.
 
 For example, starting with the following eperson field data:
 ```json
  "password": "oldpassword",
 ```
-the replace operation `[{ "op": "add", "path": "/password", "value": "newpassword"},{ "op": "add", "path": "/challenge", "value": "oldpassword"}]` will result in :
+the replace operation `[{ "op": "add", "path": "/password", "value": {"password": "newpassword", "challenge":"oldpassword"}}]` will result in :
 ```json
   "password": "newpassword",
 ```
