@@ -3,6 +3,7 @@
 
 ## Statistics for the whole repository
 **GET /api/statistics/filteredcollections**
+
 **POST /api/statistics/filteredcollections**
 
 This endpoint provides aggregated statistics about the number of items per collection according to selected filters.
@@ -22,40 +23,40 @@ An example JSON response document to `/api/statistics/filteredcollections`:
     "id": null,
     "collections": [
         {
-            "label": "Articles publiés dans des revues avec comité de lecture",
+            "label": "Collection 1",
             "handle": "100/1",
             "values": {
                 "is_discoverable": 23,
                 "has_multiple_originals": 3,
                 "has_pdf_original": 14
             },
-            "community_label": "Dépôt institutionnel de l'Université Laval",
+            "community_label": "Community 1",
             "community_handle": "20.500.11794/1",
             "nb_total_items": 23,
             "all_filters_value": 3
         },
         {
-            "label": "Autres articles publiés",
+            "label": "Collection 2",
             "handle": "100/2",
             "values": {
                 "is_discoverable": 1,
                 "has_multiple_originals": 0,
                 "has_pdf_original": 0
             },
-            "community_label": "Dépôt institutionnel de l'Université Laval",
+            "community_label": "Community 1",
             "community_handle": "20.500.11794/1",
             "nb_total_items": 1,
             "all_filters_value": 0
         },
         {
-            "label": "Thèses et mémoires",
-            "handle": "100/6",
+            "label": "Collection 3",
+            "handle": "100/3",
             "values": {
                 "is_discoverable": 1,
                 "has_multiple_originals": 0,
                 "has_pdf_original": 1
             },
-            "community_label": "Dépôt institutionnel de l'Université Laval",
+            "community_label": "Community 1",
             "community_handle": "20.500.11794/1",
             "nb_total_items": 1,
             "all_filters_value": 0
@@ -83,15 +84,15 @@ An example JSON response document to `/api/statistics/filteredcollections`:
 }
 ```
 
-The request consists of a series of filters to add to the basic report.
+The request can be parameterized with a series of filters to add to the basic report.
 
-In GET mode, it is parameterized through a `filters` query parameter whose value is a comma-separated list of filters
+In GET mode, it consists of a `filters` query parameter whose value is a comma-separated list of filters
 like the following:
 ```
 ?filters=is_discoverable,has_multiple_originals,has_pdf_original
 ```
 
-In POST mode, it is sent as a JSON document like this:
+In POST mode, it is defined as a JSON document like this:
 ```json
 {
     "filters": {
@@ -144,5 +145,5 @@ The available filters are as follows:
 
 Possible response status
 
-- 200 OK - The specific statistics data was found, and the data has been properly returned.
+* 200 OK - The specific statistics data was found, and the data has been properly returned.
 * 403 Forbidden - if a valid CSRF token is missing when issuing a POST request.
