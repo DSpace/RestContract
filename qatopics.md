@@ -1,7 +1,8 @@
 ## Main Endpoint
-**GET /api/integration/qatopics**
+Provide access to the Quality Assurance topics. A topic represents a specific type of event (such as a missing abstract can be).
 
-Provide access to the Quality Assurance Broker topics. It returns the list of the Quality Assurance Broker topics.
+**GET /api/integration/qatopics**
+It returns the list of the Quality Assurance Broker topics.
 
 ```json
 [
@@ -26,7 +27,7 @@ Provide access to the Quality Assurance Broker topics. It returns the list of th
 Attributes:
 * name: the name of the topic to display on the frontend user interface
 * lastEvent: the date of the last update from Quality Assurance Broker
-* totalEvents: the total number of suggestions provided by Quality Assurance Broker for this topic
+* totalEvents: the total number of quality assurance events provided by Quality Assurance Broker for this topic
 * id: is the identifier to use in GET Single Topic
 
 Return codes:

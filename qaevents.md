@@ -1,12 +1,18 @@
-## Main Endpoint
+# Quality Assurance Events endpoint
+The Quality Assurance feature aims to improve existing data in the repository using feedback that 
+Quality Assurance sources (as OpenAIRE) made available, such as missing or additional metadata (abstract, subjects, PIDs, projects).
+
+These endpoints provide access to the quality assurance events so that they can be reviewed and managed by the repository manager.
+
+## GET All quality assurance events
 **GET /api/integration/qaevents**
 
-_Unsupported._ The suggestions can be retrieved only by source and target or via direct link, see the single entry and search method below. 
+_Unsupported._ The quality assurance events can be retrieved only by source and target or via direct link, see the single entry and search method below. 
 
-## GET Single suggestion
-** GET /api/integration/qaevents/<:qaevent-id>
+## GET Single quality assurance event
+**GET /api/integration/qaevents/<:qaevent-id>**
 
-Return a single suggestion:
+Return a single quality assurance event:
 
 ```json
 {
@@ -33,9 +39,9 @@ Return a single suggestion:
 
 Attributes
 * the *id* attribute is the event primary key
-* the *originalId* attribute is the oai identifier of the target publication
+* the *originalId* attribute is the identifier used by the event's source for the target publication
 * the *title* attribute is the title of the publication as provided by the correction's source
-* the *trust* attribute is the level of accuracy of the suggestion
+* the *trust* attribute is the level of accuracy of the quality assurance event (values from 0.00 to 1.00)
 * the *status* attribute is one of (ACCEPTED, REJECTED, DISCARDED, PENDING)
 * the *eventDate* attribute is the timestamp of the event reception
 * the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the "topic" type is
@@ -45,9 +51,9 @@ Attributes
     * ENRICH/MISSING/PROJECT: fills `acronym`, `code`, `funder`, `fundingProgram`, `jurisdiction` and `title`
 
 Exposed links:
-* topic: link to the topic to which the event belong to
-* target: link to the item that represent the targe to whom the suggestion apply
-* related: link to a second item that is involved in the qa events (i.e. the project item)
+* topic: link to the topic to which the event belong to (see [qatopics](qatopics.md))
+* target: link to the item that represent the targe to whom the quality assurance event apply
+* related: link to an optional second item that is involved in the qa events (i.e. the project item for OpenAIRE ENRICH/MISSING/PROJECT event)
 
 Status codes:
 * 200 Ok - if the operation succeed
@@ -57,7 +63,7 @@ Status codes:
 
 ## Search methods
 ### Get qaevents by a given topic
-**/api/integration/qaevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
+**GET /api/integration/qaevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
 
 It returns the list of qa events from a specific topic
 
@@ -91,7 +97,9 @@ As response, the modified qa event will be returned.
  
 ## POST
 ### To associated a related item to the qa event
-POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uuid>
+**POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uuid>**
+
+This endpoint allows you to associate an associated item with the event, if the type of event supports it.
 
 Return codes:
 * 201 Created - if the operation succeed
@@ -101,7 +109,7 @@ Return codes:
 * 422 Unprocessable entity - if the qa event doesn't allow a related item (for example it is an openaire event not related to a */PROJECT topic)
 
 ### To remove a related item to the qa event
-DELETE /api/integration/qaevents/<:qaevent-id>/related
+**DELETE /api/integration/qaevents/<:qaevent-id>/related**
 
 Only the association between the qa event and the related item id deleted. The related item stays untouched
 

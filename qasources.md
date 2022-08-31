@@ -22,7 +22,7 @@ Provide access to the Quality Assurance sources. It returns the list of the Qual
 ```
 Attributes:
 * lastEvent: the date of the last update from the specific Quality Assurance source
-* totalEvents: the total number of suggestions provided by the Quality Assurance source
+* totalEvents: the total number of quality assurance events provided by the Quality Assurance source
 * id: is the identifier to use in GET Single Source
 
 Return codes:
