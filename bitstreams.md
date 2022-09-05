@@ -150,6 +150,8 @@ Return codes:
 * 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
 ## DELETE Method
+
+### Single Bitstream Delete
 Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a community or collection logo
 
 * 204 No content - if the operation succeed
@@ -157,3 +159,17 @@ Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a commu
 * 403 Forbidden - if you are not loggedin with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist (or was already deleted)
 * 422 Unprocessable Entity - if the bitstream is a community or collection logo
+
+### Multiple Bitstreams Delete
+Delete a list of Bitstreams in one request. This will work for any list of Bitstreams that are attached to an item, will mostly be used in the item admin edit
+
+* 204 No content - if the operation succeeded
+* 401 Unauthorized -  if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if any of the bitstreams in the list haven't been found or are already deleted
+* 422 Unprocessable Entity - If one or more of the given Bitstreams aren't attached to an Item.
+
+A sample CURL command would be:
+```
+curl -i -X DELETE 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+```
