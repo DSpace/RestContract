@@ -2,9 +2,8 @@
 [REST Overview Documentation](README.md)
 
 ## Available Endpoints
-* /api/core/sites
 * [/api/core/communities](communities.md)
-* /api/core/collections
+* [/api/core/collections](collections.md)
 * [/api/core/items](items.md)
 * [/api/core/itemtemplates](itemtemplates.md)
 * [/api/core/bitstreams](bitstreams.md)
