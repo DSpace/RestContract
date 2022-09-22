@@ -171,6 +171,9 @@ the replace operation `[{ "op": "add", "path": "/password", "value": "newpasswor
 ```json
   "password": "newpassword",
 ```
+Status codes:
+* 422 Unprocessable Entity - If the provided password not respects the rules configured in the regular expression
+
 NOTE: The new password is currently returned after an update but this could be revisited later, see [#30](https://github.com/DSpace/Rest7Contract/issues/30)
 
 ## Create new EPerson (requires admin permissions)
@@ -253,6 +256,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
 * 401 Unauthorized - if the token doesn't allow you to create this account
+* 422 Unprocessable Entity - If the provided password not respects the rules configured in the regular expression
 
 ## Linked entities
 ### Groups
