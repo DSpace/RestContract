@@ -163,6 +163,8 @@ To add/replace the password value based on a registration token, use
 `curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": {"new_password": "newpassword"}}]'`.  
 The operation requires an Authorization header or a token.
 
+If the provided current_password is wrong, a response with status 403 Forbidden is returned.
+
 For example, starting with the following eperson field data:
 ```json
  "password": "oldpassword",
