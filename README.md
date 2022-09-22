@@ -196,8 +196,7 @@ We strive to align with these rules for all REST API endpoint names:
 * Endpoint names SHOULD be descriptive, but reasonably short (<25 characters). Abbreviations are _not recommended_, unless necessary for brevity. When abbreviations are used, the REST Contract MUST spell out the meaning of the abbreviation.
 * Endpoints SHOULD be grouped with other related endpoints by category or name. 
     * The "category" is part of the endpoint's path. For example, all configuration-related endpoints use the category "config", which means they appear under `/api/config/*`.  Similarly, all submission-related endpoints use the category "submission", which means they appear under `/api/submission/*`.
-    * Alternatively, the name of the endpoint may include a prefix to relate it to other endpoints.  For example, all workflow related endpoints start with the prefix "workflow", regardless of their category. For example: `/api/config/workflowdefintions`, `/api/config/workflowsteps`, `/api/workflow/workflowitems`.
-
+    * Alternatively, the name of the endpoint may include a prefix to relate it to other endpoints.  For example, all workflow related endpoints start with the prefix "workflow", regardless of their category. For example: `/api/config/workflowdefinitions`, `/api/config/workflowsteps`, `/api/workflow/workflowitems`.
 
 ### HATEOAS & HAL
 The REST API supports the [HATEOAS paradigm](https://restfulapi.net/hateoas/) and adopt the [HAL format](http://stateless.co/hal_specification.html) to express links and embedded resources. Links are always **absolute** to allow for easier implementation of "follow link" methods on the REST client side.
