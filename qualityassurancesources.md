@@ -1,5 +1,5 @@
 ## Main Endpoint
-**GET /api/integration/qasources**
+**GET /api/integration/qualityassurancesources**
 
 Provide access to the Quality Assurance sources. It returns the list of the Quality Assurance sources.
 
@@ -8,12 +8,12 @@ Provide access to the Quality Assurance sources. It returns the list of the Qual
 
   {
     id: "openaire",
-    type: "qasource",
+    type: "qualityassurancesource",
     totalEvents: "33"
   },
   {
     id: "another-source",
-    type: "qasource",
+    type: "qualityassurancesource",
     lastEvent: "2020/10/09 10:11 UTC",
     totalEvents: "21"
   },
@@ -31,14 +31,14 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
 
 ## GET Single Source
-**GET /api/integration/qasources/<:qasource-id>**
+**GET /api/integration/qualityassurancesources/<:qualityassurancesource-id>**
 ​
 Provide detailed information about a specific Quality Assurance source. The JSON response document is as follow
 ​
 ```json
 {
   id: "openaire",
-  type: "qasource",
+  type: "qualityassurancesource",
   totalEvents: "33"
 }
  ```

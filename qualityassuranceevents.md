@@ -5,12 +5,12 @@ Quality Assurance sources (as OpenAIRE) made available, such as missing or addit
 These endpoints provide access to the quality assurance events so that they can be reviewed and managed by the repository manager.
 
 ## GET All quality assurance events
-**GET /api/integration/qaevents**
+**GET /api/integration/qualityassuranceevents**
 
 _Unsupported._ The quality assurance events can be retrieved only by source and target or via direct link, see the single entry and search method below. 
 
 ## GET Single quality assurance event
-**GET /api/integration/qaevents/<:qaevent-id>**
+**GET /api/integration/qualityassuranceevents/<:qualityassuranceevent-id>**
 
 Return a single quality assurance event:
 
@@ -33,7 +33,7 @@ Return a single quality assurance event:
     "jurisdiction":"EU",
     "title":"Elliptic Pdes and Symmetry of Interfaces and Layers for Odd Nonlinearities"
   },
-  type: "qaevent"
+  "type": "qualityassuranceevent"
 }
 ```
 
@@ -51,7 +51,7 @@ Attributes
     * ENRICH/MISSING/PROJECT: fills `acronym`, `code`, `funder`, `fundingProgram`, `jurisdiction` and `title`
 
 Exposed links:
-* topic: link to the topic to which the event belong to (see [qatopics](qatopics.md))
+* topic: link to the topic to which the event belong to (see [qualityassurancetopics](qualityassurancetopics.md))
 * target: link to the item that represent the targe to whom the quality assurance event apply
 * related: link to an optional second item that is involved in the qa events (i.e. the project item for OpenAIRE ENRICH/MISSING/PROJECT event)
 
@@ -62,8 +62,8 @@ Status codes:
 * 404 Not found - if no qa event exists with such id 
 
 ## Search methods
-### Get qaevents by a given topic
-**GET /api/integration/qaevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
+### Get qualityassuranceevents by a given topic
+**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
 
 It returns the list of qa events from a specific topic
 
@@ -79,7 +79,7 @@ Provide paginated list of the qa events available.
 
 ## PATCH 
 ### To record a decision 
-PATCH /api/integration/qaevents/<:qaevent-id>
+PATCH /api/integration/qualityassuranceevents/<:qualityassuranceevent-id>
 
 This method allow users to Accept, Reject or Discard a qa event. The PATCH body must follow the JSON PATCH specification
 
@@ -97,7 +97,7 @@ As response, the modified qa event will be returned.
  
 ## POST
 ### To associated a related item to the qa event
-**POST /api/integration/qaevents/<:qaevent-id>/related?item=<:item-uuid>**
+**POST /api/integration/qualityassuranceevents/<:qualityassuranceevent-id>/related?item=<:item-uuid>**
 
 This endpoint allows you to associate an associated item with the event, if the type of event supports it.
 
@@ -109,7 +109,7 @@ Return codes:
 * 422 Unprocessable entity - if the qa event doesn't allow a related item (for example it is an openaire event not related to a */PROJECT topic)
 
 ### To remove a related item to the qa event
-**DELETE /api/integration/qaevents/<:qaevent-id>/related**
+**DELETE /api/integration/qualityassuranceevents/<:qualityassuranceevent-id>/related**
 
 Only the association between the qa event and the related item id deleted. The related item stays untouched
 
