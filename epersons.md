@@ -158,19 +158,24 @@ The add operation allows adding or replacing information in the EPerson. Passwor
 #### These operations can be performed by administrators and by the authenticated user.
 
 To add/replace the password value while authenticated, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"]'`.  
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": {"new_password": "newpassword", "current_password":"oldpassword"}}]'`.  
 To add/replace the password value based on a registration token, use
-`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": "newpassword"]'`.  
+`curl -X PATCH http://${dspace.url}/api/eperson/epersons/<:id-eperson>?token=<:token> -H "Content-Type: application/json" -d '[{ "op": "add", "path": "/password", "value": {"new_password": "newpassword"}}]'`.  
 The operation requires an Authorization header or a token.
+
+If the provided current_password is wrong, a response with status 403 Forbidden is returned.
 
 For example, starting with the following eperson field data:
 ```json
  "password": "oldpassword",
 ```
-the replace operation `[{ "op": "add", "path": "/password", "value": "newpassword"]` will result in :
+the replace operation `[{ "op": "add", "path": "/password", "value": {"new_password": "newpassword", "current_password":"oldpassword"}}]` will result in :
 ```json
   "password": "newpassword",
 ```
+Status codes:
+* 422 Unprocessable Entity - If the provided password not respects the rules configured in the regular expression
+
 NOTE: The new password is currently returned after an update but this could be revisited later, see [#30](https://github.com/DSpace/Rest7Contract/issues/30)
 
 ## Create new EPerson (requires admin permissions)
@@ -253,6 +258,7 @@ Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
 * 401 Unauthorized - if the token doesn't allow you to create this account
+* 422 Unprocessable Entity - If the provided password not respects the rules configured in the regular expression
 
 ## Linked entities
 ### Groups
