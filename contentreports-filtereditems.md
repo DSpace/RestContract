@@ -6,7 +6,7 @@
 
 This endpoint provides a custom query API to select items from existing collections.
 
-An example JSON response document to `/api/contentreports/filtereditems`:
+An example JSON response document to `/api/contentreports/filtereditems` (metadata removed for brevity):
 ```json
 {
     "id": "filtereditems",
@@ -26,7 +26,6 @@ An example JSON response document to `/api/contentreports/filtereditems`:
                         "place": 0
                     }
                 ],
-                /*...*/
                 "dc.publisher": [
                     {
                         "value": "Elsevier",
@@ -57,7 +56,6 @@ An example JSON response document to `/api/contentreports/filtereditems`:
                             "place": 0
                         }
                     ],
-                    /*...*/
                     "dspace.entity.type": [
                         {
                             "value": "Publication",
@@ -73,7 +71,7 @@ An example JSON response document to `/api/contentreports/filtereditems`:
             "type": "item"
         },
         {
-            /*...*/
+            ...
         }
     ],
     "itemCount": 40,
