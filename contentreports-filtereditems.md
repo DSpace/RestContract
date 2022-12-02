@@ -6,15 +6,6 @@
 
 This endpoint provides a custom query API to select items from existing collections.
 
-For each collection, the basic report consists of:
-* name (label) and handle of the collection
-* name (label) and handle of the parent community
-* total number of items
-* number of items matching all selected filters
-
-In addition, a `summary` element provides the total number of items and the total number of items matching all filters
-for the whole repository.
-
 An example JSON response document to `/api/contentreports/filtereditems`:
 ```json
 {
@@ -35,7 +26,7 @@ An example JSON response document to `/api/contentreports/filtereditems`:
                         "place": 0
                     }
                 ],
-                ...
+                [...]
                 "dc.publisher": [
                     {
                         "value": "Elsevier",
@@ -66,7 +57,7 @@ An example JSON response document to `/api/contentreports/filtereditems`:
                             "place": 0
                         }
                     ],
-                    ...
+                    [...]
                     "dspace.entity.type": [
                         {
                             "value": "Publication",
@@ -82,7 +73,7 @@ An example JSON response document to `/api/contentreports/filtereditems`:
             "type": "item"
         },
         {
-            ...
+            [...]
         }
     ],
     "itemCount": 40,
@@ -117,7 +108,7 @@ The request is defined as a JSON document like this:
         "has_pdf_original": true
     },
     "additionalFields": [
-        dc.contributor.advisor
+        "dc.contributor.advisor"
     ]
 }}
 ```
