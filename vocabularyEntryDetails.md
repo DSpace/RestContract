@@ -1,7 +1,7 @@
 # Vocabulary Entries Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
-All the endpoints here described are restricted to authenticated users.
+All the endpoints here are accessible by anonoymous users.
 
 ## Main Endpoint
 **/api/submission/vocabularyEntryDetails**   
