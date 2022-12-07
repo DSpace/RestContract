@@ -90,6 +90,7 @@ Exposed links:
 * templateItemOf: the collection that have the item as template
 * relationships: the relationships to other items
 * thumbnail: the main thumbnail of the item
+* supervisionOrders: list of supervision orders defined for the item
 
 Status codes:
 * 200 OK - if the item is found and it is visible to the current user or the anonymous user. Withdrawn items are returned
