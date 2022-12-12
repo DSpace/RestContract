@@ -17,9 +17,13 @@ Provide detailed information about a specific workflow action. An example JSON r
 ```json
 {
   	"id": "editaction",
+  	"advanced": "true",
   	"options": [
   	    "approve",
   	    "reject",
+  	    "edit_metadata"
+  	],
+  	"advancedOptions": [
   	    "edit_metadata"
   	],
   	"type": "workflowaction"
@@ -29,3 +33,55 @@ Provide detailed information about a specific workflow action. An example JSON r
 The **options** property contains the list of actions the user is authorized to perform in this step:
 * The **edit_metadata** option implies the user can use the PATCH on the workflow item's submission sections to edit the metadata.
 * Other options are considered to be command options sent to REST using a [POST to the claimed task](claimedtasks.md#post-method-single-resource-level)
+
+The **advanced** property is `false` by default. When it's true, the action has more advanced behavior than simple buttons. Some samples are:
+* `edit_metadata` will redirect the user to the edit page
+* `assign_eperson` will show an EPerson lookup on a workflow task page
+* `rating` will show an option to enter a score on a workflow task page
+
+The **advancedOptions** property contains the list of actions which need the advanced functionality.
+
+In some cases, the options may need extra info. The **advancedInfo** property contains that info, for the actions which require the extra details
+
+Sample for selecting reviewers who will perform a subsequent step:
+```json
+{
+  	"id": "selectrevieweraction",
+  	"advanced": "true",
+  	"options": [
+  	    "assign_eperson"
+  	],
+  	"advancedOptions": [
+  	    "assign_eperson"
+  	],
+  	"advancedInfo": {
+      "assign_eperson" : {
+        "group": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
+        "minPeople": "2",
+        "maxPeople": "4"
+      }
+    },
+  	"type": "workflowaction"
+}
+```
+
+Sample for entering a review with a score:
+```json
+{
+  	"id": "scorereviewaction",
+  	"advanced": "true",
+  	"options": [
+  	    "rating"
+  	],
+  	"advancedOptions": [
+  	    "rating"
+  	],
+  	"advancedInfo": {
+      "rating" : {
+        "descriptionRequired": "true",
+        "maxValue": "5"
+      }
+    },
+  	"type": "workflowaction"
+}
+```
