@@ -17,13 +17,10 @@ Provide detailed information about a specific workflow action. An example JSON r
 ```json
 {
   	"id": "editaction",
-  	"advanced": "true",
+  	"advanced": "false",
   	"options": [
   	    "approve",
   	    "reject",
-  	    "edit_metadata"
-  	],
-  	"advancedOptions": [
   	    "edit_metadata"
   	],
   	"type": "workflowaction"
@@ -38,6 +35,8 @@ The **advanced** property is `false` by default. When it's true, the action has 
 * `edit_metadata` will redirect the user to the edit page
 * `assign_eperson` will show an EPerson lookup on a workflow task page
 * `rating` will show an option to enter a score on a workflow task page
+
+Although `edit_metadata` is also an advanced button with custom behavior, the current implementation deviates too much to fit in this framework.
 
 The **advancedOptions** property contains the list of actions which need the advanced functionality.
 
@@ -54,13 +53,15 @@ Sample for selecting reviewers who will perform a subsequent step:
   	"advancedOptions": [
   	    "assign_eperson"
   	],
-  	"advancedInfo": {
-      "assign_eperson" : {
+  	"advancedInfo": [
+      {
         "group": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
         "minPeople": "2",
-        "maxPeople": "4"
+        "maxPeople": "4",
+        "type": "action_info_assign_eperson",
+        "id": "b1d44ec2815cb282fd41146aab44967b"
       }
-    },
+    ],
   	"type": "workflowaction"
 }
 ```
@@ -76,12 +77,14 @@ Sample for entering a review with a score:
   	"advancedOptions": [
   	    "rating"
   	],
-  	"advancedInfo": {
-      "rating" : {
+  	"advancedInfo": [
+      {
         "descriptionRequired": "true",
-        "maxValue": "5"
+        "maxValue": "5",
+        "type": "action_info_rating",
+        "id": "c969a40a9ebd3d08e210a5e59a4f4e0e"
       }
-    },
+    ],
   	"type": "workflowaction"
 }
 ```
