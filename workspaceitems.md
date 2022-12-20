@@ -121,6 +121,7 @@ Exposed links:
 * collection: the collection where the inprogress submission will be created
 * item: the item that hold the submission data
 * submissionDefinition: the [submission definition](submissiondefinitions.md) used by this inprogress submission
+* supervisionOrders: list of [supervision orders](supervisionorders.md) defined for the workspace item
 
 ## Multipart POST Method on a single workspaceitem
 
