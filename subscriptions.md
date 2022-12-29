@@ -217,7 +217,7 @@ Status codes:
 Request body:
 ```json
 {
-  "type": "Test",
+  "subscriptionType": "Test",
   "subscriptionParameterList": [
     {
       "name": "Frequency",
@@ -249,7 +249,7 @@ It is possible to update a subscription with id
 
 ```json
 {
-  "type": "Test",
+  "subscriptionType": "Test",
   "subscriptionParameterList": [
     {
       "name": "Frequency",
