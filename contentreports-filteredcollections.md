@@ -1,12 +1,38 @@
-# Displaying the filtered collections report
+# Statistics for the whole repository
 [Back to the list of all defined endpoints](endpoints.md)
 
-## Statistics for the whole repository
+This endpoint provides aggregated statistics about the number of items per collection according to selected filters.
+
+The report can be accessed equally through a GET or a POST query. In both cases, the request can be
+parameterized with a series of filters to add to the basic report.
+
+
 **GET /api/contentreports/filteredcollections**
+
+The GET-based endpoint takes a `filters` query parameter whose value is a comma-separated list of filters
+like the following:
+```
+?filters=is_discoverable,has_multiple_originals,has_pdf_original
+```
+
+Please see [below](#available-filters) for the list of available filters.
 
 **POST /api/contentreports/filteredcollections**
 
-This endpoint provides aggregated statistics about the number of items per collection according to selected filters.
+The POST-based endpoint takes a list of filters defined as a JSON document like this:
+```json
+{
+    "filters": {
+        "is_discoverable": true,
+        "has_multiple_originals": true,
+        "has_pdf_original": true
+    }
+}
+```
+
+Please see [below](#available-filters) for the list of available filters.
+
+## Report contents
 
 For each collection, the basic report consists of:
 * name (label) and handle of the collection
@@ -84,24 +110,7 @@ An example JSON response document to `/api/contentreports/filteredcollections`:
 }
 ```
 
-The request can be parameterized with a series of filters to add to the basic report.
-
-In GET mode, it consists of a `filters` query parameter whose value is a comma-separated list of filters
-like the following:
-```
-?filters=is_discoverable,has_multiple_originals,has_pdf_original
-```
-
-In POST mode, it is defined as a JSON document like this:
-```json
-{
-    "filters": {
-        "is_discoverable": true,
-        "has_multiple_originals": true,
-        "has_pdf_original": true
-    }
-}
-```
+## Available filters
 
 The available filters are as follows:
 
@@ -143,7 +152,7 @@ The available filters are as follows:
     * `has_restricted_thumbnail`: Item has Restricted Thumbnail
     * `has_restricted_metadata`: Item has Restricted Metadata
 
-Possible response status
+Possible response status:
 
 * 200 OK - The specific report data was found, and the data has been properly returned.
-* 403 Forbidden - if a valid CSRF token is missing when issuing a POST request.
+* 403 Forbidden - if a valid CSRF token is missing when issuing a POST request. This does not apply to GET requests.

@@ -1,10 +1,15 @@
-# Displaying the filtered collections report
+# Metadata query (aka Filtered Items) report
 [Back to the list of all defined endpoints](endpoints.md)
 
-## Statistics for the whole repository
+This endpoint lists items according to given Boolean and metadata filters.
+
 **POST /api/contentreports/filtereditems**
 
 This endpoint provides a custom query API to select items from existing collections.
+
+Please see [below](#report-parameterization) for parameterization details.
+
+## Report contents
 
 An example JSON response document to `/api/contentreports/filtereditems` (metadata removed for brevity):
 ```json
@@ -84,9 +89,10 @@ An example JSON response document to `/api/contentreports/filtereditems` (metada
 }
 ```
 
+## Report parameterization
+
 The request is defined as a JSON document like this:
 ```json
-{
 {
     "collections": [
         ""
@@ -108,22 +114,30 @@ The request is defined as a JSON document like this:
     "additionalFields": [
         "dc.contributor.advisor"
     ]
-}}
+}
 ```
 
 The parameters are specified as follows:
 
-* collections: The collections where to search items. If none are provided, the whole repository is searched.
-* presetQuery: This parameter is not used on the REST API side. It defines a predefined set of query predicates
+* `collections`: The collections where to search items. If none are provided, the whole repository is searched.
+* `presetQuery`: This parameter is not used on the REST API side. It defines a predefined set of query predicates
   defined in the Angular layer.
-* queryPredicates: Predicates used to filter matching items. They can be predefined (see presetQuery above)
+* `queryPredicates`: Predicates used to filter matching items. They can be predefined (see `presetQuery` above)
   or defined specifically by the user.
-* pageLimit: Maximum number of items per page.
-* filters: Supplementary filters, these are the same as those available in the Filtered Collections report.
-  Please see [/api/contentreports/filteredcollections](contentreports-filteredcollections.md) for details.
-* additionalFields: Fields to add to the basic report for each item included in the report.
+* `pageLimit`: Maximum number of items per page.
+* `filters`: Supplementary filters, these are the same as those available in the Filtered Collections report.
+  Please see [/api/contentreports/filteredcollections](contentreports-filteredcollections.md#available-filters) for details.
+* `additionalFields`: Fields to add to the basic report for each item included in the report.
 
-Possible response status
+The _basic report_ mentioned above includes, for each item:
+
+* Sequential number (order of appearance in the report)
+* UUID
+* Parent collection
+* Handle
+* Title
+
+Possible response status:
 
 * 200 OK - The specific report data was found, and the data has been properly returned.
 * 403 Forbidden - if a valid CSRF token is missing when issuing a POST request.
