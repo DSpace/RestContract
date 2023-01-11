@@ -7,7 +7,7 @@ The report can be accessed equally through a GET or a POST query. In both cases,
 parameterized with a series of filters to add to the basic report.
 
 
-**GET /api/contentreports/filteredcollections**
+**GET /api/contentreport/filteredcollections**
 
 The GET-based endpoint takes a `filters` query parameter whose value is a comma-separated list of filters
 like the following:
@@ -17,7 +17,7 @@ like the following:
 
 Please see [below](#available-filters) for the list of available filters.
 
-**POST /api/contentreports/filteredcollections**
+**POST /api/contentreport/filteredcollections**
 
 The POST-based endpoint takes a list of filters defined as a JSON document like this:
 ```json
@@ -43,7 +43,7 @@ For each collection, the basic report consists of:
 In addition, a `summary` element provides the total number of items and the total number of items matching all filters
 for the whole repository.
 
-An example JSON response document to `/api/contentreports/filteredcollections`:
+An example JSON response document to `/api/contentreport/filteredcollections`:
 ```json
 {
     "id": "filteredcollections",
@@ -104,7 +104,7 @@ An example JSON response document to `/api/contentreports/filteredcollections`:
     "type": "filtered-collections",
     "_links": {
         "self": {
-            "href": "http://localhost:8080/dspace-server/api/contentreports/filtered-collections"
+            "href": "http://localhost:8080/dspace-server/api/contentreport/filtered-collections"
         }
     }
 }

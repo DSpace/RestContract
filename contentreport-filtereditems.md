@@ -3,7 +3,7 @@
 
 This endpoint lists items according to given Boolean and metadata filters.
 
-**POST /api/contentreports/filtereditems**
+**POST /api/contentreport/filtereditems**
 
 This endpoint provides a custom query API to select items from existing collections.
 
@@ -11,7 +11,7 @@ Please see [below](#report-parameterization) for parameterization details.
 
 ## Report contents
 
-An example JSON response document to `/api/contentreports/filtereditems` (metadata removed for brevity):
+An example JSON response document to `/api/contentreport/filtereditems` (metadata removed for brevity):
 ```json
 {
     "id": "filtereditems",
@@ -83,7 +83,7 @@ An example JSON response document to `/api/contentreports/filtereditems` (metada
     "type": "filtereditemsreport",
     "_links": {
         "self": {
-            "href": "http://localhost:8080/dspace-server/api/contentreports/filtereditems"
+            "href": "http://localhost:8080/dspace-server/api/contentreport/filtereditems"
         }
     }
 }
@@ -126,7 +126,7 @@ The parameters are specified as follows:
   or defined specifically by the user.
 * `pageLimit`: Maximum number of items per page.
 * `filters`: Supplementary filters, these are the same as those available in the Filtered Collections report.
-  Please see [/api/contentreports/filteredcollections](contentreports-filteredcollections.md#available-filters) for details.
+  Please see [/api/contentreport/filteredcollections](contentreport-filteredcollections.md#available-filters) for details.
 * `additionalFields`: Fields to add to the basic report for each item included in the report.
 
 The _basic report_ mentioned above includes, for each item:
