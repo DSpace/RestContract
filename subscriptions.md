@@ -5,9 +5,9 @@
 This endpoint contains all of the subscription requested
 
 ## Main Endpoint
-**GET /api/core/subscriptions?resourceType={resourceType}**
+**GET /api/core/subscriptions**
 
-Retrieve a pageable list of subscriptions related with dspaceObject of type resourceType. 
+Retrieve a pageable list of subscriptions. 
 The subscriptions are ordered by eperson number ascending.
 The JSON response document is as follow.
 
@@ -55,11 +55,6 @@ The JSON response document is as follow.
 
 Attributes
 * page, size [see pagination](README.md#Pagination)
-* resourceType: If isn't defined it will return all the subscriptions.
-  resourceType can be:
-  * Item
-  * Collection
-  * Community
 
 Return codes:
 * 200 OK - if the operation succeed
