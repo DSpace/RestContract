@@ -48,22 +48,27 @@ Sample for selecting reviewers who will perform a subsequent step:
   	"id": "selectrevieweraction",
   	"advanced": "true",
   	"options": [
-  	    "assign_eperson"
+  	    "submit_select_reviewer"
   	],
   	"advancedOptions": [
-  	    "assign_eperson"
+  	    "submit_select_reviewer"
   	],
   	"advancedInfo": [
       {
         "group": "617cf46b-535c-42d5-9d22-327ce2eff6dc",
-        "minPeople": "2",
-        "maxPeople": "4",
-        "type": "action_info_assign_eperson",
+        "type": "action_info_submit_select_reviewer",
         "id": "b1d44ec2815cb282fd41146aab44967b"
       }
     ],
   	"type": "workflowaction"
 }
+```
+
+To perform the action with selected reviewer(s) will be done by a request of the form (at least one eperson required):
+```
+POST /server/api/workflow/claimedtasks/{id} 
+with form data 
+submit_select_reviewer=true&eperson={reviewerEPersonId1}&eperson={reviewerEPersonId2}
 ```
 
 Sample for entering a review with a score:
@@ -72,19 +77,26 @@ Sample for entering a review with a score:
   	"id": "scorereviewaction",
   	"advanced": "true",
   	"options": [
-  	    "rating"
+  	    "submit_score"
   	],
   	"advancedOptions": [
-  	    "rating"
+  	    "submit_score"
   	],
   	"advancedInfo": [
       {
         "descriptionRequired": "true",
         "maxValue": "5",
-        "type": "action_info_rating",
+        "type": "action_info_submit_score",
         "id": "c969a40a9ebd3d08e210a5e59a4f4e0e"
       }
     ],
   	"type": "workflowaction"
 }
+```
+
+To perform the action with selected reviewer(s) will be done by a request of the form (description optional):
+```
+POST /server/api/workflow/claimedtasks/{id} 
+with form data
+rating=true&score={scoreGivenValue}&description={reviewEntered}
 ```
