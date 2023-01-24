@@ -564,3 +564,4 @@ It returns the list of Items that the current user is authorized to edit
 
 Return codes:
 * 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated
