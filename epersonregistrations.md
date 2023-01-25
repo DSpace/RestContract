@@ -33,7 +33,7 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ```
 
 ## Create new EPerson registration
-**POST /api/eperson/registrations**
+**POST /api/eperson/registrations?accountRequestType={requestType_forgot_or_register}**
 
 To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
 
@@ -44,7 +44,7 @@ To create a new EPerson registration, perform a post with the JSON below to the 
 }
 ```
 
-Requires query parameter 'type' set with either 'register' or 'forgot' value, depending on the action requested.
+Requires query parameter 'accountRequestType' set with either 'register' or 'forgot' value, depending on the action requested.
 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
@@ -53,9 +53,10 @@ Verifying whether a new registration can be created can happen using the "eperso
 
 Status codes:
 * 201 Created - if the operation succeed
-* 400 Bad Request - if e.g. the e-mail address is in a domain that is not allowed in config `authentication-password.domain.valid`
+* 400 Bad Request - if e.g. the query param 'accountRequestType' is not present or contains something else than forgot or register
 * 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
-* 422 Unprocessable Entity - if the email address was omitted
+* 422 Unprocessable Entity - if the email address was omitted or the e-mail address is in a domain that is not allowed in config `authentication-password.domain.valid`
+
 
 ## Forgot password
 
