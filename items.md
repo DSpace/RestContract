@@ -534,6 +534,62 @@ Return codes:
 * 204 No Content - if the specified item is not yet versioned
 * 400 Bad Request - if the item id param is missing or invalid (not an uuid)
 
+### Get and create item identifiers
+**GET /api/core/items/{:item-uuid}/identifiers**
+
+Returns information about the identifiers associated with this item, for example Handle and DOI URIs. If relevant, the status of the identifier is also included.
+
+The JSON response is formatted like the example below (the same data model as the [identifiers submission step](submissionsections.md)).
+```json
+{
+  "identifiers" : [ {
+    "value" : "https://doi.org/10.33515/dspace-61",
+    "identifierType" : "doi",
+    "identifierStatus" : "TO_BE_REGISTERED",
+    "type" : "identifier"
+  }, {
+    "value" : "123456789/418",
+    "identifierType" : "handle",
+    "identifierStatus" : null,
+    "type" : "identifier"
+  } ],
+  "type" : "identifiers",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/server/api/core/items/6bea2772-0e71-4636-8c1c-5c132821fa2c/identifiers"
+    }
+  }
+}
+```
+Return codes:
+* 200 OK - if the operation succeeds
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid)
+* 401 Unauthorized - if you are not authenticated and versioning is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
+* 404 Not found - if the item doesn't exist
+
+**POST /api/core/items/{:item-uuid}/identifiers**
+
+Creates or registers a new identifier for this item. A 'type' parameter is required to indicate which sort of
+identifier to create, eg. doi, handle, or other supported identifier types.
+This operation would typically be used to mint and queue a DOI for registration for an item that is already archived.
+
+No body data is required in the POST. Example request:
+
+```
+ curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/identifiers?type=doi 
+```
+
+On success, the item resource is returned as a response.
+
+Return codes:
+* 201 Created - if the operation succeeds
+* 302 Found - if an identifier registration was requested but the identifier is already registered
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid), or if the type param is missing or invalid
+* 401 Unauthorized - if you are not authenticated and versioning is not public
+* 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
+* 404 Not found - if the item doesn't exist
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**

@@ -1,23 +1,41 @@
 # WorkspaceItem data of identifiers sectionType
 [Back to the definition of the workspaceitems endpoint](workspaceitems.md)
 
-The section data represent the metadata collected for a specific [submissionform](submissionforms.md).
-It is a json object with the following structure:
+This section data represent the identifiers associated for this workspace item.
+
+It is a JSON object with the following structure (matches the response from the [item identifier link](items.md#Get and create item identifiers)) :
 
 ```json
-"identifiers" : {
-  "handle" : "http://localhost:4000/handle/123456789/6",
-  "doi" : "https://doi.org/10.5072/dspace/2",
-  "otherIdentifiers" : [ ]
-},
+ {
+  "identifiers": {
+    "identifiers": [
+      {
+        "value": "https://doi.org/10.33515/dspace-54",
+        "identifierType": "doi",
+        "identifierStatus": "PENDING",
+        "type": "identifier"
+      },
+      {
+        "value": "http://localhost:4000/handle/123456789/420",
+        "identifierType": "handle",
+        "identifierStatus": null,
+        "type": "identifier"
+      }
+    ],
+    "displayTypes": [
+      "handle",
+      "doi"
+    ]
+  }
+}
 ```
+Each identifier has the following attributes:
+* value: The actual identifier string, eg. https://doi.org/2312/23123.22
+* identifierType: The type or schema of identifier, eg, 'doi' or 'handle'
+* identifierStatus: The status of an identifier, if relevant (some identifier types require values to be locally minted and then reserved or registered with an upstream provider)
+* type: The type of resource, to help preserve context in the user interface
 
-Please note that the identifier section will never be empty. If there is no handle, the handle value will be null. If there is no DOI, the doi value will be null. If there are no other identifiers, the otherIdentifiers value will be an empty array.
+Currently, the supported item types are 'doi' and 'handle'
 
 ## Patch operations
 There are no PATCH methods implemented for this section, it simply retrieves and reports identifiers currently assigned to the workspace item.
-
-### Remove
-To limit the load on the Sherpa webservices and improve performance sherpa data are cached. It is possible to force a fresh call removing the retrievalTime from the section as follow
-`curl --data '[{ "op": "remove", "path": "/sections/sherpaPolicies/retrievalTime"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
-
