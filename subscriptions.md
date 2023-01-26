@@ -18,17 +18,16 @@ The JSON response document is as follow.
       "id" : 1,
       "type" : "subscription",
       "subscriptionParameterList" : [ {
-        "id" : 1,
-        "name" : "Frequency",
-        "value" : "Daily"
+        "name" : "frequency",
+        "value" : "D"
       } ],
-      "subscriptionType" : "TypeTest",
+      "subscriptionType" : "content",
       "_links" : {
-        "dSpaceObject" : {
-          "href" : "http://localhost/api/core/subscriptions/1/dSpaceObject"
+        "resource" : {
+          "href" : "http://localhost/api/core/subscriptions/1/resource"
         },
-        "ePerson" : {
-          "href" : "http://localhost/api/core/subscriptions/1/ePerson"
+        "eperson" : {
+          "href" : "http://localhost/api/core/subscriptions/1/eperson"
         },
         "self" : {
           "href" : "http://localhost/api/core/subscriptions/1"
@@ -58,8 +57,8 @@ Attributes
 
 Return codes:
 * 200 OK - if the operation succeed
-* 401 Unauthorized - if you are not authenticated. Please note that this also apply to resource policy related to the Anonymous group
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators, users with ADMIN right can access the subscriptions
+* 401 Unauthorized - if you are not authenticated.
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators can access the endpoint
 
 ## Single Subscription Object
 **GET /api/core/subscription/<:id>**
@@ -72,17 +71,16 @@ The JSON response document is as follow
   "id" : 1,
   "type" : "subscription",
   "subscriptionParameterList" : [ {
-    "id" : 1,
-    "name" : "Frequency",
-    "value" : "Daily"
+    "name" : "frequency",
+    "value" : "W"
   } ],
-  "subscriptionType" : "TestType",
+  "subscriptionType" : "content",
   "_links" : {
-    "dSpaceObject" : {
-      "href" : "http://localhost/api/core/subscriptions/1/dSpaceObject"
+    "resource" : {
+      "href" : "http://localhost/api/core/subscriptions/1/resource"
     },
-    "ePerson" : {
-      "href" : "http://localhost/api/core/subscriptions/1/ePerson"
+    "eperson" : {
+      "href" : "http://localhost/api/core/subscriptions/1/eperson"
     },
     "self" : {
       "href" : "http://localhost/api/core/subscriptions/1"
@@ -92,10 +90,10 @@ The JSON response document is as follow
 ```
 
 Status codes:
-* 200 OK - if the subscription is found and it is visible to the current user.
-* 401 Unauthorized - if you are not authenticated and the subscription is not visible to anonymous users
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only Admin and owner subscription has access.
-* 404 Not found - if the subscription doesn't exist
+* 200 OK - if the subscription is found and current user is Admins or owner of the subscription.
+* 401 Unauthorized - if you are not authenticated. Only Admins and owner of the subscription has access.
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only Admins and owner of the subscription has access.
+* 404 Not found - if the subscription doesn't exist.
 
 ### Search methods
 #### findByEPerson
@@ -113,17 +111,16 @@ The supported parameters are:
         "id": 60,
         "type": "subscription",
         "subscriptionParameterList" : [ {
-			    "id" : 2,
-			    "name" : "Frequency",
-			    "value" : "Daily"
+			    "name" : "frequency",
+			    "value" : "M"
 		  } ],
-        "subscriptionType": "subscription",
+        "subscriptionType": "content",
         "_links": {
-          "dSpaceObject": {
-            "href": "http://localhost:8080/server/api/core/subscriptions/60/dSpaceObject"
+          "resource": {
+            "href": "http://localhost:8080/server/api/core/subscriptions/60/resource"
           },
-          "ePerson": {
-            "href": "http://localhost:8080/server/api/core/subscriptions/60/ePerson"
+          "eperson": {
+            "href": "http://localhost:8080/server/api/core/subscriptions/60/eperson"
           },
           "self": {
             "href": "http://localhost:8080/server/api/core/subscriptions/60"
@@ -154,13 +151,13 @@ Status codes:
 
 
 #### findByEPersonAndDso
-**GET /api/core/subscriptions/search/findByEPersonAndDso?dspace_object_id={id}&eperson_id={id}>**
+**GET /api/core/subscriptions/search/findByEPersonAndDso?resource={id}&eperson_id={id}>**
 Find all subscription that a person made for a dataSpaceObject
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * eperson_id: mandatory, the uuid of the eperson that benefit of content subscription
-* dspace_object_id: mandatory, the uuid of the DSpaceObject (Community, Collection, Item)
+* resource: mandatory, the uuid of the DSpaceObject (Community, Collection, Item)
 
 ```json
 {
@@ -169,17 +166,16 @@ The supported parameters are:
       "id": 60,
       "type": "subscription",
       "subscriptionParameterList" : [ {
-			    "id" : 12,
-			    "name" : "Frequency",
-			    "value" : "Daily"
+			    "name" : "frequency",
+			    "value" : "D"
 		  } ],
-      "subscriptionType": "subscription",
+      "subscriptionType": "content",
       "_links": {
-        "dSpaceObject": {
-          "href": "http://localhost:8080/server/api/core/subscriptions/60/dSpaceObject"
+        "resource": {
+          "href": "http://localhost:8080/server/api/core/subscriptions/60/resource"
         },
-        "ePerson": {
-          "href": "http://localhost:8080/server/api/core/subscriptions/60/ePerson"
+        "eperson": {
+          "href": "http://localhost:8080/server/api/core/subscriptions/60/eperson"
         },
         "self": {
           "href": "http://localhost:8080/server/api/core/subscriptions/60"
@@ -202,36 +198,42 @@ The supported parameters are:
 ```
 Status codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the dspace_object_id or eperson_id parameters are missing or invalid
+* 400 Bad Request - if the resource or eperson_id parameters are missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the eperson_id parameter can use the endpoint
 
 ## Creating a subscription
-**POST /api/core/subscriptions?eperson_id=<:uuid>&dspace_object_id=<:uuid>**
+**POST /api/core/subscriptions?eperson_id=<:uuid>&resource=<:uuid>**
 
 Request body:
+
 ```json
 {
-  "subscriptionType": "Test",
+  "subscriptionType": "content",
   "subscriptionParameterList": [
     {
-      "name": "Frequency",
-      "value": "Daily"
+      "name": "frequency",
+      "value": "D"
     },
     {
-      "name": "Frequency",
-      "value": "WEEKLY"
+      "name": "frequency",
+      "value": "W"
     }
   ]
 }
 ```
 The parameters are:
 eperson_id: (mandatory), the uuid of the eperson that will be grant of the subscription.
-dspace_object_id: (mandatory), the uuid of the resource target of the subscription
+resource: (mandatory), the uuid of the resource target of the subscription
+
+The json body must be valid that mean:
+- subscriptionType must be 'content'
+- name must be 'frequency'
+- value must be one of the following values 'D' stand for Day, 'W' stand for Week and 'M' stand for Month
 
 Return codes:
 * 200 OK - if the operation succeed, the created subscription is returned
-* 400 Bad Request - if one or both the eperson_id and the eperson_id parameters are missing or aren't uuid
+* 400 Bad Request - if one or both the resource and the eperson_id parameters are missing or aren't uuid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
 
@@ -239,20 +241,25 @@ Return codes:
 ** PUT /api/core/subscription/<:id>**
 
 It is possible to update a subscription with id
-`curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}?dspace_object_id={id}&eperson_id={id}
+`curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}?resource={id}&eperson_id={id}
 ' -H "Authorization: Bearer ..." -H 'Content-Type: application/json'
 
 ```json
 {
-  "subscriptionType": "Test",
+  "subscriptionType": "content",
   "subscriptionParameterList": [
     {
-      "name": "Frequency",
-      "value": "Weekly"
+      "name": "frequency",
+      "value": "M"
     }
   ]
 }
 ```
+
+The json body must be valid that mean:
+- subscriptionType must be 'content'
+- name must be 'frequency'
+- value must be one of the following values: 'D' stand for Day, 'W' stand for Week and 'M' stand for Month
 
 Return codes:
 * 200 OK - if the operation succeed, the created subscription is returned
@@ -267,30 +274,28 @@ Deletes a subscription with id.
 
 * 204 No content - if the operation succeed.
 * 401 Unauthorized - if you are not authenticated.
-* 403 Forbidden - if you are not logged in with sufficient permissions. It must be creator or administrator.
+* 403 Forbidden - if you are not logged in with sufficient permissions. It must be owner of the subscription or an administrator.
 * 404 Not found - if the subscription with id doesn't exist (or was already deleted).
 
 ## Linked entities
 ### ePerson
-**GET api/core/subscriptions/<:id>/ePerson**
+**GET api/core/subscriptions/<:id>/eperson**
 
 Return the eperson linked by this subscription
 
 Return codes:
 * 200 OK - if the operation succeed
-* 204 No content - if the operation succeed but no eperson is set for this policy
 * 401 Unauthorized - if you are not authenticated.
 * 403 Forbidden - if you are not logged in with sufficient permissions.
 * 404 Not found - if the subscription doesn't exist (or was already deleted)
 
 ### dSpaceObject
-**GET api/core/subscriptions/<:id>/dSpaceObject**
+**GET api/core/subscriptions/<:id>/resource**
 
 Return the DSpaceObject (Community, Collection, Item) linked by this subscription
 
 Return codes:
 * 200 Ok - if the operation succeed
-* 204 No content - if the operation succeed but no eperson is set for this policy
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions.
 * 404 Not found - if the subscription doesn't exist (or was already deleted)
