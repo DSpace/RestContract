@@ -33,7 +33,7 @@ Exposed links:
 * group: the group that can supervise the item
 
 Status codes:
-* 200 OK - if the item is found and it is visible to the current user or the anonymous user. Withdrawn items are returned
+* 200 OK - if the item is found and it is visible to the current user. Withdrawn items are returned
 * 401 Unauthorized - if you are not authenticated.
 * 403 Forbidden - if you are not logged in with sufficient permissions (Administrators).
 * 404 Not found - if the supervision order doesn't exist
@@ -42,7 +42,7 @@ Status codes:
 ## Search methods
 
 ### Find by Item
-**/api/core/supervisionorders/search/byItem?>uuid=<:item-uuid1>**
+**/api/core/supervisionorders/search/byItem?uuid=<:item-uuid1>**
 
 This method returns a list of supervision orders defined for an item whose uuid is passed as parameter to the query
 
@@ -74,9 +74,9 @@ curl -i -X POST 'https://example.com/server/api/core/supervisionorders?uuid=<uui
 
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 400 Bad Request - if uuid or group parameter is missing or syntactically invalid (not an uuid), or if type is not one expected values.
+* 400 Bad Request - if both or one among the uuid or group parameter is missing or syntactically invalid (not an uuid), or if they resolve to an unexpected DSpace Object type.
 * 403 Forbidden - if you are not logged in with sufficient permissions (Administrator)
-* 422 Unprocessable Entity - if one among item or group does not exist
+* 422 Unprocessable Entity - if one among item or group does not exist, if a supervision order for the same group already exists, or if the item referenced by uuid is not an inprogress submission. A Supervision order can be created only when the item is in the submission or workflow process
 
 
 ## Deleting a supervision order
