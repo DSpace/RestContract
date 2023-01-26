@@ -22,6 +22,10 @@ Please keep in mind that clients on other domains *must* still be trusted by the
 
 ## How does CSRF protection work in DSpace?
 
+DSpace uses a "[double submit cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie)"  technique for CSRF protection.
+
+Here's how it works:
+
 1. The DSpace REST API generates a CSRF Token, storing it in a `HttpOnly` Cookie named `DSPACE-XSRF-COOKIE`, and sending
 it back to the client in a header named `DSPACE-XSRF-TOKEN`.
    * This token is often generated on your first request to the REST API, but may also
