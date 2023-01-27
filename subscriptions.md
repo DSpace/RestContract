@@ -236,6 +236,7 @@ Return codes:
 * 400 Bad Request - if one or both the resource and the eperson_id parameters are missing or aren't uuid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
+* 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
 
 ## Updating subscription
 ** PUT /api/core/subscription/<:id>**
@@ -266,6 +267,7 @@ Return codes:
 * 400 Bad Request - if one or both the eperson_id and the eperson_id parameters are missing or aren't uuid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
+* 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
 
 ## Deleting a Subscription Object
 **DELETE /api/core/subscriptions/<:id>**
