@@ -33,7 +33,7 @@ Exposed links:
 * group: the group that can supervise the item
 
 Status codes:
-* 200 OK - if the item is found and it is visible to the current user. Withdrawn items are returned
+* 200 OK - if the item is found and it is visible to the current user.
 * 401 Unauthorized - if you are not authenticated.
 * 403 Forbidden - if you are not logged in with sufficient permissions (Administrators).
 * 404 Not found - if the supervision order doesn't exist
