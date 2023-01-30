@@ -8,7 +8,7 @@ This endpoint contains all of the subscription requested
 **GET /api/core/subscriptions**
 
 Retrieve a pageable list of subscriptions. 
-The subscriptions are ordered by eperson number ascending.
+The subscriptions are ordered by DSpaceObject uuid ascending.
 The JSON response document is as follow.
 
 ```json
@@ -89,6 +89,10 @@ The JSON response document is as follow
 }
 ```
 
+JSON description:
+- subscriptionType: currently only content but open to future extensions like statistics
+- subscriptionParamterList: where the "frequency" is the currently only supported name and the different values ('D' stand for Day, 'W' stand for Week and 'M' stand for Month).
+
 Status codes:
 * 200 OK - if the subscription is found and current user is Admins or owner of the subscription.
 * 401 Unauthorized - if you are not authenticated. Only Admins and owner of the subscription has access.
@@ -146,6 +150,7 @@ The supported parameters are:
 Status codes:
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid parameter is missing or invalid
+* 422 Unprocessable Entity - if the uuid resolve to a different DSpace Object Type than eperson
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the user specified in the uuid parameter can use the endpoint
 
@@ -272,7 +277,7 @@ Return codes:
 ## Deleting a Subscription Object
 **DELETE /api/core/subscriptions/<:id>**
 
-Deletes a subscription with id.
+Deletes the subscription with the specified id.
 
 * 204 No content - if the operation succeed.
 * 401 Unauthorized - if you are not authenticated.
@@ -280,7 +285,7 @@ Deletes a subscription with id.
 * 404 Not found - if the subscription with id doesn't exist (or was already deleted).
 
 ## Linked entities
-### ePerson
+### eperson
 **GET api/core/subscriptions/<:id>/eperson**
 
 Return the eperson linked by this subscription
@@ -291,7 +296,7 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions.
 * 404 Not found - if the subscription doesn't exist (or was already deleted)
 
-### dSpaceObject
+### resource
 **GET api/core/subscriptions/<:id>/resource**
 
 Return the DSpaceObject (Community, Collection, Item) linked by this subscription
