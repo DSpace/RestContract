@@ -247,7 +247,7 @@ Return codes:
 ** PUT /api/core/subscription/<:id>**
 
 It is possible to update a subscription with id
-`curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}?resource={id}&eperson_id={id}
+`curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}
 ' -H "Authorization: Bearer ..." -H 'Content-Type: application/json'
 
 ```json
@@ -269,7 +269,6 @@ The json body must be valid that mean:
 
 Return codes:
 * 200 OK - if the operation succeed, the created subscription is returned
-* 400 Bad Request - if one or both the eperson_id and the eperson_id parameters are missing or aren't uuid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
 * 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
