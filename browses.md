@@ -55,25 +55,20 @@ Error codes:
 **404** if the browse index doesn't exist
 
 ## Browse indexes configured for metadata linking
-### Get a single index configured to render given field as a link
-**/api/discover/browses/search/byField?field=<:field>**
+### Get a single index configured as browse links for the given metadata fields
+**/api/discover/browses/search/byFields?fields=<:field>**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/search/byField/dc.contributor.author>
+Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/search/byFields?fields=dc.contributor.author&fields=dc.creator>
 
 Provide detailed information about a specific browse index and access to the list of items and entries in the index. The JSON response document is as the previous section.
 
 The supported parameters are:
-* field: The metadata field name, eg. dc.contributor.author
+* fields: A metadata field name, eg. dc.contributor.author. This parameter is repeatable.
 
 Error codes:
-**404** if the browse index is not a metadata browse or the browse index doesn't exist at all
 
-### Get all browse indexes configured to render metadata links
-**/api/discover/browses/search/allLinked**
-
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/search/allLinked>
-
-This endpoint returns the list of available browse indexes that are configured to render links for at least one metadata field.
+**204** if none of the fields are configured for browse or browse links
+**400** if the fields parameter is missing
 
 ## Browse entries
 ### Metadata browse 1st level
