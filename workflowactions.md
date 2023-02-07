@@ -31,18 +31,22 @@ The **options** property contains the list of actions the user is authorized to 
 * The **edit_metadata** option implies the user can use the PATCH on the workflow item's submission sections to edit the metadata.
 * Other options are considered to be command options sent to REST using a [POST to the claimed task](claimedtasks.md#post-method-single-resource-level)
 
-The **advanced** property is `false` by default. When it's true, the action has more advanced behavior than simple buttons. Some samples are:
-* `edit_metadata` will redirect the user to the edit page
+The **advanced** property on a workflow step is `false` by default. 
+When it's true (when `advancedOptions` is not empty), the action has more advanced behavior than simple buttons. 
+When this advanced action/option requires additional info about what to do from the rest, this will be put in `advancedInfo`
+For new advanced steps this will require you to create an implementation of `ActionAdvancedInfo`, with corresponding REST & Angular classes.
+
+Some samples are (see json of them below):
 * `assign_eperson` will show an EPerson lookup on a workflow task page
 * `rating` will show an option to enter a score on a workflow task page
 
-Although `edit_metadata` is also an advanced button with custom behavior, the current implementation deviates too much to fit in this framework.
+Although `edit_metadata` is also advanced button with custom behavior, in the sense that the 'Edit' option/button in the second step of the regular workflow, will also open into a separate page, where you can edit the workflow item submission metadata fields (copy of submission form), a page which was already implemented before introduction of advanced workflow steps. The current implementation deviates too much to fit in this framework. In general we'll assume that an advanced workflow step will result in a page containing a simple metadata overview of the workflow item, preceded by a section containing the advanced workflow step actions, as supported/configured by the info in `advancedOptions`.
 
 The **advancedOptions** property contains the list of actions which need the advanced functionality.
 
 In some cases, the options may need extra info. The **advancedInfo** property contains that info, for the actions which require the extra details
 
-Sample for selecting reviewers who will perform a subsequent step:
+Sample for selecting reviewer(s) who will perform a subsequent step:
 ```json
 {
   	"id": "selectrevieweraction",
