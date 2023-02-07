@@ -6,7 +6,7 @@
 
 Provide access to the browse system (SOLR based). It returns the list of available browse indexes.
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/discover/browses>
+Example: <https://{dspace.server.url}/api/discover/browses>
 
 ## Single browse index 
 **/api/discover/browses/<:index-name>**
@@ -58,7 +58,7 @@ Error codes:
 ### Get a single index configured as browse links for the given metadata fields
 **/api/discover/browses/search/byFields?fields=<:field>**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/search/byFields?fields=dc.contributor.author&fields=dc.creator>
+Example: <https://{dspace.server.url}/api/discover/browses/search/byFields?fields=dc.contributor.author&fields=dc.creator>
 
 Provide detailed information about a specific browse index and access to the list of items and entries in the index. The JSON response document is as the previous section.
 
@@ -74,7 +74,7 @@ Error codes:
 ### Metadata browse 1st level
 **/api/discover/browses/<:index-name>/entries**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/entries>
+Example: <https://{dspace.server.url}/api/discover/browses/author/entries>
 
 It returns a collection of BrowseEntryResource the JSON document looks like
 ```json
@@ -89,7 +89,7 @@ It returns a collection of BrowseEntryResource the JSON document looks like
         "count": 1,
         "_links": {
           "items": {
-            "href": "http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
+            "href": "https://dspace7.4science.it/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
           }
         }
       },
@@ -119,9 +119,9 @@ Error codes:
 
 Examples:
 
-item browse: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/dateissued/items>
+item browse: <https://{dspace.server.url}/api/discover/browses/dateissued/items>
 
-2nd level metadata browse: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy>
+2nd level metadata browse: <https://{dspace.server.url}/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy>
 
 The supported parameters are:
 * page, size & sort [see pagination](README.md#Pagination): the sort name must be one of the name specified in the sortOptions.name of the browse index or *default*, followed by a comma and the order direction. For example sort=default,asc or sort=dateissued,desc
