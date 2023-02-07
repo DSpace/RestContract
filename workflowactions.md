@@ -45,6 +45,13 @@ Although `edit_metadata` is also advanced button with custom behavior, in the se
 The **advancedOptions** property contains the list of actions which need the advanced functionality.
 
 In some cases, the options may need extra info. The **advancedInfo** property contains that info, for the actions which require the extra details
+These are added to rest via `ActionAdvancedInfo` and can be configured in `workflow-actions.xml`
+```
+    <bean id="scorereviewactionAPI" class="org.dspace.xmlworkflow.state.actions.processingaction.ScoreReviewAction" scope="prototype">
+        <property name="descriptionRequired" value="true"/>
+        <property name="maxValue" value="5"/>
+    </bean>
+```
 
 Sample for selecting reviewer(s) who will perform a subsequent step:
 ```json
