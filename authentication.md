@@ -192,14 +192,9 @@ Return codes
 - 200 Ok. 
 - 401 Unauthorized. If no user is logged in
 
-## Request short lived token using GET
-
 **GET /api/authn/shortlivedtokens**
 
-The short lived token can also be retrieved using GET, if it originates from a trusted IP.
-
-This can be used by Angular to retrieve a short lived token when a POST is not possible.
-It works identical to the [POST endpoint](#request-short-lived-token)
+_As of 7.5, this option is no longer supported._  Please use POST instead (see above).
 
 ### Using short lived token
 
