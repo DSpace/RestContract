@@ -34,8 +34,7 @@ On success, the identifier resource is returned as a response.
 
 Return codes:
 * 201 Created - if the operation succeeds
-* 302 Found - if an identifier registration was requested but the identifier is already registered
-* 400 Bad Request - if the item id param is missing or invalid (not an uuid), or if the type param is missing or invalid
+* 400 Bad Request - if the item id param is missing or invalid (not an uuid), or if the type param is missing or invalid, or if the DOI is already registered
 * 401 Unauthorized - if you are not authenticated and versioning is not public
 * 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
 * 404 Not found - if the item doesn't exist
