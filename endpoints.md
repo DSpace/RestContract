@@ -32,6 +32,7 @@
 * [/api/config/workflowsteps](workflowsteps.md)
 * [/api/discover/browses](browses.md)
 * [/api/discover/search](search-endpoint.md)
+* [/api/pid](identifiers.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/submission/vocabularies](vocabularies.md)
 * [/api/submission/vocabularyEntryDetails](vocabularyEntryDetails.md)
