@@ -55,6 +55,11 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   "lastModified": "2017-06-24T00:40:54.970+0000",
   "sections": {
   	 "collection": "05457c63-b392-4629-a373-f2d66ee9ee33",
+     "identifiers" : {
+        "handle" : "http://localhost:4000/handle/123456789/6",
+        "doi" : "https://doi.org/10.5072/dspace/2",
+        "otherIdentifiers" : [ ]
+     },
   	 "traditional-page1": {
   	 	"dc.title" : [{value: "Sample Submission Item"}],
   	 	"dc.contributor.author" : [
@@ -121,6 +126,7 @@ Exposed links:
 * collection: the collection where the inprogress submission will be created
 * item: the item that hold the submission data
 * submissionDefinition: the [submission definition](submissiondefinitions.md) used by this inprogress submission
+* supervisionOrders: list of [supervision orders](supervisionorders.md) defined for the workspace item
 
 ## Multipart POST Method on a single workspaceitem
 
