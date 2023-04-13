@@ -171,5 +171,19 @@ Delete a list of Bitstreams in one request. This will work for any list of Bitst
 
 A sample CURL command would be:
 ```
-curl -i -X DELETE 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e \n https://dspace7-entities.atmire.com/rest/api/core/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+curl -i -X PATCH 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json" --data '[ { "op": "remove", "path": "/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
+```
+
+The Patch contents is:
+```json
+[
+  {
+    "op": "remove",
+    "path": "/12623672-25a9-4df2-ab36-699c4c240c7e"
+  },
+  {
+    "op": "remove",
+    "path": "/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"
+  }
+]
 ```
