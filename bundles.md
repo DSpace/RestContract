@@ -320,7 +320,7 @@ To remove (unset) the primary bitstream:
 [
   {
     "op": "remove",
-    "path": "/primarybitstream"zoek
+    "path": "/primarybitstream"
   }
 ]
 ```
