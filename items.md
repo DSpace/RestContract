@@ -420,12 +420,13 @@ It returns the collection where the item belong to
 
 **PUT /api/core/items/<:uuid>/owningCollection**
 
-The actual collection is part of the body using the uri-list
+The actual collection is part of the body using the uri-list. Note that if the parameter inheritPolicies=true is passed in the request, the item will inherit the policies of the target owning collection.
+
 Example:
 
-```curl -i -X PUT "https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection" -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/8e0928a0-047a-4369-8883-12669f32dd64"```
+```curl -i -X PUT "https://dspace7.4science.it/dspace-spring-rest/api/core/items/1911e8a4-6939-490c-b58b-a5d70f8d91fb/owningCollection?inheritPolicies=true" -H "Content-Type:text/uri-list" -d "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/8e0928a0-047a-4369-8883-12669f32dd64"```
 
-It updates the owning collection (moves the item)
+It updates the owning collection (moves the item).
 
 Status codes:
 * 204 No content - if the operation succeeded

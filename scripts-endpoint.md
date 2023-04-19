@@ -216,3 +216,4 @@ The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED
 Status codes:
 * 202 Accepted - if the task is accepted for processing
 * 404 Not found - if the script doesn't exist
+* 413 Payload too large - uploaded file is larger than limit set in configuration parameter `spring.servlet.multipart.max-file-size`
