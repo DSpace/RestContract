@@ -1,4 +1,4 @@
-# Statistics for the whole repository
+# Filtered Collections report
 [Back to the list of all defined endpoints](endpoints.md)
 
 This endpoint provides aggregated statistics about the number of items per collection according to selected filters.
@@ -14,6 +14,13 @@ like the following:
 ```
 ?filters=is_discoverable,has_multiple_originals,has_pdf_original
 ```
+
+Alternatively, the comma-separated list can be replaced by a repetition of the `filters` parameter
+for each requested filter:
+```
+?filters=is_discoverable&filter=has_multiple_originals&filter=has_pdf_original
+```
+
 
 Please see [below](#available-filters) for the list of available filters.
 

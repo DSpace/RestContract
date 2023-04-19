@@ -1,11 +1,60 @@
 # Metadata query (aka Filtered Items) report
 [Back to the list of all defined endpoints](endpoints.md)
 
-This endpoint lists items according to given Boolean and metadata filters.
+This endpoint provides a custom query API to select items from existing collections,
+according to given Boolean and metadata filters.
+
+The report can be accessed equally through a GET or a POST query. Apart from the page offset and the
+format (query parameters vs. JSON document), all parameters are the same for both versions.
+
+
+**GET /api/contentreport/filtereditems**
+
+The report parameters are described [below](#report-parameterization).
+
+Additionally, a `pageNumber` parameter is available to retrieve results starting at a given page
+(according to `pageLimit`, the maximum number of items per page). Page numbering starts at 0.
+
+All parameters except `pageNumber` and `pageLimit` are repeatable (which is depicted by the use
+of JSON arrays in the POST version JSON example below). Multiple values can be expressed either
+by repeating the corresponding parameter, e.g.:
+```
+?filters=is_discoverable&filters=has_multiple_originals&filters=has_pdf_original
+```
+
+of by using a comma-separated value, e.g.:
+
+```
+?filters=is_discoverable,has_multiple_originals,has_pdf_original
+```
 
 **POST /api/contentreport/filtereditems**
 
-This endpoint provides a custom query API to select items from existing collections.
+The POST-based endpoint takes its parameters in a JSON document like this:
+```json
+{
+    "collections": [
+        ""
+    ],
+    "presetQuery": "new",
+    "queryPredicates": [
+        {
+            "field": "*",
+            "operator": null,
+            "value": null
+        }
+    ],
+    "pageLimit": "100",
+    "filters": {
+        "is_discoverable": true,
+        "has_multiple_originals": true,
+        "has_pdf_original": true
+    },
+    "additionalFields": [
+        "dc.contributor.advisor"
+    ]
+}
+```
 
 Please see [below](#report-parameterization) for parameterization details.
 
@@ -90,32 +139,6 @@ An example JSON response document to `/api/contentreport/filtereditems` (metadat
 ```
 
 ## Report parameterization
-
-The request is defined as a JSON document like this:
-```json
-{
-    "collections": [
-        ""
-    ],
-    "presetQuery": "new",
-    "queryPredicates": [
-        {
-            "field": "*",
-            "operator": null,
-            "value": null
-        }
-    ],
-    "pageLimit": "100",
-    "filters": {
-        "is_discoverable": true,
-        "has_multiple_originals": true,
-        "has_pdf_original": true
-    },
-    "additionalFields": [
-        "dc.contributor.advisor"
-    ]
-}
-```
 
 The parameters are specified as follows:
 
