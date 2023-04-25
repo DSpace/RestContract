@@ -30,3 +30,4 @@
 
 ## [Subscription-Send script](./subscription-send.md)
 
+* [Bulk Access Control script](./bulk-access-control.md)

@@ -1,0 +1,93 @@
+# Bulk Access Control Management script
+[Back to the list of all defined scripts](./index.md)
+
+<!-- TOC -->
+* [Import script](#bulk-access-control-management-script)
+  * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
+  * [When we use it?](#when-we-use-it)
+  * [How it Works?](#how-it-works)
+  * [Parameters](#parameters)
+  * [Conclusion](#conclusion)
+* [What is an Access Condition?](#what-is-an-access-condition)
+<!-- TOC -->
+## What it does?
+
+This script performs bulk changes to the access conditions of the items and bitstreams. 
+The Bulk Access Control Management focus on Access Control rather than resource policies. The goal will be to add / replace access condition for a set of objects from a user friendly interface that will abstract from the complexity/internal rules of DSpace’s resource policies and bundles as much as possible.
+It takes a json file as input to identify the items and bitstreams target of the changes and the access conditions to append or set.
+
+## Who can use it?
+
+This script can be used by any user that has administrative priviled over at least one community, collection or item limited to the resources that they admin.
+
+## When we use it?
+
+If you need to align the access conditions of all the items and/or bitstreams in a community or collection, or other selection to new rules defined by the Institution such as making open access all the thesis or restrict access to all the material related to a specific project, etc.
+
+
+## How it Works?
+
+The Bulk Access Control Management script reads a json file containing the details about which resources (items and bitstreams) need to be processed and how to manipulate the access conditions.
+The script then processes the items and bitstreams identified according to the defined mode and specified accessConditions.
+
+## Parameters
+
+The script takes the following parameters:
+
+| Parameter                        | Description                                                                                                                                                                            |
+|----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-f`, <br>`--file`                | This parameter specifies the json file containing the processing instruction.                                                                                                              |
+| `-h`, <br>`--help`               | This parameter displays help information for the script.                                                                                                                               |
+
+The json file specified with the file parameter has the following structure
+ structured as follow
+```json
+{
+   target: [uuid1, uuid2, ..., uuidN],
+   item: {
+      mode: "replace",
+      accessConditions: [
+          {
+            "name": "openaccess"
+          }
+      ]
+   },
+   bitstream: {
+      constraints: {
+          uuid: [bit-uuid1, bit-uuid2, ..., bit-uuidN],
+      },
+      mode: "add",
+      accessConditions: [
+        {
+         "name": "embargo",
+         "startDate": "2024-06-24T23:59:59.999+0000"
+        },
+        {
+         "name": "network"         
+        }
+      ]
+   }
+}
+```
+* target: is a list of uuid of communities, collections and individual items to process
+* item: the item node contains the processing detail at the item level for the identified resources
+  * mode: can be replace or add. Replace will mean that after processing the items will have only the access conditions that are specified in the accessContitions property. Add will mean that after processing the items will have the specified accessCondition in addition to the ones already defined.
+  * accessConditions: the list of access conditions to apply, with their specific parameters if needed (such as a startDate for an embargo, etc.). Only in replace mode the accessConditions can be empty in this case the access conditions of the item will be reset to what is inherited from their owningCollection. Please note that when accessConditions is set and is not empty not inheritence from the owningCollection occur
+* bitstreams: the bitstream node contains the processing detail at the bitstream level for the identified resources
+  * constraints: when the target element contains just a single uuid related to an item it is possible to limit the bitstreams to process to a predefined list instead than process all the bitstream of the item. If the constraints node is not present, is empty or contains a null uuid or 0-size list all the bitstreams are processed
+  * mode: as per the item node
+  * accessConditions: as per the item node
+
+## Conclusion
+
+The Batch Import from SAF script is a powerful tool for importing items into DSpace from a zip file in SAF format. The
+script provides a wide range of parameters to control how the import is executed, and can be used to add, replace, or
+delete items, map items using a mapfile, send submissions through a collection's workflow, and more.
+
+
+# What is an Access Condition?
+
+An access condition is usually linked to a resource policy that grant READ permission to a specific eperson or group over a DSpace Object. It can be constrainst to a specific time windows with a start date or end date. READ permission are grant in DSpace to user for different purpose according to the different phase of an item life-cycle for this reason resource policy have a type, `TYPE_CUSTOM` or `TYPE_INHERITED` are used in policies that are set to define the final "access condition" of an object.
+
+The access condition defined in the system are configured in a spring file of the the backend and exposed via the [Bulk Access Conditions endpoint](/bulkaccessconditionoptions.md)

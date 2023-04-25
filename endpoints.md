@@ -4,20 +4,19 @@
 ## Available Endpoints
 * /api/core/sites
 * [/api/core/communities](communities.md)
-* /api/core/collections
+* [/api/core/collections](collections.md)
 * [/api/core/items](items.md)
 * [/api/core/itemtemplates](itemtemplates.md)
 * [/api/core/bitstreams](bitstreams.md)
 * [/api/core/bitstreamformats](bitstreamformats.md)
 * [/api/core/bundles](bundles.md)
-* /api/core/sites
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/epersons](epersons.md)
 * [/api/eperson/orcidqueues](orcidqueues.md)
 * [/api/eperson/orcidhistories](orcidhistories.md)
 * [/api/eperson/profiles](profiles.md)
-* /api/core/groups
+* [/api/core/groups](epersongroups.md)
 * [/api/core/{model}/search](search-rels.md)
 * [/api/authn/login](authentication.md#Login)
 * [/api/authn/logout](authentication.md#Logout)
@@ -43,9 +42,8 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
-
-## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
+* [/api/config/bulkaccessconitionoptions](bulkaccessconditionoptions.md)
 * [/api/authz/authorizations](authorizations.md)
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)
