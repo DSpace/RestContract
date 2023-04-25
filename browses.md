@@ -54,6 +54,39 @@ Error codes:
 
 **404** if the browse index doesn't exist
 
+## Hierarchical browse index 
+**/api/discover/browses/<:index-name>**
+
+Provide detailed information about a specific hierarchical browse index and access to the parameters required to access the list of items and entries. The JSON response document is as follows
+```json
+{
+  "id": "keyword",
+  "facetType": "subject",
+  "vocabulary": "srsc",
+  "type": "hierarchicalBrowse",
+  "metadata": [
+    "dc.subject"
+  ],
+  "_links" : {
+    "vocabulary" : {
+      "href" : "/server/api/submission/vocabularyEntryDetails/search/top?vocabulary=srsc"
+    }
+  }
+} 
+```
+
+* id: the identifier for the browse index
+* facetType: the discovery filter to use to filter the items
+* vocabulary: the name of the vocabulary containing the tree
+* metadata: the list of metadata used to build this index
+
+Exposed links:
+* vocabulary: link to the vocabulary containing the tree
+
+Error codes:
+
+**404** if the browse index doesn't exist
+
 ## Browse indexes configured for metadata linking
 ### Get a single index configured as browse links for the given metadata fields
 **/api/discover/browses/search/byFields?fields=<:field>**
