@@ -26,7 +26,7 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         }
       ]
   },
-  "primarybitstream": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76",
+  "primaryBitstreamUUID": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76",
   "type": "bundle",
   "_links" : {
     "primarybitstream" : {
@@ -293,23 +293,23 @@ The primary bitstream is exposed as a link, and as a property which allows it to
 
 **PATCH /api/core/bundles/<:uuid>**
 
-To create a primary bitstream when the current `primarybitstream` is `null`:
+To create a primary bitstream when the current `primaryBitstreamUUID` is `null`:
 ```json
 [
   {
     "op": "add",
-    "path": "/primarybitstream",
+    "path": "/primaryBitstreamUUID",
     "value": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
   }
 ]
 ```
 
-To change the primary bitstream when the current `primarybitstream` is a different bitstream:
+To change the primary bitstream when the current `primaryBitstreamUUID` is a different bitstream:
 ```json
 [
   {
     "op": "replace",
-    "path": "/primarybitstream",
+    "path": "/primaryBitstreamUUID",
     "value": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
   }
 ]
@@ -320,7 +320,7 @@ To remove (unset) the primary bitstream:
 [
   {
     "op": "remove",
-    "path": "/primarybitstream"
+    "path": "/primaryBitstreamUUID"
   }
 ]
 ```
