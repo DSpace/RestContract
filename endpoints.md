@@ -43,7 +43,7 @@
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
 * [/api/authz/resourcepolicies](resourcepolicies.md)
-* [/api/config/bulkaccessconitionoptions](bulkaccessconditionoptions.md)
+* [/api/config/bulkaccessconditionoptions](bulkaccessconditionoptions.md)
 * [/api/authz/authorizations](authorizations.md)
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)

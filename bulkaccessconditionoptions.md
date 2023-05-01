@@ -7,7 +7,7 @@
 Provide access to the existent configurations for the bulk access control management. It returns the list of existent BulkAccessConfig.
 The BulkAccessConfig aggregates in a single place the configuration needed to the access section of the bulk access control management at the item and bitstream level.
 
-Please note that currently only a single repository wide configuration is supported, so this endpoint will list a single configuration.
+Please note that currently only a single repository wide configuration is supported and it is configured in the backend `/config/spring/api/access-conditions.xml` file, so this endpoint will list a single configuration.
 
 Status codes:
 * 200 OK - if the operation succeed
