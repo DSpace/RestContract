@@ -80,3 +80,17 @@ For more details see the [/actuator endpoint](actuator.md)
     * statistics viewing
   * return the status of features that are enabled for authorized users
     * item versioning
+
+## Other Endpoints not under /api context
+
+* /oai
+  * endpoint for OAI-PMH data provider (if enabled)
+* /opensearch
+  * endpoint for opensearch service
+* [/signposting](signposting.md)
+  * endpoint returning information for linkset (signposting)
+* /sword
+  * endpoint for sword (if enabled)
+* /sword2
+  * endpoint for sword2 (if enabled)
+
