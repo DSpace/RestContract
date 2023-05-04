@@ -15,6 +15,7 @@ Provide detailed information about a specific browse index and access to the lis
 ```json
 {
   "id": "title",
+  "browseType": "flatBrowse",
   "metadataBrowse": false,
   "dataType": "title",
   "sortOptions": [
@@ -40,6 +41,9 @@ Provide detailed information about a specific browse index and access to the lis
 ```
 
 * id: the identifier for the browse index
+* browseType:
+  * `valueList` if the browse index has two levels, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
+  * `flatBrowse` if the browse index has one level: the full list of items
 * metadataBrowse: true if the browse index have two level, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
 * dataType: the kind of data indexed. Can have the values "title" for item titles, "date" for date fields or "text" for other metadata
 * sortOptions: the sort options available for this index
@@ -61,21 +65,23 @@ Provide detailed information about a specific hierarchical browse index and acce
 ```json
 {
   "id": "keyword",
+  "browseType": "hierarchicalBrowse",
   "facetType": "subject",
   "vocabulary": "srsc",
-  "type": "hierarchicalBrowse",
+  "type": "browse",
   "metadata": [
     "dc.subject"
   ],
   "_links" : {
     "vocabulary" : {
-      "href" : "/server/api/submission/vocabularyEntryDetails/search/top?vocabulary=srsc"
+      "href" : "/server/api/submission/vocabularies/srsc"
     }
   }
 } 
 ```
 
 * id: the identifier for the browse index
+* browseType: `hierarchicalBrowse` if the browse index should display the vocabulary tree. The 1st level shows the tree. The second level is the actual list of items linked to a specific entry
 * facetType: the discovery filter to use to filter the items
 * vocabulary: the name of the vocabulary containing the tree
 * metadata: the list of metadata used to build this index
