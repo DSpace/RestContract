@@ -1,6 +1,7 @@
-# Filter-Media Script
+# filter-media script
+[Back to the scripts index](index.md)
 <!-- TOC -->
-* [Filter-Media Script](#filter-media-script)
+* [filter-media script](#filter-media-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,19 +10,23 @@
 <!-- TOC -->
 ## What it does?
 
-The script processes bitstreams that are added to DSpace, and extracts metadata and full text from the files. This information is then used to create thumbnails.
+This script processes bitstreams (files) that are added to DSpace.  It can perform various actions on files, which include extracting full text from files (to allow for searching within files) and creation of file thumbnails.
+
+For more information see the [Media Filter documentation](https://wiki.lyrasis.org/display/DSDOC7x/Mediafilters+for+Transforming+DSpace+Content)
 
 ## When we use it?
 
 The Filter-Media script is used to extract full text from documents and create thumbnails in DSpace.
 
+
 ## How it Works?
 
-The Filter-Media script processes bitstreams that are added to DSpace, and extracts metadata and full text from the files. This information is then used to create thumbnails and make the full text searchable in DSpace.
+The filter-media script processes bitstreams (files) that are added to DSpace, performing various activities on those files.  For instance, by default, it will extract the full text from files to make them full text searchable.  It will also create thumbnails.
 
 The script can be run with a variety of parameters to control which bitstreams are processed and which Media Filter plugins are used.
 
 By default, the script will process all bitstreams in DSpace and run all Media Filter plugins listed in the 'filter.plugins' configuration property in dspace.cfg.
+
 
 ## Parameters
 
@@ -38,7 +43,7 @@ By default, the script will process all bitstreams in DSpace and run all Media F
 
 ## Conclusion/QuickGuide:
 
-The Filter-Media script is a powerful tool for extracting full text and creating thumbnails in DSpace. By default, the
+The filter-media script is a powerful tool for extracting full text and creating thumbnails in DSpace. By default, the
 script will process all bitstreams in DSpace and run all available Media Filter plugins. However, by using the available
 parameters, you can customize the script to process only specific bitstreams or to use only certain Media Filter
 plugins. This can help to optimize the performance of the script and ensure that the desired output is generated.

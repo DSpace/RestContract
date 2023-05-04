@@ -1,6 +1,7 @@
-# Index-Discovery script
+# index-discovery script
+[Back to the scripts index](index.md)
 <!-- TOC -->
-* [Index-Discovery script](#index-discovery-script)
+* [index-discovery script](#index-discovery-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,23 +10,23 @@
 <!-- TOC -->
 ## What it does?
 
-The Index-Discovery script interacts with the Discovery Solr search index in DSpace. Depending on the parameters passed,
+The index-discovery script interacts with the Discovery Solr search index in DSpace. Depending on the parameters passed,
 the script adds, removes, updates, or rebuilds the search index.
 
 ## When we use it?
 
-The Index-Discovery script is used to update the Discovery Solr search index in DSpace. The script allows for adding,
+The index-discovery script is used to update the Discovery Solr search index in DSpace. The script allows for adding,
 removing, updating, and rebuilding the search index.
 
 ## How it Works?
 
-The Index-Discovery script updates the Discovery Solr search index in DSpace. The script queries the DSpace database to
+The index-discovery script updates the Discovery Solr search index in DSpace. The script queries the DSpace database to
 identify the items, collections, or communities that need to be added, updated, or removed from the index, and then
 performs the corresponding operations on the index.
 
 ## Parameters:
 
-The following parameters are available for the Index-Discovery script:
+The following parameters are available for the index-discovery script:
 
 | Parameter                     | Description                                                                                 |
 |-------------------------------|---------------------------------------------------------------------------------------------|
@@ -47,7 +48,7 @@ to the index that affect the spellchecking functionality.
 
 ## Conclusion/QuickGuide:
 
-The Index-Discovery script is a powerful tool for managing the Discovery Solr search index in DSpace. With this script,
+The index-discovery script is a powerful tool for managing the Discovery Solr search index in DSpace. With this script,
 you can add, update, or remove items, collections, or communities from the index, as well as clean, delete, or rebuild
 the index from scratch. By using the various options available in the script, you can keep your Discovery Solr search
 index up-to-date and ensure that your users are able to find the content they need in DSpace.
