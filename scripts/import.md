@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [import script](#import-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -17,6 +18,10 @@ See [what is SAF](./export.md#what-is-saf)? for more information about the SAF e
 It takes several parameters to customize the import, such as the action to perform, the zip file to import, the
 destination collection, whether to send the submission through the collection's workflow, and whether to validate the
 import.
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

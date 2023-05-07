@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [subscription-send script](#subscription-send-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -14,6 +15,10 @@ The subscription-send script is designed to send email notifications related to 
 subscribe to specific communities, collections, or items.
 
 For more information see the [Email Subscription documentation](https://wiki.lyrasis.org/display/DSDOC7x/Email+Subscriptions)
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

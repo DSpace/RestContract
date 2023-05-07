@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [curate script](#curate-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -15,6 +16,10 @@ The curate script allows you to select specific curation tasks to perform, and p
 queueing tasks.
 
 For more information, see the [Curation System documentation](https://wiki.lyrasis.org/display/DSDOC7x/Curation+System)
+
+## Who can use it?
+
+This script can be used by any user that has administrative privileges over at least one community, collection or item limited to the resources that they admin.
 
 ## When we use it?
 
