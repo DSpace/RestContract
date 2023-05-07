@@ -37,6 +37,8 @@ The script takes the following parameters:
 
 | Parameter                        | Description                                                                                                                                                                            |
 |----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-u`, <br>`--uuid`                | This parameter, mandatory and repeatable, specifies the uuid of the object to process according to processing instruction, specified in the json file (see below).                                                                                                              |
+
 | `-f`, <br>`--file`                | This parameter specifies the json file containing the processing instruction.                                                                                                              |
 | `-h`, <br>`--help`               | This parameter displays help information for the script.                                                                                                                               |
 
@@ -44,7 +46,6 @@ The json file specified with the file parameter has the following structure
  structured as follow
 ```json
 {
-   target: [uuid1, uuid2, ..., uuidN],
    item: {
       mode: "replace",
       accessConditions: [
@@ -80,7 +81,6 @@ The json file specified with the file parameter has the following structure
   * accessConditions: as per the item node
 
 The following validations rules apply to the file
-* target.size() > 0
 * item?.mode = replace|add
 * bitstream?.mode = replace|add
 * item or bitstream must be present
