@@ -1,13 +1,14 @@
 # Available scripts index
 
 ## Scripts and processes endpoints
-This index contains a list of all the provided scripts in DSpace REST API contract, to learn more about the scripts and processes endpoints, they are available here: 
+This index contains a list of all the provided scripts in DSpace REST API contract,
+to learn more about the scripts and processes endpoints; check the following documentation: 
 
 * [Processes](https://github.com/DSpace/RestContract/blob/main/processes-endpoint.md)
 
 * [Scripts](https://github.com/DSpace/RestContract/blob/main/scripts-endpoint.md)
 
-## List of available Scripts
+## List of available scripts
 
 * [curate script](./curate.md)
 

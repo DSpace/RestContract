@@ -1,5 +1,5 @@
 # harvest script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [harvest script](#harvest-script)
   * [What it does?](#what-it-does)
@@ -12,11 +12,12 @@
 
 With this script, you can configure a collection to harvest its items from an external OAI-PMH instance. You can specify whether to harvest metadata only, or files as well (for external sites that support harvesting files).
 
-For more information see the [OAI documentation](https://wiki.lyrasis.org/display/DSDOC7x/OAI) 
+For more information, see the [OAI documentation](https://wiki.lyrasis.org/display/DSDOC7x/OAI) 
 
 ## When we use it?
 
-The script can be used to set up configurations, related to a collection for harvesting its items, run the harvest procedure, or manage the status of
+The script can be used to set up configurations related to a collection for harvesting its items,
+run the harvest procedure, or manage the status of
 harvested collections.
 
 The harvest script can also be used to reset the status of harvested collections, purge collections, and re-import all

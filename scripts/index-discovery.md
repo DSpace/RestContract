@@ -1,5 +1,5 @@
 # index-discovery script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [index-discovery script](#index-discovery-script)
   * [What it does?](#what-it-does)

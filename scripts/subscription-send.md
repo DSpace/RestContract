@@ -1,5 +1,5 @@
 # subscription-send script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [subscription-send script](#subscription-send-script)
   * [What it does?](#what-it-does)
@@ -13,7 +13,8 @@
 The subscription-send script is designed to send email notifications related to subscriptions in DSpace. Users can
 subscribe to specific communities, collections, or items.
 
-For more information see the [Email Subscription documentation](https://wiki.lyrasis.org/display/DSDOC7x/Email+Subscriptions)
+For more information,
+see the [Email Subscription documentation](https://wiki.lyrasis.org/display/DSDOC7x/Email+Subscriptions)
 
 ## When we use it?
 
@@ -21,8 +22,10 @@ The subscription-send script is used to send periodic email updates based on the
 
 ## How it Works?
 
-The subscription-send script runs periodically (e.g. daily) on the DSpace server, and sends email notifications to users
-who have subscribed to specific communities, collections, or items. The script queries the DSpace database to identify
+The subscription-send script runs periodically (e.g., daily) on the DSpace server,
+and sends email notifications to users
+who have subscribed to specific communities, collections, or items.
+The script queries the DSpace database to identify
 users who have subscribed to specific items, and then generates an email notification for each subscription.
 
 The script's frequency parameter specifies how often email notifications should be sent. For example, if the frequency

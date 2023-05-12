@@ -1,5 +1,5 @@
 # filter-media script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [filter-media script](#filter-media-script)
   * [What it does?](#what-it-does)
@@ -12,7 +12,8 @@
 
 This script processes bitstreams (files) that are added to DSpace.  It can perform various actions on files, which include extracting full text from files (to allow for searching within files) and creation of file thumbnails.
 
-For more information see the [Media Filter documentation](https://wiki.lyrasis.org/display/DSDOC7x/Mediafilters+for+Transforming+DSpace+Content)
+For more information,
+see the [Media Filter documentation](https://wiki.lyrasis.org/display/DSDOC7x/Mediafilters+for+Transforming+DSpace+Content)
 
 ## When we use it?
 

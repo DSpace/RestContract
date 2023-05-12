@@ -1,5 +1,5 @@
 # ORCID-bulk-push script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [ORCID-bulk-push script](#orcid-bulk-push-script)
   * [What it does?](#what-it-does)
@@ -13,7 +13,8 @@
 The ORCID-bulk-push script is used to perform a bulk synchronization of all the ORCID entities that are placed in the
 ORCID queue. This script is specifically designed to work with ORCID integration in DSpace.
 
-For more information see the [ORCID Integration documentation](https://wiki.lyrasis.org/display/DSDOC7x/ORCID+Integration)
+For more information,
+see the [ORCID Integration documentation](https://wiki.lyrasis.org/display/DSDOC7x/ORCID+Integration)
 
 
 ## When we use it?

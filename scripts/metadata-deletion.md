@@ -1,5 +1,5 @@
 # metadata-deletion script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [metadata-deletion script](#metadata-deletion-script)
   * [What it does?](#what-it-does)
