@@ -289,38 +289,44 @@ New list of bitstreams:
 
 ## Primary bitstream
 
-The primary bitstream is exposed as a link, and as a property which allows it to be modified
+The primary bitstream is exposed as a link, and can be modified
 
-**PATCH /api/core/bundles/<:uuid>**
+**/api/core/bundles/<:uuid>/primaryBitstream**
 
-To create a primary bitstream when the current `primaryBitstreamUUID` is `null`:
-```json
-[
-  {
-    "op": "add",
-    "path": "/primaryBitstreamUUID",
-    "value": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
-  }
-]
+### Retrieve Primary bitstream
+
+The Primary bitstream can be retrieved using a GET, this may result in `null`
+
+**GET /api/core/bundles/<:uuid>/primaryBitstream**
+
+### Create Primary bitstream
+
+If the Primary bitstream doesn't exist, it can be created using a POST
+
+**POST /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X POST "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
 ```
 
-To change the primary bitstream when the current `primaryBitstreamUUID` is a different bitstream:
-```json
-[
-  {
-    "op": "replace",
-    "path": "/primaryBitstreamUUID",
-    "value": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
-  }
-]
+### Update Primary bitstream
+
+If the Primary bitstream already exists, it can be changed using a PUT
+
+**PUT /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X PUT "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
 ```
 
-To remove (unset) the primary bitstream:
-```json
-[
-  {
-    "op": "remove",
-    "path": "/primaryBitstreamUUID"
-  }
-]
-```
+### Removing Primary bitstream
+
+If the Primary bitstream already exists, and no primary bitstream should be used anymore, it can be changed using a DELETE. This will **not** delete the bitstream nor unassign it from the bundle, it will just ensure the bundle has no primary bitstream anymore
+
+**DELETE /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should not have any content
