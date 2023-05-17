@@ -13,6 +13,8 @@
 The index-discovery script interacts with the Discovery Solr search index in DSpace. Depending on the parameters passed,
 the script adds, removes, updates, or rebuilds the search index.
 
+For more information regarding the Discovery infrastructure, see the [DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC7x/Discovery).
+
 ## When we use it?
 
 The index-discovery script is used to update the Discovery Solr search index in DSpace. The script allows for adding,

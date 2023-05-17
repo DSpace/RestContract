@@ -4,9 +4,9 @@
 This index contains a list of all the provided scripts in DSpace REST API contract,
 to learn more about the scripts and processes endpoints; check the following documentation: 
 
-* [Processes](https://github.com/DSpace/RestContract/blob/main/processes-endpoint.md)
+* [Processes](../processes-endpoint.md)
 
-* [Scripts](https://github.com/DSpace/RestContract/blob/main/scripts-endpoint.md)
+* [Scripts](../scripts-endpoint.md)
 
 ## List of available scripts
 

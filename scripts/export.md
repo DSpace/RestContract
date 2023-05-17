@@ -76,6 +76,8 @@ The basic concept behind the DSpace's Simple Archive Format is to create an arch
 subdirectory per item. Each item directory contains a file for the item's descriptive metadata, and the files that make
 up the item.
 
+For more information on the Simple Archive Format, see the [DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC7x/Importing+and+Exporting+Items+via+Simple+Archive+Format).
+
 ## A visual representation of a SAF
 
 <details>
