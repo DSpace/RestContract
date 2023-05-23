@@ -8,6 +8,29 @@ Provide access to the browse system (SOLR based). It returns the list of availab
 
 Example: <https://{dspace.server.url}/api/discover/browses>
 
+## Browse types
+
+There are currently types of browse, each behaving differently:
+* `valueList`:
+  * The browse index has two levels
+  * The 1st level shows the list of entries like author names, subjects, types, etc
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is used to render the author names, subjects, types, etc
+  * The `vocabulary` link is not used
+* `flatBrowse`:
+  * The browse index has one level: the full list of items
+  * The `items` link is used to render this list of items
+  * The `entries` link is not used
+  * The `vocabulary` link is not used
+* `hierarchicalBrowse`:
+  * The browse index displays the vocabulary tree
+  * The 1st level shows the tree
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is not used
+  * The `vocabulary` link is used to render the tree
+
 ## Single browse index 
 **/api/discover/browses/<:index-name>**
 
