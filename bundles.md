@@ -26,7 +26,6 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         }
       ]
   },
-  "primaryBitstreamUUID": "ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76",
   "type": "bundle",
   "_links" : {
     "primarybitstream" : {
