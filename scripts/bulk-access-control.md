@@ -8,7 +8,6 @@
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
-  * [Conclusion](#conclusion)
 * [What is an Access Condition?](#what-is-an-access-condition)
 <!-- TOC -->
 ## What it does?
@@ -37,7 +36,7 @@ The script takes the following parameters:
 
 | Parameter                        | Description                                                                                                                                                                            |
 |----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-u`, <br>`--uuid`                | This parameter, mandatory and repeatable, specifies the uuid of the object to process according to processing instruction, specified in the json file (see below).                                                                                                              |
+| `-u`, <br>`--uuids`              | This parameter, mandatory and repeatable, specifies the uuid of the object to process according to processing instruction, specified in the json file (see below).                                                                                                              |
 
 | `-f`, <br>`--file`                | This parameter specifies the json file containing the processing instruction.                                                                                                              |
 | `-h`, <br>`--help`               | This parameter displays help information for the script.                                                                                                                               |
@@ -46,20 +45,20 @@ The json file specified with the file parameter has the following structure
  structured as follow
 ```json
 {
-   item: {
-      mode: "replace",
-      accessConditions: [
+   "item": {
+      "mode": "replace",
+      "accessConditions": [
           {
             "name": "openaccess"
           }
       ]
    },
-   bitstream: {
-      constraints: {
-          uuid: [bit-uuid1, bit-uuid2, ..., bit-uuidN],
+   "bitstream": {
+      "constraints": {
+          "uuid": ["bit-uuid1", "bit-uuid2", "...", "bit-uuidN"],
       },
-      mode: "add",
-      accessConditions: [
+      "mode": "add",
+      "accessConditions": [
         {
          "name": "embargo",
          "startDate": "2024-06-24T23:59:59.999+0000"
@@ -71,12 +70,11 @@ The json file specified with the file parameter has the following structure
    }
 }
 ```
-* target: is a list of uuid of communities, collections and individual items to process
 * item: the item node contains the processing detail at the item level for the identified resources
   * mode: can be replace or add. Replace will mean that after processing the items will have only the access conditions that are specified in the accessContitions property. Add will mean that after processing the items will have the specified accessCondition in addition to the ones already defined.
   * accessConditions: the list of access conditions to apply, with their specific parameters if needed (such as a startDate for an embargo, etc.). Only in replace mode the accessConditions can be empty in this case the access conditions of the item will be reset to what is inherited from their owningCollection. Please note that when accessConditions is set and is not empty not inheritence from the owningCollection occur. For more information on accessConditions see the [What is an Access Condition?](#what-is-an-access-condition) section below.
-* bitstreams: the bitstream node contains the processing detail at the bitstream level for the identified resources
-  * constraints: only when the `target` element (see above) contains just a single Item UUID, then the 'constraints' can be used to limit which Bitstreams are processed in that Item. If `constraints` specifies one or more bitstream UUIDs, then only those bitstreams listed will be processed. If the `constraint`s node is not present, is empty or contains a null uuid or 0-size list, then all the bitstreams will be processed.
+* bitstreams: the bitstreams node contains the processing details at the bitstream level for the identified resources, applies to bitstreams in the main content bundle (i.e. ORIGINAL bundle) and also applies to derived bitstreams created by the filter-media will be updated according to the changes performed to the corresponding original bitstream expect than for bitstreams derived by public filters classes that will stay with their original policies (set to READ Anonymous at the creation time)
+  * constraints: only when the `--uuid` param (see above) contains just a single Item UUID, then the 'constraints' can be used to limit which Bitstreams are processed in that Item. If `constraints` specifies one or more bitstream UUIDs, then only those bitstreams listed will be processed. If the `constraint`s node is not present, is empty or contains a null uuid or 0-size list, then all the bitstreams will be processed.
   * mode: as per the item node
   * accessConditions: as per the item node
 
@@ -86,13 +84,6 @@ The following validations rules apply to the file
 * item or bitstream must be present
 * item?.accessContitions[*].name & bitstream?.accessContitions[*].name must match a defined access conditions and the object must be validated against the access condition rules (max end date etc).
 Failures to comply with these rules will lead to a failure in the script execution.
-
-## Conclusion
-
-The Batch Import from SAF script is a powerful tool for importing items into DSpace from a zip file in SAF format. The
-script provides a wide range of parameters to control how the import is executed, and can be used to add, replace, or
-delete items, map items using a mapfile, send submissions through a collection's workflow, and more.
-
 
 # What is an Access Condition?
 
