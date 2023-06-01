@@ -1,6 +1,7 @@
-# Harvest Script
+# harvest script
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Harvest Script](#harvest-script)
+* [harvest script](#harvest-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,20 +10,22 @@
 <!-- TOC -->
 ## What it does?
 
-With this script, you can set up collections for harvesting, run the standard harvest procedure, and perform other tasks
-to manage your harvesting process.
+With this script, you can configure a collection to harvest its items from an external OAI-PMH instance. You can specify whether to harvest metadata only, or files as well (for external sites that support harvesting files).
+
+For more information, see the [OAI documentation](https://wiki.lyrasis.org/display/DSDOC7x/OAI) 
 
 ## When we use it?
 
-The script can be used to set up collections for harvesting, run the harvest procedure, and manage the status of
+The script can be used to set up configurations related to a collection for harvesting its items,
+run the harvest procedure, or manage the status of
 harvested collections.
 
-The Harvest script can also be used to reset the status of harvested collections, purge collections, and re-import all
+The harvest script can also be used to reset the status of harvested collections, purge collections, and re-import all
 items in a collection.
 
 ## How it Works?
 
-The Harvest script uses the OAI-PMH protocol to harvest metadata from external collections and import it into DSpace.
+The harvest script uses the OAI-PMH protocol to harvest metadata from external collections and import it into DSpace.
 
 When a collection is set up for harvesting, the script establishes a connection with the specified OAI-PMH server and
 imports metadata for the specified set ID and metadata format. The harvested metadata is then imported into DSpace, and
@@ -49,6 +52,6 @@ items are created or updated as necessary.
 
 ## Conclusion/QuickGuide:
 
-The Harvest script is a useful tool for managing the OAI-PMH harvesting of external collections in DSpace. It provides a
+The harvest script is a useful tool for managing the OAI-PMH harvesting of external collections in DSpace. It provides a
 range of options for setting up collections, running the harvest procedure, and managing harvested collections. If you
 need to import metadata from external collections into DSpace, the Harvest script may be a helpful tool to use.

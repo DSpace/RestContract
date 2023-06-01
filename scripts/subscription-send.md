@@ -1,6 +1,7 @@
-# Subscription-Send script
+# subscription-send script
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Subscription-Send script](#subscription-send-script)
+* [subscription-send script](#subscription-send-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,17 +10,22 @@
 <!-- TOC -->
 ## What it does?
 
-The Subscription-Send script is designed to send email notifications related to subscriptions in DSpace. Users can
+The subscription-send script is designed to send email notifications related to subscriptions in DSpace. Users can
 subscribe to specific communities, collections, or items.
+
+For more information,
+see the [Email Subscription documentation](https://wiki.lyrasis.org/display/DSDOC7x/Email+Subscriptions)
 
 ## When we use it?
 
-The Subscription-Send script is used to send periodic email updates based on the user's subscription frequency.
+The subscription-send script is used to send periodic email updates based on the user's subscription frequency.
 
 ## How it Works?
 
-The Subscription-Send script runs periodically (e.g. daily) on the DSpace server, and sends email notifications to users
-who have subscribed to specific communities, collections, or items. The script queries the DSpace database to identify
+The subscription-send script runs periodically (e.g., daily) on the DSpace server,
+and sends email notifications to users
+who have subscribed to specific communities, collections, or items.
+The script queries the DSpace database to identify
 users who have subscribed to specific items, and then generates an email notification for each subscription.
 
 The script's frequency parameter specifies how often email notifications should be sent. For example, if the frequency
@@ -27,7 +33,7 @@ is set to "W" (week), email notifications will be sent once per week to users wh
 
 ## Parameters
 
-The Subscription-Send script has the following parameter:
+The subscription-send script has the following parameter:
 
 | Parameter                        | Description                                                                         |
 |----------------------------------|-------------------------------------------------------------------------------------|
@@ -35,7 +41,7 @@ The Subscription-Send script has the following parameter:
 
 ## Conclusion/QuickGuide:
 
-In conclusion, the Subscription-Send script is a useful tool for sending email notifications to DSpace users who have
+In conclusion, the subscription-send script is a useful tool for sending email notifications to DSpace users who have
 subscribed to specific items. By default, the script runs daily, but the frequency can be adjusted to match the needs of
 your institution. If you have issues with users not receiving email notifications for their subscriptions, the
-Subscription-Send script may be a helpful tool to diagnose and resolve the issue.
+subscription-send script may be a helpful tool to diagnose and resolve the issue.

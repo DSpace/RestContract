@@ -1,6 +1,7 @@
-# Export Script
+# export script
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Export Script](#export-script)
+* [export script](#export-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it works?](#how-it-works)
@@ -12,17 +13,20 @@
 <!-- TOC -->
 ## What it does?
 
-The Export script can be used to export individual items or entire collections, and can be customized to exclude
+The export script can be used to export individual items or entire collections, and can be customized to exclude
 bitstreams and metadata as needed.
 
 ## When we use it?
 
-The Export script is used to batch export items from DSpace to Simple Archive Format (SAF) for migration or backup
+The export script is used to batch export items from DSpace to Simple Archive Format (SAF) for migration or backup
 purposes.
+
+[See below](#what-is-saf) for more information about the SAF export format.
+
 
 ## How it works?
 
-The Export script works by querying the DSpace database to identify the item or collection to be exported. Once the item
+The export script works by querying the DSpace database to identify the item or collection to be exported. Once the item
 or collection has been identified, the script creates a Simple Archive Format (SAF) file containing the item's metadata
 and bitstreams (if applicable).
 
@@ -32,7 +36,7 @@ It takes several parameters to customize the export, such as the type of object 
 object, the sequence number to begin exporting items with, whether to export for migration, and whether to exclude
 bitstreams.
 
-The following parameters are available for the Export script:
+The following parameters are available for the export script:
 
 | Parameter                         | Description                                                                              |
 |-----------------------------------|------------------------------------------------------------------------------------------|
@@ -59,9 +63,9 @@ exporting large collections that contain many large files, as it can reduce the 
 
 ## Conclusion/QuickGuide:
 
-The Export script is a useful tool for batch exporting items from DSpace to Simple Archive Format (SAF). By default, the
+The export script is a useful tool for batch exporting items from DSpace to Simple Archive Format (SAF). By default, the
 script exports both metadata and bitstreams, but can be customized to exclude bitstreams and metadata as needed. If you
-need to migrate your DSpace repository to a new system, the Export script can be used to export items in a format that
+need to migrate your DSpace repository to a new system, the export script can be used to export items in a format that
 can be easily imported into the new system.
 
 # What is SAF?
@@ -71,6 +75,8 @@ can be easily imported into the new system.
 The basic concept behind the DSpace's Simple Archive Format is to create an archive, which is a directory containing one
 subdirectory per item. Each item directory contains a file for the item's descriptive metadata, and the files that make
 up the item.
+
+For more information on the Simple Archive Format, see the [DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC7x/Importing+and+Exporting+Items+via+Simple+Archive+Format).
 
 ## A visual representation of a SAF
 

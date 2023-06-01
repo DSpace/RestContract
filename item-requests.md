@@ -6,7 +6,7 @@ This supports the Request a Copy feature.
 ## Main Endpoint
 **/api/tools/itemrequests**
 
-Provide access to requests. It returns the list of existing requests.  **NOT IMPLEMENTED**
+Provide access to requests. It returns the list of existing requests avoiding to expose token to not admin users.  **NOT IMPLEMENTED**
 
 Example: to be provided
 
@@ -85,7 +85,7 @@ Anyone may create an item request.  The Content-Type is JSON.  Example:
 ```
 `bitstreamId` is ignored and may be omitted if `allfiles` is `false`.  `requestMessage` is optional.  `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson.  If the session is anonymous then `requestEmail` is required.  `bitstreamId` is required if `allfiles` is false.  `itemId` is always required.
 
-The response contains the complete request in JSON format, as shown in Single Request.
+The response is empty, generated token should not be exposed.
 
 An appropriate person will be notified that the request has been filed.
 

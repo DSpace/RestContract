@@ -1,6 +1,7 @@
-# Retry-Tracker script
+# retry-tracker script
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Retry-Tracker script](#retry-tracker-script)
+* [retry-tracker script](#retry-tracker-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,18 +10,23 @@
 <!-- TOC -->
 ## What it does?
 
-The Retry-Tracker script is used to retry failed commits to the OpenURLTracker in DSpace. The OpenURLTracker is used to
+The retry-tracker script is used to retry failed commits to the OpenURLTracker in DSpace. The OpenURLTracker is used to
 track requests made to external systems, such as DOI lookup services, and store metadata about those requests in the
 DSpace database.
 
+Also note
+that this script is useful
+in [exchanging usage statistics information with IRUS](https://wiki.lyrasis.org/display/DSDOC7x/Exchange+usage+statistics+with+IRUS).
+
+
 ## When we use it?
 
-When occasionally, these requests may fail due to network or service issues, and the Retry-Tracker script can be used to
+When occasionally, these requests may fail due to network or service issues, and the retry-tracker script can be used to
 retry those failed requests.
 
 ## How it Works?
 
-The Retry-Tracker script queries the DSpace database to identify URLs that have been marked as failed in the
+The retry-tracker script queries the DSpace database to identify URLs that have been marked as failed in the
 OpenURLTracker table. It then attempts to resend those failed requests. This can be useful in situations where requests
 fail due to temporary network or service issues.
 
@@ -39,6 +45,6 @@ The following parameters are available for the Retry-Tracker script:
 
 ## Conclusion/QuickGuide:
 
-The Retry-Tracker script is a helpful tool for retrying failed requests to external systems in DSpace. It can help
+The retry-tracker script is a helpful tool for retrying failed requests to external systems in DSpace. It can help
 ensure that important requests are not lost due to temporary network or service issues. If you experience frequent
 issues with failed requests, the Retry-Tracker script may be a useful tool to add to your DSpace workflow.

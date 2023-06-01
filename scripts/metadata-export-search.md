@@ -1,6 +1,7 @@
-# Metadata-Export-Search Script
+# metadata-export-search Script
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Metadata-Export-Search Script](#metadata-export-search-script)
+* [metadata-export-search Script](#metadata-export-search-script)
   * [What it does?](#what-it-does)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
@@ -9,17 +10,24 @@
 <!-- TOC -->
 ## What it does?
 
-The Metadata-Export-Search script exports metadata from a discovery search in DSpace in CSV format.
+The metadata-export-search script exports metadata from a discovery search in DSpace in CSV format.
+
+For more information,
+see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
+
 
 ## When we use it?
 
-The Metadata-Export-Search script is used to export metadata from a discovery search in DSpace. This script can be
+The metadata-export-search script is used to export metadata from a discovery search in DSpace. This script can be
 useful for creating reports or generating metadata exports based on specific search criteria.
+
+This export can also be used as a starting point
+to perform offline bulk changes to the record via the [Batch Metadata Editing feature](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
 
 ## How it Works?
 
 The script works by using the DSpace Discovery search API to execute a search based on the specified search string and
-search parameters. It then exports metadata from the search results using the Simple Archive Format (SAF) format, which
+search parameters. It then exports metadata from the search results using CSV format, which
 is a standard format for exporting metadata from DSpace.
 
 ## Parameters
@@ -34,7 +42,7 @@ is a standard format for exporting metadata from DSpace.
 
 ## Conclusion/QuickGuide:
 
-The Metadata-Export-Search script is a useful tool for exporting metadata from a discovery search in DSpace. By
+The metadata-export-search script is a useful tool for exporting metadata from a discovery search in DSpace. By
 specifying the search string and search parameters, users can export metadata from a specific subset of records that
 match their search criteria. The script uses the CSV format, which is a standard format for
 exporting metadata from DSpace, making it easy to import the metadata into other systems or analyze the metadata using
