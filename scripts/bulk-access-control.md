@@ -36,7 +36,7 @@ The script takes the following parameters:
 
 | Parameter                        | Description                                                                                                                                                                            |
 |----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-u`, <br>`--uuids`              | This parameter, mandatory and repeatable, specifies the uuid of the object to process according to processing instruction, specified in the json file (see below).                                                                                                              |
+| `-u`, <br>`--uuid`               | This parameter, mandatory and repeatable, specifies the uuid of the object to process according to processing instruction, specified in the json file (see below).                                                                                                              |
 
 | `-f`, <br>`--file`                | This parameter specifies the json file containing the processing instruction.                                                                                                              |
 | `-h`, <br>`--help`               | This parameter displays help information for the script.                                                                                                                               |
