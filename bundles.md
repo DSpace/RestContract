@@ -347,7 +347,7 @@ If the Primary bitstream already exists, and no primary bitstream should be used
 This should not have any content
 
 Status codes:
-* 205 No Content - if the operation succeeded
+* 204 No Content - if the operation succeeded
 * 400 Bad Request - if there was no primary bitstream
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
