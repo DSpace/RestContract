@@ -71,29 +71,47 @@ Return codes:
 
 To create a metadata field, perform a post with the JSON below when logged in as admin.
 
-```
+```json
 {
   "element": "contributor",
   "qualifier": "tester",
-  "scopeNote": "An agent which provided illustrations for the resource",
-  "type": "metadatafield"
+  "scopeNote": "An agent which provided illustrations for the resource"
 }
 ```
+
+Return codes:
+* **201 Created** - if the operation succeed
+* **400 Bad Request** - if the body of the request can't be parsed (for example because of a missing field)
+* **401 Unauthorized** - if you are not authenticated
+* **403 Forbidden** - if you are not logged in with sufficient permissions
+* **422 Unprocessable Entity** - if the request is well-formed, but is invalid based on the given data.
+  * If the schema ID does not exist
+  * If you attempt to create a field with an empty `element` or if it contains dots, commas or spaces or if it's longer than 64 characters.
+  * If you attempt to create a field with a `qualifier` contains dots, commas or spaces or if it's longer than 64 characters.
 
 ## Updating a Metadata Field
 
 **PUT /api/core/metadatafields/<:id>**
 
-Provide updated information about a specific metadata field, when the update is completed the updated object will be returned. The JSON to update can be found below.
-```
+To update the `scopeNote` of a specific metadata field, when the update is completed the updated object will be returned. The JSON to update can be found below.
+```json
 {
   "id": 7,
-  "element": "coverageUpdated",
-  "qualifier": "spatialUpdated",
-  "scopeNote": null,
-  "type": "metadatafield"
+  "element": "contributor",
+  "qualifier": "tester",
+  "scopeNote": null
 }
-```  
+```
+
+Return codes:
+* **200 OK** - if the operation succeed
+* **400 Bad Request** - if the body of the request can't be parsed (for example because of a missing field)
+* **401 Unauthorized** - if you are not authenticated
+* **403 Forbidden** - if you are not logged in with sufficient permissions
+* **404 Not found** - if the metadata field doesn't exist
+* **422 Unprocessable Entity** - if the request is well-formed, but is invalid based on the given data.
+  * If you attempt to update the `element`.
+  * If you attempt to update the `qualifier`.
 
 ## Deleting a Metadata Field
 
