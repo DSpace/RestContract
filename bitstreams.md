@@ -51,7 +51,7 @@ Update the bitstream format of the bitstream
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bitstreamformats/6'
+curl -i -X PUT 'https://demo7.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo7.dspace.org/server/api/core/bitstreamformats/6'
 ```
 
 The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
@@ -83,7 +83,7 @@ Move the bitstream to another bundle
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/bundle' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://dspace7-entities.atmire.com/rest/api/core/bundles/0b3c0ebf-83bc-4017-afa1-9df37a1a065c'
+curl -i -X PUT 'https://demo7.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/bundle' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo7.dspace.org/server/api/core/bundles/0b3c0ebf-83bc-4017-afa1-9df37a1a065c'
 ```
 
 The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
@@ -171,7 +171,7 @@ Delete a list of Bitstreams in one request. This will work for any list of Bitst
 
 A sample CURL command would be:
 ```
-curl -i -X PATCH 'https://dspace7-entities.atmire.com/rest/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json" --data '[ { "op": "remove", "path": "/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
+curl -i -X PATCH 'https://demo7.dspace.org/server/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json" --data '[ { "op": "remove", "path": "/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
 ```
 
 The Patch contents is:
