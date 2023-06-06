@@ -1,5 +1,5 @@
 # metadata-export-search Script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [metadata-export-search Script](#metadata-export-search-script)
   * [What it does?](#what-it-does)
@@ -13,7 +13,8 @@
 
 The metadata-export-search script exports metadata from a discovery search in DSpace in CSV format.
 
-For more information see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
+For more information,
+see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
 
 ## Who can use it?
 
@@ -24,6 +25,8 @@ This script can be used only by repository administrators.
 The metadata-export-search script is used to export metadata from a discovery search in DSpace. This script can be
 useful for creating reports or generating metadata exports based on specific search criteria.
 
+This export can also be used as a starting point
+to perform offline bulk changes to the record via the [Batch Metadata Editing feature](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
 
 ## How it Works?
 

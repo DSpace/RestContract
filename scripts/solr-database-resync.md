@@ -1,5 +1,5 @@
 # solr-database-resync script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [solr-database-resync script](#solr-database-resync-script)
   * [What it does?](#what-it-does)

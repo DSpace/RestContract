@@ -1,5 +1,5 @@
 # metadata-export script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [metadata-export script](#metadata-export-script)
   * [What it does?](#what-it-does)
@@ -13,7 +13,8 @@
 
 The metadata-export script exports the metadata for a specific item, collection, or community in CSV format.
 
-For more information see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
+For more information,
+see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
 
 ## Who can use it?
 

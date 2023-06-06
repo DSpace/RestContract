@@ -1,5 +1,5 @@
 # curate script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [curate script](#curate-script)
   * [What it does?](#what-it-does)

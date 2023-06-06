@@ -1,5 +1,5 @@
 # process-cleaner script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [process-cleaner script](#process-cleaner-script)
   * [What it does?](#what-it-does)
@@ -11,8 +11,8 @@
 <!-- TOC -->
 ## What it does?
 
-The process-cleaner script is designed to clean up old processes in DSpace by removing processes in a specified state (
-RUNNING, FAILED, or COMPLETED).
+The process-cleaner script is designed to clean up old processes in DSpace by removing processes in a specified state
+(RUNNING, FAILED, or COMPLETED).
 
 ## Who can use it?
 

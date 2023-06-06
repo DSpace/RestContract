@@ -1,7 +1,7 @@
 # retry-tracker script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
-* [Retry-Tracker script](#retry-tracker-script)
+* [retry-tracker script](#retry-tracker-script)
   * [What it does?](#what-it-does)
   * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
@@ -14,6 +14,10 @@
 The retry-tracker script is used to retry failed commits to the OpenURLTracker in DSpace. The OpenURLTracker is used to
 track requests made to external systems, such as DOI lookup services, and store metadata about those requests in the
 DSpace database.
+
+Also note
+that this script is useful
+in [exchanging usage statistics information with IRUS](https://wiki.lyrasis.org/display/DSDOC7x/Exchange+usage+statistics+with+IRUS).
 
 ## Who can use it?
 

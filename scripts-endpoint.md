@@ -225,3 +225,4 @@ Status codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions for the requested script according to the provided parameters
 * 400 Not found - if the provided parameters don't match the script expectations
 * 404 Not found - if the script doesn't exist
+* 413 Payload too large - uploaded file is larger than limit set in configuration parameter `spring.servlet.multipart.max-file-size`

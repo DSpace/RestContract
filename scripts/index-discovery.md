@@ -1,5 +1,5 @@
 # index-discovery script
-[Back to the scripts index](index.md)
+[Back to the script index](index.md)
 <!-- TOC -->
 * [index-discovery script](#index-discovery-script)
   * [What it does?](#what-it-does)
@@ -13,6 +13,8 @@
 
 The index-discovery script interacts with the Discovery Solr search index in DSpace. Depending on the parameters passed,
 the script adds, removes, updates, or rebuilds the search index.
+
+For more information regarding the Discovery infrastructure, see the [DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC7x/Discovery).
 
 ## Who can use it?
 
