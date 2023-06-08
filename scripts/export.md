@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [export script](#export-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it works?](#how-it-works)
   * [Parameters](#parameters)
@@ -15,6 +16,10 @@
 
 The export script can be used to export individual items or entire collections, and can be customized to exclude
 bitstreams and metadata as needed.
+
+## Who can use it?
+
+This script can be used by any user that has administrative privileges over at least one community, collection or item limited to the resources that they admin.
 
 ## When we use it?
 

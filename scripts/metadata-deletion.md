@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [metadata-deletion script](#metadata-deletion-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -11,6 +12,10 @@
 ## What it does?
 
 The metadata-deletion script is designed to remove all values of a specified metadata field from each item in DSpace.
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

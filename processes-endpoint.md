@@ -91,6 +91,11 @@ Optional parameters to query the processes:
 * `status`: The status of the script
 * `parameter.xyz`: Which parameters have been used, and their value
 
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in as a repository administrator
+
 ## Execution Details
 **GET /api/system/processes/<:process-id>**
 
@@ -132,13 +137,24 @@ This endpoint will return details on the requested process.
 }
 ```
 
-The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`.
+The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`.
+
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
+* 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
 
 ## Execution Console Output
 **GET /api/system/processes/<:process-id>/output**
 
 This endpoint will return the console output of the script. To keep the scope of this work limited, it will print the full console output without datestamps.
 In a future version, a solution supporting a live-feed can also be included.
+
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
+* 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
+* 404 Resource Not Found - if the specified process id doesn't exist
 
 ## Execution File Output List
 **GET /api/system/processes/<:process-id>/files**
@@ -289,6 +305,12 @@ This endpoint will return a list of files that are associated with the process, 
 }
 ```
 
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
+* 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
+* 404 Resource Not Found - if the specified process id doesn't exist
+
 ## Get process file types
 
 **GET /api/system/processes/<:process-id>/filetypes**
@@ -312,12 +334,25 @@ This endpoint will return all the different file types for the given process.  T
 }
 ```
 
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
+* 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
+* 404 Resource Not Found - if the specified process id doesn't exist
+
 ## Execution File Output (using type identifier)
 **GET /api/system/processes/<:process-id>/files/<:type>**
 
 Returns a single file of the specified process with the provided type (the type matches on the dspace.process.filetype metadata field of the bitstream)
 
-## Search processes
+Status codes:
+* 200 Ok - if the request succeed
+* 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
+* 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
+* 404 Resource Not Found - if the specified process id or file type doesn't exist
+
+## Search Methods
+### Search processes by Property
 **GET /api/system/processes/search/byProperty**
 
 This supports a basic search of the processes
@@ -327,12 +362,24 @@ The supported parameters are:
 * sort, options are startTime, endTime
 * userId: optional, the uuid of the eperson who started the process. If not specified, all processes will be returned
 * scriptName: optional, limit the returned processes to the specified script
-* processStatus: optional, limit the returned processes to the specified status. The possible `status` values are `RUNNING`, `COMPLETED` and `FAILED`
+* processStatus: optional, limit the returned processes to the specified status. The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`
 
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access the processes
+
+### Retrieve own processes
+**GET /api/system/processes/search/own**
+
+This return the list of owned processes, i.e. the processes that have been started by the current, logged-in, user
+
+The supported parameters are:
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
 
 ## Execution Deletion
 **DELETE /api/system/processes/<:process-id>**

@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [retry-tracker script](#retry-tracker-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -18,6 +19,9 @@ Also note
 that this script is useful
 in [exchanging usage statistics information with IRUS](https://wiki.lyrasis.org/display/DSDOC7x/Exchange+usage+statistics+with+IRUS).
 
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [ORCID-bulk-push script](#orcid-bulk-push-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -16,6 +17,9 @@ ORCID queue. This script is specifically designed to work with ORCID integration
 For more information,
 see the [ORCID Integration documentation](https://wiki.lyrasis.org/display/DSDOC7x/ORCID+Integration)
 
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 
