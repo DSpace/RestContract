@@ -17,6 +17,7 @@ Provide detailed information about a specific collection. The JSON response docu
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
   "name": "Collection of Sample Items",
   "handle": "10673/2",
+  "archivedItemsCount": 6,
   "metadata": {
     "dc.description": [
       {
