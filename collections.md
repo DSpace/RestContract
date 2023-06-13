@@ -97,6 +97,10 @@ Exposed links:
 * bitstreamReadGroup: the Collection Default bitstream READ rights group
 * workflowGroups/<:workflow-role>: the Collection Workflow groups
 
+Other properties:
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature 
+is disabled at backend.
+
 ### Search methods
 #### findSubmitAuthorized
 **/api/core/collections/search/findSubmitAuthorized**

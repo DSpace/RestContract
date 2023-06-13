@@ -77,6 +77,10 @@ Exposed links:
 * parentCommunity: the community containing this community
 * adminGroup: the Community Administrator group
 
+Other properties:
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature
+  is disabled at backend.
+
 ## Linked entities
 
 ### SubCommunities
