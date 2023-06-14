@@ -17,6 +17,7 @@ Provide detailed information about a specific collection. The JSON response docu
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
   "name": "Collection of Sample Items",
   "handle": "10673/2",
+  "archivedItemsCount": 6,
   "metadata": {
     "dc.description": [
       {
@@ -95,6 +96,10 @@ Exposed links:
 * itemReadGroup: the Collection Default item READ rights group
 * bitstreamReadGroup: the Collection Default bitstream READ rights group
 * workflowGroups/<:workflow-role>: the Collection Workflow groups
+
+Other properties:
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature 
+is disabled at backend.
 
 ### Search methods
 #### findSubmitAuthorized

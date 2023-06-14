@@ -17,6 +17,7 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "7669c72a-3f2a-451f-a3b9-9210e7a4c02f",
   "name": "OR2017 - Demonstration",
   "handle": "10673/11",
+  "archivedItemsCount": 12,
   "metadata": {
     "dc.description": [
       {
@@ -75,6 +76,10 @@ Exposed links:
 * logo: link to the bitstream that represent the community's logo
 * parentCommunity: the community containing this community
 * adminGroup: the Community Administrator group
+
+Other properties:
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature
+  is disabled at backend.
 
 ## Linked entities
 
