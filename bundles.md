@@ -285,3 +285,70 @@ New list of bitstreams:
   ]
 }
 ```
+
+## Primary bitstream
+
+The primary bitstream is exposed as a link, and can be modified
+
+**/api/core/bundles/<:uuid>/primaryBitstream**
+
+### Retrieve Primary bitstream
+
+The Primary bitstream can be retrieved using a GET, this may result in `null`
+
+**GET /api/core/bundles/<:uuid>/primaryBitstream**
+
+### Create Primary bitstream
+
+If the Primary bitstream doesn't exist, it can be created using a POST
+
+**POST /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X POST "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+```
+
+Status codes:
+* 201 Created - if the operation succeeded
+* 400 Bad Request - if there already was a primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist
+* 422 Unprocessable Entity - if the bitstream does not exist or is not part of this bundle
+
+### Update Primary bitstream
+
+If the Primary bitstream already exists, it can be changed using a PUT
+
+**PUT /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X PUT "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+```
+
+Status codes:
+* 200 OK - if the operation succeeded
+* 400 Bad Request - if there was no primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist
+* 422 Unprocessable Entity - if the bitstream does not exist or is not part of this bundle
+
+### Removing Primary bitstream
+
+If the Primary bitstream already exists, and no primary bitstream should be used anymore, it can be changed using a DELETE. This will **not** delete the bitstream nor unassign it from the bundle, it will just ensure the bundle has no primary bitstream anymore
+
+**DELETE /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should not have any content
+
+Status codes:
+* 204 No Content - if the operation succeeded
+* 400 Bad Request - if there was no primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist
