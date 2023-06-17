@@ -6,7 +6,7 @@ The section data represent the data about the granted deposit license
 ```json
 {
   	"granted": true,
-  	"url": "https://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
     "acceptanceDate": "2017-11-20T10:32:42Z"
 }
 ```
@@ -71,7 +71,7 @@ will result in
 		"license":
 			{
 				"granted": true,
-			  	"url": "https://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+			  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
 			    "acceptanceDate": "2017-11-20T10:32:42Z"
 			}
 		...
@@ -116,7 +116,7 @@ trasforming
 		"license":
 			{
 				"granted": true,
-			  	"url": "https://dspace7.4science.it/dspace-spring-rest/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
+			  	"url": "https://api7.dspace.org/server/api/core/bitstreams/004a297e-fd06-4662-ae51-73e4b7c165c8/content",
 			    "acceptanceDate": "2017-11-20T10:32:42Z"
 			}
 		...
