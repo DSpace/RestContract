@@ -6,7 +6,7 @@
 
 Provide access to the list of harvesting metadata configurations (config based).
 
-Example: <http://api7.dspace.org/server/#/server/api/config/harvestermetadata>
+Example: <https://api7.dspace.org/server/#/server/api/config/harvestermetadata>
 
 
 A sample json response:

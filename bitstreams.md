@@ -41,7 +41,7 @@ Bitstream metadata can be modified as described in [Modifying metadata via Patch
 ### Format
 **GET /api/core/bitstreams/<:uuid>/format**
 
-Example: <http://api7.dspace.org/server/#http://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
 
 It returns the format of the bitstream
 
@@ -73,7 +73,7 @@ Keep in mind that there's a change to dc.format in the API related to bitstream 
 ### Bundle
 **GET /api/core/bitstreams/<:uuid>/bundle**
 
-Example: <http://api7.dspace.org/server/#http://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/bundle>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/bundle>
 
 It returns the bundle of the bitstream
 
@@ -98,7 +98,7 @@ Error codes:
 ### Content
 **/api/core/bitstreams/<:uuid>/content**
 
-Example: <http://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
+Example: <https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
 
 It returns the actual content (bits) described by the bitstream
 

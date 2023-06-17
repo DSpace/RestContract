@@ -6,7 +6,7 @@
 
 Provide access to the list of collections (DBMS based).
 
-Example: <http://api7.dspace.org/server/#/server/api/core/collections>
+Example: <https://api7.dspace.org/server/#/server/api/core/collections>
 
 ## Single Collection
 **/api/core/collections/<:uuid>**

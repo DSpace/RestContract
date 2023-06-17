@@ -6,7 +6,7 @@
 
 Provide access to the metadata fields defined in the registry (DBMS based). It returns the list of existent metadata fields.
 
-Example: <http://api7.dspace.org/server/#/server/api/core/metadatafields>
+Example: <https://api7.dspace.org/server/#/server/api/core/metadatafields>
 
 ## Single Metadata Field
 **/api/core/metadatafields/<:id>**

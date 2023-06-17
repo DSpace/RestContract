@@ -6,7 +6,7 @@
 
 Provide access to the metadata schemas defined in the registry (DBMS based). It returns the list of existent metadata schemas.
 
-Example: <http://api7.dspace.org/server/#/server/api/core/metadataschemas>
+Example: <https://api7.dspace.org/server/#/server/api/core/metadataschemas>
 
 ## Single Metadata Schema
 **/api/core/metadataschemas/<:id>**
