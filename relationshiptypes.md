@@ -8,12 +8,12 @@ A HAL link to the item types is embedded as well
 ## Main Endpoint
 **/api/core/relationshiptypes**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes
+A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationshiptypes
 
 ## Single Relationship Type
 **/api/core/relationshiptypes/<:id>**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes/1
+A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationshiptypes/1
 
 ```json
 {
@@ -27,13 +27,13 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "type": "relationshiptype",
   "_links": {
     "leftType": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1"
+      "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
     },
     "rightType": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/2"
+      "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
     },
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/relationshiptypes/1"
+      "href": "https://api7.dspace.org/server/api/core/relationshiptypes/1"
     }
   },
   "_embedded": {
@@ -43,10 +43,10 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
       "type": "entitytype",
       "_links": {
         "self": {
-          "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1"
+          "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
         },
         "relationshiptypes": {
-          "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1/relationshiptypes"
+          "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
         }
       }
     },
@@ -56,10 +56,10 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
       "type": "entitytype",
       "_links": {
         "self": {
-          "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/2"
+          "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
         },
         "relationshiptypes": {
-          "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/2/relationshiptypes"
+          "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
         }
       }
     }

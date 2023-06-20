@@ -6,7 +6,7 @@
 
 Provide access to the list of collections (DBMS based).
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/collections>
+Example: <https://api7.dspace.org/server/#/server/api/core/collections>
 
 ## Single Collection
 **/api/core/collections/<:uuid>**
@@ -196,7 +196,7 @@ Collection metadata can be modified as described in [Modifying metadata via Patc
 #### Retrieve Logo
 **GET /api/core/collections/<:uuid>/logo**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo>
 
 It returns the bitstream representing the logo of this collection. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
@@ -207,7 +207,7 @@ To be used on a collection without a logo
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.png"
@@ -259,7 +259,7 @@ Return information about the license template in use by the collection. The json
 #### Retrieve Item template
 **GET /api/core/collections/<:uuid>/itemtemplate**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate>
 
 It returns the item representing the item template of this collection. [See the item endpoint for more info](items.md#Single Item)
 
@@ -329,7 +329,7 @@ The json representation is as follow
         "type": "resourcePolicy",
         "_links": {
           "self": {
-            "href": "https://dspace7.4science.it/dspace-spring-rest/api/authz/resourcePolicies/2844"
+            "href": "https://api7.dspace.org/server/api/authz/resourcePolicies/2844"
           }
         }
       }
@@ -337,7 +337,7 @@ The json representation is as follow
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588/defaultAccessConditions"
+      "href": "https://api7.dspace.org/server/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588/defaultAccessConditions"
     }
   },
   "page": {
@@ -393,7 +393,7 @@ A sample json response:
   "last_harvested": null,
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
+      "href": "https://api7.dspace.org/server/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
     }
   },
   "_embedded": {
@@ -417,7 +417,7 @@ A sample json response:
       ],
       "_links": {
         "self": {
-          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
+          "href": "https://api7.dspace.org/server/api/config/harvestermetadata"
         }
       }
     }
@@ -440,7 +440,7 @@ A sample json response if no harvesting is enabled:
   "last_harvested": null,
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
+      "href": "https://api7.dspace.org/server/api/core/collections/6f944500-c300-449a-9023-a5ad8bd21160/harvester"
     }
   },
   "_embedded": {
@@ -464,7 +464,7 @@ A sample json response if no harvesting is enabled:
       ],
       "_links": {
         "self": {
-          "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
+          "href": "https://api7.dspace.org/server/api/config/harvestermetadata"
         }
       }
     }

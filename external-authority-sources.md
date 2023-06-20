@@ -18,13 +18,13 @@ Example:
         "type": "externalsource",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entries"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entries"
           },
           "entityTypes": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entityTypes"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entityTypes"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
           }
         }
       },
@@ -35,13 +35,13 @@ Example:
         "type": "externalsource",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia/entries"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/ciencia/entries"
           },
           "entityTypes": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia/entityTypes"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/ciencia/entityTypes"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/ciencia"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/ciencia"
           }
         }
       },
@@ -52,13 +52,13 @@ Example:
         "type": "externalsource",
         "_links": {
           "entries": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db/entries"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/my_staff_db/entries"
           },
           "entityTypes": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db/entityTypes"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/my_staff_db/entityTypes"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/my_staff_db"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/my_staff_db"
           }
         }
       }
@@ -66,7 +66,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/externalsources"
+      "href": "https://api7.dspace.org/server/api/integration/externalsources"
     }
   },
   "page": {
@@ -158,13 +158,13 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "type": "externalSourceEntry",
         "_links": {
           "authority": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/authorities/authors/entryValues/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
+            "href": "https://api7.dspace.org/server/api/integration/authorities/authors/entryValues/d4b5ca88-9d6d-4a87-b905-fef0f8cae26c"
           },
           "parent": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
           }
         }
       },
@@ -213,13 +213,13 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "type": "externalSourceEntry",
         "_links": {
           "entity": {
-            "href": "https://dspace7.4science.cloud/server/api/core/item/6fd90bf5-b84f-47b3-aaec-a55bde3a2a5a"
+            "href": "https://api7.dspace.org/server/api/core/item/6fd90bf5-b84f-47b3-aaec-a55bde3a2a5a"
           },
           "parent": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
           },          
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0003-3681-2038"
+            "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0003-3681-2038"
           }
         }
       }
@@ -281,13 +281,13 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
   },
   "_links": {
     "entity": {
-      "href": "https://dspace7.4science.cloud/server/api/core/item/00167e74-c027-4984-8564-85c3fe513d45"
+      "href": "https://api7.dspace.org/server/api/core/item/00167e74-c027-4984-8564-85c3fe513d45"
     },
     "parent": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid"
+      "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
     },    
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+      "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
     }
   }
 }

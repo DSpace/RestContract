@@ -19,13 +19,13 @@
   "type": "group",
   "_links": {
     "subgroups": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
+      "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
     },
     "epersons": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+      "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
     },
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
+      "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
     }
   }
 }
@@ -122,13 +122,13 @@ Sample:
           "type": "group",
           "_links": {
             "subgroups": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
+              "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
             },
             "epersons": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+              "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
             },
             "self": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
+              "href": "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc"
             }
           }
         }
@@ -136,7 +136,7 @@ Sample:
     },
     "_links": {
       "self": {
-        "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/subgroups"
+        "href": "https://api7.dspace.org/server/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/subgroups"
       }
     },
     "page": {
@@ -162,9 +162,9 @@ The actual sub group is part of the body using the uri-list
 
 Example:
 ```bash
-curl -i -X POST "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
+curl -i -X POST "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups"
   -H "Content-Type:text/uri-list"
-  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
+  -d "https://api7.dspace.org/server/api/eperson/groups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
 ```
 
 The group is mandatory
@@ -184,7 +184,7 @@ A DELETE request will result in removing a subgroup from the parent group
 Example:
 ```bash
 curl -i -X DELETE 
-  "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
+  "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/subgroups/05e3dbb8-332b-4487-a3f9-d78431b6cc02"
 ```
 
 The above request would remove the mapping between the parent group with UUID `617cf46b-535c-42d5-9d22-327ce2eff6dc`
@@ -258,7 +258,7 @@ Sample:
           "type": "eperson",
           "_links": {
             "self": {
-              "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+              "href": "https://api7.dspace.org/server/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
             }
           }
         }
@@ -266,7 +266,7 @@ Sample:
     },
     "_links": {
       "self": {
-        "href": "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons"
+        "href": "https://api7.dspace.org/server/api/eperson/groups/3b1de75d-5bf9-4ca3-bf4d-42bc8abd0d42/epersons"
       }
     },
     "page": {
@@ -292,9 +292,9 @@ The actual eperson is part of the body using the uri-list
 
 Example:
 ```bash
-curl -i -X POST "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
+curl -i -X POST "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons"
   -H "Content-Type:text/uri-list"
-  -d "https://dspace7.4science.it/dspace-spring-rest/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+  -d "https://api7.dspace.org/server/api/eperson/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
 ```
 
 The eperson is mandatory
@@ -313,7 +313,7 @@ To remove an eperson from a parent group, perform a DELETE to the Epeople of a G
 Example:
 ```bash
 curl -i -X DELETE 
-  "https://dspace7.4science.it/dspace-spring-rest/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
+  "https://api7.dspace.org/server/api/eperson/groups/617cf46b-535c-42d5-9d22-327ce2eff6dc/epersons/a6086b34-3918-45b7-8ddd-9329a702a26a"
 ```
 
 The above request would remove the mapping between the group with UUID `617cf46b-535c-42d5-9d22-327ce2eff6dc`

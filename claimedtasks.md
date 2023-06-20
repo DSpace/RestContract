@@ -95,9 +95,9 @@ If successful a 201 code will be returned along with the new claimedtask. The po
 
 An example curl call:
 ```
-curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/workflow/claimedtasks
+curl -i -X POST https://api7.dspace.org/server/api/workflow/claimedtasks
 \ -H "Content-Type:text/uri-list" \
---data "https://dspace7.4science.it/dspace-spring-rest/api/workflow/pooltasks/1"
+--data "https://api7.dspace.org/server/api/workflow/pooltasks/1"
 ```
 
 Return codes:

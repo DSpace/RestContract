@@ -170,16 +170,16 @@ An example
 ```
 "_links": {
     "first": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=0&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=0&size=5"
     },
     "self": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams"
+      	"href": "http://localhost:8080/server/api/core/bitstreams"
     },
     "next": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=1&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=1&size=5"
     },
     "last": {
-        "href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=2&size=5"
+        "href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
     }
 }
 ```

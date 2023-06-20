@@ -53,7 +53,7 @@ A collection's item template can be deleted, automatically ensuring the relation
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/itemtemplates/34d343c5-feb7-4a54-b07f-20a92debe061' \
+curl 'https://api7.dspace.org/server/api/core/itemtemplates/34d343c5-feb7-4a54-b07f-20a92debe061' \
  -XDELETE \
  -H 'Authorization: Bearer eyJhbGciOiJI...'
 ```
