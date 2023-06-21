@@ -17,7 +17,7 @@ As we don't have yet an use case to iterate over all the existent linksets the m
 ### in application/linkset+json serialization
 ```/signposting/linksets/<:uuid>/json```
 
-This endpoint provides typed links of item having uuid specified in input, in application/linkset+json serialization
+This endpoint provides typed links of item having uuid specified in input and its resources, in application/linkset+json serialization
 
 ```json
 {
@@ -33,6 +33,36 @@ This endpoint provides typed links of item having uuid specified in input, in ap
           "type": "application/pdf"
         }
       ],
+      "type": [
+        {
+          "href": "https://schema.org/AboutPage"
+        }
+      ],
+      "linkset": [
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}",
+          "type": "application/linkset"
+        },
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}/json",
+          "type": "application/linkset+json"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://doi.org/10.1007/978-3-642-35233-1_18",
+          "type": "application/vnd.datacite.datacite+json"
+        },
+        {
+          "href": "https://{dspace.ui.url}/handle/123456789/17",
+          "type": "text/html"
+        }
+      ],
+      "cite-as": [
+        {
+          "href": "https://{dspace.ui.url}/handle/123456789/17"
+        }
+      ],
       "author": [
         {
           "href": "http://orcid.org/0000-0002-3748-8359",
@@ -45,12 +75,63 @@ This endpoint provides typed links of item having uuid specified in input, in ap
           "type": "text/html"
         }
       ],
-      "cite-as": [
+      "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}",
+    },
+    {
+      "collection": [
         {
-          "href": "https://doi.org/10.1007/978-3-642-35233-1_18"
+          "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
+          "type": "text/html"
         }
       ],
-      "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+      "linkset": [
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}",
+          "type": "application/linkset"
+        },
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}/json",
+          "type": "application/linkset+json"
+        }
+      ],
+      "anchor": "https://{dspace.ui.url}/bitstreams/{uuid}/download"
+    },
+    {
+      "collection": [
+        {
+          "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
+          "type": "text/html"
+        }
+      ],
+      "linkset": [
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}",
+          "type": "application/linkset"
+        },
+        {
+          "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}/json",
+          "type": "application/linkset+json"
+        }
+      ],
+      "anchor": "https://{dspace.ui.url}/bitstreams/{uuid}/download"
+    },
+    {
+      "describes": [
+        {
+          "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
+          "type": "text/html"
+        }
+      ],
+      "anchor": "https://{dspace.ui.url}/handle/123456789/17"
+    },
+    {
+      "describes": [
+        {
+          "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
+          "type": "text/html"
+        }
+      ],
+      "anchor": "https://doi.org/10.1007/978-3-642-35233-1_18"
     }
   ]
 }
@@ -66,11 +147,18 @@ Return codes:
 This endpoint provides typed links of item having uuid specified in input, in application/linkset serialization
 
 ```
-<https://{dspace.ui.url}/bitstreams/{uuid}/download> ; rel="item" ; type="text/plain" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
-<https://{dspace.ui.url}/bitstreams/{uuid}/download> ; rel="item" ; type="application/pdf" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/bitstreams/{uuid}/download> ; rel="item" ; type="text/plain" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/handle/123456789/29> ; rel="describedby" ; type="text/html" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/handle/123456789/29> ; rel="cite-as" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
 <http://orcid.org/0000-0002-3748-8359> ; rel="author" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
 <https://isni.org/isni/0000002251201436> ; rel="author" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
-<https://doi.org/10.1007/978-3-642-35233-1_18> ; rel="cite-as" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
+<https://{dspace.ui.url}/signposting/linksets/{uuid}> ; rel="linkset" ; type="application/linkset" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/signposting/linksets/{uuid}/json> ; rel="linkset" ; type="application/linkset+json" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://schema.org/AboutPage> ; rel="type" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/signposting/linksets/{uuid}> ; rel="linkset" ; type="application/linkset" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
+<https://{dspace.ui.url}/signposting/linksets/{uuid}/json> ; rel="linkset" ; type="application/linkset+json" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
+<https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="collection" ; type="text/html" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
+<https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="describes" ; type="text/html" ; anchor="https://{dspace.ui.url}/handle/123456789/29" , 
 ```
 Return codes:
 * 200 OK - if the operation succeed
@@ -85,19 +173,49 @@ This endpoint provides typed links, of item or bitstream having uuid specified i
 ```json
 [
   {
-    "href": "https://{dspace.ui.url}/linksets/{uuid}",
-    "rel": "linkset",
-    "type": "application/linkset"
+    "href": "http://orcid.org/orcidValue",
+    "rel": "author",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
   },
   {
-    "href": "https://{dspace.ui.url}/linksets/{uuid}/json",
-    "rel": "linkset",
-    "type": "application/linkset+json"
+    "href": "https://{dspace.ui.url}/bitstreams/{uuid}/download",
+    "rel": "item",
+    "type": "text/plain",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
   },
   {
-    "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
-    "rel": "collection",
-    "type": "text/html"
+    "href": "https://doi.org/10.1007/978-3-642-35233-1_18",
+    "rel": "describedby",
+    "type": "application/vnd.datacite.datacite+json",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+  },
+  {
+    "href": "https://{dspace.ui.url}/handle/123456789/40",
+    "rel": "describedby",
+    "type": "text/html",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+  },
+  {
+    "href": "https://{dspace.ui.url}/handle/123456789/40",
+    "rel": "cite-as",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+  },
+  {
+    "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}",
+    "rel": "linkset",
+    "type": "application/linkset",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+  },
+  {
+    "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}/json",
+    "rel": "linkset",
+    "type": "application/linkset+json",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+  },
+  {
+    "href": "https://schema.org/AboutPage",
+    "rel": "type",
+    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
   }
 ]
 ```
