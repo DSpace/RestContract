@@ -50,12 +50,8 @@ This endpoint provides typed links of item having uuid specified in input and it
       ],
       "describedby": [
         {
-          "href": "https://doi.org/10.1007/978-3-642-35233-1_18",
-          "type": "application/vnd.datacite.datacite+json"
-        },
-        {
-          "href": "https://{dspace.ui.url}/handle/123456789/17",
-          "type": "text/html"
+          "href": "https://{dspace.ui.url}/signposting/describedby/{uuid}",
+          "type": "application/vnd.datacite.datacite+xml"
         }
       ],
       "cite-as": [
@@ -122,16 +118,7 @@ This endpoint provides typed links of item having uuid specified in input and it
           "type": "text/html"
         }
       ],
-      "anchor": "https://{dspace.ui.url}/handle/123456789/17"
-    },
-    {
-      "describes": [
-        {
-          "href": "https://{dspace.ui.url}/entities/publication/{uuid}",
-          "type": "text/html"
-        }
-      ],
-      "anchor": "https://doi.org/10.1007/978-3-642-35233-1_18"
+      "anchor": "https://{dspace.ui.url}/signposting/describedby/{uuid}"
     }
   ]
 }
@@ -148,7 +135,7 @@ This endpoint provides typed links of item having uuid specified in input, in ap
 
 ```
 <https://{dspace.ui.url}/bitstreams/{uuid}/download> ; rel="item" ; type="text/plain" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
-<https://{dspace.ui.url}/handle/123456789/29> ; rel="describedby" ; type="text/html" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
+<https://{dspace.ui.url}/signposting/describedby/{uuid}> ; rel="describedby" ; type="application/vnd.datacite.datacite+xml" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
 <https://{dspace.ui.url}/handle/123456789/29> ; rel="cite-as" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
 <http://orcid.org/0000-0002-3748-8359> ; rel="author" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" ,
 <https://isni.org/isni/0000002251201436> ; rel="author" ; anchor="https://{dspace.ui.url}/entities/publication/{uuid}" , 
@@ -158,7 +145,7 @@ This endpoint provides typed links of item having uuid specified in input, in ap
 <https://{dspace.ui.url}/signposting/linksets/{uuid}> ; rel="linkset" ; type="application/linkset" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
 <https://{dspace.ui.url}/signposting/linksets/{uuid}/json> ; rel="linkset" ; type="application/linkset+json" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
 <https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="collection" ; type="text/html" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
-<https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="describes" ; type="text/html" ; anchor="https://{dspace.ui.url}/handle/123456789/29" , 
+<https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="describes" ; type="text/html" ; anchor="https://{dspace.ui.url}/signposting/describedby/{uuid}" , 
 ```
 Return codes:
 * 200 OK - if the operation succeed
@@ -174,50 +161,54 @@ This endpoint provides typed links, of item or bitstream having uuid specified i
 [
   {
     "href": "http://orcid.org/orcidValue",
-    "rel": "author",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "rel": "author"
   },
   {
     "href": "https://{dspace.ui.url}/bitstreams/{uuid}/download",
     "rel": "item",
-    "type": "text/plain",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "type": "text/plain"
   },
   {
-    "href": "https://doi.org/10.1007/978-3-642-35233-1_18",
+    "href": "https://{dspace.ui.url}/signposting/describedby/{uuid}",
     "rel": "describedby",
-    "type": "application/vnd.datacite.datacite+json",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "type": "application/vnd.datacite.datacite+xml"
   },
   {
     "href": "https://{dspace.ui.url}/handle/123456789/40",
-    "rel": "describedby",
-    "type": "text/html",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
-  },
-  {
-    "href": "https://{dspace.ui.url}/handle/123456789/40",
-    "rel": "cite-as",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "rel": "cite-as"
   },
   {
     "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}",
     "rel": "linkset",
-    "type": "application/linkset",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "type": "application/linkset"
   },
   {
     "href": "https://{dspace.ui.url}/signposting/linksets/{uuid}/json",
     "rel": "linkset",
-    "type": "application/linkset+json",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "type": "application/linkset+json"
   },
   {
     "href": "https://schema.org/AboutPage",
-    "rel": "type",
-    "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
+    "rel": "type"
   }
 ]
+```
+Return codes:
+* 200 OK - if the operation succeed
+* 403 Forbidden - if you are not logged in with sufficient permissions for reading Item information.
+* 404 Not found - if the item doesn't exist
+
+### Describes the scholarly object in a commonly used format
+```/signposting/describedby/<:uuid>```
+
+This endpoint provides description of an object having uuid specified in input
+
+```xml
+<title xmlns="http://datacite.org/schema/kernel-3">Item title</title>
+<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="doi">10.1007/978-3-642-35233-1_18</alternateIdentifier>
+<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="uri">https://{dspace.ui.url}/handle/123456789/11</alternateIdentifier>
+<date xmlns="http://datacite.org/schema/kernel-3" dateType="Accepted">2023-06-22</date>
+<date xmlns="http://datacite.org/schema/kernel-3" dateType="Available">2023-06-22</date>
 ```
 Return codes:
 * 200 OK - if the operation succeed
