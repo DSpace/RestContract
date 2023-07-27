@@ -4,7 +4,7 @@
 ## Search Endpoint
 **/api/discover/search**   
 
-This endpoint provides the functionality of the Discovery search screen: https://wiki.duraspace.org/display/DSDOC6x/Discovery.
+This endpoint provides the functionality of the Discovery search screen: https://wiki.duraspace.org/display/DSDOC7x/Discovery.
 It will provide detailed information on the Discovery search configuration that can be used to build complex searches.
 
 It supports the following parameters:
