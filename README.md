@@ -66,6 +66,11 @@ Creates a new resource (object) and adds it to the group. Any required data (i.e
 - `GET` -
 Returns the first page of the resources in the group (or collection). See [Pagination](#pagination) section. 
 
+- `PATCH` -
+  Allows for batch updates (e.g. batch deletion via Patch 'remove' operation) to several resources in the collection at once.
+  The request body must adhere to the the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902).
+  See [General rules for the Patch operation](patch.md) for more details.
+
 ### On Single Resource Endpoints
 
 This type of endpoint interacts with a single, existing resource (object). For example: `/api/core/items/<:uuid>` references a single Item resource.
@@ -165,16 +170,16 @@ An example
 ```
 "_links": {
     "first": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=0&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=0&size=5"
     },
     "self": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams"
+      	"href": "http://localhost:8080/server/api/core/bitstreams"
     },
     "next": {
-      	"href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=1&size=5"
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=1&size=5"
     },
     "last": {
-        "href": "http://localhost:8080/dspace-spring-rest/api/core/bitstreams?page=2&size=5"
+        "href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
     }
 }
 ```

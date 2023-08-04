@@ -21,9 +21,9 @@ In the remote resource scenario, Multipart POST can include a uri-list containin
 
 An example curl call:
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
+ curl -i -X POST https://api7.dspace.org/server/api/submission/workspaceitems?owningCollection=1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \
  -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
+ --data "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
 ```
 No confirmation, user has confirmed they want this record, and the previous state of the item is empty
 
@@ -41,7 +41,7 @@ There are some constraints to import files:
 
 An example curl call:
 
-    curl --location --request POST 'https://dspace7.4science.it/dspace-spring-rest/api/submission/workspaceitems' 
+    curl --location --request POST 'https://api7.dspace.org/server/api/submission/workspaceitems' 
     --form 'file=@/path/to/bibtex-test.bib' --form 'file=@/path/to/pubmed-test.xml'
 
     
@@ -55,6 +55,11 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   "lastModified": "2017-06-24T00:40:54.970+0000",
   "sections": {
   	 "collection": "05457c63-b392-4629-a373-f2d66ee9ee33",
+     "identifiers" : {
+        "handle" : "http://localhost:4000/handle/123456789/6",
+        "doi" : "https://doi.org/10.5072/dspace/2",
+        "otherIdentifiers" : [ ]
+     },
   	 "traditional-page1": {
   	 	"dc.title" : [{value: "Sample Submission Item"}],
   	 	"dc.contributor.author" : [
@@ -69,7 +74,7 @@ Provide detailed information about a specific workspaceitem. The JSON response d
   	 },
   	 "license": {
   	 	acceptanceDate: "2017-06-24T00:40:54.970+0000",
-  	 	url: "http://dspace7.4science.it/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
+  	 	url: "https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
   	 },
   	 "uploads": [ 
   	 	{
@@ -82,7 +87,7 @@ Provide detailed information about a specific workspaceitem. The JSON response d
 			    "checkSumAlgorithm": "MD5",
 			    "value": "9d8f0f9e369cf12159d47c146c499cf4"
 			},
-  	 		"url": "http://dspace7.4science.it/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+  	 		"url": "https://api7.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,
@@ -121,6 +126,7 @@ Exposed links:
 * collection: the collection where the inprogress submission will be created
 * item: the item that hold the submission data
 * submissionDefinition: the [submission definition](submissiondefinitions.md) used by this inprogress submission
+* supervisionOrders: list of [supervision orders](supervisionorders.md) defined for the workspace item
 
 ## Multipart POST Method on a single workspaceitem
 

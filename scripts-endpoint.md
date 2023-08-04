@@ -175,6 +175,12 @@ Following parameter types are available:
 * `file`: For parameters with this type, the user has to provide a file. This would be a multipart POST request using the same filename
 * `output`: Parameters with this type define the name of the output file. This name can be used later to download the the output file (e.g. when running `export` or `metadata-export`).
 
+Status codes:
+* 200 Ok - if the script exists and can be accessed by the loggedin User
+* 401 Unauthorized - if you are not authenticated and the script is not usable by anonymous users
+* 403 Forbidden - if you are not logged in with sufficient permissions for the requested script
+* 404 Resource Not Found - if a script with the specified name doesn't exist
+
 ## Script Invocation
 **POST /api/system/scripts/<:script-name>/processes**
 
@@ -215,4 +221,8 @@ The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED
 
 Status codes:
 * 202 Accepted - if the task is accepted for processing
+* 401 Unauthorized - if you are not authenticated and the script is not usable by anonymous users
+* 403 Forbidden - if you are not logged in with sufficient permissions for the requested script according to the provided parameters
+* 400 Not found - if the provided parameters don't match the script expectations
 * 404 Not found - if the script doesn't exist
+* 413 Payload too large - uploaded file is larger than limit set in configuration parameter `spring.servlet.multipart.max-file-size`

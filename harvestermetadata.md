@@ -6,7 +6,7 @@
 
 Provide access to the list of harvesting metadata configurations (config based).
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/config/harvestermetadata>
+Example: <https://api7.dspace.org/server/#/server/api/config/harvestermetadata>
 
 
 A sample json response:
@@ -32,7 +32,7 @@ A sample json response:
   ],
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.it/dspace-spring-rest/api/config/harvestermetadata"
+      "href": "https://api7.dspace.org/server/api/config/harvestermetadata"
     }
   }
 }

@@ -1,40 +1,42 @@
 # Entity Type Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
-This endpoint contains the various types of items (publication, person, journal, …)
+This endpoint contains the various types of entities (publication, person, journal, …) and links to the types of
+relationships each of these entities may have.
+Entities are Items with a valid value in the `dspace.entity.type` 
 
 ## Main Endpoint
 **/api/core/entitytypes**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes
+A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes
 
 ```json
 {
   "_embedded": {
-    "itemtypes": [
+    "entitytypes": [
       {
         "id": 1,
         "label": "Publication",
-        "type": "itemtype",
+        "type": "entitytype",
         "_links": {
           "self": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1"
+            "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
           },
           "relationshiptypes": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/1/relationshiptypes"
+            "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
           }
         }
       },
       {
         "id": 2,
         "label": "Person",
-        "type": "itemtype",
+        "type": "entitytype",
         "_links": {
           "self": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/2"
+            "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
           },
           "relationshiptypes": {
-            "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes/2/relationshiptypes"
+            "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
           }
         }
       }
@@ -42,7 +44,7 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   },
   "_links": {
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/itemtypes"
+      "href": "https://api7.dspace.org/server/api/core/entitytypes"
     }
   },
   "page": {
@@ -54,10 +56,10 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
 }
 ```
 
-## Single Item Type
+## Single Entity Type
 **/api/core/entitytypes/<:id>**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1
+A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes/1
 
 ```json
 {
@@ -66,27 +68,27 @@ A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspac
   "type": "entitytype",
   "_links": {
     "self": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1"
+      "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
     },
     "relationshiptypes": {
-      "href": "https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1/relationshiptypes"
+      "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
     }
   }
 }
 ```
 
-It contains a HAL link to the Relationship Types for the current Item Type (not embedded)
+It contains a HAL link to the Relationship Types for the current Entity Type (not embedded)
 
-## Relationship Types for the current Item Type
+## Relationship Types for the current Entity Type
 **/api/core/entitytypes/<:id>/relationshiptypes**
 
-A sample can be found at https://dspace7-entities.atmire.com/rest/#https://dspace7-entities.atmire.com/rest/api/core/entitytypes/1/relationshiptypes
-It embeds the [relationshiptypes](relationshiptypes.md) which are linked to the given item type (either on the left or right side)
+A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes
+It embeds the [relationshiptypes](relationshiptypes.md) which are linked to the given entity type (either on the left or right side)
 
 ## Get Entity type from label
 **/api/core/entitytypes/label/<:entity-type-label>**
 
-A sample request would be https://dspace7-entities.atmire.com/server/#/server/api/core/entitytypes/label/Person
+A sample request would be https://api7.dspace.org/server/#/server/api/core/entitytypes/label/Person
 The entity-type-label is mandatory
 
 There's always at most one entity type per label.

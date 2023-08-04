@@ -16,7 +16,7 @@ The section data represent the data about the user uploaded files
 			    "checkSumAlgorithm": "MD5",
 			    "value": "9d8f0f9e369cf12159d47c146c499cf4"
 			},
-  	 		"url": "http://dspace7.4science.it/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+  	 		"url": "https://api7.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,
@@ -99,7 +99,7 @@ will set the title of the first uploaded file to MyFile.pdf returning the follow
 				    "checkSumAlgorithm": "MD5",
 				    "value": "9d8f0f9e369cf12159d47c146c499cf4"
 				},
-	  	 		"url": "http://dspace7.4science.it/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+	  	 		"url": "https://api7.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
 	  	 		"accessConditions": [
 	  	 			{
 	  	 				"id": 123,

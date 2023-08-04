@@ -6,7 +6,7 @@
 
 Provide access to the communities (DBMS based). It returns the list of existent communities.
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#/dspace-spring-rest/api/core/communities>
+Example: <https://api7.dspace.org/server/#/server/api/core/communities>
 
 ## Single Community 
 **/api/core/communities/<:uuid>**
@@ -17,6 +17,7 @@ Provide detailed information about a specific community. The JSON response docum
   "uuid": "7669c72a-3f2a-451f-a3b9-9210e7a4c02f",
   "name": "OR2017 - Demonstration",
   "handle": "10673/11",
+  "archivedItemsCount": 12,
   "metadata": {
     "dc.description": [
       {
@@ -76,6 +77,10 @@ Exposed links:
 * parentCommunity: the community containing this community
 * adminGroup: the Community Administrator group
 
+Other properties:
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature
+  is disabled at backend.
+
 ## Linked entities
 
 ### SubCommunities
@@ -92,7 +97,7 @@ The supported parameters are:
 ### Collections
 **/api/core/communities/<:uuid>/collections**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
 
 It returns the collections within this community
 
@@ -103,7 +108,7 @@ The supported parameters are:
 #### Retrieve Logo
 **GET /api/core/communities/<:uuid>/logo**
 
-Example: <http://dspace7.4science.it/dspace-spring-rest/#http://dspace7.4science.it/dspace-spring-rest/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
 
 It returns the bitstream representing the logo of this community. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
@@ -114,7 +119,7 @@ To be used on a community without a logo
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.png"
@@ -144,7 +149,7 @@ To be used on a community with a logo
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPUT -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.png"
@@ -174,7 +179,7 @@ To be used on a community with a logo
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XDELETE \
  -H 'Authorization: Bearer eyJhbGciOiJI...'
 ```

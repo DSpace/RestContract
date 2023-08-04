@@ -14,7 +14,7 @@ This page helps provide an overview of how to submit a new Item into DSpace.
 
 In DSpace, a submission is started by creating a WorkspaceItem. The WorkspaceItem acts as an "in progress" submission object.
 
-To create a WorkspaceItem, just `POST` to [/api/submission/workspaceitems](workspaceitem.md), passing in an owning Collection UUID (as every Item must belong to a Collection)
+To create a WorkspaceItem, just `POST` to [/api/submission/workspaceitems](workspaceitems.md), passing in an owning Collection UUID (as every Item must belong to a Collection)
 ```
 POST /api/submission/workspaceitems?owningCollection=<:collection-uuid>
 ```
@@ -22,11 +22,11 @@ This POST would create an empty WorkspaceItem by default.
 
 Alternatively, you can create a WorkspaceItem by uploading a file via a Multipart POST,
 or passing an [external entry value](external-authority-sources.md) whose metadata should be imported.
-For more information, see "Multipart POST Method" in the [/api/submission/workspaceitems](workspaceitem.md) documentation.
+For more information, see "Multipart POST Method" in the [/api/submission/workspaceitems](workspaceitems.md) documentation.
 
 ## Modifying the Submission
 
-Once a submission is created (see above), the response will provide a new [/api/submission/workspaceitems](workspaceitem.md) resource.
+Once a submission is created (see above), the response will provide a new [/api/submission/workspaceitems](workspaceitems.md) resource.
 This is the WorkspaceItem object you created.
 
 It is **important** to keep the `id` of the WorkspaceItem, as this is necessary to update it or access it again.

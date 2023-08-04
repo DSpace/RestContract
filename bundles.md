@@ -29,16 +29,16 @@ Provide detailed information about a specific bundle. A sample JSON response doc
   "type": "bundle",
   "_links" : {
     "primarybitstream" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+      "href" : "https://api7.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
     },
     "bitstreams" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
     },
     "item" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
+      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
     },
     "self" : {
-      "href" : "https://dspace7-entities.atmire.com/rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
     }
   },
    "_embedded" : {
@@ -79,13 +79,13 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         "type" : "bitstream",
         "_links" : {
           "content" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/content"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/content"
           },
           "format" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/format"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/format"
           },
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }, {
@@ -125,13 +125,13 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         "type" : "bitstream",
         "_links" : {
           "content" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/content"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/content"
           },
           "format" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/format"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/format"
           },
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       }
@@ -157,7 +157,7 @@ Deleting a bundle will delete all bitstreams in the bundle
 
 **GET /api/core/bundles/<:uuid>/bitstreams**
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
 It returns the bitstreams within this bundle. See the [bitstream endpoint](bitstreams.md#Single-Bitstream) for more info
 
@@ -168,11 +168,11 @@ The supported parameters are:
 
 TODO: the item has to be known as well when creating a new bitstream. See https://jira.duraspace.org/browse/DS-4317?focusedCommentId=63099&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-63099
 
-Example: <https://dspace7.4science.it/dspace-spring-rest/#https://dspace7.4science.it/dspace-spring-rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
 Curl example:
 ```
-curl 'https://dspace7.4science.cloud/dspace-spring-rest/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams' \
+curl 'https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.html" \
@@ -231,7 +231,7 @@ Current list of bitstreams:
         "uuid" : "1ce6db0e-662f-4a13-ba87-c371ad664b14",
         "_links" : {
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }, {
@@ -239,7 +239,7 @@ Current list of bitstreams:
         "uuid" : "4dd9621f-a464-4192-bc17-d70f68845bdc",
         "_links" : {
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       }
@@ -269,7 +269,7 @@ New list of bitstreams:
         "uuid" : "4dd9621f-a464-4192-bc17-d70f68845bdc",
         "_links" : {
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       },
@@ -278,10 +278,77 @@ New list of bitstreams:
         "uuid" : "1ce6db0e-662f-4a13-ba87-c371ad664b14",
         "_links" : {
           "self" : {
-            "href" : "http://10.211.55.20:8080/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }
   ]
 }
 ```
+
+## Primary bitstream
+
+The primary bitstream is exposed as a link, and can be modified
+
+**/api/core/bundles/<:uuid>/primaryBitstream**
+
+### Retrieve Primary bitstream
+
+The Primary bitstream can be retrieved using a GET, this may result in `null`
+
+**GET /api/core/bundles/<:uuid>/primaryBitstream**
+
+### Create Primary bitstream
+
+If the Primary bitstream doesn't exist, it can be created using a POST
+
+**POST /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X POST "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+```
+
+Status codes:
+* 201 Created - if the operation succeeded
+* 400 Bad Request - if there already was a primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist
+* 422 Unprocessable Entity - if the bitstream does not exist or is not part of this bundle
+
+### Update Primary bitstream
+
+If the Primary bitstream already exists, it can be changed using a PUT
+
+**PUT /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
+
+```
+curl -i -X PUT "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+```
+
+Status codes:
+* 200 OK - if the operation succeeded
+* 400 Bad Request - if there was no primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist
+* 422 Unprocessable Entity - if the bitstream does not exist or is not part of this bundle
+
+### Removing Primary bitstream
+
+If the Primary bitstream already exists, and no primary bitstream should be used anymore, it can be changed using a DELETE. This will **not** delete the bitstream nor unassign it from the bundle, it will just ensure the bundle has no primary bitstream anymore
+
+**DELETE /api/core/bundles/<:uuid>/primaryBitstream**
+
+This should not have any content
+
+Status codes:
+* 204 No Content - if the operation succeeded
+* 400 Bad Request - if there was no primary bitstream
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the bundle doesn't exist

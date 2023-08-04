@@ -20,7 +20,7 @@ Provide detailed information about a specific workflow step. An example JSON res
   	"type": "workflowstep",
     "_links": {
       "workflowactions": {
-        "href": "https://dspace7-entities.atmire.com/rest/api/config/workflowsteps/<:step-name>/workflowactions"
+        "href": "https://api7.dspace.org/server/api/config/workflowsteps/<:step-name>/workflowactions"
       }
     },
     "_embedded": {
