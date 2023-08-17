@@ -197,10 +197,15 @@ List all the available item filters in the system.
 
 Status codes:
 * 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
 
 ## Single Item Filter
 **/api/config/itemfilters/<:id>**
 
 Status codes:
-* 405 Method Not Allowed
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
+* 404 Not found - if the itemfilter doesn't exist
 
