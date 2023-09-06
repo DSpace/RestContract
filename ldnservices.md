@@ -58,7 +58,7 @@ Status codes:
 ## Creating a new LDN notify service
 **POST /api/ldn/ldnservices**
 
-Authenticated users can create LDN notify service. The content-type is JSON. An example JSON can be seen below:
+Only administrator users can create LDN notify service. The content-type is JSON. An example JSON can be seen below:
 
 ```json
 {
@@ -72,7 +72,7 @@ Authenticated users can create LDN notify service. The content-type is JSON. An 
 Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden is not possible because it is restricted to authenticated users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
 * 404 Not found - if no LDN notify service exists with such id
 * 422 Unprocessable Entity - if Error parsing request body
 
@@ -390,7 +390,7 @@ to remove name or ldnUrl from ldn notify service
 
 status codes:
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden is not possible because it is restricted to authenticated users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
 * 404 Not found - if the LDN Notify Service doesn't exist (or was already deleted)
 * 422 Unprocessable Entity - name and ldnUrl fields are mandatory and can't be removed
 
@@ -486,7 +486,7 @@ to remove constraint from specific outboundPattern of ldn notify service
 Patch Status codes:
 * 200 OK - if the operation succeeded
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden is not possible because it is restricted to authenticated users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
 * 404 Not found - if the LDN Notify Service doesn't exist (or was already deleted)
 
 ## Deleting LDN notify service
@@ -497,7 +497,7 @@ Delete LDN notify service.
 
 * 204 No content - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden is not possible because it is restricted to authenticated users
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators
 * 404 Not found - if the LDN notify service doesn't exist (or was already deleted)
 
 ## Search methods
