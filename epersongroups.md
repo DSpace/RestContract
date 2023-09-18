@@ -327,13 +327,39 @@ Return codes:
 * 404 Not found - if the parent group doesn't exist
 * 422 Unprocessable Entity - if the child group doesn't exist or if the specified eperson doesn't exist
 
-## Search
+## Search Groups by Metadata
 **GET /api/eperson/groups/search/byMetadata?query=<:name>**
 
 This supports a basic search in the metadata.
 It will search in:
 * UUID (exact match)
 * group name
+
+## Search Groups by Membership
+**GET /api/eperson/groups/search/isMemberOf?group=<:name>**
+
+Determines whether the currently logged in user is a direct member of the Group specified by `group`.
+
+The `group` param only supports two possible values:
+* UUID (exact match)
+* Group Name (exact match, as Group names are unique)
+
+If the currently logged in user is a member of the Group, then a `200 OK` will be returned with one result (totalElements=1) in the response. That one result will be the matched group.
+
+If the currently logged in user is NOT a member of the Group (or the `group` param matches no Groups), then a `200 OK` will be returned with zero results (totalElements=0).
+
+## Search Groups by SubGroups
+**GET /api/eperson/groups/search/isSubGroupOf?group=<:name>&subgroup=<:name>**
+
+Determines whether the given `subgroup` is a direct member of the Group specified by `group`.
+
+The `subgroup` and `group` params only supports possible values:
+* UUID (exact match)
+* Group Name (exact match, as Group names are unique)
+
+If the subgroup is a member of the Group, then a `200 OK` will be returned with one result (totalElements=1) in the response. That one result will be the parent Group.
+
+If the subgroup is NOT a member of the Group (or the `group` param matches no Groups), then a `200 OK` will be returned with zero results (totalElements=0).
 
 ## Related DSpace Object of group
 **GET /api/eperson/groups/<:uuid>/object** (READ-ONLY)
