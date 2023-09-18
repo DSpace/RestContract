@@ -65,7 +65,16 @@ Only administrator users can create LDN notify service. The content-type is JSON
   "name": "service name",
   "description": "service description",
   "url": "service url",
-  "ldnUrl": "service ldn url"
+  "ldnUrl": "service ldn url",
+  "notifyServiceInboundPatterns":
+  [
+    {"pattern":"patternA","constraint":"itemFilterA","automatic":true},
+    {"pattern":"patternB","constraint":null,"automatic":false}
+  ],
+  "notifyServiceOutboundPatterns":
+  [
+    {"pattern":"patternC","constraint":"itemFilterC"}
+  ]
 }
 ```
 
@@ -138,7 +147,7 @@ to add inboundPatterns to ldn notify service
   {
     "op": "add",
     "path": "notifyservices_inbound_patterns/-",
-    "value": "{\"pattern\":\"patternA\",\"constraint\":\"itemFilterA\",\"automatic\":\"false\"}"
+    "value": {"pattern":"patternA","constraint":"itemFilterA","automatic":"false"}
   }
 ]
 ```
@@ -152,7 +161,7 @@ to add outboundPatterns to ldn notify service
   {
     "op": "add",
     "path": "notifyservices_outbound_patterns/-",
-    "value": "{\"pattern\":\"patternA\",\"constraint\":\"itemFilterA\"}"
+    "value": {"pattern":"patternA","constraint":"itemFilterA"}
   }
 ]
 ```
@@ -264,7 +273,7 @@ if value contains an empty array all inboundPatterns will be removed
   {
     "op": "replace",
     "path": "notifyservices_inbound_patterns",
-    "value": "[{\"pattern\":\"patternC\",\"constraint\":\"itemFilterC\",\"automatic\":\"false\"}, {\"pattern\":\"patternD\",\"constraint\":\"itemFilterD\",\"automatic\":\"false\"}]"
+    "value": [{"pattern":"patternC","constraint":"itemFilterC","automatic":"false"}, {"pattern":"patternD","constraint":"itemFilterD","automatic":"false"}]
   }
 ]
 ```
@@ -276,7 +285,7 @@ to replace inboundPattern of ldn notify service at specific index
   {
     "op": "replace",
     "path": "notifyservices_inbound_patterns[0]",
-    "value": "{\"pattern\":\"patternD\",\"constraint\":\"itemFilterD\",\"automatic\":\"true\"}"
+    "value": {"pattern":"patternD","constraint":"itemFilterD","automatic":"true"}
   }
 ]
 ```
@@ -289,7 +298,7 @@ if value contains an empty array all outboundPatterns will be removed
   {
     "op": "replace",
     "path": "notifyservices_outbound_patterns",
-    "value": "[{\"pattern\":\"patternC\",\"constraint\":\"itemFilterC\"}, {\"pattern\":\"patternD\",\"constraint\":\"itemFilterD\"}]"
+    "value": [{"pattern":"patternC","constraint":"itemFilterC"}, {"pattern":"patternD","constraint":"itemFilterD"}]
   }
 ]
 ```
@@ -301,7 +310,7 @@ to replace outboundPattern of ldn notify service at specific index
   {
     "op": "replace",
     "path": "notifyservices_outbound_patterns[0]",
-    "value": "{\"pattern\":\"patternD\",\"constraint\":\"itemFilterD\"}"
+    "value": {"pattern":"patternD","constraint":"itemFilterD"}
   }
 ]
 ```
