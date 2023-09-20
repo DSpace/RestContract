@@ -140,13 +140,13 @@ to add url to ldn notify service
 
 to add inboundPatterns to ldn notify service
 
--adding object to the last, this array isn't sorted so, not supported adding to index like "notifyservices_inbound_patterns[index]"
+-adding object to the last, this array isn't sorted so, not supported adding to index like "notifyServiceInboundPatterns[index]"
 
 ```json
 [
   {
     "op": "add",
-    "path": "notifyservices_inbound_patterns/-",
+    "path": "notifyServiceInboundPatterns/-",
     "value": {"pattern":"patternA","constraint":"itemFilterA","automatic":"false"}
   }
 ]
@@ -154,13 +154,13 @@ to add inboundPatterns to ldn notify service
 
 to add outboundPatterns to ldn notify service
 
--adding object to the last, this array isn't sorted so, not supported adding to index like "notifyservices_outbound_patterns[index]"
+-adding object to the last, this array isn't sorted so, not supported adding to index like "notifyServiceOutboundPatterns[index]"
 
 ```json
 [
   {
     "op": "add",
-    "path": "notifyservices_outbound_patterns/-",
+    "path": "notifyServiceOutboundPatterns/-",
     "value": {"pattern":"patternA","constraint":"itemFilterA"}
   }
 ]
@@ -172,7 +172,7 @@ to add pattern to specific inboundPattern of ldn notify service
 [
   {
     "op": "add",
-    "path": "notifyservices_inbound_patterns[0]/pattern",
+    "path": "notifyServiceInboundPatterns[0]/pattern",
     "value": "patternA"
   }
 ]
@@ -184,7 +184,7 @@ to add constraint to specific inboundPattern of ldn notify service
 [
   {
     "op": "add",
-    "path": "notifyservices_inbound_patterns[0]/constraint",
+    "path": "notifyServiceInboundPatterns[0]/constraint",
     "value": "itemFilterA"
   }
 ]
@@ -197,7 +197,7 @@ to add pattern to specific outboundPattern of ldn notify service
 [
   {
     "op": "add",
-    "path": "notifyservices_outbound_patterns[0]/pattern",
+    "path": "notifyServiceOutboundPatterns[0]/pattern",
     "value": "patternA"
   }
 ]
@@ -209,7 +209,7 @@ to add constraint to specific outboundPattern of ldn notify service
 [
   {
     "op": "add",
-    "path": "notifyservices_outbound_patterns[0]/constraint",
+    "path": "notifyServiceOutboundPatterns[0]/constraint",
     "value": "itemFilterA"
   }
 ]
@@ -272,7 +272,7 @@ if value contains an empty array all inboundPatterns will be removed
 [
   {
     "op": "replace",
-    "path": "notifyservices_inbound_patterns",
+    "path": "notifyServiceInboundPatterns",
     "value": [{"pattern":"patternC","constraint":"itemFilterC","automatic":"false"}, {"pattern":"patternD","constraint":"itemFilterD","automatic":"false"}]
   }
 ]
@@ -284,7 +284,7 @@ to replace inboundPattern of ldn notify service at specific index
 [
   {
     "op": "replace",
-    "path": "notifyservices_inbound_patterns[0]",
+    "path": "notifyServiceInboundPatterns[0]",
     "value": {"pattern":"patternD","constraint":"itemFilterD","automatic":"true"}
   }
 ]
@@ -297,7 +297,7 @@ if value contains an empty array all outboundPatterns will be removed
 [
   {
     "op": "replace",
-    "path": "notifyservices_outbound_patterns",
+    "path": "notifyServiceOutboundPatterns",
     "value": [{"pattern":"patternC","constraint":"itemFilterC"}, {"pattern":"patternD","constraint":"itemFilterD"}]
   }
 ]
@@ -309,7 +309,7 @@ to replace outboundPattern of ldn notify service at specific index
 [
   {
     "op": "replace",
-    "path": "notifyservices_outbound_patterns[0]",
+    "path": "notifyServiceOutboundPatterns[0]",
     "value": {"pattern":"patternD","constraint":"itemFilterD"}
   }
 ]
@@ -321,7 +321,7 @@ to replace pattern of specific inboundPattern of ldn notify service
 [
   {
     "op": "replace",
-    "path": "notifyservices_inbound_patterns[1]/pattern",
+    "path": "notifyServiceInboundPatterns[1]/pattern",
     "value": "patternB"
   }
 ]
@@ -333,7 +333,7 @@ to replace constraint of specific inboundPattern of ldn notify service
 [
   {
     "op": "replace",
-    "path": "notifyservices_inbound_patterns[1]/constraint",
+    "path": "notifyServiceInboundPatterns[1]/constraint",
     "value": "itemFilterB"
   }
 ]
@@ -345,7 +345,7 @@ to replace automatic of specific inboundPattern of ldn notify service
 [
   {
     "op": "replace",
-    "path": "notifyservices_inbound_patterns[1]/automatic",
+    "path": "notifyServiceInboundPatterns[1]/automatic",
     "value": "true"
   }
 ]
@@ -357,7 +357,7 @@ to replace pattern of specific outboundPattern of ldn notify service
 [
   {
     "op": "replace",
-    "path": "notifyservices_outbound_patterns[1]/pattern",
+    "path": "notifyServiceOutboundPatterns[1]/pattern",
     "value": "patternB"
   }
 ]
@@ -369,7 +369,7 @@ to replace constraint of specific outboundPattern of ldn notify service
 [
   {
     "op": "replace",
-    "path": "notifyservices_outbound_patterns[0]/constraint",
+    "path": "notifyServiceOutboundPatterns[0]/constraint",
     "value": "itemFilterA"
   }
 ]
@@ -432,7 +432,7 @@ to remove all inboundPatterns of ldn notify service
 [
   {
     "op": "remove",
-    "path": "notifyservices_inbound_patterns"
+    "path": "notifyServiceInboundPatterns"
   }
 ]
 ```
@@ -443,7 +443,7 @@ to remove inboundPattern from ldn notify service at specific index
 [
   {
     "op": "remove",
-    "path": "notifyservices_inbound_patterns[0]"
+    "path": "notifyServiceInboundPatterns[0]"
   }
 ]
 ```
@@ -454,7 +454,7 @@ to remove all outboundPatterns of ldn notify service
 [
   {
     "op": "remove",
-    "path": "notifyservices_outbound_patterns"
+    "path": "notifyServiceOutboundPatterns"
   }
 ]
 ```
@@ -465,7 +465,7 @@ to remove outboundPattern from ldn notify service at specific index
 [
   {
     "op": "remove",
-    "path": "notifyservices_outbound_patterns[1]"
+    "path": "notifyServiceOutboundPatterns[1]"
   }
 ]
 ```
@@ -476,7 +476,7 @@ to remove constraint from specific inboundPattern of ldn notify service
 [
   {
     "op": "remove",
-    "path": "notifyservices_inbound_patterns[0]/constraint"
+    "path": "notifyServiceInboundPatterns[0]/constraint"
   }
 ]
 ```
@@ -487,7 +487,7 @@ to remove constraint from specific outboundPattern of ldn notify service
 [
   {
     "op": "remove",
-    "path": "notifyservices_outbound_patterns[0]/constraint"
+    "path": "notifyServiceOutboundPatterns[0]/constraint"
   }
 ]
 ```
