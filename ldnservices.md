@@ -23,6 +23,7 @@ Return codes:
   "description" : "service description",
   "url" : "service url",
   "ldnUrl" : "service ldn url",
+  "enabled" : true,
   "notifyServiceInboundPatterns" :
   [
     {
@@ -66,6 +67,7 @@ Only administrator users can create LDN notify service. The content-type is JSON
   "description": "service description",
   "url": "service url",
   "ldnUrl": "service ldn url",
+  "enabled" : true,
   "notifyServiceInboundPatterns":
   [
     {"pattern":"patternA","constraint":"itemFilterA","automatic":true},
@@ -261,6 +263,18 @@ to update the url of ldn notify service
     "op": "replace",
     "path": "/url",
     "value": "url value"
+  }
+]
+```
+
+to update enabled of ldn notify service
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/enabled",
+    "value": false
   }
 ]
 ```
@@ -525,6 +539,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byLdnUrl?ldnUrl=ser
   "description" : "service description one",
   "url" : "service url one",
   "ldnUrl" : "service_ldn_url",
+  "enabled" : true,
   "notifyServiceInboundPatterns" :
   [
     {
