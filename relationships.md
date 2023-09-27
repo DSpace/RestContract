@@ -7,12 +7,12 @@ It uses a [relationship type](relationshiptypes.md) and the 2 items with HAL lin
 ## Main Endpoint
 **/api/core/relationships**
 
-A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationshiptypes
+A sample can be found at https://demo.dspace.org/#https://demo.dspace.org/server/api/core/relationshiptypes
 
 ## Single Relationship
 **/api/core/relationships/<:id>**
 
-A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationships/1117
+A sample can be found at https://demo.dspace.org/#https://demo.dspace.org/server/api/core/relationships/1117
 
 ```json
 {
@@ -23,16 +23,16 @@ A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server
   "type": "relationship",
   "_links": {
     "relationshipType": {
-      "href": "https://api7.dspace.org/server/api/core/relationships/530/relationshipType"
+      "href": "https://demo.dspace.org/server/api/core/relationships/530/relationshipType"
     },
     "self": {
-      "href": "https://api7.dspace.org/server/api/core/relationships/530"
+      "href": "https://demo.dspace.org/server/api/core/relationships/530"
     },
     "leftItem": {
-      "href": "https://api7.dspace.org/server/api/core/items/e98b0f27-5c19-49a0-960d-eb6ad5287067"
+      "href": "https://demo.dspace.org/server/api/core/items/e98b0f27-5c19-49a0-960d-eb6ad5287067"
     },
     "rightItem": {
-      "href": "https://api7.dspace.org/server/api/core/items/0ffbee3f-e7ea-42bc-92fe-2fbef1a52c0f"
+      "href": "https://demo.dspace.org/server/api/core/items/0ffbee3f-e7ea-42bc-92fe-2fbef1a52c0f"
     }
   },
   "_embedded": {
@@ -47,13 +47,13 @@ A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server
       "type": "relationshiptype",
       "_links": {
         "leftType": {
-          "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
+          "href": "https://demo.dspace.org/server/api/core/entitytypes/1"
         },
         "rightType": {
-          "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+          "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
         },
         "self": {
-          "href": "https://api7.dspace.org/server/api/core/relationshiptypes/1"
+          "href": "https://demo.dspace.org/server/api/core/relationshiptypes/1"
         }
       },
       "_embedded": {
@@ -63,10 +63,10 @@ A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server
           "type": "entitytype",
           "_links": {
             "self": {
-              "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
+              "href": "https://demo.dspace.org/server/api/core/entitytypes/1"
             },
             "relationshiptypes": {
-              "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
+              "href": "https://demo.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
             }
           }
         },
@@ -76,10 +76,10 @@ A sample can be found at https://api7.dspace.org/#https://api7.dspace.org/server
           "type": "entitytype",
           "_links": {
             "self": {
-              "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+              "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
             },
             "relationshiptypes": {
-              "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
+              "href": "https://demo.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
             }
           }
         }
@@ -126,12 +126,12 @@ A new relationship between 2 items can be created by specifying both items in a 
 
 A sample CURL command would be:
 ```
-curl -i -X POST 'https://api7.dspace.org/server/api/core/relationships?relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://api7.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+curl -i -X POST 'https://demo.dspace.org/server/api/core/relationships?relationshipType=1' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://demo.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
 Including a name variant would result in:
 ```
-curl -i -X POST 'https://api7.dspace.org/server/api/core/relationships?relationshipType=1&leftwardValue=Name%20variant%201' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://api7.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+curl -i -X POST 'https://demo.dspace.org/server/api/core/relationships?relationshipType=1&leftwardValue=Name%20variant%201' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e \n https://demo.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
 The uri-list should always contain exactly 2 items. The first item will be used as the left Item. The second item will be used as the right Item.
@@ -150,12 +150,12 @@ Update the items in the relationship
 
 A sample CURL command to update the left item would be:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/core/relationships/891/leftItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e'
+curl -i -X PUT 'https://demo.dspace.org/server/api/core/relationships/891/leftItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/items/12623672-25a9-4df2-ab36-699c4c240c7e'
 ```
 
 A sample CURL command to update the right item would be:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/core/relationships/891/rightItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
+curl -i -X PUT 'https://demo.dspace.org/server/api/core/relationships/891/rightItem' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-8a2-f00ede62c60a'
 ```
 
 The uri-list should always contain exactly 1 item. This item will be used as to replace the left of right item, depending on whether the URL ends with /leftItem or /rightItem
@@ -175,7 +175,7 @@ Error codes:
 
 Update the name variant or the place:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:application/json" --data '{ "leftPlace": 1, "leftwardValue": "Smith, Jane", "rightPlace": 1, "rightwardValue": null }'
+curl -i -X PUT 'https://demo.dspace.org/server/api/core/relationships/891' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:application/json" --data '{ "leftPlace": 1, "leftwardValue": "Smith, Jane", "rightPlace": 1, "rightwardValue": null }'
 ```
 
 Omitted properties will be removed.
@@ -189,7 +189,7 @@ Error codes:
 ## Relationships per Relationship type
 **/api/core/relationships/search/byLabel?label=<:relationshipname>**
 
-A sample search would be https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit
+A sample search would be https://demo.dspace.org/#https://demo.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit
 The relationshipname parameter is mandatory
 
 It would respond with
@@ -206,16 +206,16 @@ It would respond with
         "type": "relationship",
         "_links": {
           "relationshipType": {
-            "href": "https://api7.dspace.org/server/api/core/relationships/590/relationshipType"
+            "href": "https://demo.dspace.org/server/api/core/relationships/590/relationshipType"
           },
           "self": {
-            "href": "https://api7.dspace.org/server/api/core/relationships/590"
+            "href": "https://demo.dspace.org/server/api/core/relationships/590"
           },
           "leftItem": {
-            "href": "https://api7.dspace.org/server/api/core/items/f2235aa6-6fe7-4174-a690-598b72dd8e44"
+            "href": "https://demo.dspace.org/server/api/core/items/f2235aa6-6fe7-4174-a690-598b72dd8e44"
           },
           "rightItem": {
-            "href": "https://api7.dspace.org/server/api/core/items/d30de96b-1e76-40ae-8ef9-ab426b6f9763"
+            "href": "https://demo.dspace.org/server/api/core/items/d30de96b-1e76-40ae-8ef9-ab426b6f9763"
           }
         },
         "_embedded": {
@@ -230,13 +230,13 @@ It would respond with
             "type": "relationshiptype",
             "_links": {
               "leftType": {
-                "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+                "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
               },
               "rightType": {
-                "href": "https://api7.dspace.org/server/api/core/entitytypes/4"
+                "href": "https://demo.dspace.org/server/api/core/entitytypes/4"
               },
               "self": {
-                "href": "https://api7.dspace.org/server/api/core/relationshiptypes/5"
+                "href": "https://demo.dspace.org/server/api/core/relationshiptypes/5"
               }
             },
             "_embedded": {
@@ -246,10 +246,10 @@ It would respond with
                 "type": "entitytype",
                 "_links": {
                   "self": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
                   },
                   "relationshiptypes": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
                   }
                 }
               },
@@ -259,10 +259,10 @@ It would respond with
                 "type": "entitytype",
                 "_links": {
                   "self": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/4"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/4"
                   },
                   "relationshiptypes": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/4/relationshiptypes"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/4/relationshiptypes"
                   }
                 }
               }
@@ -279,16 +279,16 @@ It would respond with
         "type": "relationship",
         "_links": {
           "relationshipType": {
-            "href": "https://api7.dspace.org/server/api/core/relationships/589/relationshipType"
+            "href": "https://demo.dspace.org/server/api/core/relationships/589/relationshipType"
           },
           "self": {
-            "href": "https://api7.dspace.org/server/api/core/relationships/589"
+            "href": "https://demo.dspace.org/server/api/core/relationships/589"
           },
           "leftItem": {
-            "href": "https://api7.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a"
+            "href": "https://demo.dspace.org/server/api/core/items/5a3f7c7a-d3df-419c-b8a2-f00ede62c60a"
           },
           "rightItem": {
-            "href": "https://api7.dspace.org/server/api/core/items/c216201f-ed10-4361-b0e0-5a065405bd3e"
+            "href": "https://demo.dspace.org/server/api/core/items/c216201f-ed10-4361-b0e0-5a065405bd3e"
           }
         },
         "_embedded": {
@@ -303,13 +303,13 @@ It would respond with
             "type": "relationshiptype",
             "_links": {
               "leftType": {
-                "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+                "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
               },
               "rightType": {
-                "href": "https://api7.dspace.org/server/api/core/entitytypes/4"
+                "href": "https://demo.dspace.org/server/api/core/entitytypes/4"
               },
               "self": {
-                "href": "https://api7.dspace.org/server/api/core/relationshiptypes/5"
+                "href": "https://demo.dspace.org/server/api/core/relationshiptypes/5"
               }
             },
             "_embedded": {
@@ -319,10 +319,10 @@ It would respond with
                 "type": "entitytype",
                 "_links": {
                   "self": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
                   },
                   "relationshiptypes": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
                   }
                 }
               },
@@ -332,10 +332,10 @@ It would respond with
                 "type": "entitytype",
                 "_links": {
                   "self": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/4"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/4"
                   },
                   "relationshiptypes": {
-                    "href": "https://api7.dspace.org/server/api/core/entitytypes/4/relationshiptypes"
+                    "href": "https://demo.dspace.org/server/api/core/entitytypes/4/relationshiptypes"
                   }
                 }
               }
@@ -348,7 +348,7 @@ It would respond with
   },
   "_links": {
     "self": {
-      "href": "https://api7.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit"
+      "href": "https://demo.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit"
     }
   },
   "page": {
@@ -367,7 +367,7 @@ It embeds all relationships where the relationship type has the given label on e
 
 
 This can be further filtered to a single DSO using 
-https://api7.dspace.org/#https://api7.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
+https://demo.dspace.org/#https://demo.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
 
 ## Deleting a relationship
@@ -378,7 +378,7 @@ Delete a relationship between 2 items.
 
 A sample CURL command would be:
 ```
-curl -D - -XDELETE 'https://api7.dspace.org/server/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
+curl -D - -XDELETE 'https://demo.dspace.org/server/api/core/relationships/890'  -H 'Authorization: Bearer eyJhbGciO…'
 ```
 
 An optional parameter for copying virtual metadata to actual metadata in the related items can be included (only authorized if the user has permissions to update the metadata of the given items): `copyVirtualMetadata`. This can contain values:
