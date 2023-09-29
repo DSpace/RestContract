@@ -1,9 +1,12 @@
 # Admin Processes Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
-This endpoint allows users to list and manipulate script processes created by the [Scripts endpoint](scripts-endpoint.md).
+This endpoint allows users to list and manipulate script processes created by
+the [Scripts endpoint](scripts-endpoint.md).
 
 ## Execution List
+
 **GET /api/system/processes**
 
 This endpoint will return a list of all created processes. The JSON response document is as follows:
@@ -11,72 +14,72 @@ This endpoint will return a list of all created processes. The JSON response doc
 ```json
 {
   "page": {
-      	"size": 5,
-      	"totalElements": 14,
-      	"totalPages": 3,
-      	"number": 0
+    "size": 5,
+    "totalElements": 14,
+    "totalPages": 3,
+    "number": 0
   },
-  "_embedded" : {
-    "processes" : [
+  "_embedded": {
+    "processes": [
       {
-        "processId" : "1",
-        "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
-        "startTime" : "2017-11-22T10:29:11Z",
-        "creationTime" : "2017-11-22T10:29:00Z",
-        "endTime" : null,
+        "processId": "1",
+        "userId": "aa0263e2-b90a-4528-89fa-116ea4859de1",
+        "startTime": "2017-11-22T10:29:11Z",
+        "creationTime": "2017-11-22T10:29:00Z",
+        "endTime": null,
         "scriptName": "metadata-import",
-        "processStatus" : "RUNNING",
-        "parameters" : [
+        "processStatus": "RUNNING",
+        "parameters": [
           {
-            "name" : "-c",
-            "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
+            "name": "-c",
+            "value": "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
           },
           {
-            "name" : "-n",
-            "value" : "true"
+            "name": "-n",
+            "value": "true"
           }
         ],
-        "_links" : {
-          "self" : {
-            "href" : "/api/system/processes/1"
+        "_links": {
+          "self": {
+            "href": "/api/system/processes/1"
           },
-          "script" : {
-            "href" : "/api/system/scripts/import"
+          "script": {
+            "href": "/api/system/scripts/import"
           },
-          "output" : {
-            "href" : "/api/system/processes/1/output"
+          "output": {
+            "href": "/api/system/processes/1/output"
           },
-          "files" : {
-            "href" : "/api/system/processes/1/files"
+          "files": {
+            "href": "/api/system/processes/1/files"
           }
         }
       },
       {
-        "processId" : "2",
-        "userId" : "c7d85e7f-63e5-4bc0-96cb-5d80be48d62e",
-        "startTime" : "2017-11-20T10:29:11Z",  
-        "creationTime" : "2017-11-22T10:29:00Z",
-        "endTime" : "2017-11-20T10:30:11Z",
+        "processId": "2",
+        "userId": "c7d85e7f-63e5-4bc0-96cb-5d80be48d62e",
+        "startTime": "2017-11-20T10:29:11Z",
+        "creationTime": "2017-11-22T10:29:00Z",
+        "endTime": "2017-11-20T10:30:11Z",
         "scriptName": "metadata-import",
-        "processStatus" : "FAILED",
-        "parameters" : [
+        "processStatus": "FAILED",
+        "parameters": [
           {
-            "name" : "-i",
-            "value" : "c70893a6-ac55-48c7-9447-61e026b62929"
+            "name": "-i",
+            "value": "c70893a6-ac55-48c7-9447-61e026b62929"
           }
         ],
-        "_links" : {
-          "self" : {
-            "href" : "/api/system/processes/2"
+        "_links": {
+          "self": {
+            "href": "/api/system/processes/2"
           },
-          "script" : {
-            "href" : "/api/system/scripts/metadata-export"
+          "script": {
+            "href": "/api/system/scripts/metadata-export"
           },
-          "output" : {
-            "href" : "/api/system/processes/2/output"
+          "output": {
+            "href": "/api/system/processes/2/output"
           },
-          "files" : {
-            "href" : "/api/system/processes/2/files"
+          "files": {
+            "href": "/api/system/processes/2/files"
           }
         }
       }
@@ -86,52 +89,55 @@ This endpoint will return a list of all created processes. The JSON response doc
 ```
 
 Optional parameters to query the processes:
+
 * `script`: The name of the script (e.g. import)
 * `userId`: The UUID of the person who created the process (only admins can retrieve processes they didn't start)
 * `status`: The status of the script
 * `parameter.xyz`: Which parameters have been used, and their value
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in as a repository administrator
 
 ## Execution Details
+
 **GET /api/system/processes/<:process-id>**
 
 This endpoint will return details on the requested process.
 
 ```json
 {
-  "processId" : "3",
-  "userId" : "aa0263e2-b90a-4528-89fa-116ea4859de1",
-  "startTime" : "2017-11-22T10:29:11Z",  
-  "creationTime" : "2017-11-22T10:29:00Z",
-  "endTime" : null,              
+  "processId": "3",
+  "userId": "aa0263e2-b90a-4528-89fa-116ea4859de1",
+  "startTime": "2017-11-22T10:29:11Z",
+  "creationTime": "2017-11-22T10:29:00Z",
+  "endTime": null,
   "scriptName": "metadata-import",
-  "processStatus" : "RUNNING",
-  "parameters" : [
+  "processStatus": "RUNNING",
+  "parameters": [
     {
-    "name" : "-c",
-    "value" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
+      "name": "-c",
+      "value": "954e5cfa-6990-4c85-ae42-f30d8c7888e2"
     },
     {
-    "name" : "-n",
-    "value" : "true"
+      "name": "-n",
+      "value": "true"
     }
   ],
-  "_links" : {
-    "self" : {
-      "href" : "/api/system/processes/3"
+  "_links": {
+    "self": {
+      "href": "/api/system/processes/3"
     },
-    "script" : {
-      "href" : "/api/system/scripts/import"
+    "script": {
+      "href": "/api/system/scripts/import"
     },
-    "output" : {
-      "href" : "/api/system/processes/3/output"
+    "output": {
+      "href": "/api/system/processes/3/output"
     },
-    "files" : {
-      "href" : "/api/system/processes/3/files"
+    "files": {
+      "href": "/api/system/processes/3/files"
     }
   }
 }
@@ -140,172 +146,179 @@ This endpoint will return details on the requested process.
 The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`.
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
 * 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
 
 ## Execution Console Output
+
 **GET /api/system/processes/<:process-id>/output**
 
-This endpoint will return the console output of the script. To keep the scope of this work limited, it will print the full console output without datestamps.
+This endpoint will return the console output of the script. To keep the scope of this work limited, it will print the
+full console output without datestamps.
 In a future version, a solution supporting a live-feed can also be included.
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
 * 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
 * 404 Resource Not Found - if the specified process id doesn't exist
 
 ## Execution File Output List
+
 **GET /api/system/processes/<:process-id>/files**
 
-This endpoint will return a list of files that are associated with the process, this can be files uploaded by the end user for imports or files generated by the script like for exports of data.
+This endpoint will return a list of files that are associated with the process, this can be files uploaded by the end
+user for imports or files generated by the script like for exports of data.
 
 ```json
 {
   "_embedded": {
     "bitstreams": [
       {
-          "id": "e2343390-0b1b-4397-be3d-66fed243a436",
-          "uuid": "e2343390-0b1b-4397-be3d-66fed243a436",
-          "name": "test.csv",
-          "handle": null,
-          "metadata": {
-            "dc.title": [
-              {
-                "value": "test.csv",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": 0
-              }
-            ],
-            "dspace.process.filetype": [
-              {
-                "value": "exportCSV",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": 0
-              }
-            ]
-          },
-          "bundleName": null,
-          "sizeBytes": 479381,
-          "checkSum": {
-            "checkSumAlgorithm": "MD5",
-            "value": "64cdb4b4dd01b4a4cbb41e6d879fe996"
-          },
-          "sequenceId": null,
-          "type": "bitstream",
-          "_links": {
-            "content": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/content"
-            },
-            "format": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/format"
-            },
-            "self": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436"
+        "id": "e2343390-0b1b-4397-be3d-66fed243a436",
+        "uuid": "e2343390-0b1b-4397-be3d-66fed243a436",
+        "name": "test.csv",
+        "handle": null,
+        "metadata": {
+          "dc.title": [
+            {
+              "value": "test.csv",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": 0
             }
+          ],
+          "dspace.process.filetype": [
+            {
+              "value": "exportCSV",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ]
+        },
+        "bundleName": null,
+        "sizeBytes": 479381,
+        "checkSum": {
+          "checkSumAlgorithm": "MD5",
+          "value": "64cdb4b4dd01b4a4cbb41e6d879fe996"
+        },
+        "sequenceId": null,
+        "type": "bitstream",
+        "_links": {
+          "content": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/content"
           },
-          "_embedded": {
-            "format": {
-              "id": 1,
-              "shortDescription": "CSV",
-              "description": "Comma-separated values",
-              "mimetype": "text/csv",
-              "supportLevel": 0,
-              "internal": false,
-              "extensions": null,
-              "type": "bitstreamformat",
-              "_links" : {
-                "self" : {
-                  "href": "/api/core/bitstreamformats/27"
-                }
+          "format": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/format"
+          },
+          "self": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436"
+          }
+        },
+        "_embedded": {
+          "format": {
+            "id": 1,
+            "shortDescription": "CSV",
+            "description": "Comma-separated values",
+            "mimetype": "text/csv",
+            "supportLevel": 0,
+            "internal": false,
+            "extensions": null,
+            "type": "bitstreamformat",
+            "_links": {
+              "self": {
+                "href": "/api/core/bitstreamformats/27"
               }
             }
           }
+        }
       },
       {
-          "id": "e2343390-0b1b-4397-be3d-66fed243a436",
-          "uuid": "e2343390-0b1b-4397-be3d-66fed243a436",
-          "name": "map.txt",
-          "handle": null,
-          "metadata": {
-            "dc.title": [
-              {
-                "value": "map.txt",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": 0
-              }
-            ],
-            "dspace.process.filetype": [
-              {
-                "value": "mappingFile",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": 0
-              }
-            ]
-          },
-          "bundleName": null,
-          "sizeBytes": 479381,
-          "checkSum": {
-            "checkSumAlgorithm": "MD5",
-            "value": "64cdb4b4dd01b4a4cbb41e6d879fe996"
-          },
-          "sequenceId": null,
-          "type": "bitstream",
-          "_links": {
-            "content": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/content"
-            },
-            "format": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/format"
-            },
-            "self": {
-              "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436"
+        "id": "e2343390-0b1b-4397-be3d-66fed243a436",
+        "uuid": "e2343390-0b1b-4397-be3d-66fed243a436",
+        "name": "map.txt",
+        "handle": null,
+        "metadata": {
+          "dc.title": [
+            {
+              "value": "map.txt",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": 0
             }
+          ],
+          "dspace.process.filetype": [
+            {
+              "value": "mappingFile",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": 0
+            }
+          ]
         },
-          "_embedded": {
-            "format": {
-              "id": 1,
-              "shortDescription": "Text",
-              "description": "Plain Text",
-              "mimetype": "text/plain",
-              "supportLevel": 0,
-              "internal": false,
-              "extensions": null,
-              "type": "bitstreamformat",
-              "_links": {
-                "self": {
-                  "href": "/api/core/bitstreamformats/6"
-                }
+        "bundleName": null,
+        "sizeBytes": 479381,
+        "checkSum": {
+          "checkSumAlgorithm": "MD5",
+          "value": "64cdb4b4dd01b4a4cbb41e6d879fe996"
+        },
+        "sequenceId": null,
+        "type": "bitstream",
+        "_links": {
+          "content": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/content"
+          },
+          "format": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436/format"
+          },
+          "self": {
+            "href": "/api/core/bitstreams/e2343390-0b1b-4397-be3d-66fed243a436"
+          }
+        },
+        "_embedded": {
+          "format": {
+            "id": 1,
+            "shortDescription": "Text",
+            "description": "Plain Text",
+            "mimetype": "text/plain",
+            "supportLevel": 0,
+            "internal": false,
+            "extensions": null,
+            "type": "bitstreamformat",
+            "_links": {
+              "self": {
+                "href": "/api/core/bitstreamformats/6"
               }
             }
           }
-      } 
+        }
+      }
     ]
-    },
-    "page": {
-       "number": 0,
-       "size": 10,
-       "totalPages": 1,
-       "totalElements": 5
-    },
-    "_links": {
-       "self": {
-           "href": "/api/system/processes/10/files?page=0&size=10"
-       }
+  },
+  "page": {
+    "number": 0,
+    "size": 10,
+    "totalPages": 1,
+    "totalElements": 5
+  },
+  "_links": {
+    "self": {
+      "href": "/api/system/processes/10/files?page=0&size=10"
     }
+  }
 }
 ```
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
 * 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
@@ -315,8 +328,10 @@ Status codes:
 
 **GET /api/system/processes/<:process-id>/filetypes**
 
-Individual processes can have files of different "types". The types can be anything. It refers to what the file represents: e.g. mappingFile, exportCSV, etc.
-This endpoint will return all the different file types for the given process.  The `/api/system/processes/<:process-id>/files/<:type>` endpoint can be used to find the file of that type.
+Individual processes can have files of different "types". The types can be anything. It refers to what the file
+represents: e.g. mappingFile, exportCSV, etc.
+This endpoint will return all the different file types for the given process.
+The `/api/system/processes/<:process-id>/files/<:type>` endpoint can be used to find the file of that type.
 
 ```json
 {
@@ -328,71 +343,86 @@ This endpoint will return all the different file types for the given process.  T
   "type": "filetypes",
   "_links": {
     "self": {
-        "href": "/api/system/processes/10/filetypes"
+      "href": "/api/system/processes/10/filetypes"
     }
   }
 }
 ```
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
 * 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
 * 404 Resource Not Found - if the specified process id doesn't exist
 
 ## Execution File Output (using type identifier)
+
 **GET /api/system/processes/<:process-id>/files/<:type>**
 
-Returns a single file of the specified process with the provided type (the type matches on the dspace.process.filetype metadata field of the bitstream)
+Returns a single file of the specified process with the provided type (the type matches on the dspace.process.filetype
+metadata field of the bitstream)
 
 Status codes:
+
 * 200 Ok - if the request succeed
 * 401 Unauthorized - if you are not authenticated and the process was not started by an anonymous user
 * 403 Forbidden - if you are not logged in as a repository administrator or the user that has started the process
 * 404 Resource Not Found - if the specified process id or file type doesn't exist
 
 ## Search Methods
+
 ### Search processes by Property
+
 **GET /api/system/processes/search/byProperty**
 
 This supports a basic search of the processes
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination)
 * sort, options are startTime, endTime
 * userId: optional, the uuid of the eperson who started the process. If not specified, all processes will be returned
 * scriptName: optional, limit the returned processes to the specified script
-* processStatus: optional, limit the returned processes to the specified status. The possible `status` values are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`
+* processStatus: optional, limit the returned processes to the specified status. The possible `status` values
+  are `SCHEDULED`, `RUNNING`, `COMPLETED` and `FAILED`
 
 Return codes:
+
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access the processes
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators can access the
+  processes
 
 ### Retrieve own processes
+
 **GET /api/system/processes/search/own**
 
 This return the list of owned processes, i.e. the processes that have been started by the current, logged-in, user
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination)
 
 Return codes:
+
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 
 ## Execution Deletion
+
 **DELETE /api/system/processes/<:process-id>**
 
-The will delete the process and associated files and output. Only processes with states of `SCHEDULED`, `COMPLETED` and `FAILED` can be deleted. 
+This will delete the process and associated files and output. Only processes with states of `SCHEDULED`, `COMPLETED`
+and `FAILED` can be deleted.
 
 Support for stopping a process can be included in a future version.
 
 Status codes:
+
 * 201 Created - if the operation succeed
 * 404 Not found - if the processes doesn't exist
 * 422 Unprocessable Entity - If the process is running
-
 
 ## Script Invocation
 

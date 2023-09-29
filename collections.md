@@ -1,17 +1,21 @@
 # Collections Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/core/collections**   
+
+**/api/core/collections**
 
 Provide access to the list of collections (DBMS based).
 
 Example: <https://api7.dspace.org/server/#/server/api/core/collections>
 
 ## Single Collection
+
 **/api/core/collections/<:uuid>**
 
-Provide detailed information about a specific collection. The JSON response document is as follow
+Provide detailed information about a specific collection. The JSON response document is as follows:
+
 ```json
 {
   "uuid": "1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb",
@@ -87,6 +91,7 @@ Provide detailed information about a specific collection. The JSON response docu
 ```
 
 Exposed links:
+
 * logo: link to the bitstream that represent the collection's logo
 * license: link to the license template used by the collection
 * defaultAccessConditions: link to the resource policies applied by default to new submissions in the collection
@@ -98,14 +103,18 @@ Exposed links:
 * workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 Other properties:
-* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature 
-is disabled at backend.
+
+* archivedItemsCount - The count of the items in the given container. It returns -1 when counting items feature
+  is disabled at backend.
 
 ### Search methods
+
 #### findSubmitAuthorized
+
 **/api/core/collections/search/findSubmitAuthorized**
 
 The supported parameters are:
+
 * `query`: limit the returned collections to those with metadata values matching the query terms.
   The query is also used to build a prefix query. It can be used to implement
   an autosuggest feature over the collection name
@@ -114,14 +123,17 @@ The supported parameters are:
 It returns the list of collections where the current user is authorized to submit
 
 Return codes:
+
 * 200 OK - if the operation succeeds
 
 #### findSubmitAuthorizedByEntityType
+
 **/api/core/collections/search/findSubmitAuthorizedByEntityType?query=<:query>&entityType=<:entityTypeLabel>**
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination)
-* entityType: mandatory, the label of the entity type  field the collection must have
+* entityType: mandatory, the label of the entity type field the collection must have
 
 It returns the list of collections where the current user is authorized to submit and deal with the request entity type
 
@@ -129,36 +141,43 @@ eg:
 /api/core/collections/search/findSubmitAuthorizedByEntityType?entityType=<:entityType>
 /api/core/collections/search/findSubmitAuthorizedByEntityType?entityType=Publication
 
-retrieve all the collections that deal with the entity type 'Publication'  where the current user is authorized to submit
+retrieve all the collections that deal with the entity type 'Publication' where the current user is authorized to submit
 
 Return codes:
+
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the entityType parameter is missing or invalid
 
-
 #### findSubmitAuthorizedByCommunity
+
 **/api/core/collections/search/findSubmitAuthorizedByCommunity?uuid=<:uuid>**
 
 The supported parameters are:
+
 * `query`: limit the returned collections to those with metadata values matching the query terms.
   The query is also used to build a prefix query. It can be used to implement
   an autosuggest feature over the collection name
 * `page`, `size` [see pagination](README.md#Pagination)
 * `uuid`: mandatory, the uuid of the community
 
-It returns the list of collections which are direct children of the specified community where the current user is authorized to submit
+It returns the list of collections which are direct children of the specified community where the current user is
+authorized to submit
 
 Return codes:
+
 * 200 OK - if the operation succeeds
 * 400 Bad Request - if the uuid parameter is missing or invalid
 
 #### findSubmitAuthorizedByCommunityAndEntityType
-**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&query=<:query>&entityType=<:entityTypeLabel>**
+
+**/api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&query=<:query>&entityType=<:
+entityTypeLabel>**
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, the uuid of the community
-* entityType: mandatory, the label of the entity type  field the collection must have
+* entityType: mandatory, the label of the entity type field the collection must have
 
 It returns the list of collections where the current user is authorized to submit and deal with the request entity type
 
@@ -166,24 +185,29 @@ eg:
 /api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&entityType=<:entityType>
 /api/core/collections/search/findSubmitAuthorizedByCommunityAndEntityType?uuid=<:uuid>&entityType=Publication
 
-retrieve all children collections of the community that deal with the entity type 'Publication' where the current user is authorized to submit
+retrieve all children collections of the community that deal with the entity type 'Publication' where the current user
+is authorized to submit
 
 Return codes:
+
 * 200 OK - if the operation succeed
 * 400 Bad Request - if the uuid or entityType parameters are missing or invalid
 
 #### findAdminAuthorized
+
 **/api/core/collections/search/findAdminAuthorized**
 
 Get the list of all collections the current user is admin for.
 
 The supported parameters are:
+
 * `query`: limit the returned collections to those with metadata values matching the query terms.
   The query is also used to build a prefix query. It can be used to implement
   an autosuggest feature over the collection name
 * `page`, `size` [see pagination](README.md#Pagination)
 
 Return codes:
+
 * 200 OK - if the operation succeeds
 * 401 Unauthorized - if you are not authenticated
 
@@ -192,21 +216,27 @@ Return codes:
 Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
 
 ## Linked entities
+
 ### Logo
+
 #### Retrieve Logo
+
 **GET /api/core/collections/<:uuid>/logo**
 
 Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo>
 
-It returns the bitstream representing the logo of this collection. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
+It returns the bitstream representing the logo of this
+collection. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
 #### Create Logo
+
 **POST /api/core/collections/<:uuid>/logo**
 
 To be used on a collection without a logo
 
 Curl example:
-```
+
+```bash
 curl 'https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
@@ -221,6 +251,7 @@ It returns the created bitstream. [See the bitstream endpoint for more info](bit
 The REST API can support Content-Length and Content-MD5 headers to verify integrity
 
 Status codes:
+
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
@@ -235,16 +266,20 @@ This endpoint only accepts one file at a time. If multiple files are uploaded, a
 Replacing a logo will require deleting the logo and creating a new logo hereafter
 
 #### Delete Logo
+
 **DELETE /api/core/bitstreams/<:uuid>**
 
 Use the [bitstream delete endpoint](bitstreams.md#delete-method) for removing the collection logo
 
-If the bitstream is delete, this automatically ensures the relationship between the collection and the logo is removed as well.
+If the bitstream is deleted, this automatically ensures the relationship between the collection and the logo is removed
+as well.
 
 ### License
+
 **/api/core/collections/<:uuid>/license**
 
-Return information about the license template in use by the collection. The json representation is as follow
+Return information about the license template in use by the collection. The json representation is as follows
+
 ```json
 {
   "custom": false,
@@ -252,22 +287,27 @@ Return information about the license template in use by the collection. The json
 }
 ```
 
-* custom (**READ-ONLY**): can be true or false. True means that a custom license has been set for the collection otherwise the site license template is used and returned in the text attribute
+* custom (**READ-ONLY**): can be true or false. True means that a custom license has been set for the collection
+  otherwise the site license template is used and returned in the text attribute
 * text: contains the textual value of the license template to use for submission in the collection
 
 ### Item template
+
 #### Retrieve Item template
+
 **GET /api/core/collections/<:uuid>/itemtemplate**
 
 Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/itemtemplate>
 
-It returns the item representing the item template of this collection. [See the item endpoint for more info](items.md#Single Item)
+It returns the item representing the item template of this
+collection. [See the item endpoint for more info](items.md#Single Item)
 
 #### Create Item template
+
 **POST /api/core/collections/<:uuid>/itemtemplate**
 
-To be used on a collection without a item template.
-The metadata is included in JSON
+To be used on a collection without an item template.
+The metadata is included in JSON:
 
 ```json
 {
@@ -295,28 +335,35 @@ The metadata is included in JSON
 It returns the created item. [See the item endpoint for more info](items.md#Single Item)
 
 Status codes:
+
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
-* 422 Unprocessable Entity - if inArchive, discoverable, withdrawn was set to true, or if the collection already contains a itemtemplate
+* 422 Unprocessable Entity - if inArchive, discoverable, withdrawn was set to true, or if the collection already
+  contains an itemtemplate
 
 #### Replace Item template
+
 **PATCH /api/core/itemtemplates/<:uuid>**
 
 See the [item template endpoint](itemtemplates.md#updating-item-template-metadata) for details
 
 #### Delete Item template
+
 **DELETE /api/core/itemtemplates/<:uuid>**
 
 See the [item template endpoint](itemtemplates.md#delete-item-template) for details
 
 ### Default Access Conditions
+
 **/api/core/collections/<:uuid>/defaultAccessConditions**
 
-It returns the resource policies applied by default to new submissions in the collection. They are the DEFAULT\_BITSTREAM\_READ policies of the collection
+It returns the resource policies applied by default to new submissions in the collection. They are the
+DEFAULT\_BITSTREAM\_READ policies of the collection
 
-The json representation is as follow
+The json representation is as follows:
+
 ```json
 {
   "_embedded": {
@@ -348,29 +395,35 @@ The json representation is as follow
   }
 }
 ```
+
 see also the [ResourcePolicies endpoint](resourcepolicies.md)
 
 ### Mapped items
+
 **/api/core/collections/<:uuid>/mappedItems**
 
 This is a Read-only endpoint to retrieve the mapped items for this collection.
 
 Item mappings can only be modified via [/items/[uuid]/mappedCollections](items.md#mapped-collections)
 
-The request will return a list of items 
+The request will return a list of items
 
 ### Collection Harvesting Settings
+
 **GET /api/core/collections/<:uuid>/harvester**
 
-It returns the harvesting settings for the current collection. This information is only accessible for users with collection administration permissions
+It returns the harvesting settings for the current collection. This information is only accessible for users with
+collection administration permissions
 
 The harvest_type can be any of:
+
 * NONE
 * METADATA_ONLY
 * METADATA_AND_REF
 * METADATA_AND_BITSTREAMS
 
 The harvest_status can be any of:
+
 * READY
 * BUSY
 * QUEUED
@@ -400,19 +453,19 @@ A sample json response:
     "metadata_configs": {
       "configs": [
         {
-           "id": "dc",
-           "label": "Simple Dublin Core",
-           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+          "id": "dc",
+          "label": "Simple Dublin Core",
+          "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
         },
         {
-           "id": "qdc",
-           "label": "Qualified Dublin Core",
-           "nameSpace": "http://purl.org/dc/terms/"
+          "id": "qdc",
+          "label": "Qualified Dublin Core",
+          "nameSpace": "http://purl.org/dc/terms/"
         },
         {
-           "id": "dim",
-           "label": "DSpace Intermediate Metadata",
-           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+          "id": "dim",
+          "label": "DSpace Intermediate Metadata",
+          "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
         }
       ],
       "_links": {
@@ -421,7 +474,6 @@ A sample json response:
         }
       }
     }
-    
   }
 }
 ```
@@ -447,19 +499,19 @@ A sample json response if no harvesting is enabled:
     "harvestermetadata": {
       "configs": [
         {
-           "id": "dc",
-           "label": "Simple Dublin Core",
-           "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
+          "id": "dc",
+          "label": "Simple Dublin Core",
+          "nameSpace": "http://www.openarchives.org/OAI/2.0/oai_dc/"
         },
         {
-           "id": "qdc",
-           "label": "Qualified Dublin Core",
-           "nameSpace": "http://purl.org/dc/terms/"
+          "id": "qdc",
+          "label": "Qualified Dublin Core",
+          "nameSpace": "http://purl.org/dc/terms/"
         },
         {
-           "id": "dim",
-           "label": "DSpace Intermediate Metadata",
-           "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
+          "id": "dim",
+          "label": "DSpace Intermediate Metadata",
+          "nameSpace": "http://www.dspace.org/xmlns/dspace/dim"
         }
       ],
       "_links": {
@@ -468,15 +520,16 @@ A sample json response if no harvesting is enabled:
         }
       }
     }
-    
   }
 }
 ```
 
 ### Changing Collection Harvesting Settings
+
 **PUT /api/core/collections/<:uuid>/harvester**
 
-It updates the harvesting settings for the current collection. This information can only be updated by users with collection administration permissions
+It updates the harvesting settings for the current collection. This information can only be updated by users with
+collection administration permissions
 
 A sample json request:
 
@@ -498,6 +551,7 @@ A sample json request to disable harvesting is:
 ```
 
 Status codes:
+
 * 200 OK - if the operation succeeded
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
@@ -505,21 +559,25 @@ Status codes:
 * 422 Unprocessable Entity - if the harvest_type or the metadata_config_id is not valid
 
 ### Parent Community
+
 **/api/core/collections/<:uuid>/parentCommunity**
 
 It returns the community containing this collection, e.g. for trail purposes.  
 If a collection is part of multiple parent communities, it only returns one community.
 
 Return codes:
+
 * 200 OK - if the parent community exists and returned
 * 204 No content - if the collection exists but the parent community doesn't exist
 * 401 Unauthorized - if you are not authenticated and the current collection or parent community is not public
-* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the current collection or parent community
+* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the current collection or parent
+  community
 * 404 Not found - if the current collection doesn't exist
 
 ### Groups
 
 This includes group management for the type of groups:
+
 * adminGroup: the Collection Administrator group
 * submittersGroup: the Collection Submitters group
 * itemReadGroup: the Collection Default item READ rights group
@@ -527,25 +585,31 @@ This includes group management for the type of groups:
 * workflowGroups/<:workflow-role>: the Collection Workflow groups
 
 #### Collection administrators
+
 **/api/core/collections/<:uuid>/adminGroup**
 
 Endpoints for managing the collection administrators
 
 ##### Retrieve collection administrators
+
 **GET /api/core/collections/<:uuid>/adminGroup**
 
 Example: /server/api/core/collections/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/adminGroup
 
-It returns the EPerson Group representing the administrators of this collection. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
+It returns the EPerson Group representing the administrators of this
+collection. [See the EPerson Group endpoint for more info](epersongroups.md#single-eperson-group)
 
 Return codes:
+
 * 200 OK - if the admin group exists and is returned
 * 204 No content - if the current collection exists but the admin group doesn't exist
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the groups, parent community admins and collection admins can retrieve the group
+* 403 Forbidden - if you are not logged in with sufficient permissions to retrieve the groups, parent community admins
+  and collection admins can retrieve the group
 * 404 Not found - if the current collection doesn't exist
 
 ##### Create collection administrators group
+
 **POST /api/core/collections/<:uuid>/adminGroup**
 
 To be used on a collection without collection administrators
@@ -555,47 +619,58 @@ Perform a post with the JSON below.
 ```json
 {
   "metadata": {
-      "dc.description": [
-        {
-          "value": "Test group",
-          "language": null,
-          "authority": "",
-          "confidence": -1
-        }
-      ]
+    "dc.description": [
+      {
+        "value": "Test group",
+        "language": null,
+        "authority": "",
+        "confidence": -1
+      }
+    ]
   }
 }
 ```
+
 Contrary to the [EPerson Group endpoint](epersongroups.md#create-new-eperson-group), the name cannot be set here
 
 Status codes:
+
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and parent community admins can retrieve the group
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins and parent community admins can
+  retrieve the group
 * 404 Not found - if the collection doesn't exist
-* 422 Unprocessable Entity - if the name was included, if permanent was set to true, or if the collection already contains an administrator group
+* 422 Unprocessable Entity - if the name was included, if permanent was set to true, or if the collection already
+  contains an administrator group
 
 ##### Modifying the collection administrators group
 
 All modifications to the group will be performed directly on the Group endpoint:
+
 * Adding members will need to use the [EPerson Group endpoint](epersongroups.md#add-an-eperson-to-a-parent-group)
 * Adding sub-groups will need to use the [EPerson Group endpoint](epersongroups.md#add-a-group-to-a-parent-group)
 
-Modifying the collection administrators group will be authorized for admins, parent community admins and collection admins
+Modifying the collection administrators group will be authorized for admins, parent community admins and collection
+admins
 
 ##### Delete the collection administrators group
+
 **DELETE /api/core/collections/<:uuid>/adminGroup**
 
 To be used on a collection with an administrator group
 
 Status codes:
-* 204 No content - if the delete succeeded (including the case of no-op if the collection didn't contain an administrator group) 
+
+* 204 No content - if the deletion succeeded (including the case of no-op if the collection didn't contain an
+  administrator group)
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins, parent community admins and collection admins can delete the group
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only admins, parent community admins and
+  collection admins can delete the group
 * 404 Not found - if the collection doesn't exist
 * 422: if the collection didn't contain an administrator group
 
 #### Collection Submitters
+
 **/api/core/communities/<:uuid>/submittersGroup**
 
 Endpoints for managing the Collection Submitters group
@@ -604,6 +679,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the submitters group.
 
 #### Collection Default item READ rights group
+
 **/api/core/communities/<:uuid>/itemReadGroup**
 
 Endpoints for managing the Collection Default item READ rights group
@@ -612,6 +688,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default item READ rights group.
 
 #### Collection Default bitstream READ rights group
+
 **/api/core/communities/<:uuid>/bitstreamReadGroup**
 
 Endpoints for managing the Collection Default bitstream READ rights group
@@ -620,30 +697,37 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default bitstream READ rights group
 
 #### Collection Workflow groups
+
 **/api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
 
 Endpoints for managing the Collection Workflow groups
 
 This works similar to the [Collection administrators](#collection-administrators).  
 The differences are:
+
 * The collection administrators can also create the Collection Workflow groups
-* The <:workflow-role> can be any role configured in the workflow with scope Collection. A HAL link for each of these groups will be included
+* The <:workflow-role> can be any role configured in the workflow with scope Collection. A HAL link for each of these
+  groups will be included
 
 The workflow role can be e.g.:
+
 * reviewer
 * editor
 * finaleditor
 * reviewmanagers
 
 ##### Delete a collection workflow group
+
 **DELETE /api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
 
 Delete the Group associated with a Workflow role.
 
 Error messages:
+
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 422 Unprocessable entity - if the role still has pending workflow tasks (deleting the group in that case may cause tasks to end up in an invalid state)
+* 422 Unprocessable entity - if the role still has pending workflow tasks (deleting the group in that case may cause
+  tasks to end up in an invalid state)
 
 ## Creating a collection
 
@@ -667,17 +751,19 @@ To create a collection, perform as post with the JSON below when logged in as ad
 }
 ```
 
- Error messages:
- * 200 OK - if the operation succeed
- * 401 Unauthorized - if you are not authenticated
- * 403 Forbidden - if you are not logged in with sufficient permissions
- * 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
+Error messages:
+
+* 200 OK - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 UNPROCESSABLE ENTITY - if the parent community doesn't exist (the REST URI /api/core/collections still exists)
 
 ## Updating a collection
 
 **PUT /api/core/collections/<:uuid>**
 
-Provide updated metadata information about a specific collection, when the update is completed the updated object will be returned. The JSON to update can be found below.
+Provide updated metadata information about a specific collection, when the update is completed the updated object will
+be returned. The JSON to update can be found below.
 
 ```json
 {
@@ -705,11 +791,14 @@ Provide updated metadata information about a specific collection, when the updat
 ```  
 
 Error messages:
+
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the collection doesn't exist
-* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the current value. The id, uuid, handle and type are non-editable.
+* 422 UNPROCESSABLE ENTITY - Altering one of the non-editable parameters will result in a 422 UNPROCESSABLE ENTITY
+  error. The non-editable parameters are optional, but if they are specified, they have to remain identical to the
+  current value. The id, uuid, handle and type are non-editable.
 
 ## Deleting a collection
 

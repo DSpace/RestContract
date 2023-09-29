@@ -47,7 +47,7 @@ With the `add` operation, you can add any number of metadata values in a single 
 
 You also use `add` to effectively _replace_ all values for a given metadata key, by specifying
 an already-present key as the `path`, and an array of your replacement values as the `value`.
-This use of the add operation to replace a list of values may be counter-intiutive, but it
+This use of the add operation to replace a list of values may be counter-intuitive, but it
 is done according to the [RFC section 4.1](https://tools.ietf.org/html/rfc6902#section-4.1)
 
 > If the target location specifies an object member that does exist, that member's value is replaced.

@@ -1,4 +1,5 @@
 # Projections
+
 [REST Overview Documentation](README.md)
 
 All `GET` requests returning a HAL document support an optional *projection* argument, specifying the name
@@ -26,7 +27,7 @@ if no projection is specified.
 The _full_ projection includes all linked subresources also embedded in the response.
 
 Since embeds may include other embedded resources, it is important to limit the number of embed levels
-alloweds. Thus, only two levels of embeds will be returned at maximum when the _full_ projection is requested.
+allowed. Thus, only two levels of embeds will be returned at maximum when the _full_ projection is requested.
 
 ## Custom Projections
 
@@ -55,20 +56,25 @@ All linked resources which allow embeds can be retrieved using the *embed* argum
 ### Basic embeds
 
 The most basic usage is to specify one level of embeds.
-This will allow `core/items/<:uuid>?embed=bundles&embed=owningCollection` to embed the bundles and the owningCollection of the item.
+This will allow `core/items/<:uuid>?embed=bundles&embed=owningCollection` to embed the bundles and the owningCollection
+of the item.
 
 The embed parameters only apply to the current resource.
-When using `/api/core/communities/<:uuid>?embed=subcommunities&embed=collections`, it embeds the collections and subcommunities of the current community.
+When using `/api/core/communities/<:uuid>?embed=subcommunities&embed=collections`, it embeds the collections and
+subcommunities of the current community.
 It won't embed the collections and subcommunities of subcommunities.
 
-The supported syntax is `core/items/{uuid}?embed=bundles&embed=owningCollection` or `core/items/{uuid}?embed=bundles,owningCollection`
+The supported syntax is `core/items/{uuid}?embed=bundles&embed=owningCollection`
+or `core/items/{uuid}?embed=bundles,owningCollection`
 
 ### Multi-level embeds
 
 In case there's a use case to embed sub-resources of a sub-resource, multi-level embeds can be used.
 
-This will allow `/server/api/core/items/<:uuid>?embed=owningCollection/mappedItems/bundles/bitstreams&embed=owningCollection/logo`.
+This will
+allow `/server/api/core/items/<:uuid>?embed=owningCollection/mappedItems/bundles/bitstreams&embed=owningCollection/logo`.
 That request will embed:
+
 * The item's owningCollection
 * The mappedItems of the item's owningCollection
 * The bundles of the mappedItems
@@ -76,6 +82,7 @@ That request will embed:
 * The logo of the item's owningCollection
 
 This will **not** embed:
+
 * The bundles of the main item
 * The item's mappedCollections
 * The owning collection of the mappedItems
@@ -85,11 +92,15 @@ The path specified in the embed parameters will be traversed.
 
 It is possible the path contains the same link name multiple times.  
 The request `/api/core/communities/<:uuid>?embed=subcommunities/subcommunities&embed=collections` will embed:
+
 * The community's subcommunities
 * The subcommunities of the subcommunities
 * The community's collections
 
-The request `/api/core/communities/<:uuid>?embed=subcommunities/subcommunities&embed=subcommunities/collections&embed=collections` will embed:
+The
+request `/api/core/communities/<:uuid>?embed=subcommunities/subcommunities&embed=subcommunities/collections&embed=collections`
+will embed:
+
 * The community's subcommunities
 * The subcommunities of the subcommunities
 * The collections of the subcommunities

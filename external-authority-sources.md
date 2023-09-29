@@ -1,12 +1,15 @@
 # External sources Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**/api/integration/externalsources**   
+
+**/api/integration/externalsources**
 
 Provide access to the configured external sources. It returns the list of existent external sources.
 
 Example:
+
 ```json
 {
   "_embedded": {
@@ -79,9 +82,11 @@ Example:
 ```
 
 ## Single Authority
+
 **/api/integration/externalsources/<:source-name>**
 
-Provide detailed information about a specific external source. The JSON response document is as follow
+Provide detailed information about a specific external source. The JSON response document is as follows:
+
 ```json
 {
   "id": "orcid",
@@ -92,23 +97,28 @@ Provide detailed information about a specific external source. The JSON response
 ```
 
 Exposed links:
+
 * entries: the list of values managed by the external source
 * entityTypes: the list of entity types that are compatible with the provider
 
 ## Linked entities
+
 ### external source entries
+
 **/api/integration/externalsources/<:source-name>/entries**
 
-It returns the filtered entries managed by the externally, see below 
+It returns the filtered entries managed by the externally, see below
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination) if supported by the external source
 * query: the terms, keywords or prefix to search: mandatory
-* parent: the key of the parent authority when searching in a hierarchical authority 
+* parent: the key of the parent authority when searching in a hierarchical authority
 
 It returns the entries in the external source matching the query
 
-sample for an external source /server/api/integration/externalsources/orcid/entries?query=Smith&size=2 
+sample for an external source `/server/api/integration/externalsources/orcid/entries?query=Smith&size=2`
+
 ```json
 {
   "_embedded": {
@@ -118,42 +128,42 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "display": "Smith, Dean",
         "value": "Smith, Dean",
         "metadata": {
-            "dc.identifier.orcid": [
-              {
-                "value": "0000-0002-4271-0436",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "dc.identifier.uri": [
-              {
-                "value": "https://orcid.org/0000-0002-4271-0436",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "person.familyName": [
-              {
-                "value": "Smith",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "person.givenName": [
-              {
-                "value": "Dean",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ]
+          "dc.identifier.orcid": [
+            {
+              "value": "0000-0002-4271-0436",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "dc.identifier.uri": [
+            {
+              "value": "https://orcid.org/0000-0002-4271-0436",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "person.familyName": [
+            {
+              "value": "Smith",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "person.givenName": [
+            {
+              "value": "Dean",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ]
         },
         "type": "externalSourceEntry",
         "_links": {
@@ -173,42 +183,42 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
         "display": "Smith, Charles",
         "value": "Smith, Charles",
         "metadata": {
-            "dc.identifier.orcid": [
-              {
-                "value": "0000-0003-3681-2038",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "dc.identifier.uri": [
-              {
-                "value": "https://orcid.org/0000-0003-3681-2038",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "person.familyName": [
-              {
-                "value": "Smith",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ],
-            "person.givenName": [
-              {
-                "value": "Charles",
-                "language": null,
-                "authority": null,
-                "confidence": -1,
-                "place": -1
-              }
-            ]
+          "dc.identifier.orcid": [
+            {
+              "value": "0000-0003-3681-2038",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "dc.identifier.uri": [
+            {
+              "value": "https://orcid.org/0000-0003-3681-2038",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "person.familyName": [
+            {
+              "value": "Smith",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ],
+          "person.givenName": [
+            {
+              "value": "Charles",
+              "language": null,
+              "authority": null,
+              "confidence": -1,
+              "place": -1
+            }
+          ]
         },
         "type": "externalSourceEntry",
         "_links": {
@@ -217,7 +227,7 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
           },
           "parent": {
             "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
-          },          
+          },
           "self": {
             "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0003-3681-2038"
           }
@@ -229,11 +239,13 @@ sample for an external source /server/api/integration/externalsources/orcid/entr
 ```
 
 ### single entry
+
 **GET /api/integration/externalsources/<:source-name>/entryValues/<:entry-id>**
 
 It returns the data from one entry in an external source
 
-sample for an external source /api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436 
+sample for an external source `/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436`
+
 ```json
 {
   "id": "0000-0002-4271-0436",
@@ -285,7 +297,7 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
     },
     "parent": {
       "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid"
-    },    
+    },
     "self": {
       "href": "https://api7.dspace.org/server/api/integration/externalsources/orcid/entryValues/0000-0002-4271-0436"
     }
@@ -294,19 +306,26 @@ sample for an external source /api/integration/externalsources/orcid/entryValues
 ```
 
 ### supported entity types
+
 **/api/integration/externalsources/<:source-name>/entityTypes**
 
-Return the list of entity types that are supported by this external provider. For example a Pubmed provider can return "Publication" and "Dataset" as supported entity types assuming that a separate Dataset entity type has been configured in DSpace
+Return the list of entity types that are supported by this external provider. For example a Pubmed provider can return "
+Publication" and "Dataset" as supported entity types assuming that a separate Dataset entity type has been configured in
+DSpace
 
 ### Search methods
+
 #### findByEntityType
+
 **/api/integration/externalsources/search/findByEntityType?entityType=<:type-label>**
 
 The supported parameters are:
+
 * entityType (mandatory) the label of the entity type
 * page, size [see pagination](README.md#Pagination)
-It returns a list of external sources that support the requested entity type
+  It returns a list of external sources that support the requested entity type
 
 Return codes:
+
 * 200 OK - if the operation succeed, a 0 size list can be returned
 * 400 Bad Request - if the entityType parameter is missing

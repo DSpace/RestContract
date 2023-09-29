@@ -1,14 +1,17 @@
 # Controlled Vocabularies Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
-All the endpoints here are accessible by anonoymous users.
+All the endpoints here are accessible by anonymous users.
 
 ## Main Endpoint
-**/api/submission/vocabularies**   
+
+**/api/submission/vocabularies**
 
 Provide access to the configured controlled vocabularies. It returns the list of existent controlled vocabularies.
 
 Example:
+
 ```json
 {
   "_embedded": {
@@ -76,9 +79,11 @@ Example:
 ```
 
 ## Single Vocabulary
+
 **/api/submission/vocabularies/<:vocabulary-name>**
 
-Provide detailed information about a specific controlled vocabulary. The JSON response document is as follow
+Provide detailed information about a specific controlled vocabulary. The JSON response document is as follows:
+
 ```json
 {
   "id": "srsc",
@@ -91,39 +96,50 @@ Provide detailed information about a specific controlled vocabulary. The JSON re
 ```
 
 Attributes
-* id: the id of the vocabulary, it is the same than the name. The id must be Alphanumeric, i.e [A-z0-9]
+
+* id: the id of the vocabulary, it is the same as the name. The id must be Alphanumeric, i.e. [A-z0-9]
 * name: see id
-* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter parameter, see [vocabulary entries](vocabularies.md#controlled-vocabulary-entries)
+* scrollable: if true mean that it is possible to scroll all the entries in the authority without providing a filter
+  parameter, see [vocabulary entries](vocabularies.md#controlled-vocabulary-entries)
 * hierarchical: if true means that the vocabulary expose a tree structure where some entries are parent of others
-* preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0 only the top nodes are shown, 1 also their children are preloaded and so on)
+* preloadLevel: for hierarchical vocabularies express the preference to preload the tree at a specific level of depth (0
+  only the top nodes are shown, 1 also their children are preloaded and so on)
 
 Exposed links:
+
 * entries: get entries from the controlled vocabulary
 
 ## Linked entities
+
 ### controlled vocabulary entries
+
 **/api/submission/vocabularies/<:vocabulary-name>/entries**
 
-It returns the entries in the vocabulary in response to either a user input or a scrollable list, see below 
+It returns the entries in the vocabulary in response to either a user input or a scrollable list, see below
 
 The supported parameters are:
+
 * page, size [see pagination](README.md#Pagination)
 * filter: the terms, keywords or prefix to use to filter the entries
-* exact: can be true or false (default if absent). If true force the vocabulary to provide only entries that match exactly with the filter
-* entryID: get just those entries related to a specific vocabulary entry ID. Multiple entries may be returned, e.g. if two entries are just different terms/phrases for the same thing. 
+* exact: can be true or false (default if absent). If true force the vocabulary to provide only entries that match
+  exactly with the filter
+* entryID: get just those entries related to a specific vocabulary entry ID. Multiple entries may be returned, e.g. if
+  two entries are just different terms/phrases for the same thing.
 
-It returns the entries suggested by the controlled vocabulary according to the filter or the entryID. 
-The filter and entryID parameters are alternatively, exactly one of them must be used except than for scrollable 
+It returns the entries suggested by the controlled vocabulary according to the filter or the entryID.
+The filter and entryID parameters are alternatively, exactly one of them must be used except than for scrollable
 vocabularies than can provide free consultation of the entries.
 
 Return codes:
+
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the filter and entryID parameters are both provided or if the exact parameter is provided with an invalid value or without the filter parameter
+* 400 Bad Request - if the filter and entryID parameters are both provided or if the exact parameter is provided with an
+  invalid value or without the filter parameter
 * 401 Unauthorized - if you are not authenticated
 * 422 Unprocessable Entity - if the filter and entryID are both absent and the vocabulary is NOT scrollable
 
-sample for the vocabulary common_types defined via a value pairs in the submission-forms.xml 
-/server/api/submission/vocabularies/common_types/entries?size=2 
+sample for the vocabulary common_types defined via a value pairs in the submission-forms.xml
+/server/api/submission/vocabularies/common_types/entries?size=2
 
 ```json
 {
@@ -138,7 +154,8 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
         "display": "Article",
         "value": "Article",
         "type": "vocabularyEntry"
-      }]
+      }
+    ]
   },
   "_links": {
     "first": {
@@ -164,7 +181,7 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
 ```
 
 extra sample filtering the suggestion with the term Book
-/server/api/submission/vocabularies/common_types/entries?size=2&filter=Book
+`/server/api/submission/vocabularies/common_types/entries?size=2&filter=Book`
 
 ```json
 {
@@ -179,7 +196,8 @@ extra sample filtering the suggestion with the term Book
         "display": "Book chapter",
         "value": "Book chapter",
         "type": "vocabularySuggestion"
-      }]
+      }
+    ]
   },
   "_links": {
     "first": {
@@ -201,8 +219,8 @@ extra sample filtering the suggestion with the term Book
 }
 ```
 
-sample for a hierarchical authority  (srsc): 
-/server/api/submission/vocabularies/srsc/entries?filter=Research&size=2
+sample for a hierarchical authority  (srsc):
+`/server/api/submission/vocabularies/srsc/entries?filter=Research&size=2`
 
 ```json
 {
@@ -266,7 +284,7 @@ sample for a hierarchical authority  (srsc):
 ```
 
 sample for a vocabulary providing an authority value
-/server/api/submission/vocabularies/SolrAuthorAuthority/entries?size=1&filter=Bollini
+`/server/api/submission/vocabularies/SolrAuthorAuthority/entries?size=1&filter=Bollini`
 
 ```json
 {
@@ -282,7 +300,8 @@ sample for a vocabulary providing an authority value
             "href": "https://api7.dspace.org/server/api/submission/vocabularyEntryDetails/SolrAuthorAuthority:42768ba6-0ba1-4aa3-971e-9c4e27fd7558"
           }
         }
-      }]
+      }
+    ]
   },
   "_links": {
     "first": {
@@ -304,18 +323,23 @@ sample for a vocabulary providing an authority value
 }
 ```
 
-
 ## Search methods
+
 ### Get controlled vocabulary by metadata and collection
-**/api/submission/vocabularies/search/byMetadataAndCollection?metadata=<schema.element[.qualifier]>&collection=<:collection-uuid>**
+
+**/api/submission/vocabularies/search/byMetadataAndCollection?metadata=<schema.element[.qualifier]>&collection=<:
+collection-uuid>**
 
 Return the controlled vocabulary configured for the specified metadata and collection if any.
 
-The response is the same than the one of a single controlled vocabulary or an empty body if no controlled vocabulary is available for the specified parameter.
+The response is the same as the one of a single controlled vocabulary or an empty body if no controlled vocabulary is
+available for the specified parameter.
 
 Return codes:
+
 * 200 OK - if the operation succeed and a controlled vocabulary is available
-* 204 No content - if the operation succeed but NO controlled vocabulary is available for the specified metadata and collection
+* 204 No content - if the operation succeed but NO controlled vocabulary is available for the specified metadata and
+  collection
 * 400 Bad Request - if the metadata or collection parameter are missing of syntactically invalid
 * 401 Unauthorized - if you are not authenticated
 * 422 Unprocessable Entity - if the specified metadata or collection don't exist

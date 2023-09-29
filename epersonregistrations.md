@@ -1,16 +1,21 @@
 # EPerson registration Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
+
 **GET /api/eperson/registrations**
 
-As we don't have a use case to iterate over all the existent registrations, the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
+As we don't have a use case to iterate over all the existent registrations, the main endpoint is not implemented and a
+405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Single EPerson registration
 
-As we don't have a use case to retrieve an eperson registration based on the email, the single endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
+As we don't have a use case to retrieve an eperson registration based on the email, the single endpoint is not
+implemented and a 405 error code is returned according to our [general error response codes](README.md#Error-codes).
 
 ## Search EPerson registration
+
 **/api/eperson/registrations/search/findByToken?token=<:token>**
 
 Exposes the registered email address based on the token.  
@@ -33,9 +38,11 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ```
 
 ## Create new EPerson registration
+
 **POST /api/eperson/registrations?accountRequestType={requestType_forgot_or_register}**
 
-To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
+To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without
+being authenticated).
 
 ```json
 {
@@ -44,22 +51,27 @@ To create a new EPerson registration, perform a post with the JSON below to the 
 }
 ```
 
-Requires query parameter 'accountRequestType' set with either 'register' or 'forgot' value, depending on the action requested.
+Requires query parameter 'accountRequestType' set with either 'register' or 'forgot' value, depending on the action
+requested.
 
 No other properties can be set (e.g. the name cannot be defined)
 If successful, an email will be sent with a token allowing the user to continue the registration
 
-Verifying whether a new registration can be created can happen using the "epersonRegistration" [feature](features.md), verified against the site
+Verifying whether a new registration can be created can happen using the "epersonRegistration" [feature](features.md),
+verified against the site
 
 Status codes:
-* 201 Created - if the operation succeed
-* 400 Bad Request - if e.g. the query param 'accountRequestType' is not present or contains something else than forgot or register
-* 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
-* 422 Unprocessable Entity - if the email address was omitted or the e-mail address is in a domain that is not allowed in config `authentication-password.domain.valid`
 
+* 201 Created - if the operation succeed
+* 400 Bad Request - if e.g. the query param 'accountRequestType' is not present or contains something else than forgot
+  or register
+* 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
+* 422 Unprocessable Entity - if the email address was omitted or the e-mail address is in a domain that is not allowed
+  in config `authentication-password.domain.valid`
 
 ## Forgot password
 
 The same endpoint as [Create new EPerson registration](#create-new-eperson-registration) is used.
 
-Using the same endpoint ensures it's not possible for a malicious user to identify which email addresses are registered by attempting a registration and verifying whether the account exists
+Using the same endpoint ensures it's not possible for a malicious user to identify which email addresses are registered
+by attempting a registration and verifying whether the account exists

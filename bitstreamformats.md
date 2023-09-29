@@ -1,18 +1,22 @@
 # Bitstream Formats Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## Main Endpoint
-**GET /api/core/bitstreamformats**   
 
-Provide access to the bitstream formats defined in the registry (DBMS based). It returns the list of existent metadata fields.
+**GET /api/core/bitstreamformats**
+
+Provide access to the bitstream formats defined in the registry (DBMS based). It returns the list of existent metadata
+fields.
 
 Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bitstreamformats>
 
-**POST /api/core/bitstreamformats**   
+**POST /api/core/bitstreamformats**
 
 Create a new bitstream format in the registry (DBMS based). Requires an admin account
 
 The JSON should be similar to:
+
 ```json
 {
   "shortDescription": "XML",
@@ -21,22 +25,26 @@ The JSON should be similar to:
   "supportLevel": "KNOWN",
   "internal": false,
   "extensions": [
-          "xml"
+    "xml"
   ],
   "type": "bitstreamformat"
 }
 ```
 
 Status codes:
+
 * 201 Created - if the operation succeed
-* 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
+* 400 Bad request - if the supportLevel is invalid. The valid values
+  are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 
 ## Single Bitstream Format
+
 **GET /api/core/bitstreamformats/<:id>**
 
-Provide detailed information about a specific bitstream format. The JSON response document is as follow
+Provide detailed information about a specific bitstream format. The JSON response document is as follows
+
 ```json
 {
   "id": 5,
@@ -58,11 +66,13 @@ Provide detailed information about a specific bitstream format. The JSON respons
 ```
 
 Exposed links:
+
 * self
 
 **PUT /api/core/bitstreamformats/<:id>**
 
 Updates a specific bitstream format. Requires an admin account. The JSON should be similar to:
+
 ```json
 {
   "id": 6,
@@ -81,8 +91,10 @@ Updates a specific bitstream format. Requires an admin account. The JSON should 
 ```
 
 Status codes:
+
 * 200 Created - if the operation succeed
-* 400 Bad request - if the supportLevel is invalid. The valid values are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
+* 400 Bad request - if the supportLevel is invalid. The valid values
+  are https://github.com/DSpace/DSpace/blob/master/dspace-api/src/main/java/org/dspace/content/BitstreamFormat.java#L94
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the bitstream format doesn't exist
@@ -92,6 +104,7 @@ Status codes:
 Deletes a specific bitstream format. Requires an admin account. No JSON details are required.
 
 Status codes:
+
 * 204 No content - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions

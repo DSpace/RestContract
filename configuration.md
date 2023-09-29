@@ -3,7 +3,8 @@
 ## Main Endpoint
 **/api/config/properties**   
 
-As we don't have yet an use case to iterate over all the configuration properties the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#Error codes).
+As we don't have yet a use case to iterate over all the configuration properties the main endpoint is not
+implemented and a 405 error code is returned according to our [general error response codes](README.md#Error codes).
 
 ## Single property
 **/api/config/properties/<:property>**

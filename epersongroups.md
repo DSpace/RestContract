@@ -87,7 +87,10 @@ The replace operation allows to replace *existent* information with new one.
 The only property which can be modified is the group name.
 
 To change the name of an EPerson Group, use
-`curl --data '[ { "op": "replace", "path": "/name", "value": "New Name"}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api//eperson/groups/${group-uuid}`.
+
+```bash
+curl --data '[ { "op": "replace", "path": "/name", "value": "New Name"}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api//eperson/groups/${group-uuid}
+```
 
 Status codes:
 * 200 OK - if the operation succeeded
@@ -174,7 +177,7 @@ Return codes:
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions 
 * 404 Not found - if the parent group doesn't exist
-* 422 Unprocessable Entity - if the specified group is not found, or if adding the group would create a cyclic reference (ie. A -> B -> C, -> mean contains we cannot add A to C)
+* 422 Unprocessable Entity - if the specified group is not found, or if adding the group would create a cyclic reference (i.e. A -> B -> C, -> mean contains we cannot add A to C)
 
 ### Remove a Group from a parent Group
 **DELETE /api/eperson/groups/<:parent_group_uuid>/subgroups/<:sub_group_uuid>**
@@ -191,7 +194,7 @@ The above request would remove the mapping between the parent group with UUID `6
  and the child group with UUID `05e3dbb8-332b-4487-a3f9-d78431b6cc02`.
 
 Return codes:
-* 204: if the delete succeeded (including the case of no-op if the child group was not a subgroup) 
+* 204: if the deletion succeeded (including the case of no-op if the child group was not a subgroup) 
 * 401 Forbidden - if you are not authenticated
 * 403 Unauthorized - if you are not logged in with sufficient permissions
 * 404 Not found - if the parent group doesn't exist

@@ -1,23 +1,31 @@
 # Signposting Endpoints
+
 [Back to the list of all defined endpoints](endpoints.md)
 
 ## The /signposting is used to implement Signposting.
 
-Signposting is an approach to make the scholarly web more friendly to machines. It uses Typed Links as a means to clarify patterns that occur repeatedly in scholarly portals. For resources of any media type, these typed links are provided in HTTP Link headers. For HTML resources, they may additionally be provided in HTML link elements. More information at [Signposting the Scholarly Web](https://signposting.org/)
+Signposting is an approach to make the scholarly web more friendly to machines. It uses Typed Links as a means to
+clarify patterns that occur repeatedly in scholarly portals. For resources of any media type, these typed links are
+provided in HTTP Link headers. For HTML resources, they may additionally be provided in HTML link elements. More
+information at [Signposting the Scholarly Web](https://signposting.org/)
 
 DSpace supports the FAIR signposting profile at level 2, see https://signposting.org/FAIR/
 
 ## Main Endpoint
+
 ```/signposting/linksets```
 
-As we don't have yet an use case to iterate over all the existent linksets the main endpoint is not implemented and a 405 error code is returned according to our [general error response codes](README.md#error-codes).
+As we don't have yet a use case to iterate over all the existent linksets the main endpoint is not implemented and a 405
+error code is returned according to our [general error response codes](README.md#error-codes).
 
 ## Single Item linkset
 
 ### in application/linkset+json serialization
+
 ```/signposting/linksets/<:uuid>/json```
 
-This endpoint provides typed links of item having uuid specified in input and its resources, in application/linkset+json serialization
+This endpoint provides typed links of item having uuid specified in input and its resources, in application/linkset+json
+serialization
 
 ```json
 {
@@ -71,7 +79,7 @@ This endpoint provides typed links of item having uuid specified in input and it
           "type": "text/html"
         }
       ],
-      "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}",
+      "anchor": "https://{dspace.ui.url}/entities/publication/{uuid}"
     },
     {
       "collection": [
@@ -123,12 +131,15 @@ This endpoint provides typed links of item having uuid specified in input and it
   ]
 }
 ```
+
 Return codes:
+
 * 200 OK - if the operation succeed
 * 403 Forbidden - if you are not logged in with sufficient permissions for reading Item information.
 * 404 Not found - if the item doesn't exist
 
 ### in application/linkset serialization
+
 ```/signposting/linksets/<:uuid>```
 
 This endpoint provides typed links of item having uuid specified in input, in application/linkset serialization
@@ -147,15 +158,19 @@ This endpoint provides typed links of item having uuid specified in input, in ap
 <https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="collection" ; type="text/html" ; anchor="https://{dspace.ui.url}/bitstreams/{uuid}/download" , 
 <https://{dspace.ui.url}/entities/publication/{uuid}> ; rel="describes" ; type="text/html" ; anchor="https://{dspace.ui.url}/signposting/describedby/{uuid}" , 
 ```
+
 Return codes:
+
 * 200 OK - if the operation succeed
 * 403 Forbidden - if you are not logged in with sufficient permissions for reading Item information.
 * 404 Not found - if the item doesn't exist
 
 ### linkset data for response header or meta tag
+
 ```/signposting/links/<:uuid>```
 
-This endpoint provides typed links, of item or bitstream having uuid specified in input, to be included item or bitstream page response header or meta tag
+This endpoint provides typed links, of item or bitstream having uuid specified in input, to be included item or
+bitstream page response header or meta tag
 
 ```json
 [
@@ -193,24 +208,34 @@ This endpoint provides typed links, of item or bitstream having uuid specified i
   }
 ]
 ```
+
 Return codes:
+
 * 200 OK - if the operation succeed
 * 403 Forbidden - if you are not logged in with sufficient permissions for reading Item information.
 * 404 Not found - if the item doesn't exist
 
 ### Describes the scholarly object in a commonly used format
+
 ```/signposting/describedby/<:uuid>```
 
 This endpoint provides description of an object having uuid specified in input
 
 ```xml
+
 <title xmlns="http://datacite.org/schema/kernel-3">Item title</title>
-<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="doi">10.1007/978-3-642-35233-1_18</alternateIdentifier>
-<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="uri">https://{dspace.ui.url}/handle/123456789/11</alternateIdentifier>
+<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="doi">
+10.1007/978-3-642-35233-1_18
+</alternateIdentifier>
+<alternateIdentifier xmlns="http://datacite.org/schema/kernel-3" alternateIdentifierType="uri">
+https://{dspace.ui.url}/handle/123456789/11
+</alternateIdentifier>
 <date xmlns="http://datacite.org/schema/kernel-3" dateType="Accepted">2023-06-22</date>
 <date xmlns="http://datacite.org/schema/kernel-3" dateType="Available">2023-06-22</date>
 ```
+
 Return codes:
+
 * 200 OK - if the operation succeed
 * 403 Forbidden - if you are not logged in with sufficient permissions for reading Item information.
 * 404 Not found - if the item doesn't exist
