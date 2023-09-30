@@ -6,7 +6,7 @@
 
 Provide access to the communities (DBMS based). It returns the list of existent communities.
 
-Example: <https://api7.dspace.org/server/#/server/api/core/communities>
+Example: <https://demo.dspace.org/server/#/server/api/core/communities>
 
 ## Single Community 
 **/api/core/communities/<:uuid>**
@@ -97,7 +97,7 @@ The supported parameters are:
 ### Collections
 **/api/core/communities/<:uuid>/collections**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
 
 It returns the collections within this community
 
@@ -108,7 +108,7 @@ The supported parameters are:
 #### Retrieve Logo
 **GET /api/core/communities/<:uuid>/logo**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/logo>
 
 It returns the bitstream representing the logo of this community. [See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
@@ -119,7 +119,7 @@ To be used on a community without a logo
 
 Curl example:
 ```
-curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://demo.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.png"
@@ -149,7 +149,7 @@ To be used on a community with a logo
 
 Curl example:
 ```
-curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://demo.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XPUT -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.png"
@@ -179,7 +179,7 @@ To be used on a community with a logo
 
 Curl example:
 ```
-curl 'https://api7.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
+curl 'https://demo.dspace.org/server/api/core/communities/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb/logo' \
  -XDELETE \
  -H 'Authorization: Bearer eyJhbGciOiJI...'
 ```

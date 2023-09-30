@@ -8,7 +8,7 @@ Entities are Items with a valid value in the `dspace.entity.type`
 ## Main Endpoint
 **/api/core/entitytypes**
 
-A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes
+A sample can be found at https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/entitytypes
 
 ```json
 {
@@ -20,10 +20,10 @@ A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org
         "type": "entitytype",
         "_links": {
           "self": {
-            "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
+            "href": "https://demo.dspace.org/server/api/core/entitytypes/1"
           },
           "relationshiptypes": {
-            "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
+            "href": "https://demo.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
           }
         }
       },
@@ -33,10 +33,10 @@ A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org
         "type": "entitytype",
         "_links": {
           "self": {
-            "href": "https://api7.dspace.org/server/api/core/entitytypes/2"
+            "href": "https://demo.dspace.org/server/api/core/entitytypes/2"
           },
           "relationshiptypes": {
-            "href": "https://api7.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
+            "href": "https://demo.dspace.org/server/api/core/entitytypes/2/relationshiptypes"
           }
         }
       }
@@ -44,7 +44,7 @@ A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org
   },
   "_links": {
     "self": {
-      "href": "https://api7.dspace.org/server/api/core/entitytypes"
+      "href": "https://demo.dspace.org/server/api/core/entitytypes"
     }
   },
   "page": {
@@ -59,7 +59,7 @@ A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org
 ## Single Entity Type
 **/api/core/entitytypes/<:id>**
 
-A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes/1
+A sample can be found at https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/entitytypes/1
 
 ```json
 {
@@ -68,10 +68,10 @@ A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org
   "type": "entitytype",
   "_links": {
     "self": {
-      "href": "https://api7.dspace.org/server/api/core/entitytypes/1"
+      "href": "https://demo.dspace.org/server/api/core/entitytypes/1"
     },
     "relationshiptypes": {
-      "href": "https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
+      "href": "https://demo.dspace.org/server/api/core/entitytypes/1/relationshiptypes"
     }
   }
 }
@@ -82,13 +82,13 @@ It contains a HAL link to the Relationship Types for the current Entity Type (no
 ## Relationship Types for the current Entity Type
 **/api/core/entitytypes/<:id>/relationshiptypes**
 
-A sample can be found at https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/entitytypes/1/relationshiptypes
+A sample can be found at https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/entitytypes/1/relationshiptypes
 It embeds the [relationshiptypes](relationshiptypes.md) which are linked to the given entity type (either on the left or right side)
 
 ## Get Entity type from label
 **/api/core/entitytypes/label/<:entity-type-label>**
 
-A sample request would be https://api7.dspace.org/server/#/server/api/core/entitytypes/label/Person
+A sample request would be https://demo.dspace.org/server/#/server/api/core/entitytypes/label/Person
 The entity-type-label is mandatory
 
 There's always at most one entity type per label.

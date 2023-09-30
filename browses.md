@@ -151,7 +151,7 @@ It returns a collection of BrowseEntryResource the JSON document looks like
         "count": 1,
         "_links": {
           "items": {
-            "href": "https://api7.dspace.org/server/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
+            "href": "https://demo.dspace.org/server/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
           }
         }
       },

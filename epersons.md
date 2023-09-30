@@ -51,10 +51,10 @@
   "type": "eperson",
   "_links": {
     "self": {
-      "href": "https://api7.dspace.org/server/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
+      "href": "https://demo.dspace.org/server/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107"
     },
     "groups": {
-      "href": "https://api7.dspace.org/server/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107/groups"
+      "href": "https://demo.dspace.org/server/api/eperson/epersons/028dcbb8-0da2-4122-a0ea-254be49ca107/groups"
     }
   }
 }
