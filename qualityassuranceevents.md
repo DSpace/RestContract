@@ -52,7 +52,7 @@ Attributes
 
 Exposed links:
 * topic: link to the topic to which the event belong to (see [qualityassurancetopics](qualityassurancetopics.md))
-* target: link to the item that represent the targe to whom the quality assurance event apply
+* target: link to the item that represent the target to whom the quality assurance event apply
 * related: link to an optional second item that is involved in the qa events (i.e. the project item for OpenAIRE ENRICH/MISSING/PROJECT event)
 
 Status codes:
@@ -60,6 +60,51 @@ Status codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged as an administrator
 * 404 Not found - if no qa event exists with such id 
+
+# POST
+### To create a new quality assurance event
+
+**POST /api/integration/qualityassuranceevents**
+
+Only events for the [Quality Assurance Source](qualityassurancesources.md) named DSpace User Corrections can be created. A new quality assurance event can be created by specifying the correctionType, the target item and an optional related item as parameters.
+The message of the quality assurance event will be provided as body of the json request.
+
+The supported parameters are:
+* correctionType: the id of the [correction type](correctiontypes.md) used to generate the quality assurance event
+* target: the uuid of the item that will be the target of the quality assurance event
+* related: (optional) the uuid of an additional item involved in the quality assurance event. Included for future extension
+
+A sample CURL command would be:
+```
+curl -i -X POST 'https://demo.dspace.org/server/#/server/api/integration/qualityassuranceevents?correctionType=request-withdrawn&target=c71c4b56-ff05-4c7f-a45f-757e2e29ced7' /
+-H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/json" /
+--data '{reason: "The reason for the request provided by the user"}'
+```
+
+Return codes:
+* 201 Created - if the operation succeed
+* 400 Bad Request - if the target parameter or the correctionType parameters are missing
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions
+* 422 Unprocessable Entity - if The given correctionType in the request is not valid, the given items in the request were not valid items or the provided correctionType is not allowed for the target item, the related item is unexpected or invalid for the specified correctionType. 
+
+# DELETE
+### To delete a quality assurance event previously created
+
+**DELETE /api/integration/qualityassuranceevents/<:qualityassuranceevent-id>**
+
+Only events for the [Quality Assurance Source](qualityassurancesources.md) named DSpace User Corrections can be deleted.
+
+A sample CURL command would be:
+```
+curl -i -X DELETE 'https://demo.dspace.org/server/#/server/api/integration/qualityassuranceevents/c71c4b56-ff05-4c7f-a45f-757e2e29ced7' -H 'Authorization: Bearer eyJhbGciO…'
+```
+
+Return codes:
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only the user that has originally created the request can delete it
+* 404 Not found - if the quality assurance event doesn't exist (or was already deleted)
 
 ## Search methods
 ### Get qualityassuranceevents by a given topic
@@ -76,6 +121,22 @@ Return codes:
 * 400 Bad Request - if the topic parameter is missing or invalid
 
 Provide paginated list of the qa events available.
+
+### Get qualityassuranceevents created by the current user
+**GET /api/integration/qualityassuranceevents/search/findByCurrentUser?target=<:item-uuid>[&size=10&page=0]**
+
+It returns the list of qa events created from the current user
+
+The supported parameters are:
+* target: mandatory. The uuid of the item target of the returned quality assurance events
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the target parameter is missing or is not a UUID
+* 422 Unprocessable Entity - it the target parameter doesn't resolve to a valid item
+
+Provide paginated list of the qa events for the specified target item created by the current user. An empty page is returned for unauthenticated users
 
 ## PATCH 
 ### To record a decision 
