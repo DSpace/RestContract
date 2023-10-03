@@ -327,13 +327,39 @@ Return codes:
 * 404 Not found - if the parent group doesn't exist
 * 422 Unprocessable Entity - if the child group doesn't exist or if the specified eperson doesn't exist
 
-## Search
-**GET /api/eperson/groups/search/byMetadata?query=<:name>**
+## Search Methods
 
-This supports a basic search in the metadata.
+### byMetadata
+**GET /api/eperson/groups/search/byMetadata?query=<:string>**
+
+This supports a basic search across all Groups via their metadata.
 It will search in:
 * UUID (exact match)
 * group name
+
+It returns the list of GroupRest instances, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the 'query' parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or Community/Collection administrators can use this endpoint.
+
+### isNotMemberOf
+**GET /api/eperson/groups/search/isNotMemberOf?group=<:uuid>&query=<:string>**
+
+This supports a basic search across all Groups which are not already a member (subgroup) of the provided Group (in the 'group' parameter). Therefore it searches across Groups _not already listed_ on the `/api/eperson/groups/<:uuid>/subgroups` endpoint for the provided group.
+It will search in:
+* UUID (exact match)
+* group name
+
+It returns the list of GroupRest instances, if any, matching the user query
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the 'group' or 'query' parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or Community/Collection administrators can use this endpoint.
 
 ## Related DSpace Object of group
 **GET /api/eperson/groups/<:uuid>/object** (READ-ONLY)
