@@ -50,6 +50,11 @@ List all the available correction types in the system. The correction types are 
 
 A sample can be found at https://demo.dspace.org/server/#/server/api/config/correctiontypes
 
+Attributes
+* the *id* attribute is the correction type primary key
+* the *topic* attribute is the id of the [quality assurance topic](qualityassurancetopics.md) that would be created from such correction type
+* the *creationForm* attribute is used to specify the type of inputs eventually requested to create a [quality assurance event](qualityassuranceevents.md) from this correction type. If null no input is needed. The *provideReason* sample expect a textual description to be provided to create the quality assurance event.
+
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
