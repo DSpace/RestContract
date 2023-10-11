@@ -6,33 +6,37 @@ The section data represents the data about the COAR Notify
 ```json
 [
   {
-    "pattern" : "review",
-    "services" : [{
-      "id" : 1,
-      "name" : "service name",
-      "description" : "service description"
-    },
-      {
-        "id" : 2,
-        "name" : "service name",
-        "description" : "service description"
-      }
-    ]
-  },
-  {
     "pattern" : "endorsement",
-    "services" : [{
-      "id" : 3,
-      "name" : "service name",
-      "description" : "service description"
-    }]
-  },
-  {
-    "pattern" : "ingest",
-    "services" : [{
+    "services" : [ {
       "id" : 4,
-      "name" : "service name",
-      "description" : "service description"
+      "name" : "service name two",
+      "description" : null,
+      "url" : null,
+      "ldnUrl" : "service ldn url two",
+      "notifyServiceInboundPatterns" : [ ],
+      "notifyServiceOutboundPatterns" : [ ],
+      "type" : "ldnservice"
+    }, {
+      "id" : 5,
+      "name" : "service name three",
+      "description" : null,
+      "url" : null,
+      "ldnUrl" : "service ldn url three",
+      "notifyServiceInboundPatterns" : [ ],
+      "notifyServiceOutboundPatterns" : [ ],
+      "type" : "ldnservice"
+    }]
+  }, {
+    "pattern" : "review",
+    "services" : [ {
+      "id" : 3,
+      "name" : "service name one",
+      "description" : null,
+      "url" : null,
+      "ldnUrl" : "service ldn url one",
+      "notifyServiceInboundPatterns" : [ ],
+      "notifyServiceOutboundPatterns" : [ ],
+      "type" : "ldnservice"
     }]
   }
 ]
@@ -44,14 +48,14 @@ The PATCH method expects a JSON body according to the [JSON Patch specification 
 Each successful Patch operation will return a HTTP 200 CODE with the new workspaceitem as body
 
 ### Add
-To add a new service for a specific type of message
+To add a new services for a specific type of message
 
 ```json
 [
   {
     "op": "add",
-    "path": "/sections/<:name-of-the-form>/review-service",
-    "value": "1"
+    "path": "/sections/coarnotify/review/-",
+    "value": ["1","2","6"]
   }
 ]
 ```
@@ -63,7 +67,7 @@ To replace a service for a specific type of message
 [
   {
     "op": "replace",
-    "path": "/sections/<:name-of-the-form>/review-service",
+    "path": "/sections/coarnotify/endorsement/1",
     "value": "2"
   }
 ]
@@ -71,4 +75,4 @@ To replace a service for a specific type of message
 
 ### Remove
 It is possible to remove a previously service
-`curl --data '{[ { "op": "remove", "path": "/sections/<:name-of-the-form>/review-service[0]"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
+`curl --data '{[ { "op": "remove", "path": "/sections/coarnotify/review/0"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
