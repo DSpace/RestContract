@@ -18,7 +18,7 @@ Returns the list of configured COAR notify.
         "id": "default",
         "name": "default",
         "type": "submissioncoarnotifyservices",
-        "fields": []
+        "patterns": ["review", "endorsement", "ingest"]
       }
     ]
   },
@@ -42,7 +42,7 @@ Provide detailed information about a specific COAR notify.
   "id": "default",
   "name": "default",
   "type": "submissioncoarnotifyservices",
-  "fields": [],
+  "patterns": ["review", "endorsement", "ingest"],
   "_links" : {
     "self" : {
       "href" : "/api/config/submissioncoarnotifyservices/default"
