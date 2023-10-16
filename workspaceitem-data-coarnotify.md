@@ -7,37 +7,10 @@ The section data represents the data about the COAR Notify
 [
   {
     "pattern" : "endorsement",
-    "services" : [ {
-      "id" : 4,
-      "name" : "service name two",
-      "description" : null,
-      "url" : null,
-      "ldnUrl" : "service ldn url two",
-      "notifyServiceInboundPatterns" : [ ],
-      "notifyServiceOutboundPatterns" : [ ],
-      "type" : "ldnservice"
-    }, {
-      "id" : 5,
-      "name" : "service name three",
-      "description" : null,
-      "url" : null,
-      "ldnUrl" : "service ldn url three",
-      "notifyServiceInboundPatterns" : [ ],
-      "notifyServiceOutboundPatterns" : [ ],
-      "type" : "ldnservice"
-    }]
+    "services" : [ 1, 2, 3 ]
   }, {
     "pattern" : "review",
-    "services" : [ {
-      "id" : 3,
-      "name" : "service name one",
-      "description" : null,
-      "url" : null,
-      "ldnUrl" : "service ldn url one",
-      "notifyServiceInboundPatterns" : [ ],
-      "notifyServiceOutboundPatterns" : [ ],
-      "type" : "ldnservice"
-    }]
+    "services" : [ 6 ]
   }
 ]
 ```
