@@ -63,9 +63,9 @@ Status codes:
 
 ## Search methods
 ### Get qualityassuranceevents by a given topic
-**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
+**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:target-key[&size=10&page=0][&target=:item-uuid]**
 
-It returns the list of qa events from a specific topic
+It returns the list of qa events from a specific topic, possibly filtered by the item they refer to
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
