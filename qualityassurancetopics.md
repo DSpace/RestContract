@@ -48,7 +48,7 @@ Provide detailed information about a specific Quality Assurance Broker topic. Th
   lastEvent: "2020/10/09 10:11 UTC",
   totalEvents: 33
 }
- ```
+```
 ​
 Return codes:
 * 200 OK - if the operation succeed
@@ -73,3 +73,14 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
 
 Provide paginated list of the qa topics available.
+
+### Get qualityassurancetopics by a given source
+**GET /api/integration/qualityassurancetopics/search/byTarget?target=:item-uuid[&source=:source-id]**
+
+It returns the list of qa topics (from a specific source) to a specific targeted item.
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the topic parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you are not logged in with sufficient permissions, only system administrators can access
