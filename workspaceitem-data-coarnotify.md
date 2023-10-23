@@ -18,7 +18,9 @@ The above example shows a submission where three services (id 1, 2, 3) were sele
 ## Patch operations
 The PATCH method expects a JSON body according to the [JSON Patch specification RFC6902](https://tools.ietf.org/html/rfc6902)
 
-Each successful Patch operation will return a HTTP 200 CODE with the updated workspaceitem as body
+Each successful Patch operation will return a HTTP 200 CODE with the updated workspaceitem as body.
+
+If the requested path doesn't match a valid pattern for the current configuration or a specified service id doesn't exist 422 Unprocessable Entity will be returned.
 
 ### Add
 To specify which services request for a specific pattern
