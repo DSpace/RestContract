@@ -63,13 +63,14 @@ Status codes:
 
 ## Search methods
 ### Get qualityassuranceevents by a given topic
-**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:target-key[&size=10&page=0][&target=:item-uuid]**
+**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:topic-key[&target=:item-uuid&size=10&page=0]**
 
-It returns the list of qa events from a specific topic, possibly filtered by the item they refer to
+It returns the list of qa events from a specific topic, eventually filtered by the target they refer to
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * topic: mandatory, the key associated with the requested topic
+* target: optional, the uuid of the target item to restrict the qa events
 
 Return codes:
 * 200 OK - if the operation succeed
