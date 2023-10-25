@@ -21,5 +21,6 @@ The DSpace server will have a whitelist of properties that can be retrieved by t
 }
 ```          
 
-* 200 OK - if the operation succeed
-* 404 Not found - if the property doesn't exist or isn't configured to be retrieved
+* 200 OK - if the operation succeeded
+* 204 No Content - if the property isn't configured to be retrieved
+* 404 Not found - if the property doesn't exist 
