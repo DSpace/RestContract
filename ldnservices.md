@@ -566,3 +566,74 @@ Return codes:
 * 400 Bad Request - if the ldnUrl parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden is not possible because it is restricted to authenticated users
+
+### findByInboundPattern
+**/api/ldn/ldnservices/search/byInboundPattern?pattern=<:pattern>**
+
+Parameters:
+* The `pattern` the inbound pattern of the LDN notify service
+
+A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pattern=review'
+
+```json
+{
+  "_embedded" : {
+    "ldnservices" : [ {
+      "id" : 1,
+      "name" : "service name one",
+      "description" : "service description one",
+      "url" : "https://service.ldn.org/about",
+      "ldnUrl" : "https://service.ldn.org/inbox",
+      "enabled" : false,
+      "notifyServiceInboundPatterns" : [ {
+        "pattern" : "review",
+        "constraint" : "itemFilterA",
+        "automatic" : false
+      } ],
+      "notifyServiceOutboundPatterns" : [ ],
+      "type" : "ldnservice",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost/api/ldn/ldnservices/1"
+        }
+      }
+    }, {
+      "id" : 2,
+      "name" : "service name two",
+      "description" : "service description two",
+      "url" : "https://service2.ldn.org/about",
+      "ldnUrl" : "https://service2.ldn.org/inbox",
+      "enabled" : false,
+      "notifyServiceInboundPatterns" : [ {
+        "pattern" : "review",
+        "constraint" : "itemFilterA",
+        "automatic" : false
+      } ],
+      "notifyServiceOutboundPatterns" : [ ],
+      "type" : "ldnservice",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost/api/ldn/ldnservices/2"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost/api/ldn/ldnservices/search/byInboundPattern?pattern=review"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 2,
+    "totalPages" : 1,
+    "number" : 0
+  }
+}
+```
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the pattern parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden is not possible because it is restricted to authenticated users
