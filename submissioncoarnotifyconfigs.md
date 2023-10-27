@@ -4,7 +4,7 @@
 Provide access to the existing configurations for the submission COAR Notify panel.
 The SubmissionCOARNotifyConfig list which request patterns can be selected during the submission.
 
-In the first implementation, a single configuration named *default* is expected as these configurations were set at the site level.
+In the first implementation, a single configuration named *coarnotify* is expected as these configurations were set at the site level.
 Introducing an endpoint to manage a collection of configurations we open the door to future extension where different setups can be used for different kind of submissions (theses, technical reports, journal articles, etc.)
 
 ## Main Endpoint
@@ -16,12 +16,12 @@ Returns the list of configured COAR notify patterns to be offered during the sub
 {
   "_embedded" : {
     "submissioncoarnotifyconfigs" : [ {
-      "id" : "default",
+      "id" : "coarnotify",
       "patterns" : [ "review", "endorsement", "ingest" ],
       "type" : "submissioncoarnotifyconfig",
       "_links" : {
         "self" : {
-          "href" : "http://localhost/api/config/submissioncoarnotifyconfigs/default"
+          "href" : "http://localhost/api/config/submissioncoarnotifyconfigs/coarnotify"
         }
       }
     } ]
@@ -48,17 +48,17 @@ Status codes:
 ## Single COAR notify
 **/api/config/submissioncoarnotifyconfigs/<:coarnotify-name>**
 
-*:coarnotify-name* is initially hard-coded to *default*
+*:coarnotify-name* is initially hard-coded to *coarnotify*
 
 Provide detailed information about a specific COAR notify.
 ```json
 {
-  "id" : "default",
+  "id" : "coarnotify",
   "patterns" : [ "review", "endorsement", "ingest" ],
   "type" : "submissioncoarnotifyconfig",
   "_links" : {
     "self" : {
-      "href" : "http://localhost/api/config/submissioncoarnotifyconfigs/default"
+      "href" : "http://localhost/api/config/submissioncoarnotifyconfigs/coarnotify"
     }
   }
 }
