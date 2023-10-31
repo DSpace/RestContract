@@ -44,7 +44,7 @@ Attributes
 * the *trust* attribute is the level of accuracy of the quality assurance event (values from 0.00 to 1.00)
 * the *status* attribute is one of (ACCEPTED, REJECTED, DISCARDED, PENDING)
 * the *eventDate* attribute is the timestamp of the event reception
-* the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the "topic" type is
+* the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the source is "openaire" and the "topic" type is
     * ENRICH/MISSING/PID and ENRICH/MORE/PID: fills `message.type` with the type of persistent identifier (doi, pmid, etc.) and `message.value` with the corresponding value
     * ENRICH/MISSING/ABSTRACT: fills `message.abstract`
     * ENRICH/MISSING/SUBJECT/ACM: fills the `message.value` with the actual keywords, the subject classification is defined by the last part of the topic (ACM, JEL, DDC, etc.)
@@ -52,7 +52,7 @@ Attributes
 
 Exposed links:
 * topic: link to the topic to which the event belong to (see [qualityassurancetopics](qualityassurancetopics.md))
-* target: link to the item that represent the targe to whom the quality assurance event apply
+* target: link to the item that represent the target to whom the quality assurance event apply
 * related: link to an optional second item that is involved in the qa events (i.e. the project item for OpenAIRE ENRICH/MISSING/PROJECT event)
 
 Status codes:
@@ -63,18 +63,17 @@ Status codes:
 
 ## Search methods
 ### Get qualityassuranceevents by a given topic
-**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:topic-key[&target=:item-uuid&size=10&page=0]**
+**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:topic-key[&size=10&page=0]**
 
 It returns the list of qa events from a specific topic, eventually filtered by the target they refer to
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* topic: mandatory, the key associated with the requested topic
-* target: optional, the uuid of the target item to restrict the qa events
+* topic: mandatory, the key associated with the requested topic. Please note that the topic could contain the uuid of a specific target item to restrict the qa events. See the note about the [qa topic id](qualityassurancetopics.md#get-single-topic)
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the topic parameter is missing or invalid
+* 400 Bad Request - if the topic parameter is missing
 
 Provide paginated list of the qa events available.
 
