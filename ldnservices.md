@@ -24,6 +24,7 @@ Return codes:
   "url" : "service url",
   "ldnUrl" : "service ldn url",
   "enabled" : true,
+  "score" : "service score between 0 and 1",
   "notifyServiceInboundPatterns" :
   [
     {
@@ -67,6 +68,7 @@ Only administrator users can create LDN notify service. The content-type is JSON
   "description": "service description",
   "url": "service url",
   "ldnUrl": "service ldn url",
+  "score" : "service score between 0 and 1",
   "enabled" : true,
   "notifyServiceInboundPatterns":
   [
@@ -136,6 +138,18 @@ to add url to ldn notify service
     "op": "add",
     "path": "/url",
     "value": "url value"
+  }
+]
+```
+
+to add score to ldn notify service
+
+```json
+[
+  {
+    "op": "add",
+    "path": "/score",
+    "value": "score value"
   }
 ]
 ```
@@ -251,6 +265,18 @@ to update the ldnUrl of ldn notify service
     "op": "replace",
     "path": "/ldnurl",
     "value": "service ldnUrl"
+  }
+]
+```
+
+to update the score of ldn notify service
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/score",
+    "value": "service score"
   }
 ]
 ```
@@ -440,6 +466,17 @@ to remove url value from ldn notify service
 ]
 ```
 
+to remove score value from ldn notify service
+
+```json
+[
+  {
+    "op": "remove",
+    "path": "/score"
+  }
+]
+```
+
 to remove all inboundPatterns of ldn notify service
 
 ```json
@@ -539,6 +576,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byLdnUrl?ldnUrl=ser
   "description" : "service description one",
   "url" : "service url one",
   "ldnUrl" : "service_ldn_url",
+  "score" : "service score one",
   "enabled" : true,
   "notifyServiceInboundPatterns" :
   [
@@ -584,6 +622,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "description" : "service description one",
       "url" : "https://service.ldn.org/about",
       "ldnUrl" : "https://service.ldn.org/inbox",
+      "score" : "service score one",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "review",
@@ -603,6 +642,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "description" : "service description two",
       "url" : "https://service2.ldn.org/about",
       "ldnUrl" : "https://service2.ldn.org/inbox",
+      "score" : "service score two",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "review",
