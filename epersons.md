@@ -99,7 +99,9 @@ Return codes:
 This supports a basic search across all EPersons which are not already a member of the provided Group (in the 'group' parameter). Therefore it searches EPersons _not already listed_ on the `/api/eperson/groups/<:uuid>/epersons` endpoint for the provided group.
 It will search in:
 * UUID (exact match)
-* group name
+* first name
+* last name
+* email address
 
 It returns the list of EPersonRest instances, if any, matching the user query
 
