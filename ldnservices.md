@@ -573,7 +573,7 @@ Return codes:
 Parameters:
 * The `pattern` the inbound pattern of the LDN notify service
 
-A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pattern=review'
+A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pattern=request-review'
 
 ```json
 {
@@ -586,7 +586,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "ldnUrl" : "https://service.ldn.org/inbox",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
-        "pattern" : "review",
+        "pattern" : "request-review",
         "constraint" : "itemFilterA",
         "automatic" : false
       } ],
@@ -605,7 +605,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "ldnUrl" : "https://service2.ldn.org/inbox",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
-        "pattern" : "review",
+        "pattern" : "request-review",
         "constraint" : "itemFilterA",
         "automatic" : false
       } ],
@@ -620,7 +620,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
   },
   "_links" : {
     "self" : {
-      "href" : "http://localhost/api/ldn/ldnservices/search/byInboundPattern?pattern=review"
+      "href" : "http://localhost/api/ldn/ldnservices/search/byInboundPattern?pattern=request-review"
     }
   },
   "page" : {
