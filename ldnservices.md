@@ -21,9 +21,10 @@ Return codes:
   "id" : 1,
   "name" : "service name",
   "description" : "service description",
-  "url" : "service url",
-  "ldnUrl" : "service ldn url",
+  "url" : "https://service-name.org/about",
+  "ldnUrl" : "https://service-name.org/ldn-inbox",
   "enabled" : true,
+  "score" : "0.375",
   "notifyServiceInboundPatterns" :
   [
     {
@@ -56,6 +57,25 @@ Status codes:
 * 403 Forbidden is not possible because it is restricted to authenticated users
 * 404 Not found - if no LDN notify service exists with such id
 
+  Attributes
+* id: numerical identificator assigned by the rest to the service itself
+* name: a short name associated to the service
+* description: a description for the service, i.e. the reason for the service
+* url: the URL for users to check out more information about the service
+* ldnUrl: the URL of the LDN Inbox
+* enabled: This proeprty is a simple boolean, it defines if the service is selected as one of the active ones
+* score: This property defines to the safety score assigned by the user
+* inboundPatterns: an array that contains inbound pattern defined by 3 properties:
+    * pattern: the defining pattern name for the pattern itself
+    * constraint: a filter put in place during the pattern creation
+    * automatic: The automatic property is a boolean property that defines the behaviour during an item archiving operation;
+      * automatic:TRUE = all the patterns flagged with the true value for the automatic property, for which a positive response is returned, a  notification on the corresponding service
+      * automatic:FALSE = all the patterns flagged with the false value for the automatic property, needs to be explicitly declared from the user during a submission in the related submission section COAR Notify
+
+* outboundPatterns: an array that contains inbound pattern defined by 3 properties:
+    * pattern: the defining pattern name for the pattern itself
+    * constraint: a filter put in place during the pattern creation
+
 ## Creating a new LDN notify service
 **POST /api/ldn/ldnservices**
 
@@ -65,8 +85,9 @@ Only administrator users can create LDN notify service. The content-type is JSON
 {
   "name": "service name",
   "description": "service description",
-  "url": "service url",
-  "ldnUrl": "service ldn url",
+  "url": "https://service-name.org/about",
+  "ldnUrl": "https://service-name.org/ldn-inbox",
+  "score" : "0.765",
   "enabled" : true,
   "notifyServiceInboundPatterns":
   [
@@ -123,7 +144,7 @@ to add ldnUrl to ldn notify service
   {
     "op": "add",
     "path": "/ldnurl",
-    "value": "service ldnUrl"
+    "value": "https://service-name.org/ldn-inbox"
   }
 ]
 ```
@@ -135,7 +156,19 @@ to add url to ldn notify service
   {
     "op": "add",
     "path": "/url",
-    "value": "url value"
+    "value": "https://service-name.org/about"
+  }
+]
+```
+
+to add score to ldn notify service
+
+```json
+[
+  {
+    "op": "add",
+    "path": "/score",
+    "value": "0.89"
   }
 ]
 ```
@@ -250,7 +283,19 @@ to update the ldnUrl of ldn notify service
   {
     "op": "replace",
     "path": "/ldnurl",
-    "value": "service ldnUrl"
+    "value": "https://service-name.org/ldn-inbox"
+  }
+]
+```
+
+to update the score of ldn notify service
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/score",
+    "value": "0.97"
   }
 ]
 ```
@@ -262,7 +307,7 @@ to update the url of ldn notify service
   {
     "op": "replace",
     "path": "/url",
-    "value": "url value"
+    "value": "https://service-name.org/about"
   }
 ]
 ```
@@ -440,6 +485,17 @@ to remove url value from ldn notify service
 ]
 ```
 
+to remove score value from ldn notify service
+
+```json
+[
+  {
+    "op": "remove",
+    "path": "/score"
+  }
+]
+```
+
 to remove all inboundPatterns of ldn notify service
 
 ```json
@@ -537,8 +593,9 @@ A sample search would be `/server/api/ldn/ldnservices/search/byLdnUrl?ldnUrl=ser
   "id" : 1,
   "name" : "service name one",
   "description" : "service description one",
-  "url" : "service url one",
-  "ldnUrl" : "service_ldn_url",
+  "url" : "https://service-one.org/about",
+  "ldnUrl" : "https://service-one.org/ldn-inbox",
+  "score" : "0.57",
   "enabled" : true,
   "notifyServiceInboundPatterns" :
   [
@@ -584,6 +641,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "description" : "service description one",
       "url" : "https://service.ldn.org/about",
       "ldnUrl" : "https://service.ldn.org/inbox",
+      "score" : "0.675",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "request-review",
@@ -601,9 +659,10 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "id" : 2,
       "name" : "service name two",
       "description" : "service description two",
-      "url" : "https://service2.ldn.org/about",
-      "ldnUrl" : "https://service2.ldn.org/inbox",
-      "enabled" : false,
+      "url" : "https://service-two.org/about",
+      "ldnUrl" : "https://service-two.org/ldn-inbox",
+      "score" : "0.34",
+      "enabled" : true,
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "request-review",
         "constraint" : "itemFilterA",
