@@ -641,7 +641,7 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "description" : "service description one",
       "url" : "https://service.ldn.org/about",
       "ldnUrl" : "https://service.ldn.org/inbox",
-      "score" : "service score one",
+      "score" : "0.675",
       "enabled" : false,
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "review",
