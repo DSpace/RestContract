@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [index-discovery script](#index-discovery-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters:](#parameters)
@@ -14,6 +15,10 @@ The index-discovery script interacts with the Discovery Solr search index in DSp
 the script adds, removes, updates, or rebuilds the search index.
 
 For more information regarding the Discovery infrastructure, see the [DSpace Documentation](https://wiki.lyrasis.org/display/DSDOC7x/Discovery).
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

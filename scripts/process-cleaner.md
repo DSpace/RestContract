@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [process-cleaner script](#process-cleaner-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -12,6 +13,10 @@
 
 The process-cleaner script is designed to clean up old processes in DSpace by removing processes in a specified state
 (RUNNING, FAILED, or COMPLETED).
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

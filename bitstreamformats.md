@@ -6,7 +6,7 @@
 
 Provide access to the bitstream formats defined in the registry (DBMS based). It returns the list of existent metadata fields.
 
-Example: <https://dspace7.4science.cloud/dspace-spring-rest/#https://dspace7.4science.cloud/dspace-spring-rest/api/core/bitstreamformats>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bitstreamformats>
 
 **POST /api/core/bitstreamformats**   
 

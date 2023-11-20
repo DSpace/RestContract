@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [metadata-import script](#metadata-import-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -15,6 +16,9 @@ The metadata-import script is designed to import metadata from a CSV file after 
 For more information,
 see the [Batch Metadata Editing documentation](https://wiki.lyrasis.org/display/DSDOC7x/Batch+Metadata+Editing)
 
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

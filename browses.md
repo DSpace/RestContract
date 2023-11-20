@@ -8,6 +8,29 @@ Provide access to the browse system (SOLR based). It returns the list of availab
 
 Example: <https://{dspace.server.url}/api/discover/browses>
 
+## Browse types
+
+There are currently types of browse, each behaving differently:
+* `valueList`:
+  * The browse index has two levels
+  * The 1st level shows the list of entries like author names, subjects, types, etc
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is used to render the author names, subjects, types, etc
+  * The `vocabulary` link is not used
+* `flatBrowse`:
+  * The browse index has one level: the full list of items
+  * The `items` link is used to render this list of items
+  * The `entries` link is not used
+  * The `vocabulary` link is not used
+* `hierarchicalBrowse`:
+  * The browse index displays the vocabulary tree
+  * The 1st level shows the tree
+  * The second level is the actual list of items linked to a specific entry
+  * The `items` link is not used
+  * The `entries` link is not used
+  * The `vocabulary` link is used to render the tree
+
 ## Single browse index 
 **/api/discover/browses/<:index-name>**
 
@@ -15,6 +38,7 @@ Provide detailed information about a specific browse index and access to the lis
 ```json
 {
   "id": "title",
+  "browseType": "flatBrowse",
   "metadataBrowse": false,
   "dataType": "title",
   "sortOptions": [
@@ -40,6 +64,9 @@ Provide detailed information about a specific browse index and access to the lis
 ```
 
 * id: the identifier for the browse index
+* browseType:
+  * `valueList` if the browse index has two levels, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
+  * `flatBrowse` if the browse index has one level: the full list of items
 * metadataBrowse: true if the browse index have two level, the 1st level shows the list of entries like author names, subjects, types, etc. the second level is the actual list of items linked to a specific entry
 * dataType: the kind of data indexed. Can have the values "title" for item titles, "date" for date fields or "text" for other metadata
 * sortOptions: the sort options available for this index
@@ -49,6 +76,41 @@ Provide detailed information about a specific browse index and access to the lis
 Exposed links:
 * items: link to get the actual list of items associated with the index
 * entries (**only for metadata browse index**): link to get the list of entries in the metadata index
+
+Error codes:
+
+**404** if the browse index doesn't exist
+
+## Hierarchical browse index 
+**/api/discover/browses/<:index-name>**
+
+Provide detailed information about a specific hierarchical browse index and access to the parameters required to access the list of items and entries. The JSON response document is as follows
+```json
+{
+  "id": "keyword",
+  "browseType": "hierarchicalBrowse",
+  "facetType": "subject",
+  "vocabulary": "srsc",
+  "type": "browse",
+  "metadata": [
+    "dc.subject"
+  ],
+  "_links" : {
+    "vocabulary" : {
+      "href" : "/server/api/submission/vocabularies/srsc"
+    }
+  }
+} 
+```
+
+* id: the identifier for the browse index
+* browseType: `hierarchicalBrowse` if the browse index should display the vocabulary tree. The 1st level shows the tree. The second level is the actual list of items linked to a specific entry
+* facetType: the discovery filter to use to filter the items
+* vocabulary: the name of the vocabulary containing the tree
+* metadata: the list of metadata used to build this index
+
+Exposed links:
+* vocabulary: link to the vocabulary containing the tree
 
 Error codes:
 
@@ -89,7 +151,7 @@ It returns a collection of BrowseEntryResource the JSON document looks like
         "count": 1,
         "_links": {
           "items": {
-            "href": "https://dspace7.4science.it/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
+            "href": "https://demo.dspace.org/server/api/discover/browses/author/items?filterValue=Arulmozhiyal, Ramaswamy"
           }
         }
       },

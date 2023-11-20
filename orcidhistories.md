@@ -55,7 +55,7 @@ Return codes:
 
 An example curl call:
 ```
- curl -i -X POST https://dspace7.4science.it/dspace-spring-rest/api/eperson/orcidhistories \
+ curl -i -X POST https://demo.dspace.org/server/api/eperson/orcidhistories \
  -H "Content-Type:text/uri-list" \
- --data "https://dspace7.4science.it/dspace-spring-rest/api/eperson/orcidqueues/10"
+ --data "https://demo.dspace.org/server/api/eperson/orcidqueues/10"
 ```

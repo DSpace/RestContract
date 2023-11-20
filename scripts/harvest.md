@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [harvest script](#harvest-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters:](#parameters)
@@ -13,6 +14,10 @@
 With this script, you can configure a collection to harvest its items from an external OAI-PMH instance. You can specify whether to harvest metadata only, or files as well (for external sites that support harvesting files).
 
 For more information, see the [OAI documentation](https://wiki.lyrasis.org/display/DSDOC7x/OAI) 
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 

@@ -31,13 +31,13 @@ Provide detailed information about a specific request. The JSON response documen
   "requestName":"John Smith",
   "_links":{
     "bitstream":{
-      "href":"http://localhost/api/tools/itemrequests/1/bitstream"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1/bitstream"
     },
     "item":{
-      "href":"http://localhost/api/tools/itemrequests/1/item"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1/item"
     },
     "self":{
-      "href":"http://localhost/api/tools/itemrequests/1"
+      "href":"https://demo.dspace.org/server/api/tools/itemrequests/1"
     }
   }
 }

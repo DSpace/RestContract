@@ -12,6 +12,9 @@ The sections below describe the parameters for a page view event. All other info
 - `targetId`: The id of the object the user viewed
 - `targetType`: The type of the object the user viewed
 
+### Optional Parameters
+- `referrer`: The referrer of the object the user viewed. When this value is not present, it will be derived from the request instead. 
+
 ### Status codes:
 
 - `201` Created: if the operation succeeded
@@ -23,7 +26,8 @@ The sections below describe the parameters for a page view event. All other info
 ```json
 {
   "targetId": "43f9bb3e-f90d-458f-9858-7e4589481d18",
-  "targetType": "item"
+  "targetType": "item",
+  "referrer": "https://demo7.dspace.org/search"
 }
 ```
 

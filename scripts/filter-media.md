@@ -3,6 +3,7 @@
 <!-- TOC -->
 * [filter-media script](#filter-media-script)
   * [What it does?](#what-it-does)
+  * [Who can use it?](#who-can-use-it)
   * [When we use it?](#when-we-use-it)
   * [How it Works?](#how-it-works)
   * [Parameters](#parameters)
@@ -14,6 +15,10 @@ This script processes bitstreams (files) that are added to DSpace.  It can perfo
 
 For more information,
 see the [Media Filter documentation](https://wiki.lyrasis.org/display/DSDOC7x/Mediafilters+for+Transforming+DSpace+Content)
+
+## Who can use it?
+
+This script can be used only by repository administrators.
 
 ## When we use it?
 
