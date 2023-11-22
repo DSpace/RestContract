@@ -696,3 +696,39 @@ Return codes:
 * 400 Bad Request - if the pattern parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden is not possible because it is restricted to authenticated users
+
+
+## Notify Requests for specific item
+### notifyrequests
+**/api/ldn/notifyrequests/<:itemUUID>**
+
+Parameters:
+* The `itemUUID` is the uuid of the item
+
+A sample search would be `/server/api/ldn/notifyrequests/_itemuuid_'
+
+```json
+{
+    "notifyStatus": [
+        {
+            "serviceName": "NS",
+            "serviceUrl": "2f4ec582-109e-4952-a94a-b7d7615a8c69",
+            "status": "REJECTED"
+        }
+    ],
+    "itemuuid": "_itemuuid_",
+    "type": "notifyrequests",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/server/api/ldn/notifyrequests/ldn/org.dspace.app.rest.model.NotifyRequestStatusRest@31a86e42"
+        }
+    }
+}
+```
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the itemuuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden is not possible because it is restricted to authenticated users
+
