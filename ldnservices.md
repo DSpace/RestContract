@@ -698,7 +698,8 @@ Return codes:
 * 403 Forbidden is not possible because it is restricted to authenticated users
 
 
-## Search methods
+## Notify Requests for specific item
+
 ### notifyrequests
 **/api/ldn/notifyrequests/<:itemUUID>**
 
@@ -713,6 +714,7 @@ A sample search would be `/server/api/ldn/notifyrequests/_itemuuid_'
         {
             "serviceName": "NS",
             "serviceUrl": "2f4ec582-109e-4952-a94a-b7d7615a8c69",
+            "offerType": "Request",
             "status": "REJECTED"
         }
     ],
