@@ -26,8 +26,7 @@ For example:
 * 404 Not found - if the property doesn't exist or isn't configured to be exposed
 
 ## Search methods
-### top
-**/api/config/properties/search/exposed**
+**/api/config/properties/search/isExposed**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
