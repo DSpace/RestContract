@@ -8,27 +8,22 @@ It returns the list of the Quality Assurance Broker topics.
 [
 
   {
-    id: "ENRICH!MORE!PID",
-    type: "qualityassurancetopic",
-    name: "ENRICH/MORE/PID",
+    key: "ENRICH!MORE!PID",
     lastEvent: "2020/10/09 10:11 UTC",
-    totalSuggestions: "33"
+    totalEvents: "33"
   },
   {
-    id: "ENRICH!MISSING!ABSTRACT",
-    type: "qualityassurancetopic",
-    name: "ENRICH/MISSING/ABSTRACT",
+    key: "ENRICH!MISSING!ABSTRACT",
     lastEvent: "2020/10/09 10:11 UTC",
-    totalSuggestions: "21"
+    totalEvents: "21"
   },
   ...
 ]
 ```
 Attributes:
-* name: the name of the topic to display on the frontend user interface
+* key: the name of the topic to display on the frontend user interface
 * lastEvent: the date of the last update from Quality Assurance Broker
 * totalEvents: the total number of quality assurance events provided by Quality Assurance Broker for this topic
-* id: is the identifier to use in GET Single Topic
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -41,15 +36,13 @@ Return codes:
 Provide detailed information about a specific Quality Assurance Broker topic. The JSON response document is as follow
 ​
 ```json
-{
-  id: "ENRICH!MORE!PID",
-  type: "qualityassurancetopic",
-  name: "ENRICH/MORE/PID",
-  lastEvent: "2020/10/09 10:11 UTC",
-  totalEvents: 33
-}
- ```
-​
+  {
+    key: "ENRICH!MORE!PID",
+    lastEvent: "2020/10/09 10:11 UTC",
+    totalEvents: "33"
+  }
+```
+
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated

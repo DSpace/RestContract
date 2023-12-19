@@ -34,7 +34,7 @@ Provide detailed information about a specific workflowitem. The JSON response do
   	 },
   	 "license": {
   	 	acceptanceDate: "2017-06-24T00:40:54.970+0000",
-  	 	url: "https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
+  	 	url: "https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content"
   	 },
   	 "uploads": [ 
   	 	{
@@ -47,7 +47,7 @@ Provide detailed information about a specific workflowitem. The JSON response do
 			    "checkSumAlgorithm": "MD5",
 			    "value": "9d8f0f9e369cf12159d47c146c499cf4"
 			},
-  	 		"url": "https://api7.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+  	 		"url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
   	 		"accessConditions": [
   	 			{
   	 				"id": 123,

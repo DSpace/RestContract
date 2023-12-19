@@ -311,7 +311,7 @@ Update the eperson linked by this resource policy
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/authz/resourcepolicies/3/eperson' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/eperson/epersons/ba05e3dd-aa20-4441-ac05-8ceef6f67ac7'
+curl -i -X PUT 'https://demo.dspace.org/server/api/authz/resourcepolicies/3/eperson' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/eperson/epersons/ba05e3dd-aa20-4441-ac05-8ceef6f67ac7'
 ```
 The uri-list should always contain exactly 1 eperson. This eperson will be assigned to the resource policy
 
@@ -343,7 +343,7 @@ Update the group linked by this resource policy
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/authz/resourcepolicies/4/group' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/eperson/groups/db337ae5-abd2-4a28-b4ad-918cf7779e25'
+curl -i -X PUT 'https://demo.dspace.org/server/api/authz/resourcepolicies/4/group' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/eperson/groups/db337ae5-abd2-4a28-b4ad-918cf7779e25'
 ```
 The uri-list should always contain exactly 1 group. This group will be assigned to the resource policy
 

@@ -18,10 +18,10 @@ Provides information about a single supervision order defined into the system
   "id": 42,
   "_links": {
     "item": {
-      "href": "https://api7.dspace.org/server/api/core/items/092b59e8-8159-4e70-98b5-93ec60bd3431"
+      "href": "https://demo.dspace.org/server/api/core/items/092b59e8-8159-4e70-98b5-93ec60bd3431"
     },
     "group": {
-      "href": "https://api7.dspace.org/server/api/eperson/groups/4ebb837c-c2ae-4928-9bb1-6f51df4eeb60"
+      "href": "https://demo.dspace.org/server/api/eperson/groups/4ebb837c-c2ae-4928-9bb1-6f51df4eeb60"
     }
   }
 ```
@@ -69,7 +69,7 @@ The supported parameters are:
 
 A sample CURL command would be:
 ```
-curl -i -X POST 'https://api7.dspace.org/server/api/core/supervisionorders?uuid=<uuid>&group=<group uuid>&type=NONE' -H 'Authorization: Bearer eyJrasdfw…' 
+curl -i -X POST 'https://demo.dspace.org/server/api/core/supervisionorders?uuid=<uuid>&group=<group uuid>&type=NONE' -H 'Authorization: Bearer eyJrasdfw…' 
 ```
 
 * 201 Created - if the operation succeed
@@ -87,7 +87,7 @@ Delete a supervision order.
 
 A sample CURL command would be:
 ```
-curl -D - -XDELETE 'https://api7.dspace.org/server/api/core/supervisionorders/42'  -H 'Authorization: Bearer eyJhafsdf…'
+curl -D - -XDELETE 'https://demo.dspace.org/server/api/core/supervisionorders/42'  -H 'Authorization: Bearer eyJhafsdf…'
 ```
 
 Return codes:

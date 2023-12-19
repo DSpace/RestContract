@@ -6,7 +6,7 @@
 
 Provide access to the metadata fields defined in the registry (DBMS based). It returns the list of existent metadata fields.
 
-Example: <https://api7.dspace.org/server/#/server/api/core/metadatafields>
+Example: <https://demo.dspace.org/server/#/server/api/core/metadatafields>
 
 ## Single Metadata Field
 **/api/core/metadatafields/<:id>**
@@ -29,7 +29,7 @@ Exposed links:
 ### Schema
 **/api/core/metadatafields/<:id>/schema**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/metadatafields/8/schema>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/metadatafields/8/schema>
 
 It returns the metadata schema which the metadata field belongs. See the Metadata Schema endpoint for more info](metadataschemas.md#Single Metadata Schema)
 
@@ -38,7 +38,7 @@ It returns the metadata schema which the metadata field belongs. See the Metadat
 #### bySchema
 **/api/core/metadatafields/search/bySchema?schema=<:prefix>**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/metadatafields/search/bySchema?schema=dc>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/metadatafields/search/bySchema?schema=dc>
 
 The supported parameters are:
 * **(mandatory)** schema, the prefix of the metadata schema (i.e. "dc", "dcterms", "eperson, etc.)
