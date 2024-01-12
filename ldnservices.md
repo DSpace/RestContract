@@ -25,6 +25,8 @@ Return codes:
   "ldnUrl" : "https://service-name.org/ldn-inbox",
   "enabled" : true,
   "score" : "0.375",
+  "lowerIp" : "192.168.0.1",
+  "upperIp" : "192.168.0.5",
   "notifyServiceInboundPatterns" :
   [
     {
@@ -65,6 +67,8 @@ Status codes:
 * ldnUrl: the URL of the LDN Inbox
 * enabled: This proeprty is a simple boolean, it defines if the service is selected as one of the active ones
 * score: This property defines to the safety score assigned by the user
+* lowerIp: This property defines to the lowerIp of the ip range
+* upperIp: This property defines to upperIp of the ip range
 * inboundPatterns: an array that contains inbound pattern defined by 3 properties:
     * pattern: the defining pattern name for the pattern itself
     * constraint: a filter put in place during the pattern creation
@@ -89,6 +93,8 @@ Only administrator users can create LDN notify service. The content-type is JSON
   "ldnUrl": "https://service-name.org/ldn-inbox",
   "score" : "0.765",
   "enabled" : true,
+  "lowerIp" : "192.168.0.1",
+  "upperIp" : "192.168.0.5",
   "notifyServiceInboundPatterns":
   [
     {"pattern":"patternA","constraint":"itemFilterA","automatic":true},
@@ -324,6 +330,29 @@ to update enabled of ldn notify service
 ]
 ```
 
+to update the lowerIp of ldn notify service
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/lowerIp",
+    "value": "192.168.0.1"
+  }
+]
+```
+to update the upperIp of ldn notify service
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/upperIp",
+    "value": "192.168.0.5"
+  }
+]
+```
+
 to replace all inboundPatterns of ldn notify service,
 if value contains an empty array all inboundPatterns will be removed
 
@@ -436,7 +465,7 @@ to replace constraint of specific outboundPattern of ldn notify service
 
 ### Remove
 
-to remove name or ldnUrl from ldn notify service
+to remove name or ldnUrl or lowerIp or upperIp from ldn notify service
 
 ```json
 [
@@ -452,6 +481,24 @@ to remove name or ldnUrl from ldn notify service
   {
     "op": "remove",
     "path": "/ldnurl"
+  }
+]
+```
+
+```json
+[
+  {
+    "op": "remove",
+    "path": "/lowerIp"
+  }
+]
+```
+
+```json
+[
+  {
+    "op": "remove",
+    "path": "/upperIp"
   }
 ]
 ```
@@ -597,6 +644,8 @@ A sample search would be `/server/api/ldn/ldnservices/search/byLdnUrl?ldnUrl=ser
   "ldnUrl" : "https://service-one.org/ldn-inbox",
   "score" : "0.57",
   "enabled" : true,
+  "lowerIp" : "192.168.0.1",
+  "upperIp" : "192.168.0.5",
   "notifyServiceInboundPatterns" :
   [
     {
@@ -643,6 +692,8 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "ldnUrl" : "https://service.ldn.org/inbox",
       "score" : "0.675",
       "enabled" : false,
+      "lowerIp" : "192.168.0.1",
+      "upperIp" : "192.168.0.5",
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "request-review",
         "constraint" : "itemFilterA",
@@ -663,6 +714,8 @@ A sample search would be `/server/api/ldn/ldnservices/search/byInboundPattern?pa
       "ldnUrl" : "https://service-two.org/ldn-inbox",
       "score" : "0.34",
       "enabled" : true,
+      "lowerIp" : "192.168.0.1",
+      "upperIp" : "192.168.0.5",
       "notifyServiceInboundPatterns" : [ {
         "pattern" : "request-review",
         "constraint" : "itemFilterA",
