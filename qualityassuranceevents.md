@@ -123,3 +123,19 @@ Return codes:
 
 ### To replace a related item
 Replacing a related item will require deleting the related association and creating a new association hereafter
+
+### Get qualityassuranceevents created by the current user
+**GET /api/integration/qualityassuranceevents/search/findByCurrentUser?target=<:item-uuid>[&size=10&page=0]**
+
+It returns the list of qa events created from the current user
+
+The supported parameters are:
+* target: mandatory. The uuid of the item target of the returned quality assurance events
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the target parameter is missing or is not a UUID
+* 422 Unprocessable Entity - it the target parameter doesn't resolve to a valid item
+
+Provide paginated list of the qa events for the specified target item created by the current user. An empty page is returned for unauthenticated users
