@@ -17,7 +17,16 @@ Returns the list of configured COAR notify patterns to be offered during the sub
   "_embedded" : {
     "submissioncoarnotifyconfigs" : [ {
       "id" : "coarnotify",
-      "patterns" : [ "request-review", "request-endorsement", "request-ingest" ],
+      "patterns" : [ {
+        "pattern" : "request-review",
+        "multipleRequest" : true
+      }, {
+        "pattern" : "request-endorsement",
+        "multipleRequest" : true
+      }, {
+        "pattern" : "request-ingest",
+        "multipleRequest" : false
+      } ],
       "type" : "submissioncoarnotifyconfig",
       "_links" : {
         "self" : {
@@ -54,7 +63,16 @@ Provide detailed information about a specific COAR notify.
 ```json
 {
   "id" : "coarnotify",
-  "patterns" : [ "request-review", "request-endorsement", "request-ingest" ],
+  "patterns" : [ {
+    "pattern" : "request-review",
+    "multipleRequest" : true
+  }, {
+    "pattern" : "request-endorsement",
+    "multipleRequest" : true
+  }, {
+    "pattern" : "request-ingest",
+    "multipleRequest" : false
+  } ],
   "type" : "submissioncoarnotifyconfig",
   "_links" : {
     "self" : {
