@@ -5,11 +5,25 @@ Provide access to the Quality Assurance topics. A topic represents a specific ty
 This method is not implemented as we haven't a use case that require to iterate over all the qa topics regardless of their source. Please use the search/bySource method instead.
 
 
+```json
+  {
+    key: "ENRICH!MORE!PID",
+    lastEvent: "2020/10/09 10:11 UTC",
+    totalEvents: "33"
+  },
+  {
+    key: "ENRICH!MISSING!ABSTRACT",
+    lastEvent: "2020/10/09 10:11 UTC",
+    totalEvents: "21"
+  },
+  ...
+]
+```
 Attributes:
-* name: the name of the topic to display on the frontend user interface
+* key: the name of the topic to display on the frontend user interface
 * lastEvent: the date of the last update from Quality Assurance Broker
 * totalEvents: the total number of quality assurance events provided by Quality Assurance Broker for this topic
-* id: is the identifier to use in GET Single Topic. It is composed of the source, the topic name and optionally the target item uuid to which the data will be restricted
+
 
 Return codes:
 * 200 OK - if the operation succeed
@@ -22,6 +36,7 @@ Return codes:
 Provide detailed information about a specific Quality Assurance Broker topic. The JSON response document is as follow
 ​
 ```json
+
 {
   id: "openaire:ENRICH!MORE!PID",
   type: "qualityassurancetopic",
@@ -30,7 +45,7 @@ Provide detailed information about a specific Quality Assurance Broker topic. Th
   totalEvents: 33
 }
 ```
-​
+
 Return codes:
 * 200 OK - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
