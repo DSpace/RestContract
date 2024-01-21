@@ -13,5 +13,6 @@ cclicense | [/config/submissioncclicenses](submissioncclicenses.md) | [example](
 access | [/config/submissionaccessoptions](submissionaccessoptions.md) | [example](workspaceitem-data-access.md)
 sherpaPolicies | n/a | [example](workspaceitem-data-sherpa-policy.md)
 identifiers | n/a | [example](workspaceitem-data-identifiers.md)
+duplicates | n/a | [example](workspaceitem-data-duplicates.md)
 
 n/a --> not applicable. The sectionType doesn't require/support any extra configuration

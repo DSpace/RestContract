@@ -569,6 +569,26 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
 * 404 Not found - if the item doesn't exist
 
+### Get potential duplicates of an item
+**GET /api/core/items/{:item-uuid}/duplicates**
+
+Provides a list of items that may be duplicates, if this feature is enabled.
+
+The potential duplicates listed in the section have all been detected by a special Solr search that compares the
+levenshtein edit distance between the in-progress item title and other item titles (normalised).
+
+Each potential duplicate has the following attributes:
+
+* title: The item title
+* uuid: The item UUID
+* owningCollectionName: Name of the owning collection, if present
+* workspaceItemId: Integer ID of the workspace item, if present
+* workflowItemId: Integer ID of the workflow item, if present
+* metadata: A list of metadata values copied from the item, as per configuration
+* type: The value is always DUPLICATE. This is the 'type' category used for serialization/deserialization.
+
+See `dspace/config/modules/duplicate-detection.cfg` for configuration properties and examples.
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**
