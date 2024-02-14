@@ -1,6 +1,68 @@
 # LDN Notify Services Endpoints
 [Back to the list of all defined endpoints](endpoints.md)
 
+## Inbox Endpoint
+**/api/ldn/inbox**
+
+Active only if config ldn.enabled is true. This is the inbox of Notification json
+(see org.dspace.app.ldn.model.Notification model): when accepted an instance
+of LdnMessageEntity is created and stored. See documentation at: 
+https://wiki.lyrasis.org/pages/viewpage.action?pageId=319815713
+where json Notification examples are shared into a ready-to-use PostMan collection.
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://purl.org/coar/notify"
+  ],
+  "actor": {
+    "id": "https://research-organisation.org",
+    "name": "Research Organisation",
+    "type": "Organization"
+  },
+  "context": {
+    "id": "http://localhost:4000/handle/123456789/1119",
+    "ietf:cite-as": "https://doi.org/10.5555/12345680",
+    "type": "sorg:AboutPage",
+    "url": {
+      "id": "https://another-research-organisation.org/repository/datasets/item/201203421/data_archive.zip",
+      "mediaType": "application/zip",
+      "type": [
+        "Article",
+        "sorg:Dataset"
+      ]
+    }
+  },
+  "id": "urn:uuid:2f4ec582-109e-4952-a94a-b7d7615a8c69",
+  "object": {
+    "as:object": "newValue",
+    "as:relationship": "somethingElse",
+    "as:subject": "https://research-organisation.org/repository/item/201203/421/",    
+    "id": "http://localhost:4000/handle:123456789/1119",
+    "type": "Relationship"
+  },
+  "origin": {
+    "id": "https://research-organisation.org/repository",
+    "inbox": "2f4ec582-109e-4952-a94a-b7d7615a8c69",
+    "type": "Service"
+  },
+  "target": {
+    "id": "https://another-research-organisation.org/repository",
+    "inbox": "https://another-research-organisation.org/inbox/",
+    "type": "Service"
+  },
+  "type": [
+    "Announce",
+    "coar-notify:RelationshipAction"
+  ]
+}
+```
+Return codes:
+* 200 OK - if the operation succeed, respose echoes the same id in the request
+* 422 Unprocessable Entity - if Error parsing request body
+* 500 Forbidden is not possible because it is restricted to authenticated users
+
 ## Main Endpoint
 **/api/ldn/ldnservices**
 
