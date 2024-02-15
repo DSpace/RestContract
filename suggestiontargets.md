@@ -4,7 +4,7 @@
 ## Main Endpoint
 **/api/integration/suggestiontargets**   
 
-_Unsupported._ The suggestion targets can be retrieved only by source or by target, see the search methods below. 
+_Unsupported._ The suggestion targets can be retrieved only by target and/or by source, see the search methods below. 
 
 ### single entry
 **GET api/integration/suggestiontargets/<source:target-id>**
@@ -21,13 +21,13 @@ sample for a suggestion /api/integration/suggestiontargets/scopus:nhy567-9d6d-ty
     "type": "suggestiontarget",
     "_links": {
       "target": {
-        "href": "https://dspace7.4science.cloud/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
+        "href": "https://demo.dspace.org/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
       },
       "suggestions": {
-        "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26"
+        "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26"
       },
       "self": {
-        "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/scopus:nhy567-9d6d-ty67-b905-fef0f8cae26"
+        "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/scopus:nhy567-9d6d-ty67-b905-fef0f8cae26"
       }
     }
 }
@@ -72,13 +72,13 @@ Example:
         "type": "suggestiontarget",
         "_links": {
           "target": {
-            "href": "https://dspace7.4science.cloud/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
           },
           "suggestions": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
+            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26"
           }
         }
       },
@@ -90,13 +90,13 @@ Example:
         "type": "suggestiontarget",
         "_links": {
           "target": {
-            "href": "https://dspace7.4science.cloud/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
           },
           "suggestions": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26&source=reciter"
+            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26&source=reciter"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/reciter:nhy567-9d6d-ty67-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/reciter:nhy567-9d6d-ty67-b905-fef0f8cae26"
           }
         }
       }
@@ -104,7 +104,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/search/findBySource?source=reciter"
+      "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/search/findBySource?source=reciter"
     }
   },
   "page": {
@@ -144,13 +144,13 @@ Example:
         "type": "suggestiontarget",
         "_links": {
           "target": {
-            "href": "https://dspace7.4science.cloud/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
           },
           "suggestions": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
+            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26"
           }
         }
       },
@@ -162,13 +162,13 @@ Example:
         "type": "suggestiontarget",
         "_links": {
           "target": {
-            "href": "https://dspace7.4science.cloud/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
           },
           "suggestions": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26&source=scopus"
+            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26&source=scopus"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/scopus:gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/scopus:gf3d657-9d6d-4a87-b905-fef0f8cae26"
           }
         }
       }
@@ -176,7 +176,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/search/findByTarget?target=gf3d657-9d6d-4a87-b905-fef0f8cae26"
+      "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/search/findByTarget?target=gf3d657-9d6d-4a87-b905-fef0f8cae26"
     }
   },
   "page": {

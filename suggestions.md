@@ -18,7 +18,7 @@ sample for a suggestion /api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b
     "display": "publication one",
     "source": "reciter",
     "score": "62.7",
-    "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
+    "externalSourceUri": "https://demo.dspace.org/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
     "evidences": {
       "acceptedRejectedEvidence": {
         "score": "2.7",
@@ -87,10 +87,10 @@ sample for a suggestion /api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b
     "type": "suggestion",
     "_links": {
       "target": {
-        "href": "https://dspace7.4science.cloud/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
+        "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
       },
       "self": {
-        "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26:24694772"
+        "href": "https://demo.dspace.org/server/api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26:24694772"
       }
     }
 }
@@ -115,12 +115,12 @@ sample for a search /server/api/integration/suggestions/search/findByTargetAndSo
 ```json
 {
   "_embedded": {
-    "reciterSourceEntries": [
+    "suggestions": [
 {
         "id": "24694772",
         "display": "publication one",
         "source": "reciter",
-        "external-source-uri": "https://dspace7.4science.cloud/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
+        "externalSourceUri": "https://demo.dspace.org/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
         "evidences": {
           "acceptedRejectedEvidence": {
             "score": "2.7",
@@ -189,10 +189,10 @@ sample for a search /server/api/integration/suggestions/search/findByTargetAndSo
         "type": "suggestion",
         "_links": {
           "target": {
-            "href": "https://dspace7.4science.cloud/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
+            "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
           },
           "self": {
-            "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26c:24694772"
+            "href": "https://demo.dspace.org/server/api/integration/suggestions/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26c:24694772"
           }
         }
       }
@@ -200,7 +200,7 @@ sample for a search /server/api/integration/suggestions/search/findByTargetAndSo
   },
   "_links": {
     "self": {
-      "href": "https://dspace7.4science.cloud/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
+      "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
     }
   },
   "page": {

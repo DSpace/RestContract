@@ -18,9 +18,6 @@ sample for a source /api/integration/suggestionsources/reciter
     "total": 2,
     "type": "suggestionsource",
     "_links": {
-      "suggestiontargets": {
-        "href": "https://dspace7.4science.cloud/server/api/integration/suggestiontargets/search/findBySource?source=reciter"
-      },
       "self": {
         "href": "https://dspace7.4science.cloud/server/api/integration/suggestionsources/reciter"
       }
@@ -33,7 +30,7 @@ Attributes
 * the *total* attribute is the number of target with suggestions. It can be 0 if there are no target with suggestions
 
 Exposed links:
-* suggestiontargets: link to the suggestion targets entries
+
 
 Status codes:
 * 200 Ok - if the operation succeed
