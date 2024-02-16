@@ -11,25 +11,23 @@ _Unsupported._ The suggestion targets can be retrieved only by target and/or by 
 
 It returns the data from one target. This endpoint is accessible to the owner of the target profile and to the administrators
 
-sample for a suggestion /api/integration/suggestiontargets/scopus:nhy567-9d6d-ty67-b905-fef0f8cae26
+sample for a suggestion /api/integration/suggestiontargets/openaire%3Abbb7feb2-7099-44cd-a896-1d47305a6a44
+
 ```json
 {
-    "id": "scopus:nhy567-9d6d-ty67-b905-fef0f8cae26",
-    "display": "Digilio, Giuseppe",
-    "source": "scopus",
-    "total": 3,
-    "type": "suggestiontarget",
-    "_links": {
-      "target": {
-        "href": "https://demo.dspace.org/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
-      },
-      "suggestions": {
-        "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26"
-      },
-      "self": {
-        "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/scopus:nhy567-9d6d-ty67-b905-fef0f8cae26"
-      }
+  "id" : "openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44",
+  "display" : "Andrea Bollini",
+  "source" : "openaire",
+  "total" : 10,
+  "type" : "suggestiontarget",
+  "_links" : {
+    "target" : {
+      "href" : "http://localhost:8080/server/api/integration/suggestiontargets/openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44/target"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/server/api/integration/suggestiontargets/openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44"
     }
+  }
 }
 ```
 
@@ -40,7 +38,6 @@ Attributes
 
 Exposed links:
 * target: link to the items that represent the person to whom the suggestions are proposed
-* suggestions: link to the suggestions entries
 
 Status codes:
 * 200 Ok - if the operation succeed
@@ -59,59 +56,37 @@ The supported parameters are:
 
 It returns the list of targets with their suggestion count for the specified source. Only targets that have at least one suggestion are returned. This endpoint is reserved to administrators
 
-Example:
+Sample of a resposne for /api/integration/suggestiontargets/search/findBySource?page=0&size=10&sort=display,ASC&source=openaire
+
 ```json
 {
-  "_embedded": {
-    "suggestiontargets": [
-      {
-        "id": "reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26",
-        "display": "Bollini, Andrea",
-        "source": "reciter",
-        "total": 31,
-        "type": "suggestiontarget",
-        "_links": {
-          "target": {
-            "href": "https://demo.dspace.org/server/api/core/items/gf3d657-9d6d-4a87-b905-fef0f8cae26"
-          },
-          "suggestions": {
-            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=gf3d657-9d6d-4a87-b905-fef0f8cae26c&source=reciter"
-          },
-          "self": {
-            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/reciter:gf3d657-9d6d-4a87-b905-fef0f8cae26"
-          }
-        }
-      },
-      {
-        "id": "reciter:nhy567-9d6d-ty67-b905-fef0f8cae26",
-        "display": "Digilio, Giuseppe",
-        "source": "reciter",
-        "total": 12,
-        "type": "suggestiontarget",
-        "_links": {
-          "target": {
-            "href": "https://demo.dspace.org/server/api/core/items/nhy567-9d6d-ty67-b905-fef0f8cae26"
-          },
-          "suggestions": {
-            "href": "https://demo.dspace.org/server/api/integration/suggestions/search/findByTargetAndSource?target=nhy567-9d6d-ty67-b905-fef0f8cae26&source=reciter"
-          },
-          "self": {
-            "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/reciter:nhy567-9d6d-ty67-b905-fef0f8cae26"
-          }
+  "_embedded" : {
+    "suggestiontargets" : [ {
+      "id" : "openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44",
+      "display" : "Andrea Bollini",
+      "source" : "openaire",
+      "total" : 10,
+      "type" : "suggestiontarget",
+      "_links" : {
+        "target" : {
+          "href" : "http://localhost:8080/server/api/integration/suggestiontargets/openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44/target"
+        },
+        "self" : {
+          "href" : "http://localhost:8080/server/api/integration/suggestiontargets/openaire:bbb7feb2-7099-44cd-a896-1d47305a6a44"
         }
       }
-    ]
+    } ]
   },
-  "_links": {
-    "self": {
-      "href": "https://demo.dspace.org/server/api/integration/suggestiontargets/search/findBySource?source=reciter"
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/server/api/integration/suggestiontargets/search/findBySource?page=0&size=10&sort=display,ASC&source=openaire"
     }
   },
-  "page": {
-    "size": 20,
-    "totalElements": 2,
-    "totalPages": 1,
-    "number": 0
+  "page" : {
+    "size" : 10,
+    "totalElements" : 1,
+    "totalPages" : 1,
+    "number" : 0
   }
 }
 ```
