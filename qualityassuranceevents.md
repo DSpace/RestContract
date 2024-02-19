@@ -20,6 +20,7 @@ Return a single quality assurance event:
   "originalId": "oai:www.openstarts.units.it:10077/21486",
   "title":"Index nominum et rerum",
   "trust":"0.375",
+  "topic":"ENRICH/MISSING/ABSTRACT",
   "eventDate": "2020/10/09 10:11 UTC",
   "status": "PENDING",
   "message" : {
@@ -42,13 +43,13 @@ Attributes
 * the *originalId* attribute is the identifier used by the event's source for the target publication
 * the *title* attribute is the title of the publication as provided by the correction's source
 * the *trust* attribute is the level of accuracy of the quality assurance event (values from 0.00 to 1.00)
+* the *topic* attribute is the name of the topic of the event
 * the *status* attribute is one of (ACCEPTED, REJECTED, DISCARDED, PENDING)
 * the *eventDate* attribute is the timestamp of the event reception
 * the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the "topic" type is
     * ENRICH/MISSING/PID and ENRICH/MORE/PID: fills `message.type` with the type of persistent identifier (doi, pmid, etc.) and `message.value` with the corresponding value
     * ENRICH/MISSING/ABSTRACT: fills `message.abstract`
-    * ENRICH/MISSING/SUBJECT/ACM: fills the `message.value` with the actual keywords, the subject classification is defined by the last part of the topic (ACM, JEL, DDC, etc.)
-    * ENRICH/MISSING/PROJECT: fills `acronym`, `code`, `funder`, `fundingProgram`, `jurisdiction` and `title`
+    * ENRICH/MISSING/PROJECT and ENRICH/MORE/PROJECT: fills `acronym`, `code`, `funder`, `fundingProgram`, `jurisdiction` and `title`
 
 Exposed links:
 * topic: link to the topic to which the event belong to (see [qualityassurancetopics](qualityassurancetopics.md))

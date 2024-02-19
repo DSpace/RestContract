@@ -29,16 +29,16 @@ Provide detailed information about a specific bundle. A sample JSON response doc
   "type": "bundle",
   "_links" : {
     "primarybitstream" : {
-      "href" : "https://api7.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
+      "href" : "https://demo.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
     },
     "bitstreams" : {
-      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
+      "href" : "https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams"
     },
     "item" : {
-      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
+      "href" : "https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/item"
     },
     "self" : {
-      "href" : "https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+      "href" : "https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
     }
   },
    "_embedded" : {
@@ -79,13 +79,13 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         "type" : "bitstream",
         "_links" : {
           "content" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/content"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/content"
           },
           "format" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/format"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14/format"
           },
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }, {
@@ -125,13 +125,13 @@ Provide detailed information about a specific bundle. A sample JSON response doc
         "type" : "bitstream",
         "_links" : {
           "content" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/content"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/content"
           },
           "format" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/format"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc/format"
           },
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       }
@@ -157,7 +157,7 @@ Deleting a bundle will delete all bitstreams in the bundle
 
 **GET /api/core/bundles/<:uuid>/bitstreams**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
 It returns the bitstreams within this bundle. See the [bitstream endpoint](bitstreams.md#Single-Bitstream) for more info
 
@@ -168,11 +168,11 @@ The supported parameters are:
 
 TODO: the item has to be known as well when creating a new bitstream. See https://jira.duraspace.org/browse/DS-4317?focusedCommentId=63099&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-63099
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
 Curl example:
 ```
-curl 'https://api7.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams' \
+curl 'https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams' \
  -XPOST -H 'Content-Type: multipart/form-data' \
  -H 'Authorization: Bearer eyJhbGciOiJI...' \
  -F "file=@Downloads/test.html" \
@@ -231,7 +231,7 @@ Current list of bitstreams:
         "uuid" : "1ce6db0e-662f-4a13-ba87-c371ad664b14",
         "_links" : {
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }, {
@@ -239,7 +239,7 @@ Current list of bitstreams:
         "uuid" : "4dd9621f-a464-4192-bc17-d70f68845bdc",
         "_links" : {
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       }
@@ -269,7 +269,7 @@ New list of bitstreams:
         "uuid" : "4dd9621f-a464-4192-bc17-d70f68845bdc",
         "_links" : {
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/4dd9621f-a464-4192-bc17-d70f68845bdc"
           }
         }
       },
@@ -278,7 +278,7 @@ New list of bitstreams:
         "uuid" : "1ce6db0e-662f-4a13-ba87-c371ad664b14",
         "_links" : {
           "self" : {
-            "href" : "https://api7.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
+            "href" : "https://demo.dspace.org/server/api/core/bitstreams/1ce6db0e-662f-4a13-ba87-c371ad664b14"
           }
         }
       }

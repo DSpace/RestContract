@@ -694,7 +694,7 @@ The JSON response document is as follow
         "hasMinMaxValues": true,
         "_links": {
           "self": {
-            "href": "https://api7.dspace.org/server/api/discover/facets/dateissued"
+            "href": "https://demo.dspace.org/server/api/discover/facets/dateissued"
           }
         }
       },
@@ -704,7 +704,7 @@ The JSON response document is as follow
         "facetLimit": 2,
         "_links": {
           "self": {
-            "href": "https://api7.dspace.org/server/api/discover/facets/has_content_in_original_bundle"
+            "href": "https://demo.dspace.org/server/api/discover/facets/has_content_in_original_bundle"
           }
         }
       }
@@ -817,7 +817,7 @@ Example
   "type" : "discover",
   "_links" : {
     "self" : {
-      "href" : "https://api7.dspace.org/server/api/discover/search/objects?configuration=workspace"
+      "href" : "https://demo.dspace.org/server/api/discover/search/objects?configuration=workspace"
     }
   },
   "_embedded" : {
@@ -828,7 +828,7 @@ Example
           "type" : "discover",
           "_links" : {
             "indexableObject" : {
-              "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8"
+              "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8"
             }
           },
           "_embedded" : {
@@ -864,19 +864,19 @@ Example
               "type" : "workspaceitem",
               "_links" : {
                 "collection" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8/collection"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8/collection"
                 },
                 "item" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8/item"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8/item"
                 },
                 "submissionDefinition" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8/submissionDefinition"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8/submissionDefinition"
                 },
                 "submitter" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8/submitter"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8/submitter"
                 },
                 "self" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/8"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/8"
                 }
               },
               "_embedded" : {
@@ -898,7 +898,7 @@ Example
           "type" : "discover",
           "_links" : {
             "indexableObject" : {
-              "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9"
+              "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9"
             }
           },
           "_embedded" : {
@@ -934,19 +934,19 @@ Example
               "type" : "workspaceitem",
               "_links" : {
                 "collection" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9/collection"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9/collection"
                 },
                 "item" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9/item"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9/item"
                 },
                 "submissionDefinition" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9/submissionDefinition"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9/submissionDefinition"
                 },
                 "submitter" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9/submitter"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9/submitter"
                 },
                 "self" : {
-                  "href" : "https://api7.dspace.org/server/api/submission/workspaceitems/9"
+                  "href" : "https://demo.dspace.org/server/api/submission/workspaceitems/9"
                 }
               },
               "_embedded" : {
@@ -968,7 +968,7 @@ Example
           "type" : "discover",
           "_links" : {
             "indexableObject" : {
-              "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3"
+              "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3"
             }
           },
           "_embedded" : {
@@ -1004,19 +1004,19 @@ Example
               "type" : "workflowitem",
               "_links" : {
                 "collection" : {
-                  "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3/collection"
+                  "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3/collection"
                 },
                 "item" : {
-                  "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3/item"
+                  "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3/item"
                 },
                 "submissionDefinition" : {
-                  "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3/submissionDefinition"
+                  "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3/submissionDefinition"
                 },
                 "submitter" : {
-                  "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3/submitter"
+                  "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3/submitter"
                 },
                 "self" : {
-                  "href" : "https://api7.dspace.org/server/api/workflow/workflowitems/3"
+                  "href" : "https://demo.dspace.org/server/api/workflow/workflowitems/3"
                 }
               },
 			"_embedded" : {
@@ -1038,7 +1038,7 @@ Example
       },
       "_links" : {
         "self" : {
-          "href" : "https://api7.dspace.org/server/api/discover/search/objects?configuration=workspace"
+          "href" : "https://demo.dspace.org/server/api/discover/search/objects?configuration=workspace"
         }
       },
       "page" : {
@@ -1054,7 +1054,7 @@ Example
       "facetLimit" : 10,
       "_links" : {
         "self" : {
-          "href" : "https://api7.dspace.org/server/api/discover/facets/namedresourcetype?configuration=workspace"
+          "href" : "https://demo.dspace.org/server/api/discover/facets/namedresourcetype?configuration=workspace"
         }
       },
       "page" : {
@@ -1068,7 +1068,7 @@ Example
           "type" : "discover",
           "_links" : {
             "search" : {
-              "href" : "https://api7.dspace.org/server/api/discover/search/objects?configuration=workspace&f.namedresourcetype=workspace,authority"
+              "href" : "https://demo.dspace.org/server/api/discover/search/objects?configuration=workspace&f.namedresourcetype=workspace,authority"
             }
           }
         }, {
@@ -1077,7 +1077,7 @@ Example
           "type" : "discover",
           "_links" : {
             "search" : {
-              "href" : "https://api7.dspace.org/server/api/discover/search/objects?configuration=workspace&f.namedresourcetype=workflow,authority"
+              "href" : "https://demo.dspace.org/server/api/discover/search/objects?configuration=workspace&f.namedresourcetype=workflow,authority"
             }
           }
         } ]
@@ -1088,7 +1088,7 @@ Example
       "facetLimit" : 10,
       "_links" : {
         "self" : {
-          "href" : "https://api7.dspace.org/server/api/discover/facets/itemtype?configuration=workspace"
+          "href" : "https://demo.dspace.org/server/api/discover/facets/itemtype?configuration=workspace"
         }
       },
       "_embedded" : {
@@ -1102,7 +1102,7 @@ Example
       "maxValue" : "2010-11-03",
       "_links" : {
         "self" : {
-          "href" : "https://api7.dspace.org/server/api/discover/facets/dateIssued?configuration=workspace"
+          "href" : "https://demo.dspace.org/server/api/discover/facets/dateIssued?configuration=workspace"
         }
       },
       "page" : {
@@ -1116,7 +1116,7 @@ Example
           "type" : "discover",
           "_links" : {
             "search" : {
-              "href" : "https://api7.dspace.org/server/api/discover/search/objects?configuration=workspace&f.dateIssued=2010,equals"
+              "href" : "https://demo.dspace.org/server/api/discover/search/objects?configuration=workspace&f.dateIssued=2010,equals"
             }
           }
         } ]

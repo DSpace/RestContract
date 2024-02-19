@@ -22,10 +22,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/srsc/entries"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/srsc/entries"
           },
           "self": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/srsc"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/srsc"
           }
         }
       },
@@ -37,10 +37,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/srsc/entries"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/srsc/entries"
           },
           "self": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/srsc"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/srsc"
           }
         }
       },
@@ -52,10 +52,10 @@ Example:
         "type": "vocabulary",
         "_links": {
           "entries": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_iso_languages/entries"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_iso_languages/entries"
           },
           "self": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_iso_languages"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_iso_languages"
           }
         }
       }
@@ -63,7 +63,7 @@ Example:
   },
   "_links": {
     "self": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies"
     }
   },
   "page": {
@@ -142,16 +142,16 @@ sample for the vocabulary common_types defined via a value pairs in the submissi
   },
   "_links": {
     "first": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
     },
     "self": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?size=2"
     },
     "next": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?page=1&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?page=1&size=2"
     },
     "last": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?page=10&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?page=10&size=2"
     }
   },
   "page": {
@@ -183,13 +183,13 @@ extra sample filtering the suggestion with the term Book
   },
   "_links": {
     "first": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
     },
     "self": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?size=2"
     },
     "last": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?page=0&size=2"
     }
   },
   "page": {
@@ -220,7 +220,7 @@ sample for a hierarchical authority  (srsc):
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularyEntryDetails/srsc:VR131402"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularyEntryDetails/srsc:VR131402"
           }
         }
       },
@@ -236,7 +236,7 @@ sample for a hierarchical authority  (srsc):
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularyEntryDetails/srsc:VR131403"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularyEntryDetails/srsc:VR131403"
           }
         }
       }
@@ -244,16 +244,16 @@ sample for a hierarchical authority  (srsc):
   },
   "_links": {
     "first": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=0"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=0"
     },
     "self": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2"
     },
     "next": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=1"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=1"
     },
     "last": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=12"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/common_types/entries?filter=Research&size=2&page=12"
     }
   },
   "page": {
@@ -279,20 +279,20 @@ sample for a vocabulary providing an authority value
         "type": "vocabularyEntry",
         "_links": {
           "vocabularyEntryDetail": {
-            "href": "https://api7.dspace.org/server/api/submission/vocabularyEntryDetails/SolrAuthorAuthority:42768ba6-0ba1-4aa3-971e-9c4e27fd7558"
+            "href": "https://demo.dspace.org/server/api/submission/vocabularyEntryDetails/SolrAuthorAuthority:42768ba6-0ba1-4aa3-971e-9c4e27fd7558"
           }
         }
       }]
   },
   "_links": {
     "first": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?page=0&size=1"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?page=0&size=1"
     },
     "self": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?size=1"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?size=1"
     },
     "last": {
-      "href": "https://api7.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?page=0&size=1"
+      "href": "https://demo.dspace.org/server/api/submission/vocabularies/SolrAuthorAuthority/entries?page=0&size=1"
     }
   },
   "page": {

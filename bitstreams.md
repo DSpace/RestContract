@@ -41,7 +41,7 @@ Bitstream metadata can be modified as described in [Modifying metadata via Patch
 ### Format
 **GET /api/core/bitstreams/<:uuid>/format**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/format>
 
 It returns the format of the bitstream
 
@@ -51,7 +51,7 @@ Update the bitstream format of the bitstream
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/bitstreamformats/6'
+curl -i -X PUT 'https://demo.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/bitstreamformats/6'
 ```
 
 The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
@@ -73,7 +73,7 @@ Keep in mind that there's a change to dc.format in the API related to bitstream 
 ### Bundle
 **GET /api/core/bitstreams/<:uuid>/bundle**
 
-Example: <https://api7.dspace.org/server/#https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/bundle>
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/bundle>
 
 It returns the bundle of the bitstream
 
@@ -83,7 +83,7 @@ Move the bitstream to another bundle
 
 Sample CURL command:
 ```
-curl -i -X PUT 'https://api7.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/bundle' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://api7.dspace.org/server/api/core/bundles/0b3c0ebf-83bc-4017-afa1-9df37a1a065c'
+curl -i -X PUT 'https://demo.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/bundle' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/bundles/0b3c0ebf-83bc-4017-afa1-9df37a1a065c'
 ```
 
 The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
@@ -98,7 +98,7 @@ Error codes:
 ### Content
 **/api/core/bitstreams/<:uuid>/content**
 
-Example: <https://api7.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
+Example: <https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/content>
 
 It returns the actual content (bits) described by the bitstream
 
