@@ -20,42 +20,14 @@ sample for a suggestion /api/integration/suggestions/openaire:gf3d657-9d6d-4a87-
     "score": "62.7",
     "externalSourceUri": "https://demo.dspace.org/server/api/integration/reciterSourcesEntry/pubmed/entryValues/24694772",
     "evidences": {
-      "acceptedRejectedEvidence": {
-        "score": "2.7",
-        "notes": "some notes, eventually empty or null"
-      },
-      "authorNameEvidence": {
-        "score": "0",
-        "notes": "some notes, eventually empty or null"
-      },
-      "journalCategoryEvidence": {
-        "score": "6",
-        "notes": "some notes, eventually empty or null"
-      },
-      "affiliationEvidence": {
-        "score": "23.7",
-        "notes": "some notes, eventually empty or null"
-      },
-      "relationshipEvidence": {
-        "score": "9",
-        "notes": "some notes, eventually empty or null"
-      },
-      "educationYearEvidence": {
-        "score": "3.6",
-        "notes": "some notes, eventually empty or null"
-      },
-      "personTypeEvidence": {
-        "score": "4",
-        "notes": "some notes, eventually empty or null"
-      },
-      "articleCountEvidence": {
-        "score": "6.7",
-        "notes": "some notes, eventually empty or null"
-      },
-      "averageClusteringEvidence": {
-        "score": "7",
-        "notes": "some notes, eventually empty or null"
-      }
+        "AuthorNamesScorer" : {
+          "score" : "100.00",
+          "notes" : "The author Andrea Bollini at position 2 in the authors list matches the name Andrea Bollini in the researcher profile"
+        },
+        "DateScorer" : {
+          "score" : "0.00",
+          "notes" : "No assumption was possible about the publication year range. Please consider to set a min/max date in the profile, specify the birthday or education achievements"
+        }
     },
     "metadata": {
         "dc.identifier.uri": [
