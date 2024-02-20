@@ -45,6 +45,11 @@
 * [/api/integration/qualityassurancesources](qualityassurancesources.md)
 * [/api/integration/qualityassurancetopics](qualityassurancetopics.md)
 * [/api/integration/qualityassuranceevents](qualityassuranceevents.md)
+* [/api/integration/suggestions](suggestions.md)
+* [/api/integration/suggestionsources](suggestionsources.md)
+* [/api/integration/suggestiontargets](suggestiontargets.md)
+
+## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
 * [/api/config/bulkaccessconditionoptions](bulkaccessconditionoptions.md)
 * [/api/authz/authorizations](authorizations.md)
