@@ -42,7 +42,7 @@ Return codes:
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* uri: mandatory, the object to use for the authorization check. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/api/core/community/{uuid}
+* uri: mandatory, the object to use for the authorization check. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/api/core/communities/{uuid}
 * eperson: optional, the uuid of the eperson to evaluate for authorization. If not specified authorization of anonymous users will be returned
 * feature: optional, limit the returned authorization to the specified feature (this provide an alternative to codify the authorization id rule on the client side)
 
@@ -60,7 +60,7 @@ Return codes:
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
 * uuid: mandatory, repeatable. Represents the list of objects to be used for the authorization check. For each of them, the UUID must be specified.2
-* type: mandatory. Represents the type of resource(s) (i.e. "core.item", "workflow.workflowitem",...)  on which authorizations are checked.
+* type: mandatory. Represents the type of resource(s) (i.e. "core.items", "workflow.workflowitems",...)  on which authorizations are checked.
 * eperson: optional, the uuid of the eperson to evaluate for authorization. If not specified authorization of anonymous users will be returned
 * feature: optional, repeatable. Represents the list of features. Limits the returned authorizations to the specified features (this provide an alternative to codify the authorization id rule on the client side)
 

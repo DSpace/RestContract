@@ -526,7 +526,7 @@ Status codes:
 **GET /api/core/items/{:item-uuid}/version**
 
 Provide version information based on a given Item UUID. An Item UUID will only match one version. READ permissions over the item in addition to the version permissions are checked.
-The JSON response is the same as the [Version endpoint](version.md#get-single-version).
+The JSON response is the same as the [Version endpoint](versions.md#get-single-version).
 
 Return codes:
 * 200 OK - if the operation succeeds
