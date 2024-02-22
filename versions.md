@@ -115,7 +115,7 @@ Return codes:
 
 ### Version History
 
-Retrieves the related version history, for details see [Version history](versionhistory.md)
+Retrieves the related version history, for details see [Version history](versionhistories.md)
 
 ### Item
 

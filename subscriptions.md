@@ -61,7 +61,7 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only administrators can access the endpoint
 
 ## Single Subscription Object
-**GET /api/core/subscription/<:id>**
+**GET /api/core/subscriptions/<:id>**
 
 Provide detailed information about a specific subscription.
 The JSON response document is as follow
@@ -101,7 +101,7 @@ Status codes:
 
 ### Search methods
 #### findByEPerson
-**GET /api/core/subscription/search/findByEPerson?uuid=<:ePerson-uuid>**
+**GET /api/core/subscriptions/search/findByEPerson?uuid=<:ePerson-uuid>**
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -244,7 +244,7 @@ Return codes:
 * 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
 
 ## Updating subscription
-** PUT /api/core/subscription/<:id>**
+** PUT /api/core/subscriptions/<:id>**
 
 It is possible to update a subscription with id
 `curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}
