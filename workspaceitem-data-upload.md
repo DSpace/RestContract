@@ -80,9 +80,9 @@ will set the title of the first uploaded file to MyFile.pdf returning the follow
 
 ```json
 {
-    id: 1,
-    type: "workspaceitem",
-    sections:
+    "id": 1,
+    "type": "workspaceitem",
+    "sections":
     {
        "traditional-page1":
        {
