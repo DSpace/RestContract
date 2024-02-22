@@ -69,7 +69,7 @@ Possible response status
 This endpoint provides a paginated list of statistics for a DSpaceObject. 
 
 The DSpaceObject is given through the following parameters:
-- `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/community/{uuid}
+- `uri` The object to retrieve statistics for. The full URI of the rest resource must be specified, i.e. https://{dspace.url}/server/api/core/communities/{uuid}
 
 The usual parameters for paginated lists are supported as well:
 - `page` The page number 
