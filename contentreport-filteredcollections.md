@@ -6,6 +6,8 @@ This endpoint provides aggregated statistics about the number of items per colle
 The report can be accessed equally through a GET or a POST query. In both cases, the request can be
 parameterized with a series of filters to add to the basic report.
 
+NOTE: This is currently a beta feature.
+
 
 **GET /api/contentreport/filteredcollections**
 

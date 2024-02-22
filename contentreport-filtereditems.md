@@ -7,6 +7,8 @@ according to given Boolean and metadata filters.
 The report can be accessed equally through a GET or a POST query. Apart from the page offset and the
 format (query parameters vs. JSON document), all parameters are the same for both versions.
 
+NOTE: This is currently a beta feature.
+
 
 **GET /api/contentreport/filtereditems**
 
