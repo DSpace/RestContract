@@ -5,43 +5,47 @@ The section data represent the data about the user uploaded files
 
 ```json
 {
-	"files": [ 
-  	 	{
-  	 		metadata: {
-  	 			"dc.title" : [{value: "sample_file.pdf"}],
-  	 			"dc.description" : [{value: "Description of the sample file"}]
-  	 		},
-  	 		"sizeBytes": 8528,
-			"checkSum": {
-			    "checkSumAlgorithm": "MD5",
-			    "value": "9d8f0f9e369cf12159d47c146c499cf4"
-			},
-  	 		"url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
-  	 		"accessConditions": [
-  	 			{
-  	 				"id": 123,
-	  	 			"name": "openaccess"
-  	 			},
-  	 			{
-  	 				"id": 126,
-	  	 			"name": "administrator"
-  	 			},
-  	 			{
-  	 				"id": 127,
-	  	 			"name": "embargo",
-	  	 			"startDate": "2018-06-24T00:40:54.970+0000"
-  	 			},
-  	 			{
-  	 				"id": 128,
-	  	 			"name": "lease",
-	  	 			"endDate": "2017-12-24T00:40:54.970+0000"
-  	 			}
-  	 		]
- 		}
- 	]
+    "primary": "00001abf-b2e0-477a-99de-104db7cb6469",
+    "files": [ 
+           {
+            "uuid": "00001abf-b2e0-477a-99de-104db7cb6469",
+            "metadata": {
+              "dc.title" : [{value: "sample_file.pdf"}],
+              "dc.description" : [{value: "Description of the sample file"}]
+           },
+           "sizeBytes": 8528,
+           "checkSum": {
+               "checkSumAlgorithm": "MD5",
+               "value": "9d8f0f9e369cf12159d47c146c499cf4"
+           },
+           "url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+           "accessConditions": [
+              {
+                  "id": 123,
+                  "name": "openaccess"
+              },
+              {
+                  "id": 126,
+                  "name": "administrator"
+              },
+              {
+                  "id": 127,
+                  "name": "embargo",
+                  "startDate": "2018-06-24T00:40:54.970+0000"
+              },
+              {
+                  "id": 128,
+                  "name": "lease",
+                  "endDate": "2017-12-24T00:40:54.970+0000"
+              }
+           ]
+        }
+    ]
 }
 ```
-the files attribute contains the list of user uploaded file in the section. For each file the following attributes exist
+the primary attribute contains eventually the uuid of the bitstream set as primary, it will be null if no primary bitstream is set for the ORIGINAL bundle.
+The files attribute contains the list of user uploaded file in the section. For each file the following attributes exist
+* id: the uuid of the underlying bitstream. Useful to set the primary attribute
 * metadata: the map of the metadata assigned to the specific file with [the same structure](workspaceitem-data-metadata.md) used in the submission-form sectionType for the item metadata
 * sizeBytes (**READ-ONLY**): the size of the received file as calculated on the server at the receiving time 
 * checkSum (**READ-ONLY**): the checksum details (algorithm and value) of the received file as calculated on the server at the receiving time
@@ -54,7 +58,7 @@ The PATCH method expects a JSON body according to the [JSON Patch specification 
 Each successful Patch operation will return a HTTP 200 CODE with the new workspaceitem as body. See also the [General rules for the Patch operation](patch.md) for more details.
 
 ### Add
-The add operation is used to add new metadata or access condition to already uploaded files. To upload a completely new file a [POST Multipart request must be issued against the workspaceitems endpoint, see here](workspaceitems.md).
+The add operation is used to add new metadata, access condition to already uploaded files or to set the primary bitstream for the ORIGINAL bundle. To upload a completely new file a [POST Multipart request must be issued against the workspaceitems endpoint, see here](workspaceitems.md).
 
 #### Metadata
 To add a value to an **existent metadata** the client must send a JSON Patch ADD operation as follow
@@ -73,57 +77,60 @@ for instance the call
 `curl --data '{[ { "op": "add", "path": "/sections/uploads/files/0/metadata/dc.title", "value": [{value: "MyFile.pdf"}]}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
 
 will set the title of the first uploaded file to MyFile.pdf returning the following json document
+
 ```json
 {
-	id: 1,
-	type: "workspaceitem",
-	sections:
-	{
-		"traditional-page1":
-		{
-		  "dc.title" : [{value: "Sample Submission Item", language: "en"}],
-		  "dc.contributor.author" : [
-		  	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
-		  ]
-		},
-		"uploads":
-		{	
-			"files": [ 
-	  	 	{
-	  	 		metadata: {
-	  	 			"dc.title" : [{value: "MyFile.pdf"}],
-	  	 			"dc.description" : [{value: "Description of the sample file"}]
-	  	 		},
-	  	 		"sizeBytes": 8528,
-				"checkSum": {
-				    "checkSumAlgorithm": "MD5",
-				    "value": "9d8f0f9e369cf12159d47c146c499cf4"
-				},
-	  	 		"url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
-	  	 		"accessConditions": [
-	  	 			{
-	  	 				"id": 123,
-		  	 			"name": "openaccess"
-	  	 			},
-	  	 			{
-	  	 				"id": 126,
-		  	 			"name": "administrator"
-	  	 			},
-	  	 			{
-	  	 				"id": 127,
-		  	 			"name": "embargo",
-		  	 			"startDate": "2018-06-24T00:40:54.970+0000"
-	  	 			},
-	  	 			{
-	  	 				"id": 128,
-		  	 			"name": "lease",
-		  	 			"endDate": "2017-12-24T00:40:54.970+0000"
-	  	 			}
-	  	 		]
-	 		}
- 		]
-		}
-	}
+    "id": 1,
+    "type": "workspaceitem",
+    "sections":
+    {
+       "traditional-page1":
+       {
+         "dc.title" : [{value: "Sample Submission Item", language: "en"}],
+         "dc.contributor.author" : [
+                {alue: "Bollini, Andrea", authority: "rp00001", confidence: 600}
+         ]
+       },
+       "uploads":
+       {
+           "primary": null,
+           "files": [
+           {
+                "uuid": "00001abf-b2e0-477a-99de-104db7cb6469",
+                "metadata": {
+                  "dc.title" : [{value: "MyFile.pdf"}],
+                  "dc.description" : [{value: "Description of the sample file"}]
+              },
+              "sizeBytes": 8528,
+              "checkSum": {
+                  "checkSumAlgorithm": "MD5",
+                  "value": "9d8f0f9e369cf12159d47c146c499cf4"
+              },
+              "url": "https://demo.dspace.org/server/api/core/bitstreams/00001abf-b2e0-477a-99de-104db7cb6469/content",
+              "accessConditions": [
+                  {
+                     "id": 123,
+                     "name": "openaccess"
+                  },
+                  {
+                     "id": 126,
+                     "name": "administrator"
+                  },
+                  {
+                     "id": 127,
+                     "name": "embargo",
+                     "startDate": "2018-06-24T00:40:54.970+0000"
+                  },
+                  {
+                     "id": 128,
+                     "name": "lease",
+                     "endDate": "2017-12-24T00:40:54.970+0000"
+                  }
+              ]
+           }
+           ]
+       }
+    }
 }
 ```
 
@@ -150,6 +157,13 @@ will be rejected because a startDate attribute is also expected when an embargo 
 
 Please note that doesn't make sense to add an access condition in a specific index and, to simplify the client implementation it was assumed that the accessCondition array is never *null* but eventually an empty array so that you call always append new AccessCondition to the path "/sections/<:name-of-the-form>/files/<:file-idx>/accessCondition/-".
 
+#### Primary bitstream
+To set a bitstream as primary bitstream of the ORIGINAL bundle you can use a JSON Patch ADD operation as follow
+
+`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/primary", "value": "<uuid-of-the-bitstream>"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+
+The specified uuid must match the uuid of an existing bitstreams in the ORIGINAL bundle of the item related to the inprogress submission. If the uuid is invalid or incorrect the 422 response code will be returned. Please note that the add operation can be used to either set the primary bitstream for the first time or to update it
+
 ### Remove
 It is possible to remove an uploaded file specifying its index in the path of a remove operation 
 `curl --data '{[ { "op": "remove", "path": "/sections/uploads/files/<:idx-file>"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
@@ -163,6 +177,11 @@ To remove a previous applied access condition it is sufficient to invoke a remov
 
 the following request will reset the access condition of the specified file to the empty array
 `curl --data '{[ { "op": "remove", "path": "/sections/uploads/files/<:idx-file>/accessConditions"}]' -X PATCH ${dspace7-url}/api/submission/workspaceitems/1`
+
+#### Primary bitstream
+To unset the primary bitstream of the ORIGINAL bundle you can use a JSON Patch REMOVE operation as follow
+
+`curl --data '{[ { "op": "remove", "path": "/sections/<:name-of-the-form>/primary"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 ### Replace
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation without a previous value must return an error. See [general errors on PATCH requests](patch.md)
@@ -183,6 +202,13 @@ to transform an existent *openaccess* access condition to an *administrator* acc
 `curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/0/name", "value": "administrator"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 please note that the above works only because of openaccess and administrator have the same settings needs (no need of addition information). Indeed, the backend is expected to remove the existent policy and create a new policy. If the settings of the previous and new access condition differs the request must fail with a 422 error code
+
+#### Primary bitstream
+To replace the bitstream set as primary bitstream of the ORIGINAL bundle you can use a JSON Patch REPLACE operation as follow
+
+`curl --data '{[ { "op": "replace", "path": "/sections/<:name-of-the-form>/primary", "value": "<uuid-of-the-bitstream>"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
+
+The specified uuid must match the uuid of an existing bitstreams in the ORIGINAL bundle of the item related to the inprogress submission. Please note that the replace operation can be only used if a previous bitstream was set as primary, if you are uncertain about the current status or you need to set the primary bitstream for the first time use the "add" operation. If the uuid is invalid, incorrect or no primary bitstream was previously set the 422 response code will be returned. 
 
 ### Move
 The move operation is allowed to the files index path to change the order of the uploaded file. 
