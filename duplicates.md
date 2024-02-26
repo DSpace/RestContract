@@ -1,9 +1,35 @@
-# WorkspaceItem data of identifiers sectionType
-[Back to the definition of the workspaceitems endpoint](workspaceitems.md)
+# Duplicates Endpoints
+[Back to the list of all defined endpoints](endpoints.md)
 
-This section data represent a list of potential duplicates associated for this workspace item.
+## Main Endpoint
+**/api/duplicates**   
 
-It is a JSON object with the following structure (matches the response from the [duplicate search endpoint](duplicates.md)) :
+Provide access to basic duplicate detection search methods
+
+## Search methods
+
+### search
+
+**GET /api/duplicates/search?uuid=<:uuid>**
+
+Provides a list of items that may be duplicates, if this feature is enabled, given the uuid as a parameter.
+
+The potential duplicates listed in the section have all been detected by a special Solr search that compares the
+levenshtein edit distance between the in-progress item title and other item titles (normalised).
+
+Each potential duplicate has the following attributes:
+
+* title: The item title
+* uuid: The item UUID
+* owningCollectionName: Name of the owning collection, if present
+* workspaceItemId: Integer ID of the workspace item, if present
+* workflowItemId: Integer ID of the workflow item, if present
+* metadata: A list of metadata values copied from the item, as per configuration
+* type: The value is always DUPLICATE. This is the 'type' category used for serialization/deserialization.
+
+See `dspace/config/modules/duplicate-detection.cfg` for configuration properties and examples.
+
+Example
 
 ```json
 {
@@ -70,20 +96,3 @@ It is a JSON object with the following structure (matches the response from the 
     }]
 }
 ```
-The potential duplicates listed in the section have all been detected by a special Solr search that compares the
- levenshtein edit distance between the in-progress item title and other item titles (normalised).
-
-Each potential duplicate has the following attributes:
-
-* title: The item title
-* uuid: The item UUID
-* owningCollectionName: Name of the owning collection, if present
-* workspaceItemId: Integer ID of the workspace item, if present
-* workflowItemId: Integer ID of the workflow item, if present
-* metadata: A list of metadata values copied from the item, as per configuration
-* type: The value is always DUPLICATE. This is the 'type' category used for serialization/deserialization.
-
-See `dspace/config/modules/duplicate-detection.cfg` for configuration properties.
-
-## Patch operations
-There are no PATCH methods implemented for this section. 
