@@ -3,15 +3,12 @@
 
 This endpoint provides aggregated statistics about the number of items per collection according to selected filters.
 
-The report can be accessed equally through a GET or a POST query. In both cases, the request can be
-parameterized with a series of filters to add to the basic report.
-
 NOTE: This is currently a beta feature.
 
 
 **GET /api/contentreport/filteredcollections**
 
-The GET-based endpoint takes a `filters` query parameter whose value is a comma-separated list of filters
+The endpoint takes a `filters` query parameter whose value is a comma-separated list of filters
 like the following:
 ```
 ?filters=is_discoverable,has_multiple_originals,has_pdf_original
@@ -23,21 +20,6 @@ for each requested filter:
 ?filters=is_discoverable&filter=has_multiple_originals&filter=has_pdf_original
 ```
 
-
-Please see [below](#available-filters) for the list of available filters.
-
-**POST /api/contentreport/filteredcollections**
-
-The POST-based endpoint takes a list of filters defined as a JSON document like this:
-```json
-{
-    "filters": {
-        "is_discoverable": true,
-        "has_multiple_originals": true,
-        "has_pdf_original": true
-    }
-}
-```
 
 Please see [below](#available-filters) for the list of available filters.
 
@@ -164,4 +146,4 @@ The available filters are as follows:
 Possible response status:
 
 * 200 OK - The specific report data was found, and the data has been properly returned.
-* 403 Forbidden - if a valid CSRF token is missing when issuing a POST request. This does not apply to GET requests.
+* 403 Forbidden - In case of unauthorized user session.

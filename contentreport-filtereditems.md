@@ -4,9 +4,6 @@
 This endpoint provides a custom query API to select items from existing collections,
 according to given Boolean and metadata filters.
 
-The report can be accessed equally through a GET or a POST query. Apart from the page offset and the
-format (query parameters vs. JSON document), all parameters are the same for both versions.
-
 NOTE: This is currently a beta feature.
 
 
@@ -17,8 +14,7 @@ The report parameters are described [below](#report-parameterization).
 Additionally, a `pageNumber` parameter is available to retrieve results starting at a given page
 (according to `pageLimit`, the maximum number of items per page). Page numbering starts at 0.
 
-All parameters except `pageNumber` and `pageLimit` are repeatable (which is depicted by the use
-of JSON arrays in the POST version JSON example below). Multiple values can be expressed either
+All parameters except `pageNumber` and `pageLimit` are repeatable. Multiple values can be expressed either
 by repeating the corresponding parameter, e.g.:
 ```
 ?filters=is_discoverable&filters=has_multiple_originals&filters=has_pdf_original
@@ -30,33 +26,8 @@ of by using a comma-separated value, e.g.:
 ?filters=is_discoverable,has_multiple_originals,has_pdf_original
 ```
 
-**POST /api/contentreport/filtereditems**
-
-The POST-based endpoint takes its parameters in a JSON document like this:
-```json
-{
-    "collections": [
-        ""
-    ],
-    "presetQuery": "new",
-    "queryPredicates": [
-        {
-            "field": "*",
-            "operator": null,
-            "value": null
-        }
-    ],
-    "pageLimit": "100",
-    "filters": {
-        "is_discoverable": true,
-        "has_multiple_originals": true,
-        "has_pdf_original": true
-    },
-    "additionalFields": [
-        "dc.contributor.advisor"
-    ]
-}
-```
+except the `queryPredicates` parameter, which supports only parameter repetition for multiple values
+to avoid any ambiguities in case a predicate values contains commas.
 
 Please see [below](#report-parameterization) for parameterization details.
 
@@ -144,11 +115,12 @@ An example JSON response document to `/api/contentreport/filtereditems` (metadat
 
 The parameters are specified as follows:
 
-* `collections`: The collections where to search items. If none are provided, the whole repository is searched.
+* `collections`: The collection UUIDs where to search items. If none are provided, the whole repository is searched.
 * `presetQuery`: This parameter is not used on the REST API side. It defines a predefined set of query predicates
   defined in the Angular layer.
 * `queryPredicates`: Predicates used to filter matching items. They can be predefined (see `presetQuery` above)
-  or defined specifically by the user.
+  or defined specifically by the user. As mentioned above, they are the only parameter that cannot be repeated
+  using comma-separated values.
 * `pageLimit`: Maximum number of items per page.
 * `filters`: Supplementary filters, these are the same as those available in the Filtered Collections report.
   Please see [/api/contentreport/filteredcollections](contentreport-filteredcollections.md#available-filters) for details.
@@ -165,4 +137,4 @@ The _basic report_ mentioned above includes, for each item:
 Possible response status:
 
 * 200 OK - The specific report data was found, and the data has been properly returned.
-* 403 Forbidden - if a valid CSRF token is missing when issuing a POST request.
+* 403 Forbidden - In case of unauthorized user session.
