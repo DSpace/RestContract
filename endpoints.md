@@ -48,6 +48,7 @@
 * [/api/integration/suggestions](suggestions.md)
 * [/api/integration/suggestionsources](suggestionsources.md)
 * [/api/integration/suggestiontargets](suggestiontargets.md)
+* [/api/submission/duplicates](duplicates.md)
 
 ## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
