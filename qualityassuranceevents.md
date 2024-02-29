@@ -46,7 +46,7 @@ Attributes
 * the *topic* attribute is the name of the topic of the event
 * the *status* attribute is one of (ACCEPTED, REJECTED, DISCARDED, PENDING)
 * the *eventDate* attribute is the timestamp of the event reception
-* the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the "topic" type is
+* the *message* attribute is a json object which structure depends on the source and on the topic of the event. When the source is "openaire" and the "topic" type is
     * ENRICH/MISSING/PID and ENRICH/MORE/PID: fills `message.type` with the type of persistent identifier (doi, pmid, etc.) and `message.value` with the corresponding value
     * ENRICH/MISSING/ABSTRACT: fills `message.abstract`
     * ENRICH/MISSING/PROJECT and ENRICH/MORE/PROJECT: fills `acronym`, `code`, `funder`, `fundingProgram`, `jurisdiction` and `title`
@@ -109,17 +109,17 @@ Return codes:
 
 ## Search methods
 ### Get qualityassuranceevents by a given topic
-**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:target-key[&size=10&page=0]**
+**GET /api/integration/qualityassuranceevents/search/findByTopic?topic=:topic-key[&size=10&page=0]**
 
-It returns the list of qa events from a specific topic
+It returns the list of qa events from a specific topic, eventually filtered by the target they refer to
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
-* topic: mandatory, the key associated with the requested topic
+* topic: mandatory, the key associated with the requested topic. Please note that the topic could contain the uuid of a specific target item to restrict the qa events. See the note about the [qa topic id](qualityassurancetopics.md#get-single-topic)
 
 Return codes:
 * 200 OK - if the operation succeed
-* 400 Bad Request - if the topic parameter is missing or invalid
+* 400 Bad Request - if the topic parameter is missing
 
 Provide paginated list of the qa events available.
 
@@ -184,3 +184,19 @@ Return codes:
 
 ### To replace a related item
 Replacing a related item will require deleting the related association and creating a new association hereafter
+
+### Get qualityassuranceevents created by the current user
+**GET /api/integration/qualityassuranceevents/search/findByCurrentUser?target=<:item-uuid>[&size=10&page=0]**
+
+It returns the list of qa events created from the current user
+
+The supported parameters are:
+* target: mandatory. The uuid of the item target of the returned quality assurance events
+* page, size [see pagination](README.md#Pagination)
+
+Return codes:
+* 200 OK - if the operation succeed
+* 400 Bad Request - if the target parameter is missing or is not a UUID
+* 422 Unprocessable Entity - it the target parameter doesn't resolve to a valid item
+
+Provide paginated list of the qa events for the specified target item created by the current user. An empty page is returned for unauthenticated users
