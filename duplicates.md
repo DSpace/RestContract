@@ -9,9 +9,17 @@ to detect potential duplicates of a given item, useful during submission and wor
 
 See `dspace/config/modules/duplicate-detection.cfg` for configuration properties and examples.
 
+## Single duplicate
+
+Not implemented. (a duplicate only makes sense in the context of a search by item)
+
+## All duplicates
+
+Not implemented. (a duplicate only makes sense in the context of a search by item)
+
 ## Search
 
-**GET /api/submission/duplicates/search?uuid=<:uuid>**
+**GET /api/submission/duplicates/search/findByItem?uuid=<:uuid>**
 
 Provides a list of items that may be duplicates, if this feature is enabled, given the uuid as a parameter.
 
