@@ -36,8 +36,8 @@
 * [/api/submission/vocabularies](vocabularies.md)
 * [/api/submission/vocabularyEntryDetails](vocabularyEntryDetails.md)
 * [/api/system/systemwidealerts](systemwidealerts.md)
-* [/api/versioning/version](version.md)
-* [/api/versioning/versionhistory](versionhistory.md)
+* [/api/versioning/versions](versions.md)
+* [/api/versioning/versionhistories](versionhistories.md)
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
@@ -45,12 +45,19 @@
 * [/api/integration/qualityassurancesources](qualityassurancesources.md)
 * [/api/integration/qualityassurancetopics](qualityassurancetopics.md)
 * [/api/integration/qualityassuranceevents](qualityassuranceevents.md)
+* [/api/integration/suggestions](suggestions.md)
+* [/api/integration/suggestionsources](suggestionsources.md)
+* [/api/integration/suggestiontargets](suggestiontargets.md)
+
+## Endpoints Under Development/Discussion
 * [/api/authz/resourcepolicies](resourcepolicies.md)
 * [/api/config/bulkaccessconditionoptions](bulkaccessconditionoptions.md)
 * [/api/authz/authorizations](authorizations.md)
 * [/api/authz/features](features.md)
 * [/api/statistics](statistics.md)
 * [/api/tools/itemrequests](item-requests.md)
+* [/api/contentreport/filteredcollections](contentreport-filteredcollections.md)
+* [/api/contentreport/filtereditems](contentreport-filtereditems.md)
 
 ## Actuator endpoints
 The following endpoints are implemented using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.enabling) and are enabled by default:

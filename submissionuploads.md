@@ -55,5 +55,5 @@ Exposed links:
 
 ### Linked entities
 #### metadata
-**/api/confg/submissionupload/:upload-name/metadata**
+**/api/config/submissionuploads/:upload-name/metadata**
 The [submission-form](submissionforms.md) used for the metadata of the files

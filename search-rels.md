@@ -15,5 +15,5 @@ Search endpoints on a collection of resources should act as follows:
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
-* [/api/workflow/polltasks](polltasks.md)
+* [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/workflowitems](workflowitems.md)

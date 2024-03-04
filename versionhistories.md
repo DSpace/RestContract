@@ -42,7 +42,7 @@ Provide information about for a version history id.
 }
 ```
 Attributes:
-- draftVersion: true, if the most recent version is associated to an item still in progress (workspace or workflow), false otherwise. This attribute is only visible to users allowed to create a new version in the history, see [Create version endpoint](version.md#Create version) 
+- draftVersion: true, if the most recent version is associated to an item still in progress (workspace or workflow), false otherwise. This attribute is only visible to users allowed to create a new version in the history, see [Create version endpoint](versions.md#Create version) 
 
 Status codes:
 * 200 OK - if the version history exists and is accessible by the current user
@@ -57,7 +57,7 @@ Status codes:
 **GET /api/versioning/versionhistories/<:versionHistoryId>/versions**
 
 Retrieve a pageable list of versions for the provided version history identifier.  
-The versions are ordered by version number descending and attributes are secured as described in the [get single version endpoint](version.md#get-single-version).
+The versions are ordered by version number descending and attributes are secured as described in the [get single version endpoint](versions.md#get-single-version).
 Only versions related to archived or withdrawn items are return, the most recent version will be excluded from this list if it is not yet archived.
 
 ```json
