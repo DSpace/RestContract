@@ -32,7 +32,7 @@ This is the WorkspaceItem object you created.
 It is **important** to keep the `id` of the WorkspaceItem, as this is necessary to update it or access it again.
 For example, using the `id`, you can load up the current state of your WorkspaceItem
 ```
-GET /api/sumission/workspaceitems/<:id>
+GET /api/submission/workspaceitems/<:id>
 ```
 
 In the response, you'll see a list of `sections` which are available to complete for this WorkspaceItem.

@@ -60,8 +60,31 @@ Provide detailed information about a specific workspaceitem. The JSON response d
         "doi" : "https://doi.org/10.5072/dspace/2",
         "otherIdentifiers" : [ ]
      },
+    "duplicates": {
+      "potentialDuplicates": [
+        {
+          "title": "Sample Submission Item",
+          "uuid": "5ca83276-f003-460d-98b6-dd3c30708749",
+          "owningCollectionName": "Another Collection",
+          "workspaceItemId": null,
+          "workflowItemId": null,
+          "metadata": {
+            "dc.title": [
+              {
+                "value": "Example Item",
+                "language": null,
+                "authority": null,
+                "confidence": -1,
+                "place": 0
+              }
+            ]
+          },
+          "type": "DUPLICATE"
+        }
+      ]
+    },
   	 "traditional-page1": {
-  	 	"dc.title" : [{value: "Sample Submission Item"}],
+  	  	"dc.title" : [{value: "Sample Submission Item"}],
   	 	"dc.contributor.author" : [
   	 		{value: "Bollini, Andrea", authority: "rp00001", confidence: 600}
   	 	]
