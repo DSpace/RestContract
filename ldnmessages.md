@@ -71,7 +71,7 @@ Status codes:
 * 405 Method Not Allowed
 
 ## enqueueRetry
-**/api/ldn/ldnmessages/enqueueretry/<:id>**
+**POST /api/ldn/ldnmessages/<:id>/enqueueretry**
 
 this endpoint is responsible for requesting a reprocessing of LDN Message
 by changing `queueStatusLabel` to be "QUEUE_STATUS_QUEUED_FOR_RETRY"
