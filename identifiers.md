@@ -4,7 +4,7 @@
 ## Main Endpoint
 **GET /api/pid/identifiers**
 
-* GET method not implemented. To fetch an identifier for an item, see (the Items endpoint)[items.md].
+* GET method not implemented. To fetch an identifier for an item, see [the Items endpoint](items.md).
 
 **POST /api/pid/identifiers?type=<:identifier_type>**
 Creates or registers a new identifier for this item. A 'type' parameter is required to indicate which sort of
