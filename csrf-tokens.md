@@ -20,21 +20,20 @@ which also works cross-domain (allowing clients to be on entirely separate domai
 Please keep in mind that clients on other domains *must* still be trusted by the REST API by configuring the [CORS (Cross-Origin Resource Sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 `Access-Control-Allow-Origin` header. This is configurable via the `rest.cors.allowed-origins` configuration in the DSpace Backend.
 
-## How does CSRF protection work in DSpace?
+## How does CSRF protection work in DSpace REST API?
 
-DSpace uses a "[double submit cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie)"  technique for CSRF protection.
+The DSpace REST API (backend) uses [Spring Security's built-in CSRF Protection](https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html).  Specifically it uses a customized version of Spring Security's `CookieCsrfTokenRepository` to store the CSRF token in a cookie between requests as described below.
 
 Here's how it works:
 
-1. The DSpace REST API generates a CSRF Token, storing it in a `HttpOnly` Cookie named `DSPACE-XSRF-COOKIE`, and sending
-it back to the client in a header named `DSPACE-XSRF-TOKEN`.
-   * This token is often generated on your first request to the REST API, but may also
-    be updated at any time.
+1. The DSpace REST API generates a CSRF Token (via Spring Security), storing it in a `HttpOnly` Cookie named `DSPACE-XSRF-COOKIE`, and sending
+it back to the client in an HTTP header named `DSPACE-XSRF-TOKEN`.
+   * This token is often generated on your first request to the REST API, but may also be updated at any time.
    * If your REST API is running via HTTP, then the `DSPACE-XSRF-COOKIE` Cookie will be created with `SameSite=Lax`. This setting means that the cookie will not be sent (by your browser) to any other domains. Effectively, this will block all logins from any domain that is not the same as the REST API. Therefore, we only recommend HTTP in development environments.
    * If your REST API is running via HTTPS, then the `DSPACE-XSRF-COOKIE` Cookie will be created with `SameSite=None; Secure`. This setting means the cookie will be sent cross domain, but only for HTTPS requests. This is recommended for all Production environments.
 2. The client **MUST** store/keep a copy of this CSRF token (usually by watching for the `DSPACE-XSRF-TOKEN` header in every response),
 and update that stored copy whenever a new token is sent.
-   * For example, the [DSpace Angular UI](https://github.com/DSpace/dspace-angular) stores watches for this token from the `DSPACE-XSRF-TOKEN` header, and stores it in a client-side cookie named `XSRF-TOKEN` (as this is the default cookie name that Angular apps use for reading a CSRF token).
+   * For example, the [DSpace Angular UI](https://github.com/DSpace/dspace-angular) stores watches for this token from the `DSPACE-XSRF-TOKEN` header, and stores it in a client-side cookie named `XSRF-TOKEN` (as this is the default cookie name that Angular apps use for reading a CSRF token).  More information on how this works can be found below.
 3. Whenever the client wishes to make a modifying request (`POST`, `PUT`, `PATCH`, `DELETE`, etc), 
 the current CSRF token **MUST** be sent back in the `X-XSRF-TOKEN` header of the request.
    * Keep in mind that [authentication](authentication.md) (via `/api/authn/login`) requires `POST` and therefore also requires a valid CSRF token.
@@ -43,3 +42,16 @@ the current CSRF token **MUST** be sent back in the `X-XSRF-TOKEN` header of the
 `X-XSRF-TOKEN` header to the value in the `DSPACE-XSRF-COOKIE` Cookie. If the values match, the request proceeds.
 If the values do not match, a `403 Forbidden` error is returned.
    * Keep in mind that if the `DSPACE-XSRF-COOKIE` Cookie was blocked (or not sent back to the REST API) during this process, the same error will occur. So, you must ensure this Cookie is sent back (when using a browser this is usually done automatically, provided the `SameSite` settings allow it)
+
+## How does CSRF protection work in DSpace User Interface?
+
+The DSpace User Interface includes some minor customizations to the default [CSRF protection built into Angular](https://angular.io/guide/http-security-xsrf-protection) based on the behavior of the backend.
+
+Here's how it works:
+1. The User Interface submits a request to the REST API which generates a CSRF Token (as described above).
+2. The REST API sends the generated CSRF Token to the User Interface in an HTTP header named `DSPACE-XSRF-TOKEN`.
+    * NOTE: The User Interface is unable to "see" the `DSPACE-XSRF-COOKIE` cookie where the REST API also stores this token.  This cookie has `HttpOnly` which makes it unreadable to Javascript. In addition, the User Interface and REST API may be on separate domains (which will often results in the web browser blocking the cross-domain cookie).
+3. The User Interface reads the CSRF Token from the `DSPACE-XSRF-TOKEN` header and **stores it** in a client-side cookie named `XSRF-TOKEN` (as this is the default cookie name that Angular apps use for reading a CSRF token).
+4. When the User Interface nexts sends a modifying request (`POST`, `PUT`, `PATCH`, `DELETE`, etc), it *reads* the current CSRF Token from the client-side `XSRF-TOKEN` cookie and then **copies it** into the `X-XSRF-TOKEN` HTTP Header to send back to the REST API.
+5. On each later response from the REST API, the User Interface watches for changes to the CSRF Token by checking for the `DSPACE-XSRF-TOKEN` header.  If changes are found, it copies the new token into the client-side cookie named `XSRF-TOKEN` for future requests.
+
