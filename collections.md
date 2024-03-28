@@ -682,7 +682,7 @@ Provide updated metadata information about a specific collection, when the updat
 ```json
 {
   "uuid": "20263916-6a3d-4fdc-a44a-4616312f030c",
-  "name": "test collection",
+  "handle": "10673/2",
   "metadata": {
     "dc.title": [
       {
@@ -700,7 +700,8 @@ Provide updated metadata information about a specific collection, when the updat
         "confidence": -1
       }
     ]
-  }
+  },
+  "type": "collection"
 }
 ```  
 

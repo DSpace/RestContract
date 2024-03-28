@@ -359,9 +359,7 @@ Provide updated metadata information about a specific community, when the update
 
 ```json
 {
-  "id": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
   "uuid": "b8872eba-1a79-4b8b-a8f6-55fa8f73197b",
-  "name": "test new title",
   "handle": "123456789/60631",
   "metadata": {
     "dc.title": [

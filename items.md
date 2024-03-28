@@ -186,9 +186,7 @@ Provide updated metadata information for an item, when the update is completed t
 
 ```json
 {
-  "id": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
   "uuid": "a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9",
-  "name": "Test new title",
   "handle": "123456789/60636",
   "metadata": {
     "dc.contributor.author": [
@@ -208,9 +206,6 @@ Provide updated metadata information for an item, when the update is completed t
       }
     ]
   },
-  "inArchive": true,
-  "discoverable": true,
-  "withdrawn": false,
   "type": "item"
 }
 ```
