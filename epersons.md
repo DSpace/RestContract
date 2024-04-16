@@ -70,8 +70,8 @@ The supported parameters are:
 It returns the EPersonRest instance, if any, matching the user query
 
 Return codes:
-* 200 OK - if the search operation succeeds and a EPerson with the given email address exists
-* 204 OK - if the search operation succeeds, but a EPerson with the given email address does not exist
+* 200 OK - if the search operation succeeds and an EPerson with the given email address exists
+* 204 OK - if the search operation succeeds, but an EPerson with the given email address does not exist
 * 400 Bad Request - if the email parameter is missing or invalid
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and users with READ rights on the target EPerson can use the endpoint
