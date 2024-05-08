@@ -171,16 +171,9 @@ The replace operation allows to replace *existent* information with new one. Att
 Similarly to what has been described for the add operation you can look to the documentation about [the submission-form sectionType](workspaceitem-data-metadata.md) for example about how to replace a metadata or a single metadata value for the file. You will only need to use the *path* to the file'metadata as specified above, i.e. adding /files/<:idx-file>/metadata/
 
 #### Access Condition
-You can replace an existent access condition with a new one or update some settings of an existent access condition using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionupload configuration endpoint](submissionuploads.md).
+You can replace an existent access condition with a new one using the replace operation. The new settings must be valid for the selected access condition (name) according to the [submissionupload configuration endpoint](submissionuploads.md).
 
-To replace an access condition with a new one
 `curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/0", "value": {name: "embargo", startDate: "2018-12-31"}}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
-
-to update the embargo start date
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/0/startDate", "value": "2019-12-31"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
-
-to transform an existent *openaccess* access condition to an *administrator* access condition
-`curl --data '{[ { "op": "add", "path": "/sections/<:name-of-the-form>/files/<:file-idx>/accessConditions/0/name", "value": "administrator"}]}' -X PATCH ${dspace7-url}/api/submission/workspaceitems/<:id>`
 
 please note that the above works only because of openaccess and administrator have the same settings needs (no need of addition information). Indeed, the backend is expected to remove the existent policy and create a new policy. If the settings of the previous and new access condition differs the request must fail with a 422 error code
 
