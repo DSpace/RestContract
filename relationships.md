@@ -370,6 +370,10 @@ This can be further filtered to a single DSO using
 https://demo.dspace.org/#https://demo.dspace.org/server/api/core/relationships/search/byLabel?label=isPersonOfOrgUnit&dso=f2235aa6-6fe7-4174-a690-598b72dd8e44 which contains all relationships created using the relationship type isPersonOfOrgUnit for which one item is f2235aa6-6fe7-4174-a690-598b72dd8e44
 The dso parameter is optional
 
+When applying the dso parameter you can also filter out the results that do not have the given related entity type on the other side of the relationship
+https://demo.dspace.org/server/#/server/api/core/relationships/search/byLabel?label=isAuthorOfPublication&dso=dc051683-17c5-40c1-971f-fa229d2fffcb&relatedEntityType=Person which contains all relationships created using the relationship type `isAuthorOfPublication` for which one item is `dc051683-17c5-40c1-971f-fa229d2fffcb` and the other item has entity type `Person`.
+The `relatedEntityType` parameter is optional
+
 ## Deleting a relationship
 
 **DELETE /api/core/relationships/<:id>**
