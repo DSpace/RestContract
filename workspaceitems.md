@@ -167,7 +167,7 @@ In addition, it allows in future to change the 1:1 association between collectio
 #### findBySubmitter
 **/api/submission/workspaceitems/search/findBySubmitter?uuid=<:submitter-uuid>**
 
-It returns the workspaceitem created by the specified submitter
+It returns the list of workspaceitems created by the specified submitter (eperson).
 
 ## Get Single Workspace Item from Item UUID
 
