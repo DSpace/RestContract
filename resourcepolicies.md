@@ -137,7 +137,14 @@ Return codes:
 The add operation allows to initialize or replace information with new one.
 
 To set a startDate
-`curl --data '[ { "op": "add", "path": "/startDate", "value": "2019-10-31" }]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}`
+
+```
+curl --data '[ { "op": "add", "path": "/startDate", "value": "2019-10-31" }]' \
+     -H 'Authorization: Bearer ...' \
+     -H 'content-type: application/json' \
+     -X PATCH \
+     '${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}'
+```
 
 ```json
   "id": 2844,
@@ -164,8 +171,14 @@ the add operation will result in:
 ```
 
 To set a name and a description
-`curl --data '[ { "op": "add", "path": "/name", "value": "my name" }, { "op": "add", "path": "/description", "value": "my description"}]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}`
 
+```
+curl --data '[ { "op": "add", "path": "/name", "value": "my name" }, { "op": "add", "path": "/description", "value": "my description"}]' \
+     -H 'Authorization: Bearer ...' \
+     -H 'content-type: application/json' \
+     -X PATCH \
+     '${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}'
+```
 
 ```json
   "id": 2844,
@@ -207,7 +220,14 @@ With the `remove` operation, you can delete:
 the other properties cannot be nullified.
 
 To remove an embargo you can for instance use the following
-`curl --data '[ { "op": "remove", "path": "/startDate" }]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}`
+
+```
+curl --data '[ { "op": "remove", "path": "/startDate" }]'
+      -H 'Authorization: Bearer ...' \
+      -H 'content-type: application/json' \
+      -X PATCH \
+      '${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}'
+```
 
 that will transform
 
@@ -245,7 +265,14 @@ Return codes, see also general [return codes for PATCH requests](patch.md#error-
 The replace operation allows to replace *existent* information with new one. Attempt to use the replace operation to set not yet initialized information must return an error. See [general errors on PATCH requests](patch.md)
 
 To change the startDate
-`curl --data '[ { "op": "replace", "path": "/startDate", "value": "2020-01-01" }]' -H "Authorization: Bearer ..." -H "content-type: application/json" -X PATCH ${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}`
+
+```
+curl --data '[ { "op": "replace", "path": "/startDate", "value": "2020-01-01" }]' \
+     -H 'Authorization: Bearer ...' \
+     -H 'content-type: application/json' \
+     -X PATCH \
+     '${dspace7-url}/api/authz/resourcepolicies/${resourcepolicy-id}'
+```
 
 For example, starting with the following item data:
 
@@ -310,9 +337,14 @@ Return codes:
 Update the eperson linked by this resource policy 
 
 Sample CURL command:
+
 ```
-curl -i -X PUT 'https://demo.dspace.org/server/api/authz/resourcepolicies/3/eperson' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/eperson/epersons/ba05e3dd-aa20-4441-ac05-8ceef6f67ac7'
+curl -X PUT '${dspace7-url}/api/authz/resourcepolicies/3/eperson' \
+     -H 'Authorization: Bearer eyJhbGciOiJ…' \
+     -H 'Content-Type:text/uri-list' \
+     --data '${dspace7-url}/api/eperson/epersons/ba05e3dd-aa20-4441-ac05-8ceef6f67ac7'
 ```
+
 The uri-list should always contain exactly 1 eperson. This eperson will be assigned to the resource policy
 
 Return codes:
@@ -342,9 +374,14 @@ Return codes:
 Update the group linked by this resource policy 
 
 Sample CURL command:
+
 ```
-curl -i -X PUT 'https://demo.dspace.org/server/api/authz/resourcepolicies/4/group' -H 'Authorization: Bearer eyJhbGciOiJ…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/eperson/groups/db337ae5-abd2-4a28-b4ad-918cf7779e25'
+curl -X PUT '${dspace7-url}/api/authz/resourcepolicies/4/group' \
+     -H 'Authorization: Bearer eyJhbGciOiJ…' \
+     -H 'Content-Type:text/uri-list' \
+     --data '${dspace7-url}/api/eperson/groups/db337ae5-abd2-4a28-b4ad-918cf7779e25'
 ```
+
 The uri-list should always contain exactly 1 group. This group will be assigned to the resource policy
 
 Return codes:
