@@ -13,7 +13,7 @@ A `GET` endpoint is also available to force a CSRF token refresh. See below.
 
 ### GET /api/security/csrf
 
-Provides a new CSRF Token to the client for usage in later requests. This endpoint SHOULD BE USED SPARINGLY as every call to this endpoint will create a new CSRF token. The DSpace REST API automatically manages CSRF tokens and sends them back to the client _only when the token needs to be changed_ (e.g. on login/logout, etc). Using this endpoint to refresh CSRF tokens frequently may result in unexpected behaviors or even performance issues. The primary purpose of this endpoint is to obtain the *first* CSRF token (if not yet sent by the REST API).
+Provides a new CSRF Token to the client for usage in later requests. This endpoint SHOULD BE USED SPARINGLY as every call to this endpoint will create a new CSRF token. The DSpace REST API automatically manages CSRF tokens and sends them back to the client _only when the token needs to be changed_ (e.g. on login/logout, etc). Using this endpoint to refresh CSRF tokens frequently may result in unexpected behaviors or even performance issues on the client side. The primary purpose of this endpoint is to obtain the *first* CSRF token (if not yet sent by the REST API).
 
 This endpoint returns an empty response with the newly generated CSRF Token in the `DSPACE-XSRF-TOKEN` HTTP Header. It will also save this CSRF Token to the `DSPACE-XSRF-COOKIE` server-side Cookie, for later verification. See [How does CSRF protection work in DSpace REST API?](#how-does-csrf-protection-work-in-dspace-rest-api) below for more details about this header and cookie.
 
