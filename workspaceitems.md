@@ -184,6 +184,15 @@ It would respond with:
 * 403 Forbidden - if you are not logged in with sufficient permissions to view the workspace item
 * 204 if the workspace item doesn't exist
 
+## DELETE Method
 
+**/api/submission/workspaceitems/<:ws-item-uuid>**
 
+Deletes workspace item with the given UUID. The deletion includes the deletion of the item object that is associated to the given workspace item.
 
+Available Response Codes are
+
+* 204 No content - if the operation succeed
+* 401 Unauthorized - if the requester is not authenticated
+* 403 Forbidden - if the requester does not have sufficient permissions ((deletion of workspace items can only be requested by the submitter of the workspace item or administrators)
+* 404 Not found - if the workspace item doesn't exist
