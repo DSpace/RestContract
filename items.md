@@ -571,9 +571,7 @@ It returns the submitter of the item
 
 Status codes:
 * 200 OK - returning the submitter
-* 204 No Content - if there is no submitter for the specified item
-* 401 Unauthorized - if you are not authenticated and don't have permissions on the item
-* 403 Forbidden - if you are not logged in with sufficient permissions
+* 204 No Content - if you are not authenticated or you have no read access on that submitter.
 * 404 Not found - if the item doesn't exist
 
 ## Deleting an item
