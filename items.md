@@ -564,6 +564,16 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions and versioning is not public
 * 404 Not found - if the item doesn't exist
 
+### Get Item Submitter
+**/api/core/items/<:uuid>/submitter**
+
+It returns the submitter of the item
+
+Status codes:
+* 200 OK - returning the submitter
+* 204 No Content - if you are not authenticated or you have no read access on that submitter.
+* 404 Not found - if the item doesn't exist
+
 ## Deleting an item
 
 **DELETE /api/core/items/<:uuid>**
