@@ -596,7 +596,7 @@ Status codes:
 * 422: if the collection didn't contain an administrator group
 
 #### Collection Submitters
-**/api/core/communities/<:uuid>/submittersGroup**
+**/api/core/collections/<:uuid>/submittersGroup**
 
 Endpoints for managing the Collection Submitters group
 
@@ -604,7 +604,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the submitters group.
 
 #### Collection Default item READ rights group
-**/api/core/communities/<:uuid>/itemReadGroup**
+**/api/core/collections/<:uuid>/itemReadGroup**
 
 Endpoints for managing the Collection Default item READ rights group
 
@@ -612,7 +612,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default item READ rights group.
 
 #### Collection Default bitstream READ rights group
-**/api/core/communities/<:uuid>/bitstreamReadGroup**
+**/api/core/collections/<:uuid>/bitstreamReadGroup**
 
 Endpoints for managing the Collection Default bitstream READ rights group
 
@@ -620,7 +620,7 @@ This works identical to the [Collection administrators](#collection-administrato
 except the collection administrators can also create the Collection Default bitstream READ rights group
 
 #### Collection Workflow groups
-**/api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
+**/api/core/collections/<:uuid>/workflowGroups/<:workflow-role>**
 
 Endpoints for managing the Collection Workflow groups
 
@@ -636,7 +636,7 @@ The workflow role can be e.g.:
 * reviewmanagers
 
 ##### Delete a collection workflow group
-**DELETE /api/core/communities/<:uuid>/workflowGroups/<:workflow-role>**
+**DELETE /api/core/collections/<:uuid>/workflowGroups/<:workflow-role>**
 
 Delete the Group associated with a Workflow role.
 
