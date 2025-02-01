@@ -1,4 +1,33 @@
-# DSpace 7 REST Contract
+"_links": {
+    "first": {
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=0&size=5"
+    },
+    "self": {
+      	"href": "http://localhost:8080/server/api/core/bitstreams"
+    },
+    "next": {
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=1&size=5"
+    },
+    "last": {
+        "href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
+    }
+}http://localhost:8080/server/api/core/bitstreams?page=0&size=5http://localhost:8080/server/api/core/bitstreamshttp://localhost:8080/server/api/core/bitstreams?page=1&size=5http://localhost:8080/server/api/core/bitstreams?page=2&size=5"page": {
+    "size": 5,
+    "totalElements": 14,
+    "totalPages": 3,
+    "number": 0
+}0# Example curl command to delete a *single* Collection mapping for an Item
+curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections/<:collection_uuid>"
+
+# Example curl command to delete *ALL* Collection mappings for an item (unsupported at this time)
+curl -i -X DELETE "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollectionshttp://localhost:8080/rest/api/core/items/# Example curl command to add a *new* Collection mapping for an Item
+curl -i -X POST "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+     -H "Content-Type:text/uri-list" 
+     -d "http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588# Example curl command to replace Item-to-Collection mappings with the two listed
+# Notice the two Collection URIs are separated by a newline (\n)
+curl -i -X PUT "http://localhost:8080/rest/api/core/items/<:uuid>/mappedCollections" 
+     -H "Content-Type:text/uri-list" 
+     -d "http://localhost:8080/rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb \n http://localhost:8080/rest/api/core/collections/5ad50035-ca22-4a4d-84ca-d5132f34f588"http://localhost:8080/rest/api/core/collections/1c11f3f1-ba1f-4f36-908a-3f1ea9a557eb# DSpace 7 REST Contract
 
 This repository documents new DSpace REST API Contract beginning with version 7.0.
 * The code that implements this contract is on the  [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp) of the DSpace backend.
