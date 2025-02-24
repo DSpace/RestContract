@@ -244,11 +244,11 @@ Return codes:
 * 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
 
 ## Updating subscription
-** PUT /api/core/subscriptions/<:id>**
+**PUT /api/core/subscriptions/<:id>**
 
-It is possible to update a subscription with id
-`curl -X PUT '{dspace7-url}/api/core/subscriptions/{id}
-' -H "Authorization: Bearer ..." -H 'Content-Type: application/json'
+It is possible to update a subscription with a given id.
+
+Request body:
 
 ```json
 {
@@ -265,12 +265,12 @@ It is possible to update a subscription with id
 The json body must be valid that mean:
 - subscriptionType must be 'content'
 - name must be 'frequency'
-- value must be one of the following values: 'D' stand for Day, 'W' stand for Week and 'M' stand for Month
+- value must be one of the following values: 'D' (Day), 'W' (Week) or 'M' (Month)
 
 Return codes:
-* 200 OK - if the operation succeed, the created subscription is returned
+* 200 OK - if the operation succeed, the updated subscription is returned
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and subscription owners can update subscriptions.
 * 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
 
 ## Deleting a Subscription Object
