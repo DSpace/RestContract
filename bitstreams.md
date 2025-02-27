@@ -38,6 +38,50 @@ Exposed links:
 Bitstream metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
 
 ## Linked entities
+
+### Access Status
+**GET /api/core/bitstreams/<:uuid>/accessStatus**
+
+This endpoint expose the mechanism for retrieving and calculating the access status based on the current user,
+including the embargo date of a DSpace bitstream.
+It can be checked by calling this endpoint with the corresponding item UUID.
+
+Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/accessStatus>
+
+It returns the access status of the bitstream, E.G.:
+
+_200 - Response if the UUID parameter is valid_
+```json
+{
+  "status": "embargo",
+  "embargoDate": "2050-01-01",
+  "type": "accessStatus",
+  "_links" : {
+    "self" : {
+      "href" : "http://{dspace-server.url}/api/core/bitstreams/8d33bdfb-e7ba-43e6-a93a-f445b7e8a1e2/accessStatus"
+    }
+  }
+}
+```
+
+Fields
+- Status: String value if the UUID is valid
+- EmbargoDate: String value, the accessibility date
+- Type: Type of the endpoint, "accessStatus" in this case
+
+Exposed links:
+- self: The valid URL to the bitstream's access status
+
+Default access status values
+- open.access = The file is downloadable
+- embargo = Th file is under an embargo
+- restricted = The file is not downloadable
+
+Return code
+- 200 Ok if the parameter is a valid item UUID
+- 400 Bad Request if the parameter is invalid
+- 404 Not Found if the item cannot be retrieved 
+
 ### Format
 **GET /api/core/bitstreams/<:uuid>/format**
 

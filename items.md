@@ -282,8 +282,9 @@ the discoverable operation will result in:
 
 **GET /api/core/items/<:uuid>/accessStatus**
 
-This endpoint expose the mechanism for retrieving and calculating the access status of a DSpace item.
-It can be checked by calling this endpoint with the the corresponding item UUID.
+This endpoint expose the mechanism for retrieving and calculating the access status of a DSpace item based
+on the anonymous group. It can be checked by calling this
+endpoint with the corresponding item UUID.
 
 ```
 curl -v "http://{dspace-server.url}/api/core/items/2245f2c5-1bed-414b-a313-3fd2d2ec89d6/accessStatus"
@@ -295,6 +296,7 @@ _200 - Response if the UUID parameter is valid_
 ```json
 {
   "status": "metadata.only",
+  "embargoDate": null,
   "type": "accessStatus",
   "_links" : {
     "self" : {
@@ -306,6 +308,7 @@ _200 - Response if the UUID parameter is valid_
 
 Fields
 - Status: String value if the UUID is valid
+- EmbargoDate: String value, the accessibility date
 - Type: Type of the endpoint, "accessStatus" in this case
 
 Exposed links:
