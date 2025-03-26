@@ -282,8 +282,7 @@ the discoverable operation will result in:
 
 **GET /api/core/items/<:uuid>/accessStatus**
 
-This endpoint expose the mechanism for retrieving and calculating the access status of a DSpace item.
-It can be checked by calling this endpoint with the the corresponding item UUID.
+This endpoint expose the mechanism for retrieving and calculating the access status (including the embargo date) of a DSpace item based on the anonymous group or the current user, depending on the system configuration. See access.status.for-user.item property in the dspace.cfg file. The result includes the embargo date in a YYYY-MM-DD format only if the status is embargo. It can be checked by calling this endpoint with the corresponding item UUID.
 
 ```
 curl -v "http://{dspace-server.url}/api/core/items/2245f2c5-1bed-414b-a313-3fd2d2ec89d6/accessStatus"
@@ -295,6 +294,7 @@ _200 - Response if the UUID parameter is valid_
 ```json
 {
   "status": "metadata.only",
+  "embargoDate": null,
   "type": "accessStatus",
   "_links" : {
     "self" : {
@@ -303,9 +303,23 @@ _200 - Response if the UUID parameter is valid_
   }
 }
 ```
+_Includes the embargo date when the status is embargo..._
+```json
+{
+  "status": "embargo",
+  "embargoDate": "2050-01-01",
+  "type": "accessStatus",
+  "_links" : {
+    "self" : {
+      "href" : "http://{dspace-server.url}/api/core/items/2245f2c5-1bed-414b-a313-3fd2d2ec89d7/accessStatus"
+    }
+  }
+}
+```
 
 Fields
 - Status: String value if the UUID is valid
+- EmbargoDate: String value, the accessibility date in YYYY-MM-DD format
 - Type: Type of the endpoint, "accessStatus" in this case
 
 Exposed links:
