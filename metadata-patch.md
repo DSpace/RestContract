@@ -47,7 +47,7 @@ With the `add` operation, you can add any number of metadata values in a single 
 
 You also use `add` to effectively _replace_ all values for a given metadata key, by specifying
 an already-present key as the `path`, and an array of your replacement values as the `value`.
-This use of the add operation to replace a list of values may be counter-intiutive, but it
+This use of the add operation to replace a list of values may be counter-intuitive, but it
 is done according to the [RFC section 4.1](https://tools.ietf.org/html/rfc6902#section-4.1)
 
 > If the target location specifies an object member that does exist, that member's value is replaced.
@@ -142,13 +142,11 @@ New metadata state:
 
 ## Replacing metadata
 
-With `replace`, you can overwrite any of the following within a single operation
-of a PATCH request:
-
-* The entire set of all object metadata (`path="/metadata"`)
-* All metadata values for an existing key (e.g. `path="/metadata/dc.title"`)
+With `replace`, you can overwrite a value at a given target location in a PATCH request:
 * A single existing metadata value (e.g. `path="/metadata/dc.title/0"`)
 * A single property of an existing value (e.g. `path="/metadata/dc.title/0/language"`)
+
+(NOTE: If you are wanting to replace _all values_ of a given metadata field, you should use the `add` operation with an array of values as documented above.)
 
 Example request, replacing the `value` and `language` of the first `dc.title`:
 
