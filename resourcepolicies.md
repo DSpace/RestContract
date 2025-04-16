@@ -322,8 +322,6 @@ Return codes:
 
 Return the eperson linked by this resource policy
 
-The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
-
 Return codes:
 * 200 Ok - if the operation succeed and an eperson is set for this policy
 * 204 No content - if the operation succeed but no eperson is set for this policy
@@ -358,8 +356,6 @@ Return codes:
 **/api/authz/resourcepolicies/<:id>/group**
 
 Return the group linked by this resource policy
-
-The recipient of the policy, eperson or group, cannot be modified. If you need to do so please delete the policy and create a new one.
 
 Return codes:
 * 200 Ok if the operation succeed and a group is linked to this resource policy
