@@ -35,6 +35,13 @@ The examples in each section below build on each other, assuming an initial meta
 }
 ```
 
+PATCH operations targeting metadata must specify a JSON `path` relative to the DSpace object, valid for the following levels:
+- All metadata: `/metadata` → `value` must be an object (if applicable)
+- All values of one metadata field: `/metadata/dc.title` → `value` must be an array (if applicable)
+- One values of one metadata field: `/metadata/dc.title/0` → `value` must be an object (if applicable)
+
+Any metadata field explicitly included in the `path` must be part the metadata registry. PATCH requests targeting unknown metadata fields will fail with HTTP 422 (unprocessable entity).
+
 Note: The metadata of items _in submission_ is modeled in the same way described here -- as a map
 of metadata keys to an ordered array of values. The primary difference is where the metadata
 is located within the JSON representation. The documentation and examples below apply to archived
