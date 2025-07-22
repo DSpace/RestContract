@@ -25,27 +25,35 @@ This endpoint will return details about the event
 
 ```json
 {
-  "id" : "954e5cfa-6990-4c85-ae42-f30d8c7888e2",
-  "eventType" : "ADD",
-  "timeStamp" : "2017-11-22T10:29:11Z",
-  "detail" : "...",
-  "subjectUUID" : "...uuid...",
-  "subjectType" : "Collection",
-  "objectUUID" : "...uuid...",
-  "objectType" : "Item",
-  "type" : "auditevent",
-  "_links" : {
-    "self" : {
-      "href" : "/api/system/auditevents/954e5cfa-6990-4c85-ae42-f30d8c7888e2"
+  "id": "d7ca31fc-50a4-4a85-89ea-599fc1494f12",
+  "epersonUUID": "685369f5-e169-48b3-bedc-70e5d03f8ce2",
+  "objectUUID": null,
+  "objectType": null,
+  "subjectUUID": "e173a574-2de3-4f4a-843d-62fcfc4d2109",
+  "subjectType": "COMMUNITY",
+  "eventType": "MODIFY_METADATA",
+  "timeStamp": "2025-07-21T14:49:54.718+00:00",
+  "detail": null,
+  "metadataField": "dc_identifier_uri",
+  "value": "http://localhost:4000/handle/123456789/7",
+  "authority": "",
+  "confidence": -1,
+  "place": 0,
+  "action": "ADD",
+  "checksum": null,
+  "type": "auditevent",
+  "_links": {
+    "eperson": {
+      "href": "http://localhost:8080/server/api/system/auditevents/d7ca31fc-50a4-4a85-89ea-599fc1494f12/eperson"
     },
-    "eperson" : {
-      "href" : "/api/system/auditevents/954e5cfa-6990-4c85-ae42-f30d8c7888e2/eperson"
+    "object": {
+      "href": "http://localhost:8080/server/api/system/auditevents/d7ca31fc-50a4-4a85-89ea-599fc1494f12/object"
     },
-    "subject" : {
-      "href" : "/api/system/auditevents/954e5cfa-6990-4c85-ae42-f30d8c7888e2/subject"
+    "subject": {
+      "href": "http://localhost:8080/server/api/system/auditevents/d7ca31fc-50a4-4a85-89ea-599fc1494f12/subject"
     },
-    "object" : {
-      "href" : "/api/system/auditevents/954e5cfa-6990-4c85-ae42-f30d8c7888e2/object"
+    "self": {
+      "href": "http://localhost:8080/server/api/system/auditevents/d7ca31fc-50a4-4a85-89ea-599fc1494f12"
     }
   }
 }
