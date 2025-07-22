@@ -36,6 +36,7 @@
 * [/api/submission/workspaceitems](workspaceitems.md)
 * [/api/submission/vocabularies](vocabularies.md)
 * [/api/submission/vocabularyEntryDetails](vocabularyEntryDetails.md)
+* [/api/system/auditevents](auditevents.md)
 * [/api/system/systemwidealerts](systemwidealerts.md)
 * [/api/versioning/versions](versions.md)
 * [/api/versioning/versionhistories](versionhistories.md)
