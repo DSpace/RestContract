@@ -605,3 +605,14 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist (or was already deleted)
+
+### findByCustomURL
+
+**GET /api/core/items/search/findByCustomURL?q=<:custom-url>**
+
+Search an item by the provided custom url. If the provided url is an UUID, a find by item's uuid is performed. The response has the same format of the find by uuid.
+
+Return codes:
+* 200 OK - if the operation succeed
+* 204 No content - if the operation succeed but no item was found
+* 500 Internal server error - if multiple item was found related to the given url
