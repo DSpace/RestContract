@@ -605,3 +605,17 @@ Return codes:
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if the item doesn't exist (or was already deleted)
+
+## Search methods
+### findItemsWithEdit
+**GET /api/core/items/search/findItemsWithEdit**
+
+The supported parameters are:
+* `query`: limit the returned Items to those with metadata values matching the query terms.
+* `page`, `size` [see pagination](README.md#Pagination)
+
+It returns the list of Items that the current user is authorized to edit
+
+Return codes:
+* 200 OK - if the operation succeeds
+* 401 Unauthorized - if you are not authenticated
