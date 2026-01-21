@@ -187,6 +187,23 @@ Return codes:
 * 200 OK - if the operation succeeds
 * 401 Unauthorized - if you are not authenticated
 
+#### findBySubmissionDefinitionName
+**/api/core/collections/search/findBySubmissionDefinitionName**
+
+Get the list of all collections associated with a particular submission name.
+
+The supported parameters are:
+* `name`: the name for a specific submission-definition.
+* `page`, `size` [see pagination](README.md#Pagination)
+
+eg:
+/api/core/collections/search/findBySubmissionDefinitionName?name=<:definition-name>
+
+Return codes:
+* 200 OK - if the operation succeeds
+* 400 Bad Request - if the name is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+
 ## Patch operations
 
 Collection metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
