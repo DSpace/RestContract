@@ -110,7 +110,7 @@ Sample CURL command:
 curl -i -X PUT 'https://demo.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/format' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/bitstreamformats/6'
 ```
 
-The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
+The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream.
 
 Error codes:
 * 200 OK - if the operation succeeded
@@ -142,7 +142,7 @@ Sample CURL command:
 curl -i -X PUT 'https://demo.dspace.org/server/api/core/bitstreams/6ba01288-8a5a-4acf-96f1-fd0730424a1f/bundle' -H 'Authorization: Bearer eyJhbGciO…' -H "Content-Type:text/uri-list" --data 'https://demo.dspace.org/server/api/core/bundles/0b3c0ebf-83bc-4017-afa1-9df37a1a065c'
 ```
 
-The uri-list should always contain exactly 1 bitstream format. This bitstream format will be assigned to the bitstream
+The uri-list should always contain exactly one bundle URI (URI of target bundle).
 
 Error codes:
 * 200 OK - if the operation succeeded
