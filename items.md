@@ -614,5 +614,5 @@ Search an item by the provided custom url. If the provided url is an UUID, a fin
 
 Return codes:
 * 200 OK - if the operation succeed
-* 204 No content - if the operation succeed but no item was found
+* 404 Not found - if no item was found with the given custom URL
 * 500 Internal server error - if multiple item was found related to the given url
