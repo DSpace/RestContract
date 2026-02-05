@@ -24,7 +24,6 @@ Provide detailed information about a specific submission-definition. The JSON re
 ```
 
 Exposed links:
-* collections: list of collections that explicitly use such submission-definition
 * sections: list of submission-section included in this definition
 
 ### Search methods
@@ -34,11 +33,6 @@ Exposed links:
 It returns the submission definition that apply to a specific collection eventually fallback to the default configuration 
 
 ### Linked entities
-#### collections
-**/api/config/submissiondefinitions/<:definition-name>/collections**
-
-It returns the list of collection that make an explicit use of the submission-definition. If a collection doesn't specify the submission-definition to be used the default mapping apply but this collection is not included in the list returned by this method
-
 #### sections
 **/api/config/submissiondefinitions/<:definition-name>/sections**
 
