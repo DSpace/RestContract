@@ -88,7 +88,11 @@ Other properties:
 
 Example: t.b.p
 
-It returns the sub-communities within this community
+It returns the direct sub-communities within this community. Please note that, to provide good performance, 
+the REST API uses information flatten and stored in SOLR at the time of item indexing that could become stale 
+when new delegation are enabled (i.e. a community or collection admin group are created). In such case you are 
+advised to reindex your items. This doesn't apply when your delegation are already inplace and you only change 
+the members of an admin group, these changes are immediately visible without any need to reindex. 
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
@@ -99,7 +103,11 @@ The supported parameters are:
 
 Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/communities/7669c72a-3f2a-451f-a3b9-9210e7a4c02f/collections>
 
-It returns the collections within this community
+It returns the collections direct children of this community. Please note that, to provide good performance, 
+the REST API uses information flatten and stored in SOLR at the time of item indexing that could become stale 
+when new delegation are enabled (i.e. a community or collection admin group are created). In such case you are 
+advised to reindex your items. This doesn't apply when your delegation are already inplace and you only change 
+the members of an admin group, these changes are immediately visible without any need to reindex.
 
 The supported parameters are:
 * page, size [see pagination](README.md#Pagination)
