@@ -823,6 +823,46 @@ The returned JSON response will be like:
 }
 ```
 
+## Autocomplete suggestions
+**/api/discover/suggest**
+
+This endpoint returns a list of terms from a the Solr search core suggest handler. This is configured in solrconfig.xml and, if using with existing metatavalues (as opposed to a flat file), discovery.cfg.
+
+The following parameters are required:
+
+* `dict`: The name of the dictionary / suggest component e.g. "subject" or "countries_file"
+* `q`: A string query (at least 3 characters) to match against autocomplete suggestions
+
+The response is JSON representation as returned by Solr, there are no addressable DSpace objects in the response so no further modelling is used by the REST API.
+
+This is currently used by some vocabularies in submission forms (see traditionalpagetwo subject field for an example) and can be used elsewhere in the frontend or integrated systems.
+
+Example response
+
+```
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 11
+  },
+  "suggest": {
+    "subject": {
+      "test": {
+        "numFound": 1,
+        "suggestions": [
+          {
+            "term": "<b>Test/b> Subject",
+            "weight": 1,
+            "payload": ""
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+
 ## Special configurations
 
 ### workspace
