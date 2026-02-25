@@ -34,9 +34,24 @@ Sample JSON:
 }
 ```
 
+Facet properties:
+
+- `name`: name of the facet
+- `id`: id of the facet
+- `facetType`: type of the facet, e.g. hierarchical, date, text authority
+- `facetLimit`: maximum number of entries on the facet page
+- `minValue`: if configured to expose minimum and maximum values, this is the minimum value
+- `maxValue`: if configured to expose minimum and maximum values, this is the maximum value
+- `openByDefault`: if the facet is meant to be presented initially as opened/active
+
 Exposed links: 
 
 - `values`: link to the list of values that correspond to the facet
+
+Status codes:
+
+- 200 OK: if the facet is found
+- 404 Not found: if the facet doesn't exist, or isn't defined on the provided DiscoveryConfiguration
 
 ## Linked entities 
 
@@ -56,6 +71,8 @@ It returns the facet values corresponding to the given facet. The endpoint suppo
 - `configuration`: The name of a Discovery configuration that should be used by this search. If the provided scope already has a specific Discovery configuration defined, then this parameter will be ignored.
 - `f.<:filter-name>=<:filter-value>,<:filter-operator>`: Advanced search filter that has to be used to filter the result set. The `filter-name` and `filter-operator` must match a value returned by the DiscoveryConfigurations endpoint (see [here](discoveryconfigurations.md)). For example `f.author=5df05073-3be7-410d-8166-e254369e4166,authority` or `f.title=rainbows,notcontains`. If the filter operator is absent or invalid a "422 Unprocessable Entity" will be returned.
 - `page`, `size` & `sort` [see pagination](README.md#Pagination): the sort name must match a value returned by the DiscoveryConfigurations endpoint (see [here](discoveryconfigurations.md)). or *default*, followed by a comma and the order direction. For example `sort=default,asc` or `sort=dateissued,desc`.
+
+Sample JSON:
 
 ```
 {
@@ -99,3 +116,9 @@ It returns the facet values corresponding to the given facet. The endpoint suppo
   }
 }
 ```
+
+Facet value properties:
+
+- `label`: label of the facet value, the label to display
+- `count`: amount of entries found
+- `authorityKey`: authority key of the value (if any)

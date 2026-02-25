@@ -24,11 +24,19 @@ Sample JSON:
 }
 ```
 
+Discovery configuration properties: 
+
+- `id`: ID of the configuration
+
 Exposed links:
 
 - `searchfilters`: link to the search filters defined on this configuration
 - `sortoptions`: link to the sort options defined on this configuration
 - `defaultsortoption`: link to the default sort option defined on this configuration
+
+Status codes:
+
+- 200 OK: if the configuration is found. Note that even if the provided ID couldn't be resolved, the `default` configuration will still be returned.
 
 ## Linked entities
  
@@ -154,6 +162,15 @@ Sample JSON:
 }
 ```
 
+Search filter properties:
+
+- `filter`: name of the filter
+- `hasFacets`: whether this filter is also a facet
+- `filterType`: type of the filter (text, date, standard, hierarchical)
+- `pageSize`: page size of the filter
+- `operators`: list of supported operators that can be combined on each search filter
+- `openByDefault`: if the facet is meant to be presented initially as opened/active 
+
 ### Sort options
 
 **GET /api/discover/discoveryconfigurations/<:name>/sortoptions**
@@ -173,7 +190,7 @@ Sample JSON:
         "type": "sortoption"
       },
       {
-        "name": null,
+        "name": "score",
         "sortOrder": "desc",
         "type": "sortoption"
       },
@@ -203,6 +220,11 @@ Sample JSON:
 }
 ```
 
+Sort option properties:
+
+- `name`: name of the sort option
+- `sortOrder`: sort order of the sort option
+
 ### Default sort option
 
 **GET /api/discover/discoveryconfigurations/<:name>/defaultsortoption**
@@ -223,3 +245,8 @@ Sample JSON:
   }
 }
 ```
+
+Sort option properties:
+
+- `name`: name of the default sort option
+- `sortOrder`: sort order of the default sort option
