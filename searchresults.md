@@ -37,313 +37,278 @@ Sample JSON:
 
 ```
 {
-  "id": null,
+  "_embedded": {
+    "objects": [
+      {
+        "hitHighlights": {
+          "dc.title": [
+            "<em>Test</em> item 1"
+          ]
+        },
+        "type": "discover",
+        "_links": {
+          "indexableObject": {
+            "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024"
+          }
+        },
+        "_embedded": {
+          "indexableObject": {
+            "id": "011e97af-a10b-49ad-a7b6-201b331e1024",
+            "uuid": "011e97af-a10b-49ad-a7b6-201b331e1024",
+            "name": "Test item 1",
+            "handle": "123456789/26",
+            "metadata": {
+              "dc.contributor.author": [
+                {
+                  "value": "Smith, John",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.date.accessioned": [
+                {
+                  "value": "2025-11-12T13:52:57Z",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.identifier": [
+                {
+                  "value": "test",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.identifier.uri": [
+                {
+                  "value": "http://localhost:4000/handle/123456789/26",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.title": [
+                {
+                  "value": "Test item 1",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dspace.entity.type": [
+                {
+                  "value": "Publication",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ]
+            },
+            "inArchive": true,
+            "discoverable": true,
+            "withdrawn": false,
+            "lastModified": "2026-01-30T07:42:06.147410Z",
+            "entityType": "Publication",
+            "type": "item",
+            "_links": {
+              "accessStatus": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/accessStatus"
+              },
+              "bundles": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/bundles"
+              },
+              "identifiers": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/identifiers"
+              },
+              "mappedCollections": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/mappedCollections"
+              },
+              "owningCollection": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/owningCollection"
+              },
+              "relationships": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/relationships"
+              },
+              "version": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/version"
+              },
+              "templateItemOf": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/templateItemOf"
+              },
+              "thumbnail": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/thumbnail"
+              },
+              "submitter": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024/submitter"
+              },
+              "self": {
+                "href": "http://localhost:8080/server/api/core/items/011e97af-a10b-49ad-a7b6-201b331e1024"
+              }
+            }
+          }
+        }
+      },
+      {
+        "hitHighlights": {
+          "dc.title": [
+            "<em>Test</em> Item"
+          ]
+        },
+        "type": "discover",
+        "_links": {
+          "indexableObject": {
+            "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198"
+          }
+        },
+        "_embedded": {
+          "indexableObject": {
+            "id": "14877d8f-243c-4828-ac86-69a57ff4e198",
+            "uuid": "14877d8f-243c-4828-ac86-69a57ff4e198",
+            "name": "Test Item",
+            "handle": "123456789/31",
+            "metadata": {
+              "dc.contributor.author": [
+                {
+                  "value": "Smith, John",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                },
+                {
+                  "value": "Doe, Jane",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 1
+                }
+              ],
+              "dc.date.accessioned": [
+                {
+                  "value": "2026-03-02T08:29:46Z",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.date.issued": [
+                {
+                  "value": "2026",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.identifier.uri": [
+                {
+                  "value": "http://localhost:4000/handle/123456789/31",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.title": [
+                {
+                  "value": "Test Item",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ],
+              "dc.type": [
+                {
+                  "value": "Book",
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1,
+                  "place": 0
+                }
+              ]
+            },
+            "inArchive": true,
+            "discoverable": true,
+            "withdrawn": false,
+            "lastModified": "2026-03-02T08:29:46.784203Z",
+            "entityType": null,
+            "type": "item",
+            "_links": {
+              "accessStatus": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/accessStatus"
+              },
+              "bundles": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/bundles"
+              },
+              "identifiers": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/identifiers"
+              },
+              "mappedCollections": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/mappedCollections"
+              },
+              "owningCollection": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/owningCollection"
+              },
+              "relationships": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/relationships"
+              },
+              "version": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/version"
+              },
+              "templateItemOf": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/templateItemOf"
+              },
+              "thumbnail": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/thumbnail"
+              },
+              "submitter": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198/submitter"
+              },
+              "self": {
+                "href": "http://localhost:8080/server/api/core/items/14877d8f-243c-4828-ac86-69a57ff4e198"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "first": {
+      "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&dsoType=item&page=0&size=2"
+    },
+    "self": {
+      "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&dsoType=item&page=0&size=2"
+    },
+    "next": {
+      "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&dsoType=item&page=1&size=2"
+    },
+    "last": {
+      "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&dsoType=item&page=10&size=2"
+    }
+  },
   "scope": null,
   "query": "test",
   "appliedFilters": null,
   "sort": null,
-  "configuration": "default",
+  "configuration": null,
   "type": "searchresult",
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&configuration=default&dsoType=collection"
-    }
-  },
-  "_embedded": {
-    "searchResult": {
-      "self": {},
-      "_embedded": {
-        "objects": [
-          {
-            "hitHighlights": {
-              "dc.title": [
-                "<em>Test</em> Collection 3"
-              ]
-            },
-            "type": "discover",
-            "_links": {
-              "indexableObject": {
-                "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d"
-              }
-            },
-            "_embedded": {
-              "indexableObject": {
-                "id": "d1ad480f-e918-4905-ac12-a7826c46407d",
-                "uuid": "d1ad480f-e918-4905-ac12-a7826c46407d",
-                "name": "Test Collection 3",
-                "handle": "123456789/4",
-                "metadata": {
-                  "dc.identifier.uri": [
-                    {
-                      "value": "http://localhost:4000/handle/123456789/4",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ],
-                  "dc.title": [
-                    {
-                      "value": "Test Collection 3",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ]
-                },
-                "archivedItemsCount": -1,
-                "type": "collection",
-                "_links": {
-                  "harvester": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/harvester"
-                  },
-                  "itemtemplate": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/itemtemplate"
-                  },
-                  "license": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/license"
-                  },
-                  "logo": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/logo"
-                  },
-                  "mappedItems": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/mappedItems"
-                  },
-                  "parentCommunity": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/parentCommunity"
-                  },
-                  "adminGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/adminGroup"
-                  },
-                  "submittersGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/submittersGroup"
-                  },
-                  "itemReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/itemReadGroup"
-                  },
-                  "bitstreamReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/bitstreamReadGroup"
-                  },
-                  "self": {
-                    "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d"
-                  },
-                  "workflowGroups": [
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/workflowGroups/reviewer",
-                      "name": "reviewer"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/workflowGroups/editor",
-                      "name": "editor"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/d1ad480f-e918-4905-ac12-a7826c46407d/workflowGroups/finaleditor",
-                      "name": "finaleditor"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "hitHighlights": {
-              "dc.title": [
-                "<em>Test</em> Collection 1"
-              ]
-            },
-            "type": "discover",
-            "_links": {
-              "indexableObject": {
-                "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09"
-              }
-            },
-            "_embedded": {
-              "indexableObject": {
-                "id": "5533a5cf-a197-426c-a23b-7120f7c67a09",
-                "uuid": "5533a5cf-a197-426c-a23b-7120f7c67a09",
-                "name": "Test Collection 1",
-                "handle": "123456789/2",
-                "metadata": {
-                  "dc.identifier.uri": [
-                    {
-                      "value": "http://localhost:4000/handle/123456789/2",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ],
-                  "dc.title": [
-                    {
-                      "value": "Test Collection 1",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ]
-                },
-                "archivedItemsCount": -1,
-                "type": "collection",
-                "_links": {
-                  "harvester": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/harvester"
-                  },
-                  "itemtemplate": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/itemtemplate"
-                  },
-                  "license": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/license"
-                  },
-                  "logo": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/logo"
-                  },
-                  "mappedItems": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/mappedItems"
-                  },
-                  "parentCommunity": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/parentCommunity"
-                  },
-                  "adminGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/adminGroup"
-                  },
-                  "submittersGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/submittersGroup"
-                  },
-                  "itemReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/itemReadGroup"
-                  },
-                  "bitstreamReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/bitstreamReadGroup"
-                  },
-                  "self": {
-                    "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09"
-                  },
-                  "workflowGroups": [
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/workflowGroups/reviewer",
-                      "name": "reviewer"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/workflowGroups/editor",
-                      "name": "editor"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/5533a5cf-a197-426c-a23b-7120f7c67a09/workflowGroups/finaleditor",
-                      "name": "finaleditor"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "hitHighlights": {
-              "dc.title": [
-                "<em>Test</em> Collection 2"
-              ]
-            },
-            "type": "discover",
-            "_links": {
-              "indexableObject": {
-                "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527"
-              }
-            },
-            "_embedded": {
-              "indexableObject": {
-                "id": "a5c2d45f-2a8a-4648-a20e-ff0589ae7527",
-                "uuid": "a5c2d45f-2a8a-4648-a20e-ff0589ae7527",
-                "name": "Test Collection 2",
-                "handle": "123456789/3",
-                "metadata": {
-                  "dc.identifier.uri": [
-                    {
-                      "value": "http://localhost:4000/handle/123456789/3",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ],
-                  "dc.title": [
-                    {
-                      "value": "Test Collection 2",
-                      "language": null,
-                      "authority": null,
-                      "confidence": -1,
-                      "place": 0
-                    }
-                  ]
-                },
-                "archivedItemsCount": -1,
-                "type": "collection",
-                "_links": {
-                  "harvester": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/harvester"
-                  },
-                  "itemtemplate": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/itemtemplate"
-                  },
-                  "license": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/license"
-                  },
-                  "logo": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/logo"
-                  },
-                  "mappedItems": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/mappedItems"
-                  },
-                  "parentCommunity": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/parentCommunity"
-                  },
-                  "adminGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/adminGroup"
-                  },
-                  "submittersGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/submittersGroup"
-                  },
-                  "itemReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/itemReadGroup"
-                  },
-                  "bitstreamReadGroup": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/bitstreamReadGroup"
-                  },
-                  "self": {
-                    "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527"
-                  },
-                  "workflowGroups": [
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/workflowGroups/reviewer",
-                      "name": "reviewer"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/workflowGroups/editor",
-                      "name": "editor"
-                    },
-                    {
-                      "href": "http://localhost:8080/server/api/core/collections/a5c2d45f-2a8a-4648-a20e-ff0589ae7527/workflowGroups/finaleditor",
-                      "name": "finaleditor"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        ]
-      },
-      "page": {
-        "number": 0,
-        "size": 20,
-        "totalPages": 1,
-        "totalElements": 3
-      },
-      "_links": {
-        "self": {
-          "href": "http://localhost:8080/server/api/discover/searchresults/search/objects?query=test&configuration=default&dsoType=collection"
-        }
-      }
-    }
+  "page": {
+    "size": 2,
+    "totalElements": 22,
+    "totalPages": 11,
+    "number": 0
   }
 }
 ```
