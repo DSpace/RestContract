@@ -862,6 +862,17 @@ Example response
 }
 ```
 
+**/api/discover/suggest/build**
+
+This endpoint triggers a (re)build of a named or all dictionaries defined in Solr search core suggestion handler configuration.
+
+A preauthorize check limits this endpoint to site-wide administrators.
+
+An optional `dict` parameter can be passed to build a specific dictionary, if allowed by configuration. The parameter value should match the name of the solr "suggester" component and an allowed dictionary in DSpace configuration. See `dspace/solr/search/solrconfig.xml` and the `discovery.suggest.allowed-dictionaries` configuration property in `dspace/config/discovery.cfg`.
+
+If no `dict` parameter is parsed, all allowed dictionaries will be rebuilt.
+
+Solr suggest dictionaries do not track atomic updates to documents in the search core - they need to be fully rebuild to capture all changes made to underlying Solr documents in the search core. For this reason, it is recommended to rebuild dictionaries on startup and at regular intervals, and after deletion of sensitive metadata.
 
 ## Special configurations
 
