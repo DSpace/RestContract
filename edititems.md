@@ -55,9 +55,9 @@ It is possible to remove a specific metadatavalue if the metadata is defined in 
 `curl --data '[{ "op": "remove", "path": "/sections/traditionalpageone/dc.subject/0"}]' -X PATCH ${dspace7-url}/api/core/edititems/<:id>:<:MODE>`
 
 ## Find available modes
-**/api/core/edititems/search/search/findModesById?uuid=<:id>**
+**/api/core/edititems/search/findModesById?uuid=<:id>**
 
-Provide detailed information about edit item modes available to current user for Item having uuid passed as input paraameter. 
+Provide detailed information about edit item modes available to current user for Item having uuid passed as input parameter. 
 The JSON response document is as follow
 ```json
 {
@@ -94,4 +94,66 @@ The JSON response document is as follow
 Return codes:
 * 200 OK - if the operation succeed
 * 400 Bad request - if the id parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+
+## Find edit items by submitter
+**/api/core/edititems/search/findBySubmitter?uuid=<:submitter-uuid>**
+
+Returns a paginated list of edit items submitted by the specified user (EPerson). Each EditItem is returned **without a specific mode**, using the mode identifier `"none"` in the composite ID. This means the returned EditItems have minimal information and no populated sections, as they are not bound to any particular edit mode configuration.
+
+To work with a specific edit mode for an item, use the `/api/core/edititems/search/findModesById` endpoint to discover available modes, then access the item via `/api/core/edititems/{uuid}:{mode}`.
+
+**Note:** This endpoint requires READ permission on the specified EPerson. It retrieves all archived items where the submitter field matches the provided UUID.
+
+The JSON response document is as follows:
+```json
+{
+  "_embedded": {
+    "edititems": [
+      {
+        "id": "7a356e11-f719-4dae-ae44-fa93f21ee6a0:none",
+        "lastModified": "2020-10-12T16:06:39.021+0000",
+        "sections": {},
+        "type": "edititem",
+        "uniqueType": "core.edititem",
+        "_links": {
+          "self": {
+            "href": "http://{dspace-url}/server/api/core/edititems/7a356e11-f719-4dae-ae44-fa93f21ee6a0:none"
+          },
+          "item": {
+            "href": "http://{dspace-url}/server/api/core/edititems/7a356e11-f719-4dae-ae44-fa93f21ee6a0:none/item"
+          },
+          "collection": {
+            "href": "http://{dspace-url}/server/api/core/edititems/7a356e11-f719-4dae-ae44-fa93f21ee6a0:none/collection"
+          },
+          "modes": {
+            "href": "http://{dspace-url}/server/api/core/edititems/7a356e11-f719-4dae-ae44-fa93f21ee6a0:none/modes"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://{dspace-url}/server/api/core/edititems/search/findBySubmitter?uuid=a1b2c3d4-5678-90ab-cdef-1234567890ab"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 1,
+    "totalPages": 1,
+    "number": 0
+  }
+}
+```
+
+Parameters:
+* `uuid` (required): The UUID of the EPerson (submitter) whose edit items should be retrieved
+
+Return codes:
+* 200 OK - if the operation succeeds
+* 400 Bad request - if the uuid parameter is missing or invalid
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you don't have READ permission on the specified EPerson
+
 

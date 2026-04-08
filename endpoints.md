@@ -13,6 +13,7 @@
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/edititems](edititems.md)
+* [/api/core/edititemmodes](edititemmodes.md)
 * [/api/core/epersons](epersons.md)
 * [/api/eperson/orcidqueues](orcidqueues.md)
 * [/api/eperson/orcidhistories](orcidhistories.md)
