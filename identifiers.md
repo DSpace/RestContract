@@ -40,7 +40,7 @@ Return codes:
 * 404 Not found - if the item doesn't exist
 
 ## Get identifiers for item
-**GET /api/pid/identifiers/search/findByItem?uuid=<:uuid>
+**GET /api/pid/identifiers/search/findByItem?uuid=<:uuid>**
 
 Return an array of identifiers associated with the given item.
 ```json
