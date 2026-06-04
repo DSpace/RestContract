@@ -1,8 +1,8 @@
-# DSpace 7 REST Contract
+# DSpace REST Contract
 
-This repository documents new DSpace REST API Contract beginning with version 7.0.
+This repository documents the current DSpace REST API Contract beginning with DSpace version 7.0.
 * The code that implements this contract is on the  [`main` branch](https://github.com/DSpace/DSpace/tree/main/dspace-server-webapp) of the DSpace backend.
-* One example client which utilizes this contract is the [DSpace User Interface](https://github.com/DSpace/dspace-angular/), built in [Angular.io](https://angular.io/).
+* One example client which utilizes this contract is the DSpace frontend [DSpace User Interface](https://github.com/DSpace/dspace-angular/), built with [Angular.io](https://angular.io/).
 
 ## Table of Contents
 * [REST Endpoints](#rest-endpoints)
