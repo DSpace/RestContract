@@ -72,7 +72,7 @@ Return codes:
 ## Creating a Request
 **POST /api/tools/itemrequests**
 
-Anyone may create an item request. The Content-Type is JSON.  
+Anyone may create an item request (depending on backend configuration parameter `request.item.type`). The Content-Type is JSON.  
 
 Example JSON payload:
 
