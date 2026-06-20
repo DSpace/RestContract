@@ -33,23 +33,24 @@ Also exposes whether it's a new user registration, or a password reset for an ex
 ```
 
 ## Create new EPerson registration
+
 **POST /api/eperson/registrations?accountRequestType={requestType_forgot_or_register}**
 
-To create a new EPerson registration, perform a post with the JSON below to the eperson registrations endpoint (without being authenticated).
+To create a new EPerson registration, perform a POST with the JSON payload below to the eperson registrations endpoint (without being authenticated).
 
 ```json
 {
-  "email": "user@institution.edu",
-  "type": "registration"
+  "email": "user@institution.edu"
 }
 ```
 
-Requires query parameter 'accountRequestType' set with either 'register' or 'forgot' value, depending on the action requested.
+Requires query parameter `accountRequestType` set with value either `register` or `forgot`, depending on the action requested.
 
 No other properties can be set (e.g. the name cannot be defined)
-If successful, an email will be sent with a token allowing the user to continue the registration
 
-Verifying whether a new registration can be created can happen using the "epersonRegistration" [feature](features.md), verified against the site
+If successful, an email will be sent with a token allowing the user to continue the registration.
+
+Verifying whether a new registration can be created can happen using the "epersonRegistration" [feature](features.md), verified against the site.
 
 Status codes:
 * 201 Created - if the operation succeed
@@ -57,9 +58,8 @@ Status codes:
 * 401 Unauthorized - if registration is disabled, you are not authorized to create a new registration
 * 422 Unprocessable Entity - if the email address was omitted or the e-mail address is in a domain that is not allowed in config `authentication-password.domain.valid`
 
-
 ## Forgot password
 
-The same endpoint as [Create new EPerson registration](#create-new-eperson-registration) is used.
+The same endpoint as [Create new EPerson registration](#create-new-eperson-registration) is used (set query parameter `accountRequestType` to `forgot`).
 
 Using the same endpoint ensures it's not possible for a malicious user to identify which email addresses are registered by attempting a registration and verifying whether the account exists
