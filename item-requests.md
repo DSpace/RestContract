@@ -72,7 +72,10 @@ Return codes:
 ## Creating a Request
 **POST /api/tools/itemrequests**
 
-Anyone may create an item request.  The Content-Type is JSON.  Example:
+Anyone may create an item request (depending on backend configuration parameter `request.item.type`). The Content-Type is JSON.  
+
+Example JSON payload:
+
 ```json
 {
     "itemId": "71d9fb0c-cc36-41c1-b1d3-63887b414fca",
@@ -83,7 +86,11 @@ Anyone may create an item request.  The Content-Type is JSON.  Example:
     "requestMessage": "Please send this to me."
 }
 ```
-`bitstreamId` is ignored and may be omitted if `allfiles` is `false`.  `requestMessage` is optional.  `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson.  If the session is anonymous then `requestEmail` is required.  `bitstreamId` is required if `allfiles` is false.  `itemId` is always required.
+
+* `bitstreamId` is ignored and may be omitted if `allfiles` is `true`. `bitstreamId` is required if `allfiles` is false.
+* `itemId` is always required.
+* `requestMessage` is optional.
+* `requestEmail` and `requestName` are ignored and may be omitted if the session is authenticated -- these fields will be filled from the session user's EPerson. If the session is anonymous then `requestEmail` is required.
 
 The response is empty, generated token should not be exposed.
 
