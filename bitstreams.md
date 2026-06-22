@@ -205,32 +205,45 @@ Return codes:
 * 403 Forbidden - if you are not logged in with sufficient permissions to see the bitstream metadata
 * 422 Unprocessable Entity - if the provided uuid cannot be resolved to an item regardless to the item status
 
-## DELETE Method
+## Bitstream Deletion
 
-### Single Bitstream Delete
-Delete a bitstream. Works for normal bitstreams in an Item (bundle), and a community or collection logo
+### Deletion of a single bitstream
 
+**DELETE /api/core/bitstreams/<:bitstream_uuid>**
+
+Deletes the bitstream identified by the given UUID. This endpoint supports deleting bitstreams associated with items (via bundles), as well as bitstreams used as community or collection logos.
+
+Return codes:
 * 204 No content - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not loggedin with sufficient permissions
 * 404 Not found - if the bitstream doesn't exist (or was already deleted)
 * 422 Unprocessable Entity - if the bitstream is a community or collection logo
 
-### Multiple Bitstreams Delete
-Delete a list of Bitstreams in one request. This will work for any list of Bitstreams that are attached to an item, will mostly be used in the item admin edit
+### Deletion of multiple bitstreams in a single request
 
+**PATCH /api/core/bitstreams**
+
+A `PATCH` request can be used to delete multiple bitstreams in a single request. This endpoint supports deleting any number of bitstreams attached to an item and is primarily intended for use by the item administration edit interface (in the Angular UI).
+
+Return codes:
 * 204 No content - if the operation succeeded
 * 401 Unauthorized -  if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
 * 404 Not found - if any of the bitstreams in the list haven't been found or are already deleted
 * 422 Unprocessable Entity - If one or more of the given Bitstreams aren't attached to an Item.
 
-A sample CURL command would be:
-```
-curl -i -X PATCH 'https://demo7.dspace.org/server/api/core/bitstreams -H 'Authorization: Bearer eyJhbGciO…' -H "content-type: application/json" --data '[ { "op": "remove", "path": "/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
+A sample `curl` command to delete two bitstreams in a single `PATCH` request would be:
+
+```sh
+curl -i -X PATCH https://demo7.dspace.org/server/api/core/bitstreams \
+     -H 'Authorization: Bearer …' \
+     -H 'content-type: application/json' \
+     --data '[ { "op": "remove", "path": "/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
 ```
 
-The Patch contents is:
+The `PATCH` request body includes the UUIDs of the bitstreams to be deleted.
+
 ```json
 [
   {
