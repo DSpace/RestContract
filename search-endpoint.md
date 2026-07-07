@@ -213,7 +213,7 @@ The returned JSON response will be like:
     "by" : "dc.date.issued",
     "order" : "asc"
   },
-  spellCheckSuggestion": null,
+  "spellCheckSuggestion": null,
   "_embedded" : {
     "searchResults": {
       "_embedded": {
