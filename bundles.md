@@ -157,7 +157,7 @@ Deleting a bundle will delete all bitstreams in the bundle
 
 **GET /api/core/bundles/<:uuid>/bitstreams**
 
-Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Example: <https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
 
 It returns the bitstreams within this bundle. See the [bitstream endpoint](bitstreams.md#Single-Bitstream) for more info
 
@@ -166,9 +166,7 @@ The supported parameters are:
 
 **POST /api/core/bundles/<:uuid>/bitstreams**
 
-TODO: the item has to be known as well when creating a new bitstream. See https://jira.duraspace.org/browse/DS-4317?focusedCommentId=63099&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-63099
-
-Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d300edd79edb/bitstreams>
+Creates a new bitstream in the bundle with the given UUID
 
 Curl example:
 ```
@@ -179,9 +177,9 @@ curl 'https://demo.dspace.org/server/api/core/bundles/d3599177-0408-403b-9f8d-d3
  -F 'properties={ "name": "test.html", "metadata": { "dc.description": [ { "value": "example file", "language": null, "authority": null, "confidence": -1, "place": 0 } ]}, "bundleName": "ORIGINAL" };type=application/json'
 ```
 
-* The item is determined using the ID in the URL
-* The file is uploaded using multipart/form-data
-* The metadata of the bitstream is included as a json property, and with layout, it looks like:
+* The item is determined by the bundle UUID in the URL
+* The file is uploaded using `multipart/form-data`
+* The metadata of the new bitstream is included as a JSON property:
 ```json
 {
   "name": "test.html",
@@ -204,7 +202,7 @@ The bitstream properties can contain:
 
 It returns the created bitstream. See the bitstream endpoint for more info](bitstreams.md#Single Bitstream)
 
-The REST API can support Content-Length and Content-MD5 headers to verify integrity
+The REST API can support `Content-Length` and `Content-MD5` HTTP headers to verify integrity.
 
 Status codes:
 * 201 Created - if the operation succeed
@@ -307,7 +305,7 @@ If the Primary bitstream doesn't exist, it can be created using a POST
 This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
 
 ```
-curl -i -X POST "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+curl -i -X POST "https://demo.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo.dspace.org/api/core/bitstreams/[uuid]"
 ```
 
 Status codes:
@@ -327,7 +325,7 @@ If the Primary bitstream already exists, it can be changed using a PUT
 This should use `Content-Type:text/uri-list` with a single URI value which represents the new Bitstream to mark as primary.
 
 ```
-curl -i -X PUT "https://demo7.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo7.dspace.org/api/core/bitstreams/[uuid]"
+curl -i -X PUT "https://demo.dspace.org/api/core/bundles/[uuid]/primaryBitstream" -H "Content-type:text/uri-list" -d "https://demo.dspace.org/api/core/bitstreams/[uuid]"
 ```
 
 Status codes:
