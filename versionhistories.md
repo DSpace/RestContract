@@ -30,13 +30,13 @@ Provide information about for a version history id.
   "type": "versionhistory",  
   "_links": {
     "self": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1"
+      "href": "https://demo.dspace.org/server/api/versioning/versionhistories/1"
     },
     "versions": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1/versions"
+      "href": "https://demo.dspace.org/server/api/versioning/versionhistories/1/versions"
     },
     "draftVersion": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1/draftVersion"
+      "href": "https://demo.dspace.org/server/api/versioning/versionhistories/1/draftVersion"
     }
   }
 }
@@ -81,7 +81,7 @@ Only versions related to archived or withdrawn items are return, the most recent
     ],
     "_links": {
      "self": {
-       "href": "https://demo7.dspace.org/server/api/versioning/versions/search/findByHistory?historyId=1"
+       "href": "https://demo.dspace.org/server/api/versioning/versions/search/findByHistory?historyId=1"
      }
     },
     "page": {

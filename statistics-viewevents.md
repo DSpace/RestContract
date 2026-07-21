@@ -29,7 +29,7 @@ The sections below describe the parameters for a page view event. All other info
 {
   "targetId": "43f9bb3e-f90d-458f-9858-7e4589481d18",
   "targetType": "item",
-  "referrer": "https://demo7.dspace.org/search"
+  "referrer": "https://demo.dspace.org/search"
 }
 ```
 
