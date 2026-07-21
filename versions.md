@@ -32,9 +32,9 @@ The new created version will be returned in the response, see the [get single ve
 An example curl call:
 
 ```
- curl -i -X POST https://demo7.dspace.org/server/api/versioning/versions \
+ curl -i -X POST https://demo.dspace.org/server/api/versioning/versions \
  -H "Content-Type:text/uri-list" \
- --data "https://demo7.dspace.org/server/api/core/items/a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9"
+ --data "https://demo.dspace.org/server/api/core/items/a8ba963f-d9c9-4198-b5a4-3f74e2ab6fb9"
 ```
 
 Status codes:
@@ -61,13 +61,13 @@ The following example shows all the available attributes as exposed to an admini
   "submitterName": "LastName, FirstName",
   "_links": {
     "versionhistory": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versionhistories/1"
+      "href": "https://demo.dspace.org/server/api/versioning/versionhistories/1"
     },
     "self": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versions/345"
+      "href": "https://demo.dspace.org/server/api/versioning/versions/345"
     },
     "item": {
-      "href": "https://demo7.dspace.org/server/api/versioning/versions/345/item"
+      "href": "https://demo.dspace.org/server/api/versioning/versions/345/item"
     }
   }
 }         
