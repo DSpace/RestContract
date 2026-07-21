@@ -3,7 +3,7 @@
 
 The authentication mechanism since DSpace 7 is based on JSON Web Token (JWT / RFC 7519).
 
-Information about the underline implementation are [available on the wiki](https://wiki.duraspace.org/display/DSPACE/REST+Authentication)
+Information about the underline implementation are [available on the wiki](https://wiki.lyrasis.org/display/DSPACE/REST+Authentication)
 
 ## Login
 **POST /api/authn/login**
