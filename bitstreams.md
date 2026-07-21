@@ -236,7 +236,7 @@ Return codes:
 A sample `curl` command to delete two bitstreams in a single `PATCH` request would be:
 
 ```sh
-curl -i -X PATCH https://demo7.dspace.org/server/api/core/bitstreams \
+curl -i -X PATCH https://demo.dspace.org/server/api/core/bitstreams \
      -H 'Authorization: Bearer …' \
      -H 'content-type: application/json' \
      --data '[ { "op": "remove", "path": "/bitstreams/12623672-25a9-4df2-ab36-699c4c240c7e"}, { "op": "remove", "path": "/bitstreams/5a3f7c7a-d3df-419c-8a2-f00ede62c60a"}]'
