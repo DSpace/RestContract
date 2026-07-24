@@ -231,6 +231,9 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
 }
 ```
 
+A successful response includes a `Location` header with the canonical URI of the created EPerson:
+`${dspace.url}/api/eperson/epersons/<:uuid>`.
+
 Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
