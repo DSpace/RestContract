@@ -55,6 +55,7 @@ This type of endpoint interacts with a group (or collection) of resources (objec
 - `POST` -
 Creates a new resource (object) and adds it to the group. Any required data (i.e. attributes) for the new object _must be included_ in the request body. An empty request body is not allowed, unless you are creating an empty object with no attributes.
     - Related or additional information (such as required associations to other objects) may be passed as querystring parameters in the request, _if it is required to create the object._
+    - A successful JSON creation returns `201 Created` with a `Location` response header containing the absolute URI of the created resource.
         ```
         # For example, creating a Collection *requires* linking it to a parent Community
         # In this scenario, we must have a querystring param to specify the parent Community UUID
