@@ -21,7 +21,6 @@ This repository documents the current DSpace REST API Contract beginning with DS
     * [HATEOAS & HAL](#hateoas--hal)
     * [Statelessness](#statelessness)
         * [JSON Web Tokens](#json-web-tokens)
-    * [ALPS](#alps---application-level-profile-semantics)
     * [Spring Technology Alignment](#spring-technology-alignment)
 * [Content Negotiation](#content-negotiation)
     * [Language Support](#language-support)
@@ -213,10 +212,6 @@ The REST API is [stateless](https://restfulapi.net/statelessness/), meaning the 
 
 #### JSON Web Tokens
 [JSON Web Tokens (JWT)](https://jwt.io/) are used to store state (and authentication) information between requests. This is the format of token the REST API returns to the client. The client should return the JWT to the server in subsequent requests.
-
-### ALPS - Application Level Profile Semantics
-**While not yet implemented**, we expect future support for the ALPS metadata (<http://alps.io/>), so a profile link MUST exist from the root of API.
-A profile link as defined in [RFC 6906](<https://tools.ietf.org/html/rfc6906>), is a place to include application level details. See the ALPS draft spec (http://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-00)
 
 ### Spring Technology Alignment
 While it's an implementation detail, the new REST API uses many Spring REST (Java) libraries, including:
