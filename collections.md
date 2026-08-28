@@ -278,6 +278,15 @@ Example: <https://demo.dspace.org/server/#https://demo.dspace.org/server/api/cor
 
 It returns the item representing the item template of this collection. [See the item endpoint for more info](items.md#Single Item)
 
+This endpoint requires an authenticated user with `ADD` permission on the collection. This includes collection
+submitters and administrators.
+
+Status codes:
+* 200 OK - if the item template is returned
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you do not have `ADD` permission on the collection
+* 404 Not found - if the collection doesn't exist
+
 #### Create Item template
 **POST /api/core/collections/<:uuid>/itemtemplate**
 
