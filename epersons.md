@@ -235,7 +235,8 @@ Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
 * 403 Forbidden - if you are not logged in with sufficient permissions
-* 422 Unprocessable Entity - if the email address was omitted or already exists
+* 409 Conflict - if the email address already exists
+* 422 Unprocessable Entity - if the email address was omitted
 
 ## Create new EPerson based on registration token
 **POST /api/eperson/epersons?token=<:token>**
