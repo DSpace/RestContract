@@ -46,6 +46,8 @@
 * [/api/workflow/workflowitems](workflowitems.md)
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
+* [/api/layout/sections](sections.md)
+* [/api/layout/sections/search/visibleTopBarSections](sections.md)
 * [/api/tools/feedbacks](feedbacks.md)
 * [/api/integration/qualityassurancesources](qualityassurancesources.md)
 * [/api/integration/qualityassurancetopics](qualityassurancetopics.md)
