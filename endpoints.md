@@ -41,6 +41,8 @@
 * [/api/submission/vocabularyEntryDetails](vocabularyEntryDetails.md)
 * [/api/system/auditevents](auditevents.md)
 * [/api/system/systemwidealerts](systemwidealerts.md)
+* [/api/system/emailtemplates](emailtemplates.md)
+* [/api/system/systemconfigvariables](systemconfigvariables.md)
 * [/api/versioning/versions](versions.md)
 * [/api/versioning/versionhistories](versionhistories.md)
 * [/api/workflow/workflowitems](workflowitems.md)
