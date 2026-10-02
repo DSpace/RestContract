@@ -231,6 +231,9 @@ To create a new EPerson, perform a post with the JSON below to the epersons endp
 }
 ```
 
+A successful response includes a `Location` header with the canonical URI of the created EPerson:
+`${dspace.url}/api/eperson/epersons/<:uuid>`.
+
 Status codes:
 * 201 Created - if the operation succeed
 * 401 Unauthorized - if you are not authenticated
@@ -273,6 +276,9 @@ The "eperson.firstname" and "eperson.lastname" metadata are mandatory. The phone
 The email property can be set, but would need to be identical to the value from the registration.  
 The selfRegistered property can be set, but would need to be true
 
+A successful response includes a `Location` header with the canonical URI of the created EPerson:
+`${dspace.url}/api/eperson/epersons/<:uuid>`.
+
 Status codes:
 * 201 Created - if the operation succeed
 * 400 Bad Request - if the email address didn't match the token or already exists. If the token doesn't exist or is expired
@@ -300,6 +306,9 @@ curl -X POST http://${dspace.url}/api/eperson/epersons/${id-eperson}?token=${tok
 ```
 
 As you can see, the request has an ***empty body***.
+
+A successful response includes a `Location` header with the canonical URI of the updated EPerson:
+`${dspace.url}/api/eperson/epersons/<:uuid>`.
 
 Status codes:
 * 201 Created - if the operation succeed
