@@ -10,6 +10,7 @@
 * [/api/core/bitstreams](bitstreams.md)
 * [/api/core/bitstreamformats](bitstreamformats.md)
 * [/api/core/bundles](bundles.md)
+* [/api/core/uploads](uploads.md)
 * [/api/core/metadatafields](metadatafields.md)
 * [/api/core/metadataschemas](metadataschemas.md)
 * [/api/core/edititems](edititems.md)
