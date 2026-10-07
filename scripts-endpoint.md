@@ -182,6 +182,7 @@ Status codes:
 * 404 Resource Not Found - if a script with the specified name doesn't exist
 
 ## Script Invocation
+
 **POST /api/system/scripts/<:script-name>/processes**
 
 POST requests to this endpoint will start the corresponding script with the provided parameters. All parameter values should be provided in the body that has to use the `multipart/form-data` content type. Once the upload is complete and the script was started successfully, this endpoint will return details on the scripts execution
@@ -226,3 +227,37 @@ Status codes:
 * 400 Not found - if the provided parameters don't match the script expectations
 * 404 Not found - if the script doesn't exist
 * 413 Payload too large - uploaded file is larger than limit set in configuration parameter `spring.servlet.multipart.max-file-size`
+
+### Script Invocation from staged uploads
+
+**POST /api/system/scripts/<:script-name>/processes**
+
+The same endpoint also accepts an `application/json` body, which lets a client attach input files
+that were previously [staged in bounded chunks](uploads.md) instead of sending one multipart request:
+
+```json
+{
+  "properties": [
+    { "name": "--add" },
+    { "name": "--zip", "value": "batch.zip" },
+    { "name": "-v" },
+    { "name": "--collection", "value": "954e5cfa-6990-4c85-ae42-f30d8c7888e2" }
+  ],
+  "uploads": [ "18c54117-a230-4c10-b6fc-a906b592ddaf" ]
+}
+```
+
+`properties` is the parameter array otherwise sent as the `properties` form field. `uploads` lists
+the identifiers of complete staged uploads owned by the requesting user; each becomes an input file
+under its staged filename, so a parameter such as `--zip` must name that file. `uploads` may be
+empty, in which case the script is started without input files.
+
+The response is the same `202 Accepted` process representation as above, and the same status codes
+apply. In addition:
+* 404 Not found - if one of the uploads does not exist or belongs to another user
+* 409 Conflict - if one of the uploads is incomplete, or is being or has been consumed by another request
+
+The script's own authorization is checked before the uploads are touched, so a refused request
+leaves them resumable. Once the process exists its link is recorded on every consumed upload;
+repeating the same request afterwards, including after a lost response, returns that same process
+and never starts a second one.
