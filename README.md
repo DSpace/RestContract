@@ -162,9 +162,10 @@ An example
 When applicable, the following links may also appear:
 - `self` - a parameterized link to the requested collection page
 - `next` - the link to the next page of resources in the collection, if any, keeping the same option for size and sorting
-- `previous` - the link to the previous page of resources in the collection, if any, keeping the same option for size and sorting
+- `prev` - the link to the previous page of resources in the collection, if any, keeping the same option for size and sorting
 - `first` - the link to the first page of resources in the collection, keeping the same option for size and sorting
 - `last` - the link to the last page of resources in the collection, keeping the same option for size and sorting
+- `search` - the link to the search methods available on the collection endpoint
 
 An example
 ```
@@ -172,15 +173,27 @@ An example
     "first": {
       	"href": "http://localhost:8080/server/api/core/bitstreams?page=0&size=5"
     },
-    "self": {
-      	"href": "http://localhost:8080/server/api/core/bitstreams"
-    },
-    "next": {
+    "prev": {
       	"href": "http://localhost:8080/server/api/core/bitstreams?page=1&size=5"
     },
+    "self": {
+      	"href": "http://localhost:8080/server/api/core/bitstreams?size=5"
+    },
+    "next": {
+      	"href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
+    },
     "last": {
-        "href": "http://localhost:8080/server/api/core/bitstreams?page=2&size=5"
+        "href": "http://localhost:8080/server/api/core/bitstreams?page=3&size=5"
     }
+}
+```
+
+Following the `search` link returns the available search methods:
+```
+"_links" : {
+ "byItemHandle" : {
+   "href" : "http://localhost:8080/server/api/core/bitstreams/search/byItemHandle"
+ }
 }
 ```
 
