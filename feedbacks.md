@@ -20,17 +20,17 @@ As we don't have yet an use case to get a single feedback the main endpoint is n
 Request body:
 ```json
 {
-  "e-mail": "myemail@test.com",
+  "email": "myemail@test.com",
   "message": "DSpace is the best!",
   "page": "/home"
 }
 ```
 
 The json body must be valid that mean
-- e-mail must be provided
-- message must be provided
+- `email` must be provided
+- `message` must be provided
 
 Return codes:
 * 201 Created - if the operation succeed
-* 400 Bad Request - if some of the fields e-mail or message is missing
-* 404 Not found - if the property 'feedback.recipient' is not configured
+* 400 Bad Request - if some of the fields `email` or `message` is missing
+* 404 Not found - if the property `feedback.recipient` is not configured
