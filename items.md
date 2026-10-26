@@ -93,9 +93,9 @@ Exposed links:
 
 Status codes:
 * 200 OK - if the item is found and it is visible to the current user or the anonymous user. Withdrawn items are returned
-* 401 Unauthorized - if you are not authenticated and the item is not visible to anonymous users
-* 403 Forbidden - if you are not logged in with sufficient permissions. Please note that withdrawn items are visible to everyone without any metadata details
-* 404 Not found - if the item doesn't exist
+* 401 Unauthorized - if the item exists, but you are not authenticated and it is not visible to anonymous users
+* 403 Forbidden - if the item exists, but you are not logged in with sufficient permissions. Please note that withdrawn items are visible to everyone without any metadata details
+* 404 Not Found - if the identifier is malformed, the item doesn't exist, or the UUID belongs to a different type of DSpace object
 
 ### Withdrawn item
 A withdrawn item is a normal item that has been retired from the repository using a patch operation as described below. Once withdrawn the response will show an empty metadata section to everyone except than administrators.

@@ -33,6 +33,12 @@ Exposed links:
 * bundle: link to the bundle, not embedded
 * thumbnail: the thumbnail of the bitstream
 
+Status codes:
+* 200 OK - if the bitstream is found and its metadata is visible to the current user or the anonymous user
+* 401 Unauthorized - if the bitstream exists, but you are not authenticated and its metadata is not visible to anonymous users
+* 403 Forbidden - if the bitstream exists, but you are not logged in with sufficient permissions to see its metadata
+* 404 Not Found - if the identifier is malformed, the bitstream doesn't exist, or the UUID belongs to a different type of DSpace object
+
 ## Patch operations
 
 Bitstream metadata can be modified as described in [Modifying metadata via Patch](metadata-patch.md).
