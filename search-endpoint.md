@@ -213,6 +213,7 @@ The returned JSON response will be like:
     "by" : "dc.date.issued",
     "order" : "asc"
   },
+  "spellCheckSuggestion": null,
   "_embedded" : {
     "searchResults": {
       "_embedded": {
@@ -464,6 +465,7 @@ The returned JSON response will be like:
     "by" : "dc.date.issued",
     "order" : "asc"
   },
+  "spellCheckSuggestions": null,
   "page": {
     	"size": 5,
     	"totalElements": 14,
