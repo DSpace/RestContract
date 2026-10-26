@@ -4,7 +4,7 @@
 ## Main Endpoint
 **/api/core/bundles**   
 
-_Unsupported._ The main endpoint is not relevant and should not be implemented
+The main endpoint only supports the `PATCH` operation for [removing multiple bundles at once](#removing-multiple-bundles-at-once). Retrieving bundles from this endpoint is unsupported.
 
 ## Single Bundle
 **/api/core/bundles/<:uuid>**
@@ -152,6 +152,45 @@ Bundles are only created as part of an item, the contract can be found at the [i
 **DELETE /api/core/bundles/<:uuid>**
 
 Deleting a bundle will delete all bitstreams in the bundle
+
+### Removing multiple bundles at once
+
+**PATCH /api/core/bundles**
+
+A `PATCH` request can be used to delete multiple bundles in a single request. Deleting a bundle also deletes all bitstreams contained in that bundle.
+
+The request body contains a JSON Patch `remove` operation for each bundle UUID:
+
+```json
+[
+  {
+    "op": "remove",
+    "path": "/bundles/d3599177-0408-403b-9f8d-d300edd79edb"
+  },
+  {
+    "op": "remove",
+    "path": "/bundles/4192405f-5734-4e01-a7f8-fcfb74a774d7"
+  }
+]
+```
+
+A sample `curl` command to delete two bundles in a single request:
+
+```sh
+curl -i -X PATCH https://demo.dspace.org/server/api/core/bundles \
+     -H 'Authorization: Bearer …' \
+     -H 'Content-Type: application/json-patch+json' \
+     --data '[{"op":"remove","path":"/bundles/d3599177-0408-403b-9f8d-d300edd79edb"},{"op":"remove","path":"/bundles/4192405f-5734-4e01-a7f8-fcfb74a774d7"}]'
+```
+
+The maximum number of operations in one request is controlled by the `rest.patch.operations.limit` configuration property. The request is rejected without deleting any bundles when an operation is invalid.
+
+Return codes:
+* 204 No Content - if the operation succeeded
+* 400 Bad Request - if the request is invalid or exceeds the configured operation limit
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you do not have sufficient permissions to delete any of the bundles
+* 422 Unprocessable Entity - if any bundle UUID cannot be resolved
 
 ## Bitstreams
 
