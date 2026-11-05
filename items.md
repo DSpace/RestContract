@@ -344,7 +344,7 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
     "metadata": {},
     "type": "bundle",
     "_links" : {
-      "primarybitstream" : {
+      "primaryBitstream" : {
         "href" : "https://demo.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
       "bitstreams" : {
@@ -362,7 +362,7 @@ It returns the bundles within this item. See the [bundle endpoint](bundles.md) f
     "metadata": {},
     "type": "bundle",
     "_links" : {
-      "primarybitstream" : {
+      "primaryBitstream" : {
         "href" : "https://demo.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
       },
       "bitstreams" : {
