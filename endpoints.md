@@ -24,6 +24,7 @@
 * [/api/authn/login](authentication.md#Login)
 * [/api/authn/logout](authentication.md#Logout)
 * [/api/authn/status](authentication.md#Status)
+* [/api/authn/mfa](mfa.md)
 * [/api/captcha/challenge](captcha.md)
 * [/api/config/harvestermetadata](harvestermetadata.md)
 * [/api/config/submissiondefinitions](submissiondefinitions.md)
