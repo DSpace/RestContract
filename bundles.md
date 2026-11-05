@@ -28,7 +28,7 @@ Provide detailed information about a specific bundle. A sample JSON response doc
   },
   "type": "bundle",
   "_links" : {
-    "primarybitstream" : {
+    "primaryBitstream" : {
       "href" : "https://demo.dspace.org/server/api/core/bitstreams/ac49f361-4ffd-47a4-8eb2-e6c73c3f3e76"
     },
     "bitstreams" : {
@@ -141,7 +141,7 @@ Provide detailed information about a specific bundle. A sample JSON response doc
 ```
 
 Exposed links:
-* primarybitstream: link to the primary bitstream if present, it will be embedded
+* primaryBitstream: link to the primary bitstream if present, it will be embedded
 * bitstreams: link to the list of bitstreams displayed according to the order specified by the bundle, it will be embedded
 * item: link to the item
 
