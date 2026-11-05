@@ -72,7 +72,7 @@ The JSON response document is as follow
         "uniqueType": "core.edititemmode",
         "_links": {
           "self": {
-            "href": "https://{dspace-cris-backend-url}/server/api/core/edititemmodes/FULL"
+            "href": "https://{dspace-url}/server/api/core/edititemmodes/FULL"
           }
         }
       }
@@ -80,7 +80,7 @@ The JSON response document is as follow
   },
   "_links": {
     "self": {
-      "href": "http://{dspace-cris-backend-url}/server/api/core/edititems/search/findModesById?uuid=9880d9e1-5441-4e14-a6e8-6cf453bc25f9"
+      "href": "http://{dspace-url}/server/api/core/edititems/search/findModesById?uuid=9880d9e1-5441-4e14-a6e8-6cf453bc25f9"
     }
   },
   "page": {

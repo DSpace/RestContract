@@ -229,7 +229,7 @@ Request body:
 ```
 The parameters are:
 eperson_id: (mandatory), the uuid of the eperson that will be grant of the subscription.
-resource: (mandatory), the uuid of the resource target of the subscription
+resource: (mandatory), the uuid of the resource target of the subscription. The resource can be a Community, a Collection or an Item.
 
 The json body must be valid that mean:
 - subscriptionType must be 'content'
@@ -237,11 +237,21 @@ The json body must be valid that mean:
 - value must be one of the following values 'D' stand for Day, 'W' stand for Week and 'M' stand for Month
 
 Return codes:
-* 200 OK - if the operation succeed, the created subscription is returned
-* 400 Bad Request - if one or both the resource and the eperson_id parameters are missing or aren't uuid
+* 201 Created - if the operation succeed, the created subscription is returned
+* 400 Bad Request - if the resource or eperson_id is a well-formed uuid that does not resolve to an existing DSpaceObject or EPerson
 * 401 Unauthorized - if you are not authenticated
-* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators and Owner can create subscription
-* 422 Unprocessable Entity - if the subscriptionType or subscriptionParameter name or value are invalid
+* 403 Forbidden - if you are not logged in with sufficient permissions. Only system administrators or the owner of the eperson_id can create a subscription, and the subscribing EPerson must have READ permission on the target resource
+* 422 Unprocessable Entity - if the resource or eperson_id parameter is missing, or the subscriptionType or subscriptionParameter name or value are invalid
+
+### Subscribing to an Item
+
+**POST /api/core/subscriptions?eperson_id=<:uuid>&resource=<:uuid>**
+
+Items are subscribed to in the same way as Communities and Collections: the request body, the `eperson_id` parameter and the returned representation are unchanged, only the `resource` parameter points to the uuid of an Item.
+
+The subscribing EPerson must have READ permission on the Item, otherwise the request is rejected with 403 Forbidden. A subscription created on an Item is returned by the same endpoints described above, including [findByEPersonAndDso](#findbyepersonanddso).
+
+The possibility to subscribe is also exposed to clients through the `canSubscribeDso` authorization feature, which reports whether the current user can subscribe to a given DSpace object. The feature supports `core.community`, `core.collection` and `core.item` resources.
 
 ## Updating subscription
 **PUT /api/core/subscriptions/<:id>**
