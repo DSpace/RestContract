@@ -33,7 +33,17 @@ Provide detailed information about a specific item. The JSON response document i
   "type": "item"
 }
 ```
- 
+
+This endpoint requires an authenticated user with `ADD` permission on the collection that owns the item template.
+This includes collection submitters and administrators. It applies the same rule as the
+[collection item template endpoint](collections.md#retrieve-item-template).
+
+Status codes:
+* 200 OK - if the item template is returned
+* 401 Unauthorized - if you are not authenticated
+* 403 Forbidden - if you do not have `ADD` permission on the collection
+* 404 Not found - if the item template doesn't exist
+
 ## Creating an item template
 **POST /api/core/collections/<:uuid>/itemtemplate**
 
