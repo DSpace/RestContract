@@ -21,7 +21,7 @@ Provide detailed information about a specific input-form. The JSON response docu
 {
   "id": "default",
   "required": true,
-  "max-size": 536870912,
+  "maxSize": 536870912,
   "accessConditionOptions": [
 		{
  			"name": "openaccess"
@@ -49,6 +49,8 @@ The attributes of the objects in the accessConditionOptions arrays are as follow
 * If there is a *hasEndDate* attribute and it is true, the access condition to be applied requires to specify an endDate that must be less or equal than the value of the *maxEndDate* attribute (if null any date is acceptable). If a startDate is supplied the endDate must be greater than the startDate
 
 A null value for the accessConditionOptions attribute means that the upload step doesn't allow the user to set a policy for the file. The file will get only the policies inherited from the collection.
+
+The *maxSize* attribute is the largest file, in bytes, that this upload step accepts: the `maxSize` configured for the upload configuration (or `upload.max`), capped by the REST server's multipart limit (`spring.servlet.multipart.max-file-size`). It is absent when no limit applies. Clients should check a file against it before sending any data; the backend also rejects a larger file with the section error `error.validation.filesize`.
 
 Exposed links:
 * metadata: it is a link to the submission-form to use for the files metadata
