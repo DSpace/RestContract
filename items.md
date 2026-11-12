@@ -90,6 +90,7 @@ Exposed links:
 * templateItemOf: the collection that have the item as template
 * relationships: the relationships to other items
 * thumbnail: the main thumbnail of the item
+* metrics: the metrics collected for the item
 
 Status codes:
 * 200 OK - if the item is found and it is visible to the current user or the anonymous user. Withdrawn items are returned
@@ -529,6 +530,95 @@ Status codes:
 * 204 No Content - if there is no thumbnail for the specified item
 * 401 Unauthorized - if you are not authenticated and don't have permissions on the item or the thumbnail's metadata
 * 403 Forbidden - if you are not logged in with sufficient permissions
+* 404 Not found - if the item doesn't exist
+
+### Metrics
+**GET /api/core/items/<:uuid>/metrics**
+
+It returns the [metrics](metrics.md) collected for the item as a paginated HAL collection of `metric` resources. READ permissions on the item are required. The endpoint supports the `page` and `size` parameters (see [pagination](README.md#pagination)) as well as the usual `embed` and `projection` parameters. The `metrics` link is present in the `_links` of every item: when the item has no metrics, the endpoint still returns `200 OK` with an empty page (`page.totalElements` equal to `0`).
+
+The JSON response is as follows:
+```json
+{
+  "_embedded": {
+    "metrics": [
+      {
+        "id": "storedmetric-1",
+        "metricType": "scopusCitation",
+        "metricCount": 4.0,
+        "acquisitionDate": "2019-10-31T00:00:00.000+00:00",
+        "startDate": null,
+        "endDate": null,
+        "last": true,
+        "remark": "{\"identifier\":\"2-s2.0-67349162500\",\"pmid\":\"19406218\",\"doi\":\"10.1016/j.gene.2009.04.019\"}",
+        "deltaPeriod1": 3.0,
+        "deltaPeriod2": 12.0,
+        "rank": 50.0,
+        "type": "metric",
+        "uniqueType": "cris.metric",
+        "_links": {
+          "self": {
+            "href": "http://localhost:8080/server/api/cris/metrics/storedmetric-1"
+          }
+        }
+      },
+      {
+        "id": "storedmetric-2",
+        "metricType": "view",
+        "metricCount": 4501.0,
+        "acquisitionDate": "2019-10-31T00:00:00.000+00:00",
+        "startDate": null,
+        "endDate": null,
+        "last": true,
+        "remark": null,
+        "deltaPeriod1": null,
+        "deltaPeriod2": null,
+        "rank": null,
+        "type": "metric",
+        "uniqueType": "cris.metric",
+        "_links": {
+          "self": {
+            "href": "http://localhost:8080/server/api/cris/metrics/storedmetric-2"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/server/api/core/items/40a0cdfe-a3d9-4f55-94c6-ebcdd2c1fa04/metrics"
+    }
+  },
+  "page": {
+    "number": 0,
+    "size": 20,
+    "totalPages": 1,
+    "totalElements": 2
+  }
+}
+```
+
+Fields:
+* id: the metric identifier. It is `storedmetric-<id>` for metrics stored in the database, or `<item-uuid>:<metricType>` for metrics computed dynamically at request time (e.g. `embedded-view`, `embedded-download`, `altmetric`, `google-scholar`, `dimensions`, `plumX`)
+* metricType: the type of the metric (e.g. `scopusCitation`, `wosCitation`, `embedded-view`, `embedded-download`, `altmetric`)
+* metricCount: the value of the metric, if available
+* acquisitionDate: the date the metric was acquired, in ISO-8601 format
+* startDate, endDate: the optional time range the metric refers to, in ISO-8601 format
+* last: true if this is the most recent value recorded for the metric type
+* remark: a provider-specific payload, encoded as a JSON string (not a nested JSON object), or null
+* deltaPeriod1, deltaPeriod2: the variation of the metric over the two configured periods, if available
+* rank: the rank of the item for this metric, if available
+* type: the REST resource type, `metric` in this case
+* uniqueType: the unique REST resource type, `cris.metric` in this case
+
+Exposed links:
+* self: the URL of the item's metrics endpoint
+
+Status codes:
+* 200 OK - if the item exists and is readable by the current user
+* 400 Bad Request - if the item UUID is missing or invalid
+* 401 Unauthorized - if you are not authenticated and the item is not visible to anonymous users
+* 403 Forbidden - if you are not logged in with sufficient permissions to read the item
 * 404 Not found - if the item doesn't exist
 
 ### Get single version for item
