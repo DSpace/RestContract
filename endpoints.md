@@ -47,6 +47,7 @@
 * [/api/workflow/pooltasks](pooltasks.md)
 * [/api/workflow/claimedtasks](claimedtasks.md)
 * [/api/tools/feedbacks](feedbacks.md)
+* [/api/integration/itemexportformats](itemexportformats.md)
 * [/api/integration/qualityassurancesources](qualityassurancesources.md)
 * [/api/integration/qualityassurancetopics](qualityassurancetopics.md)
 * [/api/integration/qualityassuranceevents](qualityassuranceevents.md)
